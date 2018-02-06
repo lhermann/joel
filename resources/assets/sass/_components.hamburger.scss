@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #HAMBURGER
+   ========================================================================== */
+
+.c-hamburger {
+    border: 0;
+    border-left: 1px solid $c-border;
+    background-color: $c-background;
+    cursor: pointer;
+    width: 56px;
+    height: 56px;
+    color: $c-gray-6;
+
+    @include mq($from: tablet) {
+        border-right: 1px solid $c-border;
+    }
+
+    &:hover {
+        background-color: $c-accent;
+        color: $c-white;
+    }
+}
+
+    .c-hamburger__icon {
+        font-size: 32px;
+    }

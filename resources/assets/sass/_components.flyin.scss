@@ -1,0 +1,66 @@
+/* ==========================================================================
+   #FLYIN
+   ========================================================================== */
+
+$flyin-max-width: 24em;
+
+.c-flyin {
+    position: fixed;
+    top: 0;
+    right: -24em;
+    transform: translateX(0);
+    transition: $global-transition transform ease;
+    z-index: 100;
+    box-shadow: $global-shadow;
+    background-color: $c-white;
+    width: 90%;
+    max-width: $flyin-max-width;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    &.c-flyin--open {
+        transform: translateX(-$flyin-max-width);
+    }
+}
+
+    /*
+     * Wrapper around header and content
+     * responsible for the inner animation
+     */
+    .c-flyin__inner {
+        transform: translateX(-50%);
+        transition: $global-transition transform ease;
+
+        .c-flyin--open & {
+            transform: translateX(0);
+        }
+    }
+
+        .c-flyin__header {
+            display: flex;
+            border-bottom: 1px solid $c-border;
+            padding-left: $unit;
+            height: $header-height;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+            .c-flyin__title {
+                @include inuit-font-size(22px, false);
+                display: inline-block;
+                margin-bottom: 0;
+                color: $c-textalt;
+                font-weight: 400;
+            }
+
+            .c-flyin__btn {
+                border-width: 0 0 0 1px;
+                width: $header-height;
+                height: $header-height - 1px;
+            }
+
+        .c-flyin__content {
+            padding: $unit;
+        }
+

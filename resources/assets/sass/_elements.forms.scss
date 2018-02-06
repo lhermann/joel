@@ -1,0 +1,59 @@
+/* ==========================================================================
+   #FOMRS
+   ========================================================================== */
+
+form {
+    legend {
+        color: $c-border;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    ul {
+        margin: 0;
+        list-style: none;
+    }
+}
+
+fieldset {
+    border: 1px solid $c-border;
+    border-radius: $global-radius;
+    padding: $unit-small $unit $unit;
+}
+
+input,
+textarea {
+    transition: border-color $global-transition;
+    border: 1px solid $c-border;
+    border-radius: $global-radius;
+    background-color: $c-background-transparent;
+    padding: $unit-tiny $unit-small;
+    color: $c-text;
+    font-weight: 300;
+
+    &::placeholder { color: $c-gray-6; }
+    &::-webkit-input-placeholder { color: $c-gray-6; }
+    &:-ms-input-placeholder { color: $c-gray-6; }
+
+    &:focus {
+        border-color: $c-accent;
+    }
+
+    // &[type="text"],
+    // &[type="tel"],
+    // &[type="number"] {
+    //     width: 100%;
+    // }
+
+    &[type="radio"],
+    &[type="checkbox"] {
+        cursor: pointer;
+    }
+}
+
+textarea {
+    // width: 100%;
+    min-height: $unit * 3;
+}

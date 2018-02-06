@@ -1,0 +1,138 @@
+/* ==========================================================================
+   #SLIDE
+   ========================================================================== */
+
+.c-slide {
+    position: relative;
+    background-color: $c-background;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+
+    &--white {
+        color: $c-white;
+    }
+
+    .is-entering & {
+        animation: $slide-transition ease-in-out c-slide--enter;
+    }
+
+    .is-leaving & {
+        animation: $slide-transition ease-in-out c-slide--leave;
+    }
+}
+
+    .c-slide__link {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .c-slide--wrapper {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+
+        .c-slide--top & {
+            align-items: flex-start;
+        }
+
+        .c-slide--right & {
+            justify-content: flex-end;
+        }
+
+        .c-slide--bottom & {
+            align-items: flex-end;
+        }
+
+        .c-slide--left & {
+            justify-content: flex-start;
+        }
+    }
+
+        .c-slide__body {
+            padding: $unit-large;
+            width: $unit * 26;
+            text-align: center;
+        }
+
+    .c-slide__hero {
+        position: relative;
+        z-index: 30;
+    }
+
+        .c-slide__btn {
+            min-width: 50%;
+        }
+
+        .c-slide__hero__body {
+            padding: $unit-large;
+            width: $unit * 26;
+            text-align: center;
+        }
+
+        /*
+         * 1. horizontally align list with rest of page
+         */
+        .c-slide__hero__medialist {
+            margin-left: -$unit; /* 1 */
+            background-color: rgba($c-white, .8);
+            padding: 0 $unit;
+        }
+
+        .c-slide__quote {
+            position: relative;
+            color: $c-gray-7;
+
+            &:before,
+            &:after {
+                position: absolute;
+                line-height: 0;
+                color: $c-gray-3;
+                font-family: serif;
+                font-size: 500%;
+            }
+
+            &:before {
+                bottom: -$unit;
+                left: -$unit-large;
+                content: "\201D";
+            }
+
+            &:after {
+                top: $unit;
+                right: -$unit-large;
+                content: "\201C";
+            }
+        }
+
+        .c-slide__credits {
+            margin-top: $unit;
+            color: $c-textmuted;
+        }
+
+
+
+@keyframes c-slide--enter {
+    0% {
+        transform: translateX(-70%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes c-slide--leave {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-70%);
+    }
+}

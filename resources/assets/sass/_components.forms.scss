@@ -1,0 +1,43 @@
+/* ==========================================================================
+   #FOMRS
+   ========================================================================== */
+
+.c-form {
+    &--large {
+        @include inuit-font-size(16px);
+    }
+
+    &--huge {
+        @include inuit-font-size(18px);
+    }
+}
+
+    /*
+     * 1. Don't break button from input
+     * 2. if 100% width is reached save exactly the space for a button with icon
+     */
+    .c-form__input-with-btn {
+        white-space: nowrap; /* 1 */
+
+        .c-form__input {
+            border-radius: $global-radius 0 0 $global-radius;
+            padding-right: $unit;
+            max-width: calc(100% - 50px); /* 2 */
+        }
+
+        .c-form__btn {
+            display: inline-block;
+            vertical-align: top;
+            line-height: 1.15; // same as input
+        }
+    }
+
+    .c-form--large {
+        .c-form__input {
+            padding: $unit-small - 1px $unit;
+        }
+
+        .c-form__btn {
+            padding: $unit-small $unit;
+        }
+    }

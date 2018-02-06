@@ -1,0 +1,50 @@
+///* ========================================================================
+//   #GLOBAL
+//   ======================================================================== */
+// The global settings file contains any project-wide variables; things that
+// need to be made available to the entire codebase.
+
+// Standardise some UI treatments.
+$global-radius: 3px !default;
+$global-transition: (1/3) + s !default;
+$global-shadow: 0 3px 15px rgba(0, 0, 0, .2) !default;
+
+// $inuit-offsets: true;
+$inuit-fractions: 1 2 3 4 5;
+$inuit-wrapper-width: 1200px;
+
+$inuit-responsive-spacing-directions: (
+  null: null,
+  "t": "-top",
+  "r": "-right",
+  "b": "-bottom",
+  "l": "-left",
+  "h": ("-right", "-left"),
+  "v": ("-top", "-bottom")
+);
+
+$inuit-responsive-spacing-properties: (
+  "m": "margin",
+  "p": "padding"
+);
+
+$inuit-responsive-spacing-sizes: (
+  null: $inuit-global-spacing-unit,
+  \-\-: $inuit-global-spacing-unit-tiny,
+  \-:   $inuit-global-spacing-unit-small,
+  \+:   $inuit-global-spacing-unit-large,
+  \+\+: $inuit-global-spacing-unit-huge,
+  '0': 0
+);
+
+$inuit-crops: (
+  (1:1),
+  (16:9),
+);
+
+$inuit-ratios: (
+  (2:1),
+  (4:3),
+  (16:9),
+);
+

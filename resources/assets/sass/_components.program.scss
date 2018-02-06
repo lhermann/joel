@@ -1,0 +1,126 @@
+/* ==========================================================================
+   #PROGRAM
+   ========================================================================== */
+
+.c-program {
+    margin-left: 0;
+    overflow: hidden;
+    list-style: none;
+    flex-wrap: wrap;
+
+    @include mq($from: tablet) {
+        display: flex;
+    }
+}
+
+    .c-program__item {
+        position: relative;
+        margin-bottom: $unit;
+        margin-left: $unit-small;
+        margin-right: $unit-small;
+    }
+
+        .c-program__box {
+            position: relative;
+            z-index: 2;
+            border: 1px solid $c-secondary;
+            background-color: $c-white;
+            padding: $unit-tiny $unit-small;
+            text-align: center;
+            line-height: 1.2;
+
+            @include mq($from: tablet) {
+                width: $unit * 4;
+                padding: $unit-small 0;
+            }
+
+            .is-today & {
+                border-color: $c-green;
+            }
+
+            &:after,
+            &:before {
+                display: block;
+                position: absolute;
+                top: 50%;
+                border-top: 1px solid $c-border;
+                content: "";
+            }
+
+            &:after {
+                left: 100%;
+                margin-left: 1px;
+                width: 1000%;
+            }
+
+            &:before {
+                left: -$unit-small;
+                margin-left: -1px;
+                width: $unit-small;
+            }
+        }
+
+            .c-program__week {
+                font-size: 160%;
+                font-weight: 600;
+            }
+
+            // .c-program__date {
+            //     font-size: 80%;
+            // }
+
+            @include mq($until: tablet) {
+                .c-program__week,
+                .c-program__date {
+                    display: inline-block;
+                    font-size: 130%;
+                    margin-right: $unit-tiny;
+                }
+            }
+
+        .c-program__eventlist {
+            margin-left: $unit * 3;
+            list-style: none;
+        }
+
+            .c-program__event {
+                position: relative;
+                margin-top: $unit-small;
+                line-height: 1.3;
+            }
+
+                .c-program__dot,
+                .c-program__line {
+                    position: absolute;
+                    bottom: 50%;
+                    left: -$unit;
+                    border: 1px solid $c-secondary;
+
+                    .is-today & {
+                        border-color: $c-green;
+                    }
+                }
+
+                .c-program__dot {
+                    z-index: 1;
+                    margin: 0 0 #{-$unit-tiny} #{-$unit-tiny};
+                    border-radius: 50%;
+                    background-color: $c-white;
+                    width: $unit-small;
+                    height: $unit-small;
+
+                    .is-now & {
+                        background-color: $c-green;
+                    }
+                }
+
+                .c-program__line {
+                    z-index: 0;
+                    border-right-width: 0;
+                    height: $unit-large;
+                }
+
+                .c-program__time {
+                    font-weight: 600;
+                }
+

@@ -1,0 +1,65 @@
+/* ==========================================================================
+   #SITE-FOOTER
+   ========================================================================== */
+
+.c-site-footer {
+    background-color: $c-gray-8;
+    color: $c-gray-4;
+}
+
+    .c-site-footer__nav {
+        position: relative;
+        padding: $unit-large $unit $unit-large $unit-large;
+
+        @include mq($from: tablet) {
+            &:after {
+                position: absolute;
+                top: 0;
+                left: 73%;
+                border-left: 1px solid $c-gray-6;
+                height: 100%;
+                content: "";
+            }
+        }
+
+    }
+
+        .c-site-footer__hr {
+            margin: $unit -#{$unit};
+            border-color: $c-gray-6;
+        }
+
+    .c-site-footer__copyright {
+        background-color: $c-gray-9;
+        padding: $unit;
+    }
+
+        .c-site-footer__heading {
+            @include inuit-font-size(18px);
+            margin-bottom: $unit-small;
+            color: $c-gray-2;
+            font-weight: 600;
+        }
+
+        .c-site-footer__list {
+            margin-left: 0;
+            list-style: none;
+
+            a {
+                color: $c-gray-4;
+
+                &:focus,
+                &:hover {
+                    color: $c-gray-3;
+                }
+            }
+
+            &--inline > li {
+                display: inline-block;
+            }
+
+            &--middot > li:not(:last-child):after {
+                padding: 0 $unit-tiny;
+                content: "\0a\b7";
+            }
+        }

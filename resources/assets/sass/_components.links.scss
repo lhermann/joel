@@ -1,0 +1,85 @@
+/* ==========================================================================
+   #LINKS
+   ========================================================================== */
+
+/**
+ * 1. Remove button styling
+ */
+.c-link {
+    display: inline;
+    border: 0;            /* 1 */
+    background: none;     /* 1 */
+    cursor: pointer;      /* 1 */
+    padding: 0;           /* 1 */
+    width: 100%;
+    text-align: inherit;  /* 1 */
+    line-height: inherit; /* 1 */
+    color: $c-text;
+    font-weight: inherit; /* 1 */
+
+    &.is-active {
+        font-weight: 500;
+    }
+}
+
+.c-link--touch {
+    @include mq($until: desktop) {
+        padding-top: $unit-tiny;
+        padding-bottom: $unit-tiny;
+    }
+}
+
+.c-link--block {
+    display: block;
+    padding: $unit-small $unit;
+    white-space: nowrap;
+}
+
+.c-link--dotted {
+    border-bottom: 1px dotted $c-textmuted;
+}
+
+.c-link--white {
+    color: rgba($c-white, .8);
+    border-color: rgba($c-white, .2);
+
+    &:hover {
+        color: $c-white;
+        border-color: $c-white;
+    }
+}
+
+.c-link--primary {
+    color: $c-text;
+
+    &:active,
+    &:hover {
+        background-color: $c-accent;
+        color: $c-white;
+    }
+}
+
+.c-link--secondary {
+    color: $c-text;
+
+    &:active,
+    &:hover {
+        background-color: $c-gray-2;
+    }
+}
+
+.c-link--alt {
+    color: $c-textalt;
+}
+
+.c-link--muted {
+    color: $c-textmuted;
+}
+
+    .c-link__float-right {
+        float: right;
+        margin-top: -$inuit-global-line-height;
+        @include mq($until: tablet) {
+            margin-top: -18px;
+        }
+    }

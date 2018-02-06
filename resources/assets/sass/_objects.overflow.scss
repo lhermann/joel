@@ -1,0 +1,72 @@
+/* ==========================================================================
+   #OVERFLOW
+   ========================================================================== */
+/*
+ * This class will allow elements to overflow its box horizontally and adds
+ * navigational elements
+ *
+ * Works together with overflow.js
+ */
+.o-overflow {
+    position: relative;
+
+    @include mq($from: desktop) {
+        overflow-x: scroll;
+    }
+
+    /*
+     * Add padding inside the overflow element
+     */
+    &--padding {
+        padding-right: $unit;
+        padding-left: $unit;
+    }
+}
+
+    /*
+     * The content that flows over. Will be animated with javascript
+     */
+    .o-overflow__content {
+        transition: transform $global-transition;
+    }
+
+    /*
+     * Create a space for the buttons left and right
+     */
+    .o-overflow__nav {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: $unit-huge;
+        z-index: 11;
+        padding: 1px 0;
+
+        @if ($inuit-use-markup-fix == false) {
+            font-size: $inuit-global-font-size * 1.5;
+            font-size: 1.5rem;
+        }
+
+        @include mq($from: desktop) {
+            display: none;
+        }
+
+        &--left {
+            left: 0;
+            padding-right: $unit-large;
+            background-image: linear-gradient(to right, rgba(255,255,255,1), 40%, rgba(255,255,255,.05) 90%, rgba(255,255,255,0));
+
+            .is-left & {
+                display: none;
+            }
+        }
+
+        &--right {
+            right: 0;
+            padding-left: $unit-large;
+            background-image: linear-gradient(to left, rgba(255,255,255,1), 40%, rgba(255,255,255,.05) 90%, rgba(255,255,255,0));
+
+            .is-right & {
+                display: none;
+            }
+        }
+    }

@@ -1,0 +1,17 @@
+/* ==========================================================================
+   #BADGE
+   ========================================================================== */
+
+.c-badge {
+    @include inuit-font-size(12px);
+    border-radius: $global-radius;
+    background-color: $c-background;
+    vertical-align: middle;
+    padding: $unit-tiny/2 $unit-small;
+    font-weight: 600;
+
+    &--success {
+        background-color: $c-green;
+        color: $c-white;
+    }
+}

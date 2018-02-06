@@ -1,0 +1,27 @@
+/* ==========================================================================
+   #GRID
+   ========================================================================== */
+
+.o-grid {
+    display: grid;
+    grid-gap: $unit;
+    width: 100%;
+
+    @include mq($from: desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &--h50u {
+        height: $unit * 25;
+    }
+}
+
+    .o-grid__item {
+        &--hero {
+            @include mq($from: tablet) {
+                grid-row: 1 / span 2;
+                grid-column: 1 / span 2;
+            }
+        }
+    }
+

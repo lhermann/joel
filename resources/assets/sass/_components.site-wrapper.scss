@@ -1,0 +1,33 @@
+/* ==========================================================================
+   #FLYIN
+   ========================================================================== */
+
+.c-site-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.c-site-wrapper:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: $global-transition background-color;
+    z-index: -99;
+    background-color: rgba($c-black, 0);
+    content: "";
+}
+
+/*
+ * Transparent overlay while mobile nav is visible
+ */
+.c-site-wrapper--faded {
+    overflow: hidden;
+
+    &:after {
+        z-index: 99;
+        background-color: rgba($c-black, .5);
+    }
+}

@@ -1,0 +1,113 @@
+///* ========================================================================
+//   #COLORS
+//   ======================================================================== */
+
+// Brand Colors
+
+$c-primary:               #061375;
+$c-primary-lighter:       lighten($c-primary, 10%);
+$c-primary-darker:        darken($c-primary, 10%);
+
+$c-secondary:             #0B5EE5;
+$c-secondary-lighter:     lighten($c-secondary, 10%);
+$c-secondary-darker:      darken($c-secondary, 10%);
+
+$c-white:       #fff;
+$c-gray-1:      #f8f8f8;
+$c-gray-2:      #f0f0f0;
+$c-gray-3:      #e8e8e8;
+$c-gray-4:      #b6b6b6;
+$c-gray-5:      #8e8e8e;
+$c-gray-6:      #666;
+$c-gray-7:      #4d4d4d;
+$c-gray-8:      #333;
+$c-gray-9:      #262626;
+$c-black:       #000;
+
+$c-dark:        $c-gray-8;
+$c-light:       $c-gray-2;
+$c-green:       #39b54a;
+$c-red:         #ed1c24;
+
+/**
+ * Semantics
+ */
+// Semantic color variables are daisy-chained onto their literal names.
+
+/* Text colors */
+$c-text:                        $c-gray-8;
+$c-textalt:                     $c-gray-5;
+$c-textmuted:                   rgba($c-gray-7, .45);
+$c-accent:                      $c-primary;
+$c-background:                  $c-gray-1;
+$c-background-transparent:      rgba($c-black, .04);
+$c-border:                      $c-gray-3;
+
+$c-link:                        $c-secondary;
+$c-link-hover:                  $c-primary;
+
+$c-primary-btn-text:            $c-white;
+$c-primary-btn:                 $c-primary;
+$c-primary-btn-hover:           $c-primary-darker;
+
+$c-secondary-btn-text:          $c-text;
+$c-secondary-btn:               $c-gray-2;
+$c-secondary-btn-hover-text:    $c-white;
+$c-secondary-btn-hover:         $c-gray-7;
+
+$c-tertiary-btn-text:           $c-white;
+$c-tertiary-btn:                rgba($c-black, .5);
+$c-tertiary-btn-hover:          rgba($c-black, .6);
+
+
+
+
+
+$c-1: #171738;
+$c-2: #061375;
+$c-3: #005377;
+$c-4: #136F63;
+
+$c-1: #061375;
+$c-2: #102087;
+$c-3: #1C2FA8;
+$c-4: #3D52D5;
+
+
+$global-colors: (
+    'white':    #fff,
+    'gray-1':   #f8f8f8,
+    'gray-2':   #f0f0f0,
+    'gray-3':   #e8e8e8,
+    'gray-4':   #b6b6b6,
+    'gray-5':   #8e8e8e,
+    'gray-6':   #666,
+    'gray-7':   #4d4d4d,
+    'gray-8':   #333,
+    'gray-9':   #262626,
+    'black':    #000,
+
+    'primary':   #061375,
+    'secondary': #0B5EE5,
+
+    'dark':     color(gray-8),
+    'light':    color(gray-2),
+    'green':    #39b54a,
+    'red':      #ed1c24,
+
+
+    'error':    #da291c,
+    'info':     #330072,
+    'pending':  #8a1538,
+    'success':  #78be20,
+    'warning':  #fae100
+);
+
+// Grab colors from the above map by calling `color(error)`.
+@function color($key) {
+  @return map-get($global-colors, $key);
+}
+
+
+
+

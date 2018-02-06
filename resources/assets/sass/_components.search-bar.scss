@@ -1,0 +1,52 @@
+/* ==========================================================================
+   #SEARCH-BAR
+   ========================================================================== */
+
+.c-search-bar {
+    @include inuit-font-size(18px);
+    position: relative;
+    width: 100%;
+    color: $c-white;
+
+    @include mq($until: desktop) {
+        @include inuit-font-size(14px);
+    }
+
+    &--primary {
+        @include mq($until: 30em) {
+            display: none;
+        }
+    }
+
+    &--mobile {
+        @include mq($from: 30em) {
+            display: none;
+        }
+    }
+}
+
+    .c-search-bar__input {
+        border-width: 0;
+        border-radius: $global-radius 0 0 $global-radius;
+        padding-left: $unit;
+        width: calc(100% - 36px);
+        height: 36px;
+    }
+
+    .c-search-bar__btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        float: right;
+        border-radius: 0 $global-radius $global-radius 0;
+        background-color: $c-gray-4;
+        padding: 0;
+        width: 36px;
+        height: 36px;
+        color: $c-white;
+
+        &:hover,
+        &:focus {
+            background-color: $c-gray-6;
+        }
+    }

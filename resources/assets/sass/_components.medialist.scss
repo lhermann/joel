@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #MEDIAITEM
+   ========================================================================== */
+
+.c-medialist {
+    width: 100%;
+}
+
+    // .c-medialist__title {
+    //     .c-medialist--notitle & {
+    //         display: none;
+    //     }
+    // }
+
+    .c-medialist__list {
+        margin: 0;
+        margin-right: -$unit-small;
+        margin-left: -$unit-small;
+        list-style: none;
+    }

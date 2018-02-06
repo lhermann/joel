@@ -1,0 +1,67 @@
+/* ==========================================================================
+   #ORIENTATIONS
+   ========================================================================== */
+
+/**
+ * orient content of a block
+ *
+ *   <div class="u-center u-right"></div>
+ */
+
+$orientations: (
+    "center": ("center", "center"),
+    "top": ("flex-start", ""),
+    "right": ("", "flex-end"),
+    "bottom": ("flex-end", ""),
+    "left": ("", "flex-start")
+) !default;
+
+$selector: ();
+@each $name, $value in $orientations {
+    $selector: append($selector, ".u-#{$name}", "comma");
+}
+#{$selector} {
+    display: flex !important;
+}
+
+@each $name, $value in $orientations {
+    .u-#{$name} {
+        @if nth($value, 1) != "" {
+            align-items: #{nth($value, 1)} !important;
+        }
+        @if nth($value, 2) != "" {
+            justify-content: #{nth($value, 2)} !important;
+        }
+    }
+}
+
+
+
+// $orient-horizontal: (
+//     left:   "flex-start",
+//     center: "center",
+//     right:  "flex-end"
+// );
+
+// $orient-vertical: (
+//     top:    "flex-start",
+//     middle: "center",
+//     bottom: "flex-end"
+// );
+
+// [class^="u-orient"],
+// [class*=" u-orient"] {
+//     display: flex !important;
+// }
+
+// @each $key, $value in $orient-vertical {
+//     .u-orient-#{$key} {
+//         align-items: #{$value} !important;
+//     }
+// }
+
+// @each $key, $value in $orient-horizontal {
+//     .u-orient-#{$key} {
+//         justify-content: #{$value} !important;
+//     }
+// }

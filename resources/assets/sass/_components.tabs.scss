@@ -1,0 +1,44 @@
+/* ==========================================================================
+   #TABS
+   ========================================================================== */
+
+// .c-tabs {
+
+// }
+
+    .c-tabs__item {
+        transition: background-color $global-transition;
+        border-left: 1px solid $c-border;
+        border-bottom: 1px solid $c-border;
+        background-color: $c-background;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &.is-active:first-child {
+            border-left: 0;
+        }
+
+        &:last-child:not(.is-active) {
+            border-right: 1px solid $c-border;
+        }
+
+        &.is-active {
+            border-bottom: 0;
+            background-color: transparent;
+        }
+    }
+
+    .c-tabs__link {
+        @include inuit-font-size($inuit-font-size-h5, $unit * 3);
+        display: inline-block;
+        transition: color $global-transition;
+        padding: 0 $unit-small;
+        width: 100%;
+        color: $c-textmuted;
+
+        .is-active & {
+            color: $c-text;
+        }
+    }

@@ -1,0 +1,38 @@
+///* ========================================================================
+//   #CLOTHOID
+//   ======================================================================== */
+
+// Mixin to generate a clothoid gradient
+// http://www.cssmojo.com/the-very-latest-clearfix-reloaded/
+//
+// .usage {
+//   @include inuit-clearfix(#fff, .5, 0);
+// }
+@mixin clothoid-gradient($color: #000, $deg: 180deg, $first-stop: 0%, $alpha-from: 1, $alpha-to: 0) {
+    $diff: $alpha-from - $alpha-to;
+    background-image: linear-gradient( $deg,
+        rgba($color, $alpha-from) 0%,
+        // rgba($color, $alpha-from) $first-stop + ((100% - $first-stop) * .3),
+        rgba($color, $alpha-from - $diff*.7) 50%,
+        // rgba($color, $alpha-from - $diff*.7) $first-stop + ((100% - $first-stop) * .51),
+        rgba($color, $alpha-from - $diff*.85) 65%,
+        // rgba($color, $alpha-from - $diff*.85) $first-stop + ((100% - $first-stop) * .657),
+        rgba($color, $alpha-from - $diff*.925) 75.5%,
+        // rgba($color, $alpha-from - $diff*.925) $first-stop + ((100% - $first-stop) * .76),
+        rgba($color, $alpha-from - $diff*.963) 82.85%,
+        // rgba($color, $alpha-from - $diff*.963) $first-stop + ((100% - $first-stop) * .832),
+        rgba($color, $alpha-from - $diff*.981) 88%,
+        // rgba($color, $alpha-from - $diff*.981) $first-stop + ((100% - $first-stop) * .877),
+        rgba($color, $alpha-to) 100%
+    );
+}
+
+
+/*
+15   : 35    (0.428)    15   : 50    (0.3)   15    (x 0.3)
+10.5 : 24.5  (0.428)    10.5 : 35    (0.3)   25.5  (x 0.51)
+7.35 : 17.15 (0.428)    7.35 : 24.5  (0.3)   32.85 (x 0.657)
+5.15 : 12    (0.428)    5.15 : 17.15 (0.3)   38    (x 0.76)
+0    : 0     (0.428)    3.6  : 12    (0.3)   41.6  (x 0.832)
+0    : 0     (0.428)    2.25 : 8.4   (0.3)   43.85 (x 0.877)
+*/

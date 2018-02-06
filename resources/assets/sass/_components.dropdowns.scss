@@ -1,0 +1,25 @@
+/* ==========================================================================
+#DROPDOWNS
+========================================================================== */
+
+.c-dropdown {
+    z-index: 98;
+    margin: 3px 0;
+    border: 1px solid $c-border;
+    box-shadow: $global-shadow;
+    background-color: $c-white;
+    list-style: none;
+
+    &--round {
+        border-radius: $global-radius;
+        overflow: hidden;
+    }
+}
+
+    .c-dropdown__item {
+        border-bottom: 1px solid $c-border;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }

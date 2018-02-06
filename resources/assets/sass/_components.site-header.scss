@@ -1,0 +1,46 @@
+/* ==========================================================================
+   #HEADER
+   ========================================================================== */
+
+.c-site-header {
+    border-bottom: 1px solid $c-border;
+}
+
+    .c-site-header__wrapper {
+        display: flex;
+        height: $header-height;
+        align-items: center;
+        justify-content: space-between;
+
+        @include mq($until: tablet) {
+            padding-right: 0;
+        }
+    }
+
+        .c-site-header__item {
+            padding-right: $unit-large;
+
+            @include mq($until: desktop) {
+                padding-right: $unit;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+
+        .c-site-header__item--double {
+            flex-grow: 2;
+        }
+
+            .c-site-header__hamburger {
+                border-width: 0 1px;
+                padding-right: 0; /* IE9 */
+                padding-left: 0; /* IE9 */
+                width: $header-height;
+                height: $header-height;
+
+                @include mq($until: tablet) {
+                    border-right-width: 0;
+                }
+            }

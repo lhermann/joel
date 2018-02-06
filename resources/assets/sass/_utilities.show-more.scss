@@ -1,0 +1,48 @@
+/* ==========================================================================
+   #SHOW-MORE
+   ========================================================================== */
+
+/**
+ * Hide all list elements except the first five
+ */
+.u-show-more {
+
+    position: relative;
+    height: $unit * 4;
+    overflow: hidden;
+
+    &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 75%;
+        bottom: 0;
+        background-image: linear-gradient(to top, rgba( $c-white, 1), 45%, rgba( $c-white, .1) 85%, rgba( $c-white, 0));
+    }
+
+    &--list {
+        overflow: visible;
+        height: auto;
+
+        &:after {
+            content: none;
+        }
+
+        > li:nth-child(n + 6) {
+            display: none;
+        }
+
+        &.is-visible > li {
+            display: initial;
+        }
+    }
+
+
+    &.is-visible {
+        height: auto;
+
+        &:after {
+            content: none;
+        }
+    }
+}

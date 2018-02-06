@@ -1,0 +1,162 @@
+/* ==========================================================================
+   #MEDIAITEM
+   ========================================================================== */
+
+/*
+ * Thumbnail dimensions:
+ * Video:       96x54       192x108
+ * Serie:       128x72      256x144
+ * Sprecher:    80x80       160x160
+ */
+$width-video:    (96px 54px);
+$width-audio:    (54px 54px);
+$width-serie:    (128px 72px);
+$width-sprecher: (80px 80px);
+
+/**
+ * 1. Overwriting o-media with flexbox for vertical centering
+ */
+.c-mediaitem {
+    display: flex; /* 1 */
+    position: relative;
+    // transform: translateY(0);
+    transform: translate(0, 0);
+    transition: $global-transition;
+    border-radius: $global-radius;
+    padding: $unit-small;
+    align-items: center; /* 1 */
+
+    &:hover {
+        // transform: translateY(-2px);
+        transform: translate(-1px, -2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .08);
+        background-color: rgba($c-black, .03);
+    }
+
+    &--standalone {
+        margin-left: -$unit-small;
+    }
+}
+
+    .c-mediaitem__link {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+    }
+
+    .c-mediaitem__img {
+        position: relative;
+        margin-right: $unit;
+        width: nth($width-video, 1);
+        height: nth($width-video, 2);
+        flex-basis: nth($width-video, 1);
+        flex-shrink: 0;
+
+        .c-mediaitem--audio & {
+            width: nth($width-audio, 1);
+            flex-basis: nth($width-audio, 1);
+        }
+
+        .c-mediaitem--serie & {
+            width: nth($width-serie, 1);
+            height: nth($width-serie, 2);
+            flex-basis: nth($width-serie, 1);
+        }
+
+        .c-mediaitem--sprecher & {
+            width: nth($width-sprecher, 1);
+            height: nth($width-sprecher, 2);
+            flex-basis: nth($width-sprecher, 1);
+        }
+
+        .c-mediaitem--thema & {
+            width: auto;
+            height: $unit-large;
+            flex-basis: auto;
+        }
+
+        img {
+            border-radius: $global-radius;
+        }
+    }
+
+        .c-mediaitem__imglink {
+            display: block;
+            transition: $global-transition color;
+            color: $c-gray-3;
+
+            .c-mediaitem--thema & {
+                line-height: 1;
+                font-size: $unit-large;
+            }
+
+            .c-mediaitem:hover &,
+            .c-mediaitem:focus & {
+                color: $c-gray-6;
+            }
+        }
+
+        .c-mediaitem__length {
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            opacity: .6;
+            border-radius: $global-radius 0;
+            background-color: $c-black;
+            padding: 2px $unit-tiny 0;
+            line-height: 1.3;
+            color: #fff;
+            font-size: 60%;
+            font-weight: 500;
+
+            .c-mediaitem--serie & {
+                display: flex;
+                top: 0;
+                right: 70%;
+                left: 0;
+                border-radius: $global-radius 0 0 $global-radius;
+                align-items: center;
+
+                > div {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+
+    .c-mediaitem__title, {
+        &,
+        &:hover,
+        &:focus {
+            color: $c-text;
+        }
+    }
+
+    .c-mediaitem__meta {
+        margin-left: 0;
+        color: $c-textmuted;
+        font-size: 80%;
+
+        > li {
+            display: inline-block;
+
+            &:not(:last-child):after {
+                content: "\a0\b7"; /* \b7 is a middot, \a0 is a space */
+            }
+        }
+
+        a {
+            color: $c-textmuted;
+
+            &:focus,
+            &:hover {
+                border-bottom: 1px dotted $c-textmuted;
+                color: $c-textalt;
+            }
+        }
+    }
