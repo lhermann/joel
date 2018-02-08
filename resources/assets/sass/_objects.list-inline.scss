@@ -15,3 +15,21 @@
         margin-right: $unit-tiny;
     }
 }
+
+.o-list-inline--nowrap > li {
+    white-space: nowrap;
+}
+
+.o-list-inline--large > li {
+    margin-right: $unit;
+}
+
+.o-list-inline--flush {
+    font-size: 0;
+
+    > li {
+      font-size: $inuit-global-font-size;
+      font-size: 1rem;
+      margin-right: 0;
+    }
+}

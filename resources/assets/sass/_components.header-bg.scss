@@ -1,0 +1,22 @@
+/* ==========================================================================
+   #HEADER-BG
+   ========================================================================== */
+
+/*
+ * 1. Workaround to avoid pixel boarders
+ */
+.c-header-bg {
+    background-image: url("/images/header.svg");
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    margin-left: -1px;
+    width: calc(100% + 2px);
+}
+
+/*
+ * Bottom Offset
+ * ****************************/
+.c-header-bg--offset {
+    background-position: center bottom 30px;
+}

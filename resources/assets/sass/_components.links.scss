@@ -17,7 +17,8 @@
     color: $c-text;
     font-weight: inherit; /* 1 */
 
-    &.is-active {
+    &.is-active,
+    .is-active & {
         font-weight: 500;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Theme\Structure;
+namespace AppTheme\Structure;
 
 /*
 |-----------------------------------------------------------
@@ -22,4 +22,4 @@ function register_widgets()
 {
     // register_widget('\My\Widget\Class');
 }
-add_action('widgets_init', 'App\Theme\Structure\register_widgets');
+add_action('widgets_init', 'AppTheme\Structure\register_widgets');

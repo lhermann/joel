@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Theme;
+namespace AppTheme;
 
 /*
 |------------------------------------------------------------------
@@ -13,7 +13,7 @@ namespace App\Theme;
 |
 */
 
-use function App\Theme\template;
+use function AppTheme\template;
 
 /**
  * Renders single page.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Theme\Structure;
+namespace AppTheme\Structure;
 
 /*
 |-----------------------------------------------------------
@@ -13,7 +13,7 @@ namespace App\Theme\Structure;
 |
 */
 
-use function App\Theme\config;
+use function AppTheme\config;
 
 /**
  * Registers the widget areas.
@@ -30,4 +30,4 @@ function register_widget_areas()
         'after_title' => '</h5>',
     ]);
 }
-add_action('widgets_init', 'App\Theme\Structure\register_widget_areas');
+add_action('widgets_init', 'AppTheme\Structure\register_widget_areas');

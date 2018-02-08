@@ -42,5 +42,6 @@
 
                 @include mq($until: tablet) {
                     border-right-width: 0;
+                    margin-right: -$unit;
                 }
             }

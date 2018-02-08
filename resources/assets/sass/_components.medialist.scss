@@ -2,19 +2,17 @@
    #MEDIAITEM
    ========================================================================== */
 
+/*
+ * 1. Reserve mediaitem :hover offset of 2px
+ */
 .c-medialist {
-    width: 100%;
+    margin: 0;
+    margin-right: -$unit-small;
+    margin-left: -$unit-small;
+    padding-top: 2px;
+    list-style: none;
 }
 
-    // .c-medialist__title {
-    //     .c-medialist--notitle & {
-    //         display: none;
-    //     }
-    // }
+    // .c-medialist__item {
 
-    .c-medialist__list {
-        margin: 0;
-        margin-right: -$unit-small;
-        margin-left: -$unit-small;
-        list-style: none;
-    }
+    // }

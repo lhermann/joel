@@ -4,6 +4,7 @@
 
 .c-badge {
     @include inuit-font-size(12px);
+
     border-radius: $global-radius;
     background-color: $c-background;
     vertical-align: middle;

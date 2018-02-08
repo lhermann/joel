@@ -1,5 +1,5 @@
 <?php
-use function App\Theme\config;
+use function AppTheme\config;
 ?>
 
 <form action="/" method="get">

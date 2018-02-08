@@ -16,8 +16,12 @@
     }
 }
 
+    /*
+     * 1. Counteract u-text-right
+     */
     .c-dropdown__item {
         border-bottom: 1px solid $c-border;
+        text-align: left; /* 1 */
 
         &:last-child {
             border-bottom: 0;

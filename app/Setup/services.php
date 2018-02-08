@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Theme\Setup;
+namespace AppTheme\Setup;
 
 /*
 |-----------------------------------------------------------
@@ -13,7 +13,7 @@ namespace App\Theme\Setup;
 |
 */
 
-use function App\Theme\theme;
+use function AppTheme\theme;
 use Tonik\Gin\Foundation\Theme;
 use WP_Query;
 
@@ -38,4 +38,4 @@ function bind_books_service()
         ]);
     });
 }
-add_action('init', 'App\Theme\Setup\bind_books_service');
+add_action('init', 'AppTheme\Setup\bind_books_service');

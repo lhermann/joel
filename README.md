@@ -1,5 +1,7 @@
 # Joel – The media archive Wordpress theme by Joel Media Ministry e.V.
 
+Built with [tonik/theme](https://github.com/tonik/theme)
+
 ## Requirements
 
 * WordPress >= 4.7

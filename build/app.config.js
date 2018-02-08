@@ -59,10 +59,24 @@ module.exports = merge(
         settings: {
             sourceMaps: true,
             styleLint: true,
+            autoprefixer: {
+                browsers: ["last 2 versions", "> 1%"]
+            },
             browserSync: {
                 host: "localhost",
                 port: 3000,
-                proxy: "http://joel.local/"
+                proxy: "http://joel.local/",
+                open: false,
+                reloadDelay: 500,
+                files: [
+                    "*.php",
+                    "app/**/*.php",
+                    "resources/templates/**/*.php",
+                    "resources/assets/js/**/*.js",
+                    "resources/assets/sass/**/*.{sass,scss}",
+                    "resources/assets/images/**/*.{jpg,jpeg,png,gif,svg}",
+                    "resources/assets/fonts/**/*.{eot,ttf,woff,woff2,svg}"
+                ]
             }
         }
     },

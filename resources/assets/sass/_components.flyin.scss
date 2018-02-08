@@ -48,6 +48,7 @@ $flyin-max-width: 24em;
 
             .c-flyin__title {
                 @include inuit-font-size(22px, false);
+
                 display: inline-block;
                 margin-bottom: 0;
                 color: $c-textalt;
