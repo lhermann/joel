@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #button-group
+   ========================================================================== */
+
+/**
+ * The list-inline object simply displays a list of items in one line.
+ */
+
+.c-button-group {
+    display: flex;
+    align-items: stretch;
+    margin: 0;
+    list-style: none;
+}
+
+.c-button-group--stretch\@tablet {
+    @include mq($until: tablet) {
+        > .c-button-group__item {
+            flex-grow: 1;
+        }
+
+        .c-btn {
+            width: 100%;
+        }
+    }
+}

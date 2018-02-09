@@ -33,6 +33,10 @@
     > [class*=" u-ic-"] {
         vertical-align: -2px;
     }
+
+    &:disabled {
+        cursor: default;
+    }
 }
 
 
@@ -74,6 +78,11 @@
     &:focus {
         background-color: $c-secondary-btn-hover;
         color: $c-secondary-btn-hover-text;
+    }
+
+    &:disabled {
+        background-color: $c-secondary-btn;
+        color: lighten($c-secondary-btn-text, 40%);
     }
 }
 
