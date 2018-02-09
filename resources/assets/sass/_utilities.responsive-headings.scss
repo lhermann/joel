@@ -1,0 +1,15 @@
+/* ==========================================================================
+   #RESPONSIVE HEADINGS
+   ========================================================================== */
+
+h1.u-responsive {
+    @include mq($until: tablet) {
+        font-size: calc(#{$inuit-font-size-h1*0.6} + 1.3vw);
+    }
+}
+
+h2.u-responsive {
+    @include mq($until: tablet) {
+        font-size: calc(#{$inuit-font-size-h2*0.67} + 0.75vw);
+    }
+}

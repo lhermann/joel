@@ -482,14 +482,10 @@ $slide-duration: 3s;
     transition: $global-transition;
 }
 
-.u-h-responsive {
-    font-size: 1.5em;
-    font-size: calc(1.5rem + .6vw);
-}
-
 // RESPONSIVE UTILITIES
 @import "utilities.responsive-spacings";
 @import "utilities.responsive-hide";
+@import "utilities.responsive-headings";
 
 .u-break-wrapper {
     margin-right: -$unit;

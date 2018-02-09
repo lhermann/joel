@@ -6,24 +6,27 @@
 // http://www.cssmojo.com/the-very-latest-clearfix-reloaded/
 //
 // .usage {
-//   @include inuit-clearfix(#fff, .5, 0);
+//   @include inuit-clearfix(#fff, 0.5, 0);
 // }
 @mixin clothoid-gradient($color: #000, $deg: 180deg, $first-stop: 0%, $alpha-from: 1, $alpha-to: 0) {
     $diff: $alpha-from - $alpha-to;
-    background-image: linear-gradient( $deg,
-        rgba($color, $alpha-from) 0%,
-        // rgba($color, $alpha-from) $first-stop + ((100% - $first-stop) * .3),
-        rgba($color, $alpha-from - $diff*.7) 50%,
-        // rgba($color, $alpha-from - $diff*.7) $first-stop + ((100% - $first-stop) * .51),
-        rgba($color, $alpha-from - $diff*.85) 65%,
-        // rgba($color, $alpha-from - $diff*.85) $first-stop + ((100% - $first-stop) * .657),
-        rgba($color, $alpha-from - $diff*.925) 75.5%,
-        // rgba($color, $alpha-from - $diff*.925) $first-stop + ((100% - $first-stop) * .76),
-        rgba($color, $alpha-from - $diff*.963) 82.85%,
-        // rgba($color, $alpha-from - $diff*.963) $first-stop + ((100% - $first-stop) * .832),
-        rgba($color, $alpha-from - $diff*.981) 88%,
-        // rgba($color, $alpha-from - $diff*.981) $first-stop + ((100% - $first-stop) * .877),
-        rgba($color, $alpha-to) 100%
+
+    background-image:
+        linear-gradient(
+            $deg,
+            rgba($color, $alpha-from) 0%,
+            // rgba($color, $alpha-from) $first-stop + ((100% - $first-stop) * 0.3),
+            rgba($color, $alpha-from - $diff*0.7) 50%,
+            // rgba($color, $alpha-from - $diff*.7) $first-stop + ((100% - $first-stop) * .51),
+            rgba($color, $alpha-from - $diff*0.85) 65%,
+            // rgba($color, $alpha-from - $diff*0.85) $first-stop + ((100% - $first-stop) * .657),
+            rgba($color, $alpha-from - $diff*0.925) 75.5%,
+            // rgba($color, $alpha-from - $diff*.925) $first-stop + ((100% - $first-stop) * .76),
+            rgba($color, $alpha-from - $diff*0.963) 82.85%,
+            // rgba($color, $alpha-from - $diff*.963) $first-stop + ((100% - $first-stop) * .832),
+            rgba($color, $alpha-from - $diff*0.981) 88%,
+            // rgba($color, $alpha-from - $diff*.981) $first-stop + ((100% - $first-stop) * .877),
+            rgba($color, $alpha-to) 100%
     );
 }
 
