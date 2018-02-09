@@ -1,10 +1,10 @@
-const isdev = require('isdev')
-const stylelint = require("stylelint")
-const autoprefixer = require('autoprefixer')
+const isdev = require("isdev");
+const stylelint = require("stylelint");
+const autoprefixer = require("autoprefixer");
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const config = require('../app.config')
+const config = require("../app.config");
 
 module.exports = {
     test: /\.s[ac]ss$/,
@@ -12,14 +12,14 @@ module.exports = {
     loader: ExtractTextPlugin.extract({
         use: [
             {
-                loader: 'css-loader',
+                loader: "css-loader",
                 options: {
                     sourceMap: isdev
                 }
             },
 
             {
-                loader: 'postcss-loader',
+                loader: "postcss-loader",
                 options: {
                     sourceMap: true,
                     plugins: () => [autoprefixer]
@@ -27,12 +27,12 @@ module.exports = {
             },
 
             {
-                loader: 'sass-loader',
+                loader: "sass-loader",
                 options: {
                     sourceMap: true
                 }
             }
         ],
-        fallback: 'style-loader'
+        fallback: "style-loader"
     })
-}
+};

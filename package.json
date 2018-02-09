@@ -1,7 +1,6 @@
 {
     "name": "joel",
-    "description":
-        "Joel - The media archive Wordpress theme by Joel Media Ministry e.V.",
+    "description": "Joel - The media archive Wordpress theme by Joel Media Ministry e.V.",
     "version": "2.0.0-alpha.1",
     "main": "index.php",
     "author": "Lukas Hermann <lukher6@web.de>",
@@ -13,12 +12,11 @@
     "private": true,
     "scripts": {
         "dev": "npm run watch",
-        "development":
-            "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js",
+        "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js",
         "prod": "npm run production",
-        "production":
-            "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.config.js",
-        "watch": "npm run development -- --watch"
+        "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "start": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js --watch"
     },
     "dependencies": {
         "motion-ui": "^1.2.0"
@@ -44,14 +42,20 @@
         "inuitcss": "^6.0.0-beta.5",
         "isdev": "^1.0.1",
         "node-sass": "^4.5.2",
+        "on-build-webpack": "^0.1.0",
         "popper.js": "^1.12.9",
         "postcss-loader": "^1.3.3",
         "sass-loader": "^6.0.3",
+        "shelljs": "^0.8.1",
         "style-loader": "^0.16.1",
         "stylelint-webpack-plugin": "^0.7.0",
         "webpack": "^2.3.3",
         "webpack-dev-server": "^2.4.4",
-        "webpack-merge": "^4.1.0"
+        "webpack-merge": "^4.1.0",
+        "webpack-shell-plugin": "^0.5.0"
     },
-    "browserslist": ["> 2%", "last 2 versions"]
+    "browserslist": [
+        "> 2%",
+        "last 2 versions"
+    ]
 }
