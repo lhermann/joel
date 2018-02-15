@@ -6,7 +6,9 @@
 
 $c-primary:               #061375;
 $c-primary-lighter:       lighten($c-primary, 10%);
+$c-primary-light:         #0b5ee5;
 $c-primary-darker:        darken($c-primary, 10%);
+$c-primary-dark:          #040B44;
 
 $c-secondary:             #0B5EE5;
 $c-secondary-lighter:     lighten($c-secondary, 10%);
@@ -26,7 +28,7 @@ $c-black:       #000;
 
 $c-dark:        $c-gray-8;
 $c-light:       $c-gray-2;
-$c-green:       #39b54a;
+$c-green:       #3aa648;
 $c-red:         #ed1c24;
 
 /**
@@ -46,18 +48,10 @@ $c-border:                      $c-gray-3;
 $c-link:                        $c-secondary;
 $c-link-hover:                  $c-primary;
 
-$c-primary-btn-text:            $c-white;
-$c-primary-btn:                 $c-primary;
-$c-primary-btn-hover:           $c-primary-darker;
-
 $c-secondary-btn-text:          $c-text;
 $c-secondary-btn:               $c-gray-2;
 $c-secondary-btn-hover-text:    $c-white;
 $c-secondary-btn-hover:         $c-gray-7;
-
-$c-tertiary-btn-text:           $c-white;
-$c-tertiary-btn:                rgba($c-black, .5);
-$c-tertiary-btn-hover:          rgba($c-black, .6);
 
 
 

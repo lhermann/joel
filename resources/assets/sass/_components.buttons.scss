@@ -27,6 +27,9 @@
     vertical-align: middle; /* [2] */
     text-align: center; /* [4] */
     font: inherit; /* [3] */
+    font-weight: 400;
+    color: $c-white;
+    background-color: $c-gray-4;
     // font-family: $font-heading;
 
     > [class^="u-ic-"],
@@ -37,6 +40,13 @@
     &:disabled {
         cursor: default;
     }
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none; /* [4] */
+    }
 }
 
 
@@ -46,60 +56,69 @@
 ========================================================================== */
 
 .c-btn--primary {
-    background-color: $c-primary-btn;
-
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-        text-decoration: none; /* [4] */
-        color: $c-primary-btn-text;
-    }
+    background-color: $c-primary-light;
+    color: $c-white;
 
     &:hover,
     &:focus {
-        background-color: $c-primary-btn-hover;
+        background-color: $c-primary-lighter;
     }
 }
 
 .c-btn--secondary {
-    background-color: $c-secondary-btn;
-
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-        text-decoration: none;
-        color: $c-secondary-btn-text;
-    }
+    background-color: $c-gray-2;
+    color: $c-gray-7;
 
     &.is-active,
     &:hover,
     &:focus {
-        background-color: $c-secondary-btn-hover;
-        color: $c-secondary-btn-hover-text;
+        background-color: $c-gray-7;
+        color: $c-gray-2;
     }
 
     &:disabled {
-        background-color: $c-secondary-btn;
-        color: lighten($c-secondary-btn-text, 40%);
+        background-color: $c-gray-2;
+        color: lighten($c-text, 40%);
     }
 }
 
-.c-btn--tertiary {
-    background-color: $c-tertiary-btn;
+.c-btn--green {
+    background-color: $c-green;
+    color: $c-white;
 
-    &,
     &:hover,
-    &:active,
     &:focus {
-        text-decoration: none;
-        color: $c-tertiary-btn-text;
+        background-color: darken($c-green, 6%);
     }
+}
+
+.c-btn--red {
+    background-color: $c-red;
+    color: $c-white;
 
     &:hover,
     &:focus {
-        background-color: $c-tertiary-btn-hover;
+        background-color: darken($c-red, 8%);
+    }
+}
+
+.c-btn--dark {
+    background-color: rgba($c-black, 0.6);
+    color: $c-white;
+
+    &:hover,
+    &:focus {
+        background-color: rgba($c-black, 0.7);
+    }
+}
+
+.c-btn--light {
+    background-color: $c-gray-2;
+    color: $c-text;
+
+    &:hover,
+    &:focus {
+        background-color: lighten($c-gray-4, 10%);
     }
 }
 
@@ -108,35 +127,12 @@
     border-radius: 0;
     background-color: $c-background;
     padding: ($inuit-global-spacing-unit-small - 1px) ($inuit-global-spacing-unit-large - 1px);
-
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-        text-decoration: none;
-        color: $c-text;
-    }
+    color: $c-text;
 
     &:hover,
     &:focus {
         background-color: $c-accent;
         color: $c-white;
-    }
-}
-
-.c-btn--none {
-    background-color: transparent;
-
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-        background-color: transparent;
-    }
-
-    &:hover,
-    &:focus {
-        background-color: $c-border;
     }
 }
 
@@ -173,12 +169,14 @@ $btn-ghost-border-width: 1px;
 .c-btn--ghost {
     border: $btn-ghost-border-width solid currentColor;
     padding: ($inuit-global-spacing-unit-small - $btn-ghost-border-width) ($inuit-global-spacing-unit - $btn-ghost-border-width);
+    color: currentcolor;
 
     &,
     &:hover,
     &:active,
     &:focus {
         background: none;
+        border-color: currentcolor;
     }
 
     &.c-btn--tiny {
@@ -194,40 +192,79 @@ $btn-ghost-border-width: 1px;
     }
 
     &.c-btn--primary {
-        color: $c-primary-btn;
+        color: $c-primary-light;
+        border-color: $c-primary-light;
 
         &:hover,
         &:focus {
-            color: $c-primary-btn-hover;
+            color: $c-white;
+            background-color: $c-primary-light;
         }
     }
 
     &.c-btn--secondary {
-        color: $c-textmuted;
-        border-color: $c-secondary-btn;
+        color: $c-gray-4;
+        border-color: $c-gray-4;
 
         &:hover,
         &:focus {
-            color: $c-secondary-btn-hover;
-            border-color: $c-textmuted;
+            color: $c-gray-2;
+            background-color: $c-gray-7;
+            border-color: $c-gray-7;
         }
     }
 
-    &.c-btn--tertiary {
-        color: $c-tertiary-btn;
+    &.c-btn--green {
+        color: $c-green;
+        border-color: $c-green;
 
         &:hover,
         &:focus {
-            color: $c-tertiary-btn-hover;
+            color: $c-white;
+            background-color: $c-green;
         }
     }
 
-    &.c-btn--none {
+    &.c-btn--red {
+        color: $c-red;
+        border-color: $c-red;
+
+        &:hover,
+        &:focus {
+            color: $c-white;
+            background-color: $c-red;
+        }
+    }
+
+    &.c-btn--dark {
+        color: rgba($c-black, 0.7);
+        border-color: rgba($c-black, 0.7);
+
+        &:hover,
+        &:focus {
+            color: $c-white;
+            background-color: rgba($c-black, 0.7);
+        }
+    }
+
+    &.c-btn--light {
+        color: $c-gray-2;
+        border-color: $c-gray-2;
+
+        &:hover,
+        &:focus {
+            color: $c-text;
+            background-color: $c-gray-2;
+        }
+    }
+
+    &.c-btn--subtle {
         border-color: transparent;
+        // color: currentcolor;
 
         &:hover,
         &:focus {
-            border-color: $c-text;
+            border-color: currentcolor;
         }
     }
 }
@@ -262,10 +299,14 @@ $btn-ghost-border-width: 1px;
     width: $unit-small * 2 + $inuit-global-line-height;
 
     &.c-btn--small {
+        padding-right: unset;
+        padding-left: unset;
         width: $unit-tiny * 2 + $inuit-global-line-height;
     }
 
     &.c-btn--large {
+        padding-right: unset;
+        padding-left: unset;
         width: $unit * 2 + $inuit-global-line-height;
     }
 }

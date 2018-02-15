@@ -121,7 +121,8 @@ if (isdev) {
         new OnBuildPlugin(function(stats) {
             let command =
                 "printf '[\033[0;31mrsync\033[0m] Syncing assets to patternlab\n'";
-            command += "&& rsync -az public/ ../patternlab/source";
+            command +=
+                "&& rsync -az --include='*/' --include='*.css' --include='*.js' --exclude='*' public/ ../patternlab/source";
             shell.exec(command, { async: true });
         })
     );
