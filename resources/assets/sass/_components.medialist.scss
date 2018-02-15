@@ -11,8 +11,26 @@
     margin-left: -$unit-small;
     padding-top: 2px;
     list-style: none;
+    color: $c-text;
+
+    --opacity: 0.45;
 }
 
-    // .c-medialist__item {
+.c-medialist--white {
+    color: $c-white;
 
-    // }
+    --background: rgba($c-white, 0.05);
+    --border: rgba($c-white, 0.4);
+    --font-weight: 400;
+}
+
+.c-medialist--inline {
+    margin-right: 0;
+    margin-left: 0;
+
+    .c-medialist__item {
+        display: inline-block;
+        margin-right: $unit-small;
+        margin-bottom: $unit-small;
+    }
+}

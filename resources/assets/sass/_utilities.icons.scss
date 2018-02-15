@@ -31,6 +31,14 @@
   vertical-align: -0.1em;
 }
 
+.u-ic--large {
+    font-size: 2em;
+}
+
+.u-ic--huge {
+    font-size: 4em;
+}
+
 .u-ic-add_box::before {
   content: "\e146";
 }
