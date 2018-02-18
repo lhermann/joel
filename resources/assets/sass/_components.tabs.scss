@@ -32,6 +32,7 @@
 
     .c-tabs__link {
         @include inuit-font-size($inuit-font-size-h5, $unit * 3);
+
         display: inline-block;
         transition: color $global-transition;
         padding: 0 $unit-small;

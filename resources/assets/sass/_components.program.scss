@@ -38,8 +38,8 @@
                 border-color: $c-green;
             }
 
-            &:after,
-            &:before {
+            &::after,
+            &::before {
                 display: block;
                 position: absolute;
                 top: 50%;
@@ -47,13 +47,13 @@
                 content: "";
             }
 
-            &:after {
+            &::after {
                 left: 100%;
                 margin-left: 1px;
                 width: 1000%;
             }
 
-            &:before {
+            &::before {
                 left: -$unit-small;
                 margin-left: -1px;
                 width: $unit-small;
@@ -64,10 +64,6 @@
                 font-size: 160%;
                 font-weight: 600;
             }
-
-            // .c-program__date {
-            //     font-size: 80%;
-            // }
 
             @include mq($until: tablet) {
                 .c-program__week,

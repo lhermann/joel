@@ -80,7 +80,7 @@
          */
         .c-slide__hero__medialist {
             margin-left: -$unit; /* 1 */
-            background-color: rgba($c-white, .8);
+            background-color: rgba($c-white, 0.8);
             padding: 0 $unit;
         }
 
@@ -88,8 +88,8 @@
             position: relative;
             color: $c-gray-7;
 
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 position: absolute;
                 line-height: 0;
                 color: $c-gray-3;
@@ -97,13 +97,13 @@
                 font-size: 500%;
             }
 
-            &:before {
+            &::before {
                 bottom: -$unit;
                 left: -$unit-large;
                 content: "\201D";
             }
 
-            &:after {
+            &::after {
                 top: $unit;
                 right: -$unit-large;
                 content: "\201C";

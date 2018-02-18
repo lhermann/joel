@@ -1,6 +1,7 @@
 /* ==========================================================================
    #MEDIA-ARTICLE
    ========================================================================== */
+
 /*
  * 1. Fixes an overlow clipping issue with safari
  */
@@ -24,7 +25,7 @@
         .c-media-article__link {
             display: table;
             transition: $global-transition;
-            background-color: rgba($c-black, .65);
+            background-color: rgba($c-black, 0.65);
             padding: 0 $unit $unit;
             width: 100%;
             height: 100%;
@@ -42,6 +43,7 @@
 
             .c-media-article__title {
                 @include inuit-font-size(16px, 1.5);
+
                 display: table-cell;
                 vertical-align: middle;
                 color: $c-white;
@@ -92,13 +94,13 @@
         bottom: 0;
         transition: $global-transition opacity;
         z-index: 3; /* 1 */
-        border-top: 1px solid rgba($c-white, .2);
+        border-top: 1px solid rgba($c-white, 0.2);
         padding: $unit-tiny/2 $unit;
         width: 100%;
-        color: rgba($c-white, .6);
+        color: rgba($c-white, 0.6);
 
         a {
-            color: rgba($c-white, .75);
+            color: rgba($c-white, 0.75);
 
             &:hover,
             &:focus {

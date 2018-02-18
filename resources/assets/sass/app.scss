@@ -72,6 +72,7 @@
 @import "settings.config";
 $inuit-global-font-size: 14px;
 $inuit-global-line-height: 21px;
+
 @import "~inuitcss/settings/settings.core";
 @import "settings.global";
 @import "settings.colors";
@@ -92,7 +93,6 @@ $unit-huge:     $inuit-global-spacing-unit-huge;
 @import "~inuitcss/tools/tools.hidden";
 @import "~sass-mq/mq";
 @import "tools.clothoid";
-
 
 
 
@@ -232,6 +232,7 @@ hr {
  * 1. .c-site-wrapper is included with .c-mobile-nav
  */
 $header-height: 56px;
+
 @import "components.buttons";
 @import "components.flyin"; /* 1 */
 @import "components.forms";
@@ -258,8 +259,9 @@ $header-height: 56px;
 @import "components.button-group";
 
 /* Keep in sync with slider.js */
-$slide-transition: .7s;
+$slide-transition: 0.7s;
 $slide-duration: 3s;
+
 @import "components.slider";
 @import "components.slide";
 
@@ -293,7 +295,7 @@ $slide-duration: 3s;
     //     // 87px
     // }
 
-    &:before {
+    &::before {
         content: "";
         display: block;
         width: 100%;
@@ -314,7 +316,7 @@ $slide-duration: 3s;
 
 // STATES
 .is-faded {
-    opacity: .25;
+    opacity: 0.25;
 }
 
 // UTILITIES
@@ -386,7 +388,7 @@ $slide-duration: 3s;
 }
 
 .u-muted {
-    opacity: .6;
+    opacity: 0.6;
 }
 
 .u-truncate {
@@ -415,14 +417,14 @@ $slide-duration: 3s;
 }
 
 .u-active {
-    background-color: rgba($c-green, .3);
+    background-color: rgba($c-green, 0.3);
 }
 
 .u-hover:hover {
-    background-color: rgba(0, 0, 0, .03);
+    background-color: rgba(0, 0, 0, 0.03);
 
     &.u-active {
-        background-color: rgba($c-green, .5);
+        background-color: rgba($c-green, 0.5);
     }
 }
 

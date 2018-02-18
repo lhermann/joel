@@ -24,6 +24,7 @@
 
         .c-primary-nav__item {
             @include inuit-font-size(18px, false);
+
             display: inline-block;
 
             &:hover > .c-primary-nav__link {

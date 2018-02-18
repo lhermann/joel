@@ -41,8 +41,8 @@
 }
 
 .c-link--white {
-    color: rgba($c-white, .8);
-    border-color: rgba($c-white, .2);
+    color: rgba($c-white, 0.8);
+    border-color: rgba($c-white, 0.2);
 
     &:hover {
         color: $c-white;
@@ -80,6 +80,7 @@
     .c-link__float-right {
         float: right;
         margin-top: -$inuit-global-line-height;
+
         @include mq($until: tablet) {
             margin-top: -18px;
         }

@@ -20,6 +20,7 @@
 
         .c-media-promo__title {
             @include inuit-font-size(18px);
+
             display: block;
             padding: $unit-small $unit;
             width: 100%;
@@ -30,6 +31,7 @@
 
         .c-media-promo__btn {
             @include inuit-font-size(22px, 1);
+
             position: absolute;
             top: 50%;
             right: 0;

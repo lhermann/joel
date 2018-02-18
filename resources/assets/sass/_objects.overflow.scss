@@ -1,6 +1,7 @@
 /* ==========================================================================
    #OVERFLOW
    ========================================================================== */
+
 /*
  * This class will allow elements to overflow its box horizontally and adds
  * navigational elements
@@ -53,7 +54,7 @@
         &--left {
             left: 0;
             padding-right: $unit-large;
-            background-image: linear-gradient(to right, rgba(255,255,255,1), 40%, rgba(255,255,255,.05) 90%, rgba(255,255,255,0));
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 1), 40%, rgba(255, 255, 255, 0.05) 90%, rgba(255, 255, 255, 0));
 
             .is-left & {
                 display: none;
@@ -63,7 +64,7 @@
         &--right {
             right: 0;
             padding-left: $unit-large;
-            background-image: linear-gradient(to left, rgba(255,255,255,1), 40%, rgba(255,255,255,.05) 90%, rgba(255,255,255,0));
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 1), 40%, rgba(255, 255, 255, 0.05) 90%, rgba(255, 255, 255, 0));
 
             .is-right & {
                 display: none;

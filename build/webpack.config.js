@@ -98,9 +98,9 @@ module.exports = {
  * Adds Stylelint plugin if
  * linting is configured.
  */
-// if (config.settings.styleLint) {
-//     module.exports.plugins.push(new StyleLintPlugin());
-// }
+if (config.settings.styleLint) {
+    module.exports.plugins.push(new StyleLintPlugin());
+}
 
 /**
  * Adds BrowserSync plugin when

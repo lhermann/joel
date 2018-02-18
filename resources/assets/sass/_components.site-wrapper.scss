@@ -7,7 +7,7 @@
     height: 100%;
 }
 
-.c-site-wrapper:after {
+.c-site-wrapper::after {
     display: block;
     position: absolute;
     top: 0;
@@ -26,8 +26,8 @@
 .c-site-wrapper--faded {
     overflow: hidden;
 
-    &:after {
+    &::after {
         z-index: 99;
-        background-color: rgba($c-black, .5);
+        background-color: rgba($c-black, 0.5);
     }
 }

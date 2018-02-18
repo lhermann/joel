@@ -4,6 +4,7 @@
 
 .c-search-bar {
     @include inuit-font-size(18px);
+
     position: relative;
     width: 100%;
     color: $c-white;

@@ -11,17 +11,15 @@
 $breakpoint-separator: \@;
 
 @each $bp-name, $bp-value in $mq-breakpoints {
-
-    .u-hidden-from#{$breakpoint-separator}#{$bp-name}{
+    .u-hidden-from#{$breakpoint-separator}#{$bp-name} {
         @include mq($from: $bp-name) {
             display: none !important;
         }
     }
 
-    .u-hidden-until#{$breakpoint-separator}#{$bp-name}{
+    .u-hidden-until#{$breakpoint-separator}#{$bp-name} {
         @include mq($until: $bp-name) {
             display: none !important;
         }
     }
-
 }

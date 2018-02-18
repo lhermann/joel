@@ -12,7 +12,7 @@
         padding: $unit-large $unit $unit-large $unit-large;
 
         @include mq($from: tablet) {
-            &:after {
+            &::after {
                 position: absolute;
                 top: 0;
                 left: 73%;
@@ -21,7 +21,6 @@
                 content: "";
             }
         }
-
     }
 
         .c-site-footer__hr {
@@ -36,6 +35,7 @@
 
         .c-site-footer__heading {
             @include inuit-font-size(18px);
+
             margin-bottom: $unit-small;
             color: $c-gray-2;
             font-weight: 600;
@@ -58,7 +58,7 @@
                 display: inline-block;
             }
 
-            &--middot > li:not(:last-child):after {
+            &--middot > li:not(:last-child)::after {
                 padding: 0 $unit-tiny;
                 content: "\0a\b7";
             }
