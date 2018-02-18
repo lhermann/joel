@@ -1,3 +1,7 @@
+/* ==========================================================================
+   JOEL WORDPRESS THEME
+   ========================================================================== */
+
 import "./imports/flyin.js";
 import "./imports/slider.js";
 import "./imports/overflow.js";

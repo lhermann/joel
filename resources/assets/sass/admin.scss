@@ -1,0 +1,74 @@
+/* ==========================================================================
+   JOEL WORDPRESS THEME ADMIN
+   ========================================================================== */
+
+/* Images */
+.img {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.img-54p { width: 96px; height: 54px; }
+.img-72p { width: 128px; height: 72px; }
+.img-108p { width: 196px; height: 108px; }
+.img-144p { width: 256px; height: 144px; }
+.img-180p { width: 320px; height: 180px; }
+.img-360p { width: 640px; height: 360px; }
+.img-720p { width: 1280px; height: 720px; }
+
+.img-square80 { width: 80px; height: 80px; }
+.img-square160 { width: 160px; height: 160px; }
+.img-square320 { width: 320px; height: 320px; }
+.img-square640 { width: 640px; height: 640px; }
+
+/* Admin Columns */
+.wp-list-table {
+    .column-status {
+        width: 10px;
+        padding-right: 0;
+    }
+
+    .column-image {
+        width: 92px;
+    }
+
+    .column-subscribers {
+        width: 3em;
+    }
+
+    .column-posts {
+        width: 80px;
+    }
+
+    .column-media_speakers,
+    .column-media_series,
+    .column-media_topics {
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .wp-list-table {
+        tr:not(.inline-edit-row):not(.no-items) td.column-image::before {
+            display: none;
+        }
+
+        th.column-image,
+        th.column-status {
+            display: none;
+        }
+
+        tr:not(.inline-edit-row):not(.no-items) td.column-status {
+            position: absolute;
+            left: 140px;
+            margin-top: -55px;
+        }
+    }
+}
+
+
+/* Admin Menu */
+#adminmenu li.wp-menu-separator {
+    background: #444;
+}
+
+@import "~chartist/dist/scss/chartist";

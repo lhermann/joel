@@ -76,3 +76,21 @@ function render_documentation_button()
     echo do_shortcode("[button href='https://github.com/tonik/tonik']Checkout documentation →[/button]");
 }
 add_action('theme/header/end', 'AppTheme\Setup\render_documentation_button');
+
+/**
+ * After Theme Switch
+ */
+function joel_setup_options () {
+    //migrate joel db
+    global $wpdb;
+    $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'media' WHERE post_type = 'video';" );
+    $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'video','media') WHERE meta_key LIKE '%video%';" );
+    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_series' WHERE taxonomy = 'video_serien';" );
+    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_speakers' WHERE taxonomy = 'video_sprecher';" );
+    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_topics' WHERE taxonomy = 'video_themen';" );
+    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_podcasts' WHERE taxonomy = 'podcasts';" );
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_serien','media_series') WHERE meta_key LIKE '%video_serien%';" );
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher','media_speakers') WHERE meta_key LIKE '%video_sprecher%';" );
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_themen','media_topics') WHERE meta_key LIKE '%video_themen%';" );
+}
+add_action('after_switch_theme', 'AppTheme\Setup\joel_setup_options');

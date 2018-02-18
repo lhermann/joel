@@ -19,6 +19,24 @@ namespace AppTheme\Structure;
  */
 function add_image_sizes()
 {
-    add_image_size('custom-thumbnail', 800, 600, true);
+    // 16x9 image sizes
+    add_image_size('54p',     96,   54, true);
+    add_image_size('72p',    128,   72, true);
+    add_image_size('108p',   192,  108, true);
+    add_image_size('144p',   256,  144, true);
+    add_image_size('180p',   320,  180, true);
+    add_image_size('360p',   640,  360, true);
+    add_image_size('720p',  1280,  720, true);
+    add_image_size('1080p', 1920, 1080, true);
+
+    // Square image sizes
+    add_image_size('square80',  80,  80,  true);
+    add_image_size('square160', 160, 160, true);
+    add_image_size('square320', 320, 320, true);
+    add_image_size('square640', 640, 640, true);
+
+    // add WordPress standard Thumbnail
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 320, 180, true );
 }
 add_action('after_setup_theme', 'AppTheme\Structure\add_image_sizes');

@@ -3,6 +3,11 @@
         "app": [
             "./resources/assets/js/app.js",
             "./resources/assets/sass/app.scss"
+        ],
+
+        "admin": [
+            "./resources/assets/js/admin.js",
+            "./resources/assets/sass/admin.scss"
         ]
     },
 
