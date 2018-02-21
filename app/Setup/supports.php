@@ -61,6 +61,16 @@ function add_theme_supports()
         'gallery',
         'caption',
     ]);
+
+    /**
+     * Add theme support for Custom Logo.
+     */
+    add_theme_support( 'custom-logo', array(
+        'width'       => 320,
+        'height'      => 320,
+        'flex-width'  => true,
+        'flex-height' => true
+    ) );
 }
 add_action('after_setup_theme', 'AppTheme\Setup\add_theme_supports');
 

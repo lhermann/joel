@@ -36,7 +36,6 @@ function add_image_sizes()
     add_image_size('square640', 640, 640, true);
 
     // add WordPress standard Thumbnail
-    add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 320, 180, true );
 }
 add_action('after_setup_theme', 'AppTheme\Structure\add_image_sizes');

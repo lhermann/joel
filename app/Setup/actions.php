@@ -83,14 +83,20 @@ add_action('theme/header/end', 'AppTheme\Setup\render_documentation_button');
 function joel_setup_options () {
     //migrate joel db
     global $wpdb;
-    $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'media' WHERE post_type = 'video';" );
-    $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'video','media') WHERE meta_key LIKE '%video%';" );
-    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_series' WHERE taxonomy = 'video_serien';" );
-    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_speakers' WHERE taxonomy = 'video_sprecher';" );
-    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_topics' WHERE taxonomy = 'video_themen';" );
-    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'media_podcasts' WHERE taxonomy = 'podcasts';" );
-    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_serien','media_series') WHERE meta_key LIKE '%video_serien%';" );
-    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher','media_speakers') WHERE meta_key LIKE '%video_sprecher%';" );
-    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_themen','media_topics') WHERE meta_key LIKE '%video_themen%';" );
+    $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'recording' WHERE post_type = 'video';" );
+    $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'video','recording') WHERE meta_key LIKE '%video%';" );
+    $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'recording_thumbnail','thumbnail') WHERE meta_key LIKE '%recording_thumbnail';" );
+    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'series' WHERE taxonomy = 'video_serien';" );
+    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'speakers' WHERE taxonomy = 'video_sprecher';" );
+    $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'topics' WHERE taxonomy = 'video_themen';" );
+
+
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher_website','website') WHERE meta_key LIKE '%video_sprecher_website';" );
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher_bild','image') WHERE meta_key LIKE '%video_sprecher_bild';" );
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_serien_bild','image') WHERE meta_key LIKE '%video_serien_bild';" );
+
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_serien','series') WHERE meta_key LIKE '%video_serien%';" );
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher','speakers') WHERE meta_key LIKE '%video_sprecher%';" );
+    $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_themen','topics') WHERE meta_key LIKE '%video_themen%';" );
 }
 add_action('after_switch_theme', 'AppTheme\Setup\joel_setup_options');

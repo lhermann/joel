@@ -23,6 +23,7 @@ function register_navigation_areas()
 {
     register_nav_menus([
         'primary' => __('Primary', config('textdomain')),
+        'footer' => __('Footer', config('textdomain')),
     ]);
 }
 add_action('after_setup_theme', 'AppTheme\Structure\register_navigation_areas');

@@ -72,6 +72,7 @@ return [
     */
     'autoload' => [
         'helpers.php',
+        'ACF/recordings.php',
         'Structure/navs.php',
         'Structure/widgets.php',
         'Structure/sidebars.php',

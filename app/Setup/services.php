@@ -22,7 +22,7 @@ use WP_Query;
  *
  * @return void
  */
-function bind_books_service()
+function bind_recordings_service()
 {
     /**
      * Binds service for retrieving posts of specific post type.
@@ -32,10 +32,10 @@ function bind_books_service()
      *
      * @return \WP_Post[]
      */
-    theme()->bind('books', function (Theme $theme, $parameters) {
+    theme()->bind('recordings', function (Theme $theme, $parameters) {
         return new WP_Query([
-            'post_type' => 'book',
+            'post_type' => 'recordings',
         ]);
     });
 }
-add_action('init', 'AppTheme\Setup\bind_books_service');
+add_action('init', 'AppTheme\Setup\bind_recordings_service');

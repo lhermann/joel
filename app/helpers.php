@@ -81,3 +81,27 @@ function asset_path($file)
 {
     return asset($file)->getUri();
 }
+
+/**
+ * Get the url currentlu in the status bar, or compare a parameter with it.
+ */
+function current_url($url_to_compare_with = false) {
+    $actual_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    if($url_to_compare_with) {
+        return $url_to_compare_with == $actual_url;
+    }
+    return $actual_url;
+}
+
+/**
+ * check if this item, or any of its children, is active
+ */
+function menu_item_is_active($item, $menu = []) {
+    $is_active = current_url($item->url);
+    if( count($menu) ) {
+        foreach ($menu as $subitem) {
+            $is_active = $is_active || current_url($subitem->url);
+        }
+    }
+    return $is_active;
+}

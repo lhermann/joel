@@ -2,14 +2,7 @@
 use function AppTheme\config;
 ?>
 
-<form action="/" method="get">
-    <div class="input-group">
-        <label for="search">
-            <input id="search" class="input-group-field" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="<?= __('Searching for...', config('textdomain')) ?>">
-        </label>
-
-        <div class="input-group-button">
-          <input type="submit" class="button" value="Search">
-        </div>
-    </div>
+<form class="c-search-bar <?= $style_modifier ?>" method="get" id="searchform" action="/">
+    <input class="c-search-bar__input" type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="<?= __('Search archive...', config('textdomain')) ?>">
+    <button class="c-btn c-search-bar__btn" type="submit" for="search" value="Suche"><span class="u-ic u-ic-search"></span></button>
 </form>

@@ -21,13 +21,18 @@ use function AppTheme\config;
  */
 function register_media_taxonomies()
 {
-    register_taxonomy('media_series', 'media', [
+
+    register_taxonomy('series', 'recording', [
+        'public' => true,
+        'show_in_nav_menus' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'hierarchical' => false,
         'rewrite' => [
             'slug' => 'series',
             'with_front' => true,
             'hierarchical' => true,
         ],
-        'hierarchical' => false,
         'labels' => [
             'name' => _x('Series', 'taxonomy general name', config('textdomain')),
             'singular_name' => _x('Series', 'taxonomy singular name', config('textdomain')),
@@ -43,13 +48,14 @@ function register_media_taxonomies()
         ],
     ]);
 
-    register_taxonomy('media_speakers', 'media', [
+    register_taxonomy('speakers', 'recording', [
+        'show_in_nav_menus' => true,
+        'hierarchical' => false,
         'rewrite' => [
             'slug' => 'speakers',
             'with_front' => true,
             'hierarchical' => true,
         ],
-        'hierarchical' => false,
         'labels' => [
             'name' => _x('Speakers', 'taxonomy general name', config('textdomain')),
             'singular_name' => _x('Speaker', 'taxonomy singular name', config('textdomain')),
@@ -65,7 +71,7 @@ function register_media_taxonomies()
         ],
     ]);
 
-    register_taxonomy('media_topics', 'media', [
+    register_taxonomy('topics', 'recording', [
         'rewrite' => [
             'slug' => 'topics',
             'with_front' => true,
@@ -87,7 +93,7 @@ function register_media_taxonomies()
         ],
     ]);
 
-    register_taxonomy('media_podcasts', 'media', [
+    register_taxonomy('podcasts', 'recording', [
         'rewrite' => [
             'slug' => 'podcasts',
             'with_front' => true,
@@ -113,15 +119,15 @@ add_action('init', 'AppTheme\Structure\register_media_taxonomies');
 
 
 /**
- * Add Taxonomy Filter to Admin List of `media`
+ * Add Taxonomy Filter to Admin List of `recording`
  *
  * @source https://wordpress.org/support/topic/add-taxonomy-filter-to-admin-list-for-my-custom-post-type
  * @return void
  */
-function restrict_media_by_taxonomy() {
+function restrict_recording_by_taxonomy() {
     global $typenow;
-    $post_type = 'media';
-    $taxonomies = ['media_series', 'media_speakers', 'media_topics'];
+    $post_type = 'recording';
+    $taxonomies = ['series', 'speakers', 'topics'];
     if ($typenow == $post_type) {
         foreach ($taxonomies as $taxonomy) {
             $selected = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
@@ -138,12 +144,12 @@ function restrict_media_by_taxonomy() {
         };
     }
 }
-add_action('restrict_manage_posts', 'AppTheme\Structure\restrict_media_by_taxonomy');
+add_action('restrict_manage_posts', 'AppTheme\Structure\restrict_recording_by_taxonomy');
 
 function convert_id_to_term_in_query( $query ) {
     global $pagenow;
-    $post_type = 'media';
-    $taxonomies = ['media_series', 'media_speakers', 'media_topics'];
+    $post_type = 'recording';
+    $taxonomies = ['series', 'speakers', 'topics'];
     $q_vars = &$query->query_vars;
     foreach ( $taxonomies as $taxonomy ) {
         if ($pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type && isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0) {
@@ -162,7 +168,7 @@ add_filter('parse_query', 'AppTheme\Structure\convert_id_to_term_in_query');
  * -- removing the description
  */
 // Register the column
-function media_tax_edit_columns($columns) {
+function recording_tax_edit_columns($columns) {
     $columns = array_merge(
         array_slice($columns, 0, 1),
         array( 'image' => __('Image', config('textdomain')) ),
@@ -171,35 +177,41 @@ function media_tax_edit_columns($columns) {
     );
     return $columns;
 }
-add_filter('manage_edit-media_speakers_columns', 'AppTheme\Structure\media_tax_edit_columns', 5);
-add_filter('manage_edit-media_series_columns', 'AppTheme\Structure\media_tax_edit_columns', 5);
+add_filter('manage_edit-speakers_columns', 'AppTheme\Structure\recording_tax_edit_columns', 5);
+add_filter('manage_edit-series_columns', 'AppTheme\Structure\recording_tax_edit_columns', 5);
 
 // Display the columns content
-function media_speakers_custom_columns($value, $column_name, $id) {
+function speakers_custom_columns($value, $column_name, $id) {
     global $post;
     if( $column_name == 'image' ) {
-        $img = wp_get_attachment_image_src( get_field( "media_speakers_bild", "media_speakers_".$id ), 'square160' )[0];
+        $img = '';
+        if( function_exists('get_field') ) {
+            $img = wp_get_attachment_image_src( get_field( "image", "speakers_".$id ), 'square160' )[0];
+        }
         printf( '<img class="img img-square80" src="%s" alt="" />', $img );
     }
 }
-add_action('manage_media_speakers_custom_column', 'AppTheme\Structure\media_speakers_custom_columns', 5, 3);
+add_action('manage_speakers_custom_column', 'AppTheme\Structure\speakers_custom_columns', 5, 3);
 
 
-function media_series_custom_columns($value, $column_name, $id) {
+function series_custom_columns($value, $column_name, $id) {
     global $post;
     if( $column_name == 'image' ) {
-        $img = wp_get_attachment_image_src( get_field( "media_series_bild", "media_series_".$id ), '108p' )[0];
+        $img = '';
+        if( function_exists('get_field') ) {
+            $img = wp_get_attachment_image_src( get_field( "image", "series_".$id ), '108p' )[0];
+        }
         printf( '<img class="img img-54p" src="%s" alt="" />', $img );
     }
 }
-add_action('manage_media_series_custom_column', 'AppTheme\Structure\media_series_custom_columns', 5, 3);
+add_action('manage_series_custom_column', 'AppTheme\Structure\series_custom_columns', 5, 3);
 
 
 /**
  * Adding a Custom Column to the taxonomy media_podcasts to dispay the thumbnail in the index in the backend
  */
 // Register the column
-function media_podcasts_edit_columns($columns) {
+function podcasts_edit_columns($columns) {
     $columns = array_merge(
         array_slice($columns, 0, 1),
         array( 'image' => __('Image', config('textdomain')) ),
@@ -209,14 +221,17 @@ function media_podcasts_edit_columns($columns) {
     );
     return $columns;
 }
-add_filter('manage_edit-media_podcasts_columns', 'AppTheme\Structure\media_podcasts_edit_columns', 5);
+add_filter('manage_edit-podcasts_columns', 'AppTheme\Structure\podcasts_edit_columns', 5);
 
 // Display the columns content
-function media_podcasts_custom_columns($value, $column_name, $id) {
+function podcasts_custom_columns($value, $column_name, $id) {
     global $post;
     switch ($column_name) {
         case 'image':
-            $img = wp_get_attachment_image_src( get_field( "image", "media_podcasts_".$id ), 'square160' )[0];
+            $img = '';
+            if( function_exists('get_field') ) {
+                $img = wp_get_attachment_image_src( get_field( "image", "podcasts_".$id ), 'square160' )[0];
+            }
             printf( '<img class="img img-square80" src="%s" alt="" />', $img );
             break;
         case 'subscribers':
@@ -232,7 +247,7 @@ function media_podcasts_custom_columns($value, $column_name, $id) {
             break;
     }
 }
-add_action('manage_media_podcasts_custom_column', 'AppTheme\Structure\media_podcasts_custom_columns', 5, 3);
+add_action('manage_podcasts_custom_column', 'AppTheme\Structure\podcasts_custom_columns', 5, 3);
 
 
 /**
@@ -241,7 +256,7 @@ add_action('manage_media_podcasts_custom_column', 'AppTheme\Structure\media_podc
 function podcasts_increase_posts_per_page( $query ) {
     if( !is_admin() && $query->is_tax()
                     && $query->get_queried_object()
-                    && $query->get_queried_object()->taxonomy == "media_podcasts" ) {
+                    && $query->get_queried_object()->taxonomy == "podcasts" ) {
         $query->set( 'posts_per_page', '100' );
     }
 }
@@ -260,7 +275,7 @@ add_action( 'pre_get_posts', 'AppTheme\Structure\podcasts_increase_posts_per_pag
 function auto_add_to_podcast( $post_id ) {
     // Avoid the function to trigger at wrong time
     if( !isset($_POST['post_type']) ) return; // check if it is post-type index exists to prevent errors
-    if( $_POST['post_type'] != 'media' ) return; // check if post-type is video or audio
+    if( $_POST['post_type'] != 'recording' ) return; // check if post-type is video or audio
     if( empty($_POST['acf']) ) return;
 
     $series_key = "field_53dfaf955292d";
@@ -269,7 +284,7 @@ function auto_add_to_podcast( $post_id ) {
 
     // is a podcast associated with the series?
     if($series) {
-        $_POST['acf'][$podcast_key] = (string) get_field('podcast', 'media_series_'.$series);
+        $_POST['acf'][$podcast_key] = (string) get_field('podcast', 'series_'.$series);
     }
 
 }

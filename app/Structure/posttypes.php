@@ -22,8 +22,7 @@ use function AppTheme\config;
  */
 function register_media_post_type()
 {
-
-    register_post_type('media', [
+    register_post_type( 'recording', [
         'description'        => __('Collection of Video and Audio Recordings.', config('textdomain')),
         'public'             => true,
         'publicly_queryable' => true,
@@ -37,20 +36,20 @@ function register_media_post_type()
         'menu_position'      => 8,
         'supports'           => array( 'title', 'editor', 'comments' ),
         'labels' => [
-            'name' => _x('Media', 'post type general name', config('textdomain')),
-            'singular_name' => _x('Media', 'post type singular name', config('textdomain')),
+            'name' => _x('Recording', 'post type general name', config('textdomain')),
+            'singular_name' => _x('Recordings', 'post type singular name', config('textdomain')),
             'menu_name' => _x('Archive', 'admin menu', config('textdomain')),
-            'name_admin_bar' => _x('Media', 'add new on admin bar', config('textdomain')),
+            'name_admin_bar' => _x('Recordings', 'add new on admin bar', config('textdomain')),
             'add_new' => _x('Add New', 'book', config('textdomain')),
-            'add_new_item' => __('Add New Media', config('textdomain')),
-            'new_item' => __('New Media', config('textdomain')),
-            'edit_item' => __('Edit Media', config('textdomain')),
-            'view_item' => __('View Media', config('textdomain')),
-            'all_items' => __('All Media', config('textdomain')),
-            'search_items' => __('Search Media', config('textdomain')),
-            'parent_item_colon' => __('Parent Media:', config('textdomain')),
-            'not_found' => __('No books found.', config('textdomain')),
-            'not_found_in_trash' => __('No books found in Trash.', config('textdomain')),
+            'add_new_item' => __('Add New Recording', config('textdomain')),
+            'new_item' => __('New Recording', config('textdomain')),
+            'edit_item' => __('Edit Recording', config('textdomain')),
+            'view_item' => __('View Recording', config('textdomain')),
+            'all_items' => __('All Recordings', config('textdomain')),
+            'search_items' => __('Search Recordings', config('textdomain')),
+            'parent_item_colon' => __('Parent Recording:', config('textdomain')),
+            'not_found' => __('No recordings found.', config('textdomain')),
+            'not_found_in_trash' => __('No recordings found in Trash.', config('textdomain')),
         ],
     ]);
 
@@ -59,56 +58,56 @@ add_action('init', 'AppTheme\Structure\register_media_post_type');
 
 
 // Sort admin colums of video by date by default
-function set_video_post_type_admin_order($wp_query) {
+function set_recording_post_type_admin_order($wp_query) {
     if (is_admin()) {
 
         $post_type = $wp_query->query['post_type'];
 
-        if ( $post_type == 'video' && empty($_GET['orderby'])) {
+        if ( $post_type == 'recording' && empty($_GET['orderby'])) {
             $wp_query->set('orderby', 'date');
             $wp_query->set('order', 'DESC');
         }
 
     }
 }
-add_filter ( 'pre_get_posts', 'AppTheme\Structure\set_video_post_type_admin_order' );
+add_filter ( 'pre_get_posts', 'AppTheme\Structure\set_recording_post_type_admin_order' );
 
 
 /**
  * Adding Cutsom Columns to the index of post type `media`
  */
 // Register the columns
-function media_edit_columns($columns) {
+function recording_edit_columns($columns) {
     $columns = array(
-        "cb"             => "<input type=\"checkbox\" />",
-        "image"          => __('Image', config('textdomain')),
-        "status"         => '',
-        "title"          => __('Title', config('textdomain')),
-        "media_speakers" => __('Speaker', config('textdomain')),
-        "media_series"   => __('Series', config('textdomain')),
-        "date"           => __('Date', config('textdomain'))
+        "cb"         => "<input type=\"checkbox\" />",
+        "image"      => __('Image', config('textdomain')),
+        "status"     => '',
+        "title"      => __('Title', config('textdomain')),
+        "speakers"   => __('Speaker', config('textdomain')),
+        "series"     => __('Series', config('textdomain')),
+        "date"       => __('Date', config('textdomain'))
     );
 
     return $columns;
 }
-add_filter("manage_edit-media_columns", "AppTheme\Structure\media_edit_columns");
+add_filter('manage_edit-recording_columns', 'AppTheme\Structure\recording_edit_columns');
 
 
 // Register the columns as sortable
-function media_sortable_columns($columns) {
+function recording_sortable_columns($columns) {
     $custom = array(
     // meta column id => sortby value used in query
-        "media_speakers" => __('Speaker', config('textdomain')),
-        "media_series" => __('Series', config('textdomain'))
+        "speakers" => __('Speaker', config('textdomain')),
+        "series"   => __('Series', config('textdomain'))
     );
 
     return wp_parse_args($custom, $columns);
 }
-add_filter("manage_edit-media_sortable_columns", 'AppTheme\Structure\media_sortable_columns');
+add_filter('manage_edit-recording_sortable_columns', 'AppTheme\Structure\recording_sortable_columns');
 
 
 // Make the column "Sprecher" order correctly
-function media_speakers_clauses( $clauses, $wp_query ) {
+function speakers_clauses( $clauses, $wp_query ) {
     global $wpdb;
 
     if ( isset( $wp_query->query['orderby'] )
@@ -120,7 +119,7 @@ LEFT OUTER JOIN {$wpdb->term_taxonomy} USING (term_taxonomy_id)
 LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
 SQL;
 
-        $clauses['where'] .= " AND (taxonomy = 'media_speakers' OR taxonomy IS NULL)";
+        $clauses['where'] .= " AND (taxonomy = 'speakers' OR taxonomy IS NULL)";
         $clauses['groupby'] = "object_id";
         $clauses['orderby'] = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC) ";
         $clauses['orderby'] .= ( 'ASC' == strtoupper( $wp_query->get('order') ) ) ? 'ASC' : 'DESC';
@@ -128,11 +127,11 @@ SQL;
 
     return $clauses;
 }
-add_filter( 'posts_clauses', 'AppTheme\Structure\media_speakers_clauses', 10, 2 );
+add_filter( 'posts_clauses', 'AppTheme\Structure\speakers_clauses', 10, 2 );
 
 
 // Make the column "Serie" order correctly
-function media_series_clauses( $clauses, $wp_query ) {
+function series_clauses( $clauses, $wp_query ) {
     global $wpdb;
 
     if ( isset( $wp_query->query['orderby'] )
@@ -144,7 +143,7 @@ LEFT OUTER JOIN {$wpdb->term_taxonomy} USING (term_taxonomy_id)
 LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
 SQL;
 
-        $clauses['where'] .= " AND (taxonomy = 'media_series' OR taxonomy IS NULL)";
+        $clauses['where'] .= " AND (taxonomy = 'series' OR taxonomy IS NULL)";
         $clauses['groupby'] = "object_id";
         $clauses['orderby'] = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC) ";
         $clauses['orderby'] .= ( 'ASC' == strtoupper( $wp_query->get('order') ) ) ? 'ASC' : 'DESC';
@@ -152,7 +151,7 @@ SQL;
 
     return $clauses;
 }
-add_filter( 'posts_clauses', 'AppTheme\Structure\media_series_clauses', 10, 2 );
+add_filter( 'posts_clauses', 'AppTheme\Structure\series_clauses', 10, 2 );
 
 
 /*
@@ -161,24 +160,16 @@ add_filter( 'posts_clauses', 'AppTheme\Structure\media_series_clauses', 10, 2 );
  * TODO:
  * - fix 'get_status_video_files' function
  */
-function media_custom_columns($column) {
+function recordings_custom_columns($column) {
     global $post, $wpdb;
 
     switch ($column) {
         case "image":
+            $img = '';
             if(function_exists('get_field')) {
-                $thumb = wp_get_attachment_image_src( get_field( 'media_thumbnail', $post->ID ), '108p' )[0];
-                if ( !empty( $thumb ) ) {
-                    $img_tag = sprintf('<img src="%s" class="media-thumbnail img-54p" alt="icon">', $thumb);
-                    if( current_user_can( 'edit_others_posts' ) ) {
-                        edit_post_link( $img_tag, '', '', $post->ID );
-                    } else {
-                        print($img_tag);
-                    }
-                } else {
-                    print( "Kein Bild" );
-                }
+                $img = wp_get_attachment_image_src( get_field( 'thumbnail', $post->ID ), '108p' )[0];
             }
+            printf('<img src="%s" class="media-thumbnail img img-54p" alt="">', $img);
             break;
         case "status":
             if(function_exists('get_status_video_files')) {
@@ -201,7 +192,7 @@ function media_custom_columns($column) {
             }
             break;
         case "media_speakers":
-            $terms = get_the_term_list($post->ID, 'media_speakers', '', ', ','');
+            $terms = get_the_term_list($post->ID, 'speakers', '', ', ','');
             if ( is_string( $terms ) ) {
                 echo $terms;
             } else {
@@ -209,7 +200,7 @@ function media_custom_columns($column) {
             }
             break;
         case "media_series":
-            $terms = get_the_term_list($post->ID, 'media_series', '', ', ','');
+            $terms = get_the_term_list($post->ID, 'series', '', ', ','');
             if ( is_string( $terms ) ) {
                 echo $terms;
             } else {
@@ -218,16 +209,16 @@ function media_custom_columns($column) {
             break;
     }
 }
-add_action("manage_media_posts_custom_column",  "AppTheme\Structure\media_custom_columns");
+add_action('manage_recording_posts_custom_column',  'AppTheme\Structure\recordings_custom_columns');
 
 
 // Remove Serien and Sprecher standard meta box in favor of ACF
 if (is_admin()) :
     function remove_meta_boxes() {
-        remove_meta_box('tagsdiv-media_speakers', 'media', 'side');
-        remove_meta_box('tagsdiv-media_series', 'media', 'side');
-        remove_meta_box('tagsdiv-media_topics', 'media', 'side');
-        remove_meta_box('tagsdiv-podcasts', 'media', 'side');
+        remove_meta_box('tagsdiv-speakers', 'recording', 'side');
+        remove_meta_box('tagsdiv-series', 'recording', 'side');
+        remove_meta_box('tagsdiv-topics', 'recording', 'side');
+        remove_meta_box('tagsdiv-podcasts', 'recording', 'side');
     }
     add_action( 'admin_menu', 'AppTheme\Structure\remove_meta_boxes' );
 endif;
