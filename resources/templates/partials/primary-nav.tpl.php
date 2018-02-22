@@ -1,6 +1,7 @@
 <?php
 $menu = wp_get_nav_menu_items( wp_get_nav_menu_name( 'primary' ) );
 use function AppTheme\menu_item_is_active;
+use function AppTheme\menu_item_has_children;
 ?>
 
 <nav id="nav" class="c-primary-nav <?= $style_modifier ?>">
@@ -15,10 +16,12 @@ use function AppTheme\menu_item_is_active;
                     class="c-link c-link--block c-link--primary c-primary-nav__link
                     <?= menu_item_is_active($item, $menu) ? 'is-active' : '' ?>">
                     <?= $item->title ?>
-                    <span class="u-ic-keyboard_arrow_down"></span>
+                    <?php if(menu_item_has_children($item, $menu)): ?>
+                        <span class="u-ic-keyboard_arrow_down"></span>
+                    <?php endif; ?>
                 </a>
 
-
+                <?php if(menu_item_has_children($item, $menu)): ?>
                 <ul class="c-primary-nav__dropdown">
 
                     <?php foreach ($menu as $key => $subitem): if( $subitem->menu_item_parent != $item->ID ) continue; ?>
@@ -34,6 +37,7 @@ use function AppTheme\menu_item_is_active;
                     <?php endforeach ?>
 
                 </ul>
+                <?php endif; ?>
 
             </li>
 

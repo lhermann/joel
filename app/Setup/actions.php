@@ -21,8 +21,7 @@ use function AppTheme\template;
  * @see do_action('theme/index/post/thumbnail')
  * @uses resources/templates/partials/post/thumbnail-{format}.tpl.php
  */
-function render_post_thumbnail()
-{
+function render_post_thumbnail() {
     template(['partials/post/thumbnail', get_post_format()]);
 }
 add_action('theme/index/post/thumbnail', 'AppTheme\Setup\render_post_thumbnail');
@@ -33,8 +32,7 @@ add_action('theme/index/post/thumbnail', 'AppTheme\Setup\render_post_thumbnail')
  * @see do_action('theme/index/post/content')
  * @uses resources/templates/partials/post/content-{format}.tpl.php
  */
-function render_post_content()
-{
+function render_post_content() {
     template(['partials/post/content', get_post_format()]);
 }
 add_action('theme/single/content', 'AppTheme\Setup\render_post_content');
@@ -45,8 +43,7 @@ add_action('theme/single/content', 'AppTheme\Setup\render_post_content');
  * @see do_action('theme/index/content/none')
  * @uses resources/templates/partials/index/content-none.tpl.php
  */
-function render_empty_content()
-{
+function render_empty_content() {
     template(['partials/index/content', 'none']);
 }
 add_action('theme/index/content/none', 'AppTheme\Setup\render_empty_content');
@@ -58,24 +55,11 @@ add_action('theme/index/content/none', 'AppTheme\Setup\render_empty_content');
  * @see do_action('theme/single/sidebar')
  * @uses resources/templates/partials/sidebar.tpl.php
  */
-function render_sidebar()
-{
+function render_sidebar() {
     get_sidebar();
 }
 add_action('theme/index/sidebar', 'AppTheme\Setup\render_sidebar');
 add_action('theme/single/sidebar', 'AppTheme\Setup\render_sidebar');
-
-/**
- * Renders [button] shortcode after homepage content.
- *
- * @see do_action('theme/header/end')
- * @uses resources/templates/shortcodes/button.tpl.php
- */
-function render_documentation_button()
-{
-    echo do_shortcode("[button href='https://github.com/tonik/tonik']Checkout documentation →[/button]");
-}
-add_action('theme/header/end', 'AppTheme\Setup\render_documentation_button');
 
 /**
  * After Theme Switch
@@ -100,3 +84,11 @@ function joel_setup_options () {
     $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_themen','topics') WHERE meta_key LIKE '%video_themen%';" );
 }
 add_action('after_switch_theme', 'AppTheme\Setup\joel_setup_options');
+
+/**
+ * Remove 'Links' from Admin Dashboard
+ */
+function remove_admin_menu_pages() {
+    remove_menu_page('link-manager.php');
+}
+add_action( 'admin_menu', 'AppTheme\Setup\remove_admin_menu_pages' );

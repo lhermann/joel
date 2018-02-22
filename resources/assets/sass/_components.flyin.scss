@@ -22,6 +22,10 @@ $flyin-max-width: 24em;
     &.c-flyin--open {
         transform: translateX(-$flyin-max-width);
     }
+
+    .admin-bar & {
+        top: 32px;
+    }
 }
 
     /*

@@ -35,6 +35,8 @@ function add_image_sizes()
     add_image_size('square320', 320, 320, true);
     add_image_size('square640', 640, 640, true);
 
+    add_image_size('bg3x1', 1200, 400, true);
+
     // add WordPress standard Thumbnail
     set_post_thumbnail_size( 320, 180, true );
 }

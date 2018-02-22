@@ -224,3 +224,46 @@ if (is_admin()) :
 endif;
 
 
+/* ========================================================================== */
+
+/**
+ * Registers `media` custom post type.
+ *
+ * @return void
+ */
+function register_slide_post_type()
+{
+
+    register_post_type( 'slide', [
+        'description'        => __('Collection of slides for the homepage.', config('textdomain')),
+        'public'             => true,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_icon'          => 'dashicons-images-alt',
+        'query_var'          => false,
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 3,
+        'supports'           => array( 'title' ),
+        'labels' => [
+            'name' => _x('Slide', 'post type general name', config('textdomain')),
+            'singular_name' => _x('Slides', 'post type singular name', config('textdomain')),
+            'menu_name' => _x('Slider', 'admin menu', config('textdomain')),
+            'name_admin_bar' => _x('Slides', 'add new on admin bar', config('textdomain')),
+            'add_new' => _x('Add New', 'book', config('textdomain')),
+            'add_new_item' => __('Add New Slide', config('textdomain')),
+            'new_item' => __('New Slide', config('textdomain')),
+            'edit_item' => __('Edit Slide', config('textdomain')),
+            'view_item' => __('View Slide', config('textdomain')),
+            'all_items' => __('All Slides', config('textdomain')),
+            'search_items' => __('Search Slides', config('textdomain')),
+            'parent_item_colon' => __('Parent Slide:', config('textdomain')),
+            'not_found' => __('No slides found.', config('textdomain')),
+            'not_found_in_trash' => __('No slides found in Trash.', config('textdomain')),
+        ],
+    ]);
+
+}
+add_action('init', 'AppTheme\Structure\register_slide_post_type');

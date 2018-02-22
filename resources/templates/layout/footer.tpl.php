@@ -1,4 +1,8 @@
-        <?php //template('partials/mobile-nav-flyin') ?>
+<?php
+use function AppTheme\template;
+?>
+
+        <?php template('partials/flyin-nav') ?>
 
         <?php wp_footer(); ?>
 

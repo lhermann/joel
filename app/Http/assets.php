@@ -23,7 +23,7 @@ use function AppTheme\asset;
  */
 function register_stylesheets() {
     // wp_enqueue_style('foundation', asset_path('css/foundation.css'));
-    wp_enqueue_style('app', asset_path('css/app.css'));
+    wp_enqueue_style('app', asset_path('css/app.css'), [], filemtime(asset('css/admin.css')->getPath()));
 }
 add_action('wp_enqueue_scripts', 'AppTheme\Http\register_stylesheets');
 
@@ -34,7 +34,7 @@ add_action('wp_enqueue_scripts', 'AppTheme\Http\register_stylesheets');
  */
 function register_scripts() {
     // wp_enqueue_script('foundation', asset_path('js/foundation.js'), ['jquery'], null, true);
-    wp_enqueue_script('app', asset_path('js/app.js'), [], null, true);
+    wp_enqueue_script('app', asset_path('js/app.js'), [], filemtime(asset('css/admin.css')->getPath()), true);
 }
 add_action('wp_enqueue_scripts', 'AppTheme\Http\register_scripts');
 
@@ -70,7 +70,7 @@ add_action('wp_default_scripts', 'AppTheme\Http\move_jquery_to_the_footer');
  * @return void
  */
 function register_admin_scripts_and_styles() {
-    wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), false, filemtime(asset('css/admin.css')->getPath()) );
+    wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), [], filemtime(asset('css/admin.css')->getPath()) );
     wp_enqueue_script( 'admin_js', asset_path('js/admin.js'), [], filemtime(asset('js/admin.js')->getPath()), true );
 };
 add_action( 'admin_enqueue_scripts', 'AppTheme\Http\register_admin_scripts_and_styles' );

@@ -105,3 +105,75 @@ function menu_item_is_active($item, $menu = []) {
     }
     return $is_active;
 }
+
+/**
+ * check if this item, or any of its children, is active
+ */
+function menu_item_has_children($item, $menu) {
+    foreach ($menu as $temp_item) {
+        if( $temp_item->menu_item_parent == $item->ID )
+            return true;
+    }
+    return false;
+}
+
+/**
+ * Generate a simple menu structure for use in the flyin menu
+ */
+function render_menu_for_flyin($location) {
+    if( !$menu = wp_get_nav_menu_items( wp_get_nav_menu_name( $location ) ) ) return;
+
+    // var_dump(menu_item_is_active($menu[0], $menu));
+    // var_dump(menu_item_is_active($menu[1], $menu));
+
+    print('<ul class="u-break-wrapper c-mobile-nav__list">');
+
+    foreach ($menu as $key => $item) {
+        if( $item->menu_item_parent != 0 ) continue;
+
+        print('<li>');
+
+        printf(
+            '<h3 class="u-h5 u-mb-">
+                <a class="c-link c-link--block c-link--primary u-truncate %s" href="%s">%s</a>
+            </h3>',
+            menu_item_is_active($item, $menu) ? 'is-active' : '',
+            $item->url,
+            $item->title
+        );
+
+        if( menu_item_has_children($item, $menu) ) {
+
+            print('<ul class="o-list-bare">');
+
+            foreach ($menu as $key => $subitem) {
+                if( $subitem->menu_item_parent != $item->ID ) continue;
+
+                printf(
+                    '<li>
+                        <a class="c-link c-link--block c-link--primary u-truncate %s" href="%s">%s</a>
+                    </li>',
+                    menu_item_is_active($subitem) ? 'is-active' : '',
+                    $subitem->url,
+                    $subitem->title
+                );
+
+            }
+
+            print('</ul>');
+
+        }
+
+        print('</li>');
+    }
+
+    print('</ul>');
+    print('<hr class="u-break-wrapper"/>');
+}
+
+
+
+
+
+
+

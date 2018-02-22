@@ -1,6 +1,5 @@
 <?php
 use function AppTheme\template;
-use function AppTheme\menu_item_is_active;
 ?>
 
 <?php get_header() ?>
@@ -14,12 +13,7 @@ use function AppTheme\menu_item_is_active;
 
         <section class="c-section c-section--flush">
 
-            <?php //template('partials/slider') ?>
-
-            <?php //var_dump(wp_get_nav_menu_items('primary')); ?>
-
-            <?php $menu = wp_get_nav_menu_items('primary');
-                var_dump(menu_item_is_active($menu[0], $menu)); ?>
+            <?php template('partials/slider', ['id' => 'main-slider']) ?>
 
         </section>
 
