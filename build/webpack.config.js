@@ -91,7 +91,16 @@ module.exports = {
                 to: config.outputs.image.filename
             }
         ])
-    ]
+    ],
+
+    /**
+     * Load vue including the compiler to compile in-DOM HTML
+     */
+    resolve: {
+        alias: {
+            vue$: "vue/dist/vue.esm.js"
+        }
+    }
 };
 
 /**

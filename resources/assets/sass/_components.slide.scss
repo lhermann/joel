@@ -29,60 +29,74 @@
         position: absolute;
         width: 100%;
         height: 100%;
+        z-index: 1;
     }
 
-    .c-slide--wrapper {
+    .c-slide__wrapper {
         display: flex;
         height: 100%;
         justify-content: center;
         align-items: center;
 
-        .c-slide--top & {
-            align-items: flex-start;
+        // .c-slide--text-center & {
+        // }
+
+        .c-slide--teaser &,
+        .c-slide--text-left & {
+            justify-content: flex-start;
         }
 
-        .c-slide--right & {
+        .c-slide--text-right & {
             justify-content: flex-end;
         }
 
-        .c-slide--bottom & {
-            align-items: flex-end;
+        // .c-slide--media-right & {
+        // }
+
+        .c-slide--media-left & {
+            flex-direction: row-reverse;
         }
 
-        .c-slide--left & {
-            justify-content: flex-start;
-        }
+        // .c-slide--top & {
+        //     align-items: flex-start;
+        // }
+
+
+        // .c-slide--bottom & {
+        //     align-items: flex-end;
+        // }
     }
+
+        .c-slide__body,
+        .c-slide__media {
+            position: relative;
+            z-index: 2;
+            padding: $unit-large;
+
+            .c-slide--teaser & {
+                @include mq($from: desktop) {
+                    margin-left: $unit-huge;
+                }
+            }
+        }
 
         .c-slide__body {
-            padding: $unit-large;
-            width: $unit * 26;
+            max-width: $unit * 26;
             text-align: center;
         }
-
-    .c-slide__hero {
-        position: relative;
-        z-index: 30;
-    }
 
         .c-slide__btn {
             min-width: 50%;
         }
 
-        .c-slide__hero__body {
-            padding: $unit-large;
-            width: $unit * 26;
-            text-align: center;
-        }
-
-        /*
-         * 1. horizontally align list with rest of page
-         */
-        .c-slide__hero__medialist {
-            margin-left: -$unit; /* 1 */
-            background-color: rgba($c-white, 0.8);
-            padding: 0 $unit;
-        }
+        // /*
+        //  * 1. horizontally align list with rest of page
+        //  */
+        // .c-slide__hero__medialist {
+        //     margin-left: -$unit; /* 1 */
+        //     background-color: rgba($c-white, 0.8);
+        //     padding: 0 $unit;
+        // }
 
         .c-slide__quote {
             position: relative;

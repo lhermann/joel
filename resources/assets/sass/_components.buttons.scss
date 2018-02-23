@@ -46,6 +46,7 @@
     &:active,
     &:focus {
         text-decoration: none; /* [4] */
+        color: $c-white;
     }
 }
 
@@ -119,6 +120,7 @@
     &:hover,
     &:focus {
         background-color: lighten($c-gray-4, 10%);
+        color: $c-text;
     }
 }
 
@@ -176,6 +178,7 @@ $btn-ghost-border-width: 1px;
     &:active,
     &:focus {
         background: none;
+        color: currentcolor;
         border-color: currentcolor;
     }
 

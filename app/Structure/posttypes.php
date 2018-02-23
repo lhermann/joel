@@ -246,6 +246,8 @@ function register_slide_post_type()
         'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'      => 3,
+        'show_in_rest'       => true,
+        'rest_base'          => 'slides',
         'supports'           => array( 'title' ),
         'labels' => [
             'name' => _x('Slide', 'post type general name', config('textdomain')),

@@ -18,24 +18,26 @@ use Tonik\Gin\Foundation\Theme;
 use WP_Query;
 
 /**
- * Service handler for retrieving posts of specific post type.
+ * Bind all the services
  *
  * @return void
  */
-function bind_recordings_service()
+function bind_services()
 {
     /**
-     * Binds service for retrieving posts of specific post type.
-     *
-     * @param \Tonik\Gin\Foundation\Theme $theme  Instance of the service container
-     * @param array $parameters  Parameters passed on service resolving
-     *
-     * @return \WP_Post[]
+     * Retreive all the slides and allready get all the fields
      */
-    theme()->bind('recordings', function (Theme $theme, $parameters) {
-        return new WP_Query([
-            'post_type' => 'recordings',
+    theme()->bind('slides', function (Theme $theme, $parameters) {
+        $query = new WP_Query([
+            'post_type' => 'slide',
         ]);
+        foreach ($query->posts as $i => $post) {
+            $fields = get_fields($post->ID);
+            foreach ($fields as $key => $field) {
+                $query->posts[$i]->$key = $field;
+            }
+        }
+        return $query->posts;
     });
 }
-add_action('init', 'AppTheme\Setup\bind_recordings_service');
+add_action('init', 'AppTheme\Setup\bind_services');

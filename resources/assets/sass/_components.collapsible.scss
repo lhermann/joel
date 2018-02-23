@@ -1,0 +1,45 @@
+/* ==========================================================================
+   #COLLAPSIBLE
+   ========================================================================== */
+
+.c-collapsible {
+    height: 100%;
+
+    &.is-collapsed {
+        height: auto;
+    }
+}
+
+    .c-collapsible__header {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $c-border;
+        background-color: $c-white;
+
+        .is-collapsed & {
+            border-bottom-width: 0;
+        }
+    }
+
+        .c-collapsible__title {
+            flex-grow: 1;
+            padding: 0 $unit;
+        }
+
+        .c-collapsible__btn button {
+            border-width: 0;
+            border-left-width: 1px;
+        }
+
+    .c-collapsible__body {
+        padding: $unit-small;
+        transition: $global-transition transform;
+        transform: translateY(0);
+
+        .is-collapsed & {
+            height: 0;
+            overflow: hidden;
+            padding: 0;
+            transform: translateY(-$unit);
+        }
+    }

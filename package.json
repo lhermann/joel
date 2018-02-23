@@ -19,8 +19,11 @@
         "start": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js --watch"
     },
     "dependencies": {
+        "axios": "^0.18.0",
         "chartist": "^0.11.0",
-        "motion-ui": "^1.2.0"
+        "motion-ui": "^1.2.0",
+        "vue": "^2.5.13",
+        "vue-axios": "^2.0.2"
     },
     "devDependencies": {
         "ajv": "^5.5.2",

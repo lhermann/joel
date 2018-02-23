@@ -2,6 +2,12 @@
    #SLIDER
    ========================================================================== */
 
+/**
+ * 1. Why does z-index start with 20? Because each slide will get it's own
+ *    z-index assigned, starting with 1. Now we have space for 19 slides,
+ *    that should be enough.
+ */
+
 .c-slider {
     position: relative;
     height: $unit * 22;
@@ -24,7 +30,7 @@
     .c-slider__control,
     .c-slider__nav {
         position: absolute;
-        z-index: 22;
+        z-index: 22; /* 1 */
     }
 
     .c-slider__control {
@@ -54,6 +60,7 @@
             cursor: pointer;
             padding: $unit-small 0 $unit;
             line-height: 0;
+            margin-right: $unit-tiny;
 
             &:hover .c-slider__btn {
                 opacity: 0.5;
@@ -95,7 +102,7 @@
             overflow: hidden;
 
             &:first-child {
-                z-index: 20; // First slide on top
+                z-index: 20; /* 1 */ // First slide on top
             }
 
             &.is-entering {
@@ -107,7 +114,21 @@
             }
         }
 
+    .c-slider__teaser-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
 
+        .c-slider__teaser {
+            position: relative;
+            z-index: 23; /* 1 */
+            background-color: rgba($c-white, 0.9);
+            width: 50%;
+            max-width: $unit * 20;
+            margin-left: auto;
+        }
 
 @keyframes c-slide-container--enter {
     0% {
@@ -122,11 +143,11 @@
 @keyframes c-slide-container--leave {
     0% {
         transform: translateX(0);
-        z-index: 21;
+        z-index: 21; /* 1 */
     }
 
     100% {
         transform: translateX(100%);
-        z-index: 21;
+        z-index: 21; /* 1 */
     }
 }

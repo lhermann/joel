@@ -7,11 +7,10 @@ namespace AppTheme\ACF;
 | Advanced Custom Fields
 |-----------------------------------------------------------
 |
-| This file is for registering your theme post types.
-| Custom post types allow users to easily create
-| and manage various types of content.
+| The ACF settings for recordings
 |
 */
+
 
 if( function_exists('acf_add_local_field_group') ):
 
