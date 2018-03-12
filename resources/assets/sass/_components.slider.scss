@@ -8,6 +8,10 @@
  *    that should be enough.
  */
 
+ /* Keep in sync with slider.js */
+ $slide-transition: 0.7s;
+ $slide-duration: 4s;
+
 .c-slider {
     position: relative;
     height: $unit * 22;
@@ -19,11 +23,11 @@
 }
 
     .c-slider__btn {
-        opacity: 0.3;
+        opacity: 0.4;
 
         &:focus,
         &:hover {
-            opacity: 0.5;
+            opacity: 0.6;
         }
     }
 
@@ -63,7 +67,7 @@
             margin-right: $unit-tiny;
 
             &:hover .c-slider__btn {
-                opacity: 0.5;
+                opacity: 0.6;
             }
         }
 

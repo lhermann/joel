@@ -107,6 +107,8 @@ $unit-huge:     $inuit-global-spacing-unit-huge;
  * 1. Allow overflow-x: hidden to work
  * 2. Make containers default to 100% viewport height
  * 3. Fix safari transition fort smoothing bug
+ * 4. Fix iOS bouncy scroll
+ * Note: Do not use "overflow-x: hidden;"" because it kills window.scroll
  */
 html,
 body {
@@ -114,13 +116,7 @@ body {
     background-color: $c-white;
     height: 100%; /* 2 */
     -webkit-font-smoothing: antialiased; /* 3 */
-}
-
-/**
- * 1. Avoid horizontal scrolling
- */
-body {
-    overflow-x: hidden; /* 1 */
+    -webkit-overflow-scrolling: touch;
 }
 
 /**
@@ -258,11 +254,6 @@ $header-height: 56px;
 @import "components.section";
 @import "components.header-bg";
 @import "components.button-group";
-
-/* Keep in sync with slider.js */
-$slide-transition: 0.7s;
-$slide-duration: 3s;
-
 @import "components.slider";
 @import "components.slide";
 

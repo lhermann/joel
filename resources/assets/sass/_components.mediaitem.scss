@@ -64,6 +64,8 @@ $width-sprecher: (80px 80px);
         height: nth($width-video, 2);
         flex-basis: nth($width-video, 1);
         flex-shrink: 0;
+        border-radius: $global-radius;
+        background-color: $c-gray-2;
 
         .c-mediaitem--audio & {
             width: nth($width-audio, 1);

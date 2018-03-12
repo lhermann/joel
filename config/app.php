@@ -88,4 +88,14 @@ return [
         'Http/assets.php',
         'Http/ajaxes.php',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Joel Base URLs
+    |--------------------------------------------------------------------------
+    |
+    | Base URLs to Joels required services
+    |
+    */
+    'player_base_url' => 'https://embed.joelmediatv.de/'
 ];

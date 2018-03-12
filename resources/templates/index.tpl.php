@@ -4,61 +4,59 @@ use function AppTheme\template;
 
 <?php get_header() ?>
 
+<?php template('partials/header') ?>
 
-<div id="siteWrapper" class="c-site-wrapper">
+<main role="main">
 
-    <?php template('partials/header') ?>
+    <section class="c-section c-section--flush">
 
-    <main role="main">
+        <?php template('partials/slider', [
+            'id' => 'main-slider',
+            'mode' => 'initial',
+            'duration' => 4000
+        ]) ?>
 
-        <section class="c-section c-section--flush">
-
-            <?php template('partials/slider', ['id' => 'main-slider']) ?>
-
-        </section>
-
-
-        <section class="o-wrapper o-wrapper--no-padding c-section u-mt">
-
-            <?php //template('partials/promo-list', ['style_modifier' => 'o-overflow--padding']) ?>
-
-        </section>
+    </section>
 
 
-        <section class="o-wrapper c-section">
+    <section class="o-wrapper o-wrapper--no-padding c-section u-mt">
 
-            <?php //template('partials/medialist', ['style_modifier' => 'u-hidden-from@tablet']) ?>
+        <?php //template('partials/promo-list', ['style_modifier' => 'o-overflow--padding']) ?>
 
-            <pre>{{> organisms-medialist-3-columns }}</pre>
-
-        </section>
+    </section>
 
 
-        <section class="c-section">
+    <section class="o-wrapper c-section">
 
-            <?php //template(['partials/slider', 'quotes']) ?>
+        <?php //template('partials/medialist', ['style_modifier' => 'u-hidden-from@tablet']) ?>
 
-        </section>
+        <pre>{{> organisms-medialist-3-columns }}</pre>
+
+    </section>
 
 
-        <section class="o-wrapper c-section">
+    <section class="c-section">
 
-            <h2><a class="c-link c-link--dotted" href="#">Blog</a></h2>
-            <?php //template('partials/article-grid') ?>
+        <?php //template(['partials/slider', 'quotes']) ?>
 
-        </section>
+    </section>
 
-        <section class="c-section c-section--alt u-spacer-top">
 
-            <?php //template('partials/newsletter-form') ?>
+    <section class="o-wrapper c-section">
 
-        </section>
+        <h2><a class="c-link c-link--dotted" href="#">Blog</a></h2>
+        <?php //template('partials/article-grid') ?>
 
-    </main>
+    </section>
 
-    <?php //template('partials/footer') ?>
+    <section class="c-section c-section--alt u-spacer-top">
 
-</div><!-- .c-site-wrapper -->
+        <?php //template('partials/newsletter-form') ?>
 
+    </section>
+
+</main>
+
+<?php //template('partials/footer') ?>
 
 <?php get_footer() ?>

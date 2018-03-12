@@ -2,8 +2,9 @@
    JOEL WORDPRESS THEME
    ========================================================================== */
 
+import "./vue/slider.js";
+
 import "./imports/flyin.js";
-import "./imports/vue-slider.js";
 import "./imports/overflow.js";
 import "./imports/toggle.js";
 import "./imports/fadeSiblings.js";

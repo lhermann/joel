@@ -7,9 +7,6 @@ $has_teaser = false;
 ?>
 
 
-<?php //var_dump($slides); var_dump($slides[0]->media_content[0]['image']); ?>
-
-
 <!-- template for the navigation component -->
 <script type="text/x-template" id="nav-component">
     <li :class="css" v-on:click="changeSlide">
@@ -42,7 +39,7 @@ $has_teaser = false;
                 </div>
 
                 <div v-if="media" class="c-slide__media u-1/2@tablet u-hidden-until@tablet">
-                    <div class="o-ratio o-ratio--16:9">
+                    <div class="o-ratio o-ratio--16:9 u-box-shadow">
                         <a v-if="media.acf_fc_layout === 'image'" class="o-ratio__content" :href="acf.url">
                             <img :src="media.image.sizes['360p']">
                         </a>
@@ -56,18 +53,21 @@ $has_teaser = false;
 </script>
 
 <div id="<?= $id ?>"
-    class="c-slider <?= $style_modifier ?>"
-    :class="css"
-    data-mode="always">
+    class="c-slider <?= $style_modifier ?> jsSlider"
+    :class="containerClass"
+    data-mode="<?= $mode ?>"
+    data-duration="<?= $duration ?>">
 
     <div class="c-slider__control c-slider__control--left">
-        <button v-on:click="previousSlide" class="c-btn c-btn--dark c-btn--bigicon c-btn--square c-btn--right c-slider__btn">
+        <button v-on:click="manuallyChangeSlide('previous')"
+            class="c-btn c-btn--dark c-btn--bigicon c-btn--square c-btn--right c-slider__btn">
             <span class="u-ic-keyboard_arrow_left"></span>
         </button>
     </div>
 
     <div class="c-slider__control c-slider__control--right">
-        <button v-on:click="nextSlide" class="c-btn c-btn--dark c-btn--bigicon c-btn--square c-btn--left c-slider__btn">
+        <button v-on:click="manuallyChangeSlide('next')"
+            class="c-btn c-btn--dark c-btn--bigicon c-btn--square c-btn--left c-slider__btn">
             <span class="u-ic-keyboard_arrow_right"></span>
         </button>
     </div>
@@ -78,7 +78,7 @@ $has_teaser = false;
             :key="i"
             :index="i"
             :current-slide="currentSlide"
-            v-on:clicked="changeSlide"
+            v-on:clicked="manuallyChangeSlide"
         />
 
     </ul>

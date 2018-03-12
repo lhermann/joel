@@ -7,7 +7,7 @@
  */
 .u-show-more {
     position: relative;
-    height: $unit * 4;
+    max-height: $unit * 4;
     overflow: hidden;
 
     &::after {
@@ -39,6 +39,7 @@
 
     &.is-visible {
         height: auto;
+        max-height: unset;
 
         &::after {
             content: none;
