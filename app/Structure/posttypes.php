@@ -193,7 +193,7 @@ function recordings_custom_columns($column) {
                 print ( '<span class="status '.$status.'"><span></span></span>' );
             }
             break;
-        case "media_speakers":
+        case "speakers":
             $terms = get_the_term_list($post->ID, 'speakers', '', ', ','');
             if ( is_string( $terms ) ) {
                 echo $terms;
@@ -201,7 +201,7 @@ function recordings_custom_columns($column) {
                 echo 'Kein Sprecher';
             }
             break;
-        case "media_series":
+        case "series":
             $terms = get_the_term_list($post->ID, 'series', '', ', ','');
             if ( is_string( $terms ) ) {
                 echo $terms;

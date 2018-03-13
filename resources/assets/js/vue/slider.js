@@ -10,7 +10,10 @@
 
 import Vue from "vue";
 import axios from "axios";
-import VueAxios from "vue-axios";
+
+/* Axios
+ **********************/
+axios.defaults.baseURL = '/wp-json/wp/v2/';
 
 /* Global Values
  **********************/
@@ -30,10 +33,6 @@ for (var i = 0; i < sliders.length; i++) {
         )
     );
 }
-
-/* Axios
- **********************/
-Vue.use(VueAxios, axios);
 
 /* Vue Instance
  **********************/
@@ -106,7 +105,7 @@ function sliderInstance(_id, _slideDuration, _mode) {
         mounted() {
             var self = this;
             axios
-                .get("/wp-json/wp/v2/slides/")
+                .get("slides")
                 .then(function(response) {
                     self.slides = response.data;
                     self.count = response.data.length;

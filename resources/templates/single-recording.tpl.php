@@ -26,7 +26,14 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
                 <header class="u-white u-mb u-mb+@tablet">
                     <h1 class="u-responsive u-mb0"><?php the_title() ?></h1>
-                    <a class="c-link c-link--dotted c-link--white" href="#">TODO Speaker</a> · <a class="c-link c-link--dotted c-link--white" href="#">TODO Series</a>
+                    <?php foreach ($speakers as $i => $speaker): ?>
+                        <a class="c-link c-link--dotted c-link--white" href="<?= get_term_link( $speaker ) ?>">
+                            <?= $speaker->name ?>
+                        </a><?= $i !== count($speakers)-1 ? ',' : '' ?>
+                    <?php endforeach ?>
+                    · <a class="c-link c-link--dotted c-link--white" href="<?= get_term_link( $series ) ?>">
+                        <?= $series->name ?>
+                    </a>
                 </header>
 
                 <div class="o-ratio o-ratio--16:9 u-box-shadow ">
@@ -205,22 +212,22 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
             </section>
 
+            <?php if (false): ?>
             <section id="recommended">
 
-                <?php /*
-                template('partials/medialist', [
+                <?php template('partials/medialist', [
                     'id' => 'medialist-recommended',
                     'params' => [
                         'per_page' => 7,
                         'series' => $series->term_id,
                         'exclude' => get_the_ID()
                     ]
-                ]) */
-                ?>
+                ]) ?>
 
                 <hr class="u-mv+">
 
             </section>
+            <?php endif ?>
 
             <section id="license">
 

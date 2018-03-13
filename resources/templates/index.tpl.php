@@ -30,6 +30,14 @@ use function AppTheme\template;
 
         <?php //template('partials/medialist', ['style_modifier' => 'u-hidden-from@tablet']) ?>
 
+        <?php template('partials/medialist', [
+            'id' => 'medialist-1',
+            'pagination' => true,
+            'params' => [
+                'per_page' => 10
+            ]
+        ]) ?>
+
         <pre>{{> organisms-medialist-3-columns }}</pre>
 
     </section>

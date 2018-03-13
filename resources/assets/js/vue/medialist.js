@@ -5,7 +5,12 @@
 
 import Vue from "vue";
 import axios from "axios";
-import VueAxios from "vue-axios";
+import { cacheAdapterEnhancer } from 'axios-extensions';
+
+/* Axios
+ **********************/
+axios.defaults.baseURL = '/wp-json/wp/v2/';
+axios.defaults.adapter = cacheAdapterEnhancer(axios.defaults.adapter, true);
 
 /* Instantiate Medialists
  **********************/
@@ -23,10 +28,6 @@ for (var i = 0; i < medialists.length; i++) {
         )
     );
 }
-
-/* Axios
- **********************/
-Vue.use(VueAxios, axios);
 
 /* Vue Instance
  **********************/
@@ -48,7 +49,7 @@ function medialistInstance(_id) {
         mounted() {
             var self = this;
             axios
-                .get("/wp-json/wp/v2/recordings/", {
+                .get("recordings", {
                     params: this.params
                 })
                 .then(function(response) {
