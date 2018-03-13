@@ -34,6 +34,8 @@ function register_media_post_type()
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => 8,
+        'show_in_rest'       => true,
+        'rest_base'          => 'recordings',
         'supports'           => array( 'title', 'editor', 'comments' ),
         'labels' => [
             'name' => _x('Recording', 'post type general name', config('textdomain')),
@@ -241,7 +243,7 @@ function register_slide_post_type()
         'show_ui'            => true,
         'show_in_menu'       => true,
         'menu_icon'          => 'dashicons-images-alt',
-        'query_var'          => false,
+        'query_var'          => true,
         'capability_type'    => 'post',
         'has_archive'        => false,
         'hierarchical'       => false,

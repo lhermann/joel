@@ -11,46 +11,24 @@ namespace AppTheme\ACF;
 |
 */
 
+use function AppTheme\config;
 
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
     'key' => 'group_acf_videodatei',
-    'title' => 'Recordings',
+    'title' => __('Recordings', config('textdomain')),
     'fields' => array(
         array(
-            'key' => 'field_53dfb75328fc8',
-            'label' => 'Video Status',
-            'name' => '',
-            'type' => 'message',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'message' => '<div id="ajax-single-video-status">
-                <span class="jm-spinner spinner-centered"><span><span></span></span></span>
-        </div>
-        <div id="video-status-timer" class="hidden">
-                Zuletzt aktualisiert vor <span id="vs-time"></span> Sekunden.
-        </div>
-        <div data-postid="0"></div>',
-            'new_lines' => 'wpautop',
-            'esc_html' => 0,
-        ),
-        array(
             'key' => 'field_52c9deb0d3c39',
-            'label' => 'Datei wählen',
+            'label' => __('Select Recording', config('textdomain')),
             'name' => 'select_video',
             'type' => 'select',
             'instructions' => '',
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
-                'width' => '',
+                'width' => '50',
                 'class' => '',
                 'id' => '',
             ),
@@ -69,8 +47,25 @@ acf_add_local_field_group(array(
             'placeholder' => '',
         ),
         array(
+            'key' => 'field_53dfb75328fc8',
+            'label' => __('Status', config('textdomain')),
+            'name' => '',
+            'type' => 'message',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '50',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => '',
+            'new_lines' => 'wpautop',
+            'esc_html' => 0,
+        ),
+        array(
             'key' => 'field_4fb10184a8596',
-            'label' => 'Video Thumbnail',
+            'label' => __('Thumbnail', config('textdomain')),
             'name' => 'thumbnail',
             'type' => 'image',
             'instructions' => 'Erforderliche Aufl&ouml;sung in Pixel: 1920x1080',
@@ -82,7 +77,7 @@ acf_add_local_field_group(array(
                 'id' => '',
             ),
             'return_format' => 'id',
-            'preview_size' => 'thumbnail',
+            'preview_size' => '360p',
             'library' => 'all',
             'min_width' => 1280,
             'min_height' => 720,
@@ -107,6 +102,10 @@ acf_add_local_field_group(array(
     'style' => 'default',
     'label_placement' => 'top',
     'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+    'hide_on_screen' => array(),
+    'description' => '',
     'hide_on_screen' => array(
         0 => 'excerpt',
         1 => 'custom_fields',
@@ -120,8 +119,6 @@ acf_add_local_field_group(array(
         9 => 'tags',
         10 => 'send-trackbacks',
     ),
-    'active' => 1,
-    'description' => '',
 ));
 
 acf_add_local_field_group(array(
@@ -130,7 +127,7 @@ acf_add_local_field_group(array(
     'fields' => array(
         array(
             'key' => 'field_59de0a67baf08',
-            'label' => 'Image',
+            'label' => __('Image', config('textdomain')),
             'name' => 'image',
             'type' => 'image',
             'instructions' => 'Artwork must be a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels, in JPEG or PNG format, 72 dpi, with appropriate file extensions (.jpg, .png), and in the RGB colorspace.',
@@ -154,7 +151,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_59de0abf106de',
-            'label' => 'Autor',
+            'label' => __('Author', config('textdomain')),
             'name' => 'autor',
             'type' => 'taxonomy',
             'instructions' => '',
@@ -176,7 +173,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_59de0b32b3aa1',
-            'label' => 'Categorien',
+            'label' => __('Categories', config('textdomain')),
             'name' => 'categorien',
             'type' => 'checkbox',
             'instructions' => '',
@@ -212,7 +209,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_59e44c58b3706',
-            'label' => 'iTunes Link',
+            'label' => __('iTunes Link', config('textdomain')),
             'name' => 'itunes_link',
             'type' => 'url',
             'instructions' => '',
@@ -228,7 +225,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_59e79635e0444',
-            'label' => 'Stitcher Link',
+            'label' => __('Stitcher Link', config('textdomain')),
             'name' => 'stitcher_link',
             'type' => 'url',
             'instructions' => '',
@@ -244,7 +241,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_59e3aaa4c51dc',
-            'label' => 'Podcast Website',
+            'label' => __('Website', config('textdomain')),
             'name' => 'website_link',
             'type' => 'url',
             'instructions' => '',
@@ -286,7 +283,7 @@ acf_add_local_field_group(array(
         array(
             'key' => 'field_59ddf48a5960c',
             'label' => 'Titelbild für Serien',
-            'name' => 'image',
+            'name' => __('Image', config('textdomain')),
             'type' => 'image',
             'instructions' => 'Bild sollte mindestens 1280x720 Pixel haben.',
             'required' => 0,
@@ -309,7 +306,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_59e5a5c30a4fd',
-            'label' => 'Podcast',
+            'label' => __('Podcast', config('textdomain')),
             'name' => 'podcast',
             'type' => 'taxonomy',
             'instructions' => '',
@@ -356,7 +353,7 @@ acf_add_local_field_group(array(
     'fields' => array(
         array(
             'key' => 'field_59ddf586d5c6d',
-            'label' => 'Image',
+            'label' => __('Image', config('textdomain')),
             'name' => 'image',
             'type' => 'image',
             'instructions' => 'Sollte <strong>quadratisch</strong> sein, wird ansonnsten automatisch ausgeschnitten. Mindestens <strong>300x300 Pixel</strong>.',
@@ -380,7 +377,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_59ddf623f1beb',
-            'label' => 'Website',
+            'label' => __('Website', config('textdomain')),
             'name' => 'website',
             'type' => 'url',
             'instructions' => '',
@@ -415,13 +412,13 @@ acf_add_local_field_group(array(
 ));
 
 acf_add_local_field_group(array(
-    'key' => 'group_acf_video-serie-und-sprecher',
-    'title' => 'Serie, Sprecher, Themen, ...',
+    'key' => 'group_acf_choose-taxonomies',
+    'title' => __('Choose taxonomies', config('textdomain')),
     'fields' => array(
         array(
             'key' => 'field_53dfb0355292e',
-            'label' => 'Sprecher',
-            'name' => 'sprecher',
+            'label' => __('Speakers', config('textdomain')),
+            'name' => 'speakers',
             'type' => 'taxonomy',
             'instructions' => '',
             'required' => 1,
@@ -437,13 +434,13 @@ acf_add_local_field_group(array(
             'add_term' => 0,
             'save_terms' => 1,
             'load_terms' => 1,
-            'return_format' => 'object',
+            'return_format' => 'id',
             'multiple' => 0,
         ),
         array(
             'key' => 'field_53dfaf955292d',
-            'label' => 'Serie',
-            'name' => 'serien',
+            'label' => __('Series', config('textdomain')),
+            'name' => 'series',
             'type' => 'taxonomy',
             'instructions' => '',
             'required' => 1,
@@ -459,13 +456,13 @@ acf_add_local_field_group(array(
             'add_term' => 0,
             'save_terms' => 1,
             'load_terms' => 1,
-            'return_format' => 'object',
+            'return_format' => 'id',
             'multiple' => 0,
         ),
         array(
             'key' => 'field_59dcf1a261753',
-            'label' => 'Themen',
-            'name' => 'themen',
+            'label' => __('Topics', config('textdomain')),
+            'name' => 'topics',
             'type' => 'taxonomy',
             'instructions' => '',
             'required' => 0,
@@ -484,6 +481,71 @@ acf_add_local_field_group(array(
             'return_format' => 'id',
             'multiple' => 0,
         ),
+        array(
+            'key' => 'field_59dcf1e0346a5',
+            'label' => __('Podcast', config('textdomain')),
+            'name' => 'podcast',
+            'type' => 'taxonomy',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'taxonomy' => 'podcasts',
+            'field_type' => 'select',
+            'allow_null' => 1,
+            'add_term' => 0,
+            'save_terms' => 1,
+            'load_terms' => 1,
+            'return_format' => 'id',
+            'multiple' => 0,
+        ),
+        array(
+            'key' => 'field_59dcf417389a4',
+            'label' => __('Download', config('textdomain')),
+            'name' => 'download',
+            'type' => 'true_false',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => '',
+            'default_value' => 1,
+            'ui' => 1,
+            'ui_on_text' => __('permit', config('textdomain')),
+            'ui_off_text' => __('deny', config('textdomain')),
+        )
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'recording',
+            ),
+        ),
+    ),
+    'menu_order' => 1,
+    'position' => 'side',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+    'description' => '',
+));
+
+acf_add_local_field_group(array(
+    'key' => 'group_acf_bibelantworten',
+    'title' => 'Bibel.Antworten Kategorie',
+    'fields' => array(
         array(
             'key' => 'field_54b66d16a979b',
             'label' => 'Bibel.Antworten Kategorie',
@@ -520,66 +582,6 @@ acf_add_local_field_group(array(
             'return_format' => 'value',
             'placeholder' => '',
         ),
-        array(
-            'key' => 'field_59dcf1e0346a5',
-            'label' => 'Podcast',
-            'name' => 'podcast',
-            'type' => 'taxonomy',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'taxonomy' => 'podcasts',
-            'field_type' => 'select',
-            'allow_null' => 1,
-            'add_term' => 0,
-            'save_terms' => 1,
-            'load_terms' => 1,
-            'return_format' => 'id',
-            'multiple' => 0,
-        ),
-        array(
-            'key' => 'field_59dcf417389a4',
-            'label' => 'Video Download',
-            'name' => 'video_download',
-            'type' => 'true_false',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'message' => '',
-            'default_value' => 1,
-            'ui' => 1,
-            'ui_on_text' => 'erlaubt',
-            'ui_off_text' => 'verboten',
-        ),
-        array(
-            'key' => 'field_59dcf48a383d9',
-            'label' => 'Audio Download',
-            'name' => 'audio_download',
-            'type' => 'true_false',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'message' => '',
-            'default_value' => 1,
-            'ui' => 1,
-            'ui_on_text' => 'erlaubt',
-            'ui_off_text' => 'verboten',
-        ),
     ),
     'location' => array(
         array(
@@ -590,7 +592,7 @@ acf_add_local_field_group(array(
             ),
         ),
     ),
-    'menu_order' => 1,
+    'menu_order' => 9,
     'position' => 'side',
     'style' => 'default',
     'label_placement' => 'top',

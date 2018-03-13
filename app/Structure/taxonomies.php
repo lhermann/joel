@@ -23,14 +23,15 @@ function register_media_taxonomies()
 {
 
     register_taxonomy('series', 'recording', [
-        'public' => true,
+        'public'            => true,
         'show_in_nav_menus' => true,
-        'show_ui' => true,
+        'show_ui'           => true,
         'show_admin_column' => true,
-        'hierarchical' => false,
-        'rewrite' => [
-            'slug' => 'series',
-            'with_front' => true,
+        'hierarchical'      => false,
+        'show_in_rest'      => true,
+        'rewrite'           => [
+            'slug'         => 'series',
+            'with_front'   => true,
             'hierarchical' => true,
         ],
         'labels' => [

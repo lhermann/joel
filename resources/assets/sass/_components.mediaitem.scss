@@ -122,13 +122,13 @@ $width-sprecher: (80px 80px);
             position: absolute;
             right: 0;
             bottom: 0;
-            opacity: 0.6;
+            opacity: 0.8;
             border-radius: $global-radius 0;
             background-color: $c-black;
             padding: 2px $unit-tiny 0;
             line-height: 1.3;
             color: $c-white;
-            font-size: 60%;
+            font-size: 70%;
             font-weight: 500;
 
             .c-mediaitem--serie & {

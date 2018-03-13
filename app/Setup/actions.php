@@ -67,14 +67,22 @@ add_action('theme/single/sidebar', 'AppTheme\Setup\render_sidebar');
 function joel_setup_options () {
     //migrate joel db
     global $wpdb;
+    // Posts
     $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'recording' WHERE post_type = 'video';" );
+
+    // Postmeta
     $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'video','recording') WHERE meta_key LIKE '%video%';" );
     $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'recording_thumbnail','thumbnail') WHERE meta_key LIKE '%recording_thumbnail';" );
+    $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'sprecher','speakers') WHERE meta_key LIKE '%sprecher';" );
+    $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'serien','series') WHERE meta_key LIKE '%serien';" );
+    $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'themen','topics') WHERE meta_key LIKE '%themen';" );
+
+    // Term_taxonomy
     $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'series' WHERE taxonomy = 'video_serien';" );
     $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'speakers' WHERE taxonomy = 'video_sprecher';" );
     $wpdb->query( "UPDATE $wpdb->term_taxonomy SET taxonomy = 'topics' WHERE taxonomy = 'video_themen';" );
 
-
+    // Termmeta
     $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher_website','website') WHERE meta_key LIKE '%video_sprecher_website';" );
     $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher_bild','image') WHERE meta_key LIKE '%video_sprecher_bild';" );
     $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_serien_bild','image') WHERE meta_key LIKE '%video_serien_bild';" );

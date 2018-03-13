@@ -2,7 +2,10 @@
 use function AppTheme\template;
 use function AppTheme\asset_path;
 use function AppTheme\config;
-global $post;
+
+$speakers = wp_get_object_terms( get_the_ID(), 'speakers' );
+$series = wp_get_object_terms( get_the_ID(), 'series' )[0];
+// var_dump( $speakers, $series ); die();
 ?>
 
 <?php get_header() ?>
@@ -178,225 +181,42 @@ global $post;
 
             <section id="next-video">
 
-                <h2 class="u-h5 u-mb--">Nächstes Video</h2>
+                <!-- <h2 class="u-h5 u-mb--">Nächstes Video</h2> -->
+                <h2 class="u-h5 u-mb--">Weitere Aufnahmen</h2>
 
-                <p class="u-small u-muted">Serie: <a class="c-link c-link--dotted u-ml--" href="#">Sola Veritas – Die Wahre Chronik der Reformation</a></p>
+                <p class="u-small u-muted">
+                    Serie:
+                    <a class="c-link c-link--dotted u-ml--"
+                        href="<?= get_term_link( $series ) ?>">
+                        <?= $series->name ?>
+                    </a>
+                </p>
 
-                    <div class="o-media c-mediaitem   c-mediaitem--standalone" href="../../patterns/04-pages-video/04-pages-video.html">
-                        <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                        <div class="o-media__img c-mediaitem__img">
-                            <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                <img src="">
-                                <div class="c-mediaitem__length">
-                                    <div>56:07</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="o-media__body c-mediaitem__body">
-                            <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">Sola Veritas: 1. Funken im Dunkel (1482-1484)</a>
-                            <ul class="c-mediaitem__meta u-truncate">
-                                    <li>
-                                        <a href="#">Matthias Ströck</a>
-
-                                    </li>
-                                    <li>
-
-                                        5. Juni 2017
-                                    </li>
-                            </ul>
-                        </div>
-                    </div>
+                <?php template('partials/medialist', [
+                    'id' => 'medialist-next-video',
+                    'params' => [
+                        'per_page' => 7,
+                        'series' => $series->term_id,
+                        'exclude' => get_the_ID()
+                    ]
+                ]) ?>
 
                 <hr class="u-mv+">
 
             </section>
 
-            <section id="videolist">
+            <section id="recommended">
 
-                <ul class="c-medialist ">
-                    <li class="c-medialist__item">
-                        <div class="o-media c-mediaitem   " href="../../patterns/04-pages-video/04-pages-video.html">
-                            <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                            <div class="o-media__img c-mediaitem__img">
-                                <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                    <img src="">
-                                    <div class="c-mediaitem__length">
-                                        <div>56:07</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="o-media__body c-mediaitem__body">
-                                <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">Weltengeschichte - Episode 1: Die Strahlen der Ewigkeit</a>
-                                <ul class="c-mediaitem__meta u-truncate">
-                                        <li>
-                                            <a href="#">Matthias Ströck</a>
-
-                                        </li>
-                                        <li>
-
-                                            5. Juni 2017
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-medialist__item">
-                        <div class="o-media c-mediaitem   " href="../../patterns/04-pages-video/04-pages-video.html">
-                            <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                            <div class="o-media__img c-mediaitem__img">
-                                <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                    <img src="">
-                                    <div class="c-mediaitem__length">
-                                        <div>48:20</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="o-media__body c-mediaitem__body">
-                                <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">Sola Veritas: 11. Neue Wege (1506)</a>
-                                <ul class="c-mediaitem__meta u-truncate">
-                                        <li>
-                                            <a href="#">Matthias Ströck</a>
-
-                                        </li>
-                                        <li>
-
-                                            5. Juni 2017
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-medialist__item">
-                        <div class="o-media c-mediaitem   " href="../../patterns/04-pages-video/04-pages-video.html">
-                            <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                            <div class="o-media__img c-mediaitem__img">
-                                <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                    <img src="">
-                                    <div class="c-mediaitem__length">
-                                        <div>38:29</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="o-media__body c-mediaitem__body">
-                                <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">Offenbarung 17:9</a>
-                                <ul class="c-mediaitem__meta u-truncate">
-                                        <li>
-                                            <a href="#">Matthias Ströck</a>
-
-                                        </li>
-                                        <li>
-
-                                            5. Juni 2017
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-medialist__item">
-                        <div class="o-media c-mediaitem   " href="../../patterns/04-pages-video/04-pages-video.html">
-                            <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                            <div class="o-media__img c-mediaitem__img">
-                                <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                    <img src="">
-                                    <div class="c-mediaitem__length">
-                                        <div>51:26</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="o-media__body c-mediaitem__body">
-                                <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">Mit Gott leben – Apostelgeschichte 17:25b</a>
-                                <ul class="c-mediaitem__meta u-truncate">
-                                        <li>
-                                            <a href="#">Matthias Ströck</a>
-
-                                        </li>
-                                        <li>
-
-                                            5. Juni 2017
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-medialist__item">
-                        <div class="o-media c-mediaitem   " href="../../patterns/04-pages-video/04-pages-video.html">
-                            <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                            <div class="o-media__img c-mediaitem__img">
-                                <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                    <img src="">
-                                    <div class="c-mediaitem__length">
-                                        <div>2:34</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="o-media__body c-mediaitem__body">
-                                <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">"Weide meine Schafe" Erster und zweiter Petrusbrief (CSH 2017 Q2): 11. Falsche Lehrer</a>
-                                <ul class="c-mediaitem__meta u-truncate">
-                                        <li>
-                                            <a href="#">Matthias Ströck</a>
-
-                                        </li>
-                                        <li>
-
-                                            5. Juni 2017
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-medialist__item">
-                        <div class="o-media c-mediaitem   " href="../../patterns/04-pages-video/04-pages-video.html">
-                            <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                            <div class="o-media__img c-mediaitem__img">
-                                <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                    <img src="">
-                                    <div class="c-mediaitem__length">
-                                        <div>56:07</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="o-media__body c-mediaitem__body">
-                                <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">Sola Veritas: 1. Funken im Dunkel (1482-1484)</a>
-                                <ul class="c-mediaitem__meta u-truncate">
-                                        <li>
-                                            <a href="#">Matthias Ströck</a>
-
-                                        </li>
-                                        <li>
-
-                                            5. Juni 2017
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-medialist__item">
-                        <div class="o-media c-mediaitem   " href="../../patterns/04-pages-video/04-pages-video.html">
-                            <a class="c-mediaitem__link" href="../../patterns/04-pages-video/04-pages-video.html"></a>
-                            <div class="o-media__img c-mediaitem__img">
-                                <a class="c-mediaitem__imglink" href="../../patterns/04-pages-video/04-pages-video.html">
-                                    <img src="">
-                                    <div class="c-mediaitem__length">
-                                        <div>48:20</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="o-media__body c-mediaitem__body">
-                                <a class="c-mediaitem__title u-truncate" href="../../patterns/04-pages-video/04-pages-video.html">Sola Veritas: 2. Prägende Ereignisse (1485-1487)</a>
-                                <ul class="c-mediaitem__meta u-truncate">
-                                        <li>
-                                            <a href="#">Matthias Ströck</a>
-
-                                        </li>
-                                        <li>
-
-                                            5. Juni 2017
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <?php /*
+                template('partials/medialist', [
+                    'id' => 'medialist-recommended',
+                    'params' => [
+                        'per_page' => 7,
+                        'series' => $series->term_id,
+                        'exclude' => get_the_ID()
+                    ]
+                ]) */
+                ?>
 
                 <hr class="u-mv+">
 

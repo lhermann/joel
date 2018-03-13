@@ -35,27 +35,27 @@ acf_add_local_field_group(array(
                 'id' => '',
             ),
             'choices' => array(
-                'text-left'   => sprintf( '%s<br><img src="%s" width="130">',
+                'text-left'   => sprintf( '%s<br><img src="%s" width="100">',
                                     __('Text Left', config('textdomain')),
                                     asset_path('images/slide-type-text-left.jpg')
                                 ),
-                'text-center' => sprintf( '%s<br><img src="%s" width="130">',
+                'text-center' => sprintf( '%s<br><img src="%s" width="100">',
                                     __('Text Center', config('textdomain')),
                                     asset_path('images/slide-type-text-center.jpg')
                                 ),
-                'text-right'  => sprintf( '%s<br><img src="%s" width="130">',
+                'text-right'  => sprintf( '%s<br><img src="%s" width="100">',
                                     __('Text Right', config('textdomain')),
                                     asset_path('images/slide-type-text-right.jpg')
                                 ),
-                'media-right' => sprintf( '%s<br><img src="%s" width="130">',
+                'media-right' => sprintf( '%s<br><img src="%s" width="100">',
                                     __('Media Right', config('textdomain')),
                                     asset_path('images/slide-type-media-right.jpg')
                                 ),
-                'media-left'  => sprintf( '%s<br><img src="%s" width="130">',
+                'media-left'  => sprintf( '%s<br><img src="%s" width="100">',
                                     __('Media Left', config('textdomain')),
                                     asset_path('images/slide-type-media-left.jpg')
                                 ),
-                'teaser'      => sprintf( '%s<br><img src="%s" width="130">',
+                'teaser'      => sprintf( '%s<br><img src="%s" width="100">',
                                     __('Recordings Teaser', config('textdomain')),
                                     asset_path('images/slide-type-teaser.jpg')
                                 ),

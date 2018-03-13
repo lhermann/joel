@@ -1,7 +1,7 @@
 <?php
 $menu = wp_get_nav_menu_items( wp_get_nav_menu_name( 'primary' ) );
-use function AppTheme\menu_item_is_active;
-use function AppTheme\menu_item_has_children;
+use function AppTheme\Helper\menu_item_is_active;
+use function AppTheme\Helper\menu_item_has_children;
 ?>
 
 <nav id="nav" class="c-primary-nav <?= $style_modifier ?>">
