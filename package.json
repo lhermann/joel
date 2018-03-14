@@ -11,12 +11,12 @@
     },
     "private": true,
     "scripts": {
-        "dev": "npm run watch",
+        "dev": "npm run development",
         "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.config.js",
         "watch": "npm run development -- --watch",
-        "start": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js --watch"
+        "start": "npm run watch"
     },
     "dependencies": {
         "axios": "^0.18.0",

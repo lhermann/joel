@@ -115,11 +115,11 @@ if (config.settings.styleLint) {
  * Adds BrowserSync plugin when
  * settings are configured.
  */
-if (config.settings.browserSync) {
-    module.exports.plugins.push(
-        new BrowserSyncPlugin(config.settings.browserSync)
-    );
-}
+// if (config.settings.browserSync) {
+//     module.exports.plugins.push(
+//         new BrowserSyncPlugin(config.settings.browserSync)
+//     );
+// }
 
 /**
  * Plugins only added on development build

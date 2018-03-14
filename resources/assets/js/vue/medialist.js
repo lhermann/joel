@@ -1,16 +1,19 @@
 /*
- * Joel Media Medialist
+ * Medialist
  * @author: Lukas Hermann
  */
 
 import Vue from "vue";
 import axios from "axios";
-import { cacheAdapterEnhancer } from 'axios-extensions';
+import MediaitemComponent from "./mediaitem-component.js";
+// import { cacheAdapterEnhancer } from 'axios-extensions';
 
 /* Axios
  **********************/
 axios.defaults.baseURL = '/wp-json/wp/v2/';
-axios.defaults.adapter = cacheAdapterEnhancer(axios.defaults.adapter, true);
+axios.defaults.headers = {'cache-control': 'max-age=31536000, public'};
+// Disabled caching adapter for performance reasons
+// axios.defaults.adapter = cacheAdapterEnhancer(axios.defaults.adapter, true);
 
 /* Instantiate Medialists
  **********************/
@@ -34,6 +37,9 @@ for (var i = 0; i < medialists.length; i++) {
 function medialistInstance(_id) {
     return new Vue({
         el: _id,
+        components: {
+            MediaitemComponent
+        },
         data() {
             return {
                 recordings: [],
@@ -61,21 +67,3 @@ function medialistInstance(_id) {
         }
     });
 }
-
-/* Nav Component
- **********************/
-Vue.component("mediaitem-component", {
-    template: "#mediaitem-component",
-    props: ["item"],
-    data: function() {
-        return {
-            type: "video"
-        };
-    },
-    computed: {
-        title() {
-            return this.item.title.rendered;
-        }
-    },
-    methods: {}
-});

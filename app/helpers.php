@@ -82,6 +82,34 @@ function asset_path($file)
     return asset($file)->getUri();
 }
 
+/**
+ * Store Singleton
+ */
+class Store {
+    protected static $store = [];
+
+    protected function __construct(){}
+    protected function __clone(){}
+
+    public static function set($key, $value = true) {
+        self::$store[$key] = $value;
+    }
+
+    public static function get($key) {
+        return self::$store[$key];
+    }
+
+    public static function isset($key) {
+        return isset(self::$store[$key]);
+    }
+
+    public static function isset_then_set($key, $value = true) {
+        $return = self::isset($key);
+        self::set($key, $value);
+        return $return;
+    }
+}
+
 
 
 
