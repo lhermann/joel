@@ -29,7 +29,7 @@ function bind_services()
      */
     theme()->bind('slides', function (Theme $theme, $parameters) {
         $query = new WP_Query([
-            'post_type' => 'slide',
+            'post_type' => 'slides',
         ]);
         foreach ($query->posts as $i => $post) {
             $fields = get_fields($post->ID);

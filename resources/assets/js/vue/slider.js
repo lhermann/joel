@@ -13,15 +13,15 @@ import axios from "axios";
 
 /* Axios
  **********************/
-axios.defaults.baseURL = '/wp-json/wp/v2/';
+axios.defaults.baseURL = "/wp-json/wp/v2/";
 
 /* Global Values
  **********************/
 var _slideTransition = 800;
-var _sliderInstances = [];
 
 /* Instantiate Sliders
  **********************/
+var _sliderInstances = [];
 var sliders = document.getElementsByClassName("jsSlider");
 for (var i = 0; i < sliders.length; i++) {
     let slider = sliders.item(i);
@@ -117,10 +117,6 @@ function sliderInstance(_id, _slideDuration, _mode) {
                 .catch(function(error) {
                     console.log(error);
                 });
-
-            // if (this.$el.hasAttribute("data-mode")) {
-            //     this.mode = this.$el.getAttribute("data-mode");
-            // }
 
             if (this.mode !== "none") {
                 this.isAutomatic = true;
