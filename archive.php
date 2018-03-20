@@ -4,7 +4,7 @@ namespace AppTheme;
 
 /*
 |------------------------------------------------------------------
-| Single Recording Controller
+| Archive Controller
 |------------------------------------------------------------------
 |
 |
@@ -12,9 +12,4 @@ namespace AppTheme;
 
 use function AppTheme\template;
 
-/**
- * Renders single post.
- *
- * @uses resources/templates/single.tpl.php
- */
-template('single-recording');
+template( [ 'archive', get_query_var( 'archive' ) ] );

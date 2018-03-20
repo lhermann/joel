@@ -8,14 +8,29 @@ export default {
     template: "#mediaitem-component",
     props: ["item"],
     data: function() {
-        return {
-            type: "video"
-        };
+        return {};
     },
     computed: {
+        isRecording() {
+            switch (this.item.type) {
+                case "video":
+                case "audio":
+                    return true;
+                case "series":
+                case "speakers":
+                case "topcis":
+                default:
+                    return false;
+            }
+        },
         title() {
-            return this.item.title.rendered;
+            if (this.isRecording) return this.item.title.rendered;
+            return this.item.name;
+        },
+        length() {
+            if (this.isRecording) return this.item.length;
+            return this.item.count;
         }
     },
     methods: {}
-}
+};

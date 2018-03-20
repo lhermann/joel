@@ -22,7 +22,7 @@ use function AppTheme\config;
 function register_media_taxonomies()
 {
 
-    register_taxonomy('series', 'recording', [
+    register_taxonomy('series', 'recordings', [
         'public'            => true,
         'show_in_nav_menus' => true,
         'show_ui'           => true,
@@ -49,7 +49,7 @@ function register_media_taxonomies()
         ],
     ]);
 
-    register_taxonomy('speakers', 'recording', [
+    register_taxonomy('speakers', 'recordings', [
         'show_in_nav_menus' => true,
         'hierarchical' => false,
         'rewrite' => [
@@ -72,7 +72,7 @@ function register_media_taxonomies()
         ],
     ]);
 
-    register_taxonomy('topics', 'recording', [
+    register_taxonomy('topics', 'recordings', [
         'rewrite' => [
             'slug' => 'topics',
             'with_front' => true,
@@ -94,7 +94,7 @@ function register_media_taxonomies()
         ],
     ]);
 
-    register_taxonomy('podcasts', 'recording', [
+    register_taxonomy('podcasts', 'recordings', [
         'rewrite' => [
             'slug' => 'podcasts',
             'with_front' => true,
@@ -120,14 +120,14 @@ add_action('init', 'AppTheme\Structure\register_media_taxonomies');
 
 
 /**
- * Add Taxonomy Filter to Admin List of `recording`
+ * Add Taxonomy Filter to Admin List of `recordings`
  *
  * @source https://wordpress.org/support/topic/add-taxonomy-filter-to-admin-list-for-my-custom-post-type
  * @return void
  */
-function restrict_recording_by_taxonomy() {
+function restrict_recordings_by_taxonomy() {
     global $typenow;
-    $post_type = 'recording';
+    $post_type = 'recordings';
     $taxonomies = ['series', 'speakers', 'topics'];
     if ($typenow == $post_type) {
         foreach ($taxonomies as $taxonomy) {
@@ -145,11 +145,11 @@ function restrict_recording_by_taxonomy() {
         };
     }
 }
-add_action('restrict_manage_posts', 'AppTheme\Structure\restrict_recording_by_taxonomy');
+add_action('restrict_manage_posts', 'AppTheme\Structure\restrict_recordings_by_taxonomy');
 
 function convert_id_to_term_in_query( $query ) {
     global $pagenow;
-    $post_type = 'recording';
+    $post_type = 'recordings';
     $taxonomies = ['series', 'speakers', 'topics'];
     $q_vars = &$query->query_vars;
     foreach ( $taxonomies as $taxonomy ) {
@@ -169,7 +169,7 @@ add_filter('parse_query', 'AppTheme\Structure\convert_id_to_term_in_query');
  * -- removing the description
  */
 // Register the column
-function recording_tax_edit_columns($columns) {
+function recordings_tax_edit_columns($columns) {
     $columns = array_merge(
         array_slice($columns, 0, 1),
         array( 'image' => __('Image', config('textdomain')) ),
@@ -178,8 +178,8 @@ function recording_tax_edit_columns($columns) {
     );
     return $columns;
 }
-add_filter('manage_edit-speakers_columns', 'AppTheme\Structure\recording_tax_edit_columns', 5);
-add_filter('manage_edit-series_columns', 'AppTheme\Structure\recording_tax_edit_columns', 5);
+add_filter('manage_edit-speakers_columns', 'AppTheme\Structure\recordings_tax_edit_columns', 5);
+add_filter('manage_edit-series_columns', 'AppTheme\Structure\recordings_tax_edit_columns', 5);
 
 // Display the columns content
 function speakers_custom_columns($value, $column_name, $id) {
@@ -276,7 +276,7 @@ add_action( 'pre_get_posts', 'AppTheme\Structure\podcasts_increase_posts_per_pag
 function auto_add_to_podcast( $post_id ) {
     // Avoid the function to trigger at wrong time
     if( !isset($_POST['post_type']) ) return; // check if it is post-type index exists to prevent errors
-    if( $_POST['post_type'] != 'recording' ) return; // check if post-type is video or audio
+    if( $_POST['post_type'] != 'recordings' ) return; // check if post-type is video or audio
     if( empty($_POST['acf']) ) return;
 
     $series_key = "field_53dfaf955292d";

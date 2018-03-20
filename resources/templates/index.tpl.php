@@ -40,7 +40,7 @@ use function AppTheme\template;
                         'route' => 'popular-posts'
                     ],
                     'params' => [
-                        'post_type' => 'recording',
+                        'post_type' => 'recordings',
                         'limit' => 5
                     ]
                 ]) ?>
@@ -56,9 +56,13 @@ use function AppTheme\template;
 
                 <?php template('partials/medialist', [
                     'id' => 'medialist-series',
-                    'options' => [],
+                    'options' => [
+                        'route' => 'series'
+                    ],
                     'params' => [
-                        'per_page' => 5
+                        'per_page' => 4,
+                        'order' => 'desc',
+                        'orderby' => 'id'
                     ]
                 ]) ?>
 

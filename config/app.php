@@ -79,6 +79,7 @@ return [
         'Http/assets.php',
         'Http/ajaxes.php',
         'Http/restapi.php',
+        'Http/routes.php',
         'Setup/actions.php',
         'Setup/filters.php',
         'Setup/supports.php',

@@ -10,13 +10,13 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
     :params="setParams(<?= $params ?>)"
     :options="setOptions(<?= $options ?>)">
 
-    <div v-show="isLoading &amp;&amp; !recordings.length" class="u-m">
+    <div v-show="isLoading &amp;&amp; !items.length" class="u-m">
         <div class="c-spinner c-spinner--large"></div>
     </div>
 
-    <ul class="c-medialist">
+    <ul class="c-medialist" :class="medialistClass">
 
-        <li class="c-medialist__item" v-for="(item, i) in recordings">
+        <li v-for="(item, i) in items" class="c-medialist__item">
 
             <mediaitem-component
                 :key="i"

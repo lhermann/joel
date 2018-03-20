@@ -5,7 +5,6 @@ use function AppTheme\config;
 
 $speakers = wp_get_object_terms( get_the_ID(), 'speakers' );
 $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
-// var_dump( $speakers, $series ); die();
 ?>
 
 <?php get_header() ?>

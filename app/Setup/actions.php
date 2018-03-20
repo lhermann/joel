@@ -68,7 +68,7 @@ function joel_setup_options () {
     //migrate joel db
     global $wpdb;
     // Posts
-    $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'recording' WHERE post_type = 'video';" );
+    $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'recordings' WHERE post_type = 'video';" );
 
     // Postmeta
     $wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = REPLACE(meta_key,'video','recording') WHERE meta_key LIKE '%video%';" );
@@ -90,6 +90,10 @@ function joel_setup_options () {
     $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_serien','series') WHERE meta_key LIKE '%video_serien%';" );
     $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_sprecher','speakers') WHERE meta_key LIKE '%video_sprecher%';" );
     $wpdb->query( "UPDATE $wpdb->termmeta SET meta_key = REPLACE(meta_key,'video_themen','topics') WHERE meta_key LIKE '%video_themen%';" );
+
+
+    // $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'recordings' WHERE post_type = 'recording';" );
+    // $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'slides' WHERE post_type = 'slide';" );
 }
 add_action('after_switch_theme', 'AppTheme\Setup\joel_setup_options');
 

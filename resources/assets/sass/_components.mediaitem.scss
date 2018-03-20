@@ -72,19 +72,19 @@ $width-sprecher: (80px 80px);
             flex-basis: nth($width-audio, 1);
         }
 
-        .c-mediaitem--serie & {
+        .c-mediaitem--series & {
             width: nth($width-serie, 1);
             height: nth($width-serie, 2);
             flex-basis: nth($width-serie, 1);
         }
 
-        .c-mediaitem--sprecher & {
+        .c-mediaitem--speakers & {
             width: nth($width-sprecher, 1);
             height: nth($width-sprecher, 2);
             flex-basis: nth($width-sprecher, 1);
         }
 
-        .c-mediaitem--thema & {
+        .c-mediaitem--topcis & {
             width: auto;
             height: $unit-large;
             flex-basis: auto;
@@ -104,14 +104,14 @@ $width-sprecher: (80px 80px);
             transition: $global-transition opacity;
             color: currentcolor;
 
-            .c-mediaitem--thema & {
+            .c-mediaitem--topcis & {
                 line-height: 1;
                 font-size: $unit-large;
                 opacity: 0.15;
             }
 
-            .c-mediaitem--thema:hover &,
-            .c-mediaitem--thema:focus & {
+            .c-mediaitem--topcis:hover &,
+            .c-mediaitem--topcis:focus & {
                 color: currentcolor;
                 opacity: 0.6;
             }
@@ -122,16 +122,15 @@ $width-sprecher: (80px 80px);
             position: absolute;
             right: 0;
             bottom: 0;
-            opacity: 0.8;
             border-radius: $global-radius 0;
-            background-color: $c-black;
+            background-color: rgba($c-black, 0.6);
             padding: 2px $unit-tiny 0;
             line-height: 1.3;
             color: $c-white;
             font-size: 70%;
             font-weight: 500;
 
-            .c-mediaitem--serie & {
+            .c-mediaitem--series & {
                 display: flex;
                 top: 0;
                 right: 70%;
@@ -142,6 +141,8 @@ $width-sprecher: (80px 80px);
                 > div {
                     width: 100%;
                     text-align: center;
+                    font-weight: 600;
+                    font-size: 120%;
                 }
             }
         }

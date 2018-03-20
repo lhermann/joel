@@ -7,7 +7,7 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
 <script type="text/x-template" id="mediaitem-component">
 
     <div class="o-media c-mediaitem"
-        :class="['c-mediaitem--' + type]"
+        :class="['c-mediaitem--' + item.type]"
         :href="item.link">
 
         <a class="c-mediaitem__link" :href="item.link"></a>
@@ -16,7 +16,7 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
             <a class="c-mediaitem__imglink" :href="item.link">
                 <img :src="item.thumbnail">
                 <div class="c-mediaitem__length">
-                    <div>{{ item.length }}</div>
+                    <div v-html="length"></div>
                 </div>
             </a>
         </div>
@@ -24,10 +24,13 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
         <div class="o-media__body c-mediaitem__body">
             <a class="c-mediaitem__title u-truncate" :href="item.link" v-html="title"></a>
             <ul class="c-mediaitem__meta u-truncate">
+                <li v-if="item.type === 'series'">
+                    {{ item.count }} Videos
+                </li>
                 <li v-for="(speaker, i) in item.speakers">
                     <a :href="speaker.link">{{ speaker.name }}</a><template v-if="i !== item.speakers.length - 1">,</template>
                 </li>
-                <li>
+                <li v-if="isRecording">
                     {{ item.date_human }}
                 </li>
             </ul>

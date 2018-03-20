@@ -38,7 +38,8 @@ function medialistInstance(_id) {
             return {
                 namespace: "wp/v2/",
                 route: "recordings",
-                recordings: [],
+                columns: 1,
+                items: [],
                 total: 0,
                 userParams: {},
                 perPage: 10,
@@ -56,6 +57,12 @@ function medialistInstance(_id) {
                     per_page: this.perPage
                 };
                 return Object.assign(defaults, this.userParams, overwrites);
+            },
+            medialistClass() {
+                var css = [];
+                if (this.columns > 1)
+                    css.push("c-medialist--" + this.columns + "col");
+                return css;
             }
         },
         methods: {
@@ -66,6 +73,8 @@ function medialistInstance(_id) {
                     this.namespace = payload.namespace;
                 if (typeof payload.route !== "undefined")
                     this.route = payload.route;
+                if (typeof payload.columns !== "undefined")
+                    this.columns = payload.columns;
             },
             setParams(payload) {
                 this.userParams = payload;
@@ -89,7 +98,7 @@ function medialistInstance(_id) {
                     })
                     .then(function(response) {
                         self.isLoading = false;
-                        self.recordings = response.data;
+                        self.items = response.data;
                         self.totalPages = parseInt(
                             response.headers["x-wp-totalpages"]
                         );

@@ -34,3 +34,19 @@
         margin-bottom: $unit-small;
     }
 }
+
+@include mq($from: tablet) {
+    .c-medialist--2col {
+        font-size: 0;
+        padding-left: -$unit;
+
+
+        .c-medialist__item {
+            display: inline-block;
+            padding-left: $unit;
+            width: 50%;
+            font-size: $inuit-global-font-size; // IE fallback
+            font-size: 1rem;
+        }
+    }
+}

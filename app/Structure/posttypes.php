@@ -22,7 +22,7 @@ use function AppTheme\config;
  */
 function register_media_post_type()
 {
-    register_post_type( 'recording', [
+    register_post_type( 'recordings', [
         'description'        => __('Collection of Video and Audio Recordings.', config('textdomain')),
         'public'             => true,
         'publicly_queryable' => true,
@@ -35,11 +35,10 @@ function register_media_post_type()
         'hierarchical'       => false,
         'menu_position'      => 8,
         'show_in_rest'       => true,
-        'rest_base'          => 'recordings',
         'supports'           => array( 'title', 'editor', 'comments' ),
         'labels' => [
-            'name' => _x('Recording', 'post type general name', config('textdomain')),
-            'singular_name' => _x('Recordings', 'post type singular name', config('textdomain')),
+            'name' => _x('Recordings', 'post type general name', config('textdomain')),
+            'singular_name' => _x('Recording', 'post type singular name', config('textdomain')),
             'menu_name' => _x('Archive', 'admin menu', config('textdomain')),
             'name_admin_bar' => _x('Recordings', 'add new on admin bar', config('textdomain')),
             'add_new' => _x('Add New', 'book', config('textdomain')),
@@ -60,26 +59,26 @@ add_action('init', 'AppTheme\Structure\register_media_post_type');
 
 
 // Sort admin colums of video by date by default
-function set_recording_post_type_admin_order($wp_query) {
+function set_recordings_post_type_admin_order($wp_query) {
     if (is_admin()) {
 
         $post_type = $wp_query->query['post_type'];
 
-        if ( $post_type == 'recording' && empty($_GET['orderby'])) {
+        if ( $post_type == 'recordings' && empty($_GET['orderby'])) {
             $wp_query->set('orderby', 'date');
             $wp_query->set('order', 'DESC');
         }
 
     }
 }
-add_filter ( 'pre_get_posts', 'AppTheme\Structure\set_recording_post_type_admin_order' );
+add_filter ( 'pre_get_posts', 'AppTheme\Structure\set_recordings_post_type_admin_order' );
 
 
 /**
  * Adding Cutsom Columns to the index of post type `media`
  */
 // Register the columns
-function recording_edit_columns($columns) {
+function recordings_edit_columns($columns) {
     $columns = array(
         "cb"         => "<input type=\"checkbox\" />",
         "image"      => __('Image', config('textdomain')),
@@ -92,11 +91,11 @@ function recording_edit_columns($columns) {
 
     return $columns;
 }
-add_filter('manage_edit-recording_columns', 'AppTheme\Structure\recording_edit_columns');
+add_filter('manage_edit-recordings_columns', 'AppTheme\Structure\recordings_edit_columns');
 
 
 // Register the columns as sortable
-function recording_sortable_columns($columns) {
+function recordings_sortable_columns($columns) {
     $custom = array(
     // meta column id => sortby value used in query
         "speakers" => __('Speaker', config('textdomain')),
@@ -105,7 +104,7 @@ function recording_sortable_columns($columns) {
 
     return wp_parse_args($custom, $columns);
 }
-add_filter('manage_edit-recording_sortable_columns', 'AppTheme\Structure\recording_sortable_columns');
+add_filter('manage_edit-recordings_sortable_columns', 'AppTheme\Structure\recordings_sortable_columns');
 
 
 // Make the column "Sprecher" order correctly
@@ -211,16 +210,16 @@ function recordings_custom_columns($column) {
             break;
     }
 }
-add_action('manage_recording_posts_custom_column',  'AppTheme\Structure\recordings_custom_columns');
+add_action('manage_recordings_posts_custom_column',  'AppTheme\Structure\recordings_custom_columns');
 
 
 // Remove Serien and Sprecher standard meta box in favor of ACF
 if (is_admin()) :
     function remove_meta_boxes() {
-        remove_meta_box('tagsdiv-speakers', 'recording', 'side');
-        remove_meta_box('tagsdiv-series', 'recording', 'side');
-        remove_meta_box('tagsdiv-topics', 'recording', 'side');
-        remove_meta_box('tagsdiv-podcasts', 'recording', 'side');
+        remove_meta_box('tagsdiv-speakers', 'recordings', 'side');
+        remove_meta_box('tagsdiv-series', 'recordings', 'side');
+        remove_meta_box('tagsdiv-topics', 'recordings', 'side');
+        remove_meta_box('tagsdiv-podcasts', 'recordings', 'side');
     }
     add_action( 'admin_menu', 'AppTheme\Structure\remove_meta_boxes' );
 endif;
@@ -236,7 +235,7 @@ endif;
 function register_slide_post_type()
 {
 
-    register_post_type( 'slide', [
+    register_post_type( 'slides', [
         'description'        => __('Collection of slides for the homepage.', config('textdomain')),
         'public'             => true,
         'publicly_queryable' => false,
@@ -252,8 +251,8 @@ function register_slide_post_type()
         'rest_base'          => 'slides',
         'supports'           => array( 'title' ),
         'labels' => [
-            'name' => _x('Slide', 'post type general name', config('textdomain')),
-            'singular_name' => _x('Slides', 'post type singular name', config('textdomain')),
+            'name' => _x('Slides', 'post type general name', config('textdomain')),
+            'singular_name' => _x('Slide', 'post type singular name', config('textdomain')),
             'menu_name' => _x('Slider', 'admin menu', config('textdomain')),
             'name_admin_bar' => _x('Slides', 'add new on admin bar', config('textdomain')),
             'add_new' => _x('Add New', 'book', config('textdomain')),

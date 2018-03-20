@@ -11,15 +11,32 @@ namespace AppTheme\Http;
 |
 */
 
-use function AppTheme\Helper\get_video_length;
 use function AppTheme\config;
+use function AppTheme\Helper\get_video_length;
+use function AppTheme\Helper\get_terms_associated_with_term;
 
 function rest_api_additions() {
 
     /**
-     * Add a 'length' field showing the length of the recording
+     * Add a 'type' field
      */
-    register_rest_field( 'recording', 'length', array(
+    register_rest_field(
+        [ 'recordings', 'series', 'speakers', 'topcis' ],
+        'type',
+        [ 'get_callback' => function( $object ) {
+            if( isset($object['type']) ) {
+                return 'video';
+            } elseif( isset($object['taxonomy']) ) {
+                return $object['taxonomy'];
+            }
+            return '';
+        } ]
+    );
+
+    /**
+     * Add a 'length' field showing the length of the recordings
+     */
+    register_rest_field( 'recordings', 'length', array(
         'get_callback' => function( $object ) {
             return get_video_length($object['id']);
         }
@@ -28,19 +45,42 @@ function rest_api_additions() {
     /**
      * Add the preview thumbnail for recordings
      */
-    register_rest_field( 'recording', 'thumbnail', array(
-        'get_callback' => function( $object ) {
-            return wp_get_attachment_image_src($object['acf']['thumbnail'], '108p')[0];
-        }
-    ) );
+    register_rest_field(
+        [ 'recordings', 'series', 'speakers' ],
+        'thumbnail',
+        [ 'get_callback' => function( $object ) {
+            $res = '108p';
+            switch ($object['type']) {
+                case 'video':
+                case 'audio':
+                    $id = $object['acf']['thumbnail'];
+                    break;
+                case 'series':
+                    $id = get_field( 'image', 'series_'.$object['id'] );
+                    $res = '144p';
+                case 'speakers':
+                    break;
+                default:
+                    return '';
+            }
+            return wp_get_attachment_image_src( $id, $res )[0];
+        } ]
+    );
 
     /**
      * Add the links for the speakers
      */
-    register_rest_field( 'recording', 'speakers', array(
-        'get_callback' => function( $object ) {
+    register_rest_field(
+        [ 'recordings', 'series' ],
+        'speakers',
+        [ 'get_callback' => function( $object ) {
+            if( in_array($object['type'], ['video', 'audio'])) {
+                $terms = wp_get_post_terms( $object['id'], 'speakers' );
+            } else {
+                $terms = get_terms_associated_with_term( $object['id'], 'speakers' );
+            }
             $speakers = [];
-            foreach ( wp_get_post_terms( $object['id'], 'speakers' ) as $i => $term ) {
+            foreach ( $terms as $i => $term ) {
                 $speakers[] = array(
                     'id' => $term->term_id,
                     'name' => $term->name,
@@ -48,13 +88,13 @@ function rest_api_additions() {
                 );
             }
             return $speakers;
-        }
-    ) );
+        } ]
+    );
 
     /**
      * Add a human readable date (and take the date-burden off js' back)
      */
-    register_rest_field( 'recording', 'date_human', array(
+    register_rest_field( 'recordings', 'date_human', array(
         'get_callback' => function( $object ) {
             return esc_attr( get_the_date('j. F Y') );
         }

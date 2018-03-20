@@ -20,4 +20,4 @@ use function AppTheme\template;
  *
  * @uses resources/templates/single.tpl.php
  */
-template('single');
+template( [ 'single', get_query_var( 'post_type' ) ] );
