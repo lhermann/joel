@@ -12,52 +12,52 @@ if( Store::isset_then_set('vue-pagination-component') ) return;
             <ol class="o-list-inline o-list-inline--1px">
 
                 <li class="o-list-inline__item">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--left" disabled="">
+                    <button
+                        class="c-btn c-btn--secondary c-btn--small c-btn--left"
+                        :class="{'c-btn--square': !verbose}"
+                        :disabled="currentPage <= 1 || isLoading"
+                        v-on:click="previousPage"
+                    >
                         <span class="u-ic-keyboard_arrow_left"></span>
-                        <span class="u-hidden-until@tablet">Vorherige Seite</span>
+                        <span v-if="verbose" class="u-hidden-until@tablet">
+                            Vorherige Seite
+                        </span>
                     </button>
                 </li>
-
-                <li class="o-list-inline__item u-hidden-until@tablet">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--edgy
-                        c-btn--square is-active">
-                        1
-                    </button>
-                </li>
-                <li class="o-list-inline__item u-hidden-until@tablet">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--edgy
-                        c-btn--square ">
-                        2
-                    </button>
-                </li>
-                <li class="o-list-inline__item u-hidden-until@tablet">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--edgy
-                        c-btn--square ">
-                        3
-                    </button>
-                </li>
-                <li class="o-list-inline__item u-hidden-until@tablet">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--edgy
-                        c-btn--square ">
-                        4
-                    </button>
-                </li>
-                <li class="o-list-inline__item u-hidden-until@tablet">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--edgy
-                        c-btn--square ">
+                <li v-if="!minimal"
+                    v-for="n in buttons"
+                    class="o-list-inline__item u-hidden-until@tablet">
+                    <button
+                        v-if="n == 'left' || n == 'right'"
+                        class="c-btn c-btn--secondary c-btn--small c-btn--edgy
+                        c-btn--square"
+                        :class="{'is-active': n === currentPage}"
+                        :disabled="isLoading"
+                        v-on:click="changeRange(n)"
+                    >
                         ...
                     </button>
-                </li>
-                <li class="o-list-inline__item u-hidden-until@tablet">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--edgy
-                        c-btn--square ">
-                        23
+                    <button
+                        v-else
+                        class="c-btn c-btn--secondary c-btn--small c-btn--edgy
+                        c-btn--square"
+                        :class="{'is-active': n === currentPage}"
+                        :disabled="isLoading"
+                        v-on:click="toPage(n)"
+                    >
+                        {{ n }}
                     </button>
                 </li>
-
                 <li class="o-list-inline__item">
-                    <button class="c-btn c-btn--secondary c-btn--small c-btn--right">
-                        <span class="u-hidden-until@tablet">Nächste Seite</span>
+                    <button
+                        class="c-btn c-btn--secondary c-btn--small c-btn--right"
+                        :class="{'c-btn--square': !verbose}"
+                        :disabled="currentPage >= totalPages || isLoading"
+                        v-on:click="nextPage"
+                    >
+                        <span v-if="verbose" class="u-hidden-until@tablet">
+                            Nächste Seite
+                        </span>
                         <span class="u-ic-keyboard_arrow_right"></span>
                     </button>
                 </li>
@@ -65,8 +65,12 @@ if( Store::isset_then_set('vue-pagination-component') ) return;
             </ol><!--end c-primary-nav__list-->
         </div>
 
-        <div class="o-layout__item u-pb-">
-            1 - 60 von 300
+        <div class="o-layout__item u-pb-" v-show="isLoading">
+            <div class="c-spinner"></div>
+        </div>
+
+        <div class="o-layout__item u-pb-" v-if="!minimal">
+            {{ 1 + (currentPage - 1) * perPage }} - {{ currentPage * perPage }} von {{ total }}
         </div>
 
     </nav>

@@ -1,0 +1,23 @@
+/* ==========================================================================
+   #SPINNER
+   ========================================================================== */
+
+@keyframes rotating {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.c-spinner {
+    border-radius: 50%;
+    width: $unit;
+    height: $unit;
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-top: 6px solid rgba(0, 0, 0, 0.6);
+    animation: rotating 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+    .c-spinner--large {
+        width: $unit-large;
+        height: $unit-large;
+    }

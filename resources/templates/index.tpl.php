@@ -8,7 +8,7 @@ use function AppTheme\template;
 
 <main role="main">
 
-    <section class="c-section c-section--flush">
+    <section id="slider" class="c-section c-section--flush">
 
         <?php template('partials/slider', [
             'id' => 'main-slider',
@@ -19,26 +19,81 @@ use function AppTheme\template;
     </section>
 
 
-    <section class="o-wrapper o-wrapper--no-padding c-section u-mt">
+    <section id="promo-list" class="o-wrapper o-wrapper--no-padding c-section u-mt">
 
         <?php //template('partials/promo-list', ['style_modifier' => 'o-overflow--padding']) ?>
 
     </section>
 
 
-    <section class="o-wrapper c-section">
+    <section id="medialists" class="o-wrapper c-section">
+
+        <div class="o-layout o-layout--large u-hidden-until@tablet">
+            <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-1/1">
+
+                <h2 class="u-h3">Beliebte Videos</h2>
+
+                <?php template('partials/medialist', [
+                    'id' => 'medialist-popular',
+                    'options' => [
+                        'namespace' => 'wordpress-popular-posts/v1/',
+                        'route' => 'popular-posts'
+                    ],
+                    'params' => [
+                        'post_type' => 'recording',
+                        'limit' => 5
+                    ]
+                ]) ?>
+
+            </div>
+            <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-hidden-until@tablet">
+
+                <h3>
+                    <a class="c-link c-link--dotted" href="#">
+                        Neue Serien
+                    </a>
+                </h3>
+
+                <?php template('partials/medialist', [
+                    'id' => 'medialist-series',
+                    'options' => [],
+                    'params' => [
+                        'per_page' => 5
+                    ]
+                ]) ?>
+
+            </div>
+            <div class="o-layout__item u-1/3 u-hidden-until@desktop">
+
+                <h3>
+                    <a class="c-link c-link--dotted" href="#">
+                        Tägliche Andachten
+                    </a>
+                </h3>
+
+                <?php template('partials/medialist', [
+                    'id' => 'medialist-devotional',
+                    'options' => [],
+                    'params' => [
+                        'per_page' => 5,
+                        'series' => 368 // mit Gott leben
+                    ]
+                ]) ?>
+
+            </div>
+        </div>
 
         <?php //template('partials/medialist', ['style_modifier' => 'u-hidden-from@tablet']) ?>
 
-        <?php template('partials/medialist', [
+        <?php /*template('partials/medialist', [
             'id' => 'medialist-1',
-            'pagination' => true,
+            'options' => [
+                'pagination' => 'normal'
+            ],
             'params' => [
                 'per_page' => 10
             ]
-        ]) ?>
-
-        <pre>{{> organisms-medialist-3-columns }}</pre>
+        ])*/ ?>
 
     </section>
 

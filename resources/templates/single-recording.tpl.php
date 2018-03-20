@@ -27,11 +27,16 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                 <header class="u-white u-mb u-mb+@tablet">
                     <h1 class="u-responsive u-mb0"><?php the_title() ?></h1>
                     <?php foreach ($speakers as $i => $speaker): ?>
-                        <a class="c-link c-link--dotted c-link--white" href="<?= get_term_link( $speaker ) ?>">
+                        <a class="c-link c-link--dotted c-link--white"
+                            href="<?= get_term_link( $speaker ) ?>"
+                        >
                             <?= $speaker->name ?>
                         </a><?= $i !== count($speakers)-1 ? ',' : '' ?>
                     <?php endforeach ?>
-                    · <a class="c-link c-link--dotted c-link--white" href="<?= get_term_link( $series ) ?>">
+                    <span class="u-mh--">&middot;</span>
+                    <a class="c-link c-link--dotted c-link--white"
+                        href="<?= get_term_link( $series ) ?>"
+                    >
                         <?= $series->name ?>
                     </a>
                 </header>
@@ -201,6 +206,9 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
                 <?php template('partials/medialist', [
                     'id' => 'medialist-next-video',
+                    'options' => [
+                        'pagination' => 'normal'
+                    ],
                     'params' => [
                         'per_page' => 7,
                         'series' => $series->term_id,
@@ -217,6 +225,9 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
                 <?php template('partials/medialist', [
                     'id' => 'medialist-recommended',
+                    'options' => [
+                        'pagination' => 'minimal'
+                    ],
                     'params' => [
                         'per_page' => 7,
                         'series' => $series->term_id,

@@ -12,6 +12,7 @@ namespace AppTheme\Http;
 */
 
 use function AppTheme\Helper\get_video_length;
+use function AppTheme\config;
 
 function rest_api_additions() {
 
@@ -58,6 +59,17 @@ function rest_api_additions() {
             return esc_attr( get_the_date('j. F Y') );
         }
     ) );
+
+    /**
+     * Add a route
+     */
+    // register_rest_route( config('textdomain').'/v1', '/route', array(
+    //     'methods' => 'GET',
+    //     'callback' => function( $data ) {
+    //         $params = $data->get_params();
+    //         return $data;
+    //     }
+    // ) );
 
 };
 add_action( 'rest_api_init', 'AppTheme\Http\rest_api_additions' );
