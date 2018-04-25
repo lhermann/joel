@@ -14,6 +14,7 @@ namespace AppTheme\Http;
 use function AppTheme\config;
 use function AppTheme\Helper\get_video_length;
 use function AppTheme\Helper\get_terms_associated_with_term;
+use function AppTheme\Helper\fallback_img;
 
 function rest_api_additions() {
 
@@ -49,11 +50,11 @@ function rest_api_additions() {
         [ 'recordings', 'series', 'speakers' ],
         'thumbnail',
         [ 'get_callback' => function( $object ) {
-            $res = '108p';
             switch ($object['type']) {
                 case 'video':
                 case 'audio':
                     $id = $object['acf']['thumbnail'];
+                    $res = '108p';
                     break;
                 case 'series':
                     $id = get_field( 'image', 'series_'.$object['id'] );
@@ -63,9 +64,14 @@ function rest_api_additions() {
                     $res = 'square160';
                     break;
                 default:
+                    $id = null;
+                    $res = '160p';
                     return '';
             }
-            return wp_get_attachment_image_src( $id, $res )[0];
+            return fallback_img(
+                wp_get_attachment_image_src( $id, $res )[0],
+                $res
+            );
         } ]
     );
 

@@ -98,6 +98,11 @@ function render_menu_for_flyin($location) {
     print('<hr class="u-break-wrapper"/>');
 }
 
+function fallback_img($img, $resolution) {
+    if($img) return $img;
+    return \AppTheme\asset_path('images/dummy-'.$resolution.'.jpg');
+}
+
 
 
 

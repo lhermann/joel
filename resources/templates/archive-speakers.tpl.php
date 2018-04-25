@@ -1,6 +1,7 @@
 <?php
 use function AppTheme\template;
 use function AppTheme\config;
+use function AppTheme\Helper\fallback_img;
 ?>
 
 <?php get_header() ?>
