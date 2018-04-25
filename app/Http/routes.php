@@ -41,9 +41,6 @@ function additional_rewrite_rules() {
     // define new rules
     $new_rules = array(
 
-        __('recordings', config('textdomain')).'/?$'
-            => "index.php?archive=recordings",
-
         __('series', config('textdomain')).'/?$'
             => "index.php?archive=series",
 

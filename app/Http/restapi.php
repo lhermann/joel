@@ -59,6 +59,7 @@ function rest_api_additions() {
                 case 'series':
                     $id = get_field( 'image', 'series_'.$object['id'] );
                     $res = '144p';
+                    break;
                 case 'speakers':
                     $id = get_field( 'image', 'speakers_'.$object['id'] );
                     $res = 'square160';
@@ -76,7 +77,7 @@ function rest_api_additions() {
     );
 
     /**
-     * Add the links for the speakers
+     * Add the links for the speakers to series and recordings
      */
     register_rest_field(
         [ 'recordings', 'series' ],
@@ -96,6 +97,18 @@ function rest_api_additions() {
                 );
             }
             return $speakers;
+        } ]
+    );
+
+    /**
+     * Add the count of series to speakers
+     */
+    register_rest_field(
+        [ 'speakers' ],
+        'series_count',
+        [ 'get_callback' => function( $object ) {
+            $terms = get_terms_associated_with_term( $object['id'], 'series' );
+            return count($terms);
         } ]
     );
 

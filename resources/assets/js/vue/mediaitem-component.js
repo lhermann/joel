@@ -18,7 +18,7 @@ export default {
                     return true;
                 case "series":
                 case "speakers":
-                case "topcis":
+                case "topics":
                 default:
                     return false;
             }
