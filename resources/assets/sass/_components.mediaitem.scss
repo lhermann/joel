@@ -162,7 +162,7 @@ $width-sprecher: (80px 80px);
         font-weight: var(--font-weight, 300);
 
         > li {
-            display: inline-block;
+            display: inline;
 
             &:not(:last-child)::after {
                 content: "\a0\b7"; /* \b7 is a middot, \a0 is a space */

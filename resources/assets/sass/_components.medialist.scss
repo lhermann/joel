@@ -9,7 +9,7 @@
     margin: 0;
     margin-right: -$unit-small;
     margin-left: -$unit-small;
-    padding-top: 2px;
+    padding-top: 2px; /* 1 */
     list-style: none;
     color: $c-text;
 
@@ -38,7 +38,7 @@
 @include mq($from: tablet) {
     .c-medialist--2col {
         font-size: 0;
-        padding-left: -$unit;
+        margin-left: -($unit + $unit-small);
 
 
         .c-medialist__item {

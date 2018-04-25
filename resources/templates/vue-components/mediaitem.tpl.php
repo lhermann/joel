@@ -27,8 +27,11 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
                 <li v-if="item.type === 'series'">
                     {{ item.count }} Videos
                 </li>
-                <li v-for="(speaker, i) in item.speakers">
-                    <a :href="speaker.link">{{ speaker.name }}</a><template v-if="i !== item.speakers.length - 1">,</template>
+                <li>
+                    <template v-for="(speaker, i) in item.speakers">
+                        <a :href="speaker.link">{{ speaker.name }}</a><!--
+                        --><template v-if="i !== item.speakers.length - 1">, </template>
+                    </template>
                 </li>
                 <li v-if="isRecording">
                     {{ item.date_human }}
