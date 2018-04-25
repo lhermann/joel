@@ -12,13 +12,13 @@ use function AppTheme\config;
 
         <ul class="o-list-bare o-layout o-layout--flush">
 
-            <li class="o-layout__item u-1/4 c-tabs__item ">
+            <li class="o-layout__item u-1/4 c-tabs__item is-active">
                 <a class="c-tabs__link u-advent-sans u-text-center"
                     href="/<?= __('recordings', config('textdomain')) ?>/">
                     <?= __('Recordings', config('textdomain')) ?>
                 </a>
             </li>
-            <li class="o-layout__item u-1/4 c-tabs__item is-active">
+            <li class="o-layout__item u-1/4 c-tabs__item">
                 <a class="c-tabs__link u-advent-sans u-text-center"
                     href="/<?= __('series', config('textdomain')) ?>/">
                     <?= __('Series', config('textdomain')) ?>
@@ -50,7 +50,7 @@ use function AppTheme\config;
                 <div class="o-pack o-pack--auto o-pack--middle">
                     <div class="o-pack__item">
                         <h2 class="u-mb0">
-                            <?= __('Series', config('textdomain')) ?>
+                            <?= __('Recordings', config('textdomain')) ?>
                         </h2>
                     </div>
                     <div class="o-pack__item u-text-right u-hidden-until@tablet">
@@ -75,17 +75,14 @@ use function AppTheme\config;
 
 
             <?php template('partials/medialist', [
-                'id' => 'medialist-series',
+                'id' => 'medialist-recordings',
                 'style_modifier' => '',
                 'options' => [
                     'pagination' => 'verbose',
-                    'route' => 'series',
-                    'columns' => 2
+                    'route' => 'recordings'
                 ],
                 'params' => [
-                    'hide_empty' => true,
-                    'per_page' => 20,
-                    'orderby' => 'name'
+                    'per_page' => 50
                 ]
             ]) ?>
 

@@ -30,9 +30,9 @@ function register_media_taxonomies()
         'hierarchical'      => false,
         'show_in_rest'      => true,
         'rewrite'           => [
-            'slug'         => 'series',
-            'with_front'   => true,
-            'hierarchical' => true,
+            'slug'              => 'series',
+            'with_front'        => true,
+            'hierarchical'      => true,
         ],
         'labels' => [
             'name' => _x('Series', 'taxonomy general name', config('textdomain')),
@@ -50,14 +50,16 @@ function register_media_taxonomies()
     ]);
 
     register_taxonomy('speakers', 'recordings', [
+        'public'            => true,
         'show_in_nav_menus' => true,
-        'hierarchical' => false,
-        'rewrite' => [
-            'slug' => 'speakers',
-            'with_front' => true,
-            'hierarchical' => true,
+        'hierarchical'      => false,
+        'show_in_rest'      => true,
+        'rewrite'           => [
+            'slug'              => 'speakers',
+            'with_front'        => true,
+            'hierarchical'      => true,
         ],
-        'labels' => [
+        'labels'            => [
             'name' => _x('Speakers', 'taxonomy general name', config('textdomain')),
             'singular_name' => _x('Speaker', 'taxonomy singular name', config('textdomain')),
             'search_items' => __('Search Speakers', config('textdomain')),

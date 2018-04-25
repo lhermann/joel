@@ -59,6 +59,8 @@ function rest_api_additions() {
                     $id = get_field( 'image', 'series_'.$object['id'] );
                     $res = '144p';
                 case 'speakers':
+                    $id = get_field( 'image', 'speakers_'.$object['id'] );
+                    $res = 'square160';
                     break;
                 default:
                     return '';

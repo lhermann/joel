@@ -12,4 +12,6 @@ namespace AppTheme;
 
 use function AppTheme\template;
 
-template( [ 'archive', get_query_var( 'archive' ) ] );
+$key = get_query_var( 'archive' ) ?: get_query_var( 'post_type' );
+
+template( [ 'archive', $key ] );
