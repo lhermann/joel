@@ -65,14 +65,6 @@ function medialistInstance(_id) {
             currentPage() {
                 return this.params.page;
             },
-            // params() {
-            //     var defaults = {};
-            //     var overwrites = {
-            //         page: this.currentPage,
-            //         per_page: this.perPage
-            //     };
-            //     return Object.assign(defaults, this.userParams, overwrites);
-            // },
             medialistClass() {
                 if (this.columns > 1)
                     return ["c-medialist--" + this.columns + "col"];
@@ -165,16 +157,6 @@ function medialistInstance(_id) {
                 this.requestRecordings();
             }
         },
-        // watch: {
-        //     currentSortingOption(newOption, oldOption) {
-        //         this.params.order = newOption.order;
-        //         this.params.orderby = newOption.orderby;
-        //         this.requestRecordings();
-        //     }
-        // },
-        // created() {
-        //     this.setCurrentSortingOption();
-        // },
         mounted() {
             this.requestRecordings();
         }

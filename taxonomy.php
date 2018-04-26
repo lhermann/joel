@@ -4,7 +4,7 @@ namespace AppTheme;
 
 /*
 |------------------------------------------------------------------
-| Archive Controller
+| Taxonomy Controller
 |------------------------------------------------------------------
 |
 |
@@ -12,6 +12,6 @@ namespace AppTheme;
 
 use function AppTheme\template;
 
-$key = get_query_var( 'archive' ) ?: get_query_var( 'post_type' );
+$term = get_queried_object();
 
-template( [ 'archive', $key ] );
+template( [ 'taxonomy', $term->taxonomy ] );

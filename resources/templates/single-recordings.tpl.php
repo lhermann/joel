@@ -1,7 +1,7 @@
 <?php
 use function AppTheme\template;
-use function AppTheme\asset_path;
 use function AppTheme\config;
+use function AppTheme\asset_path;
 
 $speakers = wp_get_object_terms( get_the_ID(), 'speakers' );
 $series = wp_get_object_terms( get_the_ID(), 'series' )[0];

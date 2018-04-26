@@ -91,8 +91,10 @@ function get_video_length( $post_id = false, $video_files = [] ) {
  * jmm_get_terms_by_taxonomy_id( $tax_id / $term_taxonomy_id, $taxonomy_slug )
  * @since Joel Media 1.0
  */
-function get_terms_associated_with_term( $term_id, $taxonomy_slug ) {
+function get_terms_associated_with_term( $term, $taxonomy_slug ) {
     global $wpdb;
+
+    $term_id = is_object($term) ? $term->term_id : $term;
 
     $querystr = "
         SELECT DISTINCT term.term_id, term.name, tax.taxonomy, term.slug

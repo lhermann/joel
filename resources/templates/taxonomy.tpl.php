@@ -8,7 +8,7 @@ use function AppTheme\template;
 
 <main role="main" class="o-wrapper">
 
-    <h1>Single</h1>
+    <h1>Taxonomy</h1>
 
 </main>
 

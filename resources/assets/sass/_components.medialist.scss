@@ -4,12 +4,14 @@
 
 /*
  * 1. Reserve mediaitem :hover offset of 2px
+ * 2. Avoid cutting the shadow of last item
  */
 .c-medialist {
     margin: 0;
     margin-right: -$unit-small;
     margin-left: -$unit-small;
     padding-top: 2px; /* 1 */
+    padding-bottom: $unit-small; /* 2 */
     list-style: none;
     color: $c-text;
 
