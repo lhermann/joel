@@ -14,7 +14,7 @@ export default {
         "verbosity",
         "isLoading"
     ],
-    data: function() {
+    data() {
         var range = 11;
         return {
             range: range,
@@ -43,6 +43,14 @@ export default {
                 arr.push(this.totalPages);
                 return arr;
             }
+        },
+        pageRangeDisplay() {
+            let firstOfRange = 1 + (this.currentPage - 1) * this.perPage;
+            let lastOfRange =
+                this.total < this.perPage
+                    ? this.total
+                    : this.currentPage * this.perPage;
+            return `${firstOfRange} - ${lastOfRange} von ${this.total}`;
         }
     },
     methods: {

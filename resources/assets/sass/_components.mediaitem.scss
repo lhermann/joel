@@ -84,10 +84,11 @@ $width-sprecher: (80px 80px);
             flex-basis: nth($width-sprecher, 1);
         }
 
-        .c-mediaitem--topcis & {
+        .c-mediaitem--topics & {
             width: auto;
             height: $unit-large;
             flex-basis: auto;
+            background-color: transparent;
         }
 
         .c-mediaitem--simple & {
@@ -104,14 +105,14 @@ $width-sprecher: (80px 80px);
             transition: $global-transition opacity;
             color: currentcolor;
 
-            .c-mediaitem--topcis & {
+            .c-mediaitem--topics & {
                 line-height: 1;
                 font-size: $unit-large;
                 opacity: 0.15;
             }
 
-            .c-mediaitem--topcis:hover &,
-            .c-mediaitem--topcis:focus & {
+            .c-mediaitem--topics:hover &,
+            .c-mediaitem--topics:focus & {
                 color: currentcolor;
                 opacity: 0.6;
             }

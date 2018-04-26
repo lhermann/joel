@@ -75,13 +75,15 @@ function register_media_taxonomies()
     ]);
 
     register_taxonomy('topics', 'recordings', [
-        'rewrite' => [
-            'slug' => 'topics',
-            'with_front' => true,
-            'hierarchical' => true,
+        'public'        => true,
+        'show_in_rest'  => true,
+        'rewrite'       => [
+            'slug'          => 'topics',
+            'with_front'    => true,
+            'hierarchical'  => true,
         ],
-        'hierarchical' => true,
-        'labels' => [
+        'hierarchical'  => true,
+        'labels'        => [
             'name' => _x('Topics', 'taxonomy general name', config('textdomain')),
             'singular_name' => _x('Topic', 'taxonomy singular name', config('textdomain')),
             'search_items' => __('Search Topics', config('textdomain')),

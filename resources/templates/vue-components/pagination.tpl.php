@@ -6,7 +6,9 @@ if( Store::isset_then_set('vue-pagination-component') ) return;
 <!-- template for the pagination component -->
 <script type="text/x-template" id="pagination-component">
 
-    <nav class="o-layout o-layout--auto o-layout--middle u-mt+" role="navigation" aria-label="Pagination Navigation">
+    <nav class="o-layout o-layout--auto o-layout--middle u-mt+"
+        role="navigation"
+        aria-label="Pagination Navigation">
 
         <div class="o-layout__item u-pb-">
             <ol class="o-list-inline o-list-inline--1px">
@@ -70,7 +72,7 @@ if( Store::isset_then_set('vue-pagination-component') ) return;
         </div>
 
         <div class="o-layout__item u-pb-" v-if="!minimal">
-            {{ 1 + (currentPage - 1) * perPage }} - {{ currentPage * perPage }} von {{ total }}
+            {{ pageRangeDisplay }}
         </div>
 
     </nav>

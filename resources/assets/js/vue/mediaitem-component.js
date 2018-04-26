@@ -7,7 +7,7 @@ export default {
     name: "MediaitemComponent",
     template: "#mediaitem-component",
     props: ["item"],
-    data: function() {
+    data() {
         return {};
     },
     computed: {
@@ -30,6 +30,17 @@ export default {
         length() {
             if (this.isRecording) return this.item.length;
             return this.item.count;
+        },
+        subtopics() {
+            if (typeof this.item.subtopics_count === "undefined") return null;
+            switch (this.item.subtopics_count) {
+                case 0:
+                    return `Keine Unterthemen`;
+                case 1:
+                    return `Ein Unterthema`;
+                default:
+                    return `${this.item.subtopics_count} Unterthemen`;
+            }
         }
     },
     methods: {}

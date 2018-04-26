@@ -20,10 +20,48 @@
      * 1. Counteract u-text-right
      */
     .c-dropdown__item {
+        position: relative;
+        display: block;
         border-bottom: 1px solid $c-border;
-        text-align: left; /* 1 */
 
         &:last-child {
             border-bottom: 0;
         }
+
+        &.is-active::before {
+            content: "\e5ca";
+            position: absolute;
+            font-family: "icomoon";
+            line-height: calc(#{$unit} + 1em);
+            left: $unit-tiny;
+        }
+    }
+
+    .c-dropdown__link {
+        width: 100%;
+        padding: $unit-small $unit-small $unit-small $unit;
+        text-align: left; /* 1 */
+        color: $c-text;
+        border-width: 0;
+
+        &:hover,
+        &:focus {
+            background-color: $c-gray-2;
+            cursor: pointer;
+        }
+
+        &--disabled {
+            opacity: 0.5;
+
+            &:hover,
+            &:focus {
+                background-color: transparent;
+                cursor: default;
+            }
+        }
+    }
+
+    .c-dropdown__divider {
+        margin: $unit-tiny 0;
+        border-bottom: 1px solid $c-border;
     }

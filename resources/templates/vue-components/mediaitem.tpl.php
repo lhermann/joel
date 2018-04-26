@@ -13,7 +13,11 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
         <a class="c-mediaitem__link" :href="item.link"></a>
 
         <div class="o-media__img c-mediaitem__img">
-            <a class="c-mediaitem__imglink" :href="item.link">
+            <a v-if="item.type === 'topics'"
+                class="c-mediaitem__imglink" :href="item.link">
+                <span class="u-ic-folder"></span>
+            </a>
+            <a v-else class="c-mediaitem__imglink" :href="item.link">
                 <img :src="item.thumbnail">
                 <div class="c-mediaitem__length">
                     <div v-html="length"></div>
@@ -24,6 +28,9 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
         <div class="o-media__body c-mediaitem__body">
             <a class="c-mediaitem__title u-truncate" :href="item.link" v-html="title"></a>
             <ul class="c-mediaitem__meta u-truncate">
+                <li v-if="subtopics">
+                    {{ subtopics }}
+                </li>
                 <li v-if="!isRecording">
                     {{ item.count }}
                     <template v-if="item.count === 1">Video</template>
@@ -36,7 +43,9 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
                     </template>
                 </li>
                 <li v-if="item.series_count">
-                    {{ item.series_count }} Series
+                    {{ item.series_count }}
+                    <template v-if="item.series_count === 1">Serie</template>
+                    <template v-else>Serien</template>
                 </li>
                 <li v-if="isRecording">
                     {{ item.date_human }}

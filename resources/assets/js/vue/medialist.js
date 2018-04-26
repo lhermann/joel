@@ -7,6 +7,7 @@ import Vue from "vue";
 import axios from "axios";
 import MediaitemComponent from "./mediaitem-component.js";
 import PaginationComponent from "./pagination-component.js";
+import SortingComponent from "./sorting-component.js";
 // import { cacheAdapterEnhancer } from "axios-extensions";
 
 /* Axios
@@ -30,66 +31,110 @@ for (var i = 0; i < medialists.length; i++) {
 function medialistInstance(_id) {
     return new Vue({
         el: _id,
+        name: "Medialist",
         components: {
             MediaitemComponent,
-            PaginationComponent
+            PaginationComponent,
+            SortingComponent
         },
         data() {
             return {
+                initDone: false,
                 namespace: "wp/v2/",
                 route: "recordings",
                 columns: 1,
                 items: [],
-                total: 0,
-                userParams: {},
-                perPage: 10,
-                currentPage: 1,
-                totalPages: 1,
+                params: {
+                    page: 1,
+                    per_page: 10,
+                    order: null,
+                    orderby: null
+                },
+                header: false,
                 pagination: false, // false, 'minimal', 'normal', 'verbose'
-                isLoading: false
+                total: 0,
+                totalPages: 1,
+                isLoading: false,
+                currentSortingOption: { label: "" }
             };
         },
         computed: {
-            params() {
-                var defaults = {};
-                var overwrites = {
-                    page: this.currentPage,
-                    per_page: this.perPage
-                };
-                return Object.assign(defaults, this.userParams, overwrites);
+            perPage() {
+                return this.params["per_page"];
             },
+            currentPage() {
+                return this.params.page;
+            },
+            // params() {
+            //     var defaults = {};
+            //     var overwrites = {
+            //         page: this.currentPage,
+            //         per_page: this.perPage
+            //     };
+            //     return Object.assign(defaults, this.userParams, overwrites);
+            // },
             medialistClass() {
-                var css = [];
                 if (this.columns > 1)
-                    css.push("c-medialist--" + this.columns + "col");
-                return css;
+                    return ["c-medialist--" + this.columns + "col"];
+                return [];
+            },
+            sortingOptions() {
+                return [
+                    {
+                        label: "Neue zuerst",
+                        order: "desc",
+                        orderby: this.route === "recordings" ? "date" : "id"
+                    },
+                    {
+                        label: "Alte zuerst",
+                        order: "asc",
+                        orderby: this.route === "recordings" ? "date" : "id"
+                    },
+                    {
+                        label: "Alphabetisch (A-Z)",
+                        order: "asc",
+                        orderby: this.route === "recordings" ? "title" : "name"
+                    },
+                    {
+                        label: "Alphabetisch (Z-A)",
+                        order: "desc",
+                        orderby: this.route === "recordings" ? "title" : "name"
+                    }
+                ];
             }
         },
         methods: {
+            init(options, params) {
+                if (this.initDone) return;
+                this.setOptions(options);
+                this.setParams(params);
+                this.initDone = true;
+            },
             setOptions(payload) {
-                if (typeof payload.pagination !== "undefined")
-                    this.pagination = payload.pagination;
-                if (typeof payload.namespace !== "undefined")
-                    this.namespace = payload.namespace;
-                if (typeof payload.route !== "undefined")
-                    this.route = payload.route;
-                if (typeof payload.columns !== "undefined")
-                    this.columns = payload.columns;
+                for (let option in payload) {
+                    this[option] = payload[option];
+                }
             },
             setParams(payload) {
-                this.userParams = payload;
-                // default params
-                if (typeof payload.page !== "undefined")
-                    this.currentPage = payload.page;
-                if (typeof payload.per_page !== "undefined")
-                    this.perPage = payload.per_page;
+                Object.assign(this.params, payload);
+                this.setCurrentSortingOption();
             },
-            changePage(n) {
-                this.currentPage = n;
-                this.requestRecordings();
+            setCurrentSortingOption() {
+                for (let option of this.sortingOptions) {
+                    if (this.params.order && this.params.order !== option.order)
+                        continue;
+                    if (
+                        this.params.orderby &&
+                        this.params.orderby !== option.orderby
+                    )
+                        continue;
+                    this.currentSortingOption = option;
+                    return;
+                }
             },
             requestRecordings() {
                 this.isLoading = true;
+                this.items = [];
                 // create 10 dummys
                 var self = this;
                 axios
@@ -108,8 +153,28 @@ function medialistInstance(_id) {
                         self.isLoading = false;
                         console.log(error);
                     });
+            },
+            onChangePage(page) {
+                this.params.page = page;
+                this.requestRecordings();
+            },
+            onSelectOption(option) {
+                this.currentSortingOption = option;
+                this.params.order = option.order;
+                this.params.orderby = option.orderby;
+                this.requestRecordings();
             }
         },
+        // watch: {
+        //     currentSortingOption(newOption, oldOption) {
+        //         this.params.order = newOption.order;
+        //         this.params.orderby = newOption.orderby;
+        //         this.requestRecordings();
+        //     }
+        // },
+        // created() {
+        //     this.setCurrentSortingOption();
+        // },
         mounted() {
             this.requestRecordings();
         }

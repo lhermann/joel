@@ -22,7 +22,7 @@ function rest_api_additions() {
      * Add a 'type' field
      */
     register_rest_field(
-        [ 'recordings', 'series', 'speakers', 'topcis' ],
+        [ 'recordings', 'series', 'speakers', 'topics' ],
         'type',
         [ 'get_callback' => function( $object ) {
             if( isset($object['type']) ) {
@@ -108,6 +108,18 @@ function rest_api_additions() {
         'series_count',
         [ 'get_callback' => function( $object ) {
             $terms = get_terms_associated_with_term( $object['id'], 'series' );
+            return count($terms);
+        } ]
+    );
+
+    /**
+     * Add the count of subtopics to topics
+     */
+    register_rest_field(
+        [ 'topics' ],
+        'subtopics_count',
+        [ 'get_callback' => function( $object ) {
+            $terms = get_terms( 'topics', [ 'child_of' => $object['id'] ]);
             return count($terms);
         } ]
     );

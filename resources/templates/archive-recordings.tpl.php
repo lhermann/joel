@@ -46,7 +46,7 @@ use function AppTheme\config;
         <div class="o-layout__item u-4/5@tablet u-3/4@desktop">
 
 
-            <header class="u-mb+">
+            <!-- <header class="u-mb+">
                 <div class="o-pack o-pack--auto o-pack--middle">
                     <div class="o-pack__item">
                         <h2 class="u-mb0">
@@ -71,15 +71,16 @@ use function AppTheme\config;
                     {{/ sortOptions }}
                 </ul>
 
-            </header>
+            </header> -->
 
 
             <?php template('partials/medialist', [
                 'id' => 'medialist-recordings',
                 'style_modifier' => '',
                 'options' => [
-                    'pagination' => 'verbose',
-                    'route' => 'recordings'
+                    'route' => 'recordings',
+                    'header' => __('Videos', config('textdomain')),
+                    'pagination' => 'verbose'
                 ],
                 'params' => [
                     'per_page' => 50
