@@ -107,8 +107,7 @@ function rest_api_additions() {
         [ 'speakers' ],
         'series_count',
         [ 'get_callback' => function( $object ) {
-            $terms = get_terms_associated_with_term( $object['id'], 'series' );
-            return count($terms);
+            return count_terms_associated_with_term( $object['id'], 'series' );
         } ]
     );
 

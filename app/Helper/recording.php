@@ -115,6 +115,33 @@ function get_terms_associated_with_term( $term, $taxonomy_slug ) {
 };
 
 
+/**
+ * Same as count( get_terms_associated_with_term(...) ),
+ * but executing around 20% faster.
+ */
+function count_terms_associated_with_term( $term, $taxonomy_slug ) {
+    global $wpdb;
+
+    $term_id = is_object($term) ? $term->term_id : $term;
+
+    $querystr = "
+        SELECT COUNT(DISTINCT term.term_id) AS 'count'
+        FROM $wpdb->terms AS term
+        JOIN $wpdb->term_taxonomy AS tax ON tax.term_id = term.term_id
+        JOIN $wpdb->term_relationships AS rel ON rel.term_taxonomy_id = tax.term_taxonomy_id
+        WHERE rel.object_id IN (
+            SELECT irel.object_id
+            FROM $wpdb->terms AS iterm
+            JOIN $wpdb->term_taxonomy AS itax on itax.term_id = iterm.term_id
+            JOIN $wpdb->term_relationships AS irel on irel.term_taxonomy_id = itax.term_taxonomy_id
+            WHERE iterm.term_id = $term_id
+        )
+        AND tax.taxonomy = '$taxonomy_slug';
+    ";
+
+    return (int) $wpdb->get_row($querystr, OBJECT)->count;
+};
+
 
 
 

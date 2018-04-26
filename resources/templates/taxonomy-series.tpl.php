@@ -23,8 +23,8 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
         <div class="o-wrapper">
             <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
-                <a class="c-link c-link--dotted c-link--white" href="/series/">
-                    <span class="u-ic-arrow_back"></span> Alle Serien anzeigen
+                <a class="c-link c-link--dotted c-link--white" href="/<?= $term->taxonomy ?>/">
+                    <span class="u-ic-arrow_back"></span> <?= __('Show all series', config('textdomain')) ?>
                 </a>
 
                 <div class="u-mt">
@@ -36,7 +36,7 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                         </div>
                         <div class="o-flag__body">
                             <h1 class="u-responsive u-mb0"><?= $term->name ?></h1>
-                            <p class="u-bolder u-muted">Serie
+                            <p class="u-bolder u-muted"><?= _x('Series', 'taxonomy singular name', config('textdomain')) ?>
                         </p></div>
                     </div>
 
@@ -51,10 +51,10 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                     <p>
                         <span>
                             <span class="u-ic-videocam"></span>
-                            <strong><?= $term->count ?></strong> Videos
+                            <strong><?= $term->count ?></strong> <?= __('Videos', config('textdomain')) ?>
                         </span>
                         <span class="u-ml">
-                            Sprecher:
+                            <?= _x('Speaker', 'taxonomy singular name', config('textdomain')) ?>:
                             <?php foreach ($speakers as $key => $speaker): ?>
                                 <?= $key ? ', ' : '' ?>
                                 <a class="c-link c-link--dotted c-link--white"
@@ -79,7 +79,7 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                 'style_modifier' => '',
                 'options' => [
                     'route' => 'recordings',
-                    'header' => __('Videos dieser Serie', config('textdomain')),
+                    'header' => __('Videos of this series', config('textdomain')),
                     'pagination' => 'normal'
                 ],
                 'params' => [
