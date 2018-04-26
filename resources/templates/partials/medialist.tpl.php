@@ -1,5 +1,6 @@
 <?php
 use function AppTheme\template;
+use function AppTheme\config;
 $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
 $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 ?>
@@ -9,16 +10,36 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
         :exec3="setOptions(<?= $options ?>)"
     -->
 <!-- Vue medialist root component -->
-<section id="<?= $id ?>"
+<section v-cloak id="<?= $id ?>"
     class="<?= $style_modifier ?> jsMedialist"
     :init="init(<?= $options ?>, <?= $params ?>)">
 
-    <header v-if="header" class="u-mv">
+    <header v-if="title || tabs || sorting" class="u-mv">
         <div class="o-pack o-pack--auto o-pack--middle">
-            <div class="o-pack__item">
-                <h2 class="u-mb0">{{ header }}</h2>
+            <div v-if="title" class="o-pack__item u-1/2@tablet">
+                <h2 class="u-mb0">{{ title }}</h2>
             </div>
-            <div class="o-pack__item u-text-right u-hidden-until@tablet">
+            <nav v-if="tabs"
+                class="o-pack__item u-1/2@tablet"
+                role="navigation" aria-label="Tabs Navigation">
+                <!-- TODO: Being able to query series of speaker -->
+
+                <ul class="c-button-group c-button-group--stretch@tablet">
+                    <li class="c-button-group__item">
+                        <button class="c-btn c-btn--secondary c-btn--small c-btn--left is-active">
+                            <?= __('Videos', config('textdomain')) ?>
+                        </button>
+                    </li>
+                    <li class="c-button-group__item">
+                        <button class="c-btn c-btn--secondary c-btn--small c-btn--right">
+                            <?= _x('Series', 'taxonomy general name', config('textdomain')) ?>
+                        </button>
+                    </li>
+                </ul>
+
+            </nav>
+            <div v-if="sorting"
+                class="o-pack__item u-1/2@tablet u-text-right">
 
                 <sorting-component
                     :options="sortingOptions"

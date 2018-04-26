@@ -51,7 +51,8 @@ use function AppTheme\config;
                 'style_modifier' => '',
                 'options' => [
                     'route' => 'topics',
-                    'header' => __('Topics', config('textdomain')),
+                    'title' => __('Topics', config('textdomain')),
+                    'sorting' => true,
                     'pagination' => 'verbose',
                     'columns' => 2
                 ],

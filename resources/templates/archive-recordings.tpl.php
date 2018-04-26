@@ -79,7 +79,8 @@ use function AppTheme\config;
                 'style_modifier' => '',
                 'options' => [
                     'route' => 'recordings',
-                    'header' => __('Videos', config('textdomain')),
+                    'title' => __('Videos', config('textdomain')),
+                    'sorting' => true,
                     'pagination' => 'verbose'
                 ],
                 'params' => [

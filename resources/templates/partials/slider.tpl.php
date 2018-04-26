@@ -6,7 +6,7 @@ if( !$slides = theme('slides') ) return;
 $has_teaser = false;
 ?>
 
-<div id="<?= $id ?>"
+<div v-cloak id="<?= $id ?>"
     class="c-slider <?= $style_modifier ?> jsSlider"
     :class="containerClass"
     data-mode="<?= $mode ?>"

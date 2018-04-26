@@ -29,7 +29,7 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                     <div class="o-media__img u-160">
                         <img class="u-rounded u-box-shadow u-1/1"
                             src="<?= wp_get_attachment_image_src(get_field( 'image', $term ), 'square320')[0] ?>"
-                            alt="speaker"
+                            alt="Image of <?= htmlentities($term->name) ?>"
                         >
                     </div>
                     <div class="o-media__body">
@@ -49,15 +49,17 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                                 <strong><?= $series_count ?></strong>
                                 <?= _x('Series', 'taxonomy singular name', config('textdomain')) ?>
                             </li>
-                            <li class="">
-                                <?= __('Website', config('textdomain')) ?>:
-                                <a class="c-link c-link--dotted c-link--white u-bolder"
-                                    href="http://<?= get_field( 'website', $term ) ?>"
-                                >
-                                    <span class="u-ic-open_in_new"></span>
-                                    <?= get_field( 'website', $term ) ?>
-                                </a>
-                            </li>
+                            <?php if ($website = get_field( 'website', $term )): ?>
+                                <li>
+                                    <?= __('Website', config('textdomain')) ?>:
+                                    <a class="c-link c-link--dotted c-link--white u-bolder"
+                                        href="http://<?= $website ?>"
+                                    >
+                                        <span class="u-ic-open_in_new"></span>
+                                        <?= $website ?>
+                                    </a>
+                                </li>
+                            <?php endif ?>
                         </ul>
                     </div>
                 </div>
@@ -75,7 +77,8 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                 'style_modifier' => '',
                 'options' => [
                     'route' => 'recordings',
-                    'header' => __('Videos of this speaker', config('textdomain')),
+                    // 'tabs' => true,
+                    'sorting' => true,
                     'pagination' => 'normal'
                 ],
                 'params' => [

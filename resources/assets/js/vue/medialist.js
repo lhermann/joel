@@ -50,7 +50,9 @@ function medialistInstance(_id) {
                     order: null,
                     orderby: null
                 },
-                header: false,
+                title: false,
+                tabs: false,
+                sorting: false,
                 pagination: false, // false, 'minimal', 'normal', 'verbose'
                 total: 0,
                 totalPages: 1,

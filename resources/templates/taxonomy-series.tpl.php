@@ -32,7 +32,7 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                         <div class="o-flag__img u-hidden-until@tablet">
                             <img class="u-rounded u-box-shadow u-320"
                                 src="<?= wp_get_attachment_image_src(get_field( 'image', $term ), '360p')[0] ?>"
-                                alt="series">
+                                alt="Image of <?= htmlentities($term->name) ?>">
                         </div>
                         <div class="o-flag__body">
                             <h1 class="u-responsive u-mb0"><?= $term->name ?></h1>
@@ -43,7 +43,7 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                     <div class="u-mt u-hidden-from@tablet">
                         <img class="u-rounded u-box-shadow u-1/1"
                             src="<?= wp_get_attachment_image_src(get_field( 'image', $term ), '360p')[0] ?>"
-                            alt="Thumbnail for <?= $term->name ?>">
+                            alt="Image of <?= htmlentities($term->name) ?>">
                     </div>
 
                     <p class="u-mt"><?= $term->description ?></p>
@@ -79,7 +79,7 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                 'style_modifier' => '',
                 'options' => [
                     'route' => 'recordings',
-                    'header' => __('Videos of this series', config('textdomain')),
+                    'sorting' => true,
                     'pagination' => 'normal'
                 ],
                 'params' => [

@@ -52,7 +52,8 @@ use function AppTheme\Helper\fallback_img;
                 'style_modifier' => '',
                 'options' => [
                     'route' => 'speakers',
-                    'header' => __('Speakers', config('textdomain')),
+                    'title' => __('Speakers', config('textdomain')),
+                    'sorting' => true,
                     'pagination' => 'verbose',
                     'columns' => 2
                 ],

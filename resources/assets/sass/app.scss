@@ -154,6 +154,10 @@ hr {
 @import "elements.typography";
 @import "elements.forms";
 
+[v-cloak] {
+    display: none;
+}
+
 
 
 // OBJECTS

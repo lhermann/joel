@@ -35,6 +35,7 @@ $width-sprecher: (80px 80px);
         border: 1px solid var(--border, $c-textmuted);
         padding-top: $unit-tiny;
         padding-bottom: $unit-tiny;
+        min-width: 15em;
 
         &:hover {
             transform: none;

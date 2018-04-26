@@ -51,7 +51,8 @@ use function AppTheme\config;
                 'style_modifier' => '',
                 'options' => [
                     'route' => 'series',
-                    'header' => __('Series', config('textdomain')),
+                    'title' => __('Series', config('textdomain')),
+                    'sorting' => true,
                     'pagination' => 'verbose',
                     'columns' => 2
                 ],
