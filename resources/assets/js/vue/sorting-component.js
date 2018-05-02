@@ -12,7 +12,8 @@ export default {
     data() {
         return {
             popper: null,
-            show: false
+            show: false,
+            fadeIn: false
         };
     },
     computed: {},
@@ -24,14 +25,9 @@ export default {
         },
         onButtonClick() {
             this.show = !this.show;
-            this.popper.scheduleUpdate();
-            setTimeout(
-                function(arg) {
-                    arg.popper.scheduleUpdate();
-                },
-                60,
-                this
-            );
+            setTimeout(() => {
+                this.popper.scheduleUpdate();
+            }, 20);
         },
         onSelectOption(option) {
             this.$emit("select", option);
@@ -41,6 +37,13 @@ export default {
             if (this.show && !this.$el.contains(event.target)) {
                 this.show = false;
             }
+        }
+    },
+    watch: {
+        show(newState) {
+            setTimeout(() => {
+                this.fadeIn = newState;
+            }, 20);
         }
     },
     mounted() {

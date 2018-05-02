@@ -9,10 +9,16 @@
     box-shadow: $global-shadow;
     background-color: $c-white;
     list-style: none;
+    opacity: 0;
+    transition: opacity $global-transition;
 
     &--round {
         border-radius: $global-radius;
         overflow: hidden;
+    }
+
+    &.is-visible {
+        opacity: 1;
     }
 }
 
@@ -43,6 +49,7 @@
         text-align: left; /* 1 */
         color: $c-text;
         border-width: 0;
+        background-color: $c-white;
 
         &:hover,
         &:focus {

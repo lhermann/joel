@@ -20,9 +20,11 @@ if( Store::isset_then_set('vue-sorting-component') ) return;
 
         <ul ref="popper"
             class="c-dropdown c-dropdown--round"
+            :class="{'is-visible': fadeIn}"
             v-show="show"
             aria-labelledby="sorting"
         >
+        <!-- v-show="show" -->
             <li v-for="option in options"
                 class="c-dropdown__item"
                 :class="{'is-active': isCurrent(option)}"

@@ -5,10 +5,6 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
 $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 ?>
 
-    <!--
-        :exec2="setParams(<?= $params ?>)"
-        :exec3="setOptions(<?= $options ?>)"
-    -->
 <!-- Vue medialist root component -->
 <section v-cloak id="<?= $id ?>"
     class="<?= $style_modifier ?> jsMedialist"
