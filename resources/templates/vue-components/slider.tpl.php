@@ -1,12 +1,16 @@
 <?php
-use function AppTheme\theme;
+// use function AppTheme\theme;
 use function AppTheme\config;
+// $slides = theme('slides');
 $has_teaser = false;
+// var_dump($slides);
 ?>
+
+<?= $style_modifier ?>
 
 <!-- Vue slider root component -->
 <div v-cloak id="<?= $id ?>"
-    class="c-slider <?= $style_modifier ?> jsSlider"
+    class="c-slider jsSlider"
     :class="containerClass"
     data-mode="<?= $mode ?>"
     data-duration="<?= $duration ?>">

@@ -22,9 +22,9 @@ use function AppTheme\config;
 function register_navigation_areas()
 {
     register_nav_menus([
-        'primary' => __('Primary Menu', config('textdomain')),
-        'flyin'   => __('Flyin Menu', config('textdomain')),
-        'footer'  => __('Footer Menu', config('textdomain')),
+        'primary'    => __('Primary Menu', config('textdomain')),
+        'flyin'      => __('Flyin Menu', config('textdomain')),
+        'footer'     => __('Footer Menu', config('textdomain'))
     ]);
 }
 add_action('after_setup_theme', 'AppTheme\Structure\register_navigation_areas');

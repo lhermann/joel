@@ -1,4 +1,5 @@
 <?php
+use function AppTheme\theme;
 use function AppTheme\template;
 ?>
 
@@ -23,7 +24,7 @@ use function AppTheme\template;
 
     <section id="promo-list" class="o-wrapper o-wrapper--no-padding c-section u-mt">
 
-        <?php //template('partials/promo-list', ['style_modifier' => 'o-overflow--padding']) ?>
+        <?php template('partials/promo-list', ['style_modifier' => 'o-overflow--padding']) ?>
 
     </section>
 

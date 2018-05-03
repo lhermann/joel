@@ -58,7 +58,7 @@ function add_default_template_context($context) {
     return $context;
 }
 
-$partials_dir = get_stylesheet_directory().'/'.config('directories')['templates'].'/partials';
+$partials_dir = get_stylesheet_directory().'/'.config('directories')['templates'];
 $scanned_directory = array_diff(scandir($partials_dir), array('..', '.'));
 foreach ($scanned_directory as $key => $file) {
     $subdir = $partials_dir.'/'.$file;
@@ -76,7 +76,7 @@ array_walk($scanned_directory, function(&$item) {
     $item = str_replace('.tpl', '', $item);
 });
 foreach ($scanned_directory as $file) {
-    add_filter('tonik/gin/template/context/partials/'.$file, 'AppTheme\Setup\add_default_template_context');
+    add_filter('tonik/gin/template/context/'.$file, 'AppTheme\Setup\add_default_template_context');
 }
 
 

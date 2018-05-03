@@ -3,14 +3,14 @@
    ========================================================================== */
 
 .c-media-promo {
-    transition: $global-transition border-color;
-    border: 1px solid transparent;
-    border-radius: $global-radius;
+    // transition: $global-transition border-color;
+    // border: 1px solid transparent;
+    // border-radius: $global-radius;
 
-    &:focus,
-    &:hover {
-        border-color: $c-border;
-    }
+    // &:focus,
+    // &:hover {
+    //     border-color: $c-border;
+    // }
 }
 
     .c-media-promo__head {
@@ -27,6 +27,11 @@
             text-align: center;
             color: $c-text;
             font-family: $font-heading;
+
+            &:hover,
+            &:focus {
+                color: currentColor;
+            }
         }
 
         .c-media-promo__btn {
@@ -37,14 +42,13 @@
             right: 0;
             transform: translateX(-30%);
             margin-top: -$unit;
-            padding: $unit-small;
-            height: $unit-large;
-            color: transparent;
+            width: auto;
+            background: none;
 
             .c-media-promo:focus &,
             .c-media-promo:hover & {
                 transform: translateX(0%);
-                color: $c-textmuted;
+                color: $c-text;
             }
         }
 
