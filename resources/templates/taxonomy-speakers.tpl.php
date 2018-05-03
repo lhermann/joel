@@ -72,7 +72,7 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
     <div class="o-wrapper u-mt">
         <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
-            <?php template('partials/medialist', [
+            <?php template('vue-components/medialist', [
                 'id' => 'medialist',
                 'style_modifier' => '',
                 'options' => [

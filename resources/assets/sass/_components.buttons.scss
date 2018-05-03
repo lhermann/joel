@@ -220,8 +220,7 @@ $btn-ghost-border-width: 1px;
 
     &.c-btn--primary {
         color: $c-primary-light;
-        // border-color: $c-primary-light;
-        // border-color: currentcolor;
+        border-color: $c-primary-light;
 
         &:hover,
         &:focus {
@@ -236,8 +235,6 @@ $btn-ghost-border-width: 1px;
 
     &.c-btn--secondary {
         color: $c-gray-4;
-        // border-color: $c-gray-4;
-        // border-color: currentcolor;
 
         &:hover,
         &:focus {
@@ -254,7 +251,7 @@ $btn-ghost-border-width: 1px;
 
     &.c-btn--green {
         color: $c-green;
-        // border-color: $c-green;
+        border-color: $c-green;
 
         &:hover,
         &:focus {
@@ -269,7 +266,7 @@ $btn-ghost-border-width: 1px;
 
     &.c-btn--red {
         color: $c-red;
-        // border-color: $c-red;
+        border-color: $c-red;
 
         &:hover,
         &:focus {
@@ -284,7 +281,7 @@ $btn-ghost-border-width: 1px;
 
     &.c-btn--dark {
         color: rgba($c-black, 0.7);
-        // border-color: rgba($c-black, 0.7);
+        border-color: rgba($c-black, 0.7);
 
         &:hover,
         &:focus {
@@ -299,12 +296,12 @@ $btn-ghost-border-width: 1px;
 
     &.c-btn--light {
         color: $c-gray-2;
-        // border-color: $c-gray-2;
 
         &:hover,
         &:focus {
             color: $c-text;
             background-color: $c-gray-2;
+            border-color: $c-gray-2;
         }
 
         &:disabled {

@@ -203,7 +203,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                     </a>
                 </p>
 
-                <?php template('partials/medialist', [
+                <?php template('vue-components/medialist', [
                     'id' => 'medialist-next-video',
                     'options' => [
                         'pagination' => 'normal'
@@ -222,7 +222,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
             <?php if (false): ?>
             <section id="recommended">
 
-                <?php template('partials/medialist', [
+                <?php template('vue-components/medialist', [
                     'id' => 'medialist-recommended',
                     'options' => [
                         'pagination' => 'minimal'

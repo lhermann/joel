@@ -1,8 +1,6 @@
 <?php
 use function AppTheme\theme;
 use function AppTheme\config;
-
-if( !$slides = theme('slides') ) return;
 $has_teaser = false;
 ?>
 

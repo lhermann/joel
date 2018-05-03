@@ -17,35 +17,7 @@ use function AppTheme\config;
         <div class="o-layout__item u-4/5@tablet u-3/4@desktop">
 
 
-            <!-- <header class="u-mb+">
-                <div class="o-pack o-pack--auto o-pack--middle">
-                    <div class="o-pack__item">
-                        <h2 class="u-mb0">
-                            <?= __('Recordings', config('textdomain')) ?>
-                        </h2>
-                    </div>
-                    <div class="o-pack__item u-text-right u-hidden-until@tablet">
-                        {{> organisms-sorting }}
-                    </div>
-                </div>
-
-                <ul class="o-pack o-pack--1px u-mb0 u-mt u-hidden-from@tablet">
-                    {{# sortOptions }}
-                    {{# mobile }}
-                    <li class="o-pack__item">
-                        <button class="c-btn c-btn--secondary c-btn--tiny c-btn--edgy u-1/1 {{btnClass}}">
-                            {{label}}
-                            {{# direction }}<span class="u-ic-keyboard_arrow_{{direction}}"></span>{{/ direction }}
-                        </button>
-                    </li>
-                    {{/ mobile }}
-                    {{/ sortOptions }}
-                </ul>
-
-            </header> -->
-
-
-            <?php template('partials/medialist', [
+            <?php template('vue-components/medialist', [
                 'id' => 'medialist-recordings',
                 'style_modifier' => '',
                 'options' => [

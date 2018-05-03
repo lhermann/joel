@@ -1,7 +1,6 @@
 <?php
 use function AppTheme\template;
 use function AppTheme\config;
-use function AppTheme\Helper\fallback_img;
 ?>
 
 <?php get_header() ?>
@@ -18,7 +17,7 @@ use function AppTheme\Helper\fallback_img;
         <div class="o-layout__item u-4/5@tablet u-3/4@desktop">
 
 
-            <?php template('partials/medialist', [
+            <?php template('vue-components/medialist', [
                 'id' => 'medialist-speakers',
                 'style_modifier' => '',
                 'options' => [

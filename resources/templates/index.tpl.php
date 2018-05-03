@@ -8,15 +8,17 @@ use function AppTheme\template;
 
 <main role="main">
 
-    <section id="slider" class="c-section c-section--flush">
+    <?php if ( theme('slides') ): ?>
+        <section id="slider" class="c-section c-section--flush">
 
-        <?php template('partials/slider', [
-            'id' => 'main-slider',
-            'mode' => 'initial',
-            'duration' => 4000
-        ]) ?>
+            <?php template('vue-components/slider', [
+                'id' => 'main-slider',
+                'mode' => 'initial',
+                'duration' => 4000
+            ]) ?>
 
-    </section>
+        </section>
+    <?php endif ?>
 
 
     <section id="promo-list" class="o-wrapper o-wrapper--no-padding c-section u-mt">
@@ -33,7 +35,7 @@ use function AppTheme\template;
 
                 <h2 class="u-h3">Beliebte Videos</h2>
 
-                <?php template('partials/medialist', [
+                <?php template('vue-components/medialist', [
                     'id' => 'medialist-popular',
                     'options' => [
                         'namespace' => 'wordpress-popular-posts/v1/',
@@ -54,7 +56,7 @@ use function AppTheme\template;
                     </a>
                 </h3>
 
-                <?php template('partials/medialist', [
+                <?php template('vue-components/medialist', [
                     'id' => 'medialist-series',
                     'options' => [
                         'route' => 'series'
@@ -75,7 +77,7 @@ use function AppTheme\template;
                     </a>
                 </h3>
 
-                <?php template('partials/medialist', [
+                <?php template('vue-components/medialist', [
                     'id' => 'medialist-devotional',
                     'options' => [],
                     'params' => [
@@ -87,9 +89,9 @@ use function AppTheme\template;
             </div>
         </div>
 
-        <?php //template('partials/medialist', ['style_modifier' => 'u-hidden-from@tablet']) ?>
+        <?php //template('vue-components/medialist', ['style_modifier' => 'u-hidden-from@tablet']) ?>
 
-        <?php /*template('partials/medialist', [
+        <?php /*template('vue-components/medialist', [
             'id' => 'medialist-1',
             'options' => [
                 'pagination' => 'normal'
