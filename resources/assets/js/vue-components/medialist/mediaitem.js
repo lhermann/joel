@@ -41,6 +41,9 @@ export default {
                 default:
                     return `${this.item.subtopics_count} Unterthemen`;
             }
+        },
+        isDummy() {
+            return typeof this.item.dummy !== "undefined";
         }
     },
     methods: {}

@@ -13,6 +13,9 @@ if( Store::isset_then_set('vue-medialist-component') ) return;
                 <div v-if="title" class="o-pack__item u-1/2@tablet">
                     <h2 class="u-mb0">{{ title }}</h2>
                 </div>
+                <div class="o-pack__item">
+                    <div class="c-spinner" v-show="isLoading"></div>
+                </div>
                 <div v-if="sorting"
                     class="o-pack__item u-1/2@tablet u-text-right">
 
@@ -25,10 +28,6 @@ if( Store::isset_then_set('vue-medialist-component') ) return;
                 </div>
             </div>
         </header>
-
-        <div v-show="isLoading &amp;&amp; !items.length" class="u-m">
-            <div class="c-spinner c-spinner--large"></div>
-        </div>
 
         <ul class="c-medialist" :class="medialistClass">
             <li v-for="(item, i) in items" class="c-medialist__item">

@@ -101,25 +101,32 @@ export default {
         },
         requestRecordings() {
             this.isLoading = true;
-            this.items = [];
             // create 10 dummys
-            var self = this;
+            this.items = Array(this.params.per_page).fill(this.createDummy());
             axios
                 .get(this.namespace + this.route, {
                     params: this.params
                 })
-                .then(function(response) {
-                    self.isLoading = false;
-                    self.items = response.data;
-                    self.totalPages = parseInt(
+                .then(response => {
+                    this.isLoading = false;
+                    this.items = response.data;
+                    this.totalPages = parseInt(
                         response.headers["x-wp-totalpages"]
                     );
-                    self.total = parseInt(response.headers["x-wp-total"]);
+                    this.total = parseInt(response.headers["x-wp-total"]);
                 })
-                .catch(function(error) {
-                    self.isLoading = false;
+                .catch(error => {
+                    this.isLoading = false;
                     console.log(error);
                 });
+        },
+        createDummy() {
+            return {
+                name: "Loading ...",
+                type: this.route,
+                count: "XXX",
+                dummy: true
+            };
         },
         onChangePage(page) {
             this.params.page = page;
@@ -132,15 +139,6 @@ export default {
             this.requestRecordings();
         }
     },
-    // watch: {
-    //     initOptions(newOptions) {
-    //         console.log("options changed");
-    //         this.setOptions(newOptions);
-    //     },
-    //     initParams(newParams) {
-    //         this.setParams(newParams);
-    //     }
-    // },
     mounted() {
         this.setOptions(this.initOptions);
         this.setParams(this.initParams);
