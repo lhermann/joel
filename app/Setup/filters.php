@@ -118,3 +118,12 @@ function order_biblical_books($terms, $taxonomies, $args) {
 add_filter('get_terms', 'AppTheme\Setup\order_biblical_books', 10, 3);
 
 
+/**
+ * Add 'async' and 'defer' to <script> tags
+ */
+function add_async_attribute($tag, $handle) {
+    return str_replace( ' src', ' async defer src', $tag );
+}
+add_filter('script_loader_tag', 'AppTheme\Setup\add_async_attribute', 10, 2);
+
+
