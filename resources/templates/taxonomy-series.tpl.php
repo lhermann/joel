@@ -71,7 +71,7 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
     <div class="o-wrapper u-mt">
         <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
-            <?php template('vue-components/medialist', [
+            <?php template('vue-components/medialist-instantiator', [
                 'id' => 'medialist',
                 'style_modifier' => '',
                 'options' => [

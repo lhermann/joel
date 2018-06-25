@@ -3,8 +3,8 @@
    ========================================================================== */
 
 /* Vue.js */
-import "./vue/slider.js";
-import "./vue/medialist.js";
+import "./vue-components/slider-instantiator.js";
+import "./vue-components/medialist-instantiator.js";
 
 /* Cash-Dom */
 import "./imports/flyin.js";

@@ -1,10 +1,10 @@
 <?php
 use AppTheme\Store;
-if( Store::isset_then_set('vue-pagination-component') ) return;
+if( Store::isset_then_set('vue-media-pagination-component') ) return;
 ?>
 
 <!-- template for the pagination component -->
-<script type="text/x-template" id="pagination-component">
+<?= '<script type="text/x-template" id="pagination-component">' ?>
 
     <nav class="o-layout o-layout--auto o-layout--middle u-mt+"
         role="navigation"
@@ -77,4 +77,4 @@ if( Store::isset_then_set('vue-pagination-component') ) return;
 
     </nav>
 
-</script>
+<?= '</script>' ?>

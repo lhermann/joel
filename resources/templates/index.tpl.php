@@ -12,10 +12,12 @@ use function AppTheme\template;
     <?php if ( theme('slides') ): ?>
         <section id="slider" class="c-section c-section--flush">
 
-            <?php template('vue-components/slider', [
+            <?php template('vue-components/slider-instantiator', [
                 'id' => 'main-slider',
-                'mode' => 'initial',
-                'duration' => 4000
+                'options' => [
+                    'mode' => 'initial',
+                    'teaser' => true
+                ]
             ]) ?>
 
         </section>
@@ -36,7 +38,7 @@ use function AppTheme\template;
 
                 <h2 class="u-h3">Beliebte Videos</h2>
 
-                <?php template('vue-components/medialist', [
+                <?php template('vue-components/medialist-instantiator', [
                     'id' => 'medialist-popular',
                     'options' => [
                         'namespace' => 'wordpress-popular-posts/v1/',
@@ -57,7 +59,7 @@ use function AppTheme\template;
                     </a>
                 </h3>
 
-                <?php template('vue-components/medialist', [
+                <?php template('vue-components/medialist-instantiator', [
                     'id' => 'medialist-series',
                     'options' => [
                         'route' => 'series'
@@ -78,7 +80,7 @@ use function AppTheme\template;
                     </a>
                 </h3>
 
-                <?php template('vue-components/medialist', [
+                <?php template('vue-components/medialist-instantiator', [
                     'id' => 'medialist-devotional',
                     'options' => [],
                     'params' => [
@@ -90,9 +92,9 @@ use function AppTheme\template;
             </div>
         </div>
 
-        <?php //template('vue-components/medialist', ['style_modifier' => 'u-hidden-from@tablet']) ?>
+        <?php //template('vue-components/medialist-instantiator', ['style_modifier' => 'u-hidden-from@tablet']) ?>
 
-        <?php /*template('vue-components/medialist', [
+        <?php /*template('vue-components/medialist-instantiator', [
             'id' => 'medialist-1',
             'options' => [
                 'pagination' => 'normal'

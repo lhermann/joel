@@ -1,10 +1,11 @@
 <?php
 use AppTheme\Store;
-if( Store::isset_then_set('vue-sorting-component') ) return;
+if( Store::isset_then_set('vue-media-sorting-component') ) return;
 ?>
 
 <!-- template for the pagination component -->
-<script type="text/x-template" id="sorting-component">
+<?= '<script type="text/x-template" id="sorting-component">' ?>
+
     <div>
 
         <span>Sortieren:</span>
@@ -38,4 +39,6 @@ if( Store::isset_then_set('vue-sorting-component') ) return;
         </ul>
 
     </div>
-</script>
+
+<?= '</script>' ?>
+

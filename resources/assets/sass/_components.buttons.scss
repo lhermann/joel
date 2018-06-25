@@ -148,11 +148,9 @@
     }
 }
 
-.c-btn--blocky {
-    border: 1px solid $c-border;
+.c-btn--subtle {
     border-radius: 0;
-    background-color: $c-background;
-    padding: ($inuit-global-spacing-unit-small - 1px) ($inuit-global-spacing-unit-large - 1px);
+    background-color: transparent;
     color: $c-text;
 
     &:hover,

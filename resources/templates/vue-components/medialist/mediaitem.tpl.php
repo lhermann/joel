@@ -4,7 +4,7 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
 ?>
 
 <!-- template for the mediaitem component -->
-<script type="text/x-template" id="mediaitem-component">
+<?= '<script type="text/x-template" id="mediaitem-component">' ?>
 
     <div class="o-media c-mediaitem"
         :class="['c-mediaitem--' + item.type]"
@@ -55,4 +55,4 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
 
     </div>
 
-</script>
+<?= '</script>' ?>
