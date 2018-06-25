@@ -129,10 +129,17 @@
         .c-slider__teaser {
             position: relative;
             z-index: 23; /* 1 */
-            background-color: rgba($c-white, 0.9);
+            background-color: rgba($c-white, 0.85);
+            backdrop-filter: blur(20px);
             width: 50%;
             max-width: $unit * 20;
             margin-left: auto;
+            transition: $global-transition;
+
+            &.is-collapsed {
+                background-color: transparent;
+                backdrop-filter: blur(0px);
+            }
         }
 
 @keyframes c-slide-container--enter {

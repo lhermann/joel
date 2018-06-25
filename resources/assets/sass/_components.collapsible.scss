@@ -5,7 +5,7 @@
 .c-collapsible {
     height: 100%;
 
-    &.is-collapsed {
+    &__physical {
         height: auto;
     }
 }
@@ -13,12 +13,12 @@
     .c-collapsible__header {
         display: flex;
         align-items: center;
-        border-bottom: 1px solid $c-border;
+        // border-bottom: 1px solid $c-border;
         background-color: $c-white;
 
-        .is-collapsed & {
-            border-bottom-width: 0;
-        }
+        // .is-collapsed & {
+        //     border-bottom-width: 0;
+        // }
     }
 
         .c-collapsible__title {
@@ -27,14 +27,20 @@
         }
 
     .c-collapsible__body {
+        overflow: hidden;
         padding: $unit-small;
-        transition: $global-transition transform;
+        transition: $global-transition;
         transform: translateY(0);
+        opacity: 1;
+        height: 100%;
 
         .is-collapsed & {
+            transform: translateY(-$unit-small);
+            opacity: 0;
+        }
+
+        .c-collapsible__physical.is-collapsed & {
             height: 0;
-            overflow: hidden;
             padding: 0;
-            transform: translateY(-$unit);
         }
     }

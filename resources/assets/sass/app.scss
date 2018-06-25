@@ -445,6 +445,10 @@ $header-height: 56px;
     border-left: 1px solid $c-border;
 }
 
+.u-defocus:focus {
+    outline: none;
+}
+
 
 /*
  * Specific Width Utilities

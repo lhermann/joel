@@ -16,7 +16,8 @@ if( Store::isset_then_set('vue-slider-teaser-component') ) return;
                         Neue Aufnahmen
                     </div>
                     <div class="c-collapsible__btn">
-                        <button class="c-btn c-btn--subtle c-btn--square" @click="teaserCollapsed = !teaserCollapsed">
+                        <button class="c-btn c-btn--subtle c-btn--square u-defocus"
+                            @click="onCollapseClick">
                             <span class="u-ic-unfold_less"
                                 v-show="teaserCollapsed">
                             </span>
@@ -26,7 +27,7 @@ if( Store::isset_then_set('vue-slider-teaser-component') ) return;
                         </button>
                     </div>
                 </div>
-                <div class="c-collapsible__body u-center">
+                <div class="c-collapsible__body u-center u-top u-ph">
 
                     <medialist-component
                         class="u-1/1"

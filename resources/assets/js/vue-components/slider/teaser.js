@@ -9,14 +9,29 @@ export default {
     name: "SliderTeaserComponent",
     template: "#slider-teaser-component",
     components: { MedialistComponent },
-    props: ["index", "currentSlide"],
+    props: ["currentSlide"],
     data: function() {
         return {
             teaserCollapsed: false,
             options: {},
-            params: { per_page: 4 }
+            params: { per_page: 5 },
+            userIntervened: false
         };
     },
-    computed: {},
-    methods: {}
+    methods: {
+        onCollapseClick() {
+            this.teaserCollapsed = !this.teaserCollapsed;
+            this.userIntervened = true;
+        }
+    },
+    watch: {
+        currentSlide(newSlide) {
+            if (this.userIntervened) return;
+            if (newSlide === 0) {
+                this.teaserCollapsed = false;
+            } else {
+                this.teaserCollapsed = true;
+            }
+        }
+    }
 };

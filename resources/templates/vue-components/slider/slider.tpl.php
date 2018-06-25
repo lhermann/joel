@@ -46,7 +46,9 @@ if( Store::isset_then_set('vue-slider-component') ) return;
 
         </ul>
 
-        <slider-teaser-component v-if="teaser" />
+        <slider-teaser-component v-if="teaser"
+            :current-slide="currentSlide"
+        />
 
     </div>
 
