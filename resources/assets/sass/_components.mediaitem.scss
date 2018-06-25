@@ -98,6 +98,7 @@ $width-sprecher: (80px 80px);
 
         img {
             border-radius: $global-radius;
+            width: 100%; // strech smaller img
         }
     }
 
