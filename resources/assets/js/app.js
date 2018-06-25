@@ -2,9 +2,11 @@
    JOEL WORDPRESS THEME
    ========================================================================== */
 
+/* Vue.js */
 import "./vue/slider.js";
 import "./vue/medialist.js";
 
+/* Cash-Dom */
 import "./imports/flyin.js";
 import "./imports/overflow.js";
 import "./imports/toggle.js";
