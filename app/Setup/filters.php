@@ -120,9 +120,12 @@ add_filter('get_terms', 'AppTheme\Setup\order_biblical_books', 10, 3);
 
 /**
  * Add 'async' and 'defer' to <script> tags
+ *
+ * I removed the 'defer' attribute for now, because a ressource with timeout
+ * can block the whole website otherwise
  */
 function add_async_attribute($tag, $handle) {
-    return str_replace( ' src', ' async defer src', $tag );
+    return str_replace( ' src', ' async src', $tag );
 }
 add_filter('script_loader_tag', 'AppTheme\Setup\add_async_attribute', 10, 2);
 
