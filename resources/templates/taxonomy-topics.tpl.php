@@ -94,7 +94,7 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
     <div class="o-wrapper u-mt">
         <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
-            <?php template('vue-components/medialist-instantiator', [
+            <?php template('vue-components/medialist-init', [
                 'id' => 'medialist',
                 'style_modifier' => '',
                 'options' => [

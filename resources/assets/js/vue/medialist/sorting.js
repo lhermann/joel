@@ -25,9 +25,9 @@ export default {
         },
         onButtonClick() {
             this.show = !this.show;
-            setTimeout(() => {
+            this.$nextTick(() => {
                 this.popper.scheduleUpdate();
-            }, 20);
+            });
         },
         onSelectOption(option) {
             this.$emit("select", option);
