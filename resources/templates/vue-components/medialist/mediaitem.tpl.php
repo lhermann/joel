@@ -42,6 +42,9 @@ if( Store::isset_then_set('vue-mediaitem-component') ) return;
                         --><template v-if="i !== item.speakers.length - 1">, </template>
                     </template>
                 </li>
+                <li v-if="item.views">
+                    {{ item.views }} Klicks
+                </li>
                 <li v-if="item.series_count">
                     {{ item.series_count }}
                     <template v-if="item.series_count === 1">Serie</template>

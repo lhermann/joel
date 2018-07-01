@@ -147,15 +147,12 @@ function rest_api_additions() {
     /**
      * Add a route
      */
-    register_rest_route( config('textdomain').'/v1', '/recordings/popular', array(
-        'methods' => 'GET',
-        'callback' => function( $data ) {
-            if (function_exists('wpp_get_mostpopular'))
-                    $data = wpp_get_mostpopular();
-            // $params = $data->get_params();
-            return json_encode( wpp_get_views( 5864 ) );
-        }
-    ) );
+    // register_rest_route( config('textdomain').'/v1', '/route', array(
+    //     'methods' => 'GET',
+    //     'callback' => function( $data ) {
+    //         return json_encode( "Hello" );
+    //     }
+    // ) );
 
 };
 add_action( 'rest_api_init', 'AppTheme\Http\rest_api_additions' );
