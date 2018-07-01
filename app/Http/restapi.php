@@ -45,7 +45,7 @@ function rest_api_additions() {
     ) );
 
     /**
-     * Add the preview thumbnail for recordings
+     * Add 'thumbnail' to recordings
      */
     register_rest_field(
         [ 'recordings', 'series', 'speakers' ],
@@ -78,7 +78,7 @@ function rest_api_additions() {
     );
 
     /**
-     * Add the links for the speakers to series and recordings
+     * Add 'speakers' to series and recordings
      */
     register_rest_field(
         [ 'recordings', 'series' ],
@@ -102,7 +102,7 @@ function rest_api_additions() {
     );
 
     /**
-     * Add the count of series to speakers
+     * Add the 'series_count' to speakers
      */
     register_rest_field(
         [ 'speakers' ],
@@ -113,7 +113,7 @@ function rest_api_additions() {
     );
 
     /**
-     * Add the count of subtopics to topics
+     * Add the 'subtopics_count' to topics
      */
     register_rest_field(
         [ 'topics' ],
@@ -121,6 +121,17 @@ function rest_api_additions() {
         [ 'get_callback' => function( $object ) {
             $terms = get_terms( 'topics', [ 'child_of' => $object['id'] ]);
             return count($terms);
+        } ]
+    );
+
+    /**
+     * Add the 'views' to recordings
+     */
+    register_rest_field(
+        [ 'recordings' ],
+        'views',
+        [ 'get_callback' => function( $object ) {
+            return (int) wpp_get_views( $object['id'] );
         } ]
     );
 
@@ -136,13 +147,15 @@ function rest_api_additions() {
     /**
      * Add a route
      */
-    // register_rest_route( config('textdomain').'/v1', '/route', array(
-    //     'methods' => 'GET',
-    //     'callback' => function( $data ) {
-    //         $params = $data->get_params();
-    //         return $data;
-    //     }
-    // ) );
+    register_rest_route( config('textdomain').'/v1', '/recordings/popular', array(
+        'methods' => 'GET',
+        'callback' => function( $data ) {
+            if (function_exists('wpp_get_mostpopular'))
+                    $data = wpp_get_mostpopular();
+            // $params = $data->get_params();
+            return json_encode( wpp_get_views( 5864 ) );
+        }
+    ) );
 
 };
 add_action( 'rest_api_init', 'AppTheme\Http\rest_api_additions' );

@@ -52,28 +52,57 @@ export default {
             return [];
         },
         sortingOptions() {
-            return [
+            let options = [
                 {
                     label: "Neue zuerst",
-                    order: "desc",
-                    orderby: this.route === "recordings" ? "date" : "id"
+                    params: {
+                        order: "desc",
+                        orderby: this.route === "recordings" ? "date" : "id"
+                    }
                 },
                 {
                     label: "Alte zuerst",
-                    order: "asc",
-                    orderby: this.route === "recordings" ? "date" : "id"
+                    params: {
+                        order: "asc",
+                        orderby: this.route === "recordings" ? "date" : "id"
+                    }
                 },
                 {
                     label: "Alphabetisch (A-Z)",
-                    order: "asc",
-                    orderby: this.route === "recordings" ? "title" : "name"
+                    params: {
+                        order: "asc",
+                        orderby: this.route === "recordings" ? "title" : "name"
+                    }
                 },
                 {
                     label: "Alphabetisch (Z-A)",
-                    order: "desc",
-                    orderby: this.route === "recordings" ? "title" : "name"
+                    params: {
+                        order: "desc",
+                        orderby: this.route === "recordings" ? "title" : "name"
+                    }
                 }
             ];
+            if (this.route === "recordings") {
+                options.push({
+                    label: "Beliebtheit",
+                    namespace: "wordpress-popular-posts/v1/",
+                    route: "popular-posts",
+                    params: {
+                        post_type: "recordings",
+                        range: "all",
+                        limit: 50
+                    }
+                });
+            } else {
+                options.push({
+                    label: "Anzahl Videos",
+                    params: {
+                        order: "desc",
+                        orderby: "count"
+                    }
+                });
+            }
+            return options;
         }
     },
     methods: {
@@ -102,11 +131,17 @@ export default {
         requestRecordings() {
             this.isLoading = true;
             // create 10 dummys
+            let namespace =
+                this.currentSortingOption.namespace || this.namespace;
+            let route = this.currentSortingOption.route || this.route;
+            let params = Object.assign(
+                {},
+                this.params,
+                this.currentSortingOption.params
+            );
             this.items = Array(this.params.per_page).fill(this.createDummy());
             axios
-                .get(this.namespace + this.route, {
-                    params: this.params
-                })
+                .get(namespace + route, { params })
                 .then(response => {
                     this.isLoading = false;
                     this.items = response.data;
@@ -134,8 +169,7 @@ export default {
         },
         onSelectOption(option) {
             this.currentSortingOption = option;
-            this.params.order = option.order;
-            this.params.orderby = option.orderby;
+            this.params.page = 1;
             this.requestRecordings();
         }
     },
