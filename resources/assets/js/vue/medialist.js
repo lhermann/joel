@@ -1,5 +1,5 @@
 /*
- * Medialist
+ * Medialist Init
  * @author: Lukas Hermann
  */
 

@@ -13,7 +13,7 @@ if( Store::isset_then_set('vue-slider-teaser-component') ) return;
             <div class="c-slider__teaser c-collapsible" :class="{'is-collapsed': teaserCollapsed}">
                 <div class="c-collapsible__header">
                     <div class="c-collapsible__title u-h5">
-                        Neue Aufnahmen
+                        Neue Videos
                     </div>
                     <div class="c-collapsible__btn">
                         <button class="c-btn c-btn--subtle c-btn--square u-defocus"

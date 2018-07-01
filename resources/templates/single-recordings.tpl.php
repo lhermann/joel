@@ -80,12 +80,31 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                     <?php endif ?>
 
                     <!-- Download -->
-                    <div class="o-pack__item u-text-right">
-                            <button id="download-button" class="c-btn c-btn--dropdown c-btn--small c-btn--secondary jsDropdownBtn" aria-haspopup="true" aria-expanded="false">
-                                <span class="u-ic-download"></span> Download
+                    <div id="download"
+                        class="o-pack__item u-text-right"
+                        data-vue="dropdown"
+                    >
+                            <button id="download-btn"
+                                class="c-btn c-btn--small c-btn--secondary"
+                                v-on:click="toggleDropdown"
+                                ref="button"
+                                aria-haspopup="true"
+                                :aria-expanded="visible"
+                            >
+                                <span class="u-ic-download"></span>
+                                Download
+                                <span v-show="!visible"
+                                    class="u-ic-keyboard_arrow_down"></span>
+                                <span v-show="visible" v-cloak
+                                    class="u-ic-keyboard_arrow_up"></span>
                             </button>
 
-                            <ul class="c-dropdown c-dropdown--round u-hidden jsDropdown" aria-labelledby="download-button" data-placement="bottom-end" x-placement="top-end">
+                            <ul class="c-dropdown c-dropdown--round"
+                                v-show="visible" v-cloak
+                                aria-labelledby="download-btn"
+                                data-placement="bottom-end"
+                                ref="dropdown"
+                            >
 
                                 <li class="c-dropdown__item ">
                                     <a class="c-link c-link--block c-link--secondary" href="#">
@@ -112,17 +131,30 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                     </div>
 
                     <!-- Share -->
-                    <div class="o-pack__item u-text-right u-hidden-until@tablet">
-                            <button id="share-button"
-                                class="c-btn c-btn--dropdown c-btn--small c-btn--secondary jsDropdownBtn"
+                    <div id="share"
+                        class="o-pack__item u-text-right u-hidden-until@tablet"
+                        data-vue="dropdown"
+                    >
+                            <button id="share-btn"
+                                class="c-btn c-btn--small c-btn--secondary"
+                                v-on:click="toggleDropdown"
+                                ref="button"
                                 aria-haspopup="true"
-                                aria-expanded="false">
-                                <span class="u-ic-share"></span> Teilen
+                                :aria-expanded="visible"
+                            >
+                                <span class="u-ic-share"></span>
+                                Teilen
+                                <span v-show="!visible"
+                                    class="u-ic-keyboard_arrow_down"></span>
+                                <span v-show="visible" v-cloak
+                                    class="u-ic-keyboard_arrow_up"></span>
                             </button>
 
-                            <ul class="c-dropdown c-dropdown--round u-hidden jsDropdown"
-                                aria-labelledby="share-button"
-                                data-placement="bottom-end">
+                            <ul class="c-dropdown c-dropdown--round u-text-left"
+                                v-show="visible" v-cloak
+                                aria-labelledby="share-btn"
+                                data-placement="bottom-end"
+                                ref="dropdown">
 
                                 <li class="c-dropdown__item ">
                                     <a class="c-link c-link--block c-link--secondary"
@@ -203,7 +235,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                     </a>
                 </p>
 
-                <?php template('vue-components/medialist-instantiator', [
+                <?php template('vue-components/medialist-init', [
                     'id' => 'medialist-next-video',
                     'options' => [
                         'pagination' => 'normal'
@@ -222,7 +254,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
             <?php if (false): ?>
             <section id="recommended">
 
-                <?php template('vue-components/medialist-instantiator', [
+                <?php template('vue-components/medialist-init', [
                     'id' => 'medialist-recommended',
                     'options' => [
                         'pagination' => 'minimal'

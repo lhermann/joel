@@ -3,22 +3,18 @@
 ========================================================================== */
 
 .c-dropdown {
+    position: absolute;
     z-index: 98;
     margin: 3px 0;
     border: 1px solid $c-border;
     box-shadow: $global-shadow;
     background-color: $c-white;
     list-style: none;
-    opacity: 0;
     transition: opacity $global-transition;
 
     &--round {
         border-radius: $global-radius;
         overflow: hidden;
-    }
-
-    &.is-visible {
-        opacity: 1;
     }
 }
 

@@ -1,5 +1,5 @@
 /*
- * Joel Media Slider
+ * Slider Init
  * @author: Lukas Hermann
  *
  * Modes:

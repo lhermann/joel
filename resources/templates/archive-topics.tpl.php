@@ -17,7 +17,7 @@ use function AppTheme\config;
         <div class="o-layout__item u-4/5@tablet u-3/4@desktop">
 
 
-            <?php template('vue-components/medialist-instantiator', [
+            <?php template('vue-components/medialist-init', [
                 'id' => 'medialist-topics',
                 'style_modifier' => '',
                 'options' => [
