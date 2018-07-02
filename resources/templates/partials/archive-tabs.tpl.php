@@ -1,5 +1,5 @@
 <?php
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 $request_uri = $_SERVER['REQUEST_URI'];
 $tabs = [
     ['url' => '/recordings/', 'label' => _x('Recordings', 'post type general name', config('textdomain'))],

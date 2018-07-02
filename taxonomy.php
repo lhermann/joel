@@ -10,7 +10,7 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 $term = get_queried_object();
 

@@ -1,5 +1,5 @@
 <?php
-use AppTheme\Store;
+use Tonik\Theme\App\Store;
 if( Store::isset_then_set('vue-media-pagination-component') ) return;
 ?>
 

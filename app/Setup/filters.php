@@ -13,7 +13,7 @@ namespace Tonik\Theme\App\Setup;
 |
 */
 
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 
 /**
  * Hides sidebar on index template on specific views.
@@ -41,7 +41,7 @@ function modify_excerpt_length()
 {
     return 60;
 }
-add_filter('excerpt_length', 'AppTheme\Setup\modify_excerpt_length');
+add_filter('excerpt_length', 'Tonik\Theme\App\Setup\modify_excerpt_length');
 
 /**
  * Remove p-tags in term description
@@ -76,7 +76,7 @@ array_walk($scanned_directory, function(&$item) {
     $item = str_replace('.tpl', '', $item);
 });
 foreach ($scanned_directory as $file) {
-    add_filter('tonik/gin/template/context/'.$file, 'AppTheme\Setup\add_default_template_context');
+    add_filter('tonik/gin/template/context/'.$file, 'Tonik\Theme\App\Setup\add_default_template_context');
 }
 
 
@@ -89,7 +89,7 @@ function disable_main_query( &$query ) {
     if($query->is_main_query() && $query->is_archive())
         $query->set('p', 1);
 }
-add_action('pre_get_posts', 'AppTheme\Setup\disable_main_query', 10, 1);
+add_action('pre_get_posts', 'Tonik\Theme\App\Setup\disable_main_query', 10, 1);
 
 /**
  * Order children of OT (term_id: 40) and NT (term_id: 58) by the Bible
@@ -115,7 +115,7 @@ function order_biblical_books($terms, $taxonomies, $args) {
 
     return $terms;
 }
-add_filter('get_terms', 'AppTheme\Setup\order_biblical_books', 10, 3);
+add_filter('get_terms', 'Tonik\Theme\App\Setup\order_biblical_books', 10, 3);
 
 
 /**
@@ -127,6 +127,6 @@ add_filter('get_terms', 'AppTheme\Setup\order_biblical_books', 10, 3);
 function add_async_attribute($tag, $handle) {
     return str_replace( ' src', ' async src', $tag );
 }
-add_filter('script_loader_tag', 'AppTheme\Setup\add_async_attribute', 10, 2);
+add_filter('script_loader_tag', 'Tonik\Theme\App\Setup\add_async_attribute', 10, 2);
 
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f86b7131c2ff73ecf1e5d996e781ca7",
+    "content-hash": "9fe2e83aa5e75d9e1b1c5a9cfa4ec2a3",
     "packages": [
         {
             "name": "jaybizzle/crawler-detect",
@@ -57,16 +57,16 @@
         },
         {
             "name": "tonik/gin",
-            "version": "v2.0.3",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tonik/gin.git",
-                "reference": "1e726ec5266ea866968ae0f20388abb7b67e87d0"
+                "reference": "011e6944e220828bdfb3a21303a66068744a8984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tonik/gin/zipball/1e726ec5266ea866968ae0f20388abb7b67e87d0",
-                "reference": "1e726ec5266ea866968ae0f20388abb7b67e87d0",
+                "url": "https://api.github.com/repos/tonik/gin/zipball/011e6944e220828bdfb3a21303a66068744a8984",
+                "reference": "011e6944e220828bdfb3a21303a66068744a8984",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +98,7 @@
                 "tonik",
                 "wordpress"
             ],
-            "time": "2018-03-21T10:18:30+00:00"
+            "time": "2018-03-27T12:40:31+00:00"
         }
     ],
     "packages-dev": [
@@ -259,6 +259,56 @@
             "time": "2017-03-18T11:32:45+00:00"
         },
         {
+            "name": "symfony/filesystem",
+            "version": "v3.4.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed",
+                "reference": "8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "time": "2018-06-21T11:10:19+00:00"
+        },
+        {
             "name": "symfony/finder",
             "version": "v3.4.12",
             "source": {
@@ -308,22 +358,78 @@
             "time": "2018-06-19T20:52:10+00:00"
         },
         {
-            "name": "tonik/cli",
-            "version": "v2.0.0",
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tonik/cli.git",
-                "reference": "984371fe5dc3edfe2cc67c76524cb77d79edfe2c"
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tonik/cli/zipball/984371fe5dc3edfe2cc67c76524cb77d79edfe2c",
-                "reference": "984371fe5dc3edfe2cc67c76524cb77d79edfe2c",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-04-30T19:57:29+00:00"
+        },
+        {
+            "name": "tonik/cli",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tonik/cli.git",
+                "reference": "8a4d554288a2230ea7a8911ee2330be8406c2c85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tonik/cli/zipball/8a4d554288a2230ea7a8911ee2330be8406c2c85",
+                "reference": "8a4d554288a2230ea7a8911ee2330be8406c2c85",
                 "shasum": ""
             },
             "require": {
                 "league/climate": "^3.2",
                 "php": ">=7.0",
+                "symfony/filesystem": "~2.3|~3.0",
                 "symfony/finder": "~2.3|~3.0"
             },
             "require-dev": {
@@ -355,7 +461,7 @@
                 "tonik",
                 "wordpress"
             ],
-            "time": "2017-07-03T13:02:21+00:00"
+            "time": "2018-03-27T13:58:50+00:00"
         }
     ],
     "aliases": [],

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Http;
+namespace Tonik\Theme\App\Http;
 
 /*
 |-----------------------------------------------------------
@@ -12,7 +12,7 @@ namespace AppTheme\Http;
 |
 */
 
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 
 
 /**
@@ -25,7 +25,7 @@ function gladtidings_get_variables() {
     add_rewrite_tag('%archive%', '([^&]+)');
     // flush_rewrite_rules();
 }
-add_action('init', 'AppTheme\Http\gladtidings_get_variables', 10, 0);
+add_action('init', 'Tonik\Theme\App\Http\gladtidings_get_variables', 10, 0);
 
 
 /**
@@ -57,7 +57,7 @@ function additional_rewrite_rules() {
     // Add new rules to existing rules
     $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
 }
-add_action( 'generate_rewrite_rules', 'AppTheme\Http\additional_rewrite_rules' );
+add_action( 'generate_rewrite_rules', 'Tonik\Theme\App\Http\additional_rewrite_rules' );
 
 
 
@@ -71,4 +71,4 @@ function include_additional_templates( $template ) {
     }
     return $template;
 }
-add_filter( 'template_include', 'AppTheme\Http\include_additional_templates', 99 );
+add_filter( 'template_include', 'Tonik\Theme\App\Http\include_additional_templates', 99 );

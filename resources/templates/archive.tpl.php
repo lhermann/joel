@@ -1,5 +1,5 @@
 <?php
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 ?>
 
 <?php get_header() ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Helper;
+namespace Tonik\Theme\App\Helper;
 
 /*
 |-----------------------------------------------------------
@@ -101,7 +101,7 @@ function render_menu_for_flyin($location) {
  */
 function fallback_img($img, $resolution) {
     if($img) return $img;
-    return \AppTheme\asset_path('images/dummy-'.$resolution.'.jpg');
+    return \Tonik\Theme\App\asset_path('images/dummy-'.$resolution.'.jpg');
 }
 
 

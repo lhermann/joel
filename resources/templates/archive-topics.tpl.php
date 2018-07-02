@@ -1,6 +1,6 @@
 <?php
-use function AppTheme\template;
-use function AppTheme\config;
+use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 ?>
 
 <?php get_header() ?>

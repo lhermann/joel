@@ -10,7 +10,7 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 $key = get_query_var( 'archive' ) ?: get_query_var( 'post_type' );
 

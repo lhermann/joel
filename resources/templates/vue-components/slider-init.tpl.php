@@ -1,5 +1,5 @@
 <?php
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
 ?>
 

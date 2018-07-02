@@ -1,5 +1,5 @@
 <?php
-use function AppTheme\asset_path;
+use function Tonik\Theme\App\asset_path;
 $promo_list = array(
     (object) [
         'title' => 'Prophetie<br>&amp; Zeitgeschehen',

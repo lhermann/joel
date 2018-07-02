@@ -55,7 +55,7 @@ function register_media_post_type()
     ]);
 
 }
-add_action('init', 'AppTheme\Structure\register_media_post_type');
+add_action('init', 'Tonik\Theme\App\Structure\register_media_post_type');
 
 
 // Sort admin colums of video by date by default
@@ -71,7 +71,7 @@ function set_recordings_post_type_admin_order($wp_query) {
 
     }
 }
-add_filter ( 'pre_get_posts', 'AppTheme\Structure\set_recordings_post_type_admin_order' );
+add_filter ( 'pre_get_posts', 'Tonik\Theme\App\Structure\set_recordings_post_type_admin_order' );
 
 
 /**
@@ -91,7 +91,7 @@ function recordings_edit_columns($columns) {
 
     return $columns;
 }
-add_filter('manage_edit-recordings_columns', 'AppTheme\Structure\recordings_edit_columns');
+add_filter('manage_edit-recordings_columns', 'Tonik\Theme\App\Structure\recordings_edit_columns');
 
 
 // Register the columns as sortable
@@ -104,7 +104,7 @@ function recordings_sortable_columns($columns) {
 
     return wp_parse_args($custom, $columns);
 }
-add_filter('manage_edit-recordings_sortable_columns', 'AppTheme\Structure\recordings_sortable_columns');
+add_filter('manage_edit-recordings_sortable_columns', 'Tonik\Theme\App\Structure\recordings_sortable_columns');
 
 
 // Make the column "Sprecher" order correctly
@@ -128,7 +128,7 @@ SQL;
 
     return $clauses;
 }
-add_filter( 'posts_clauses', 'AppTheme\Structure\speakers_clauses', 10, 2 );
+add_filter( 'posts_clauses', 'Tonik\Theme\App\Structure\speakers_clauses', 10, 2 );
 
 
 // Make the column "Serie" order correctly
@@ -152,7 +152,7 @@ SQL;
 
     return $clauses;
 }
-add_filter( 'posts_clauses', 'AppTheme\Structure\series_clauses', 10, 2 );
+add_filter( 'posts_clauses', 'Tonik\Theme\App\Structure\series_clauses', 10, 2 );
 
 
 /*
@@ -210,7 +210,7 @@ function recordings_custom_columns($column) {
             break;
     }
 }
-add_action('manage_recordings_posts_custom_column',  'AppTheme\Structure\recordings_custom_columns');
+add_action('manage_recordings_posts_custom_column',  'Tonik\Theme\App\Structure\recordings_custom_columns');
 
 
 // Remove Serien and Sprecher standard meta box in favor of ACF
@@ -221,7 +221,7 @@ if (is_admin()) :
         remove_meta_box('tagsdiv-topics', 'recordings', 'side');
         remove_meta_box('tagsdiv-podcasts', 'recordings', 'side');
     }
-    add_action( 'admin_menu', 'AppTheme\Structure\remove_meta_boxes' );
+    add_action( 'admin_menu', 'Tonik\Theme\App\Structure\remove_meta_boxes' );
 endif;
 
 
@@ -269,4 +269,4 @@ function register_slide_post_type()
     ]);
 
 }
-add_action('init', 'AppTheme\Structure\register_slide_post_type');
+add_action('init', 'Tonik\Theme\App\Structure\register_slide_post_type');

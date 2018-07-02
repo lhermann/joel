@@ -1,8 +1,8 @@
 <?php
-use function AppTheme\config;
-use function AppTheme\Legacy\get_download_files;
-use function AppTheme\Helper\formatbytes;
-use function AppTheme\Legacy\trac_permalink;
+use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\Legacy\get_download_files;
+use function Tonik\Theme\App\Helper\formatbytes;
+use function Tonik\Theme\App\Legacy\trac_permalink;
 ?>
 
 <div class="o-pack o-pack--middle o-pack--auto u-mv">

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\ACF;
+namespace Tonik\Theme\App\ACF;
 
 /*
 |-----------------------------------------------------------
@@ -11,7 +11,7 @@ namespace AppTheme\ACF;
 |
 */
 
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 
 if( function_exists('acf_add_local_field_group') ):
 

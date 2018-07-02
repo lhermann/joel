@@ -13,6 +13,7 @@ namespace Tonik\Theme\App\Http;
 |
 */
 
+use function Tonik\Theme\App\asset;
 use function Tonik\Theme\App\asset_path;
 
 /**
@@ -60,7 +61,7 @@ function move_jquery_to_the_footer($wp_scripts) {
         $wp_scripts->add_data('jquery-migrate', 'group', 1);
     }
 }
-add_action('wp_default_scripts', 'AppTheme\Http\move_jquery_to_the_footer');
+add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer');
 
 /**
  * Registers admin scripts and stylesheets.
@@ -71,4 +72,4 @@ function register_admin_scripts_and_styles() {
     wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), [], filemtime(asset('css/admin.css')->getPath()) );
     wp_enqueue_script( 'admin_js', asset_path('js/admin.js'), [], filemtime(asset('js/admin.js')->getPath()), true );
 };
-add_action( 'admin_enqueue_scripts', 'AppTheme\Http\register_admin_scripts_and_styles' );
+add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles' );

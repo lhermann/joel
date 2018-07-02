@@ -1,5 +1,5 @@
 <?php
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 ?>
 
 <header id="header" class="c-site-header <?= $style_modifier ?>" role="banner">

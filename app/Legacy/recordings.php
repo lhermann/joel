@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Legacy;
+namespace Tonik\Theme\App\Legacy;
 
 /*
 |-----------------------------------------------------------

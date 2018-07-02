@@ -1,7 +1,6 @@
 {
     "name": "joel",
-    "description":
-        "Joel - The media archive Wordpress theme by Joel Media Ministry e.V.",
+    "description": "Joel - The media archive Wordpress theme by Joel Media Ministry e.V.",
     "version": "2.0.0-alpha.1",
     "main": "index.php",
     "author": "Lukas Hermann <lukher6@web.de>",
@@ -13,16 +12,12 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development":
-            "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js",
+        "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js",
         "prod": "npm run production",
-        "production":
-            "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.config.js",
-        "watch":
-            "npm run development -- --watch && webpack-dev-server --progress --colors",
+        "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.config.js",
+        "watch": "npm run development -- --watch && webpack-dev-server --progress --colors",
         "start": "npm run watch",
-        "stats":
-            "cross-env NODE_ENV=development webpack --profile --json --config build/webpack.config.js > stats.json && webpack-bundle-analyzer stats.json",
+        "stats": "cross-env NODE_ENV=development webpack --profile --json --config build/webpack.config.js > stats.json && webpack-bundle-analyzer stats.json",
         "build": "npm run production"
     },
     "dependencies": {
@@ -63,5 +58,8 @@
         "webpack-dev-server": "^2.4.4",
         "webpack-merge": "^4.1.0"
     },
-    "browserslist": ["> 2%", "last 2 versions"]
+    "browserslist": [
+        "> 2%",
+        "last 2 versions"
+    ]
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Http;
+namespace Tonik\Theme\App\Http;
 
 /*
 |-----------------------------------------------------------
@@ -11,10 +11,10 @@ namespace AppTheme\Http;
 |
 */
 
-use function AppTheme\config;
-use function AppTheme\Helper\get_terms_associated_with_term;
-use function AppTheme\Helper\count_terms_associated_with_term;
-use function AppTheme\Helper\fallback_img;
+use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\Helper\get_terms_associated_with_term;
+use function Tonik\Theme\App\Helper\count_terms_associated_with_term;
+use function Tonik\Theme\App\Helper\fallback_img;
 
 function rest_api_additions() {
 
@@ -39,7 +39,7 @@ function rest_api_additions() {
      */
     register_rest_field( 'recordings', 'length', array(
         'get_callback' => function( $object ) {
-            return \AppTheme\Legacy\get_video_length($object['id']);
+            return \Tonik\Theme\App\Legacy\get_video_length($object['id']);
         }
     ) );
 
@@ -154,4 +154,4 @@ function rest_api_additions() {
     // ) );
 
 };
-add_action( 'rest_api_init', 'AppTheme\Http\rest_api_additions' );
+add_action( 'rest_api_init', 'Tonik\Theme\App\Http\rest_api_additions' );

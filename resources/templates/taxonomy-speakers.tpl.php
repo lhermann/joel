@@ -1,8 +1,8 @@
 <?php
-use function AppTheme\template;
-use function AppTheme\config;
-use function AppTheme\asset_path;
-use function AppTheme\Helper\count_terms_associated_with_term;
+use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\asset_path;
+use function Tonik\Theme\App\Helper\count_terms_associated_with_term;
 $term = get_queried_object();
 $series_count = count_terms_associated_with_term( $term, 'series' );
 ?>

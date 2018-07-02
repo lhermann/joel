@@ -1,7 +1,7 @@
 <?php
-use function AppTheme\template;
-use function AppTheme\config;
-use function AppTheme\Helper\render_menu_for_flyin;
+use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\Helper\render_menu_for_flyin;
 ?>
 
 <aside id="mobileNav" class="c-flyin <?= $style_modifier ?>">

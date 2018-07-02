@@ -1,5 +1,5 @@
 <?php
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 ?>
 
 <form class="c-search-bar <?= $style_modifier ?>" method="get" id="searchform" action="/">

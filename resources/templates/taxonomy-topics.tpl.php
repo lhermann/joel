@@ -1,7 +1,7 @@
 <?php
-use function AppTheme\template;
-use function AppTheme\config;
-use function AppTheme\asset_path;
+use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\asset_path;
 $term = get_queried_object();
 $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
 ?>

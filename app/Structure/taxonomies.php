@@ -120,7 +120,7 @@ function register_media_taxonomies()
         ],
     ]);
 }
-add_action('init', 'AppTheme\Structure\register_media_taxonomies');
+add_action('init', 'Tonik\Theme\App\Structure\register_media_taxonomies');
 
 
 /**
@@ -149,7 +149,7 @@ function restrict_recordings_by_taxonomy() {
         };
     }
 }
-add_action('restrict_manage_posts', 'AppTheme\Structure\restrict_recordings_by_taxonomy');
+add_action('restrict_manage_posts', 'Tonik\Theme\App\Structure\restrict_recordings_by_taxonomy');
 
 function convert_id_to_term_in_query( $query ) {
     global $pagenow;
@@ -163,7 +163,7 @@ function convert_id_to_term_in_query( $query ) {
         }
     }
 }
-add_filter('parse_query', 'AppTheme\Structure\convert_id_to_term_in_query');
+add_filter('parse_query', 'Tonik\Theme\App\Structure\convert_id_to_term_in_query');
 
 
 /**
@@ -182,8 +182,8 @@ function recordings_tax_edit_columns($columns) {
     );
     return $columns;
 }
-add_filter('manage_edit-speakers_columns', 'AppTheme\Structure\recordings_tax_edit_columns', 5);
-add_filter('manage_edit-series_columns', 'AppTheme\Structure\recordings_tax_edit_columns', 5);
+add_filter('manage_edit-speakers_columns', 'Tonik\Theme\App\Structure\recordings_tax_edit_columns', 5);
+add_filter('manage_edit-series_columns', 'Tonik\Theme\App\Structure\recordings_tax_edit_columns', 5);
 
 // Display the columns content
 function speakers_custom_columns($value, $column_name, $id) {
@@ -196,7 +196,7 @@ function speakers_custom_columns($value, $column_name, $id) {
         printf( '<img class="img img-square80" src="%s" alt="" />', $img );
     }
 }
-add_action('manage_speakers_custom_column', 'AppTheme\Structure\speakers_custom_columns', 5, 3);
+add_action('manage_speakers_custom_column', 'Tonik\Theme\App\Structure\speakers_custom_columns', 5, 3);
 
 
 function series_custom_columns($value, $column_name, $id) {
@@ -209,7 +209,7 @@ function series_custom_columns($value, $column_name, $id) {
         printf( '<img class="img img-54p" src="%s" alt="" />', $img );
     }
 }
-add_action('manage_series_custom_column', 'AppTheme\Structure\series_custom_columns', 5, 3);
+add_action('manage_series_custom_column', 'Tonik\Theme\App\Structure\series_custom_columns', 5, 3);
 
 
 /**
@@ -226,7 +226,7 @@ function podcasts_edit_columns($columns) {
     );
     return $columns;
 }
-add_filter('manage_edit-podcasts_columns', 'AppTheme\Structure\podcasts_edit_columns', 5);
+add_filter('manage_edit-podcasts_columns', 'Tonik\Theme\App\Structure\podcasts_edit_columns', 5);
 
 // Display the columns content
 function podcasts_custom_columns($value, $column_name, $id) {
@@ -252,7 +252,7 @@ function podcasts_custom_columns($value, $column_name, $id) {
             break;
     }
 }
-add_action('manage_podcasts_custom_column', 'AppTheme\Structure\podcasts_custom_columns', 5, 3);
+add_action('manage_podcasts_custom_column', 'Tonik\Theme\App\Structure\podcasts_custom_columns', 5, 3);
 
 
 /**
@@ -265,7 +265,7 @@ function podcasts_increase_posts_per_page( $query ) {
         $query->set( 'posts_per_page', '100' );
     }
 }
-add_action( 'pre_get_posts', 'AppTheme\Structure\podcasts_increase_posts_per_page' );
+add_action( 'pre_get_posts', 'Tonik\Theme\App\Structure\podcasts_increase_posts_per_page' );
 
 
 /**
@@ -293,4 +293,4 @@ function auto_add_to_podcast( $post_id ) {
     }
 
 }
-add_action( 'acf/save_post', 'AppTheme\Structure\auto_add_to_podcast', 1 );
+add_action( 'acf/save_post', 'Tonik\Theme\App\Structure\auto_add_to_podcast', 1 );

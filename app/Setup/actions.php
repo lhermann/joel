@@ -11,7 +11,7 @@ namespace Tonik\Theme\App\Setup;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 /**
  * Renders post thumbnail by its formats.
@@ -22,7 +22,7 @@ use function AppTheme\template;
 function render_post_thumbnail() {
     template(['partials/post/thumbnail', get_post_format()]);
 }
-add_action('theme/index/post/thumbnail', 'AppTheme\Setup\render_post_thumbnail');
+add_action('theme/index/post/thumbnail', 'Tonik\Theme\App\Setup\render_post_thumbnail');
 
 /**
  * Renders post contents by its formats.
@@ -33,7 +33,7 @@ add_action('theme/index/post/thumbnail', 'AppTheme\Setup\render_post_thumbnail')
 function render_post_content() {
     template(['partials/post/content', get_post_format()]);
 }
-add_action('theme/single/content', 'AppTheme\Setup\render_post_content');
+add_action('theme/single/content', 'Tonik\Theme\App\Setup\render_post_content');
 
 /**
  * Renders empty post content where there is no posts.
@@ -44,7 +44,7 @@ add_action('theme/single/content', 'AppTheme\Setup\render_post_content');
 function render_empty_content() {
     template(['partials/index/content', 'none']);
 }
-add_action('theme/index/content/none', 'AppTheme\Setup\render_empty_content');
+add_action('theme/index/content/none', 'Tonik\Theme\App\Setup\render_empty_content');
 
 /**
  * Renders sidebar content.
@@ -56,8 +56,8 @@ add_action('theme/index/content/none', 'AppTheme\Setup\render_empty_content');
 function render_sidebar() {
     get_sidebar();
 }
-add_action('theme/index/sidebar', 'AppTheme\Setup\render_sidebar');
-add_action('theme/single/sidebar', 'AppTheme\Setup\render_sidebar');
+add_action('theme/index/sidebar', 'Tonik\Theme\App\Setup\render_sidebar');
+add_action('theme/single/sidebar', 'Tonik\Theme\App\Setup\render_sidebar');
 
 /**
  * After Theme Switch
@@ -93,7 +93,7 @@ function joel_setup_options () {
     // $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'recordings' WHERE post_type = 'recording';" );
     // $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'slides' WHERE post_type = 'slide';" );
 }
-add_action('after_switch_theme', 'AppTheme\Setup\joel_setup_options');
+add_action('after_switch_theme', 'Tonik\Theme\App\Setup\joel_setup_options');
 
 /**
  * Remove 'Links' from Admin Dashboard
@@ -101,4 +101,4 @@ add_action('after_switch_theme', 'AppTheme\Setup\joel_setup_options');
 function remove_admin_menu_pages() {
     remove_menu_page('link-manager.php');
 }
-add_action( 'admin_menu', 'AppTheme\Setup\remove_admin_menu_pages' );
+add_action( 'admin_menu', 'Tonik\Theme\App\Setup\remove_admin_menu_pages' );

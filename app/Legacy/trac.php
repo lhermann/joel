@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Legacy;
+namespace Tonik\Theme\App\Legacy;
 
 /*
 |-----------------------------------------------------------
@@ -24,7 +24,7 @@ use Jaybizzle\CrawlerDetect\CrawlerDetect;
 /**
  * Add a query variables: trac-label, redirect_url
  */
-add_action('init', 'AppTheme\Legacy\trac_query_variables', 10, 0);
+add_action('init', 'Tonik\Theme\App\Legacy\trac_query_variables', 10, 0);
 function trac_query_variables() {
     add_rewrite_tag('%trac-label%', '([^&]+)');
     add_rewrite_tag('%redirect_url%', '([^&]+)');
@@ -40,7 +40,7 @@ function trac_query_variables() {
  * NOTE: Standard WP rewrite rules are turned off for each custom post type.
  *       Thus these restful routes here are the only way to reach them
  */
-add_action( 'generate_rewrite_rules', 'AppTheme\Legacy\trac_rewrite_rules' );
+add_action( 'generate_rewrite_rules', 'Tonik\Theme\App\Legacy\trac_rewrite_rules' );
 function trac_rewrite_rules() {
     global $wp_rewrite;
 
@@ -66,7 +66,7 @@ function trac_rewrite_rules() {
  * do the database thing
  * and then redirect
  */
-add_action( 'wp', 'AppTheme\Legacy\instantiate_the_controller', 10, 1 );
+add_action( 'wp', 'Tonik\Theme\App\Legacy\instantiate_the_controller', 10, 1 );
 function instantiate_the_controller( $wp ) {
 
     // Bail for admin area & if template is another
@@ -213,7 +213,7 @@ function trac_dashboard_widget() {
         'trac_dashboard_widget_function' // Display function.
     );
 }
-add_action( 'wp_dashboard_setup', 'AppTheme\Legacy\trac_dashboard_widget' );
+add_action( 'wp_dashboard_setup', 'Tonik\Theme\App\Legacy\trac_dashboard_widget' );
 
 function trac_dashboard_widget_function() {
     global $wpdb;

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Helper;
+namespace Tonik\Theme\App\Helper;
 
 /*
 |-----------------------------------------------------------
