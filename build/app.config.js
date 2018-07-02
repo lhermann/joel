@@ -98,6 +98,7 @@ module.exports = merge(
         browsers: ["last 2 versions", "> 1%"]
       },
       browserSync: {
+        // https: true,
         host: env("BROWSERSYNC_HOST", "localhost"),
         port: env("BROWSERSYNC_PORT", 8000),
         proxy: env("BROWSERSYNC_PROXY", "http://joel.local/"),

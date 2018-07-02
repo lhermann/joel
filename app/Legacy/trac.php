@@ -210,7 +210,7 @@ function trac_dashboard_widget() {
     wp_add_dashboard_widget(
         'dashboard_trac',                // Widget slug.
         'Download Statistics',           // Title.
-        'trac_dashboard_widget_function' // Display function.
+        'Tonik\Theme\App\Legacy\trac_dashboard_widget_function' // Callback function.
     );
 }
 add_action( 'wp_dashboard_setup', 'Tonik\Theme\App\Legacy\trac_dashboard_widget' );
