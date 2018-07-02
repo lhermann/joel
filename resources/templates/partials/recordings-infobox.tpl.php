@@ -134,7 +134,7 @@ use function Tonik\Theme\App\Legacy\trac_permalink;
                         value="<?=
                             htmlentities(sprintf(
                                 '<iframe width="560" height="315" src="%s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
-                                config('player_base_url').'1'.get_the_ID()
+                                EMBED_PREFIX.'1'.get_the_ID()
                             ))
                         ?>">
                 </li>

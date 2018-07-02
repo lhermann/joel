@@ -43,7 +43,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                 <div class="o-ratio o-ratio--16:9 u-box-shadow ">
                     <iframe id="player"
                         class="o-ratio__content c-player"
-                        src="<?= config('player_base_url').'0'.get_the_ID() ?>"
+                        src="<?= EMBED_PREFIX.'0'.get_the_ID() ?>"
                         frameborder="0"
                         allowfullscreen>
                     </iframe>

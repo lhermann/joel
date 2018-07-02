@@ -93,15 +93,5 @@ return [
         'Structure/taxonomies.php',
         'Structure/shortcodes.php',
         'Structure/thumbnails.php',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Joel Base URLs
-    |--------------------------------------------------------------------------
-    |
-    | Base URLs to Joels required services
-    |
-    */
-    'player_base_url' => 'https://embed.joelmediatv.de/'
+    ]
 ];
