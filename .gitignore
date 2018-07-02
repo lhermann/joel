@@ -6,4 +6,6 @@ stats.json
 .DS_Store
 Thumbs.db
 
-public/*
+public
+
+.env
