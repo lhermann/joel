@@ -50,9 +50,6 @@ function menu_item_has_children($item, $menu) {
 function render_menu_for_flyin($location) {
     if( !$menu = wp_get_nav_menu_items( wp_get_nav_menu_name( $location ) ) ) return;
 
-    // var_dump(menu_item_is_active($menu[0], $menu));
-    // var_dump(menu_item_is_active($menu[1], $menu));
-
     print('<ul class="u-break-wrapper c-mobile-nav__list">');
 
     foreach ($menu as $key => $item) {
@@ -98,10 +95,43 @@ function render_menu_for_flyin($location) {
     print('<hr class="u-break-wrapper"/>');
 }
 
+
+/**
+ * Get a fallback img for any size and resolution
+ */
 function fallback_img($img, $resolution) {
     if($img) return $img;
     return \AppTheme\asset_path('images/dummy-'.$resolution.'.jpg');
 }
+
+
+/**
+ * Function to format filesize (used for download button)
+ */
+function formatbytes($a_bytes) {
+
+    // calculate appropriate display
+    if ($a_bytes < 1024) {
+        $type = 'B';
+        $filesize = $a_bytes;
+    } elseif ($a_bytes < 1048576) {
+        $type = 'KB';
+        $filesize = round($a_bytes / 1024, 0);
+    } elseif ($a_bytes < 1073741824) {
+        $type = 'MB';
+        $filesize = round($a_bytes / 1048576, 0);
+    } else {
+        $type = 'GB';
+        $filesize = round($a_bytes / 1073741824, 0);
+    };
+
+        // return
+    if( $filesize <= 0 ){
+        return $filesize = 0;
+    } else {
+        return number_format($filesize, 0, ',', '.').' '.$type;
+    };
+};
 
 
 

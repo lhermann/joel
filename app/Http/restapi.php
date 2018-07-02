@@ -12,7 +12,6 @@ namespace AppTheme\Http;
 */
 
 use function AppTheme\config;
-use function AppTheme\Helper\get_video_length;
 use function AppTheme\Helper\get_terms_associated_with_term;
 use function AppTheme\Helper\count_terms_associated_with_term;
 use function AppTheme\Helper\fallback_img;
@@ -40,7 +39,7 @@ function rest_api_additions() {
      */
     register_rest_field( 'recordings', 'length', array(
         'get_callback' => function( $object ) {
-            return get_video_length($object['id']);
+            return \AppTheme\Legacy\get_video_length($object['id']);
         }
     ) );
 
