@@ -95,7 +95,7 @@ function instantiate_the_controller( $wp ) {
     if( ENVIRONMENT == 'development' ) {
         print("<h1>Trac Debug Message</h1>");
         printf('<p><strong>HTTP Referer:</strong> <a href="%1$s">%1$s</a></p>',
-            $_SERVER["HTTP_REFERER"]
+            isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "#"
         );
         printf("<p><strong>Redirect Url:</strong> <code>https://%s</code></p>",
             get_query_var('redirect_url')

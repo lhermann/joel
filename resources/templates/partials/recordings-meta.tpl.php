@@ -1,7 +1,7 @@
 <?php
 use function Tonik\Theme\App\config;
-use function Tonik\Theme\App\Legacy\get_download_files;
 use function Tonik\Theme\App\Helper\formatbytes;
+use function Tonik\Theme\App\Legacy\get_download_files;
 use function Tonik\Theme\App\Legacy\trac_permalink;
 ?>
 

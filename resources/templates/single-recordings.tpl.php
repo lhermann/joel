@@ -59,11 +59,21 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
             <section id="infobox">
 
-                <?php template('partials/recordings-infobox') ?>
+                <?php template('partials/recordings-meta') ?>
 
                 <hr>
 
             </section>
+
+            <?php if (false): ?>
+            <section id="podcast">
+
+                <?php template('partials/recordings-podcast') ?>
+
+                <hr>
+
+            </section>
+            <?php endif ?>
 
             <?php if (get_the_content()): ?>
             <section id="content">
@@ -154,7 +164,8 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
                 <div class="o-flag ">
                     <div class="o-flag__img">
-                        <img src="" style="max-width: 100px;">
+                        <img src="<?= asset_path('images/licenses/by-nc-nd.eu.svg') ?>"
+                            style="max-width: 100px;">
                     </div>
                     <div class="o-flag__body u-smaller">
                         <h2 class="u-default u-mb0 u-muted">Lizenz</h2>
