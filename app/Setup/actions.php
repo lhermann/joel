@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Setup;
+namespace Tonik\Theme\App\Setup;
 
 /*
 |-----------------------------------------------------------
@@ -8,8 +8,6 @@ namespace AppTheme\Setup;
 |-----------------------------------------------------------
 |
 | This file purpose is to include your theme custom
-| actions hooks, which allows to process various
-| logic is specifed parts of your system.
 |
 */
 

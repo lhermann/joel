@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Http;
+namespace Tonik\Theme\App\Http;
 
 /*
 |-----------------------------------------------------------------
@@ -13,8 +13,7 @@ namespace AppTheme\Http;
 |
 */
 
-use function AppTheme\asset_path;
-use function AppTheme\asset;
+use function Tonik\Theme\App\asset_path;
 
 /**
  * Registers theme stylesheet files.
@@ -22,10 +21,11 @@ use function AppTheme\asset;
  * @return void
  */
 function register_stylesheets() {
-    // wp_enqueue_style('foundation', asset_path('css/foundation.css'));
+
     wp_enqueue_style('app', asset_path('css/app.css'), [], filemtime(asset('css/admin.css')->getPath()));
 }
-add_action('wp_enqueue_scripts', 'AppTheme\Http\register_stylesheets');
+add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
+
 
 /**
  * Registers theme script files.
@@ -33,10 +33,9 @@ add_action('wp_enqueue_scripts', 'AppTheme\Http\register_stylesheets');
  * @return void
  */
 function register_scripts() {
-    // wp_enqueue_script('foundation', asset_path('js/foundation.js'), ['jquery'], null, true);
     wp_enqueue_script('app', asset_path('js/app.js'), [], filemtime(asset('css/admin.css')->getPath()), true);
 }
-add_action('wp_enqueue_scripts', 'AppTheme\Http\register_scripts');
+add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts');
 
 /**
  * Registers editor stylesheets.
@@ -44,10 +43,9 @@ add_action('wp_enqueue_scripts', 'AppTheme\Http\register_scripts');
  * @return void
  */
 function register_editor_stylesheets() {
-    // add_editor_style(asset_path('css/foundation.css'));
     add_editor_style(asset_path('css/app.css'));
 }
-add_action('admin_init', 'AppTheme\Http\register_editor_stylesheets');
+add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 
 /**
  * Moves front-end jQuery script to the footer.

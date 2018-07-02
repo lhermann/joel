@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+<?php
+use function AppTheme\config;
+?>
+
+<form class="c-search-bar <?= $style_modifier ?>" method="get" id="searchform" action="/">
+    <input class="c-search-bar__input" type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="<?= __('Search archive...', config('textdomain')) ?>">
+    <button class="c-btn c-search-bar__btn" type="submit" for="search" value="Suche"><span class="u-ic u-ic-search"></span></button>
+=======
+<form action="/" method="GET">
+    <label for="search">
+        <input
+            id="search"
+            type="text"
+            name="s"
+            value="<?php the_search_query(); ?>"
+            placeholder="<?= __('Searching for...', Tonik\Theme\App\config('textdomain')) ?>"
+        >
+    </label>
+
+    <input type="submit" value="Search">
+>>>>>>> tonic/master
+</form>

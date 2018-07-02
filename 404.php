@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme;
+namespace Tonik\Theme\NotFound;
 
 /*
 |------------------------------------------------------------------
@@ -12,26 +12,25 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 /**
  * Renders 404 page header.
  *
- * @see do_action('theme/index/header')
- * @uses resources/templates/partials/header.tpl.php
- */
-function render_header()
+ * @see resources/templates/index.tpl.php
 {
     template('partials/header', [
         'title' => __('Not Found'),
         'lead' => __('The page you are looking for no longer exists.'),
     ]);
 }
-add_action('theme/index/header', 'AppTheme\render_header');
+add_action('theme/index/header', 'Tonik\Theme\NotFound\render_header');
 
 /**
  * Renders 404 page.
  *
- * @uses resources/templates/index.tpl.php
+ * @see resources/templates/index.tpl.php
+ */
+template('index');
  */
 template('index');

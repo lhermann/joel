@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme;
+namespace Tonik\Theme\Sidebar;
 
 /*
 |------------------------------------------------------------------
@@ -12,11 +12,11 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 /**
  * Renders sidebar.
  *
- * @uses resources/templates/partials/sidebar.tpl.php
+ * @see resources/templates/partials/sidebar.tpl.php
  */
 template('partials/sidebar');

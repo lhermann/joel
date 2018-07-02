@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme;
+namespace Tonik\Theme\Header;
 
 /*
 |------------------------------------------------------------------
@@ -12,11 +12,11 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 /**
- * Renders layout's header.
+ * Renders layout's head.
  *
- * @uses resources/templates/layout/header.tpl.php
+ * @see resources/templates/layout/head.tpl.php
  */
-template('layout/header');
+template('layout/head');

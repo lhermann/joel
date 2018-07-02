@@ -1,0 +1,45 @@
+<?php
+
+<<<<<<< HEAD
+namespace AppTheme\Structure;
+=======
+namespace Tonik\Theme\App\Structure;
+>>>>>>> tonic/master
+
+/*
+|----------------------------------------------------------------
+| Theme Navigation Areas
+|----------------------------------------------------------------
+|
+| This file is for registering your theme custom navigation areas
+| where various menus can be assigned by site administrators.
+|
+*/
+
+<<<<<<< HEAD
+use function AppTheme\config;
+=======
+use function Tonik\Theme\App\config;
+>>>>>>> tonic/master
+
+/**
+ * Registers navigation areas.
+ *
+ * @return void
+ */
+function register_navigation_areas()
+{
+    register_nav_menus([
+<<<<<<< HEAD
+        'primary'    => __('Primary Menu', config('textdomain')),
+        'flyin'      => __('Flyin Menu', config('textdomain')),
+        'footer'     => __('Footer Menu', config('textdomain'))
+    ]);
+}
+add_action('after_setup_theme', 'AppTheme\Structure\register_navigation_areas');
+=======
+        'primary' => __('Primary', config('textdomain')),
+    ]);
+}
+add_action('after_setup_theme', 'Tonik\Theme\App\Structure\register_navigation_areas');
+>>>>>>> tonic/master

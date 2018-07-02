@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Structure;
+namespace Tonik\Theme\App\Structure;
 
 /*
 |-----------------------------------------------------------
@@ -40,4 +40,4 @@ function add_image_sizes()
     // add WordPress standard Thumbnail
     set_post_thumbnail_size( 320, 180, true );
 }
-add_action('after_setup_theme', 'AppTheme\Structure\add_image_sizes');
+add_action('after_setup_theme', 'Tonik\Theme\App\Structure\add_image_sizes');

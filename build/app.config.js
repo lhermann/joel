@@ -1,7 +1,8 @@
-const path = require("path");
-const merge = require("webpack-merge");
+const path = require('path')
+const merge = require('webpack-merge')
 
-const config = require("../config/app");
+const env = require('./utils/env')
+const config = require('../config/app')
 
 module.exports = merge(
     {
@@ -80,5 +81,78 @@ module.exports = merge(
             }
         }
     },
-    config
-);
+
+    font: {
+      filename: env('FILENAME_FONT', 'fonts/[name].[ext]')
+    },
+
+    image: {
+      filename: env('FILENAME_IMAGE', 'images/[path][name].[ext]')
+    },
+
+    javascript: {
+      filename: env('FILENAME_JAVASCRIPT', 'js/[name].js')
+    },
+
+    external: {
+      image: {
+        filename: env('FILENAME_EXTERNAL_IMAGE', 'images/[name].[ext]')
+      },
+      font: {
+        filename: env('FILENAME_EXTERNAL_FONT', 'fonts/[name].[ext]')
+      }
+    }
+  },
+
+  /**
+   * List of libraries which will be provided
+   * within application scripts as external.
+   *
+   * @type {Object}
+   */
+  externals: {
+    jquery: 'jQuery',
+  },
+
+  /**
+   * List of custom modules resolving.
+   *
+   * @type {Object}
+   */
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
+
+  /**
+   * Settings of other build features.
+   *
+   * @type {Object}
+   */
+  settings: {
+    sourceMaps: env('SOURCEMAPS', true),
+    styleLint: {
+      context: 'resources/assets'
+    },
+    autoprefixer: {
+      browsers: ['last 2 versions', '> 1%'],
+    },
+    browserSync: {
+      host: env('BROWSERSYNC_HOST', 'localhost'),
+      port: env('BROWSERSYNC_PORT', 3000),
+      proxy: env('BROWSERSYNC_PROXY', 'http://localhost:8080/'),
+      open: env('BROWSERSYNC_OPEN', false),
+      reloadDelay: env('BROWSERSYNC_DELAY', 500),
+      files: [
+        '*.php',
+        'app/**/*.php',
+        'resources/templates/**/*.php',
+        'resources/assets/js/**/*.js',
+        'resources/assets/sass/**/*.{sass,scss}',
+        'resources/assets/images/**/*.{jpg,jpeg,png,gif,svg}',
+        'resources/assets/fonts/**/*.{eot,ttf,woff,woff2,svg}'
+      ]
+    }
+  }
+}, config)

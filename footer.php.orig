@@ -1,0 +1,36 @@
+<?php
+
+<<<<<<< HEAD
+namespace AppTheme;
+=======
+namespace Tonik\Theme\Footer;
+>>>>>>> tonic/master
+
+/*
+|------------------------------------------------------------------
+| Footer Controller
+|------------------------------------------------------------------
+|
+| Controller for outputting layout's closing markup. Template
+| rendered here should include `wp_footer()` function call.
+|
+*/
+
+<<<<<<< HEAD
+use function AppTheme\template;
+=======
+use function Tonik\Theme\App\template;
+>>>>>>> tonic/master
+
+/**
+ * Renders layout's footer.
+ *
+<<<<<<< HEAD
+ * @uses resources/templates/layout/footer.tpl.php
+ */
+template('layout/footer');
+=======
+ * @see resources/templates/layout/footer.tpl.php
+ */
+template('layout/footer');
+>>>>>>> tonic/master

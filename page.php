@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme;
+namespace Tonik\Theme\Page;
 
 /*
 |------------------------------------------------------------------
@@ -13,11 +13,11 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 /**
  * Renders single page.
  *
- * @uses resources/templates/single.tpl.php
+ * @see resources/templates/single.tpl.php
  */
 template('single');

@@ -1,0 +1,30 @@
+{
+<<<<<<< HEAD
+    "assets": {
+        "app": [
+            "./resources/assets/js/app.js",
+            "./resources/assets/sass/app.scss"
+        ],
+
+        "admin": [
+            "./resources/assets/js/admin.js",
+            "./resources/assets/sass/admin.scss"
+        ]
+    },
+
+    "settings": {
+        "browserSync": {
+            "host": "localhost",
+            "port": 3000,
+            "proxy": "joel.local/"
+        }
+    }
+=======
+  "assets": {
+    "app": [
+      "./resources/assets/js/app.js",
+      "./resources/assets/sass/app.scss"
+    ]
+  }
+>>>>>>> tonic/master
+}

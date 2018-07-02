@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Setup;
+namespace Tonik\Theme\App\Setup;
 
 /*
 |-----------------------------------------------------------
@@ -13,7 +13,7 @@ namespace AppTheme\Setup;
 |
 */
 
-use function AppTheme\theme;
+use function Tonik\Theme\App\theme;
 use Tonik\Gin\Foundation\Theme;
 use WP_Query;
 
@@ -40,4 +40,4 @@ function bind_services()
         return $query->posts;
     });
 }
-add_action('init', 'AppTheme\Setup\bind_services');
+add_action('init', 'Tonik\Theme\App\Setup\bind_services');

@@ -1,0 +1,24 @@
+/*
+<<<<<<< HEAD
+Theme Name: Joel
+Theme URI: https://github.com/lhermann/joel
+Description: The media archive Wordpress theme by Joel Media Ministry e.V.
+Version: 2.0.0-alpha.1
+Author: Lukas Hermann <lukher6@web.de>
+Author URI: https://github.com/lhermann
+Text Domain: joel
+=======
+This file is responsible only for providing theme information that are displayed
+in `Apperance > Themes`. Do not write in here any CSS declarations.
+
+Theme Name: {{ theme.name }}
+Theme URI: {{ theme.url }}
+Description: {{ theme.description }}
+Version: {{ theme.version }}
+Author: {{ theme.author }}
+Author URI: {{ theme.author.url }}
+Text Domain: {{ theme.textdomain }}
+>>>>>>> tonic/master
+License: GPLv2 License
+License URI: https://wordpress.org/about/gpl/
+*/

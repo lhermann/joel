@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme;
+namespace Tonik\Theme\Single;
 
 /*
 |------------------------------------------------------------------
@@ -13,11 +13,11 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
 
 /**
  * Renders single post.
  *
- * @uses resources/templates/single.tpl.php
+ * @see resources/templates/single.tpl.php
  */
 template( [ 'single', get_query_var( 'post_type' ) ] );

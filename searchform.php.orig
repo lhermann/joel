@@ -1,0 +1,40 @@
+<?php
+
+<<<<<<< HEAD
+namespace AppTheme;
+
+/*
+|------------------------------------------------------------------
+| Search Form Controller
+=======
+namespace Tonik\Theme\Searchform;
+
+/*
+|------------------------------------------------------------------
+| Searchform Controller
+>>>>>>> tonic/master
+|------------------------------------------------------------------
+|
+| The template controller for displaying search form markup.
+| It is displayed when website posts was not found.
+|
+*/
+
+<<<<<<< HEAD
+use function AppTheme\template;
+=======
+use function Tonik\Theme\App\template;
+>>>>>>> tonic/master
+
+/**
+ * Renders search form.
+ *
+<<<<<<< HEAD
+ * @uses resources/templates/partials/searchform.tpl.php
+ */
+template('partials/searchform');
+=======
+ * @see resources/templates/partials/searchform.tpl.php
+ */
+template('partials/searchform');
+>>>>>>> tonic/master

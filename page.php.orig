@@ -1,0 +1,37 @@
+<?php
+
+<<<<<<< HEAD
+namespace AppTheme;
+=======
+namespace Tonik\Theme\Page;
+>>>>>>> tonic/master
+
+/*
+|------------------------------------------------------------------
+| Page Controller
+|------------------------------------------------------------------
+|
+| Think about theme template files as some sort of controllers
+| from MVC design pattern. They should link application
+| logic with your theme view templates files.
+|
+*/
+
+<<<<<<< HEAD
+use function AppTheme\template;
+=======
+use function Tonik\Theme\App\template;
+>>>>>>> tonic/master
+
+/**
+ * Renders single page.
+ *
+<<<<<<< HEAD
+ * @uses resources/templates/single.tpl.php
+ */
+template('single');
+=======
+ * @see resources/templates/single.tpl.php
+ */
+template('single');
+>>>>>>> tonic/master

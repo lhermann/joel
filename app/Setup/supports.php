@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Setup;
+namespace Tonik\Theme\App\Setup;
 
 /*
 |-----------------------------------------------------------
@@ -13,7 +13,7 @@ namespace AppTheme\Setup;
 |
 */
 
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 
 /**
  * Adds various theme supports.
@@ -72,7 +72,7 @@ function add_theme_supports()
         'flex-height' => true
     ) );
 }
-add_action('after_setup_theme', 'AppTheme\Setup\add_theme_supports');
+add_action('after_setup_theme', 'Tonik\Theme\App\Setup\add_theme_supports');
 
 /**
  * Loads theme textdomain language files.
@@ -85,4 +85,4 @@ function load_textdomain() {
 
     load_theme_textdomain(config('textdomain'), "{$paths['directory']}/{$directories['languages']}");
 }
-add_action('after_setup_theme', 'AppTheme\Setup\load_textdomain');
+add_action('after_setup_theme', 'Tonik\Theme\App\Setup\load_textdomain');

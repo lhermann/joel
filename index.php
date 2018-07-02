@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme;
+namespace Tonik\Theme\Index;
 
 /*
 |------------------------------------------------------------------
@@ -13,11 +13,12 @@ namespace AppTheme;
 |
 */
 
-use function AppTheme\template;
+use function Tonik\Theme\App\template;
+
 
 /**
  * Renders index page.
  *
- * @uses resources/templates/index.tpl.php
+ * @see resources/templates/index.tpl.php
  */
 template('index');

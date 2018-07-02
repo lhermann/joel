@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Structure;
+namespace Tonik\Theme\App\Structure;
 
 /*
 |-----------------------------------------------------------
@@ -12,7 +12,7 @@ namespace AppTheme\Structure;
 |
 */
 
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 
 /**
  * Registers `media_series`, `media_speakers`, `media_topics` and `media_podcasts` custom taxonomies.

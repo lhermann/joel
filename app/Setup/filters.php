@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Setup;
+namespace Tonik\Theme\App\Setup;
 
 /*
 |-----------------------------------------------------------
@@ -29,8 +29,8 @@ function show_index_sidebar($status)
 
     return $status;
 }
-add_filter('theme/index/sidebar/visibility', 'AppTheme\Setup\show_index_sidebar');
-add_filter('theme/single/sidebar/visibility', 'AppTheme\Setup\show_index_sidebar');
+add_filter('theme/index/sidebar/visibility', 'Tonik\Theme\App\Setup\show_index_sidebar');
+add_filter('theme/single/sidebar/visibility', 'Tonik\Theme\App\Setup\show_index_sidebar');
 
 /**
  * Shortens posts excerpts to 60 words.

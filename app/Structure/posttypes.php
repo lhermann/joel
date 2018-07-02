@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Structure;
+namespace Tonik\Theme\App\Structure;
 
 /*
 |-----------------------------------------------------------
@@ -13,7 +13,7 @@ namespace AppTheme\Structure;
 |
 */
 
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 
 /**
  * Registers `media` custom post type.

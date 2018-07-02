@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Structure;
+namespace Tonik\Theme\App\Structure;
 
 /*
 |----------------------------------------------------------------
@@ -12,7 +12,7 @@ namespace AppTheme\Structure;
 |
 */
 
-use function AppTheme\config;
+use function Tonik\Theme\App\config;
 
 /**
  * Registers navigation areas.
@@ -27,4 +27,4 @@ function register_navigation_areas()
         'footer'     => __('Footer Menu', config('textdomain'))
     ]);
 }
-add_action('after_setup_theme', 'AppTheme\Structure\register_navigation_areas');
+add_action('after_setup_theme', 'Tonik\Theme\App\Structure\register_navigation_areas');

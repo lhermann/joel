@@ -1,0 +1,45 @@
+<?php
+
+<<<<<<< HEAD
+namespace AppTheme\Structure;
+=======
+namespace Tonik\Theme\App\Structure;
+>>>>>>> tonic/master
+
+/*
+|-----------------------------------------------------------
+| Theme Sidebars
+|-----------------------------------------------------------
+|
+| This file is for registering your theme sidebars,
+| Creates widgetized areas, which an administrator
+| of the site can customize and assign widgets.
+|
+*/
+
+<<<<<<< HEAD
+use function AppTheme\config;
+=======
+use function Tonik\Theme\App\config;
+>>>>>>> tonic/master
+
+/**
+ * Registers the widget areas.
+ *
+ * @return void
+ */
+function register_widget_areas()
+{
+    register_sidebar([
+        'id' => 'sidebar',
+        'name' => __('Sidebar', config('textdomain')),
+        'description' => __('Website sidebar', config('textdomain')),
+        'before_title' => '<h5>',
+        'after_title' => '</h5>',
+    ]);
+}
+<<<<<<< HEAD
+add_action('widgets_init', 'AppTheme\Structure\register_widget_areas');
+=======
+add_action('widgets_init', 'Tonik\Theme\App\Structure\register_widget_areas');
+>>>>>>> tonic/master

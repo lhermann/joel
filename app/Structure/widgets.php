@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTheme\Structure;
+namespace Tonik\Theme\App\Structure;
 
 /*
 |-----------------------------------------------------------
@@ -22,4 +22,4 @@ function register_widgets()
 {
     // register_widget('\My\Widget\Class');
 }
-add_action('widgets_init', 'AppTheme\Structure\register_widgets');
+add_action('widgets_init', 'Tonik\Theme\App\Structure\register_widgets');

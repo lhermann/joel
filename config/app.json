@@ -9,13 +9,5 @@
             "./resources/assets/js/admin.js",
             "./resources/assets/sass/admin.scss"
         ]
-    },
-
-    "settings": {
-        "browserSync": {
-            "host": "localhost",
-            "port": 3000,
-            "proxy": "joel.local/"
-        }
     }
 }
