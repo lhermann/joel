@@ -69,7 +69,6 @@ function set_recordings_post_type_admin_order($wp_query) {
             $wp_query->set('order', 'DESC');
         }
 
-        // var_dump($wp_query); die();
     }
 }
 add_filter ( 'pre_get_posts', 'Tonik\Theme\App\Structure\set_recordings_post_type_admin_order' );
