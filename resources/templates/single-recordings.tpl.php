@@ -66,8 +66,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
             </section>
 
 
-            <?php var_dump($series) ?>
-            <?php if (false): ?>
+            <?php if (get_field('podcast')): ?>
             <section id="podcast">
 
                 <?php template('partials/recordings-podcast') ?>
@@ -76,6 +75,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
             </section>
             <?php endif ?>
+
 
             <?php if (get_the_content()): ?>
             <section id="content">

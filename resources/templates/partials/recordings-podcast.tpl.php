@@ -1,17 +1,27 @@
 <?php
 use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\Legacy\trac_permalink;
+use function Tonik\Theme\App\asset_path;
+
+
+$podcast = wp_get_post_terms(get_the_ID(), 'podcasts')[0];
+$podcast->itunes = get_field('itunes_link', $podcast);
+$podcast->stitcher = get_field('stitcher_link', $podcast);
+
 ?>
 
-<div style="margin-right: .5em">
+<div class="u-mb">
     Diese Aufnahme ist als Podcast verfügbar:
-</div>
-<div style="margin-right: .5em">
-    <a href="https://itunes.apple.com/de/podcast/cannstatt-study-hour/id1297946445?mt=2" target="_blank"><img src="https://www.joelmediatv.de/wordpress/wp-content/themes/joelmedia/img/listen-on-apple-podcasts.svg" alt="Podcast auf Apple Podcasts anzeigen"></a>
-</div>
-<div style="margin-right: .5em">
-    <a href="https://www.stitcher.com/s?fid=154868&amp;refid=stpr" target="_blank"><img src="https://www.joelmediatv.de/wordpress/wp-content/themes/joelmedia/img/listen-on-stitcher.svg" alt="Podcast auf Stitcher anzeigen"></a>
-</div>
-<div>
-    <a href="https://www.joelmediatv.de/podcasts/cannstatt-study-hour/" target="_blank">RSS-Feed</a>
+    <a class="u-ml-" href="<?= $podcast->itunes ?>" target="_blank">
+        <img src="<?= asset_path('images/listen-on-apple-podcasts.svg') ?>"
+            alt="Podcast auf Apple Podcasts anzeigen">
+    </a>
+    <a class="u-ml-" href="<?= $podcast->stitcher ?>" target="_blank">
+        <img src="<?= asset_path('images/listen-on-stitcher.svg') ?>"
+            alt="Podcast auf Stitcher anzeigen">
+    </a>
+    <a class="c-btn c-btn--small c-btn--secondary u-ml-"
+        href="<?= get_term_link($podcast) ?>" target="_blank">
+        RSS-Feed
+    </a>
 </div>

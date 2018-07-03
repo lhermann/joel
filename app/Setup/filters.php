@@ -86,7 +86,8 @@ foreach ($scanned_directory as $file) {
  * it's own main query
  */
 function disable_main_query( &$query ) {
-    if($query->is_main_query() && $query->is_archive() && !is_admin())
+    if(is_admin() || $query->get( 'podcasts' )) return;
+    if($query->is_main_query() && $query->is_archive())
         $query->set('p', 1);
 }
 add_action('pre_get_posts', 'Tonik\Theme\App\Setup\disable_main_query', 10, 1);

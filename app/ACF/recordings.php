@@ -162,7 +162,7 @@ acf_add_local_field_group(array (
                 'class' => '',
                 'id' => '',
             ),
-            'taxonomy' => 'sprecher',
+            'taxonomy' => 'speakers',
             'field_type' => 'select',
             'allow_null' => 1,
             'add_term' => 0,

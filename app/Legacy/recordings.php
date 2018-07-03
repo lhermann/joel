@@ -8,6 +8,20 @@ namespace Tonik\Theme\App\Legacy;
 |-----------------------------------------------------------
 */
 
+
+function get_video_file( $post_id, $type = '', $postfix = '' ) {
+    $files = get_video_files($post_id, $type, 1);
+    if( isset( $files[$type.$postfix] ) ) return $files[$type.$postfix];
+    if( $type ) {
+        foreach ($files as $file) {
+            if( $file->type == $type ) return $file;
+        }
+        return null;
+    }
+    return reset($files);
+}
+
+
 /**
  * LEGACY
  * Returns video files for one post object

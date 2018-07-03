@@ -18,19 +18,18 @@ use function Tonik\Theme\App\template;
  * Renders 404 page header.
  *
  * @see resources/templates/index.tpl.php
-{
-    template('partials/header', [
-        'title' => __('Not Found'),
-        'lead' => __('The page you are looking for no longer exists.'),
-    ]);
-}
-add_action('theme/index/header', 'Tonik\Theme\NotFound\render_header');
+ */
+// {
+//     template('partials/header', [
+//         'title' => __('Not Found'),
+//         'lead' => __('The page you are looking for no longer exists.'),
+//     ]);
+// }
+// add_action('theme/index/header', 'Tonik\Theme\NotFound\render_header');
 
 /**
  * Renders 404 page.
  *
  * @see resources/templates/index.tpl.php
- */
-template('index');
  */
 template('index');
