@@ -283,10 +283,6 @@ function auto_add_to_podcast( $post_id ) {
     if( $_POST['post_type'] != 'recordings' ) return; // check if post-type is video or audio
     if( empty($_POST['acf']) ) return;
 
-    //temp
-    return;
-    // var_dump($_POST['acf']); die();
-
     $series_key = "field_53dfaf955292d";
     $podcast_key = "field_59dcf1e0346a5";
     $series = (int) $_POST['acf'][$series_key];
