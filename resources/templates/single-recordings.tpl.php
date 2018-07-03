@@ -65,6 +65,8 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
             </section>
 
+
+            <?php var_dump($series) ?>
             <?php if (false): ?>
             <section id="podcast">
 
