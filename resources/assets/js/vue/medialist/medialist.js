@@ -113,15 +113,21 @@ export default {
         },
         setParams(payload) {
             Object.assign(this.params, payload);
-            this.setCurrentSortingOption();
+            this.setInitialSortingOption();
         },
-        setCurrentSortingOption() {
+        /**
+         * Choose a sorting option that fits with the params
+         */
+        setInitialSortingOption() {
             for (let option of this.sortingOptions) {
-                if (this.params.order && this.params.order !== option.order)
+                if (
+                    this.params.order &&
+                    this.params.order !== option.params.order
+                )
                     continue;
                 if (
                     this.params.orderby &&
-                    this.params.orderby !== option.orderby
+                    this.params.orderby !== option.params.orderby
                 )
                     continue;
                 this.currentSortingOption = option;

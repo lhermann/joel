@@ -69,6 +69,7 @@ function set_recordings_post_type_admin_order($wp_query) {
             $wp_query->set('order', 'DESC');
         }
 
+        // var_dump($wp_query); die();
     }
 }
 add_filter ( 'pre_get_posts', 'Tonik\Theme\App\Structure\set_recordings_post_type_admin_order' );
@@ -218,7 +219,7 @@ if (is_admin()) :
     function remove_meta_boxes() {
         remove_meta_box('tagsdiv-speakers', 'recordings', 'side');
         remove_meta_box('tagsdiv-series', 'recordings', 'side');
-        remove_meta_box('tagsdiv-topics', 'recordings', 'side');
+        remove_meta_box('topicsdiv', 'recordings', 'side');
         remove_meta_box('tagsdiv-podcasts', 'recordings', 'side');
     }
     add_action( 'admin_menu', 'Tonik\Theme\App\Structure\remove_meta_boxes' );

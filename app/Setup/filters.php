@@ -125,6 +125,7 @@ add_filter('get_terms', 'Tonik\Theme\App\Setup\order_biblical_books', 10, 3);
  * can block the whole website otherwise
  */
 function add_async_attribute($tag, $handle) {
+    if(is_admin()) return $tag;
     return str_replace( ' src', ' async src', $tag );
 }
 add_filter('script_loader_tag', 'Tonik\Theme\App\Setup\add_async_attribute', 10, 2);
