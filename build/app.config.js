@@ -97,23 +97,24 @@ module.exports = merge(
       autoprefixer: {
         browsers: ["last 2 versions", "> 1%"]
       },
-      browserSync: {
-        // https: true,
-        host: env("BROWSERSYNC_HOST", "localhost"),
-        port: env("BROWSERSYNC_PORT", 8000),
-        proxy: env("BROWSERSYNC_PROXY", "http://joel.local/"),
-        open: env("BROWSERSYNC_OPEN", false),
-        reloadDelay: env("BROWSERSYNC_DELAY", 500),
-        files: [
-          "*.php",
-          "app/**/*.php",
-          "resources/templates/**/*.php",
-          "resources/assets/js/**/*.js",
-          "resources/assets/sass/**/*.{sass,scss}",
-          "resources/assets/images/**/*.{jpg,jpeg,png,gif,svg}",
-          "resources/assets/fonts/**/*.{eot,ttf,woff,woff2,svg}"
-        ]
-      }
+      browserSync: false
+      // browserSync: {
+      //   // https: true,
+      //   host: env("BROWSERSYNC_HOST", "localhost"),
+      //   port: env("BROWSERSYNC_PORT", 8000),
+      //   proxy: env("BROWSERSYNC_PROXY", "http://joel.local/"),
+      //   open: env("BROWSERSYNC_OPEN", false),
+      //   reloadDelay: env("BROWSERSYNC_DELAY", 500),
+      //   files: [
+      //     "*.php",
+      //     "app/**/*.php",
+      //     "resources/templates/**/*.php",
+      //     "resources/assets/js/**/*.js",
+      //     "resources/assets/sass/**/*.{sass,scss}",
+      //     "resources/assets/images/**/*.{jpg,jpeg,png,gif,svg}",
+      //     "resources/assets/fonts/**/*.{eot,ttf,woff,woff2,svg}"
+      //   ]
+      // }
     }
   },
   config
