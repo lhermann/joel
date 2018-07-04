@@ -10,7 +10,8 @@ use function Tonik\Theme\App\Helper\render_menu_for_flyin;
 
         <header class="c-flyin__header">
             <h2 class="c-flyin__title"><?= __('Menu', config('textdomain')) ?></h2>
-            <button class="c-btn c-btn--subtle c-btn--bigicon c-btn--square c-flyin__btn jsFlyinBtn"
+            <button class="c-btn c-btn--subtle c-btn--edgy c-btn--bigicon
+                c-btn--square c-flyin__btn jsFlyinBtn"
                 data-target="mobileNav" data-action="close">
                 <span class="u-ic-close"></span>
             </button>

@@ -7,128 +7,166 @@ use function Tonik\Theme\App\template;
 
 <?php template('partials/header') ?>
 
-<main role="main">
+<main role="main" class="o-wrapper o-wrapper--slim u-pt+">
 
-    <?php if ( theme('slides') ): ?>
-        <section id="slider" class="c-section c-section--flush">
+    <header>
+        <h1>Artikel</h1>
+    </header>
 
-            <?php template('vue-components/slider-init', [
-                'id' => 'main-slider',
-                'options' => [
-                    'mode' => 'initial',
-                    'teaser' => true
-                ]
-            ]) ?>
+    <div class="o-layout u-mv+@tablet">
+        <div class="o-layout__item u-pb">
+            <div class="o-ratio o-ratio--16:9">
+                <div class="o-ratio__content">
+                        <article class="c-post-preview c-post-preview--hero">
 
-        </section>
-    <?php endif ?>
+                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article1-1280x720.jpg')">
+                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
+                            </div>
 
+                            <header class="c-post-preview__header">
+                                <ul class="c-post-preview__meta">
+                                    <li>Christopher Kramp</li>
+                                    <li><span class="u-ic-folder"></span> Allgemein</li>
+                                    <li><span class="u-ic-comment"></span> 3</li>
+                                </ul>
+                                <a href="../../patterns/04-pages-post/04-pages-post.html">
+                                    <h3 class="c-post-preview__title">„Sola Veritas“ – Die neue große Serie zur Geschichte der Reformation</h3>
+                                </a>
+                                <div class="c-post-preview__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
+                            </header>
 
-    <section id="promo-list" class="o-wrapper o-wrapper--no-padding c-section u-mt">
+                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
+                                <span>Dec<br><strong>31</strong><br>2012</span>
+                            </time>
 
-        <?php template('partials/promo-list', ['style_modifier' => 'o-overflow--padding']) ?>
-
-    </section>
-
-
-    <section id="medialists" class="o-wrapper c-section">
-
-        <div class="o-layout o-layout--large u-hidden-until@tablet">
-            <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-1/1">
-
-                <h2 class="u-h3">Beliebte Videos</h2>
-
-                <?php template('vue-components/medialist-init', [
-                    'id' => 'medialist-popular',
-                    'options' => [
-                        'namespace' => 'wordpress-popular-posts/v1/',
-                        'route' => 'popular-posts'
-                    ],
-                    'params' => [
-                        'post_type' => 'recordings',
-                        'limit' => 5
-                    ]
-                ]) ?>
-
-            </div>
-            <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-hidden-until@tablet">
-
-                <h3>
-                    <a class="c-link c-link--dotted" href="#">
-                        Neue Serien
-                    </a>
-                </h3>
-
-                <?php template('vue-components/medialist-init', [
-                    'id' => 'medialist-series',
-                    'options' => [
-                        'route' => 'series'
-                    ],
-                    'params' => [
-                        'per_page' => 4,
-                        'order' => 'desc',
-                        'orderby' => 'id'
-                    ]
-                ]) ?>
-
-            </div>
-            <div class="o-layout__item u-1/3 u-hidden-until@desktop">
-
-                <h3>
-                    <a class="c-link c-link--dotted" href="#">
-                        Tägliche Andachten
-                    </a>
-                </h3>
-
-                <?php template('vue-components/medialist-init', [
-                    'id' => 'medialist-devotional',
-                    'options' => [],
-                    'params' => [
-                        'per_page' => 5,
-                        'series' => 368 // mit Gott leben
-                    ]
-                ]) ?>
-
+                        </article>
+                </div>
             </div>
         </div>
+        <div class="o-layout__item u-pb u-1/2@tablet">
+            <div class="o-ratio o-ratio--16:9">
+                <div class="o-ratio__content">
+                        <article class="c-post-preview ">
 
-        <?php //template('vue-components/medialist-init', ['style_modifier' => 'u-hidden-from@tablet']) ?>
+                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article2-1280x720.jpg')">
+                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
+                            </div>
 
-        <?php /*template('vue-components/medialist-init', [
-            'id' => 'medialist-1',
-            'options' => [
-                'pagination' => 'normal'
-            ],
-            'params' => [
-                'per_page' => 10
-            ]
-        ])*/ ?>
+                            <header class="c-post-preview__header">
+                                <ul class="c-post-preview__meta">
+                                    <li>Christopher Kramp</li>
+                                    <li><span class="u-ic-folder"></span> Allgemein</li>
+                                    <li><span class="u-ic-comment"></span> 3</li>
+                                </ul>
+                                <a href="../../patterns/04-pages-post/04-pages-post.html">
+                                    <h3 class="c-post-preview__title">Joel Media Spezial 2017: „Franziskus, Trump und die Reformation“ am 25. Februar</h3>
+                                </a>
+                            </header>
 
-    </section>
+                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
+                                <span>Dec<br><strong>31</strong><br>2012</span>
+                            </time>
+
+                        </article>
+                </div>
+            </div>
+        </div>
+        <div class="o-layout__item u-pb u-1/2@tablet">
+            <div class="o-ratio o-ratio--16:9">
+                <div class="o-ratio__content">
+                        <article class="c-post-preview ">
+
+                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article3-1280x720.jpg')">
+                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
+                            </div>
+
+                            <header class="c-post-preview__header">
+                                <ul class="c-post-preview__meta">
+                                    <li>Christopher Kramp</li>
+                                    <li><span class="u-ic-folder"></span> Allgemein</li>
+                                    <li><span class="u-ic-comment"></span> 3</li>
+                                </ul>
+                                <a href="../../patterns/04-pages-post/04-pages-post.html">
+                                    <h3 class="c-post-preview__title">Ausblick auf ein geschichtsträchtiges Jahr</h3>
+                                </a>
+                            </header>
+
+                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
+                                <span>Dec<br><strong>31</strong><br>2012</span>
+                            </time>
+
+                        </article>
+                </div>
+            </div>
+        </div>
+        <div class="o-layout__item u-pb u-1/2@tablet">
+            <div class="o-ratio o-ratio--16:9">
+                <div class="o-ratio__content">
+                        <article class="c-post-preview ">
+
+                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article4-1280x720.jpg')">
+                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
+                            </div>
+
+                            <header class="c-post-preview__header">
+                                <ul class="c-post-preview__meta">
+                                    <li>Christopher Kramp</li>
+                                    <li><span class="u-ic-folder"></span> Allgemein</li>
+                                    <li><span class="u-ic-comment"></span> 3</li>
+                                </ul>
+                                <a href="../../patterns/04-pages-post/04-pages-post.html">
+                                    <h3 class="c-post-preview__title">Missionsprojekt Hacksaw Ridge</h3>
+                                </a>
+                            </header>
+
+                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
+                                <span>Dec<br><strong>31</strong><br>2012</span>
+                            </time>
+
+                        </article>
+                </div>
+            </div>
+        </div>
+        <div class="o-layout__item u-pb u-1/2@tablet">
+            <div class="o-ratio o-ratio--16:9">
+                <div class="o-ratio__content">
+                        <article class="c-post-preview ">
+
+                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article5-1280x720.jpg')">
+                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
+                            </div>
+
+                            <header class="c-post-preview__header">
+                                <ul class="c-post-preview__meta">
+                                    <li>Christopher Kramp</li>
+                                    <li><span class="u-ic-folder"></span> Allgemein</li>
+                                    <li><span class="u-ic-comment"></span> 3</li>
+                                </ul>
+                                <a href="../../patterns/04-pages-post/04-pages-post.html">
+                                    <h3 class="c-post-preview__title">„Weltengeschichte“ – die neue Vortragsreihe live ab dem 23. September</h3>
+                                </a>
+                            </header>
+
+                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
+                                <span>Dec<br><strong>31</strong><br>2012</span>
+                            </time>
+
+                        </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TODO: Pagination -->
+
+    <?php if (have_posts()) : ?>
+    <?php while (have_posts()) : the_post() ?>
 
 
-    <section class="c-section">
 
-        <?php //template(['partials/slider', 'quotes']) ?>
-
-    </section>
-
-
-    <section class="o-wrapper c-section">
-
-        <h2><a class="c-link c-link--dotted" href="#">Blog</a></h2>
-        <?php //template('partials/article-grid') ?>
-
-    </section>
-
-    <section class="c-section c-section--alt u-spacer-top">
-
-        <?php //template('partials/newsletter-form') ?>
-
-    </section>
+    <?php endwhile ?>
+    <?php endif ?>
 
 </main>
-
-<?php //template('partials/footer') ?>
 
 <?php get_footer() ?>

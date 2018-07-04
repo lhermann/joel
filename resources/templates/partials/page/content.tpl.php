@@ -1,7 +1,7 @@
 <article class="c-wp-article">
     <h1><?php the_title(); ?></h1>
 
-    <time>
+    <time class="u-hidden-visually">
         <small><?php the_date(); ?></small>
     </time>
 

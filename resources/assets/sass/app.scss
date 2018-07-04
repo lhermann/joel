@@ -187,7 +187,7 @@ hr {
 }
 
 .o-wrapper--slim {
-  max-width: 800px;
+    max-width: 800px;
 }
 
 .o-wrapper--no-padding {
@@ -203,7 +203,7 @@ hr {
  * avoiding the 1px gap
  */
 .o-ratio__content {
-  height: 100.2%;
+    height: 100.2%;
 }
 
 /*
@@ -261,6 +261,7 @@ $header-height: 56px;
 @import "components.slider";
 @import "components.slide";
 @import "components.spinner";
+@import "components.wp-article";
 
 .c-logo {
     min-width: 36px;

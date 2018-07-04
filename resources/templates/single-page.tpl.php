@@ -10,7 +10,7 @@ use function Tonik\Theme\App\template;
 
     <?php while (have_posts()): the_post() ?>
 
-        <?php template(['partials/post/content', get_post_format()]); ?>
+        <?php template('partials/page/content'); ?>
 
     <?php endwhile; ?>
 

@@ -84,9 +84,12 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
                     <?php if (strlen(get_the_content()) > 600): ?>
 
-                        <div class="u-text-left u-mb- u-show-more">
+                        <div class="c-wp-article u-text-left u-mb- u-show-more">
+
                             <?php the_content() ?>
+
                         </div>
+
                         <button class="c-btn c-btn--ghost c-btn--subtle c-btn--tiny u-ph jsToggle"
                             data-target=".u-show-more"
                             data-class="is-visible">

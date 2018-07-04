@@ -23,5 +23,10 @@
     <p>
         <strong>WP Query:</strong>
         <?php print_r( $wp_query->query ) ?>
+        <br>
+        <strong>Post Count:</strong> <?= count($wp_query->posts) ?>
+        <br>
+        <strong>query_vars:</strong>
+        <?php print_r($wp_query->query_vars) ?>
     </p>
 </div>

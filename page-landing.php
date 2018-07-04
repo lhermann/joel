@@ -1,4 +1,9 @@
 <?php
+/**
+ * Template Name: Landing
+ *
+ * @package WordPress
+ */
 
 namespace Tonik\Theme\Page;
 
@@ -20,4 +25,4 @@ use function Tonik\Theme\App\template;
  *
  * @see resources/templates/single.tpl.php
  */
-template(['single', 'page']);
+template('landing');

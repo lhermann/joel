@@ -83,11 +83,11 @@ foreach ($scanned_directory as $file) {
 /**
  * Disable the main query on archive fields
  * All list are generated through REST API calls, so we don't need WP to run
- * it's own main query
+ * it's own queries on certain archive pages
  */
 function disable_main_query( &$query ) {
-    if(is_admin() || $query->get( 'podcasts' )) return;
-    if($query->is_main_query() && $query->is_archive())
+    // var_dump($query); die();
+    if(in_array( $query->get('archive'), ['series', 'speakers', 'topics']))
         $query->set('p', 1);
 }
 add_action('pre_get_posts', 'Tonik\Theme\App\Setup\disable_main_query', 10, 1);

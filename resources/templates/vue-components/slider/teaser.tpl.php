@@ -16,7 +16,7 @@ if( Store::isset_then_set('vue-slider-teaser-component') ) return;
                         Neue Videos
                     </div>
                     <div class="c-collapsible__btn">
-                        <button class="c-btn c-btn--subtle c-btn--square u-defocus"
+                        <button class="c-btn c-btn--subtle c-btn--square c-btn--edgy u-defocus"
                             @click="onCollapseClick">
                             <span class="u-ic-unfold_less"
                                 v-show="teaserCollapsed">

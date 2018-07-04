@@ -21,7 +21,11 @@ use function Tonik\Theme\App\template;
             </div>
 
             <div class="o-pack__item c-site-header__item u-text-right">
-                <button class="c-btn c-btn--subtle c-btn--bigicon c-btn--square c-site-header__hamburger jsFlyinBtn" data-target="mobileNav" data-action="open">
+                <button class="c-btn c-btn--subtle c-btn--edgy c-btn--bigicon
+                    c-btn--square c-site-header__hamburger jsFlyinBtn"
+                    data-target="mobileNav"
+                    data-action="open"
+                >
                     <span class="u-ic-menu"></span>
                 </button>
             </div>
