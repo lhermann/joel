@@ -8,6 +8,39 @@ namespace Tonik\Theme\App\Helper;
 |-----------------------------------------------------------
 */
 
+
+/**
+ * Recursively scann a directory
+ */
+function recursively_scann_dir($dir) {
+
+    $scann = array_diff(scandir($dir), array('..', '.'));
+
+    foreach ($scann as $key => $file) {
+        $subdir = $dir.'/'.$file;
+
+        if (is_dir($subdir)) {
+
+            // recursively scann
+            $subscan = recursively_scann_dir($subdir);
+
+            unset( $scann[ array_search($file, $scann) ] );
+
+            // add full path to $subscann
+            array_walk( $subscan, function(&$item, $key, $prefix){
+                $item = $prefix.'/'.$item;
+            }, $file);
+
+            // merge the lists
+            $scann = array_merge($scann, $subscan);
+
+        }
+    }
+
+    return $scann;
+}
+
+
 /**
  * Get the url currently in the browser's address bar, or compare a argument
  * with it.

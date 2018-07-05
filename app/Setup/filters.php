@@ -14,6 +14,7 @@ namespace Tonik\Theme\App\Setup;
 */
 
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\Helper\recursively_scann_dir;
 
 /**
  * Hides sidebar on index template on specific views.
@@ -43,10 +44,12 @@ function modify_excerpt_length()
 }
 add_filter('excerpt_length', 'Tonik\Theme\App\Setup\modify_excerpt_length');
 
+
 /**
  * Remove p-tags in term description
  */
 remove_filter('term_description', 'wpautop');
+
 
 /*
  * Get a recursive directory tree form the partials directory and add the
@@ -58,23 +61,15 @@ function add_default_template_context($context) {
     return $context;
 }
 
-$partials_dir = get_stylesheet_directory().'/'.config('directories')['templates'];
-$scanned_directory = array_diff(scandir($partials_dir), array('..', '.'));
-foreach ($scanned_directory as $key => $file) {
-    $subdir = $partials_dir.'/'.$file;
-    if (is_dir($subdir)) {
-        $scanned_subdir = array_diff(scandir($subdir), array('..', '.'));
-        unset($scanned_directory[array_search($file, $scanned_directory)]);
-        array_walk($scanned_subdir, function(&$item, $key, $prefix){ $item = $prefix.'/'.$item; }, $file);
-        $scanned_directory = array_merge($scanned_directory, $scanned_subdir);
-    }
-}
+$partials_dir = config('paths')['directory'].'/'.config('directories')['templates'];
+$scanned_directory = recursively_scann_dir($partials_dir);
 // remove dotfiles
 $scanned_directory = array_filter($scanned_directory, function($item) { return strpos($item, '.') !== 0; });
 // remove .tpl in filenames
 array_walk($scanned_directory, function(&$item) {
     $item = str_replace('.tpl', '', $item);
 });
+// apply filter to all templates
 foreach ($scanned_directory as $file) {
     add_filter('tonik/gin/template/context/'.$file, 'Tonik\Theme\App\Setup\add_default_template_context');
 }

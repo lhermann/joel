@@ -6,6 +6,7 @@ use Tonik\Gin\Asset\Asset;
 use Tonik\Gin\Foundation\Theme;
 use Tonik\Gin\Template\Template;
 
+
 /**
  * Gets theme instance.
  *
@@ -23,6 +24,7 @@ function theme($key = null, $parameters = [])
     return Theme::getInstance();
 }
 
+
 /**
  * Gets theme config instance.
  *
@@ -38,6 +40,7 @@ function config($key = null)
 
     return theme('config');
 }
+
 
 /**
  * Renders template file with data.
@@ -56,6 +59,7 @@ function template($file, $data = [])
         ->render($data);
 }
 
+
 /**
  * Gets asset instance.
  *
@@ -70,6 +74,7 @@ function asset($file)
     return $asset->setFile($file);
 }
 
+
 /**
  * Gets asset file from public directory.
  *
@@ -81,6 +86,8 @@ function asset_path($file)
 {
     return asset($file)->getUri();
 }
+
+
 
 /**
  * Store Singleton
