@@ -3,10 +3,12 @@
    ========================================================================== */
 
 .c-section {
-    margin-top: $unit-large;
+    padding-top: $unit;
+    padding-bottom: $unit;
 
     @include mq($from: tablet) {
-        margin-top: $unit-huge;
+        padding-top: $unit-large;
+        padding-bottom: $unit-large;
     }
 }
 
@@ -14,7 +16,8 @@
  * Top Margins
  * ****************************/
 .c-section--flush {
-    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 /*

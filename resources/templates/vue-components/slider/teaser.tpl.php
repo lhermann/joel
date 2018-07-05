@@ -9,7 +9,7 @@ if( Store::isset_then_set('vue-slider-teaser-component') ) return;
 <?= '<script type="text/x-template" id="slider-teaser-component">' ?>
 
     <div class="c-slider__teaser-container u-hidden-until@tablet">
-        <div class="o-wrapper u-h-100">
+        <div class="o-wrapper u-h100">
             <div class="c-slider__teaser c-collapsible" :class="{'is-collapsed': teaserCollapsed}">
                 <div class="c-collapsible__header">
                     <div class="c-collapsible__title u-h5">
