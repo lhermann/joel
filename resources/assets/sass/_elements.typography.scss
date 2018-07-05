@@ -9,11 +9,11 @@ $font-body: "Roboto", Sans-Serif;
 
 /* latin */
 @font-face {
-  font-family: "Varela Round";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Varela Round Regular"), local("VarelaRound-Regular"), url("../fonts/VarelaRound-Regular.woff") format("woff");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+    font-family: "Varela Round";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Varela Round Regular"), local("VarelaRound-Regular"), url("../fonts/VarelaRound-Regular.woff") format("woff");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
 /* latin */
@@ -26,20 +26,20 @@ $font-body: "Roboto", Sans-Serif;
 
 /* latin */
 @font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Roboto Light"), local("Roboto-Light"), url("../fonts/Roboto-Light.woff") format("woff");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 300;
+    src: local("Roboto Light"), local("Roboto-Light"), url("../fonts/Roboto-Light.woff") format("woff");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
 /* latin */
 @font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/Roboto-Medium.woff") format("woff");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/Roboto-Medium.woff") format("woff");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
 html {
@@ -52,13 +52,16 @@ html {
     }
 }
 
-h1,
+h1 {
+    font-family: $font-heading;
+    font-weight: 400;
+}
+
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: $font-heading;
     font-weight: 400;
 }
 

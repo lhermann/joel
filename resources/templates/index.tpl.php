@@ -1,6 +1,7 @@
 <?php
 use function Tonik\Theme\App\theme;
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 ?>
 
 <?php get_header() ?>
@@ -14,158 +15,69 @@ use function Tonik\Theme\App\template;
     </header>
 
     <div class="o-layout u-mv+@tablet">
-        <div class="o-layout__item u-pb">
-            <div class="o-ratio o-ratio--16:9">
-                <div class="o-ratio__content">
-                        <article class="c-post-preview c-post-preview--hero">
 
-                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article1-1280x720.jpg')">
-                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
+        <?php if (have_posts()): $i = 0; ?>
+        <?php while (have_posts()): the_post(); $i++ ?>
+
+            <div class="o-layout__item u-pb <?= $i > 1 ? 'u-1/2@tablet' : '' ?>">
+
+                <article class="c-excerpt">
+
+                    <div class="c-excerpt__image">
+                        <?= get_the_post_thumbnail(null, '360p') ?>
+                    </div>
+
+                    <a class="c-excerpt__clickspace"
+                        href="<?php the_permalink(); ?>">
+                        <?php __('Read article', config('textdomain')) ?>
+                    </a>
+
+                    <div class="c-excerpt__body <?= $i > 1 ? 'u-pb-' : '' ?>">
+
+                        <header class="c-excerpt__content">
+                            <a class="c-link c-link--white c-link--dotted"
+                                href="<?php the_permalink(); ?>"
+                                title="<?php the_title_attribute(); ?>">
+                                <h2 class="<?= $i > 1 ? 'u-h5 u-mv--' : 'u-mv-' ?>">
+                                    <?php the_title(); ?>
+                                </h2>
+                            </a>
+                        </header>
+
+                        <ul class="c-excerpt__meta u-small u-truncate">
+                            <li><?php the_author(); ?></li>
+                            <li><span class="u-ic-folder"></span> <?php the_category(', '); ?></li>
+                            <li><span class="u-ic-comment"></span> <?= get_comments_number() ?></li>
+                        </ul>
+
+                        <?php if ($i <= 1): ?>
+                            <div class="c-excerpt__content u-mt- u-hidden-until@tablet">
+                                <?php the_excerpt(); ?>
                             </div>
+                        <?php endif ?>
 
-                            <header class="c-post-preview__header">
-                                <ul class="c-post-preview__meta">
-                                    <li>Christopher Kramp</li>
-                                    <li><span class="u-ic-folder"></span> Allgemein</li>
-                                    <li><span class="u-ic-comment"></span> 3</li>
-                                </ul>
-                                <a href="../../patterns/04-pages-post/04-pages-post.html">
-                                    <h3 class="c-post-preview__title">„Sola Veritas“ – Die neue große Serie zur Geschichte der Reformation</h3>
-                                </a>
-                                <div class="c-post-preview__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-                            </header>
+                    </div>
 
-                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
-                                <span>Dec<br><strong>31</strong><br>2012</span>
-                            </time>
+                    <time class="c-excerpt__date
+                        <?= $i === 1 ? 'c-excerpt__date--big' : '' ?> u-center"
+                        datetime="<?php the_time('c'); ?>">
+                        <span>
+                            <?php the_time('M'); ?>
+                            <br><strong><?php the_time('d'); ?></strong>
+                            <br><?php the_time('Y'); ?>
+                        </span>
+                    </time>
 
-                        </article>
-                </div>
+                </article>
+
             </div>
-        </div>
-        <div class="o-layout__item u-pb u-1/2@tablet">
-            <div class="o-ratio o-ratio--16:9">
-                <div class="o-ratio__content">
-                        <article class="c-post-preview ">
 
-                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article2-1280x720.jpg')">
-                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
-                            </div>
+        <?php endwhile ?>
+        <?php endif ?>
 
-                            <header class="c-post-preview__header">
-                                <ul class="c-post-preview__meta">
-                                    <li>Christopher Kramp</li>
-                                    <li><span class="u-ic-folder"></span> Allgemein</li>
-                                    <li><span class="u-ic-comment"></span> 3</li>
-                                </ul>
-                                <a href="../../patterns/04-pages-post/04-pages-post.html">
-                                    <h3 class="c-post-preview__title">Joel Media Spezial 2017: „Franziskus, Trump und die Reformation“ am 25. Februar</h3>
-                                </a>
-                            </header>
-
-                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
-                                <span>Dec<br><strong>31</strong><br>2012</span>
-                            </time>
-
-                        </article>
-                </div>
-            </div>
-        </div>
-        <div class="o-layout__item u-pb u-1/2@tablet">
-            <div class="o-ratio o-ratio--16:9">
-                <div class="o-ratio__content">
-                        <article class="c-post-preview ">
-
-                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article3-1280x720.jpg')">
-                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
-                            </div>
-
-                            <header class="c-post-preview__header">
-                                <ul class="c-post-preview__meta">
-                                    <li>Christopher Kramp</li>
-                                    <li><span class="u-ic-folder"></span> Allgemein</li>
-                                    <li><span class="u-ic-comment"></span> 3</li>
-                                </ul>
-                                <a href="../../patterns/04-pages-post/04-pages-post.html">
-                                    <h3 class="c-post-preview__title">Ausblick auf ein geschichtsträchtiges Jahr</h3>
-                                </a>
-                            </header>
-
-                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
-                                <span>Dec<br><strong>31</strong><br>2012</span>
-                            </time>
-
-                        </article>
-                </div>
-            </div>
-        </div>
-        <div class="o-layout__item u-pb u-1/2@tablet">
-            <div class="o-ratio o-ratio--16:9">
-                <div class="o-ratio__content">
-                        <article class="c-post-preview ">
-
-                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article4-1280x720.jpg')">
-                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
-                            </div>
-
-                            <header class="c-post-preview__header">
-                                <ul class="c-post-preview__meta">
-                                    <li>Christopher Kramp</li>
-                                    <li><span class="u-ic-folder"></span> Allgemein</li>
-                                    <li><span class="u-ic-comment"></span> 3</li>
-                                </ul>
-                                <a href="../../patterns/04-pages-post/04-pages-post.html">
-                                    <h3 class="c-post-preview__title">Missionsprojekt Hacksaw Ridge</h3>
-                                </a>
-                            </header>
-
-                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
-                                <span>Dec<br><strong>31</strong><br>2012</span>
-                            </time>
-
-                        </article>
-                </div>
-            </div>
-        </div>
-        <div class="o-layout__item u-pb u-1/2@tablet">
-            <div class="o-ratio o-ratio--16:9">
-                <div class="o-ratio__content">
-                        <article class="c-post-preview ">
-
-                            <div class="c-post-preview__bg" style="background-image: url('/images/sample/article5-1280x720.jpg')">
-                                <a href="../../patterns/04-pages-post/04-pages-post.html" class="c-post-preview__clickspace"></a>
-                            </div>
-
-                            <header class="c-post-preview__header">
-                                <ul class="c-post-preview__meta">
-                                    <li>Christopher Kramp</li>
-                                    <li><span class="u-ic-folder"></span> Allgemein</li>
-                                    <li><span class="u-ic-comment"></span> 3</li>
-                                </ul>
-                                <a href="../../patterns/04-pages-post/04-pages-post.html">
-                                    <h3 class="c-post-preview__title">„Weltengeschichte“ – die neue Vortragsreihe live ab dem 23. September</h3>
-                                </a>
-                            </header>
-
-                            <time class="c-post-preview__date u-center" data-time="1507055378" datetime="2017-10-03T18:29:38+00:00">
-                                <span>Dec<br><strong>31</strong><br>2012</span>
-                            </time>
-
-                        </article>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- TODO: Pagination -->
-
-    <?php if (have_posts()) : ?>
-    <?php while (have_posts()) : the_post() ?>
-
-
-
-    <?php endwhile ?>
-    <?php endif ?>
 
 </main>
 

@@ -233,34 +233,33 @@ hr {
  */
 $header-height: 56px;
 
+@import "components.badge";
 @import "components.buttons";
+@import "components.button-group";
+@import "components.branding";
+@import "components.collapsible";
+@import "components.dropdowns";
+@import "components.excerpt";
 @import "components.flyin"; /* 1 */
 @import "components.forms";
-@import "components.tabs";
-@import "components.program";
-@import "components.badge";
-@import "components.links";
-@import "components.site-header";
-@import "components.site-footer";
-@import "components.site-wrapper";
-@import "components.primary-nav";
-@import "components.branding";
-@import "components.search-bar";
 @import "components.hamburger";
+@import "components.header-bg";
+@import "components.links";
 @import "components.medialist";
 @import "components.mediaitem";
 @import "components.media-promo";
-@import "components.collapsible";
 // @import "components.media-article";
-@import "components.post-preview";
-@import "components.dropdowns";
-@import "components.posts";
+@import "components.primary-nav";
+@import "components.program";
+@import "components.search-bar";
 @import "components.section";
-@import "components.header-bg";
-@import "components.button-group";
+@import "components.site-header";
+@import "components.site-footer";
+@import "components.site-wrapper";
 @import "components.slider";
 @import "components.slide";
 @import "components.spinner";
+@import "components.tabs";
 @import "components.wp-article";
 
 .c-logo {
