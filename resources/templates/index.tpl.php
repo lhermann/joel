@@ -2,8 +2,10 @@
 use function Tonik\Theme\App\theme;
 use function Tonik\Theme\App\template;
 use function Tonik\Theme\App\config;
-?>
 
+global $wp_query;
+
+?>
 <?php get_header() ?>
 
 <?php template('partials/header') ?>
@@ -77,7 +79,20 @@ use function Tonik\Theme\App\config;
 
     </div>
 
-    <!-- TODO: Pagination -->
+    <!-- Pagination -->
+    <?php template('vue-components/pagination-init', [
+        'id' => 'pagination',
+        'style_modifier' => '',
+        'options' => [
+            'total'         => (int) $wp_query->found_posts,
+            'perPage'       => get_query_var('posts_per_page'),
+            'totalPages'    => $wp_query->max_num_pages,
+            'currentPage'   => max( 1, get_query_var('paged') ),
+            'verbosity'     => 'verbose',
+            'baseUrl'       => substr(get_pagenum_link(2), 0, -2)
+        ]
+    ]) ?>
+
 
 </main>
 

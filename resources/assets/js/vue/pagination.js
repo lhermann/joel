@@ -4,21 +4,12 @@
  */
 
 import Vue from "vue";
-import axios from "axios";
-import MedialistComponent from "./medialist/medialist.js";
-// import { cacheAdapterEnhancer } from "axios-extensions";
+import PaginationComponent from "./medialist/pagination.js";
 
-/* Axios
- **********************/
-axios.defaults.baseURL = "/wp-json/";
-axios.defaults.headers = { "cache-control": "max-age=31536000, public" };
-// Disabled caching adapter for performance reasons
-// axios.defaults.adapter = cacheAdapterEnhancer(axios.defaults.adapter, true);
-
-/* Instantiate Medialists
+/* Instantiate Dropdown
  **********************/
 let instances = [];
-let elements = document.querySelectorAll('[data-vue="medialist"]');
+let elements = document.querySelectorAll('[data-vue="pagination"]');
 for (var i = 0; i < elements.length; i++) {
     instances.push(vueInstance("#" + elements[i].getAttribute("id")));
 }
@@ -28,23 +19,26 @@ for (var i = 0; i < elements.length; i++) {
 function vueInstance(_id) {
     return new Vue({
         el: _id,
-        name: "MedialistRoot",
-        components: { MedialistComponent },
+        name: "Pagination",
+        components: { PaginationComponent },
         data() {
             return {
                 initDone: false,
-                params: {},
                 options: {}
             };
         },
         methods: {
             init(options, params) {
                 if (this.initDone) return;
-                Object.assign(this.params, params);
                 Object.assign(this.options, options);
                 this.initDone = true;
+            },
+            onPageClick(page) {
+                console.log(page);
+                window.location = this.options.baseUrl + page;
             }
-        }
+        },
+        mounted() {}
     });
 }
 

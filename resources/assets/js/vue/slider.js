@@ -21,20 +21,19 @@ axios.defaults.baseURL = "/wp-json/";
 var _slideTransition = 800;
 
 /* Instantiate Sliders
- **********************/
-var _sliderInstances = [];
-var sliders = document.getElementsByClassName("jsSlider");
-for (var i = 0; i < sliders.length; i++) {
-    let slider = sliders.item(i);
-    _sliderInstances.push(sliderInstance("#" + slider.getAttribute("id")));
+ *********************/
+let instances = [];
+let elements = document.querySelectorAll('[data-vue="slider"]');
+for (var i = 0; i < elements.length; i++) {
+    instances.push(vueInstance("#" + elements[i].getAttribute("id")));
 }
 
 /* Vue Instance
  **********************/
-function sliderInstance(_id) {
+function vueInstance(_id) {
     return new Vue({
         el: _id,
-        name: "SliderInstantiator",
+        name: "SliderRoot",
         components: { SliderComponent },
         data() {
             return {
@@ -54,3 +53,5 @@ function sliderInstance(_id) {
         }
     });
 }
+
+export default { instances };
