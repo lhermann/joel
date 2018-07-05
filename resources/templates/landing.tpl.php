@@ -131,9 +131,11 @@ use function Tonik\Theme\App\template;
         <div class="o-wrapper">
 
             <h2>
-                <a class="c-link c-link--dotted"
+                <span class="u-text-middle">Artikel</span>
+                <a class="c-btn c-btn--small c-btn--light u-default u-muted u-ml"
                     href="<?= get_permalink( get_page_by_path( 'artikel' ) ) ?>">
-                    Artikel
+                    Alle Artikel anzeigen
+                    <span class="u-ic-arrow_forward"></span>
                 </a>
             </h2>
 
