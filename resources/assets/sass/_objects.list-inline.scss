@@ -12,12 +12,16 @@
 
     > li {
         display: inline-block;
-        margin-right: $unit-tiny;
+        margin-right: $unit-small;
     }
 }
 
 .o-list-inline--nowrap > li {
     white-space: nowrap;
+}
+
+.o-list-inline--small > li {
+    margin-right: $unit-tiny;
 }
 
 .o-list-inline--large > li {

@@ -6,13 +6,40 @@ use function Tonik\Theme\App\template;
 
 <?php template('partials/header') ?>
 
-<main role="main" class="o-wrapper o-wrapper--slim u-pt+">
+<main role="main" class="o-wrapper o-wrapper--slim o-wrapper--flush">
 
-    <?php while (have_posts()): the_post() ?>
+    <div class="o-ratio o-ratio--16:9">
 
-        <?php template(['partials/post/content', get_post_format()]); ?>
+        <?= get_the_post_thumbnail(null, '360p', ['class' => 'o-ratio__content']) ?>
 
-    <?php endwhile; ?>
+    </div>
+
+    <div class="u-p u-mt">
+
+        <?php while (have_posts()): the_post() ?>
+
+            <?php template(['partials/post/content', get_post_format()]); ?>
+
+        <?php endwhile; ?>
+
+    </div>
+
+
+    <div class="u-center u-mv+">
+        <a class="c-btn c-btn--secondary" href="<?= get_permalink( get_page_by_path( 'artikel' ) ) ?>">
+            <span class="u-ic-arrow_back"></span>
+            Zurück zum Blog
+        </a>
+    </div>
+
+
+    <div class="u-p">
+
+        <hr>
+
+        <?php comments_template(); ?>
+
+    </div>
 
 </main>
 

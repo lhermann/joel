@@ -84,7 +84,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
                     <?php if (strlen(get_the_content()) > 600): ?>
 
-                        <div class="c-wp-article u-text-left u-mb- u-show-more">
+                        <div class="c-wp-styles u-text-left u-mb- u-show-more">
 
                             <?php the_content() ?>
 

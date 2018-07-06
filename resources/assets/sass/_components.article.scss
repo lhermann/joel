@@ -1,0 +1,24 @@
+/* ==========================================================================
+   #ARTICLE
+   ========================================================================== */
+
+.c-article {
+}
+
+    .c-article__meta {
+        @include inuit-font-size(14px, 1.5);
+
+        &,
+        a {
+            color: $c-textmuted;
+        }
+
+        a {
+            border-bottom: 1px dotted;
+
+            &:hover,
+            &:focus {
+                color: $c-text;
+            }
+        }
+    }

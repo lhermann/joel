@@ -26,7 +26,7 @@ use function Tonik\Theme\App\template;
 
     <section id="promo-list" class="c-section u-pt">
 
-        <div class="o-wrapper o-wrapper--no-padding">
+        <div class="o-wrapper o-wrapper--flush">
 
             <?php template('partials/landing/promo-list', [
                 'style_modifier' => 'o-overflow--padding'

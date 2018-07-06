@@ -190,7 +190,7 @@ hr {
     max-width: 800px;
 }
 
-.o-wrapper--no-padding {
+.o-wrapper--flush {
     padding-right: 0;
     padding-left: 0;
 }
@@ -233,6 +233,7 @@ hr {
  */
 $header-height: 56px;
 
+@import "components.article";
 @import "components.badge";
 @import "components.buttons";
 @import "components.button-group";
@@ -260,7 +261,7 @@ $header-height: 56px;
 @import "components.slide";
 @import "components.spinner";
 @import "components.tabs";
-@import "components.wp-article";
+@import "components.wp-styles";
 
 .c-logo {
     min-width: 36px;

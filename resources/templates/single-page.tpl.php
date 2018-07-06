@@ -6,11 +6,11 @@ use function Tonik\Theme\App\template;
 
 <?php template('partials/header') ?>
 
-<main role="main" class="o-wrapper o-wrapper--slim u-pt+">
+<main role="main" class="o-wrapper o-wrapper--slim u-mt+">
 
     <?php while (have_posts()): the_post() ?>
 
-        <?php template('partials/page/content'); ?>
+        <?php template('partials/post/content-simple'); ?>
 
     <?php endwhile; ?>
 
