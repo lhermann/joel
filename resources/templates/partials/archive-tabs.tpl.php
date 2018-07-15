@@ -17,7 +17,7 @@ $tabs = [
             <li class="o-layout__item u-1/4 c-tabs__item
                 <?= $request_uri === $tab['url'] ? 'is-active' : '' ?>"
             >
-                <a class="c-tabs__link u-advent-sans u-text-center" href="<?= $tab['url'] ?>">
+                <a class="c-tabs__link u-text-center" href="<?= $tab['url'] ?>">
                     <?= $tab['label'] ?>
                 </a>
             </li>

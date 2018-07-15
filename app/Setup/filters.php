@@ -82,7 +82,7 @@ foreach ($scanned_directory as $file) {
  */
 function disable_main_query( &$query ) {
     // var_dump($query); die();
-    if(in_array( $query->get('archive'), ['series', 'speakers', 'topics']))
+    if(in_array( $query->get('archive'), ['series', 'speakers', 'topics', 'podcasts']))
         $query->set('p', 1);
 }
 add_action('pre_get_posts', 'Tonik\Theme\App\Setup\disable_main_query', 10, 1);

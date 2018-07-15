@@ -68,6 +68,23 @@ function count_terms_associated_with_term( $term, $taxonomy_slug ) {
 };
 
 
+function get_series_of_podcast( $podcast ) {
+    global $wpdb;
+
+    $podcast_id = is_object($podcast) ? $podcast->term_id : $podcast;
+
+    $querystr = "
+        SELECT *
+        FROM $wpdb->terms AS term
+        JOIN $wpdb->term_taxonomy AS tax ON tax.term_id = term.term_id
+        JOIN $wpdb->termmeta AS meta ON meta.term_id = term.term_id
+        WHERE meta.meta_key = 'podcast'
+        AND meta.meta_value = $podcast_id;
+    ";
+
+    return $wpdb->get_results($querystr, OBJECT);
+}
+
 
 
 

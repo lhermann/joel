@@ -1,32 +1,44 @@
 <?php
 use function Tonik\Theme\App\config;
-use function Tonik\Theme\App\Legacy\trac_permalink;
 use function Tonik\Theme\App\asset_path;
+use function Tonik\Theme\App\Helper\get_series_of_podcast;
 
-$podcast = wp_get_post_terms(get_the_ID(), 'podcasts')[0];
 $podcast->itunes = get_field('itunes_link', $podcast);
 $podcast->stitcher = get_field('stitcher_link', $podcast);
 $podcast->image = get_field('image', $podcast);
-
-// var_dump($podcast);
+$podcast->series = get_series_of_podcast($podcast);
 
 ?>
 
 
-<div class="o-layout o-layout--middle u-mb">
+<div class="o-layout u-mb">
     <div class="o-layout__item u-2/3@tablet">
 
-        <div class="o-flag">
-            <div class="o-flag__img">
+        <div class="o-media">
+            <div class="o-media__img">
                 <?= wp_get_attachment_image($podcast->image, 'square80', null, ['class' => 'u-rounded']) ?>
             </div>
-            <div class="o-flag__body">
-                <h2 class="u-default u-muted u-mb0">Podcast:</h2>
-                <!-- <p class="u-muted u-small u-mb0">
-                    Diese Aufnahme ist als <strong>Podcast</strong> verfügbar:
-                </p> -->
+            <div class="o-media__body">
                 <h3 class="u-h5 u-mb--"><?= $podcast->name ?></h3>
-                <p class="u-small u-muted"><?= $podcast->description ?></p>
+                <div class="u-small u-muted">
+                    <p class="u-mb-"><?= $podcast->description ?></p>
+                    <p class="u-mb--">
+                        <?php if (count($podcast->series) == 1): ?>
+                            Dieser Podcast beinhaltet die folgende Serie:
+                        <?php else: ?>
+                            Dieser Podcast beinhaltet die folgenden Serien:
+                        <?php endif ?>
+                    </p>
+                    <ul class="u-mb0">
+                        <?php foreach ($podcast->series as $series): ?>
+                            <li>
+                                <a href="<?= get_term_link($series); ?>">
+                                    <?= $series->name ?>
+                                </a>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
             </div>
         </div>
 

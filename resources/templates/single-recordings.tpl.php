@@ -66,10 +66,19 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
             </section>
 
 
-            <?php if (get_field('podcast')): ?>
+            <?php if ($podcast = get_field('podcast')): ?>
             <section id="podcast">
 
-                <?php template('partials/recordings-podcast') ?>
+                <h2 class="u-h5 u-mb-">
+                    Podcast
+                    <small class="u-muted u-lighter u-ml-">
+                        Diese Aufnahme ist teil eines Podcasts
+                    </small>
+                </h2>
+
+                <?php template('partials/podcast',
+                    ['podcast' => get_term($podcast)]
+                ) ?>
 
                 <hr>
 
