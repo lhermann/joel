@@ -502,3 +502,9 @@ $header-height: 56px;
         margin-left: -$unit;
     }
 }
+
+.u-ib-until\@tablet {
+    @include mq($until: tablet) {
+        display: inline-block !important;
+    }
+}
