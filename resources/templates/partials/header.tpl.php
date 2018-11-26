@@ -8,7 +8,6 @@ use function Tonik\Theme\App\config;
     <div class="o-wrapper">
 
         <div class="c-site-header__flex">
-        <!-- <div class="o-pack o-pack--middle c-site-header__wrapper"> -->
 
             <div class="c-site-header__item">
                 <?php template('partials/branding') ?>

@@ -44,7 +44,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts');
  * @return void
  */
 function register_editor_stylesheets() {
-    add_editor_style(asset_path('css/app.css'));
+    add_editor_style(asset_path('css/editor-style.css'));
 }
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 

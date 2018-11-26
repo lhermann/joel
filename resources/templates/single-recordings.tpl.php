@@ -57,14 +57,14 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
     <div class="o-wrapper">
         <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
-            <section id="infobox">
+            <section id="infobox" class="u-pv">
 
                 <?php template('partials/recordings-meta') ?>
 
-                <hr>
 
             </section>
 
+            <hr>
 
             <?php if ($podcast = get_field('podcast')): ?>
             <section id="podcast">

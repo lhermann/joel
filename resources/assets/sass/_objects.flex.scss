@@ -5,6 +5,7 @@
 .o-flex {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: -$unit;
 
     // justify-content
     &--left { justify-content: flex-start }

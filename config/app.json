@@ -8,6 +8,8 @@
         "admin": [
             "./resources/assets/js/admin.js",
             "./resources/assets/sass/admin.scss"
-        ]
+        ],
+
+        "editor-style": ["./resources/assets/sass/editor-style.scss"]
     }
 }

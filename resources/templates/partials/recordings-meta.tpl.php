@@ -5,10 +5,10 @@ use function Tonik\Theme\App\Legacy\get_download_files;
 use function Tonik\Theme\App\Legacy\trac_permalink;
 ?>
 
-<div class="o-pack o-pack--middle o-pack--auto u-mv">
+<div class="o-flex o-flex--middle o-flex--between">
 
     <!-- Date -->
-    <div class="o-pack__item">
+    <div class="o-flex__item">
         <span class="u-hidden-until@desktop">Veröffentlicht am</span>
         <time class="u-bolder entry-date updated"
             datetime="<?= esc_attr( get_the_date( 'c' ) ); ?>">
@@ -18,7 +18,7 @@ use function Tonik\Theme\App\Legacy\trac_permalink;
 
     <!-- Klicks -->
     <?php if(function_exists('wpp_get_views')): ?>
-        <div class="o-pack__item">
+        <div class="o-flex__item">
             <span class="u-ic-visibility"></span>
             <?= wpp_get_views( get_the_ID() ) ?>
             <span class="u-hidden-until@mobile">Klicks</span>
@@ -28,7 +28,7 @@ use function Tonik\Theme\App\Legacy\trac_permalink;
 
     <!-- Download -->
     <div id="download"
-        class="o-pack__item u-text-right"
+        class="o-flex__item u-text-right"
         data-vue="dropdown"
     >
             <button id="download-btn"
@@ -93,7 +93,7 @@ use function Tonik\Theme\App\Legacy\trac_permalink;
 
     <!-- Share -->
     <div id="share"
-        class="o-pack__item u-text-right u-hidden-until@tablet"
+        class="o-flex__item u-text-right u-hidden-until@tablet"
         data-vue="dropdown"
     >
             <button id="share-btn"

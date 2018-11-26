@@ -153,8 +153,6 @@ hr {
 
 
 // OBJECTS
-//
-// Uncomment and add to this section as necessary.
 @import "~inuitcss/objects/objects.wrapper";
 @import "~inuitcss/objects/objects.layout";
 @import "~inuitcss/objects/objects.media";
@@ -165,9 +163,9 @@ hr {
 @import "~inuitcss/objects/objects.block";
 @import "~inuitcss/objects/objects.ratio";
 @import "~inuitcss/objects/objects.crop";
-@import "~inuitcss/objects/objects.pack";
+// @import "~inuitcss/objects/objects.pack";
 @import "objects.overflow";
-@import "objects.owl";
+// @import "objects.owl";
 @import "objects.grid";
 @import "objects.flex";
 

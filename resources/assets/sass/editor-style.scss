@@ -1,0 +1,264 @@
+/* ==========================================================================
+   JOEL EDITOR STYLE
+   ========================================================================== */
+
+// SETTINGS
+$inuit-global-font-size: 14px;
+$inuit-global-line-height: 21px;
+
+@import "settings.config";
+@import "~inuitcss/settings/settings.core";
+@import "settings.global";
+@import "settings.colors";
+
+
+
+// TOOLS
+@import "~inuitcss/tools/tools.font-size";
+@import "~inuitcss/tools/tools.clearfix";
+@import "~inuitcss/tools/tools.hidden";
+@import "~sass-mq/mq";
+@import "tools.clothoid";
+
+
+
+
+// GENERIC
+@import "~inuitcss/generic/generic.box-sizing";
+@import "~inuitcss/generic/generic.normalize";
+@import "~inuitcss/generic/generic.reset";
+@import "~inuitcss/generic/generic.shared";
+
+html {
+    -webkit-font-smoothing: antialiased; /* 3 */
+    -webkit-overflow-scrolling: touch;
+    padding: $unit;
+}
+
+a {
+    outline: 0;
+    text-decoration: none;
+    color: $c-link;
+
+    &:hover,
+    &:focus {
+        color: $c-link-hover;
+    }
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid $c-border;
+}
+
+
+
+
+// ELEMENTS
+@import "~inuitcss/elements/elements.page";
+@import "~inuitcss/elements/elements.headings";
+@import "~inuitcss/elements/elements.images";
+@import "~inuitcss/elements/elements.tables";
+@import "elements.typography";
+@import "elements.forms";
+
+[v-cloak] {
+    display: none;
+}
+
+
+// OBJECTS
+@import "~inuitcss/objects/objects.layout";
+@import "~inuitcss/objects/objects.media";
+@import "~inuitcss/objects/objects.flag";
+@import "~inuitcss/objects/objects.list-bare";
+@import "objects.list-inline";
+@import "~inuitcss/objects/objects.box";
+@import "~inuitcss/objects/objects.block";
+@import "~inuitcss/objects/objects.ratio";
+@import "~inuitcss/objects/objects.crop";
+@import "objects.overflow";
+@import "objects.grid";
+@import "objects.flex";
+
+
+// COMPONENTS
+@import "components.alert";
+@import "components.badge";
+@import "components.buttons";
+@import "components.button-group";
+@import "components.forms";
+@import "components.links";
+@import "components.program";
+@import "components.spinner";
+@import "components.tabs";
+@import "components.wp-styles";
+
+
+// UTILITIES
+@import "~inuitcss/utilities/utilities.widths";
+@import "~inuitcss/utilities/utilities.headings";
+@import "~inuitcss/utilities/utilities.hide";
+@import "utilities.animation";
+@import "utilities.icons";
+@import "utilities.orientation";
+@import "utilities.text-align";
+@import "utilities.show-more";
+
+/*
+ * Text Utilities
+ *************************/
+
+.u-lighter {
+    font-weight: lighter;
+}
+
+.u-normal {
+    font-weight: normal;
+}
+
+.u-bolder {
+    font-weight: bolder;
+}
+
+.u-bold {
+    font-weight: bold;
+}
+
+.u-advent-sans {
+    font-family: $font-heading !important;
+}
+
+.u-roboto {
+    font-family: $font-body !important;
+}
+
+.u-lead {
+    @include inuit-font-size(16px, $important: true);
+}
+
+.u-default {
+    @include inuit-font-size(14px, $important: true);
+}
+
+.u-small {
+    @include inuit-font-size(12px, $line-height: 1.2, $important: true);
+}
+
+.u-smaller {
+    @include inuit-font-size(10px, $line-height: 1.2, $important: true);
+}
+
+.u-white {
+    color: $c-white;
+}
+
+.u-textalt {
+    color: $c-textalt;
+}
+
+.u-textmuted {
+    color: $c-textmuted;
+}
+
+.u-muted {
+    opacity: 0.6;
+}
+
+.u-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*
+ * Box Style Utilities
+ *************************/
+
+.u-box-center {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.u-hover,
+.u-active {
+    margin-right: -$unit-tiny;
+    margin-left: -$unit-tiny;
+    border-radius: $global-radius;
+    padding-right: $unit-tiny;
+    padding-left: $unit-tiny;
+}
+
+.u-active {
+    background-color: rgba($c-green, 0.3);
+}
+
+.u-hover:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+
+    &.u-active {
+        background-color: rgba($c-green, 0.5);
+    }
+}
+
+.u-box-shadow {
+    box-shadow: $global-shadow;
+}
+
+.u-bg-white {
+    background-color: $c-white;
+}
+
+.u-anchor {
+    position: relative;
+}
+
+.u-rounded {
+    border-radius: $global-radius;
+}
+
+.u-border-left {
+    border-left: 1px solid $c-border;
+}
+
+.u-defocus:focus {
+    outline: none;
+}
+
+
+/*
+ * Specific Width Utilities
+ *************************/
+
+.u-160 {
+    width: 160px;
+}
+
+.u-320 {
+    width: 320px;
+}
+
+.u-min-220 {
+    min-width: 220px;
+}
+
+.u-h100 {
+    height: 100%;
+}
+
+/*
+ * Other Utilities
+ *************************/
+
+.u-spacer-top {
+    margin-top: $unit-large;
+
+    @include mq($from: tablet) {
+        margin-top: $unit-huge;
+    }
+}
+
+.u-transition {
+    transition: $global-transition;
+}

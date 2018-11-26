@@ -8,16 +8,16 @@ if( Store::isset_then_set('vue-medialist-component') ) return;
 <?= '<script type="text/x-template" id="medialist-component">' ?>
     <div>
 
-        <header v-if="title || tabs || sorting" class="u-mv">
-            <div class="o-pack o-pack--auto o-pack--middle">
-                <div v-if="title" class="o-pack__item u-1/2@tablet">
+        <header v-if="title || tabs || sorting" class="u-pv">
+            <div class="o-flex o-flex--middle o-flex--between">
+                <div v-if="title" class="o-flex__item">
                     <h2 class="u-mb0">{{ title }}</h2>
                 </div>
-                <div class="o-pack__item">
+                <div class="o-flex__item">
                     <div class="c-spinner" v-show="isLoading"></div>
                 </div>
                 <div v-if="sorting"
-                    class="o-pack__item u-1/2@tablet u-text-right">
+                    class="o-flex__item u-text-right">
 
                     <sorting-component
                         :options="sortingOptions"
