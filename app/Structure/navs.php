@@ -24,7 +24,8 @@ function register_navigation_areas()
     register_nav_menus([
         'primary'    => __('Primary Menu', config('textdomain')),
         'flyin'      => __('Flyin Menu', config('textdomain')),
-        'footer'     => __('Footer Menu', config('textdomain'))
+        'footer'     => __('Footer Menu', config('textdomain')),
+        'footer_sitemap' => __('Footer Sitemap', config('textdomain'))
     ]);
 }
 add_action('after_setup_theme', 'Tonik\Theme\App\Structure\register_navigation_areas');

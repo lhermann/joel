@@ -155,6 +155,4 @@ use function Tonik\Theme\App\template;
 
 </main>
 
-<?php //template('partials/footer') ?>
-
 <?php get_footer() ?>

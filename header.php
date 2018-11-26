@@ -17,6 +17,6 @@ use function Tonik\Theme\App\template;
 /**
  * Renders layout's head.
  *
- * @see resources/templates/layout/head.tpl.php
+ * @see resources/templates/layout/header.tpl.php
  */
-template('layout/head');
+template('layout/header');
