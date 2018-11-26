@@ -27,6 +27,8 @@
         <strong>Post Count:</strong> <?= count($wp_query->posts) ?>
         <br>
         <strong>query_vars:</strong>
-        <?php print_r($wp_query->query_vars) ?>
+        <div style="overflow: scroll;">
+            <?php var_dump($wp_query->query_vars) ?>
+        </div>
     </p>
 </div>

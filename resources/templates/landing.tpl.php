@@ -24,6 +24,7 @@ use function Tonik\Theme\App\template;
     <?php endif ?>
 
 
+    <?php if (false): ?>
     <section id="promo-list" class="c-section u-pt">
 
         <div class="o-wrapper o-wrapper--flush">
@@ -35,6 +36,7 @@ use function Tonik\Theme\App\template;
         </div>
 
     </section>
+    <?php endif ?>
 
 
     <section id="medialists" class="c-section">

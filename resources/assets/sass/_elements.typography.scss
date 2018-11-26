@@ -47,9 +47,9 @@ html {
     font-family: $font-body;
     font-weight: 300;
 
-    @include mq($until: tablet) {
-        font-size: 12px;
-    }
+    // @include mq($until: tablet) {
+    //     font-size: 12px;
+    // }
 }
 
 h1 {
