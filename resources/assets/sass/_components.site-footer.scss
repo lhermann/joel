@@ -45,6 +45,16 @@
             margin-left: 0;
             list-style: none;
 
+            > li {
+                display: inline-block;
+
+            }
+
+            > li:not(:last-child)::after {
+                padding: 0 $unit-tiny;
+                content: "\0a\b7";
+            }
+
             a {
                 color: $c-gray-4;
 
@@ -54,12 +64,4 @@
                 }
             }
 
-            &--inline > li {
-                display: inline-block;
-            }
-
-            &--middot > li:not(:last-child)::after {
-                padding: 0 $unit-tiny;
-                content: "\0a\b7";
-            }
         }

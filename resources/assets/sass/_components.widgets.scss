@@ -1,0 +1,25 @@
+/* ==========================================================================
+   #WIDGET
+   ========================================================================== */
+
+.c-widget {
+    ul,
+    .menu {
+        margin-left: 0;
+        list-style: none;
+    }
+
+    li a,
+    .menu-item a {
+        color: $c-gray-4;
+
+        &:focus,
+        &:hover {
+            color: $c-gray-3;
+        }
+    }
+
+    .current-menu-item a {
+        color: $c-white;
+    }
+}

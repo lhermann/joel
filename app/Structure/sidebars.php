@@ -22,12 +22,46 @@ use function Tonik\Theme\App\config;
  */
 function register_widget_areas()
 {
-    register_sidebar([
-        'id' => 'sidebar',
-        'name' => __('Sidebar', config('textdomain')),
-        'description' => __('Website sidebar', config('textdomain')),
-        'before_title' => '<h5>',
-        'after_title' => '</h5>',
-    ]);
+
+    register_sidebar( array(
+        'name'          => 'Footer 1',
+        'id'            => 'footer_1',
+        'before_widget' => '<div class="c-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="c-site-footer__heading u-truncate">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'Footer 2',
+        'id'            => 'footer_2',
+        'before_widget' => '<div class="c-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="c-site-footer__heading u-truncate">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'Footer 3',
+        'id'            => 'footer_3',
+        'before_widget' => '<div class="c-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="c-site-footer__heading u-truncate">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'Footer 4',
+        'id'            => 'footer_4',
+        'before_widget' => '<div class="c-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="c-site-footer__heading u-truncate">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'Footer Right',
+        'id'            => 'footer_right',
+        'before_widget' => '<div class="c-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="c-site-footer__heading u-truncate">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action('widgets_init', 'Tonik\Theme\App\Structure\register_widget_areas');
