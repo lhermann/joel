@@ -9,7 +9,7 @@ global $wp_query;
 
 <?php template('partials/header') ?>
 
-<main role="main" class="o-wrapper o-wrapper--slim u-pt+">
+<main role="main" class="o-wrapper o-wrapper--slim u-pv+">
 
     <header>
         <h1>Artikel</h1>

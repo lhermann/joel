@@ -1,0 +1,39 @@
+/* ==========================================================================
+   #FLEX
+   ========================================================================== */
+
+.o-flex {
+    display: flex;
+    flex-wrap: wrap;
+
+    // justify-content
+    &--left { justify-content: flex-start }
+    &--center { justify-content: center }
+    &--right { justify-content: flex-end }
+    &--between { justify-content: space-between }
+    &--around { justify-content: space-around }
+
+    // align-items
+    &--stretch { align-items: stretch }
+    &--middle { align-items: center }
+    &--top { align-items: flex-start }
+    &--bottom { align-items: flex-end }
+    &--baseline { align-items: baseline }
+
+}
+
+    .o-flex__item {
+        margin-right: $unit;
+        margin-bottom: $unit;
+
+        .o-flex--tiny & { margin-right: $unit-tiny }
+        .o-flex--small & { margin-right: $unit-small }
+        .o-flex--large & { margin-right: $unit-large }
+        .o-flex--huge & { margin-right: $unit-huge }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+    }
+

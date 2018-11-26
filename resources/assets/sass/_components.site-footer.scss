@@ -9,7 +9,8 @@
 
     .c-site-footer__nav {
         position: relative;
-        padding: $unit-large $unit $unit-large $unit-large;
+        padding-top: $unit-large;
+        padding-bottom: $unit;
 
         @include mq($from: tablet) {
             &::after {

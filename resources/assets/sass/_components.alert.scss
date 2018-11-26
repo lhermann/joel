@@ -1,0 +1,43 @@
+/* ==========================================================================
+   #ALERT
+   ========================================================================== */
+
+.c-alert {
+   position: relative;
+   padding: $unit-small $unit;
+   border-bottom: 3px solid;
+   border-radius: $global-radius;
+   background-color: $c-yellow-1;
+   color: $c-yellow-7;
+   border-color: rgba($c-yellow-4, 0.7);
+
+   &--red {
+       background-color: $c-red-1;
+       color: $c-red-7;
+       border-color: rgba($c-red-4, 0.5);
+   }
+
+   &--blue {
+       background-color: $c-primary-1;
+       color: $c-primary-8;
+       border-color: rgba($c-primary-5, 0.7);
+   }
+
+   &--green {
+       background-color: $c-green-1;
+       color: $c-green-7;
+       border-color: rgba($c-green-4, 0.7);
+   }
+}
+
+.c-alert__message {
+   padding-right: $unit-large;
+}
+
+.c-alert__close {
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: $unit-small $unit;
+   line-height: $line-height;
+}

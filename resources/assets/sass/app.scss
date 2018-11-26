@@ -69,25 +69,17 @@
  */
 
 // SETTINGS
-@import "settings.config";
 $inuit-global-font-size: 14px;
 $inuit-global-line-height: 21px;
 
+@import "settings.config";
 @import "~inuitcss/settings/settings.core";
 @import "settings.global";
 @import "settings.colors";
 
-/* Spacing Units */
-$unit:          $inuit-global-spacing-unit;
-$unit-tiny:     $inuit-global-spacing-unit-tiny;
-$unit-small:    $inuit-global-spacing-unit-small;
-$unit-large:    $inuit-global-spacing-unit-large;
-$unit-huge:     $inuit-global-spacing-unit-huge;
-
 
 
 // TOOLS
-// @import "~inuitcss/tools/tools.rem";
 @import "~inuitcss/tools/tools.font-size";
 @import "~inuitcss/tools/tools.clearfix";
 @import "~inuitcss/tools/tools.hidden";
@@ -177,6 +169,7 @@ hr {
 @import "objects.overflow";
 @import "objects.owl";
 @import "objects.grid";
+@import "objects.flex";
 
 .o-layout--overflow {
     white-space: nowrap;
@@ -234,6 +227,7 @@ hr {
 $header-height: 56px;
 
 @import "components.article";
+@import "components.alert";
 @import "components.badge";
 @import "components.buttons";
 @import "components.button-group";
