@@ -1,26 +1,30 @@
 <?php
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 ?>
 
 <header id="header" class="c-site-header <?= $style_modifier ?>" role="banner">
 
     <div class="o-wrapper">
 
-        <div class="o-pack o-pack--middle c-site-header__wrapper">
+        <div class="c-site-header__flex">
+        <!-- <div class="o-pack o-pack--middle c-site-header__wrapper"> -->
 
-            <div class="o-pack__item c-site-header__item">
+            <div class="c-site-header__item">
                 <?php template('partials/branding') ?>
             </div>
 
-            <div class="o-pack__item c-site-header__item c-site-header__item--double">
+            <?php if (config('searchbar')): ?>
+            <div class="c-site-header__item c-site-header__item--double">
                 <?php template('partials/searchform', ['style_modifier' => 'c-search-bar--primary']) ?>
             </div>
+            <?php endif ?>
 
-            <div class="o-pack__item c-site-header__item u-hidden-until@tablet">
+            <div class="c-site-header__item u-hidden-until@tablet">
                 <?php template('partials/primary-nav') ?>
             </div>
 
-            <div class="o-pack__item c-site-header__item u-text-right">
+            <div class="c-site-header__item u-text-right">
                 <button class="c-btn c-btn--subtle c-btn--edgy c-btn--bigicon
                     c-btn--square c-site-header__hamburger jsFlyinBtn"
                     data-target="mobileNav"

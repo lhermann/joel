@@ -6,11 +6,11 @@ if( Store::isset_then_set('vue-media-pagination-component') ) return;
 <!-- template for the pagination component -->
 <?= '<script type="text/x-template" id="pagination-component">' ?>
 
-    <nav class="o-layout o-layout--auto o-layout--middle u-mt+"
+    <nav class="o-layout o-layout--auto o-layout--middle"
         role="navigation"
         aria-label="Pagination Navigation">
 
-        <div class="o-layout__item u-pb-">
+        <div class="o-layout__item">
             <ol class="o-list-inline o-list-inline--1px">
 
                 <li class="o-list-inline__item">
@@ -67,11 +67,11 @@ if( Store::isset_then_set('vue-media-pagination-component') ) return;
             </ol><!--end c-primary-nav__list-->
         </div>
 
-        <div class="o-layout__item u-pb-" v-show="isLoading">
+        <div class="o-layout__item" v-show="isLoading">
             <div class="c-spinner"></div>
         </div>
 
-        <div class="o-layout__item u-pb-" v-if="!minimal">
+        <div class="o-layout__item" v-if="!minimal">
             {{ pageRangeDisplay }}
         </div>
 

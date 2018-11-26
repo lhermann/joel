@@ -12,6 +12,7 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
 >
 
     <pagination-component
+        class="u-mv+"
         :total="options.total"
         :per-page="options.perPage"
         :total-pages="options.totalPages"

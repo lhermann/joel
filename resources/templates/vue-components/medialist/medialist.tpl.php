@@ -42,6 +42,7 @@ if( Store::isset_then_set('vue-medialist-component') ) return;
 
         <!-- pagination -->
         <pagination-component v-if="pagination &amp;&amp; totalPages > 1"
+            class="u-mv+"
             :total="total"
             :per-page="perPage"
             :total-pages="totalPages"

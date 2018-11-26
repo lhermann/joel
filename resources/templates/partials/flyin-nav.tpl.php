@@ -19,10 +19,12 @@ use function Tonik\Theme\App\Helper\render_menu_for_flyin;
 
         <div class="o-wrapper u-mt">
 
+            <?php if (config('searchbar')): ?>
             <div>
                 <?php template('partials/searchform', ['style_modifier' => 'c-search-bar--mobile u-mv']) ?>
                 <hr class="u-break-wrapper u-hidden-from@mobile"/>
             </div>
+            <?php endif ?>
 
             <nav class="u-mb u-hidden-from@tablet">
 

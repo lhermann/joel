@@ -6,7 +6,7 @@
     border-bottom: 1px solid $c-border;
 }
 
-    .c-site-header__wrapper {
+    .c-site-header__flex {
         display: flex;
         height: $header-height;
         align-items: center;
@@ -22,6 +22,11 @@
 
             @include mq($until: desktop) {
                 padding-right: $unit;
+            }
+
+            &:first-child {
+                flex-grow: 2;
+                overflow: hidden;
             }
 
             &:last-child {

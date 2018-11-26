@@ -1,6 +1,7 @@
 <?php
 use function Tonik\Theme\App\theme;
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 ?>
 
 <?php get_header() ?>
@@ -24,7 +25,7 @@ use function Tonik\Theme\App\template;
     <?php endif ?>
 
 
-    <?php if (false): ?>
+    <?php if (config('promo')): ?>
     <section id="promo-list" class="c-section u-pt">
 
         <div class="o-wrapper o-wrapper--flush">
