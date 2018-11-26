@@ -6,7 +6,7 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
 <!-- Vue slider root component -->
 <div v-cloak
     id="<?= $id ?>"
-    class=" <?= $style_modifier ?>"
+    class="<?= $style_modifier ?>"
     data-vue="slider"
     :init="init(<?= $options ?>)"
 >

@@ -8,6 +8,8 @@ return [
     */
     'searchbar' => false,
     'promo' => false,
+    'newsletter' => false,
+    'quote-slider' => false,
 
     /*
     |--------------------------------------------------------------------------

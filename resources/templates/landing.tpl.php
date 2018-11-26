@@ -42,9 +42,28 @@ use function Tonik\Theme\App\config;
 
     <section id="medialists" class="c-section">
 
-        <div class="o-wrapper">
+        <div class="o-wrapper u-hidden-from@tablet">
+            <h2>
+                <span class="u-text-middle">Neue Videos</span>
+                <a class="c-btn c-btn--tiny c-btn--light u-default u-muted u-ml-"
+                    href="<?= home_url( '/recordings/' ) ?>">
+                    Alle Videos anzeigen
+                    <span class="u-ic-arrow_forward"></span>
+                </a>
+            </h2>
 
-            <div class="o-layout o-layout--large u-hidden-until@tablet">
+            <?php template('vue-components/medialist-init', [
+                'id' => 'medialist-new',
+                'options' => [],
+                'params' => [
+                    'per_page' => 6,
+                ]
+            ]) ?>
+        </div>
+
+        <div class="o-wrapper u-hidden-until@tablet">
+
+            <div class="o-layout o-layout--large">
                 <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-1/1">
 
                     <h2 class="u-h3">Beliebte Videos</h2>
@@ -121,13 +140,13 @@ use function Tonik\Theme\App\config;
 
     </section>
 
-    <!--
+    <?php if (config('quote-slider')): ?>
     <section class="c-section">
 
-        <?php //template(['partials/slider', 'quotes']) ?>
+        <?php template(['partials/slider', 'quotes']) ?>
 
     </section>
-    -->
+    <?php endif ?>
 
     <section class="c-section c-section--alt">
 
@@ -135,7 +154,7 @@ use function Tonik\Theme\App\config;
 
             <h2>
                 <span class="u-text-middle">Artikel</span>
-                <a class="c-btn c-btn--small c-btn--light u-default u-muted u-ml"
+                <a class="c-btn c-btn--tiny c-btn--light u-default u-muted u-ml-"
                     href="<?= get_permalink( get_page_by_path( 'artikel' ) ) ?>">
                     Alle Artikel anzeigen
                     <span class="u-ic-arrow_forward"></span>
@@ -148,13 +167,13 @@ use function Tonik\Theme\App\config;
 
     </section>
 
-    <!--
+    <?php if (config('newsletter')): ?>
     <section class="c-section">
 
-        <?php //template('partials/newsletter-form') ?>
+        <?php template('partials/newsletter-form') ?>
 
     </section>
-     -->
+    <?php endif ?>
 
 </main>
 
