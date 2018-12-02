@@ -48,9 +48,9 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
         <?php if (config('livestream')['enabled']): ?>
         <li class="c-primary-nav__item">
 
-            <a href="../../patterns/04-pages-homepage/04-pages-homepage.html" class="c-link c-link--block c-link--primary
-                c-primary-nav__link ">
-                    <span class="c-primary-nav__signal"></span>
+            <a href="../../patterns/04-pages-homepage/04-pages-homepage.html"
+                class="c-link c-link--block c-link--primary c-primary-nav__link ">
+                <span class="c-dot c-dot--green"></span>
                 <span class="u-hidden-until@desktop">Livestream</span>
                 <span class="u-hidden-from@desktop">Live</span>
                 <span class="u-ic-keyboard_arrow_down"></span>
