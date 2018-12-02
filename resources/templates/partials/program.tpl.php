@@ -1,6 +1,8 @@
 <?php
 use function Tonik\Theme\App\config;
 
+if(!function_exists("eo_get_events")) return;
+
 $events = eo_get_events([
     'showpastevents' => false,
     'event_end_before' => '+'.config('livestream')['program-timeframe'].' week',
