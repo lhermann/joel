@@ -2,6 +2,7 @@
 
 namespace Tonik\Theme\App\Setup;
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 
 /*
 |-----------------------------------------------------------
@@ -59,20 +60,23 @@ function register_required_plugins() {
             'force_activation'  => true,
         ),
         array(
-            'name'              => 'Event Organiser',
-            'slug'              => 'event-organiser',
-            'required'          => true,
-            'version'           => '3.7.4',
-            'force_activation'  => true,
-        ),
-        array(
             'name'              => 'WordPress Popular Posts',
             'slug'              => 'wordpress-popular-posts',
             'required'          => true,
             'version'           => '4.2.0',
             'force_activation'  => true,
-        ),
+        )
     );
+
+    if(config('livestream')['enabled']) {
+        $plugins[] = array(
+            'name'              => 'Event Organiser',
+            'slug'              => 'event-organiser',
+            'required'          => true,
+            'version'           => '3.7.4',
+            'force_activation'  => true,
+        );
+    }
 
     $config = array(
         'id'           => 'joel',                  // Unique ID for hashing notices for multiple instances of TGMPA.

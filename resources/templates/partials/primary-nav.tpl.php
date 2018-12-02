@@ -1,4 +1,5 @@
 <?php
+use function Tonik\Theme\App\config;
 $menu = wp_get_nav_menu_items( wp_get_nav_menu_name( 'primary' ) );
 use function Tonik\Theme\App\Helper\menu_item_is_active;
 use function Tonik\Theme\App\Helper\menu_item_has_children;
@@ -44,6 +45,7 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
         <?php endforeach ?>
 
         <!-- Livestream -->
+        <?php if (config('livestream')['enabled']): ?>
         <li class="c-primary-nav__item">
 
             <a href="../../patterns/04-pages-homepage/04-pages-homepage.html" class="c-link c-link--block c-link--primary
@@ -82,6 +84,7 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
             </ul>
 
         </li>
+        <?php endif ?>
 
     </ul><!--end c-primary-nav__list-->
 
