@@ -7,6 +7,7 @@ import "./vue/slider.js";
 import "./vue/medialist.js";
 import "./vue/dropdown.js";
 import "./vue/pagination.js";
+import "./vue/streamcheck.js";
 
 /* Cash-Dom */
 import "./imports/flyin.js";
