@@ -35,6 +35,13 @@ function register_required_plugins() {
 
     $plugins = array(
         array(
+            'name'              => 'Advanced Custom Fields PRO',
+            'slug'              => 'advanced-custom-fields-pro',
+            'required'          => true,
+            'version'           => '5.7.7',
+            'force_activation'  => true,
+        ),
+        array(
             'name'              => 'Event Organiser',
             'slug'              => 'event-organiser',
             'required'          => true,
