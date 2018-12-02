@@ -10,7 +10,7 @@ use function Tonik\Theme\App\config;
 
 <main role="main">
 
-    <?php if ( theme('slides') ): ?>
+    <?php if ( config('slider') && theme('slides') ): ?>
         <section id="slider" class="c-section c-section--flush">
 
             <?php template('vue-components/slider-init', [
@@ -25,7 +25,7 @@ use function Tonik\Theme\App\config;
     <?php endif ?>
 
 
-    <?php if (config('promo')): ?>
+    <?php if (config('landing-promo')): ?>
     <section id="promo-list" class="c-section u-pt">
 
         <div class="o-wrapper o-wrapper--flush">
@@ -40,9 +40,10 @@ use function Tonik\Theme\App\config;
     <?php endif ?>
 
 
+    <?php if (config('landing-videos')): ?>
     <section id="medialists" class="c-section">
-
         <div class="o-wrapper u-hidden-from@tablet">
+
             <h2>
                 <span class="u-text-middle">Neue Videos</span>
                 <a class="c-btn c-btn--tiny c-btn--light u-default u-muted u-ml-"
@@ -59,8 +60,8 @@ use function Tonik\Theme\App\config;
                     'per_page' => 6,
                 ]
             ]) ?>
-        </div>
 
+        </div>
         <div class="o-wrapper u-hidden-until@tablet">
 
             <div class="o-layout o-layout--large">
@@ -83,7 +84,7 @@ use function Tonik\Theme\App\config;
                 </div>
                 <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-hidden-until@tablet">
 
-                    <h2>
+                    <h2 class="u-h3">
                         <a class="c-link c-link--dotted"
                             href="<?= home_url( '/series/' ) ?>">
                             Neue Serien
@@ -105,7 +106,7 @@ use function Tonik\Theme\App\config;
                 </div>
                 <div class="o-layout__item u-1/3 u-hidden-until@desktop">
 
-                    <h2>
+                    <h2 class="u-h3">
                         <a class="c-link c-link--dotted"
                             href="<?= home_url( '/series/mit-gott-leben/' ) ?>">
                             Tägliche Andachten
@@ -124,23 +125,23 @@ use function Tonik\Theme\App\config;
                 </div>
             </div>
 
-            <?php //template('vue-components/medialist-init', ['style_modifier' => 'u-hidden-from@tablet']) ?>
-
-            <?php /*template('vue-components/medialist-init', [
-                'id' => 'medialist-1',
-                'options' => [
-                    'pagination' => 'normal'
-                ],
-                'params' => [
-                    'per_page' => 10
-                ]
-            ])*/ ?>
-
         </div>
-
     </section>
+    <?php endif ?>
 
-    <?php if (config('quote-slider')): ?>
+    <?php if (have_posts()): the_post(); ?>
+        <?php if (config('landing-content') && get_post()->post_content): ?>
+            <section id="landing-content" class="c-section ">
+                <div class="o-wrapper c-article">
+
+                    <?= the_content(); ?>
+
+                </div>
+            </section>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if (config('landing-quotes')): ?>
     <section class="c-section">
 
         <?php template(['partials/slider', 'quotes']) ?>
@@ -148,8 +149,9 @@ use function Tonik\Theme\App\config;
     </section>
     <?php endif ?>
 
-    <section class="c-section c-section--alt">
 
+    <?php if (config('landing-articles')): ?>
+    <section class="c-section c-section--alt">
         <div class="o-wrapper">
 
             <h2>
@@ -166,8 +168,9 @@ use function Tonik\Theme\App\config;
         </div>
 
     </section>
+    <?php endif ?>
 
-    <?php if (config('newsletter')): ?>
+    <?php if (config('landing-newsletter')): ?>
     <section class="c-section">
 
         <?php template('partials/newsletter-form') ?>
@@ -175,6 +178,8 @@ use function Tonik\Theme\App\config;
     </section>
     <?php endif ?>
 
+
+    <?php if (config('landing-donate')): ?>
     <section class="c-section">
         <div class="o-wrapper">
             <div class="o-flex o-flex--between o-flex--middle">
@@ -193,6 +198,7 @@ use function Tonik\Theme\App\config;
             </div>
         </div>
     </section>
+    <?php endif ?>
 
 </main>
 

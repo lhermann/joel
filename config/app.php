@@ -6,10 +6,15 @@ return [
     | Progressive Features
     |--------------------------------------------------------------------------
     */
-    'searchbar' => false,
-    'promo' => false,
-    'newsletter' => false,
-    'quote-slider' => false,
+    'searchbar' => defined('SEARCHBAR') ? SEARCHBAR : false,
+    'slider' => defined('SLIDER') ? SLIDER : true,
+    'landing-promo' => defined('LANDING_PROMO') ? LANDING_PROMO : false,
+    'landing-videos' => defined('LANDING_VIDEOS') ? LANDING_VIDEOS : true,
+    'landing-content' => defined('LANDING_CONTENT') ? LANDING_CONTENT : true,
+    'landing-quotes' => defined('LANDING_QUOTES') ? LANDING_QUOTES : true,
+    'landing-articles' => defined('LANDING_ARTICLES') ? LANDING_ARTICLES : true,
+    'landing-newsletter' => defined('LANDING_NEWSLETTER') ? LANDING_NEWSLETTER : false,
+    'landing-donate' => defined('LANDING_DONATE') ? LANDING_DONATE : true,
 
     /*
     |--------------------------------------------------------------------------
