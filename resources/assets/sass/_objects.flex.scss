@@ -5,7 +5,6 @@
 .o-flex {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: -$unit;
 
     // justify-content
     &--left { justify-content: flex-start }
@@ -21,16 +20,42 @@
     &--bottom { align-items: flex-end }
     &--baseline { align-items: baseline }
 
+    // Gutters
+    &--tiny {margin-bottom: -$unit-tiny }
+    &--small {margin-bottom: -$unit-small }
+    &--unit {margin-bottom: -$unit }
+    &--large {margin-bottom: -$unit-large }
+    &--huge {margin-bottom: -$unit-huge }
+
 }
 
     .o-flex__item {
-        margin-right: $unit;
-        margin-bottom: $unit;
 
-        .o-flex--tiny & { margin-right: $unit-tiny }
-        .o-flex--small & { margin-right: $unit-small }
-        .o-flex--large & { margin-right: $unit-large }
-        .o-flex--huge & { margin-right: $unit-huge }
+        .o-flex--tiny & {
+            margin-right: $unit-tiny;
+            margin-bottom: $unit-tiny;
+        }
+
+        .o-flex--small & {
+            margin-right: $unit-small;
+            margin-bottom: $unit-small;
+        }
+
+        .o-flex--unit & {
+            margin-right: $unit;
+            margin-bottom: $unit;
+        }
+
+        .o-flex--large & {
+            margin-right: $unit-large;
+            margin-bottom: $unit-large;
+        }
+
+        .o-flex--huge & {
+            margin-right: $unit-huge;
+            margin-bottom: $unit-huge;
+        }
+
 
         &:last-of-type {
             margin-right: 0;

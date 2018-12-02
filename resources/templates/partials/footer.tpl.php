@@ -13,7 +13,7 @@
         <div class="o-layout o-layout--large">
 
             <div class="o-layout__item u-3/4@tablet">
-                <div class="o-flex o-flex--between u-mr+@tablet">
+                <div class="o-flex o-flex--unit o-flex--between u-mr+@tablet">
                     <?php if ( is_active_sidebar( 'footer_1' ) ) : ?>
                         <nav class="o-flex__item">
                             <?php dynamic_sidebar( 'footer_1' ); ?>
