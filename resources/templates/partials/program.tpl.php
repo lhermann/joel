@@ -9,7 +9,6 @@ $events = eo_get_events([
     'post_status' => 'publish'
 ]);
 $last_event = null;
-setlocale(LC_ALL, 'de_DE');
 ?>
 
 <h2>Programm</h2>
@@ -29,8 +28,8 @@ setlocale(LC_ALL, 'de_DE');
         <?php if (is_null($prev) || $prev->StartDate !== $event->StartDate): ?>
         <li class="c-program__item <?= $today ? 'is-today' : '' ?>">
             <div class="c-program__box">
-                <div class="c-program__week"><?= date('D', strtotime($event->StartDate)) ?></div>
-                <div class="c-program__date"><?= date('j. M', strtotime($event->StartDate)) ?></div>
+                <div class="c-program__week"><?= strftime('%a', strtotime($event->StartDate)) ?></div>
+                <div class="c-program__date"><?= strftime('%e. %b', strtotime($event->StartDate)) ?></div>
             </div>
             <ul class="c-program__eventlist">
         <?php endif ?>
@@ -38,7 +37,7 @@ setlocale(LC_ALL, 'de_DE');
                 <li class="c-program__event <?= $now ? 'is-now' : '' ?>">
                     <div class="c-program__line"></div>
                     <div class="c-program__dot"></div>
-                    <div class="c-program__time"><?= date('G:i', strtotime($event->StartTime)) ?> Uhr</div>
+                    <div class="c-program__time"><?= strftime('%k:%M Uhr', strtotime($event->StartTime)) ?></div>
                     <div class="c-program__title"><?= $event->post_title ?></div>
                 </li>
 

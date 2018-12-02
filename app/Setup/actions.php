@@ -14,6 +14,16 @@ use function Tonik\Theme\App\template;
 
 
 /**
+ * Locale
+ */
+add_action('init', 'Tonik\Theme\App\Setup\set_locale');
+
+function set_locale() {
+    setlocale(LC_TIME, get_locale());
+}
+
+
+/**
  * Include the TGM_Plugin_Activation class.
  *
  * Depending on your implementation, you may want to change the include call:
