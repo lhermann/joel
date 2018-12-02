@@ -269,15 +269,25 @@ $header-height: 56px;
     background-color: $c-black;
 }
 
+$livestream-meta-height: $unit * 5;
+
+.c-livestream-meta {
+    height: $livestream-meta-height;
+}
+
 .c-tlkio {
     position: relative;
-    top: 0;
+    height: 50vh;
     box-shadow: $global-shadow;
     background-color: $c-white;
-    width: 100%;
 
     @include mq($from: tablet) {
         position: absolute;
+        top: 0;
+        right: 0;
+        bottom: -$livestream-meta-height;
+        left: $unit-large;
+        height: auto;
     }
 
     // @include mq($from: desktop) {
@@ -285,20 +295,20 @@ $header-height: 56px;
     //     height: 512px;
     // }
 
-    &::before {
-        content: "";
-        display: block;
-        width: 100%;
-        padding-bottom: 400px;
+    // &::before {
+    //     content: "";
+    //     display: block;
+    //     width: 100%;
+    //     padding-bottom: 400px;
 
-        @include mq($from: tablet) {
-            padding-bottom: calc(88% + 85px);
-        }
+    //     @include mq($from: tablet) {
+    //         padding-bottom: calc(88% + 85px);
+    //     }
 
-        @include mq($from: desktop) {
-            padding-bottom: calc(120% + 87px);
-        }
-    }
+    //     @include mq($from: desktop) {
+    //         padding-bottom: calc(120% + 87px);
+    //     }
+    // }
 
     #tlkio {
         position: absolute;
