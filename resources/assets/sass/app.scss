@@ -270,6 +270,7 @@ $header-height: 56px;
 }
 
 .c-tlkio {
+    position: relative;
     top: 0;
     box-shadow: $global-shadow;
     background-color: $c-white;
@@ -277,13 +278,11 @@ $header-height: 56px;
 
     @include mq($from: tablet) {
         position: absolute;
-        // 85px
     }
 
     // @include mq($from: desktop) {
     //     position: absolute;
     //     height: 512px;
-    //     // 87px
     // }
 
     &::before {
@@ -294,13 +293,19 @@ $header-height: 56px;
 
         @include mq($from: tablet) {
             padding-bottom: calc(88% + 85px);
-            // 85px
         }
 
         @include mq($from: desktop) {
             padding-bottom: calc(120% + 87px);
-            // 87px
         }
+    }
+
+    #tlkio {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
     }
 }
 

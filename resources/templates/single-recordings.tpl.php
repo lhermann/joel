@@ -13,8 +13,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
 
 <main role="main" class="u-mb u-mb++@tablet">
 
-    <?php if (have_posts()) : ?>
-    <?php while (have_posts()) : the_post() ?>
+    <?php if(have_posts()): the_post() ?>
 
     <div id="head"
         class="c-header-bg c-header-bg--offset u-pt+"
@@ -43,7 +42,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                 <div class="o-ratio o-ratio--16:9 u-box-shadow ">
                     <iframe id="player"
                         class="o-ratio__content c-player"
-                        src="<?= EMBED_PREFIX.'0'.get_the_ID() ?>"
+                        src="<?= config('url-prefix')['embed'].'0'.get_the_ID() ?>"
                         frameborder="0"
                         allowfullscreen>
                     </iframe>
@@ -191,7 +190,6 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
         </div>
     </div>
 
-    <?php endwhile ?>
     <?php endif ?>
 
 </main>

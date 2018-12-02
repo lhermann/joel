@@ -57,7 +57,7 @@ use function Tonik\Theme\App\Legacy\trac_permalink;
                     $permalink = trac_permalink(
                         $file->post_id,
                         "videodl",
-                        DL_PREFIX.$file->relative_url
+                        config('url-prefix')['download'].$file->relative_url
                     ); ?>
 
                         <li class="c-dropdown__item ">
@@ -134,7 +134,7 @@ use function Tonik\Theme\App\Legacy\trac_permalink;
                         value="<?=
                             htmlentities(sprintf(
                                 '<iframe width="560" height="315" src="%s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
-                                EMBED_PREFIX.'1'.get_the_ID()
+                                config('url-prefix')['embed'].'1'.get_the_ID()
                             ))
                         ?>">
                 </li>

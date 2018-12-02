@@ -1,20 +1,41 @@
 <?php
 
+/**
+ * Return a constant or a default if constant is not defined
+ */
+function if_defined($constant, $default = "") {
+    return defined($constant) ? constant($constant) : $default;
+}
+
 return [
     /*
     |--------------------------------------------------------------------------
-    | Progressive Features
+    | Theme Switches
     |--------------------------------------------------------------------------
     */
-    'searchbar' => defined('SEARCHBAR') ? SEARCHBAR : false,
-    'slider' => defined('SLIDER') ? SLIDER : true,
-    'landing-promo' => defined('LANDING_PROMO') ? LANDING_PROMO : false,
-    'landing-videos' => defined('LANDING_VIDEOS') ? LANDING_VIDEOS : true,
-    'landing-content' => defined('LANDING_CONTENT') ? LANDING_CONTENT : true,
-    'landing-quotes' => defined('LANDING_QUOTES') ? LANDING_QUOTES : true,
-    'landing-articles' => defined('LANDING_ARTICLES') ? LANDING_ARTICLES : true,
-    'landing-newsletter' => defined('LANDING_NEWSLETTER') ? LANDING_NEWSLETTER : false,
-    'landing-donate' => defined('LANDING_DONATE') ? LANDING_DONATE : true,
+    'searchbar' => if_defined('SEARCHBAR', false),
+    'slider' => if_defined('SLIDER', true),
+    'landing-promo' => if_defined('LANDING_PROMO', false),
+    'landing-videos' => if_defined('LANDING_VIDEOS', true),
+    'landing-content' => if_defined('LANDING_CONTENT', true),
+    'landing-quotes' => if_defined('LANDING_QUOTES', true),
+    'landing-articles' => if_defined('LANDING_ARTICLES', true),
+    'landing-newsletter' => if_defined('LANDING_NEWSLETTER', false),
+    'landing-donate' => if_defined('LANDING_DONATE', true),
+    'livestream' => [
+        'enabled' => if_defined('LIVESTREAM', true),
+        'program-timeframe' => if_defined('LIVESTREAM_TIMEFRAME', 4), // in weeks
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Theme Defaults
+    |--------------------------------------------------------------------------
+    */
+    'url-prefix' => [
+        'download' => if_defined('URL_PREFIX_DOWNLOAD', 'https://dl.joelmediatv.de/'),
+        'embed' => if_defined('URL_PREFIX_EMBED', 'https://embed.joelmediatv.de/'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
