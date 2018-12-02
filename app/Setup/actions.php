@@ -42,10 +42,24 @@ function register_required_plugins() {
             'force_activation'  => true,
         ),
         array(
+            'name'              => 'ACF to REST API',
+            'slug'              => 'acf-to-rest-api',
+            'required'          => true,
+            'version'           => '3.1.0',
+            'force_activation'  => true,
+        ),
+        array(
             'name'              => 'Event Organiser',
             'slug'              => 'event-organiser',
             'required'          => true,
             'version'           => '3.7.4',
+            'force_activation'  => true,
+        ),
+        array(
+            'name'              => 'WordPress Popular Posts',
+            'slug'              => 'wordpress-popular-posts',
+            'required'          => true,
+            'version'           => '4.2.0',
             'force_activation'  => true,
         ),
     );
