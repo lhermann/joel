@@ -21,11 +21,14 @@
     &--baseline { align-items: baseline }
 
     // Gutters
-    &--tiny {margin-bottom: -$unit-tiny }
-    &--small {margin-bottom: -$unit-small }
-    &--unit {margin-bottom: -$unit }
-    &--large {margin-bottom: -$unit-large }
-    &--huge {margin-bottom: -$unit-huge }
+    &--tiny { margin-bottom: -$unit-tiny }
+    &--small { margin-bottom: -$unit-small }
+    &--unit { margin-bottom: -$unit }
+    &--large { margin-bottom: -$unit-large }
+    &--huge { margin-bottom: -$unit-huge }
+
+    // Misc
+    &--nowrap { flex-wrap: nowrap }
 
 }
 

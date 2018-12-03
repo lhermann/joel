@@ -459,26 +459,39 @@ $livestream-meta-height: $unit * 5;
     outline: none;
 }
 
+/*
+ * Color Utilities
+ *************************/
+.u-bg-muted {
+    background-color: $c-gray-1;
+}
 
 /*
  * Specific Width Utilities
  *************************/
 
-.u-160 {
-    width: 160px;
-}
+.u-160 { width: 160px !important }
+.u-320 { width: 320px !important }
 
-.u-320 {
-    width: 320px;
-}
+.u-54p { width: 96px !important }
+.u-72p { width: 128px !important }
+.u-108p { width: 192px !important }
+.u-144p { width: 256px !important }
+.u-180p { width: 320px !important }
+.u-360p { width: 640px !important }
+.u-720p { width: 1280px !important }
+.u-1080p { width: 1920px !important }
 
-.u-min-220 {
-    min-width: 220px;
-}
+.u-min-220 { min-width: 220px !important }
+.u-h100 { height: 100% !important }
 
-.u-h100 {
-    height: 100%;
-}
+/*
+ * Display Utilities
+ *************************/
+
+.u-db { display: block }
+.u-dib { display: inline-block }
+.u-di { display: inline }
 
 /*
  * Other Utilities

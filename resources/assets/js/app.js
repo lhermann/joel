@@ -8,6 +8,8 @@ import "./vue/medialist.js";
 import "./vue/dropdown.js";
 import "./vue/pagination.js";
 import "./vue/streamcheck.js";
+import "./vue/livestream-dropdown.js";
+import "./vue/livestream-meta.js";
 
 /* Cash-Dom */
 import "./imports/flyin.js";

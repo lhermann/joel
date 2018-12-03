@@ -1,6 +1,6 @@
 <?php
 use Tonik\Theme\App\Store;
-if( Store::isset_then_set('vue-slider-nav-component') ) return;
+if( Store::isset_then_set('vue/slider/nav') ) return;
 ?>
 
 <!-- template for the navigation component -->

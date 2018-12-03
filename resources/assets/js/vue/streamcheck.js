@@ -35,7 +35,7 @@ function vueInstance(_id) {
                     axios
                         .get("//streamcheck.joelmedia.de/" + this.streamId)
                         .then(response => (this.live = response.data.live))
-                        .error()
+                        .catch()
                         .then(() => (this.loading = false));
                 }
             },

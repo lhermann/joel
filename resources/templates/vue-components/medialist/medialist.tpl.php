@@ -1,7 +1,7 @@
 <?php
 use function Tonik\Theme\App\template;
 use Tonik\Theme\App\Store;
-if( Store::isset_then_set('vue-medialist-component') ) return;
+if( Store::isset_then_set('vue/medialist/medialist') ) return;
 ?>
 
 <!-- template for the medialist component -->

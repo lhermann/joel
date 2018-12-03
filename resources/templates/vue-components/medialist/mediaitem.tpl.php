@@ -1,6 +1,6 @@
 <?php
 use Tonik\Theme\App\Store;
-if( Store::isset_then_set('vue-mediaitem-component') ) return;
+if( Store::isset_then_set('vue/medialist/mediaitem') ) return;
 ?>
 
 <!-- template for the mediaitem component -->

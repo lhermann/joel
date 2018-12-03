@@ -155,3 +155,35 @@ function rest_api_additions() {
 
 };
 add_action( 'rest_api_init', 'Tonik\Theme\App\Http\rest_api_additions' );
+
+
+/**
+ * Add route to get events from event organiser
+ */
+function event_organiser_endpoint() {
+    /**
+     * Add a route
+     */
+    register_rest_route( config('textdomain').'/v1', '/events', array(
+        'methods' => \WP_REST_Server::READABLE,
+        'callback' => function( \WP_REST_Request $request ) {
+            $params = [
+                'showpastevents' => false,
+                'post_status' => 'publish'
+            ];
+            $events = eo_get_events(
+                array_merge($params, $request->get_params())
+            );
+            foreach ($events as &$event) {
+                $event->today = $event->StartDate == date('Y-m-d');
+                $event->now = $event->today
+                    && strtotime($event->StartTime) <= current_time('timestamp')
+                    && current_time('timestamp') <= strtotime($event->FinishTime);
+                $event->thumbnail = get_the_post_thumbnail( $event->ID, '72p', array( 'class' => 'u-rounded u-hidden-until@desktop', 'width' => '80px' ));
+            }
+            return $events;
+        }
+    ) );
+
+}
+add_action( 'rest_api_init', 'Tonik\Theme\App\Http\event_organiser_endpoint' );

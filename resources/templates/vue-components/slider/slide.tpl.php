@@ -1,6 +1,6 @@
 <?php
 use Tonik\Theme\App\Store;
-if( Store::isset_then_set('vue-slider-slide-component') ) return;
+if( Store::isset_then_set('vue/slider/slide') ) return;
 ?>
 
 <!-- template for the slide component -->

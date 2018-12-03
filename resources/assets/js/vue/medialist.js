@@ -6,14 +6,6 @@
 import Vue from "vue";
 import axios from "axios";
 import MedialistComponent from "./medialist/medialist.js";
-// import { cacheAdapterEnhancer } from "axios-extensions";
-
-/* Axios
- **********************/
-axios.defaults.baseURL = "/wp-json/";
-axios.defaults.headers = { "cache-control": "max-age=31536000, public" };
-// Disabled caching adapter for performance reasons
-// axios.defaults.adapter = cacheAdapterEnhancer(axios.defaults.adapter, true);
 
 /* Instantiate Medialists
  **********************/

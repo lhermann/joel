@@ -15,6 +15,7 @@ import SliderComponent from "./slider/slider.js";
 /* Axios
  **********************/
 axios.defaults.baseURL = "/wp-json/";
+axios.defaults.headers = { "cache-control": "max-age=31536000, public" };
 
 /* Global Values
  **********************/

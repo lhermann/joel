@@ -1,6 +1,6 @@
 <?php
 use Tonik\Theme\App\Store;
-if( Store::isset_then_set('vue-media-sorting-component') ) return;
+if( Store::isset_then_set('vue/medialist/sorting') ) return;
 ?>
 
 <!-- template for the pagination component -->

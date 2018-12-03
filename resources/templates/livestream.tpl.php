@@ -34,8 +34,8 @@ use function Tonik\Theme\App\asset_path;
                 <div class="o-flex__item u-1/1 u-2/5@tablet u-1/3@desktop u-mv u-m0@tablet u-anchor">
                     <div class="c-tlkio">
 
-                        <!-- <div id="tlkio" data-channel="joelmedia"></div>
-                        <script async src="//tlk.io/embed.js" type="text/javascript"></script> -->
+                        <div id="tlkio" data-channel="joelmedia"></div>
+                        <script async src="//tlk.io/embed.js" type="text/javascript"></script>
 
                     </div>
                 </div>
@@ -47,7 +47,15 @@ use function Tonik\Theme\App\asset_path;
 
         <div class="u-3/5@tablet u-2/3@desktop">
 
-                <?php template('partials/livestream-meta') ?>
+                <?php template('vue-components/livestream-meta-init', [
+                    'id' => 'livestream-meta',
+                    'style_modifier' => 'c-livestream-meta',
+                    'options' => ['stream' => 'joelmedia'],
+                    'params' => [
+                        'numberposts' => 1,
+                        'event_end_before' => '+1 day',
+                    ]
+                ]) ?>
 
                 <hr class="u-m0" />
 
