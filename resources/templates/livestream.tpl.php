@@ -34,7 +34,7 @@ use function Tonik\Theme\App\asset_path;
                 <div class="o-flex__item u-1/1 u-2/5@tablet u-1/3@desktop u-mv u-m0@tablet u-anchor">
                     <div class="c-tlkio">
 
-                        <div id="tlkio" data-channel="joelmedia"></div>
+                        <div id="tlkio" data-channel="jmm-live-chat"></div>
                         <script async src="//tlk.io/embed.js" type="text/javascript"></script>
 
                     </div>
