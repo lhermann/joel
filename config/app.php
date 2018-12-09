@@ -36,6 +36,10 @@ return [
         'download' => if_defined('URL_PREFIX_DOWNLOAD', 'https://dl.joelmediatv.de/'),
         'embed' => if_defined('URL_PREFIX_EMBED', 'https://embed.joelmediatv.de/'),
     ],
+    'processing' => [
+        'upload-dir' => if_defined('PROCESSING_UPLOAD_DIR', '/processing/01-input/'),
+        'log-dir' => if_defined('PROCESSING_LOG_DIR', '/processing/log/'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -110,8 +114,10 @@ return [
         'helpers.php',
         'ACF/recordings.php',
         'ACF/slides.php',
+        'Adminpage/livestream.php',
         'Helper/global.php',
         'Helper/recordings.php',
+        'Legacy/admin_page_videos.php',
         'Legacy/recordings.php',
         'Legacy/trac.php',
         'Http/assets.php',

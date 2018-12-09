@@ -9,15 +9,38 @@
 }
 
 .c-spinner {
+    display: inline-block;
     border-radius: 50%;
     width: $unit;
     height: $unit;
     border: 5px solid rgba(0, 0, 0, 0.1);
     border-top: 5px solid $c-primary;
     animation: rotating 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
-}
 
-    .c-spinner--large {
+    &--large {
         width: $unit-large;
         height: $unit-large;
     }
+
+    &--small {
+        width: $unit-small;
+        height: $unit-small;
+        border-width: 3px;
+    }
+
+    &--inline {
+        margin-top: -$unit-small;
+        margin-bottom: -$unit-small;
+        vertical-align: 25%;
+
+        &.c-spinner--large {
+            margin-top: -$unit;
+            margin-bottom: -$unit;
+        }
+
+        &.c-spinner--small {
+            margin-top: -$unit-tiny;
+            margin-bottom: -$unit-tiny;
+        }
+    }
+}

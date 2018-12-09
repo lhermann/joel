@@ -2,6 +2,51 @@
    JOEL WORDPRESS THEME ADMIN
    ========================================================================== */
 
+// SETTINGS
+$inuit-global-font-size: 14px;
+$inuit-global-line-height: 21px;
+
+@import "settings.config";
+@import "~inuitcss/settings/settings.core";
+@import "settings.global";
+@import "settings.colors";
+
+
+
+// TOOLS
+@import "~inuitcss/tools/tools.font-size";
+@import "~inuitcss/tools/tools.clearfix";
+@import "~inuitcss/tools/tools.hidden";
+@import "~sass-mq/mq";
+@import "tools.clothoid";
+
+
+
+// OBJECTS
+@import "objects.flex";
+
+
+
+// COMPONENTS
+@import "components.spinner";
+@import "components.alert";
+
+
+
+// UTILITIES
+@import "~inuitcss/utilities/utilities.widths";
+@import "~inuitcss/utilities/utilities.hide";
+@import "utilities.text-align";
+
+
+
+// RESPONSIVE UTILITIES
+@import "utilities.responsive-spacings";
+
+
+
+// OTHER
+
 /* Images */
 .img {
     background-color: rgba(0, 0, 0, 0.2);
@@ -72,3 +117,10 @@
 }
 
 @import "~chartist/dist/scss/chartist";
+
+
+
+// LEGACY
+@import "_legacy.admin";
+
+
