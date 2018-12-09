@@ -175,7 +175,8 @@ function event_organiser_endpoint() {
                 array_merge($params, $request->get_params())
             );
             foreach ($events as &$event) {
-                $event->today = $event->StartDate == date('Y-m-d');
+                $event->today = $event->StartDate == current_time('Y-m-d');
+                $event->tomorrow = $event->StartDate == current_time('Y-m-') . (current_time('d') + 1);
                 $event->now = $event->today
                     && strtotime($event->StartTime) <= current_time('timestamp')
                     && current_time('timestamp') <= strtotime($event->FinishTime);

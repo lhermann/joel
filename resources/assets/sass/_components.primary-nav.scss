@@ -10,7 +10,7 @@
     .c-primary-nav__list {
         margin: 0;
         list-style: none;
-        white-space: nowrap;
+        // white-space: nowrap; this will prevent breaking of long titles
     }
 
         .c-primary-nav__item {

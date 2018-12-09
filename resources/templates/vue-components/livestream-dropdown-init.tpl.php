@@ -41,17 +41,21 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
                         <div class="o-flag__body">
                             <div>
                                 <span v-if="event.today" class="c-badge"
-                                    :class="{'c-badge--success': event.now}">live</span>
+                                    :class="{'c-badge--success': event.now, 'u-textmuted': !event.now}"
+                                >live</span>
                                 {{event.post_title}}
                             </div>
                             <div class="u-default">
                                 <template v-if="event.today">
-                                    <strong>Heute</strong>
+                                    <strong class="u-green">Heute</strong> &middot;
                                 </template>
-                                <template v-else>
-                                    <strong>{{weekday(event.StartDate)}}</strong>,
-                                    {{date(event.StartDate)}}
+                                <template v-if="event.tomorrow">
+                                    <strong class="u-yellow">Morgen</strong> &middot;
                                 </template>
+                                <span
+                                    :class="{'u-bold': !(event.today || event.tomorrow)}"
+                                >{{weekday(event.StartDate)}}</span>,
+                                {{date(event.StartDate)}}
                                 um {{time(event.StartDate + ' ' + event.StartTime)}}
                             </div>
                         </div>

@@ -43,7 +43,7 @@ use function Tonik\Theme\App\config;
                         </a>
                     </strong>
                 </p>
-                <p class="u-textalt">
+                <p class="u-textmuted">
                     <?php the_author_meta( 'description' ); ?>
                 </p>
             </div>
