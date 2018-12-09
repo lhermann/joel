@@ -1,0 +1,54 @@
+/* ==========================================================================
+   #TEXT UTILITIES
+   ========================================================================== */
+
+.u-lighter {
+    font-weight: lighter;
+}
+
+.u-normal {
+    font-weight: normal;
+}
+
+.u-bolder {
+    font-weight: bolder;
+}
+
+.u-bold {
+    font-weight: bold;
+}
+
+.u-lead {
+    @include inuit-font-size(16px, $important: true);
+}
+
+.u-default {
+    @include inuit-font-size(14px, $important: true);
+}
+
+.u-small {
+    @include inuit-font-size(12px, $line-height: 1.2, $important: true);
+}
+
+.u-smaller {
+    @include inuit-font-size(10px, $line-height: 1.2, $important: true);
+}
+
+.u-white { color: $c-white; }
+.u-black { color: $c-black; }
+.u-green { color: $c-green-4; }
+.u-red { color: $c-red-4; }
+.u-yellow { color: $c-yellow-4; }
+.u-text { color: $c-text; }
+.u-textmuted { color: $c-textmuted; }
+
+.u-muted {
+    opacity: 0.6;
+}
+
+.u-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

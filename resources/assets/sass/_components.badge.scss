@@ -2,17 +2,73 @@
    #BADGE
    ========================================================================== */
 
+/*
+ * 1. Important, so that the white-space at the end stays outside of the badge
+ * 2. Only add proportional padding at the bottom if the font-size is higher
+ *    than 12px
+ */
 .c-badge {
-    @include inuit-font-size(12px);
+    display: inline-block;
+    padding: 0.15em 0.6em 0.2em;
+    word-break: keep-all;
+    white-space: nowrap;
+    border-radius: $unit;
+    background-color: $c-gray-3;
+    color: $c-gray-9;
+    line-height: 1;
 
-    border-radius: $global-radius;
-    background-color: $c-background;
-    vertical-align: middle;
-    padding: $unit-tiny/2 $unit-small;
-    font-weight: 600;
+    &--soft {
+        background-color: $c-gray-2;
+        color: $c-gray-7;
+    }
 
-    &--success {
-        background-color: $c-green;
+    &--dark {
+        background-color: $c-dark;
         color: $c-white;
+
+        &.c-badge--soft {
+            background-color: rgba(#333, 0.6);
+            color: rgba($c-gray-1, 0.8);
+        }
+    }
+
+    &--blue {
+        background-color: $c-primary-5;
+        color: $c-white;
+
+        &.c-badge--soft {
+            background-color: $c-primary-1;
+            color: $c-primary-7;
+        }
+    }
+
+    &--red {
+        background-color: $c-red-4;
+        color: $c-white;
+
+        &.c-badge--soft {
+            background-color: $c-red-1;
+            color: $c-red-5;
+        }
+    }
+
+    &--yellow {
+        background-color: $c-yellow-4;
+        color: $c-white;
+
+        &.c-badge--soft {
+            background-color: $c-yellow-1;
+            color: $c-yellow-5;
+        }
+    }
+
+    &--green {
+        background-color: $c-green-4;
+        color: $c-white;
+
+        &.c-badge--soft {
+            background-color: $c-green-1;
+            color: $c-green-5;
+        }
     }
 }

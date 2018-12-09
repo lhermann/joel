@@ -52,29 +52,43 @@ class LivestramControllPage {
                         <!-- main content -->
                         <div id="post-body-content">
 
-                            <!-- Livestream -->
-                            <div class="meta-box-sortables ui-sortable">
-                                <div class="postbox">
-                                    <h3 class="hndle" style="cursor: default;">Joel Media Livestream</h3>
-                                    <div class="inside activity-block embed-lifestream-wrap">
-                                        <div class="embed-iframe embed-lifestream">
-                                            <iframe src="<?= config('url-prefix')['embed'].'0livestream' ?>" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!-- Livestream -->
+<div class="meta-box-sortables ui-sortable">
+    <div class="postbox">
+        <h3 class="hndle" style="cursor: default;">Joel Media Livestream</h3>
+        <div class="inside activity-block embed-lifestream-wrap">
+            <div class="embed-iframe embed-lifestream">
+                <iframe src="<?= config('url-prefix')['embed'].'0livestream' ?>" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
 
-                            <!-- Monitor -->
-                            <div id="side-sortables-3" class="meta-box-sortables ui-sortable">
-                                <div class="postbox">
-                                    <h3 class="hndle" style="cursor: default;"><span>Livestream Monitor</span></h3>
-                                    <div id="ajax-livestream-active">
-                                        <div class="inside">
-                                            <div class="c-spinner u-m"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!-- Monitor -->
+<h3>Livestream Monitor</h3>
+<div id="vue-checkstream">
+    <div v-if="!streams.length" class="c-spinner u-m"></div>
+    <div v-for="stream in streams"
+        :key="stream.id"
+        class="notice u-p-"
+        :class="{'notice-success': stream.live, 'notice-error': !stream.live}"
+    >
+        <div>
+            <strong>{{stream.id}}</strong>
+            <small>
+                <span v-if="stream.live" class="c-badge c-badge--green">on air</span>
+                <span v-else class="c-badge">offline</span>
+            </small>
+        </div>
+        <div v-for="(url, i) in stream.stream_url" :key="i" class="u-textmuted">
+            <strong>{{stream.stream_key[i]}}:</strong>
+            <em>{{url}}</em>
+            <span class="c-dot c-dot--small"
+                :class="{'c-dot--green': stream.stream_live[i]}"></span>
+        </div>
+        <div class="u-smaller u-yellow u-mt--">Last checked {{ distance(stream.updated) }} ago</div>
+    </div>
+</div>
 
                             <!-- <div class="meta-box-sortables ui-sortable">
                                 <div id="streamerStatistics" class="postbox">
@@ -90,13 +104,14 @@ class LivestramControllPage {
                         <!-- sidebar -->
                         <div id="postbox-container-1" class="postbox-container">
 
-                            <div id="side-sortables-2" class="meta-box-sortables ui-sortable">
-                                <div class="postbox">
-                                    <h3 class="hndle" style="cursor: default;"><span>Livestream Chat</span></h3>
-                                    <div id="tlkio" data-channel="jmm-live-chat" style="width:100%;height:400px;"></div>
-                                    <script async src="//tlk.io/embed.js" type="text/javascript"></script>
-                                </div><!-- .postbox -->
-                            </div><!-- .meta-box-sortables -->
+<!-- Chat -->
+<div id="side-sortables-2" class="meta-box-sortables ui-sortable">
+    <div class="postbox">
+        <h3 class="hndle" style="cursor: default;"><span>Livestream Chat</span></h3>
+        <div id="tlkio" data-channel="jmm-live-chat" style="width:100%; height:600px;"></div>
+        <script async src="//tlk.io/embed.js" type="text/javascript"></script>
+    </div>
+</div>
 
                             <!-- <div id="side-sortables-1" class="meta-box-sortables ui-sortable">
                                 <div id="livestreamStatistics" class="postbox">
@@ -112,7 +127,35 @@ class LivestramControllPage {
                     </div><!-- #post-body -->
                 </div><!-- #poststuff -->
                 <script>
-
+                    var app = new Vue({
+                        el: '#vue-checkstream',
+                        name: "Streamcheck",
+                        data() {
+                            return {
+                                streams: [],
+                                interval: null
+                            };
+                        },
+                        methods: {
+                            request() {
+                                jQuery.get( "//streamcheck.joelmedia.de/", response => {
+                                    this.streams = response
+                                });
+                            },
+                            distance(date) {
+                                return dateFns.distanceInWordsToNow(date)
+                            }
+                        },
+                        beforeMount() {
+                            this.request();
+                            this.interval = setInterval(() => {
+                                this.request();
+                            }, 30000);
+                        },
+                        destroyed() {
+                            clearInterval(this.interval);
+                        }
+                    })
                 </script>
             </section>
             <div class="clear"></div>

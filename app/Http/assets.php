@@ -70,6 +70,9 @@ add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer
  */
 function register_admin_scripts_and_styles() {
     wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), [], filemtime(asset('css/admin.css')->getPath()) );
+    wp_enqueue_script( 'datefns_js', "https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js", [], "", false );
+    // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", [], "v2.5.18", false ); //dev
+    wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue", [], "v2.5.18", false );
     wp_enqueue_script( 'admin_js', asset_path('js/admin.js'), [], filemtime(asset('js/admin.js')->getPath()), true );
 };
 add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles' );

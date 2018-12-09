@@ -5,14 +5,25 @@
 .c-dot {
     display: inline-block;
     margin-right: $unit-tiny;
-    border-radius: 20px;
+    border-radius: 50%;
     background-color: $c-gray-3;
     width: $unit-small;
     height: $unit-small;
     border: $unit-tiny solid transparent;
+    vertical-align: -5%;
+
+    &--small {
+        width: 0;
+        height: 0;
+        border-width: 0.5em;
+    }
 
     &--green {
         background-color: $c-green;
+    }
+
+    &--red {
+        background-color: $c-red;
     }
 
     &.is-loading {

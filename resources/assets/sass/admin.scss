@@ -30,6 +30,8 @@ $inuit-global-line-height: 21px;
 // COMPONENTS
 @import "components.spinner";
 @import "components.alert";
+@import "components.badge";
+@import "components.dots";
 
 
 
@@ -37,6 +39,7 @@ $inuit-global-line-height: 21px;
 @import "~inuitcss/utilities/utilities.widths";
 @import "~inuitcss/utilities/utilities.hide";
 @import "utilities.text-align";
+@import "utilities.text";
 
 
 
