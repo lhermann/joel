@@ -8,6 +8,8 @@ namespace Tonik\Theme\App\Legacy;
 |-----------------------------------------------------------
 */
 
+use function Tonik\Theme\App\Helper\formatbytes;
+
 
 function get_video_file( $post_id, $type = '', $postfix = '' ) {
     $files = get_video_files($post_id, $type, 1);
@@ -115,6 +117,58 @@ function get_download_files($post_id) {
         $post_id
     );
     return $wpdb->get_results($query);
+}
+
+
+/**
+ * LEGACY
+ * Add a widget to the dashboard.
+ *
+ * This function is hooked into the 'wp_dashboard_setup' action below.
+ *
+ * @since Joel Media 1.1
+ * @update Joel Media 1.2.1
+ */
+function dashboard_widgets() {
+
+    wp_add_dashboard_widget(
+        'dashboard_jmm_video_audio',            // Widget slug.
+        'Joel Media Videos',                    // Title.
+        'Tonik\Theme\App\Legacy\dashboard_widget_function'   // Display function.
+    );
+}
+add_action( 'wp_dashboard_setup', 'Tonik\Theme\App\Legacy\dashboard_widgets' );
+
+/**
+ * Create the function to output the contents of our Dashboard Widget.
+ */
+function dashboard_widget_function() {
+    global $wpdb;
+
+    // Get the number of videos and audios
+    $num_videos = wp_count_posts('recordings');
+    $num_vsprecher = wp_count_terms('speakers');
+    $num_vserien = wp_count_terms('series');
+    // $num_audios = wp_count_posts( 'audio' );
+    // $num_asprecher = wp_count_terms( 'audio_sprecher' );
+    // $num_aserien = wp_count_terms( 'audio_serien' );
+
+    // Get Filesize
+    $videosize = $wpdb->get_var( "SELECT sum(size) FROM wp_video_files" );
+
+    ?>
+<div id="video-count" class="activity-block">
+    <div class="main">
+        <h4><span class="video-count-headline headline">Videoarchiv</span></h4>
+        <ul>
+            <li class="video-count"><a href="edit.php?post_type=video"><?php echo $num_videos->publish; ?> Videos</a></li>
+            <li class="video-sprecher-count"><a href="edit-tags.php?taxonomy=video_sprecher&post_type=video"><?php echo $num_vsprecher; ?> Sprecher</a></li>
+            <li class="video-serien-count"><a href="edit-tags.php?taxonomy=video_serien&post_type=video"><?php echo $num_vserien; ?> Serien</a></li>
+        </ul>
+        <h4>Gr&ouml;sse auf Datentr&auml;ger: <span class="dashicons dashicons-category"></span> <?php echo formatbytes($videosize); ?></h4>
+    </div>
+</div>
+    <?php
 }
 
 
