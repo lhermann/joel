@@ -13,20 +13,23 @@ return [
     | Theme Switches
     |--------------------------------------------------------------------------
     */
-    'searchbar' => if_defined('SEARCHBAR', false),
-    'slider' => if_defined('SLIDER', true),
-    'landing-promo' => if_defined('LANDING_PROMO', false),
-    'landing-videos' => if_defined('LANDING_VIDEOS', true),
-    'landing-content' => if_defined('LANDING_CONTENT', true),
-    'landing-quotes' => if_defined('LANDING_QUOTES', false),
-    'landing-articles' => if_defined('LANDING_ARTICLES', true),
-    'landing-newsletter' => if_defined('LANDING_NEWSLETTER', false),
-    'landing-donate' => if_defined('LANDING_DONATE', true),
+    'searchbar'             => if_defined('SEARCHBAR', false),
+    'slider'                => if_defined('SLIDER', true),
+    'landing-promo'         => if_defined('LANDING_PROMO', false),
+    'landing-videos'        => if_defined('LANDING_VIDEOS', true),
+    'landing-content'       => if_defined('LANDING_CONTENT', true),
+    'landing-quotes'        => if_defined('LANDING_QUOTES', false),
+    'landing-articles'      => if_defined('LANDING_ARTICLES', true),
+    'landing-newsletter'    => if_defined('LANDING_NEWSLETTER', false),
+    'landing-donate'        => if_defined('LANDING_DONATE', true),
     'livestream' => [
-        'enabled' => if_defined('LIVESTREAM', true),
+        'enabled'           => if_defined('LIVESTREAM', true),
         'program-timeframe' => if_defined('LIVESTREAM_TIMEFRAME', 4), // in weeks
     ],
-    'matomo-consent' => if_defined('MATOMO_CONSENT', false),
+    'matomo-consent'        => if_defined('MATOMO_CONSENT', false),
+    // favicon is reachable at site root
+    'favicon'               => if_defined('FAVICON', false),
+    'comments'              => if_defined('COMMENTS', true),
 
     /*
     |--------------------------------------------------------------------------
