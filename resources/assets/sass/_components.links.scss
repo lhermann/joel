@@ -11,15 +11,20 @@
     background: none;     /* 1 */
     cursor: pointer;      /* 1 */
     padding: 0;           /* 1 */
-    width: 100%;
+    // width: 100%;
     text-align: inherit;  /* 1 */
     line-height: inherit; /* 1 */
-    color: $c-text;
+    color: currentcolor;
     font-weight: inherit; /* 1 */
 
     &.is-active,
     .is-active & {
         font-weight: 500;
+    }
+
+    &:hover {
+        color: currentcolor;
+        opacity: 0.8;
     }
 }
 
@@ -37,7 +42,7 @@
 }
 
 .c-link--dotted {
-    border-bottom: 1px dotted $c-textmuted;
+    border-bottom: 1px dotted currentcolor;
 }
 
 .c-link--white {

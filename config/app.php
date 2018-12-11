@@ -26,6 +26,7 @@ return [
         'enabled' => if_defined('LIVESTREAM', true),
         'program-timeframe' => if_defined('LIVESTREAM_TIMEFRAME', 4), // in weeks
     ],
+    'matomo-consent' => if_defined('MATOMO_CONSENT', false),
 
     /*
     |--------------------------------------------------------------------------

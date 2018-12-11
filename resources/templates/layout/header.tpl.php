@@ -1,3 +1,6 @@
+<?php
+use function Tonik\Theme\App\template;
+?>
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
 
@@ -9,5 +12,10 @@
     </head>
 
     <body <?php body_class(); ?>>
+
+        <?php template('vue-components/cookie-consent-init', [
+            'id' => 'co0kie-consent',
+            'options' => ['matomo']
+        ]) ?>
 
         <div id="siteWrapper" class="c-site-wrapper">

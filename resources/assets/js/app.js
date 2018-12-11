@@ -10,6 +10,7 @@ import "./vue/pagination.js";
 import "./vue/streamcheck.js";
 import "./vue/livestream-dropdown.js";
 import "./vue/livestream-meta.js";
+import "./vue/cookie-consent.js";
 
 /* Cash-Dom */
 import "./imports/flyin.js";
