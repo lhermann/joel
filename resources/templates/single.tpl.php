@@ -1,5 +1,6 @@
 <?php
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 ?>
 
 <?php get_header() ?>
@@ -33,13 +34,14 @@ use function Tonik\Theme\App\template;
     </div>
 
 
+    <?php if(config('comments')): ?>
     <div class="u-p">
 
         <hr>
-
         <?php comments_template(); ?>
 
     </div>
+    <?php endif ?>
 
 </main>
 
