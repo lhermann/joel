@@ -14,7 +14,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
     <div class="o-flex__item u-lead" style="flex-shrink: 0">
         <stream-check :stream="options.stream">
             <template slot-scope="props">
-                <span class="c-dot"
+                <span class="c-dot u-mr--"
                     :class="{'c-dot--green': props.live, 'is-loading': props.loading}">
                 </span>
                 <strong v-if="props.live" v-cloak>ON AIR</strong>

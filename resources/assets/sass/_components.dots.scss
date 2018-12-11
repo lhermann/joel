@@ -3,34 +3,43 @@
    ========================================================================== */
 
 .c-dot {
+    --bg: #{$c-gray-3};
+
+    position: relative;
     display: inline-block;
-    margin-right: $unit-tiny;
-    border-radius: 50%;
-    background-color: $c-gray-3;
+    background-color: var(--bg);
     width: $unit-small;
     height: $unit-small;
-    border: $unit-tiny solid transparent;
-    vertical-align: -5%;
+    text-align: center;
+    line-height: $unit-small;
+    font-size: 8px;
+
+    &,
+    &::after {
+        border-radius: 50%;
+        border: 2px solid var(--bg);
+    }
 
     &--small {
-        width: 0;
-        height: 0;
-        border-width: 0.5em;
+        width: 2px;
+        height: 2px;
+        vertical-align: 10%;
     }
 
-    &--green {
-        background-color: $c-green;
-    }
+    &--green { color: $c-white; --bg: #{$c-green-4}; }
+    &--yellow { color: $c-white; --bg: #{$c-yellow-4}; }
+    &--red { color: $c-white; --bg: #{$c-red-4}; }
 
-    &--red {
-        background-color: $c-red;
-    }
-
-    &.is-loading {
-        border-left-color: $c-gray-5;
-        border-right-color: $c-gray-5;
-        // animation: rotating 1.2s infinite;
-        animation: rotating 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    &.is-loading::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        bottom: -2px;
+        left: -2px;
+        border-left-color: currentcolor;
+        border-right-color: currentcolor;
+        animation: rotating 1.2s infinite linear;
     }
 }
 

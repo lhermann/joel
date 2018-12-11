@@ -16,7 +16,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
         class="c-link c-link--block c-link--primary c-primary-nav__link">
         <stream-check :stream="options.stream">
             <template slot-scope="props">
-                <span class="c-dot"
+                <span class="c-dot u-mr--"
                     :class="{'c-dot--green': props.live, 'is-loading': props.loading}">
                 </span>
             </template>
