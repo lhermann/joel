@@ -485,7 +485,7 @@ if( function_exists('acf_add_local_field_group') ):
         'fields' => array (
             array (
                 'key' => 'field_59ddf48a5960c',
-                'label' => __('Titelbild für Serien', config('textdomain')),
+                'label' => __('Thumbnail for series', config('textdomain')),
                 'name' => 'image',
                 'type' => 'image',
                 'instructions' => 'Bild sollte mindestens 1280x720 Pixel haben.',

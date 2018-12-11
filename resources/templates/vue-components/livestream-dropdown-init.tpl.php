@@ -1,5 +1,6 @@
 <?php
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
 $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 ?>
@@ -21,8 +22,8 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
                 </span>
             </template>
         </stream-check>
-        <span class="u-hidden-until@desktop">Livestream</span>
-        <span class="u-hidden-from@desktop">Live</span>
+        <span class="u-hidden-until@desktop"><?= __('Livestream', config('textdomain')) ?></span>
+        <span class="u-hidden-from@desktop"><?= _x('Live', 'Short for livestream', config('textdomain')) ?></span>
         <span class="u-ic-keyboard_arrow_down"></span>
     </a>
 
@@ -47,16 +48,17 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
                             </div>
                             <div class="u-default">
                                 <template v-if="event.today">
-                                    <strong class="u-green">Heute</strong> &middot;
+                                    <strong class="u-green"><?= __('Today', config('textdomain')) ?></strong> &middot;
                                 </template>
                                 <template v-if="event.tomorrow">
-                                    <strong class="u-yellow">Morgen</strong> &middot;
+                                    <strong class="u-yellow"><?= __('Tomorrow', config('textdomain')) ?></strong> &middot;
                                 </template>
                                 <span
                                     :class="{'u-bold': !(event.today || event.tomorrow)}"
                                 >{{weekday(event.StartDate)}}</span>,
                                 {{date(event.StartDate)}}
-                                um {{time(event.StartDate + ' ' + event.StartTime)}}
+                                <?= _x('at', 'as in "at 10 am"', config('textdomain')) ?>
+                                {{time(event.StartDate + ' ' + event.StartTime)}}
                             </div>
                         </div>
                     </div>
@@ -71,7 +73,8 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
             <li class="c-primary-nav__dropdown-item">
                 <a href="<?= home_url( '/livestream/' ) ?>"
                     class="c-link c-link--block c-link--primary u-truncate">
-                    Livestream &Ouml;ffnen <span class="u-ic-arrow_forward"></span>
+                    <?= __('Go to livestream', config('textdomain')) //Livestream &Ouml;ffnen ?>
+                    <span class="u-ic-arrow_forward"></span>
                 </a>
             </li>
 

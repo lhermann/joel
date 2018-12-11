@@ -20,7 +20,7 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
         <div class="o-wrapper">
             <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
-                <a class="c-link c-link--dotted c-link--white" href="/<?= $term->taxonomy ?>/">
+                <a class="c-link c-link--dotted c-link--white" href="/<?= _x('series', 'http route', config('textdomain')) ?>/">
                     <span class="u-ic-arrow_back"></span> <?= __('Show all series', config('textdomain')) ?>
                 </a>
 

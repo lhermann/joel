@@ -21,8 +21,24 @@ if ( post_password_required() ) return;
     <?php if ( have_comments() ) : ?>
         <h2 class="comments-title">
             <?php
-                printf( _nx( 'One thought on "%2$s"', '%1$s thoughts on "%2$s"', get_comments_number(), 'comments title', 'twentythirteen' ),
-                    number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+                $comments_number = get_comments_number();
+                if ( '1' === $comments_number ) {
+                    /* translators: %s: post title */
+                    printf( _x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'twentyfifteen' ), get_the_title() );
+                } else {
+                    printf(
+                        /* translators: 1: number of comments, 2: post title */
+                        _nx(
+                            '%1$s thought on &ldquo;%2$s&rdquo;',
+                            '%1$s thoughts on &ldquo;%2$s&rdquo;',
+                            $comments_number,
+                            'comments title',
+                            'twentyfifteen'
+                        ),
+                        number_format_i18n( $comments_number ),
+                        get_the_title()
+                    );
+                }
             ?>
         </h2>
 

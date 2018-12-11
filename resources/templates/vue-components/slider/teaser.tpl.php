@@ -1,5 +1,6 @@
 <?php
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 use Tonik\Theme\App\Store;
 if( Store::isset_then_set('vue/slider/teaser') ) return;
 ?>
@@ -13,7 +14,7 @@ if( Store::isset_then_set('vue/slider/teaser') ) return;
             <div class="c-slider__teaser c-collapsible" :class="{'is-collapsed': teaserCollapsed}">
                 <div class="c-collapsible__header">
                     <div class="c-collapsible__title u-h5">
-                        Neue Videos
+                        <?= __('New Recordings', config('textdomain')) ?>
                     </div>
                     <div class="c-collapsible__btn">
                         <button class="c-btn c-btn--subtle c-btn--square c-btn--edgy u-defocus"

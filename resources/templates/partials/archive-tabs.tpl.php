@@ -2,10 +2,22 @@
 use function Tonik\Theme\App\config;
 $request_uri = $_SERVER['REQUEST_URI'];
 $tabs = [
-    ['url' => '/recordings/', 'label' => _x('Recordings', 'post type general name', config('textdomain'))],
-    ['url' => '/series/',     'label' => _x('Series', 'taxonomy general name', config('textdomain'))],
-    ['url' => '/speakers/',   'label' => _x('Speakers', 'taxonomy general name', config('textdomain'))],
-    ['url' => '/topics/',     'label' => _x('Topics', 'taxonomy general name', config('textdomain'))]
+    [
+        'url' => '/'._x('recordings', 'http route', config('textdomain')).'/',
+        'label' => _x('Recordings', 'post type general name', config('textdomain'))
+    ],
+    [
+        'url' => '/'._x('series', 'http route', config('textdomain')).'/',
+        'label' => _x('Series', 'taxonomy general name', config('textdomain'))
+    ],
+    [
+        'url' => '/'._x('speakers', 'http route', config('textdomain')).'/',
+        'label' => _x('Speakers', 'taxonomy general name', config('textdomain'))
+    ],
+    [
+        'url' => '/'._x('topics', 'http route', config('textdomain')).'/',
+        'label' => _x('Topics', 'taxonomy general name', config('textdomain'))
+    ]
 ]
 ?>
 

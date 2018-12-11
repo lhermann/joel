@@ -30,7 +30,7 @@ function register_media_taxonomies()
         'hierarchical'      => false,
         'show_in_rest'      => true,
         'rewrite'           => [
-            'slug'              => 'series',
+            'slug'              => _x('series', 'http route', config('textdomain')),
             'with_front'        => true,
             'hierarchical'      => true,
         ],
@@ -55,7 +55,7 @@ function register_media_taxonomies()
         'hierarchical'      => false,
         'show_in_rest'      => true,
         'rewrite'           => [
-            'slug'              => 'speakers',
+            'slug'              => _x('speakers', 'http route', config('textdomain')),
             'with_front'        => true,
             'hierarchical'      => true,
         ],
@@ -78,7 +78,7 @@ function register_media_taxonomies()
         'public'        => true,
         'show_in_rest'  => true,
         'rewrite'       => [
-            'slug'          => 'topics',
+            'slug'          => _x('topics', 'http route', config('textdomain')),
             'with_front'    => true,
             'hierarchical'  => true,
         ],
@@ -100,7 +100,7 @@ function register_media_taxonomies()
 
     register_taxonomy('podcasts', 'recordings', [
         'rewrite' => [
-            'slug' => 'podcasts',
+            'slug' => _x('podcasts', 'http route', config('textdomain')),
             'with_front' => true,
             'hierarchical' => true,
         ],

@@ -26,7 +26,7 @@ use function Tonik\Theme\App\config;
     <body <?php body_class(); ?>>
 
         <?php template('vue-components/cookie-consent-init', [
-            'id' => 'co0kie-consent',
+            'id' => 'cookie-consent',
             'options' => ['matomo']
         ]) ?>
 

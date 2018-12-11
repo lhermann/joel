@@ -37,6 +37,7 @@ function register_media_post_type()
         'menu_position'      => 8,
         'show_in_rest'       => true,
         'supports'           => array( 'title', 'editor', 'comments' ),
+        'rewrite'            => ['slug' => _x('recordings', 'http route', config('textdomain'))],
         'labels' => [
             'name' => _x('Recordings', 'post type general name', config('textdomain')),
             'singular_name' => _x('Recording', 'post type singular name', config('textdomain')),

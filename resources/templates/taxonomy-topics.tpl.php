@@ -19,7 +19,7 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
         <div class="o-wrapper">
             <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
-                <a class="c-link c-link--dotted c-link--white" href="/<?= $term->taxonomy ?>/">
+                <a class="c-link c-link--dotted c-link--white" href="/<?= _x('topics', 'http route', config('textdomain')) ?>/">
                     <span class="u-ic-arrow_back"></span> <?= __('Show all topics', config('textdomain')) ?>
                 </a>
 

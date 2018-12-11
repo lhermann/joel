@@ -47,7 +47,7 @@ use function Tonik\Theme\App\config;
             <h2>
                 <span class="u-text-middle">Neue Videos</span>
                 <a class="c-btn c-btn--tiny c-btn--light u-default u-muted u-ml-"
-                    href="<?= home_url( '/recordings/' ) ?>">
+                    href="<?= home_url( '/'._x('recordings', 'http route', config('textdomain')).'/' ) ?>">
                     Alle Videos anzeigen
                     <span class="u-ic-arrow_forward"></span>
                 </a>
@@ -86,8 +86,8 @@ use function Tonik\Theme\App\config;
 
                     <h2 class="u-h3">
                         <a class="c-link c-link--dotted"
-                            href="<?= home_url( '/series/' ) ?>">
-                            Neue Serien
+                            href="<?= home_url( '/'._x('series', 'http route', config('textdomain')).'/' ) ?>">
+                            <?= __('New Series', config('textdomain')) ?>
                         </a>
                     </h2>
 
@@ -108,7 +108,7 @@ use function Tonik\Theme\App\config;
 
                     <h2 class="u-h3">
                         <a class="c-link c-link--dotted"
-                            href="<?= home_url( '/series/mit-gott-leben/' ) ?>">
+                            href="<?= home_url( '/'._x('series', 'http route', config('textdomain')).'/mit-gott-leben/' ) ?>">
                             Tägliche Andachten
                         </a>
                     </h2>

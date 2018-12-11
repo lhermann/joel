@@ -41,16 +41,16 @@ function additional_rewrite_rules() {
     // define new rules
     $new_rules = array(
 
-        __('series', config('textdomain')).'/?$'
+        _x('series', 'http route', config('textdomain')).'/?$'
             => "index.php?archive=series",
 
-        __('speakers', config('textdomain')).'/?$'
+        _x('speakers', 'http route', config('textdomain')).'/?$'
             => "index.php?archive=speakers",
 
-        __('topics', config('textdomain')).'/?$'
+        _x('topics', 'http route', config('textdomain')).'/?$'
             => "index.php?archive=topics",
 
-        __('podcasts', config('textdomain')).'/?$'
+        _x('podcasts', 'http route', config('textdomain')).'/?$'
             => "index.php?archive=podcasts",
     );
 

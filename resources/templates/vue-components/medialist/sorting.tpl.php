@@ -1,5 +1,6 @@
 <?php
 use Tonik\Theme\App\Store;
+use function Tonik\Theme\App\config;
 if( Store::isset_then_set('vue/medialist/sorting') ) return;
 ?>
 
@@ -8,7 +9,7 @@ if( Store::isset_then_set('vue/medialist/sorting') ) return;
 
     <div>
 
-        <span>Sortieren:</span>
+        <span><?= __('Sort:', config('textdomain')) // Sortieren: ?></span>
         <button ref="reference"
             id="sorting-dropdown"
             class="c-btn c-btn--dropdown c-btn--tiny c-btn--secondary u-ml--"

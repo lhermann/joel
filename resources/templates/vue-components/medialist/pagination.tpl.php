@@ -1,5 +1,6 @@
 <?php
 use Tonik\Theme\App\Store;
+use function Tonik\Theme\App\config;
 if( Store::isset_then_set('vue/medialist/pagination') ) return;
 ?>
 
@@ -22,7 +23,7 @@ if( Store::isset_then_set('vue/medialist/pagination') ) return;
                     >
                         <span class="u-ic-keyboard_arrow_left"></span>
                         <span v-if="verbose" class="u-hidden-until@tablet">
-                            Vorherige Seite
+                            <?= __('Previous page', config('textdomain')) ?>
                         </span>
                     </button>
                 </li>
@@ -58,7 +59,7 @@ if( Store::isset_then_set('vue/medialist/pagination') ) return;
                         v-on:click="nextPage"
                     >
                         <span v-if="verbose" class="u-hidden-until@tablet">
-                            Nächste Seite
+                            <?= __('Next page', config('textdomain')) ?>
                         </span>
                         <span class="u-ic-keyboard_arrow_right"></span>
                     </button>
