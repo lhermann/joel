@@ -14,6 +14,7 @@ namespace Tonik\Theme\App\Structure;
 */
 
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\Legacy\get_status_video_files;
 
 /**
  * Registers `media` custom post type.
@@ -173,24 +174,12 @@ function recordings_custom_columns($column) {
             printf('<img src="%s" class="media-thumbnail img img-54p" alt="">', $img);
             break;
         case "status":
-            if(function_exists('get_status_video_files')) {
-                $status_num = get_status_video_files( $post->ID, 'lowest' );
-                switch ($status_num) {
-                    case 5:
-                        $status = 'status-on';
-                        break;
-                    case 4:
-                    case 3:
-                    case 2:
-                    case 1:
-                        $status = 'status-active';
-                        break;
-                    default:
-                        $status = 'status-off';
-                        break;
-                }
-                print ( '<span class="status '.$status.'"><span></span></span>' );
-            }
+            $status_num = get_status_video_files( $post->ID, 'lowest' );
+            $dot = "";
+            if($status_num >= 1) $dot = "c-dot--yellow is-loading";
+            if($status_num >= 5) $dot = "c-dot--green";
+            if($status_num >= 60) $dot = "c-dot--red";
+            print ("<span class=\"c-dot c-dot--small $dot\"></span>");
             break;
         case "speakers":
             $terms = get_the_term_list($post->ID, 'speakers', '', ', ','');

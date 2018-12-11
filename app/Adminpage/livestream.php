@@ -53,15 +53,8 @@ class LivestramControllPage {
                         <div id="post-body-content">
 
 <!-- Livestream -->
-<div class="meta-box-sortables ui-sortable">
-    <div class="postbox">
-        <h3 class="hndle" style="cursor: default;">Joel Media Livestream</h3>
-        <div class="inside activity-block embed-lifestream-wrap">
-            <div class="embed-iframe embed-lifestream">
-                <iframe src="<?= config('url-prefix')['embed'].'0livestream' ?>" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
+<div class="embed-iframe embed-lifestream">
+    <iframe src="<?= config('url-prefix')['embed'].'0livestream' ?>" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <!-- Monitor -->

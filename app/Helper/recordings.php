@@ -9,6 +9,34 @@ namespace Tonik\Theme\App\Helper;
 */
 
 
+function ffprobe_recording( $file ) {
+    $video = new \stdClass();
+    $video->error = false;
+
+    $exec = "ffprobe -show_streams " . escapeshellarg( $file ) . " 2>&1";
+    exec ( $exec, $output );
+
+
+    // Provide face output for development environment
+    if( strpos ( implode($output) , "not found" ) ) {
+        $video->error = $output;
+        return $video;
+    }
+
+    $pattern = '/(?:\[STREAM\].*?index=0).*?width=(?<w>\d+).*?height=(?<h>\d+).*?sample_aspect_ratio=(?<par>\d+:\d+).*?display_aspect_ratio=(?<dar>\d+:\d+).*?bit_rate=(?<bitrate>\d+)/s';
+    preg_match($pattern, implode($output), $matches);
+
+    // print("<pre>"); print_r(implode($output)); print("</pre>");
+
+    $video->width = $matches['w'];
+    $video->height = $matches['h'];
+    $video->bitrate = floor($matches['bitrate']/1000);
+    $video->par = $matches['par'];
+    $video->dar = $matches['dar'];
+
+    return $video;
+}
+
 
 /**
  * Function to retrieve the taxonomy terms by slug associated to a certain term_taxonomy_id

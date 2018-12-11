@@ -37,7 +37,7 @@ function get_video_files( $post_id, $type = false, $limit = 0 ) {
         case 'source':
         case 'smil':
             $query = sprintf("
-                SELECT type, location, status, relative_url, size, resolution, bitrate, length, flags
+                SELECT *
                 FROM wp_video_files
                 WHERE post_id = %d
                 AND type = '%s'
@@ -50,7 +50,7 @@ function get_video_files( $post_id, $type = false, $limit = 0 ) {
 
         default:
             $query = sprintf("
-                SELECT type, location, status, relative_url, size, resolution, bitrate, length, flags
+                SELECT *
                 FROM wp_video_files
                 WHERE post_id = %d;",
                 $post_id
@@ -122,6 +122,54 @@ function get_download_files($post_id) {
 
 /**
  * LEGACY
+ * Get a number of a video/audio file status corresponding to the staus flag
+ * This function has been exported because it is used by embed.php
+ *
+ * 0 – file does not exist
+ * 1 – 'wait'
+ * 2 – 'open'
+ * 3 – 'processing'
+ * 4 – 'ready'
+ * 5 – 'uploaded'
+ *
+ * INPUT
+ *  $post_id    -> $post->ID
+ *  $value      -> 'highest', 'lowest' (std) or false for array
+ *
+ * OUTPUT
+ *  'higehst'   -> the highest status of all files below 200 (eg. 60 for ERROR)
+ *  'lowest'    -> the lowest status of all files (eg. 3 for PROCESSING)
+ */
+
+function get_status_video_files( $post_id, $value = false ) {
+    global $wpdb;
+
+    $files = $wpdb->get_results(
+        "SELECT * FROM wp_video_files WHERE post_id = '$post_id' AND status <= 200",
+        ARRAY_A
+    );
+
+    $return = array(
+        'highest'   => 0,
+        'lowest'    => 200
+    );
+    if ( !empty( $files ) ) {
+        foreach( $files as $file ) {
+            $i = (int)$file['status'];
+            $return['highest'] = $return['highest'] < $i ? $i : $return['highest'];
+            $return['lowest'] = $return['lowest'] > $i ? $i : $return['lowest'];
+        }
+    } else {
+        $return['lowest'] = 0;
+    };
+
+    if( $value ) return $return[$value];
+    return $return;
+}
+
+
+/**
+ * LEGACY
  * Add a widget to the dashboard.
  *
  * This function is hooked into the 'wp_dashboard_setup' action below.
@@ -149,9 +197,6 @@ function dashboard_widget_function() {
     $num_videos = wp_count_posts('recordings');
     $num_vsprecher = wp_count_terms('speakers');
     $num_vserien = wp_count_terms('series');
-    // $num_audios = wp_count_posts( 'audio' );
-    // $num_asprecher = wp_count_terms( 'audio_sprecher' );
-    // $num_aserien = wp_count_terms( 'audio_serien' );
 
     // Get Filesize
     $videosize = $wpdb->get_var( "SELECT sum(size) FROM wp_video_files" );

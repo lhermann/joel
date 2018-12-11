@@ -2,67 +2,84 @@
    #FLEX
    ========================================================================== */
 
+
 .o-flex {
     display: flex;
     flex-wrap: wrap;
 
     // justify-content
-    &--left { justify-content: flex-start }
-    &--center { justify-content: center }
-    &--right { justify-content: flex-end }
-    &--between { justify-content: space-between }
-    &--around { justify-content: space-around }
+    &--left { justify-content: flex-start; }
+    &--center { justify-content: center; }
+    &--right { justify-content: flex-end; }
+    &--between { justify-content: space-between; }
+    &--around { justify-content: space-around; }
 
     // align-items
-    &--stretch { align-items: stretch }
-    &--middle { align-items: center }
-    &--top { align-items: flex-start }
-    &--bottom { align-items: flex-end }
-    &--baseline { align-items: baseline }
+    &--stretch { align-items: stretch; }
+    &--middle { align-items: center; }
+    &--top { align-items: flex-start; }
+    &--bottom { align-items: flex-end; }
+    &--baseline { align-items: baseline; }
 
     // Gutters
-    &--tiny { margin-bottom: -$unit-tiny }
-    &--small { margin-bottom: -$unit-small }
-    &--unit { margin-bottom: -$unit }
-    &--large { margin-bottom: -$unit-large }
-    &--huge { margin-bottom: -$unit-huge }
+    &--tiny {
+        margin-left: -$unit-tiny;
+        margin-bottom: -$unit-tiny/2;
+    }
+    &--small {
+        margin-left: -$unit-small;
+        margin-bottom: -$unit-small/2;
+    }
+    &--unit {
+        margin-left: -$unit;
+        margin-bottom: -$unit/2;
+    }
+    &--large {
+        margin-left: -$unit-large;
+        margin-bottom: -$unit-large/2;
+    }
+    &--huge {
+        margin-left: -$unit-huge;
+        margin-bottom: -$unit-huge/2;
+    }
 
     // Misc
-    &--nowrap { flex-wrap: nowrap }
-
+    &--nowrap { flex-wrap: nowrap; }
 }
 
     .o-flex__item {
-
         .o-flex--tiny & {
-            margin-right: $unit-tiny;
-            margin-bottom: $unit-tiny;
+            padding-left: $unit-tiny;
+            margin-bottom: $unit-tiny/2;
         }
 
         .o-flex--small & {
-            margin-right: $unit-small;
-            margin-bottom: $unit-small;
+            padding-left: $unit-small;
+            margin-bottom: $unit-small/2;
         }
 
         .o-flex--unit & {
-            margin-right: $unit;
-            margin-bottom: $unit;
+            padding-left: $unit;
+            margin-bottom: $unit/2;
         }
 
         .o-flex--large & {
-            margin-right: $unit-large;
-            margin-bottom: $unit-large;
+            padding-left: $unit-large;
+            margin-bottom: $unit-large/2;
         }
 
         .o-flex--huge & {
-            margin-right: $unit-huge;
-            margin-bottom: $unit-huge;
+            padding-left: $unit-huge;
+            margin-bottom: $unit-huge/2;
         }
 
 
         &:last-of-type {
             margin-right: 0;
         }
+    }
 
+    .o-flex__spacer {
+        flex-grow: 1;
     }
 

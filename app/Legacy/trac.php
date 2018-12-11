@@ -297,9 +297,9 @@ function trac_dashboard_widget_function() {
         <span style="color: #f4c63d;">Audio</span> /
         <span style="color: #d17905;">Podcast</span>
     </strong></h3>
-    <div class="trac-download-chart"></div>
+    <div id="trac-download-chart"></div>
     <script>
-        var data = {
+        var chartist_data = {
           // A labels array that can contain any sort of values
           labels: [<?= implode(',', $chart_dl['labels']) ?>],
           // Our series array that contains series objects or in this case series data arrays
@@ -310,7 +310,6 @@ function trac_dashboard_widget_function() {
             [<?= implode(',', $chart_dl['podcast']) ?>]
           ]
         };
-        new Chartist.Line('.trac-download-chart', data);
     </script>
 </div>
 <div class="activity-block">

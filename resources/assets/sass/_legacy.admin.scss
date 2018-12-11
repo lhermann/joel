@@ -2,49 +2,6 @@
  * JMM Custom Admin CSS
  */
 
-/* Admin Columns */
-.wp-list-table .column-video_sprecher,
-.wp-list-table .column-video_serien,
-.wp-list-table .column-audio_sprecher,
-.wp-list-table .column-audio_serien {
-    width: 15%;
-}
-.wp-list-table .column-status {
-    width: 10px;
-    padding-right: 0;
-}
-.wp-list-table .column-image {
-    width: 92px;
-}
-.wp-list-table .column-subscribers {
-    width: 3em;
-}
-.wp-list-table .column-posts {
-    width: 80px;
-}
-
-@media screen and (max-width: 782px) {
-    .wp-list-table
-        tr:not(.inline-edit-row):not(.no-items)
-        td.column-image::before {
-        display: none;
-    }
-    .wp-list-table th.column-image,
-    .wp-list-table th.column-status {
-        display: none;
-    }
-    .wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-status {
-        position: absolute;
-        left: 140px;
-        margin-top: -55px;
-    }
-}
-
-/* Admin Menu */
-#adminmenu li.wp-menu-separator {
-    background: #444;
-}
-
 /* CSS for Dashboard Widget */
 #dashboard_jmm_video_audio .inside {
     padding: 0;
@@ -465,29 +422,4 @@
     100% {
         -webkit-transform: rotate(360deg);
     }
-}
-
-/* Progress Bar */
-.progress {
-    height: 20px;
-    margin: 6px 0;
-    overflow: hidden;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.progress-bar {
-    float: left;
-    width: 0;
-    height: 100%;
-    font-size: 12px;
-    line-height: 20px;
-    color: #fff;
-    text-align: center;
-    background-color: #337ab7;
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-}
-.progress-bar-success {
-    background-color: #5cb85c;
 }

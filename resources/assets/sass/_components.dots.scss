@@ -21,9 +21,8 @@
     }
 
     &--small {
-        width: 2px;
-        height: 2px;
-        vertical-align: 10%;
+        width: $unit-tiny;
+        height: $unit-tiny;
     }
 
     &--green { color: $c-white; --bg: #{$c-green-4}; }
@@ -40,6 +39,10 @@
         border-left-color: currentcolor;
         border-right-color: currentcolor;
         animation: rotating 1.2s infinite linear;
+    }
+
+    &--small.is-loading::after {
+        border-width: $unit-tiny / 2;
     }
 }
 

@@ -15,6 +15,7 @@ use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\Helper\get_terms_associated_with_term;
 use function Tonik\Theme\App\Helper\count_terms_associated_with_term;
 use function Tonik\Theme\App\Helper\fallback_img;
+use function Tonik\Theme\App\Legacy\get_video_files;
 
 function rest_api_additions() {
 
@@ -188,3 +189,22 @@ function event_organiser_endpoint() {
 
 }
 add_action( 'rest_api_init', 'Tonik\Theme\App\Http\event_organiser_endpoint' );
+
+
+/**
+ * Recording endpoints
+ */
+function recording_endpoints() {
+
+    /*
+     * Recording status
+     */
+    register_rest_route( config('textdomain').'/v1', '/recording-status/(?P<id>\d+)', array(
+        'methods' => \WP_REST_Server::READABLE,
+        'callback' => function( \WP_REST_Request $request ) {
+            return $video_files = get_video_files($request['id'], 'raw');
+        }
+    ) );
+
+}
+add_action( 'rest_api_init', 'Tonik\Theme\App\Http\recording_endpoints' );
