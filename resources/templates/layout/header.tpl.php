@@ -1,14 +1,17 @@
 <?php
 use function Tonik\Theme\App\template;
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\Legacy\print_open_graph;
 ?>
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
 
     <head>
-        <meta charset="utf-8">
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <?php print_open_graph(); ?>
 
         <?php if(config('favicon')): ?>
             <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

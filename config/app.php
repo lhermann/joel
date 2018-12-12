@@ -125,6 +125,7 @@ return [
         'Helper/global.php',
         'Helper/recordings.php',
         'Legacy/admin_page_videos.php',
+        'Legacy/open-graph.php',
         'Legacy/recordings.php',
         'Legacy/processing.php',
         'Legacy/trac.php',
