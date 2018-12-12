@@ -46,13 +46,19 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
 
                     <div class="u-mt+">
                         <h2 class="u-h5 u-mb-">
-                            <a href="<?= $term->parent ? get_term_link($term->parent) : '/'.$term->taxonomy.'/' ?>"
+                            <a href="<?=
+                                $term->parent
+                                    ? get_term_link($term->parent)
+                                    : '/'._x('topics', 'http route', config('textdomain')).'/'
+                                ?>"
                                 class="c-btn c-btn--light c-btn--ghost c-btn--small c-btn--square u-mr-">
                                 <span class="u-ic-arrow_back"></span>
                             </a>
                             <span>
-                                <?= (count($subtopics) ?: 'No').' '.
-                                _n( 'Subtopic', 'Subtopics', count($subtopics), config('textdomain') ) ?>
+                                <?=
+                                    (count($subtopics) ?: 'Keine').' '.
+                                    _n( 'Subtopic', 'Subtopics', count($subtopics), config('textdomain') )
+                                ?>
                             </span>
                         </h2>
                         <ul class="c-medialist c-medialist--white c-medialist--inline">
