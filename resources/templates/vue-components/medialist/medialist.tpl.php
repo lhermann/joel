@@ -30,10 +30,10 @@ if( Store::isset_then_set('vue/medialist/medialist') ) return;
         </header>
 
         <ul class="c-medialist" :class="medialistClass">
-            <li v-for="(item, i) in items" class="c-medialist__item">
+            <li v-for="item in items" class="c-medialist__item">
 
                 <mediaitem-component
-                    :key="i"
+                    :key="item.id"
                     :item="item"
                 />
 

@@ -3,6 +3,9 @@
  * @author: Lukas Hermann
  */
 
+import differenceInDays from "date-fns/differenceInDays";
+import differenceInHours from "date-fns/differenceInHours";
+
 export default {
     name: "MediaitemComponent",
     template: "#mediaitem-component",
@@ -22,6 +25,9 @@ export default {
                 default:
                     return false;
             }
+        },
+        isNew() {
+            return differenceInDays(Date.now(), this.item.date_gmt + "Z") <= 7;
         },
         title() {
             if (this.isRecording) return this.item.title.rendered;

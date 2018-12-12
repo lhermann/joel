@@ -1,6 +1,7 @@
 <?php
 use Tonik\Theme\App\Store;
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\asset_path;
 if( Store::isset_then_set('vue/medialist/mediaitem') ) return;
 ?>
 
@@ -24,6 +25,8 @@ if( Store::isset_then_set('vue/medialist/mediaitem') ) return;
                     <div v-html="length"></div>
                 </div>
             </a>
+            <div v-if="isNew" class="c-mediaitem__new"
+                style="background-image: url('<?= asset_path('images/neu-badge.png') ?>');"></div>
         </div>
 
         <div class="o-media__body c-mediaitem__body">
