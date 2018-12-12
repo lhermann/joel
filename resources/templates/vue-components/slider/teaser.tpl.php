@@ -13,20 +13,18 @@ if( Store::isset_then_set('vue/slider/teaser') ) return;
         <div class="o-wrapper u-h100">
             <div class="c-slider__teaser c-collapsible" :class="{'is-collapsed': teaserCollapsed}">
                 <div class="c-collapsible__header">
-                    <div class="c-collapsible__title u-h5">
-                        <?= __('New Recordings', config('textdomain')) ?>
-                    </div>
-                    <div class="c-collapsible__btn">
-                        <button class="c-btn c-btn--subtle c-btn--square c-btn--edgy u-defocus"
-                            @click="onCollapseClick">
-                            <span class="u-ic-unfold_less"
-                                v-show="teaserCollapsed">
-                            </span>
-                            <span class="u-ic-unfold_more"
-                                v-show="!teaserCollapsed">
-                            </span>
-                        </button>
-                    </div>
+                    <button class="c-btn c-btn--subtle c-btn--edgy u-defocus u-ph u-1/1"
+                        @click="onCollapseClick" ref="button">
+                        <div class="o-flex o-flex--middle o-flex--between">
+                            <h5 class="c-collapsible__title u-m0">
+                                <?= __('New Recordings', config('textdomain')) ?>
+                            </h5>
+                            <span class="u-ic-keyboard_arrow_down"
+                                v-show="teaserCollapsed"></span>
+                            <span class="u-ic-keyboard_arrow_up"
+                                v-show="!teaserCollapsed"></span>
+                        </div>
+                    </button>
                 </div>
                 <div class="c-collapsible__body u-center u-top u-ph">
 

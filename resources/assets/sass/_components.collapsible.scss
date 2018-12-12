@@ -11,8 +11,8 @@
 }
 
     .c-collapsible__header {
-        display: flex;
-        align-items: center;
+        // display: flex;
+        // align-items: center;
         // border-bottom: 1px solid $c-border;
         background-color: $c-white;
 
@@ -21,10 +21,10 @@
         // }
     }
 
-        .c-collapsible__title {
-            flex-grow: 1;
-            padding: 0 $unit;
-        }
+        // .c-collapsible__title {
+        //     flex-grow: 1;
+        //     padding: 0 $unit;
+        // }
 
     .c-collapsible__body {
         overflow: hidden;

@@ -22,6 +22,7 @@ export default {
         onCollapseClick() {
             this.teaserCollapsed = !this.teaserCollapsed;
             this.userIntervened = true;
+            this.$refs.button.blur();
         }
     },
     watch: {
