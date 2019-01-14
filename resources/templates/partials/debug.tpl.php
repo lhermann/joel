@@ -1,5 +1,5 @@
 <?php
-    if( !WP_DEBUG ) return;
+    if( !WP_DEBUG_DISPLAY ) return;
     global $wp_query;
 ?>
 
