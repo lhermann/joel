@@ -164,7 +164,7 @@ function delete_video( $postid ){
     // log the event
     file_put_contents(
         config('processing')['log-dir'].'main.log',
-        current_time('[d M Y H:i:s] ')." Post $post_id deleted.\n",
+        current_time('[d M Y H:i:s] ')." Post $postid deleted.\n",
         FILE_APPEND
     );
 }
