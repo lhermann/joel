@@ -8,8 +8,11 @@ import "./admin-vue/recording-status.js";
  * Changed the following in chartist.js for this to work:
  *    // if (typeof define === 'function' && define.amd) {
  *    if (root && typeof define === 'function' && define.amd) {
+ *
+ * But since I can't do that with my deploy script I just request chartist as
+ * seperate resource
  */
-import Chartist from "chartist";
+// import Chartist from "chartist";
 if (document.getElementById("trac-download-chart")) {
     new Chartist.Line("#trac-download-chart", window.chartist_data);
 }
