@@ -131,7 +131,7 @@ function rest_api_additions() {
         [ 'recordings' ],
         'views',
         [ 'get_callback' => function( $object ) {
-            return (int) wpp_get_views( $object['id'] );
+            return wpp_get_views( $object['id'] );
         } ]
     );
 
