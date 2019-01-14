@@ -151,7 +151,7 @@ function delete_video( $postid ){
 
     // We check if the global post type isn't ours and just return
     global $post_type;
-    if ( $post_type !== 'recordings' ) return;
+    if ( !$postid || $post_type !== 'recordings' ) return;
 
     // Mark video and audio files as 'OBSOLET' – status 255
     global $wpdb;
