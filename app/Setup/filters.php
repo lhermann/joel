@@ -117,13 +117,15 @@ add_filter('get_terms', 'Tonik\Theme\App\Setup\order_biblical_books', 10, 3);
 /**
  * Add 'async' and 'defer' to <script> tags
  *
- * I removed the 'defer' attribute for now, because a ressource with timeout
+ * Use 'async' in development because a ressource with timeout
  * can block the whole website otherwise
+ *
+ * User 'defer' in production otherwise jquery-dependencies throw errors
  */
-function add_async_attribute($tag, $handle) {
+function add_async_defer($tag, $handle) {
     if(is_admin()) return $tag;
-    return str_replace( ' src', ' async src', $tag );
+    return str_replace( ' src', ' defer src', $tag );
 }
-add_filter('script_loader_tag', 'Tonik\Theme\App\Setup\add_async_attribute', 10, 2);
+add_filter('script_loader_tag', 'Tonik\Theme\App\Setup\add_async_defer', 10, 2);
 
 

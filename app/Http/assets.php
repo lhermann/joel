@@ -72,9 +72,9 @@ function register_admin_scripts_and_styles() {
     /*
      * Javascript
      */
-    wp_enqueue_script( 'datefns_js', "https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js", [], "", false );
+    // wp_enqueue_script( 'datefns_js', "https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js", [], "", false );
     // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", [], "v2.5.18", false ); //dev
-    wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue", [], "v2.5.18", false );
+    // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue", [], "v2.5.18", false );
     // wp_enqueue_script( 'chartist_js', "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js", [], "0.11.0", false );
     wp_enqueue_script( 'admin_js', asset_path('js/admin.js'), [], filemtime(asset('js/admin.js')->getPath()), true );
 
