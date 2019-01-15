@@ -83,15 +83,6 @@ class LivestramControllPage {
     </div>
 </div>
 
-                            <!-- <div class="meta-box-sortables ui-sortable">
-                                <div id="streamerStatistics" class="postbox">
-                                    <h3 class="hndle" style="cursor: default;">Streamer Stats</h3>
-                                    <iframe src="https://live.stream.joelmediatv.de/stat" frameborder="0"
-                                        style="height: 420px; width: 100%;"></iframe>
-                                    <div id="video-status-timer">Zuletzt aktualisiert vor <span class="updateSeconds">0</span> Sekunden.</div>
-                                </div>
-                            </div> -->
-
                         </div><!-- post-body-content -->
 
                         <!-- sidebar -->
@@ -105,15 +96,6 @@ class LivestramControllPage {
         <script async src="//tlk.io/embed.js" type="text/javascript"></script>
     </div>
 </div>
-
-                            <!-- <div id="side-sortables-1" class="meta-box-sortables ui-sortable">
-                                <div id="livestreamStatistics" class="postbox">
-                                    <h3 class="hndle" style="cursor: default;"><span>Livestream Statistik</span></h3>
-                                    <iframe src="<?= EMBED_URL ?>stats.php" frameborder="0"
-                                        style="height: 230px; width: 100%;"></iframe>
-                                    <div id="video-status-timer">Zuletzt aktualisiert vor <span class="updateSeconds">0</span> Sekunden.</div>
-                                </div>
-                            </div> -->
 
                         </div><!-- #postbox-container-1 .postbox-container -->
 
