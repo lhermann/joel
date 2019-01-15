@@ -201,7 +201,7 @@ hr {
  * Stack media object on mobile
  */
 .o-media--stacked\@mobile {
-    @include mq($until: mobile) {
+    @include mq($until: tablet) {
         .o-media__img,
         .o-media__body {
             float: none;
@@ -210,6 +210,7 @@ hr {
         .o-media__img {
             margin-right: 0;
             margin-bottom: $unit;
+            width: 100% !important;
         }
     }
 }

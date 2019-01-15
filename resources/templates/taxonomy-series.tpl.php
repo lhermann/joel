@@ -27,9 +27,12 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                 <div class="u-mt">
                     <div class="o-flag o-flag--large">
                         <div class="o-flag__img u-hidden-until@tablet">
-                            <img class="u-rounded u-box-shadow u-320"
-                                src="<?= wp_get_attachment_image_src(get_field( 'image', $term ), '360p')[0] ?>"
-                                alt="Image of <?= htmlentities($term->name) ?>">
+                            <?= wp_get_attachment_image(
+                                get_field('image', $term),
+                                '180p',
+                                false,
+                                ["class" => "u-rounded u-box-shadow"]
+                            ) ?>
                         </div>
                         <div class="o-flag__body">
                             <h1 class="u-responsive u-mb0"><?= $term->name ?></h1>

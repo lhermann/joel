@@ -26,11 +26,13 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                 </a>
 
                 <div class="o-media o-media--stacked@mobile u-mt">
-                    <div class="o-media__img u-160">
-                        <img class="u-rounded u-box-shadow u-1/1"
-                            src="<?= wp_get_attachment_image_src(get_field( 'image', $term ), 'square320')[0] ?>"
-                            alt="Image of <?= htmlentities($term->name) ?>"
-                        >
+                    <div class="o-media__img">
+                        <?= wp_get_attachment_image(
+                            get_field('image', $term),
+                            'square160',
+                            false,
+                            ["class" => "u-rounded u-box-shadow"]
+                        ) ?>
                     </div>
                     <div class="o-media__body">
                         <h1 class="u-responsive u-mb0"><?= $term->name ?></h1>
