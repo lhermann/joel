@@ -5,6 +5,16 @@ use function Tonik\Theme\App\asset_path;
 
 $speakers = wp_get_object_terms( get_the_ID(), 'speakers' );
 $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
+$topics = str_replace(
+    '<a',
+    '<a class="c-link c-link--dotted c-link--white"',
+    get_the_term_list(
+        get_the_ID(),
+        'topics',
+        '<span class="u-mh--">&middot;</span>'.__('Topics', config('textdomain')).': ',
+        ', '
+    )
+);
 ?>
 
 <?php get_header() ?>
@@ -37,6 +47,7 @@ $series = wp_get_object_terms( get_the_ID(), 'series' )[0];
                     >
                         <?= $series->name ?>
                     </a>
+                    <?= $topics ?>
                 </header>
 
                 <div class="o-ratio o-ratio--16:9 u-box-shadow ">
