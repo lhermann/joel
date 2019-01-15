@@ -49,7 +49,7 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                             <li>
                                 <span class="u-ic-subscriptions"></span>
                                 <strong><?= $series_count ?></strong>
-                                <?= _x('Series', 'taxonomy singular name', config('textdomain')) ?>
+                                <?= _x('Series', 'taxonomy general name', config('textdomain')) ?>
                             </li>
                             <?php if ($website = get_field( 'website', $term )): ?>
                                 <li>
