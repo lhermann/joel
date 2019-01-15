@@ -85,7 +85,9 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                 ],
                 'params' => [
                     'per_page' => 20,
-                    'speakers' => $term->term_id
+                    'speakers' => $term->term_id,
+                    'taxonomy' => 'speakers',
+                    'term_id' => $term->term_id
                 ]
             ]) ?>
 

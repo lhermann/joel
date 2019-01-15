@@ -110,7 +110,9 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
                 ],
                 'params' => [
                     'per_page' => 20,
-                    'topics' => $term->term_id
+                    'topics' => $term->term_id,
+                    'taxonomy' => 'topics',
+                    'term_id' => $term->term_id
                 ]
             ]) ?>
 

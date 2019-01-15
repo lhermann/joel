@@ -84,7 +84,9 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                 ],
                 'params' => [
                     'per_page' => 20,
-                    'series' => $term->term_id
+                    'series' => $term->term_id,
+                    'taxonomy' => 'series',
+                    'term_id' => $term->term_id
                 ]
             ]) ?>
 
