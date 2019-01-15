@@ -112,7 +112,7 @@ function print_open_graph() {
                 $image_url = wp_get_attachment_image_src(get_field('thumbnail'), '720p')[0] ?: $image_url;
                 break;
             case 'post':
-                $image_url = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), '720p') ?: $image_url;
+                $image_url = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), '720p')[0] ?: $image_url;
                 break;
         }
     } elseif ( is_archive() && $wp_query->queried_object ) {
