@@ -30,7 +30,7 @@ if( Store::isset_then_set('vue/medialist/mediaitem') ) return;
         </div>
 
         <div class="o-media__body c-mediaitem__body">
-            <a class="c-mediaitem__title u-truncate" :href="item.link" v-html="title"></a>
+            <a class="c-mediaitem__title" :href="item.link" v-html="title"></a>
             <ul class="c-mediaitem__meta u-truncate">
                 <li v-if="subtopics">
                     {{ subtopics }}

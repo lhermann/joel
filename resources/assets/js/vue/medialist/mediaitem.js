@@ -30,8 +30,10 @@ export default {
             return differenceInDays(Date.now(), this.item.date_gmt + "Z") <= 7;
         },
         title() {
-            if (this.isRecording) return this.item.title.rendered;
-            return this.item.name;
+            return (this.isRecording
+                ? this.item.title.rendered
+                : this.item.name
+            ).replace(/^(.{101}[^\s]*).*/, "$1...");
         },
         length() {
             if (this.isRecording) return this.item.length;

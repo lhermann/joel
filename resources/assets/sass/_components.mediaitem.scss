@@ -171,6 +171,8 @@ $width-sprecher: (80px 80px);
     }
 
         .c-mediaitem__title {
+            display: block;
+
             &,
             &:hover,
             &:focus {
