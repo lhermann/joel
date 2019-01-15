@@ -133,6 +133,11 @@ $inuit-global-line-height: 21px;
     }
 }
 
+.wp-core-ui .attachment .landscape img:not(.icon) {
+    width: auto;
+    height: 100%;
+}
+
 @media screen and (max-width: 782px) {
     .wp-list-table {
         tr:not(.inline-edit-row):not(.no-items) td.column-image::before {
