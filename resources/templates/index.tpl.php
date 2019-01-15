@@ -1,10 +1,9 @@
 <?php
-use function Tonik\Theme\App\theme;
 use function Tonik\Theme\App\template;
 
 global $wp_query;
-
 ?>
+
 <?php get_header() ?>
 
 <?php template('partials/header') ?>

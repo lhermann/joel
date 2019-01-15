@@ -29,7 +29,7 @@ use function Tonik\Theme\App\config;
     <div class="u-center u-mv+">
         <a class="c-btn c-btn--secondary" href="<?= get_permalink( get_page_by_path( 'artikel' ) ) ?>">
             <span class="u-ic-arrow_back"></span>
-            Zurück zum Blog
+            Alle Artikel anzeigen
         </a>
     </div>
 
