@@ -32,4 +32,4 @@ use function Tonik\Theme\App\template;
  *
  * @see resources/templates/index.tpl.php
  */
-template('index');
+template('404');
