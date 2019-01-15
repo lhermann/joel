@@ -38,11 +38,13 @@ function rest_api_additions() {
     /**
      * Add a 'length' field showing the length of the recordings
      */
-    register_rest_field( 'recordings', 'length', array(
-        'get_callback' => function( $object ) {
-            return \Tonik\Theme\App\Legacy\get_video_length($object['id']);
-        }
-    ) );
+    register_rest_field(
+        'recordings',
+        'length',
+        [ 'get_callback' => function( $object ) {
+                return \Tonik\Theme\App\Legacy\get_video_length($object['id']);
+        } ]
+    );
 
     /**
      * Add 'thumbnail' to recordings

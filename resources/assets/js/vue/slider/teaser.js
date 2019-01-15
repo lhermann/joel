@@ -14,7 +14,10 @@ export default {
         return {
             teaserCollapsed: false,
             options: {},
-            params: { per_page: 5 },
+            params: {
+                per_page: 5,
+                series_exclude: 368 // mit Gott leben
+            },
             userIntervened: false
         };
     },
