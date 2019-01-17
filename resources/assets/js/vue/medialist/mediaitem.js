@@ -4,7 +4,7 @@
  */
 
 import differenceInDays from "date-fns/differenceInDays";
-import differenceInHours from "date-fns/differenceInHours";
+import parseISO from "date-fns/parseISO";
 
 export default {
     name: "MediaitemComponent",
@@ -27,7 +27,8 @@ export default {
             }
         },
         isNew() {
-            return differenceInDays(Date.now(), this.item.date_gmt + "Z") <= 7;
+            const date = parseISO(this.item.date_gmt + "Z");
+            return differenceInDays(Date.now(), date) <= 7;
         },
         title() {
             return (this.isRecording

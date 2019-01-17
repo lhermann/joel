@@ -8,6 +8,7 @@ import StreamCheck from "./livestream/streamcheck.js";
 import axios from "axios";
 import format from "date-fns/format";
 import locale from "date-fns/locale/de";
+import parseISO from "date-fns/parseISO";
 
 /* Instantiate Streamcheck
  **********************/
@@ -34,13 +35,13 @@ function vueInstance(_id) {
         },
         methods: {
             weekday(date) {
-                return format(date, "EEEE", { locale });
+                return format(parseISO(date), "EEEE", { locale });
             },
             date(date) {
-                return format(date, "d. MMM", { locale });
+                return format(parseISO(date), "d. MMM", { locale });
             },
             time(time) {
-                return format(time, "k:mm", { locale });
+                return format(parseISO(time), "k:mm", { locale });
             },
             request() {
                 axios
