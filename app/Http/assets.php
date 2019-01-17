@@ -23,7 +23,7 @@ use function Tonik\Theme\App\asset_path;
  */
 function register_stylesheets() {
 
-    wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/admin.css')->getPath()));
+    wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/app.css')->getPath()));
 }
 add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
 
@@ -34,7 +34,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
  * @return void
  */
 function register_scripts() {
-    wp_enqueue_script('app', asset_path('js/app.js'), [], sha1_file(asset('css/admin.css')->getPath()), true);
+    wp_enqueue_script('app', asset_path('js/app.js'), [], sha1_file(asset('css/app.js')->getPath()), true);
 }
 add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts');
 
