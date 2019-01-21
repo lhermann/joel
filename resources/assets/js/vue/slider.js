@@ -39,7 +39,7 @@ function vueInstance(_id) {
             return {
                 initDone: false,
                 mode: "none",
-                slideDuration: 4000,
+                slideDuration: 5000,
                 slideTransition: 800,
                 teaser: false
             };
