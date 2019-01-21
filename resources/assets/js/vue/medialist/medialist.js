@@ -120,20 +120,28 @@ export default {
          * Choose a sorting option that fits with the params
          */
         setInitialSortingOption() {
-            for (let option of this.sortingOptions) {
-                if (get(this.params, "order") !== option.params.order)
-                    continue;
-                if (get(this.params, "orderby") !== option.params.orderby)
-                    continue;
-                this.currentSortingOption = option;
-                return;
-            }
+            // this.currentSortingOption = this.sortingOptions[0];
+            // for (let option of this.sortingOptions) {
+            //     if (get(this.params, "order") !== option.params.order) continue;
+            //     if (get(this.params, "orderby") !== option.params.orderby)
+            //         continue;
+            //     this.currentSortingOption = option;
+            //     return;
+            // }
+
+            let i = this.sortingOptions.findIndex(
+                opt =>
+                    opt.params.orderby === get(this.params, "orderby") &&
+                    opt.params.order === (get(this.params, "order") || "asc")
+            );
+            this.currentSortingOption =
+                i >= 0 ? this.sortingOptions[i] : this.sortingOptions[0];
         },
         requestRecordings() {
             this.isLoading = true;
             // create 10 dummys
             const namespace =
-                this.currentSortingOption.namespace || this.namespace,
+                    this.currentSortingOption.namespace || this.namespace,
                 route = this.currentSortingOption.route || this.route,
                 params = Object.assign(
                     {},
