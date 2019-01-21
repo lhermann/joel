@@ -77,7 +77,11 @@ use function Tonik\Theme\App\config;
                         ],
                         'params' => [
                             'post_type' => 'recordings',
-                            'limit' => 5
+                            'per_page' => 5,
+                            'limit' => 5,
+                            'range' => 'custom',
+                            'time_unit' => 'day',
+                            'time_quantity' => 12
                         ]
                     ]) ?>
 

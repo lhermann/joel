@@ -7,6 +7,7 @@ import axios from "axios";
 import MediaitemComponent from "./mediaitem.js";
 import PaginationComponent from "./pagination.js";
 import SortingComponent from "./sorting.js";
+import get from "lodash/get";
 
 export default {
     name: "MedialistComponent",
@@ -120,15 +121,9 @@ export default {
          */
         setInitialSortingOption() {
             for (let option of this.sortingOptions) {
-                if (
-                    this.params.order &&
-                    this.params.order !== option.params.order
-                )
+                if (get(this.params, "order") !== option.params.order)
                     continue;
-                if (
-                    this.params.orderby &&
-                    this.params.orderby !== option.params.orderby
-                )
+                if (get(this.params, "orderby") !== option.params.orderby)
                     continue;
                 this.currentSortingOption = option;
                 return;
@@ -137,14 +132,14 @@ export default {
         requestRecordings() {
             this.isLoading = true;
             // create 10 dummys
-            let namespace =
-                this.currentSortingOption.namespace || this.namespace;
-            let route = this.currentSortingOption.route || this.route;
-            let params = Object.assign(
-                {},
-                this.params,
-                this.currentSortingOption.params
-            );
+            const namespace =
+                this.currentSortingOption.namespace || this.namespace,
+                route = this.currentSortingOption.route || this.route,
+                params = Object.assign(
+                    {},
+                    this.params,
+                    this.sorting ? this.currentSortingOption.params : {}
+                );
             this.items = Array(this.params.per_page).fill(this.createDummy());
             axios
                 .get(namespace + route, { params })
