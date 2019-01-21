@@ -1,0 +1,77 @@
+/* ==========================================================================
+   #TABLES
+   ========================================================================== */
+
+/* stylelint-disable no-descending-specificity */
+
+.c-table {
+    border-collapse: separate;
+    border-spacing: 0 $unit-tiny;
+    text-align: left;
+
+    th {
+        font-weight: bold;
+    }
+
+    th,
+    td {
+        padding: $unit-small $unit;
+    }
+
+    tr {
+        border-radius: $global-radius;
+        background-color: $c-white;
+
+        > :first-child { border-radius: $global-radius 0 0 $global-radius; }
+        > :last-child { border-radius: 0 $global-radius $global-radius 0; }
+    }
+
+    thead {
+        th {
+            vertical-align: bottom;
+            padding-top: 0;
+            padding-bottom: 0;
+            color: $c-muted;
+            text-align: center;
+        }
+
+        tr {
+            background-color: transparent;
+        }
+    }
+
+    caption {
+        caption-side: bottom;
+        color: $c-muted;
+        padding: $unit-tiny 0;
+    }
+}
+
+.c-table--shadow {
+    tr { box-shadow: $global-shadow-5; }
+    thead tr { box-shadow: none; }
+}
+
+.c-table--small {
+    border-spacing: 0 1px;
+
+    th,
+    td {
+        padding: $unit-tiny $unit-small;
+    }
+
+    &.c-table--small tr {
+        > th,
+        > td { border-radius: 0; }
+
+        &:first-child {
+            > :first-child { border-top-left-radius: $global-radius; }
+            > :last-child { border-top-right-radius: $global-radius; }
+        }
+
+        &:last-child {
+            > :first-child { border-bottom-left-radius: $global-radius; }
+            > :last-child { border-bottom-right-radius: $global-radius; }
+        }
+    }
+}

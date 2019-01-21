@@ -9,6 +9,7 @@ form {
 
     label {
         font-weight: bold;
+        margin-right: $unit-small;
     }
 
     ul {
@@ -28,17 +29,20 @@ textarea {
     transition: border-color $global-transition;
     border: 1px solid $c-border;
     border-radius: $global-radius;
-    background-color: $c-background-transparent;
+    background-color: $c-white;
     padding: $unit-tiny $unit-small;
     color: $c-text;
+    font: inherit;
     font-weight: 300;
+    width: 100%;
+    line-height: 1.2;
 
-    &::placeholder { color: $c-gray-6; }
-    &::-webkit-input-placeholder { color: $c-gray-6; }
-    &:-ms-input-placeholder { color: $c-gray-6; }
+    &::placeholder { color: $c-gray-8; }
+    &::-webkit-input-placeholder { color: $c-gray-8; }
+    &:-ms-input-placeholder { color: $c-gray-8; }
 
     &:focus {
-        border-color: $c-accent;
+        border-color: $c-primary-5;
     }
 
     // &[type="text"],
@@ -50,6 +54,7 @@ textarea {
     &[type="radio"],
     &[type="checkbox"] {
         cursor: pointer;
+        width: unset;
     }
 }
 
