@@ -42,11 +42,11 @@ use function Tonik\Theme\App\config;
 
     <?php if (config('landing-videos')): ?>
     <section id="medialists" class="c-section">
-        <div class="o-wrapper u-hidden-from@tablet">
+        <div class="o-wrapper u-hidden-from@tablet u-mb">
 
-            <h2>
-                <span class="u-text-middle">Neue Videos</span>
-                <a class="c-btn c-btn--tiny c-btn--light u-default u-muted u-ml-"
+            <h2 class="u-h3 u-mb-">
+                <span class="u-text-middle u-mr-">Neue Videos</span>
+                <a class="c-btn c-btn--tiny c-btn--light u-default u-muted"
                     href="<?= home_url( '/'._x('recordings', 'http route', config('textdomain')).'/' ) ?>">
                     Alle Videos anzeigen
                     <span class="u-ic-arrow_forward"></span>
@@ -57,17 +57,18 @@ use function Tonik\Theme\App\config;
                 'id' => 'medialist-new',
                 'options' => [],
                 'params' => [
-                    'per_page' => 6,
+                    'per_page' => 5,
+                    'series_exclude' => 368
                 ]
             ]) ?>
 
         </div>
-        <div class="o-wrapper u-hidden-until@tablet">
+        <div class="o-wrapper">
 
             <div class="o-layout o-layout--large">
-                <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-1/1">
+                <div class="o-layout__item u-1/3@desktop u-1/1 u-mb">
 
-                    <h2 class="u-h3">Beliebte Videos</h2>
+                    <h2 class="u-h3 u-mb-">Beliebte Videos</h2>
 
                     <?php template('vue-components/medialist-init', [
                         'id' => 'medialist-popular',
@@ -86,9 +87,9 @@ use function Tonik\Theme\App\config;
                     ]) ?>
 
                 </div>
-                <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-hidden-until@tablet">
+                <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-mb">
 
-                    <h2 class="u-h3">
+                    <h2 class="u-h3 u-mb-">
                         <a class="c-link c-link--dotted"
                             href="<?= home_url( '/'._x('series', 'http route', config('textdomain')).'/' ) ?>">
                             <?= __('New Series', config('textdomain')) ?>
@@ -108,9 +109,9 @@ use function Tonik\Theme\App\config;
                     ]) ?>
 
                 </div>
-                <div class="o-layout__item u-1/3 u-hidden-until@desktop">
+                <div class="o-layout__item u-1/3@desktop u-1/2@tablet u-1/1 u-mb">
 
-                    <h2 class="u-h3">
+                    <h2 class="u-h3 u-mb-">
                         <a class="c-link c-link--dotted"
                             href="<?= home_url( '/'._x('series', 'http route', config('textdomain')).'/mit-gott-leben/' ) ?>">
                             Tägliche Andachten
