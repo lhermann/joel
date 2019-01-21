@@ -129,8 +129,9 @@
         .c-slider__teaser {
             position: relative;
             z-index: 23; /* 1 */
-            background-color: rgba($c-white, 0.85);
-            backdrop-filter: blur(20px);
+            background-color: $c-white;
+            // background-color: rgba($c-white, 0.95);
+            // backdrop-filter: blur(20px);
             width: 50%;
             max-width: $unit * 20;
             margin-left: auto;

@@ -26,13 +26,22 @@ if( Store::isset_then_set('vue/slider/teaser') ) return;
                         </div>
                     </button>
                 </div>
-                <div class="c-collapsible__body u-center u-top u-ph">
+                <div class="c-collapsible__body u-ph">
 
                     <medialist-component
                         class="u-1/1"
                         :init-options="options"
                         :init-params="params"
                     />
+
+                    <div class="u-text-center u-mv--">
+                        <a class="c-btn c-btn--small c-btn--dark c-btn--ghost" href="
+                            <?= home_url( '/'._x('recordings', 'http route', config('textdomain')).'/' ) ?>
+                        ">
+                            Alle Videos anzeigen
+                            <span class="u-ic-arrow_forward"></span>
+                        </a>
+                    </div>
 
                 </div>
             </div>
