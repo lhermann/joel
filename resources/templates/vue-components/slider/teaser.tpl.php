@@ -34,10 +34,12 @@ if( Store::isset_then_set('vue/slider/teaser') ) return;
                         :init-params="params"
                     />
 
-                    <div class="u-text-center u-mv--">
-                        <a class="c-btn c-btn--small c-btn--dark c-btn--ghost" href="
-                            <?= home_url( '/'._x('recordings', 'http route', config('textdomain')).'/' ) ?>
-                        ">
+                    <div class="c-slider__teaser-btn u-text-center">
+                        <a class="c-btn c-btn--small c-btn--subtle" href="<?= home_url( '/'._x(
+                            'recordings',
+                            'http route',
+                            config('textdomain')
+                        ).'/' ) ?>">
                             Alle Videos anzeigen
                             <span class="u-ic-arrow_forward"></span>
                         </a>

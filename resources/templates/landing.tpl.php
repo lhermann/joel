@@ -46,7 +46,7 @@ use function Tonik\Theme\App\config;
 
             <h2 class="u-h3 u-mb-">
                 <span class="u-text-middle u-mr-">Neue Videos</span>
-                <a class="c-btn c-btn--tiny c-btn--light u-default u-muted"
+                <a class="c-btn c-btn--tiny c-btn--subtle u-default"
                     href="<?= home_url( '/'._x('recordings', 'http route', config('textdomain')).'/' ) ?>">
                     Alle Videos anzeigen
                     <span class="u-ic-arrow_forward"></span>
@@ -161,7 +161,7 @@ use function Tonik\Theme\App\config;
 
             <h2>
                 <span class="u-text-middle">Artikel</span>
-                <a class="c-btn c-btn--tiny c-btn--light u-default u-muted u-ml-"
+                <a class="c-btn c-btn--tiny c-btn--subtle u-default u-ml-"
                     href="<?= get_permalink( get_page_by_path( 'artikel' ) ) ?>">
                     Alle Artikel anzeigen
                     <span class="u-ic-arrow_forward"></span>

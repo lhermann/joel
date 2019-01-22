@@ -4,43 +4,25 @@
 
 .c-collapsible {
     height: 100%;
-
-    &__physical {
-        height: auto;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
     .c-collapsible__header {
-        // display: flex;
-        // align-items: center;
-        // border-bottom: 1px solid $c-border;
         background-color: $c-white;
-
-        // .is-collapsed & {
-        //     border-bottom-width: 0;
-        // }
     }
 
-        // .c-collapsible__title {
-        //     flex-grow: 1;
-        //     padding: 0 $unit;
-        // }
-
     .c-collapsible__body {
+        flex-grow: 2;
         overflow: hidden;
         padding: $unit-small;
         transition: $global-transition;
         transform: translateY(0);
         opacity: 1;
-        height: 100%;
 
         .is-collapsed & {
             transform: translateY(-$unit-small);
             opacity: 0;
-        }
-
-        .c-collapsible__physical.is-collapsed & {
-            height: 0;
-            padding: 0;
         }
     }

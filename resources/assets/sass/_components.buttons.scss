@@ -150,12 +150,12 @@
 
 .c-btn--subtle {
     background-color: transparent;
-    color: $c-text;
+    color: $c-gray-5;
 
     &:hover,
     &:focus {
-        background-color: $c-accent;
-        color: $c-white;
+        background-color: rgba($c-black, 0.05);
+        color: $c-gray-6;
     }
 }
 
@@ -329,6 +329,10 @@ $btn-ghost-border-width: 1px;
 
 /* Custom
 ========================================================================== */
+
+.c-btn--boder0 {
+    border-width: 0;
+}
 
 .c-btn--icon {
     > span {
