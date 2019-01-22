@@ -10,9 +10,6 @@ export default {
     name: "MediaitemComponent",
     template: "#mediaitem-component",
     props: ["item"],
-    data() {
-        return {};
-    },
     computed: {
         isRecording() {
             switch (this.item.type) {
@@ -31,10 +28,14 @@ export default {
             return differenceInDays(Date.now(), date) <= 7;
         },
         title() {
-            return (this.isRecording
+            const title = this.isRecording
                 ? this.item.title.rendered
-                : this.item.name
-            ).replace(/^(.{90}[^\s]*).*/, "$1...");
+                : this.item.name;
+            if (title.length < 90) {
+                return title;
+            } else {
+                return title.replace(/^(.{0,90}[\s]).*$/, "$1...");
+            }
         },
         length() {
             if (this.isRecording) return this.item.length;
