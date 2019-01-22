@@ -34,7 +34,7 @@ export default {
             return (this.isRecording
                 ? this.item.title.rendered
                 : this.item.name
-            ).replace(/^(.{101}[^\s]*).*/, "$1...");
+            ).replace(/^(.{90}[^\s]*).*/, "$1...");
         },
         length() {
             if (this.isRecording) return this.item.length;
