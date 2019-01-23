@@ -289,7 +289,7 @@ function update_trac_database( $label, $object_id, $object_type = 'post' ) {
 
 
 
-// add_action('init', 'Tonik\Theme\App\Legacy\migrate_trac_database', 10, 0);
+add_action('init', 'Tonik\Theme\App\Legacy\migrate_trac_database', 10, 0);
 function migrate_trac_database() {
     global $wpdb;
 
