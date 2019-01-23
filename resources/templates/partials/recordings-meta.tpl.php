@@ -56,7 +56,7 @@ use function Tonik\Theme\App\Legacy\trac_permalink;
                 <?php foreach (get_download_files(get_the_ID()) as $file):
                     $permalink = trac_permalink(
                         $file->post_id,
-                        "videodl",
+                        $file->type."dl",
                         config('url-prefix')['download'].$file->relative_url
                     ); ?>
 
