@@ -16,7 +16,7 @@ $fields = (object) get_fields($term);
 $author = get_field('autor', $term);
 $author = htmlspecialchars($author ? $fields->autor->name : "");
 $link = $fields->website_link ?: get_term_link($term);
-update_trac_database(0, 'podcastping', $term->term_id);
+update_trac_database('podcastping', $term->term_id, 'term');
 
 
 ?>
