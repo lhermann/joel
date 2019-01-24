@@ -9,8 +9,7 @@ if( Store::isset_then_set('vue/medialist/mediaitem') ) return;
 <?= '<script type="text/x-template" id="mediaitem-component">' ?>
 
     <div class="o-media c-mediaitem"
-        :class="['c-mediaitem--' + item.type, {'c-mediaitem--dummy': isDummy}]"
-        :href="item.link">
+        :class="['c-mediaitem--' + item.type, {'c-mediaitem--dummy': isDummy}]">
 
         <a class="c-mediaitem__link" :href="item.link"></a>
 

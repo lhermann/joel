@@ -212,5 +212,9 @@ $width-sprecher: (80px 80px);
                 border-radius: $global-radius;
                 color: transparent;
                 margin-top: 0.2em;
+
+                &:after {
+                    content: "Lorem Ipsum";
+                }
             }
         }
