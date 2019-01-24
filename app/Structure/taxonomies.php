@@ -13,6 +13,7 @@ namespace Tonik\Theme\App\Structure;
 */
 
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\Legacy\get_avg_tracs;
 
 /**
  * Registers `media_series`, `media_speakers`, `media_topics` and `media_podcasts` custom taxonomies.
@@ -219,10 +220,10 @@ add_action('manage_series_custom_column', 'Tonik\Theme\App\Structure\series_cust
 function podcasts_edit_columns($columns) {
     $columns = array_merge(
         array_slice($columns, 0, 1),
-        array( 'image' => __('Image', config('textdomain')) ),
+        ['image' => __('Image', config('textdomain'))],
         array_slice($columns, 1, 1),
         array_slice($columns, 3),
-        array( 'subscribers' => __('Subs', config('textdomain')) )
+        ['subs' => __('Subs', config('textdomain'))]
     );
     return $columns;
 }
@@ -239,16 +240,14 @@ function podcasts_custom_columns($value, $column_name, $id) {
             }
             printf( '<img class="img img-square80" src="%s" alt="" />', $img );
             break;
-        case 'subscribers':
-            if( function_exists('trac_get_podcast_subscribers') ) {
-                $pod_subs = trac_get_podcast_subscribers($id);
-                printf("%d <span style=\"color: %s;\">(%s%d)</span>",
-                       $pod_subs['current'],
-                       $pod_subs['diff'] >= 0 ? 'green' : 'red',
-                       $pod_subs['diff'] >= 0 ? '+' : '-',
-                       abs($pod_subs['diff'])
-                );
-            }
+        case 'subs':
+            $stats = get_avg_tracs('podcastdl', $id, 'term');
+            printf('<span>%s Subs</span><br>', $stats['current']);
+            printf('<span style="color: %s">%s <span class="dashicons dashicons-arrow-%s"></span></span>',
+                $stats['diff'] >= 0 ? 'green' : 'red',
+                $stats['diff'] >= 0 ? '+'.$stats['diff'] : $stats['diff'],
+                $stats['diff'] >= 0 ? 'up' : 'down'
+            );
             break;
     }
 }

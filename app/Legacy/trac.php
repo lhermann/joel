@@ -114,13 +114,6 @@ function trac_controller( $wp ) {
 function get_tracs($label, $object_id, $object_type = 'post') {
     global $wpdb;
 
-    // var_dump($wpdb->prepare(
-    //         "SELECT sum(count) FROM `trac_by_object` WHERE `label` = %s AND `object_id` = %s AND `object_id` = %s;",
-    //         $label,
-    //         $object_id,
-    //         $object_type
-    //     ));die();
-
     return number_format(
         (int) $wpdb->get_var( $wpdb->prepare(
             "SELECT sum(count) FROM `trac_by_object` WHERE `label` = %s AND `object_id` = %d AND `object_type` = %s;",
@@ -129,6 +122,33 @@ function get_tracs($label, $object_id, $object_type = 'post') {
             $object_type
         )) ?: 0
     );
+}
+
+function get_avg_tracs($label, $object_id, $object_type = 'post') {
+    global $wpdb;
+
+    $vars = $wpdb->get_results($wpdb->prepare(
+        'SELECT
+        (SELECT COALESCE(AVG(count), 0) FROM `trac_90days` WHERE label = %s AND `object_id` = %d  AND `object_type` = %s AND `date` BETWEEN %s AND %s) AS `current`,
+        (SELECT COALESCE(AVG(count), 0) FROM `trac_90days` WHERE label = %s AND `object_id` = %d  AND `object_type` = %s AND `date` BETWEEN %s AND %s) AS `previous`;
+        ',
+        $label,
+        $object_id,
+        $object_type,
+        date("Y-m-d", strtotime("-1 month")),
+        date("Y-m-d", strtotime("-1 day")),
+        $label,
+        $object_id,
+        $object_type,
+        date("Y-m-d", strtotime("-2 month")),
+        date("Y-m-d", strtotime("-1 month"))
+    ))[0];
+
+    return [
+        'current' => round($vars->current),
+        'previous' => round($vars->previous),
+        'diff' => round($vars->current - $vars->previous)
+    ];
 }
 
 
@@ -458,8 +478,8 @@ function trac_dashboard_widget_function() {
     $subs = [];
     $values = $wpdb->get_results($wpdb->prepare(
         "SELECT
-            (SELECT avg(count) FROM `trac_by_date` WHERE label = %s AND `date` BETWEEN %s AND %s) AS `current`,
-            (SELECT avg(count) FROM `trac_by_date` WHERE label = %s AND `date` BETWEEN %s AND %s) AS `previous`;
+            (SELECT COALESCE(AVG(count), 0) FROM `trac_by_date` WHERE label = %s AND `date` BETWEEN %s AND %s) AS `current`,
+            (SELECT COALESCE(AVG(count), 0) FROM `trac_by_date` WHERE label = %s AND `date` BETWEEN %s AND %s) AS `previous`;
         ",
         'podcastdl',
         date("Y-m-d", strtotime("-22 days")), // + 21 days
@@ -519,8 +539,7 @@ function trac_dashboard_widget_function() {
                 <th><span class="dashicons dashicons-rss"></span> Subscriptions</th>
                 <td class="right"><?= $subs['current'] ?> <small>total</small></td>
                 <td class="right" style="color: <?= $subs['diff'] >= 0 ? 'green' : 'red' ?>;">
-                    <?= $subs['diff'] >= 0 ? '+' : '-' ?>
-                    <?= abs($subs['diff']) ?>
+                    <?= $subs['diff'] >= 0 ? '+'.$subs['diff'] : $subs['diff'] ?>
                     <?php if ($subs['diff'] >= 0): ?>
                         <span class="dashicons dashicons-arrow-up"></span>
                     <?php else: ?>
@@ -534,46 +553,6 @@ function trac_dashboard_widget_function() {
 <?php
 }
 
-
-/**
- * Helper Function
- */
-function trac_get_podcast_subscribers($podcast_id) {
-    global $wpdb;
-    $limit = 3;
-
-    // get podcast download of last 6 episodes
-    $query = sprintf("
-        SELECT wp_posts.ID, trac_by_object.count
-        FROM wp_term_taxonomy
-        LEFT JOIN wp_term_relationships ON wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id
-        LEFT JOIN wp_posts ON wp_posts.ID = wp_term_relationships.object_id
-        LEFT JOIN trac_by_object ON trac_by_object.post_id = wp_posts.ID AND trac_by_object.label = 'podcastdl'
-        WHERE wp_term_taxonomy.term_id = %d
-        ORDER BY wp_posts.post_date DESC
-        LIMIT %d;",
-        $podcast_id,
-        $limit * 2
-    );
-    $rows = $wpdb->get_results($query);
-
-    // sum up 3 and 3
-    $return = array('current' => 0, 'past' => 0, 'diff' => 0);
-    foreach ($rows as $i => $row) {
-        if($i < $limit) {
-            $return['current'] += $row->count;
-        } else {
-            $return['past'] += $row->count;
-        }
-    }
-
-    // calculate and round average
-    $return['current'] = (int) ceil($return['current']/$limit);
-    $return['past'] = (int) ceil($return['past']/$limit);
-    $return['diff'] = $return['current'] - $return['past'];
-
-    return $return;
-}
 
 function trac_permalink($post_id, $label, $url) {
     // remove http:// or https://

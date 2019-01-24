@@ -114,25 +114,23 @@ $inuit-global-line-height: 21px;
         text-align: center;
     }
 
-    .column-image {
-        width: 96px;
-    }
-
-    .column-subscribers {
-        width: 3em;
-    }
-
-    .column-posts {
-        width: 80px;
-    }
-
     .column-speakers,
     .column-series {
         width: 120px;
     }
 
-    .column-topics {
+    .column-stats {
+        width: 100px;
+    }
+
+    .column-posts,
+    .column-topics,
+    .column-subs {
         width: 80px;
+    }
+
+    .column-image {
+        width: 96px;
     }
 
     .column-speakers,
@@ -140,8 +138,8 @@ $inuit-global-line-height: 21px;
         border-left: 1px solid $c-gray-2;
     }
 
-    .column-stats {
-        width: 100px;
+    .column-stats,
+    .column-subs {
         background-color: rgba($c-black, 0.05);
         color: $c-textmuted;
     }
