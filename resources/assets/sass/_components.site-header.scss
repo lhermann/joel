@@ -22,6 +22,7 @@
         .c-site-header__item {
             display: table-cell;
             padding: 0 $unit-large 0 0;
+            vertical-align: middle;
 
             @supports(display: flex) {
                 display: block;
