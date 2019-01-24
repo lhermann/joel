@@ -7,7 +7,9 @@
 }
 
     .c-site-header__flex {
+        display: table;
         display: flex;
+        width: 100%;
         height: $header-height;
         align-items: center;
         justify-content: space-between;
@@ -18,7 +20,12 @@
     }
 
         .c-site-header__item {
-            padding-right: $unit-large;
+            display: table-cell;
+            padding: 0 $unit-large 0 0;
+
+            @supports(display: flex) {
+                display: block;
+            }
 
             @include mq($until: desktop) {
                 padding-right: $unit;

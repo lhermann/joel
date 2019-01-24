@@ -69,7 +69,7 @@ module.exports = merge(
      * @type {Object}
      */
     externals: {
-      jquery: "jQuery"
+      // jquery: "jQuery"
     },
 
     /**
@@ -95,7 +95,7 @@ module.exports = merge(
       //   context: "resources/assets"
       // },
       autoprefixer: {
-        browsers: ["last 2 versions", "> 1%"]
+        browsers: ["last 2 versions", "> 1%", "IE 9-11"]
       },
       browserSync: false
       // browserSync: {
