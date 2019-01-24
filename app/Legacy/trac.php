@@ -111,7 +111,28 @@ function trac_controller( $wp ) {
 }
 
 
-function trac_by_object($label, $object_id, $object_type) {
+function get_tracs($label, $object_id, $object_type = 'post') {
+    global $wpdb;
+
+    // var_dump($wpdb->prepare(
+    //         "SELECT sum(count) FROM `trac_by_object` WHERE `label` = %s AND `object_id` = %s AND `object_id` = %s;",
+    //         $label,
+    //         $object_id,
+    //         $object_type
+    //     ));die();
+
+    return number_format(
+        (int) $wpdb->get_var( $wpdb->prepare(
+            "SELECT sum(count) FROM `trac_by_object` WHERE `label` = %s AND `object_id` = %d AND `object_type` = %s;",
+            $label,
+            $object_id,
+            $object_type
+        )) ?: 0
+    );
+}
+
+
+function trac_by_object($label, $object_id, $object_type = 'post') {
     global $wpdb;
 
     $row = $wpdb->get_row( $wpdb->prepare(
@@ -406,12 +427,11 @@ function trac_dashboard_widget_function() {
      */
     $total = [];
     foreach (array('videodl', 'audiodl', 'podcastdl') as $label) {
-        $total[$label] = number_format((int) $wpdb->get_var(
-            sprintf(
-                "SELECT sum(count) FROM trac_by_date WHERE label = '%s'",
-                $label
-            )
-        ) ?: 0);
+        $total[$label] = number_format(
+            (int) $wpdb->get_var( $wpdb->prepare(
+                "SELECT sum(count) FROM trac_by_date WHERE label = '%s'", $label
+            )) ?: 0
+        );
     }
 
     /*
@@ -499,6 +519,7 @@ function trac_dashboard_widget_function() {
                 <th><span class="dashicons dashicons-rss"></span> Subscriptions</th>
                 <td class="right"><?= $subs['current'] ?> <small>total</small></td>
                 <td class="right" style="color: <?= $subs['diff'] >= 0 ? 'green' : 'red' ?>;">
+                    <?= $subs['diff'] >= 0 ? '+' : '-' ?>
                     <?= abs($subs['diff']) ?>
                     <?php if ($subs['diff'] >= 0): ?>
                         <span class="dashicons dashicons-arrow-up"></span>

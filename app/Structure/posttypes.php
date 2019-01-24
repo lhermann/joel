@@ -15,6 +15,7 @@ namespace Tonik\Theme\App\Structure;
 
 use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\Legacy\get_status_video_files;
+use function Tonik\Theme\App\Legacy\get_tracs;
 
 /**
  * Registers `media` custom post type.
@@ -88,7 +89,9 @@ function recordings_edit_columns($columns) {
         "title"      => __('Title', config('textdomain')),
         "speakers"   => __('Speaker', config('textdomain')),
         "series"     => __('Series', config('textdomain')),
-        "date"       => __('Date', config('textdomain'))
+        "topics"     => __('Topics', config('textdomain')),
+        "date"       => __('Date', config('textdomain')),
+        "stats"      => __('Stats', config('textdomain'))
     );
 
     return $columns;
@@ -183,20 +186,32 @@ function recordings_custom_columns($column) {
             print ("<span class=\"c-dot c-dot--small $dot\"></span>");
             break;
         case "speakers":
-            $terms = get_the_term_list($post->ID, 'speakers', '', ', ','');
-            if ( is_string( $terms ) ) {
-                echo $terms;
-            } else {
-                echo 'Kein Sprecher';
-            }
+            the_terms($post->ID, 'speakers');
             break;
         case "series":
-            $terms = get_the_term_list($post->ID, 'series', '', ', ','');
-            if ( is_string( $terms ) ) {
-                echo $terms;
-            } else {
-                echo 'Keine Serie';
-            }
+            the_terms($post->ID, 'series');
+            break;
+        case "topics":
+            the_terms($post->ID, 'topics', '<small class="u-truncate">', ',<br>', '</small>');
+            break;
+        case "stats":
+            print('<div class="o-flex o-flex--between">');
+            printf('<div>Klicks:</div><div>%s <span class="dashicons dashicons-auto dashicons-visibility"></span></div>', wpp_get_views($post->ID));
+            print('</div>');
+            $stats = [
+                'videodl' => 'video-alt3',
+                'audiodl' => 'format-audio',
+                'podcastdl' => 'rss'
+            ];
+            print('<div class="o-flex o-flex--between o-flex--middle u-smaller">');
+            print('<div>Down-<br>loads:</div><div class="u-text-right">');
+            foreach ($stats as $key => $icon) {
+                printf('%s <span class="dashicons dashicons-auto %s"></span><br>',
+                    get_tracs($key, $post->ID),
+                    'dashicons-'.$icon
+                );
+            };
+            print('</div></div>');
             break;
     }
 }

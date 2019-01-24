@@ -126,16 +126,37 @@ $inuit-global-line-height: 21px;
         width: 80px;
     }
 
-    .column-media_speakers,
-    .column-media_series,
-    .column-media_topics {
-        width: 15%;
+    .column-speakers,
+    .column-series {
+        width: 120px;
+    }
+
+    .column-topics {
+        width: 80px;
+    }
+
+    .column-speakers,
+    .column-date {
+        border-left: 1px solid $c-gray-2;
+    }
+
+    .column-stats {
+        width: 100px;
+        background-color: rgba($c-black, 0.05);
+        color: $c-textmuted;
     }
 }
 
 .wp-core-ui .attachment .landscape img:not(.icon) {
     width: auto;
     height: 100%;
+}
+
+.dashicons-auto {
+    width: auto;
+    height: auto;
+    font-size: unset;
+    vertical-align: -10%;
 }
 
 @media screen and (max-width: 782px) {
