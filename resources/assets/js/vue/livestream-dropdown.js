@@ -46,7 +46,8 @@ function vueInstance(_id) {
             request() {
                 axios
                     .get("joel/v1/events", { params: this.params })
-                    .then(response => (this.events = response.data));
+                    .then(response => (this.events = response.data))
+                    .catch(error => console.log({ error }));
             },
             init(options, params) {
                 if (this.initDone) return;

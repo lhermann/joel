@@ -70,7 +70,7 @@ if (document.getElementById("vue-recording-status")) {
                 axios
                     .get("/wp-json/joel/v1/recording-status/" + this.postid)
                     .then(response => (this.items = response.data))
-                    .catch()
+                    .catch(error => console.log({ error }))
                     .then(() => (this.loading = false));
             },
             updateNow() {

@@ -82,7 +82,7 @@ export default {
         var self = this;
         axios
             .get("wp/v2/slides")
-            .then(function(response) {
+            .then(response => {
                 self.slides = response.data;
                 self.count = response.data.length;
                 for (var i = 0; i < self.slides.length; i++) {
@@ -90,9 +90,7 @@ export default {
                     self.slideOrder[i] = self.count - i;
                 }
             })
-            .catch(function(error) {
-                console.log(error);
-            });
+            .catch(error => console.log({ error }));
 
         if (this.mode !== "none") {
             this.isAutomatic = true;

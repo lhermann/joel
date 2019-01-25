@@ -26,7 +26,7 @@ export default {
                 baseURL: "//streamcheck.joelmedia.de/"
             })
             .then(response => (this.live = response.data.live))
-            .catch()
+            .catch(error => console.log({ error }))
             .then(() => (this.loading = false));
     }
 };

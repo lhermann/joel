@@ -4,7 +4,6 @@
  */
 
 import Vue from "vue";
-import axios from "axios";
 import MedialistComponent from "./medialist/medialist.js";
 
 /* Instantiate Medialists
