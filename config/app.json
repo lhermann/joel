@@ -5,6 +5,8 @@
             "./resources/assets/sass/app.scss"
         ],
 
+        "polyfills": ["./resources/assets/js/polyfills.js"],
+
         "admin": [
             "./resources/assets/js/admin.js",
             "./resources/assets/sass/admin.scss"

@@ -24,13 +24,15 @@
         "@babel/polyfill": "^7.2.5",
         "axios": "^0.18.0",
         "axios-extensions": "^1.2.1",
+        "babel-polyfill": "^6.26.0",
         "chartist": "^0.11.0",
         "date-fns": "^2.0.0-alpha.27",
         "filesize": "^3.6.1",
         "inuit-flexgrid": "^0.4.0",
         "lodash": "^4.17.11",
         "motion-ui": "^1.2.0",
-        "vue": "^2.5.22"
+        "vue": "^2.5.22",
+        "whatwg-fetch": "^3.0.0"
     },
     "devDependencies": {
         "autoprefixer": "^6.7.7",

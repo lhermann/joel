@@ -24,7 +24,6 @@ use function Tonik\Theme\App\Legacy\print_open_graph;
         <?php endif ?>
 
         <!--[if IE]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flexibility/2.0.1/flexibility.js"></script>
         <![endif]-->
 
