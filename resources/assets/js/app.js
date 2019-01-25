@@ -7,7 +7,6 @@ import "./vue/slider.js";
 import "./vue/medialist.js";
 import "./vue/dropdown.js";
 import "./vue/pagination.js";
-import "./vue/streamcheck.js";
 import "./vue/livestream-dropdown.js";
 import "./vue/livestream-meta.js";
 import "./vue/cookie-consent.js";
