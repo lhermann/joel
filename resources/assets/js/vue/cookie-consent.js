@@ -1,5 +1,6 @@
 /*
- * Medialist Init
+ * Cookie Consent
+ *
  * @author: Lukas Hermann
  */
 

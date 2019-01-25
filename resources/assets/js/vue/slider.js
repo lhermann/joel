@@ -1,5 +1,6 @@
 /*
  * Slider Init
+ *
  * @author: Lukas Hermann
  *
  * Modes:

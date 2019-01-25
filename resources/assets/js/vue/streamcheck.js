@@ -1,5 +1,6 @@
 /*
- * Medialist Init
+ * Streamcheck
+ *
  * @author: Lukas Hermann
  */
 

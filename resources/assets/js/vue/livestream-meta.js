@@ -1,5 +1,8 @@
 /*
- * Medialist Init
+ * Livestream Meta Init
+ *
+ * seen on the livestream page
+ *
  * @author: Lukas Hermann
  */
 

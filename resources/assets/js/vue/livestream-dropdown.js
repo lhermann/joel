@@ -1,5 +1,8 @@
 /*
- * Medialist Init
+ * Livestream Dropdown Init
+ *
+ * seen in the site header
+ *
  * @author: Lukas Hermann
  */
 

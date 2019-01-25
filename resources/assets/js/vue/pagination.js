@@ -1,5 +1,6 @@
 /*
- * Medialist Init
+ * Pagination Init
+ *
  * @author: Lukas Hermann
  */
 

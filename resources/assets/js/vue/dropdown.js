@@ -1,5 +1,6 @@
 /*
- * Medialist Init
+ * Dropdown Init
+ *
  * @author: Lukas Hermann
  */
 
