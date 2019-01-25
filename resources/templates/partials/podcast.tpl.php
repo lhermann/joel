@@ -31,7 +31,7 @@ $podcast->series = get_series_of_podcast($podcast);
                     </p>
                     <ul class="u-mb0">
                         <?php foreach ($podcast->series as $series): ?>
-                            <li>
+                            <li class="u-truncate">
                                 <a href="<?= get_term_link($series); ?>">
                                     <?= $series->name ?>
                                 </a>
