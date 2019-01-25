@@ -31,12 +31,14 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
 /**
  * Registers theme script files.
  *
+ * Priority 1 so it is added before jquery
+ *
  * @return void
  */
 function register_scripts() {
     wp_enqueue_script('app', asset_path('js/app.js'), [], sha1_file(asset('js/app.js')->getPath()), true);
 }
-add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts');
+add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 1);
 
 /**
  * Registers editor stylesheets.
