@@ -45,8 +45,8 @@ function vueInstance(_id) {
                 this.options = options;
             },
             setCookie(value) {
-                let expire = addYears(Date.now(), value === "allow" ? 3 : 1);
-                document.cookie = `consent-cookie=${value}; expires=${expire}; path=/;"`;
+                let expire = addYears(Date.now(), value === "allow" ? 2 : 1);
+                document.cookie = `consent-cookie=${value}; expires=${expire.toUTCString()}; path=/;"`;
                 this.getCookie();
             },
             getCookie() {
