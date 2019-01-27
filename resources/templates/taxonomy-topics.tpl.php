@@ -7,7 +7,6 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
 ?>
 
 <?php get_header() ?>
-<?php template('partials/header') ?>
 
 <main role="main" class="u-mb u-mb++@tablet">
 

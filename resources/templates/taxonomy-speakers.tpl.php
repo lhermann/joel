@@ -8,7 +8,6 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
 ?>
 
 <?php get_header() ?>
-<?php template('partials/header') ?>
 
 <main role="main" class="u-mb u-mb++@tablet">
 

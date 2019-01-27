@@ -8,7 +8,6 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
 ?>
 
 <?php get_header() ?>
-<?php template('partials/header') ?>
 
 <main role="main" class="u-mb u-mb++@tablet">
 

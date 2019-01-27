@@ -6,8 +6,6 @@ use function Tonik\Theme\App\asset_path;
 
 <?php get_header() ?>
 
-<?php template('partials/header') ?>
-
 <main role="main">
 
     <?php if(have_posts()): the_post() ?>

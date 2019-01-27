@@ -6,8 +6,6 @@ use function Tonik\Theme\App\config;
 
 <?php get_header() ?>
 
-<?php template('partials/header') ?>
-
 <main role="main">
 
     <?php if ( config('slider') && theme('slides') ): ?>

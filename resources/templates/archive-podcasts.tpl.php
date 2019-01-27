@@ -1,12 +1,9 @@
 <?php
 use function Tonik\Theme\App\template;
-
 $terms = get_terms( ['taxonomy' => 'podcasts'] );
-
 ?>
 
 <?php get_header() ?>
-<?php template('partials/header') ?>
 
 <main role="main" class="o-wrapper o-wrapper--slim u-pt+">
 

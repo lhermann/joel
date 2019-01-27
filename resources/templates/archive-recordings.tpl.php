@@ -4,7 +4,6 @@ use function Tonik\Theme\App\config;
 ?>
 
 <?php get_header() ?>
-<?php template('partials/header') ?>
 
 <main role="main" class="o-wrapper">
 

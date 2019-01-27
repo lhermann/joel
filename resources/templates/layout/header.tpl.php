@@ -38,3 +38,5 @@ use function Tonik\Theme\App\Legacy\print_open_graph;
         ]) ?>
 
         <div id="siteWrapper" class="c-site-wrapper">
+
+            <?php template('partials/header') ?>

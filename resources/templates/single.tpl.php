@@ -5,8 +5,6 @@ use function Tonik\Theme\App\config;
 
 <?php get_header() ?>
 
-<?php template('partials/header') ?>
-
 <main role="main" class="o-wrapper o-wrapper--slim o-wrapper--flush">
 
     <div class="o-ratio o-ratio--16:9">

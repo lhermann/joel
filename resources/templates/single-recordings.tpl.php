@@ -19,8 +19,6 @@ $topics = str_replace(
 
 <?php get_header() ?>
 
-<?php template('partials/header') ?>
-
 <main role="main" class="u-mb u-mb++@tablet">
 
     <?php if(have_posts()): the_post() ?>
