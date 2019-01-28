@@ -23,10 +23,9 @@ use function Tonik\Theme\App\Legacy\get_video_length;
  */
 function jeol_algolia_template_locations( array $locations, $file ) {
     if ( $file === 'autocomplete.php' ) {
-        // $locations[] = 'resources⁩/⁨templates⁩/algolia/autocomplete.php';
+        $locations[] = template_path('algolia/autocomplete');
     } elseif ( $file === 'instantsearch.php' ) {
         $locations[] = template_path('algolia/instantsearch');
-        // array_unshift($locations, template_path('algolia/instantsearch'));
     }
 
     return $locations;
@@ -45,7 +44,14 @@ function post_type_blacklist( array $blacklist ) {
     return $blacklist;
 }
 
-add_filter( 'algolia_post_types_blacklist', 'Tonik\Theme\App\Setup\post_type_blacklist' );
+add_filter('algolia_post_types_blacklist', 'Tonik\Theme\App\Setup\post_type_blacklist');
+
+
+function searchable_post_types(array $post_types) {
+    return ['recordings', 'posts'];
+}
+add_filter('algolia_searchable_post_types', 'Tonik\Theme\App\Setup\searchable_post_types');
+
 // function should_index_post( $should_index, \WP_Post $post ) {
 
 //     if( in_array($post->post_type, ['event', 'slides', 'page']) ) {
@@ -69,7 +75,7 @@ function recordings_shared_attributes( array $shared_attributes, \WP_Post $post)
         'type' => 'video',
         'length' => get_video_length($post->ID),
         'views' => (int) wpp_get_views($post->ID, null, false),
-        'thumbnail' => wp_get_attachment_image_src( get_field( 'thumbnail', $post->ID ), '108p' )[0],
+        'thumbnail' => wp_get_attachment_image_src(get_field('thumbnail', $post->ID), '108p')[0],
         'date_human' => esc_attr(get_the_date('j. F Y', $post->ID)),
         'speakers' => get_the_term_list($post->ID, 'speakers')
     ];
