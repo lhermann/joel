@@ -68,10 +68,10 @@ function recordings_shared_attributes( array $shared_attributes, \WP_Post $post)
     $attr = [
         'type' => 'video',
         'length' => get_video_length($post->ID),
-        'views' => (int) wpp_get_views( $post->ID, null, false ),
+        'views' => (int) wpp_get_views($post->ID, null, false),
         'thumbnail' => wp_get_attachment_image_src( get_field( 'thumbnail', $post->ID ), '108p' )[0],
-        'date_human' => esc_attr(get_the_date('j. F Y')),
-        'speakers' => get_the_term_list( $post->ID, 'speakers' )
+        'date_human' => esc_attr(get_the_date('j. F Y', $post->ID)),
+        'speakers' => get_the_term_list($post->ID, 'speakers')
     ];
 
     return array_merge($shared_attributes, $attr);
