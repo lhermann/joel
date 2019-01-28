@@ -81,7 +81,7 @@
   </div>
 </script>
 
-<script type="text/javascript">
+<script defer type="text/javascript">
   jQuery(function () {
 	/* init Algolia client */
 	var client = algoliasearch(algolia.application_id, algolia.search_api_key);

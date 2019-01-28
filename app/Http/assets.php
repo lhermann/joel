@@ -39,7 +39,11 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets', 10
  * @return void
  */
 function register_scripts() {
-    wp_enqueue_script('app', asset_path('js/app.js'), [], sha1_file(asset('js/app.js')->getPath()), true);
+
+    wp_enqueue_script('app', asset_path('js/app.js'), ['jquery'], sha1_file(asset('js/app.js')->getPath()), true);
+    wp_deregister_script( 'algolia-instantsearch' );
+    wp_deregister_script( 'algolia-autocomplete' );
+
 }
 add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 10);
 
@@ -108,4 +112,4 @@ function add_async_defer($tag, $handle) {
     if(is_admin()) return $tag;
     return str_replace( ' src', ' defer src', $tag );
 }
-// add_filter('script_loader_tag', 'Tonik\Theme\App\Http\add_async_defer', 10, 2);
+add_filter('script_loader_tag', 'Tonik\Theme\App\Http\add_async_defer', 10, 2);

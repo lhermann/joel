@@ -11,6 +11,10 @@ import "./vue/livestream-dropdown.js";
 import "./vue/livestream-meta.js";
 import "./vue/cookie-consent.js";
 
+/* Algolia */
+import "./algolia/instantsearch.js";
+import "./algolia/autocomplete.js";
+
 /* Cash-Dom */
 import "./imports/flyin.js";
 import "./imports/overflow.js";
