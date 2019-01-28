@@ -15,7 +15,7 @@ export default {
         "isLoading"
     ],
     data() {
-        var range = 11;
+        var range = 9;
         return {
             range: range,
             rangeCentre: Math.ceil(range / 2),

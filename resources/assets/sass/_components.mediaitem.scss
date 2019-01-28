@@ -12,6 +12,7 @@ $width-video:    (96px 54px);
 $width-audio:    (54px 54px);
 $width-serie:    (128px 72px);
 $width-sprecher: (80px 80px);
+$width-post:     (160px 90px);
 
 /**
  * 1. Overwriting o-media with flexbox for vertical centering
@@ -29,6 +30,12 @@ $width-sprecher: (80px 80px);
         transform: translate(-1px, -2px);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
         background-color: var(--background, rgba($c-black, 0.03));
+    }
+
+    &--post {
+        align-items: flex-start;
+        padding-top: $unit;
+        padding-bottom: $unit;
     }
 
     &--simple {
@@ -56,6 +63,10 @@ $width-sprecher: (80px 80px);
         z-index: -1;
         width: 100%;
         height: 100%;
+
+        .c-mediaitem--post & {
+            z-index: 11;
+        }
     }
 
     .c-mediaitem__img {
@@ -68,6 +79,7 @@ $width-sprecher: (80px 80px);
         border-radius: $global-radius;
         background-color: $c-gray-2;
         background-size: cover;
+        overflow: hidden;
 
         .c-mediaitem--video & {
             background-image: url("../images/dummy-108p.jpg");
@@ -100,9 +112,17 @@ $width-sprecher: (80px 80px);
             background-color: transparent;
         }
 
+        .c-mediaitem--post & {
+            width: nth($width-post, 1);
+            height: nth($width-post, 2);
+            flex-basis: nth($width-post, 1);
+            background-image: url("../images/dummy-180p.jpg");
+        }
+
         .c-mediaitem--simple & {
             margin-right: $unit-small;
         }
+
 
         img {
             border-radius: $global-radius;
@@ -124,6 +144,17 @@ $width-sprecher: (80px 80px);
             display: block;
             transition: $global-transition opacity;
             color: currentcolor;
+
+            &:after {
+                content: "";
+                position: absolute;
+                z-index: 10;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                box-shadow: 0 0 8px rgba($c-black, 0.1) inset;
+            }
 
             .c-mediaitem--topics & {
                 line-height: 1;
@@ -167,6 +198,12 @@ $width-sprecher: (80px 80px);
                 }
             }
 
+            .c-mediaitem--post & {
+                width: 100%;
+                text-align: center;
+                border-radius: 0 0 $global-radius $global-radius;
+            }
+
             .c-mediaitem--dummy & {
                 color: transparent;
             }
@@ -179,19 +216,31 @@ $width-sprecher: (80px 80px);
     }
 
         .c-mediaitem__title {
+            @include inuit-font-size($font-size, 1.3);
+
             display: block;
+            font-weight: 400;
+            margin-bottom: 0;
 
             &,
-            &:hover,
-            &:focus {
-                color: currentcolor;
+            a {
+                &,
+                &:hover,
+                &:focus, {
+                    color: currentcolor;
+                }
+            }
+
+            .c-mediaitem--post & {
+                margin-bottom: $unit-small
             }
         }
 
         .c-mediaitem__meta {
+            @include inuit-font-size($font-size-tiny, 1.5);
+
             margin-left: 0;
-            opacity: var(--opacity, 0.45);
-            font-size: 80%;
+            opacity: var(--opacity, 0.5);
             font-weight: var(--font-weight, 300);
             margin-bottom: $unit-tiny;
 
@@ -229,5 +278,5 @@ $width-sprecher: (80px 80px);
         }
 
         .c-mediaitem__content {
-            opacity: var(--opacity, 0.45);
+            color: $c-textmuted;
         }

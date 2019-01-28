@@ -10,21 +10,21 @@
 #algolia-search-box input {
     @include inuit-font-size($font-size-large, 1.5);
 
-    padding: $unit-small $unit $unit-small $unit-large;
+    padding: $unit-tiny $unit $unit-tiny $unit-large;
 }
 
 .algolia-search-icon {
     position: absolute;
     left: $unit-small;
-    font-size: 30px;
-    line-height: 56px;
+    font-size: 26px;
+    line-height: 44px;
     color: $c-primary-5;
 }
 
 .ais-search-box--powered-by,
 .ais-stats {
     position: absolute;
-    bottom: -$unit;
+    bottom: -$unit * 1.5;
 }
 
 .ais-search-box--powered-by {
@@ -43,6 +43,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     vertical-align: middle;
+}
+
+.ais-hits__empty {
+    padding-left: $unit-small;
 }
 
 .ais-hits--item em,
@@ -73,6 +77,8 @@
 
 .ais-menu--body,
 .ais-hierarchical-menu--body {
+    @include inuit-font-size($font-size-small, 1.5);
+
     margin-left: -$unit-small;
 }
 

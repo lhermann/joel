@@ -53,7 +53,9 @@ use function Tonik\Theme\App\config;
                     </a>
                 </div>
                 <div class="o-media__body c-mediaitem__body">
-                    <a class="c-mediaitem__title" href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a>
+                    <h3 class="c-mediaitem__title" itemprop="name headline">
+                        <a href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a>
+                    </h3>
                     <ul class="c-mediaitem__meta u-truncate">
                         <# if ( data.speakers ) { #><li>{{{ data.speakers }}} Klicks</li><# } #>
                         <# if ( data.views ) { #><li>{{ data.views }} Klicks</li><# } #>
@@ -63,26 +65,28 @@ use function Tonik\Theme\App\config;
             </div>
         </article>
         <# } else { #>
-        <article itemtype="http://schema.org/Article">
-            <# if ( data.images.thumbnail ) { #>
-            <div class="ais-hits--thumbnail">
-                <a href="{{ data.permalink }}" title="{{ data.post_title }}">
-                    <img src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}" title="{{ data.post_title }}" itemprop="image" />
-                </a>
-            </div>
-            <# } #>
-
-            <div class="ais-hits--content">
-                <h2 itemprop="name headline"><a href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a></h2>
-                <div class="excerpt">
-                    <p>
-            <# if ( data._snippetResult['content'] ) { #>
-              <span class="suggestion-post-content">{{{ data._snippetResult['content'].value }}}</span>
-            <# } #>
-                    </p>
+        <article class="c-medialist__item" itemtype="http://schema.org/Article">
+            <div class="o-media c-mediaitem c-mediaitem--post">
+                <a class="c-mediaitem__link" href="{{ data.permalink }}" title="{{ data.post_title }}"></a>
+                <div class="o-media__img c-mediaitem__img">
+                    <a class="c-mediaitem__imglink" href="{{ data.permalink }}">
+                        <# if ( data.images.thumbnail ) { #>
+                        <img src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}" itemprop="image">
+                        <# } #>
+                        <div class="c-mediaitem__length"><div>{{ data.post_date_formatted }}</div></div>
+                    </a>
+                </div>
+                <div class="o-media__body c-mediaitem__body">
+                    <h3 class="c-mediaitem__title" itemprop="name headline">
+                        <a href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a>
+                    </h3>
+                    <# if ( data._snippetResult['content'] ) { #>
+                    <div class="c-mediaitem__content">
+                          {{{ data._snippetResult['content'].value }}}
+                    </div>
+                    <# } #>
                 </div>
             </div>
-            <div class="ais-clearfix"></div>
         </article>
         <# } #>
     </script>
@@ -126,7 +130,12 @@ use function Tonik\Theme\App\config;
                 /* Stats widget */
                 search.addWidget(
                     instantsearch.widgets.stats({
-                        container: '#algolia-stats'
+                        container: '#algolia-stats',
+                        templates: {
+                            body: function(data) {
+                                return data.nbHits + ' Treffer in ' + data.processingTimeMS + 'ms'
+                            }
+                        }
                     })
                 );
 
@@ -136,7 +145,7 @@ use function Tonik\Theme\App\config;
                         container: '#algolia-hits',
                         hitsPerPage: 10,
                         templates: {
-                            empty: 'No results were found for "<strong>{{query}}</strong>".',
+                            empty: 'F&uuml;r "<strong>{{query}}</strong>" wurden keine Ergebnisse gefunden.',
                             item: wp.template('instantsearch-hit')
                         },
                         transformData: {
