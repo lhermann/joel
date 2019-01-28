@@ -140,11 +140,13 @@ function rest_api_additions() {
     /**
      * Add a human readable date (and take the date-burden off js' back)
      */
-    register_rest_field( 'recordings', 'date_human', array(
-        'get_callback' => function( $object ) {
+    register_rest_field(
+        [ 'recordings' ],
+        'date_human',
+        [ 'get_callback' => function( $object ) {
             return esc_attr( get_the_date('j. F Y') );
-        }
-    ) );
+        } ]
+    );
 
     /**
      * Add a route

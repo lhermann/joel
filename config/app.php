@@ -133,6 +133,7 @@ return [
         'Http/ajaxes.php',
         'Http/restapi.php',
         'Http/routes.php',
+        'Setup/algolia.php',
         'Setup/actions.php',
         'Setup/filters.php',
         'Setup/supports.php',

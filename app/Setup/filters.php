@@ -15,6 +15,7 @@ namespace Tonik\Theme\App\Setup;
 
 use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\Helper\recursively_scann_dir;
+use function Tonik\Theme\App\template_path;
 
 /**
  * Hides sidebar on index template on specific views.
@@ -112,20 +113,3 @@ function order_biblical_books($terms, $taxonomies, $args) {
     return $terms;
 }
 add_filter('get_terms', 'Tonik\Theme\App\Setup\order_biblical_books', 10, 3);
-
-
-/**
- * Add 'async' and 'defer' to <script> tags
- *
- * Use 'async' in development because a ressource with timeout
- * can block the whole website otherwise
- *
- * User 'defer' in production otherwise jquery-dependencies throw errors
- */
-function add_async_defer($tag, $handle) {
-    if(is_admin()) return $tag;
-    return str_replace( ' src', ' defer src', $tag );
-}
-add_filter('script_loader_tag', 'Tonik\Theme\App\Setup\add_async_defer', 10, 2);
-
-

@@ -24,8 +24,11 @@ use function Tonik\Theme\App\asset_path;
 function register_stylesheets() {
 
     wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/app.css')->getPath()));
+    // wp_dequeue_style( 'algolia-instantsearch' );
+    wp_deregister_style( 'algolia-instantsearch' );
+
 }
-add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
+add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets', 10);
 
 
 /**
@@ -38,7 +41,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
 function register_scripts() {
     wp_enqueue_script('app', asset_path('js/app.js'), [], sha1_file(asset('js/app.js')->getPath()), true);
 }
-add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 1);
+add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 10);
 
 /**
  * Registers editor stylesheets.
@@ -63,7 +66,7 @@ function move_jquery_to_the_footer($wp_scripts) {
         $wp_scripts->add_data('jquery-migrate', 'group', 1);
     }
 }
-add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer');
+// add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer');
 
 /**
  * Registers admin scripts and stylesheets.
@@ -91,3 +94,18 @@ function register_admin_scripts_and_styles() {
     wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), [], sha1_file(asset('css/admin.css')->getPath()) );
 };
 add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles' );
+
+
+/**
+ * Add 'async' and 'defer' to <script> tags
+ *
+ * Use 'async' in development because a ressource with timeout
+ * can block the whole website otherwise
+ *
+ * User 'defer' in production otherwise jquery-dependencies throw errors
+ */
+function add_async_defer($tag, $handle) {
+    if(is_admin()) return $tag;
+    return str_replace( ' src', ' defer src', $tag );
+}
+// add_filter('script_loader_tag', 'Tonik\Theme\App\Http\add_async_defer', 10, 2);

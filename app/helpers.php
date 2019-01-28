@@ -59,6 +59,22 @@ function template($file, $data = [])
         ->render($data);
 }
 
+/**
+ * Gets asset file from public directory.
+ *
+ * @param  string $file Relative file path to the asset file.
+ *
+ * @return string
+ */
+function template_path($file)
+{
+    $template = new Template(config());
+
+    return $template
+        ->setFile($file)
+        ->getRelativePath();
+}
+
 
 /**
  * Gets asset instance.

@@ -331,6 +331,7 @@ $livestream-meta-height: $unit * 5;
 
 // PLUGINS
 @import "plugins.wpcf7";
+@import "plugins.algolia";
 
 
 
@@ -402,9 +403,10 @@ $livestream-meta-height: $unit * 5;
     border-radius: $global-radius;
 }
 
-.u-border-left {
-    border-left: 1px solid $c-border;
-}
+.u-border-top { border-top: 1px solid $c-border; }
+.u-border-right { border-right: 1px solid $c-border; }
+.u-border-bottom { border-bottom: 1px solid $c-border; }
+.u-border-left { border-left: 1px solid $c-border; }
 
 .u-defocus:focus {
     outline: none;
