@@ -80,7 +80,7 @@ use function Tonik\Theme\App\config;
                             'limit' => 5,
                             'range' => 'custom',
                             'time_unit' => 'day',
-                            'time_quantity' => 12
+                            'time_quantity' => 7
                         ]
                     ]) ?>
 
