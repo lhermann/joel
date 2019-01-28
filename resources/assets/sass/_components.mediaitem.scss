@@ -239,9 +239,9 @@ $width-post:     (160px 90px);
         .c-mediaitem__meta {
             @include inuit-font-size($font-size-tiny, 1.5);
 
+            color: $c-textmuted;
+            font-weight: 300;
             margin-left: 0;
-            opacity: var(--opacity, 0.5);
-            font-weight: var(--font-weight, 300);
             margin-bottom: $unit-tiny;
 
             > li {

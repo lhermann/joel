@@ -14,7 +14,7 @@ use function Tonik\Theme\App\config;
             </div>
 
             <?php if (config('searchbar')): ?>
-            <div class="c-site-header__item c-site-header__item--double">
+            <div class="c-site-header__item c-site-header__item--double u-hidden-until@desktop">
                 <?php template('partials/searchform', ['style_modifier' => 'c-search-bar--primary']) ?>
             </div>
             <?php endif ?>

@@ -21,7 +21,9 @@ use function Tonik\Theme\App\Helper\render_menu_for_flyin;
 
             <?php if (config('searchbar')): ?>
             <div>
-                <?php template('partials/searchform', ['style_modifier' => 'c-search-bar--mobile u-mv']) ?>
+                <?php template('partials/searchform', [
+                    'style_modifier' => 'u-hidden-from@desktop u-mv'
+                ]) ?>
                 <hr class="u-break-wrapper u-hidden-from@mobile"/>
             </div>
             <?php endif ?>
