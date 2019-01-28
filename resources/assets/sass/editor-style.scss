@@ -32,7 +32,7 @@ $inuit-global-line-height: 21px;
 html {
     -webkit-font-smoothing: antialiased; /* 3 */
     -webkit-overflow-scrolling: touch;
-    padding: $unit;
+    margin: $unit-small $unit;
 }
 
 a {
