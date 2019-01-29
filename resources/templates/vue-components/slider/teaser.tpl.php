@@ -26,7 +26,7 @@ if( Store::isset_then_set('vue/slider/teaser') ) return;
                         </div>
                     </button>
                 </div>
-                <div class="c-collapsible__body u-ph">
+                <div class="c-collapsible__body u-ph u-pv0">
 
                     <medialist-component
                         class="u-1/1"
