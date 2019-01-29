@@ -64,13 +64,12 @@ add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
  * @return void
  */
 function move_jquery_to_the_footer($wp_scripts) {
-    if (! is_admin()) {
-        $wp_scripts->add_data('jquery', 'group', 1);
-        $wp_scripts->add_data('jquery-core', 'group', 1);
-        $wp_scripts->add_data('jquery-migrate', 'group', 1);
-    }
+    if( is_admin() ) return;
+    $wp_scripts->add_data( 'jquery', 'group', 1 );
+    $wp_scripts->add_data( 'jquery-core', 'group', 1 );
+    $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
 }
-// add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer');
+add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer');
 
 /**
  * Registers admin scripts and stylesheets.

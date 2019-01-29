@@ -48,7 +48,7 @@ add_filter('algolia_post_types_blacklist', 'Tonik\Theme\App\Setup\post_type_blac
 
 
 function searchable_post_types(array $post_types) {
-    return ['recordings', 'posts'];
+    return ['recordings', 'post'];
 }
 add_filter('algolia_searchable_post_types', 'Tonik\Theme\App\Setup\searchable_post_types');
 
