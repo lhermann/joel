@@ -1,12 +1,10 @@
 import instantsearch from "instantsearch.js/es";
-import {
-    searchBox,
-    stats,
-    hits,
-    pagination,
-    menu,
-    hierarchicalMenu
-} from "instantsearch.js/es/widgets";
+import searchBox from "instantsearch.js/es/widgets/search-box/search-box";
+import stats from "instantsearch.js/es/widgets/stats/stats";
+import hits from "instantsearch.js/es/widgets/hits/hits";
+import pagination from "instantsearch.js/es/widgets/pagination/pagination";
+import menu from "instantsearch.js/es/widgets/menu/menu";
+import hierarchicalMenu from "instantsearch.js/es/widgets/hierarchical-menu/hierarchical-menu";
 
 jQuery(function() {
     if (jQuery("#algolia-search-box").length > 0) {
