@@ -57,7 +57,7 @@ use function Tonik\Theme\App\config;
                         <a href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a>
                     </h3>
                     <ul class="c-mediaitem__meta u-truncate">
-                        <# if ( data.speakers ) { #><li>{{{ data.speakers }}} Klicks</li><# } #>
+                        <# if ( data.speakers ) { #><li>{{{ data.speakers }}}</li><# } #>
                         <# if ( data.views ) { #><li>{{ data.views }} Klicks</li><# } #>
                         <# if ( data.date_human ) { #><li>{{ data.date_human }}</li><# } #>
                     </ul>

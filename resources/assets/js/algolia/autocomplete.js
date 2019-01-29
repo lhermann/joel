@@ -84,7 +84,8 @@ jQuery(function() {
             appendTo: "body",
             templates: {
                 empty: wp.template("autocomplete-empty")
-            }
+            },
+            autoWidth: false
         };
 
         if (algolia.powered_by_enabled) {

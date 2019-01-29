@@ -24,8 +24,8 @@ use function Tonik\Theme\App\asset_path;
 function register_stylesheets() {
 
     wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/app.css')->getPath()));
-    // wp_dequeue_style( 'algolia-instantsearch' );
     wp_deregister_style( 'algolia-instantsearch' );
+    wp_deregister_style( 'algolia-autocomplete' );
 
 }
 add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets', 10);
