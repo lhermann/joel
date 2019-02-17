@@ -139,7 +139,7 @@
 
             &.is-collapsed {
                 background-color: transparent;
-                backdrop-filter: blur(0px);
+                // backdrop-filter: blur(0px);
             }
         }
 
@@ -149,6 +149,18 @@
             left: 0;
             right: 0;
         }
+
+/* Teaser transition */
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all ease $global-transition;
+}
+.collapse-enter {
+    transform: translateY(-$unit-small); opacity: 0;
+}
+.collapse-leave-to {
+    transform: translateY(-$unit-small); opacity: 0;
+}
 
 @keyframes c-slide-container--enter {
     0% {

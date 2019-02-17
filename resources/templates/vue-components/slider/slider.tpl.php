@@ -25,7 +25,8 @@ if( Store::isset_then_set('vue/slider/slider') ) return;
 
         <ul class="c-slider__nav">
 
-            <slider-nav-component v-for="(slide, i) in slides"
+            <slider-nav-component
+                v-for="(slide, i) in slides"
                 :key="i"
                 :index="i"
                 :current-slide="currentSlide"
@@ -36,7 +37,8 @@ if( Store::isset_then_set('vue/slider/slider') ) return;
 
         <ul class="c-slider__list">
 
-            <slide-component v-for="(slide, i) in slides"
+            <slide-component
+                v-for="(slide, i) in slides"
                 :key="i"
                 :slide="slide"
                 :order="slideOrder[i]"
@@ -46,8 +48,11 @@ if( Store::isset_then_set('vue/slider/slider') ) return;
 
         </ul>
 
-        <slider-teaser-component v-if="teaser"
+        <slider-teaser-component
+            v-if="teaser"
+            :slides="slides"
             :current-slide="currentSlide"
+            :auto="isAutomatic"
         />
 
     </div>

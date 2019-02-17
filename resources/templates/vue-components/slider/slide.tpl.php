@@ -9,7 +9,7 @@ if( Store::isset_then_set('vue/slider/slide') ) return;
     <li class="c-slider__item" :class="liCss" :style="liStyle">
         <div class="c-slide" :class="css" :style="slideStyle">
 
-            <a v-if="acf.link" :href="acf.link.url" target="acf.link.target" class="c-slide__link"></a>
+            <a v-if="acf.link" :href="acf.link.url" :target="acf.link.target" class="c-slide__link"></a>
 
             <div class="o-wrapper c-slide__wrapper">
 
