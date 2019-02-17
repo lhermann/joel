@@ -7,20 +7,35 @@ if( Store::isset_then_set('vue/slider/slide') ) return;
 <?= '<script type="text/x-template" id="slide-component">' ?>
 
     <li class="c-slider__item" :class="liCss" :style="liStyle">
-        <div class="c-slide" :class="css" :style="style">
+        <div class="c-slide" :class="css" :style="slideStyle">
 
-            <a v-if="acf.url" :href="acf.url" class="c-slide__link"></a>
+            <a v-if="acf.link" :href="acf.link.url" target="acf.link.target" class="c-slide__link"></a>
 
             <div class="o-wrapper c-slide__wrapper">
 
                 <div class="c-slide__body u-1/2@tablet u-1/1">
 
-                    <h1 v-if="acf.show_title" class="u-mb-">{{ title.rendered }}</h1>
+                    <h1
+                        v-if="acf.show_title"
+                        class="u-mb-"
+                        :style="{color: colors.title}"
+                    >
+                        {{ title.rendered }}
+                    </h1>
 
-                    <div v-if="acf.use_custom_html" v-html="acf.custom_html"></div>
-                    <p v-else class="u-lead u-muted">{{ acf.lead_text }}</p>
+                    <div
+                        class="u-lead"
+                        :class="{'u-muted': colors.theme === 'image'}"
+                        :style="{color: colors.text}"
+                        v-html="acf.content"
+                    ></div>
 
-                    <a v-if="acf.button_text" class="c-btn c-btn--dark c-slide__btn" :href="acf.url">
+                    <a
+                        v-if="acf.link && acf.button_text"
+                        class="c-btn c-btn--dark c-slide__btn"
+                        :href="acf.link.url"
+                        :target="acf.link.target"
+                    >
                         {{ acf.button_text }} <span class="u-ic-arrow_forward"></span>
                     </a>
 

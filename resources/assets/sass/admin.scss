@@ -105,6 +105,25 @@ $inuit-global-line-height: 21px;
 .img-square320 { width: 320px; height: 320px; }
 .img-square640 { width: 640px; height: 640px; }
 
+/* ACF */
+.acf-field.acf-field-5a8eaf6292f5d ,
+.acf-field.acf-field-5a8eb2f599038 {
+    .acf-button-group {
+        flex-wrap: wrap;
+    }
+
+    label {
+        // flex-basis: 200px;
+        flex-shrink: 0;
+        padding: 3px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
 /* Admin Columns */
 .wp-list-table {
     .column-status {

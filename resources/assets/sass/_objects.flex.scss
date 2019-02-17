@@ -2,10 +2,9 @@
    #FLEX
    ========================================================================== */
 
-
 .o-flex {
     display: flex;
-    flex-wrap: wrap;
+    align-items: self-start;
 
     // justify-content
     &--left { justify-content: flex-start; }
@@ -21,65 +20,41 @@
     &--bottom { align-items: flex-end; }
     &--baseline { align-items: baseline; }
 
+    // direction
+    &--row-reverse { flex-direction: row-reverse; }
+    &--column { flex-direction: column; }
+    &--column-reverse { flex-direction: column-reverse; }
+
     // Gutters
-    &--tiny {
-        margin-left: -$unit-tiny;
-        margin-bottom: -$unit-tiny/2;
-    }
-    &--small {
-        margin-left: -$unit-small;
-        margin-bottom: -$unit-small/2;
-    }
-    &--unit {
-        margin-left: -$unit;
-        margin-bottom: -$unit/2;
-    }
-    &--large {
-        margin-left: -$unit-large;
-        margin-bottom: -$unit-large/2;
-    }
-    &--huge {
-        margin-left: -$unit-huge;
-        margin-bottom: -$unit-huge/2;
-    }
+    &--tiny { margin-left: -$unit-tiny; }
+    &--small { margin-left: -$unit-small; }
+    &--unit { margin-left: -$unit; }
+    &--large { margin-left: -$unit-large; }
+    &--huge { margin-left: -$unit-huge; }
 
     // Misc
-    &--nowrap { flex-wrap: nowrap; }
+    &--wrap { flex-wrap: wrap; }
 }
 
     .o-flex__item {
         .o-flex--tiny & {
-            padding-left: $unit-tiny;
-            margin-bottom: $unit-tiny/2;
+            margin-left: $unit-tiny;
         }
 
         .o-flex--small & {
-            padding-left: $unit-small;
-            margin-bottom: $unit-small/2;
+            margin-left: $unit-small;
         }
 
         .o-flex--unit & {
-            padding-left: $unit;
-            margin-bottom: $unit/2;
+            margin-left: $unit;
         }
 
         .o-flex--large & {
-            padding-left: $unit-large;
-            margin-bottom: $unit-large/2;
+            margin-left: $unit-large;
         }
 
         .o-flex--huge & {
-            padding-left: $unit-huge;
-            margin-bottom: $unit-huge/2;
+            margin-left: $unit-huge;
         }
-
-
-        &:last-of-type {
-            margin-right: 0;
-        }
-    }
-
-    .o-flex__spacer {
-        flex-grow: 1;
     }
 

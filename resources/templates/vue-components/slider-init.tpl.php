@@ -1,5 +1,6 @@
 <?php
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\asset_path;
 $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
 ?>
 
@@ -11,18 +12,11 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
     :init="init(<?= $options ?>)"
 >
 
-    <slider-component
-        :mode="mode"
-        :slide-duration="slideDuration"
-        :slide-transition="slideTransition"
-        :teaser="teaser"
-    />
-
     <!-- Placeholder -->
-    <div v-if="false" class="c-slider">
+    <div v-show="!loaded" class="c-slider">
         <ul class="c-slider__list">
             <li class="c-slider__item">
-                <div class="c-slide c-slide-- c-slide--white" style="background-image: url(&quot;https://www.joelmedia.de/wordpress/wp-content/themes/joel/public/images/slide-bg1.png&quot;);">
+                <div class="c-slide c-slide-- c-slide--white" style="background-image: url('<?= asset_path('images/slide-dark-blue.svg') ?>');">
                     <a href="https://www.joelmedia.de/aufnahmen/" class="c-slide__link"></a>
                     <div class="o-wrapper c-slide__wrapper">
                         <div class="c-slide__body u-1/2">
@@ -37,6 +31,15 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
             </li>
         </ul>
     </div>
+
+    <slider-component
+        v-show="loaded"
+        :mode="mode"
+        :slide-duration="slideDuration"
+        :slide-transition="slideTransition"
+        :teaser="teaser"
+        @loaded="loaded = true"
+    />
 
 </div>
 

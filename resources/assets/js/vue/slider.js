@@ -42,7 +42,8 @@ function vueInstance(_id) {
                 mode: "none",
                 slideDuration: 5000,
                 slideTransition: 800,
-                teaser: false
+                teaser: false,
+                loaded: false
             };
         },
         methods: {

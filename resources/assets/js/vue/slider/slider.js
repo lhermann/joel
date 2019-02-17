@@ -89,6 +89,7 @@ export default {
                     self.slides[i].index = i;
                     self.slideOrder[i] = self.count - i;
                 }
+                this.$emit("loaded");
             })
             .catch(error => console.log({ error }));
 

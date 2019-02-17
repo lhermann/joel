@@ -1,0 +1,22 @@
+/* ==========================================================================
+   #TEXT COLORS
+   ========================================================================== */
+
+$colors: (
+    "brand-1": $c-brand-1,
+    "brand-2": $c-brand-2,
+    "brand-3": $c-brand-3,
+    "brand-4": $c-brand-4,
+    "brand-5": $c-brand-5,
+    "brand-6": $c-brand-6,
+    "brand-7": $c-brand-7,
+    "brand-8": $c-brand-8,
+    "brand-9": $c-brand-9
+);
+
+$selector: ();
+
+@each $name, $value in $colors {
+    .u-#{$name} { color: $value }
+    .u-bg-#{$name} { background-color: $value }
+}
