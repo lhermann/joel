@@ -35,13 +35,13 @@ add_filter('theme/index/sidebar/visibility', 'Tonik\Theme\App\Setup\show_index_s
 add_filter('theme/single/sidebar/visibility', 'Tonik\Theme\App\Setup\show_index_sidebar');
 
 /**
- * Shortens posts excerpts to 60 words.
+ * Shortens posts excerpts length in words.
  *
  * @return integer
  */
 function modify_excerpt_length()
 {
-    return 60;
+    return 26;
 }
 add_filter('excerpt_length', 'Tonik\Theme\App\Setup\modify_excerpt_length');
 

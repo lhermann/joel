@@ -40,7 +40,7 @@
     .c-excerpt__image {
         z-index: 0;
         height: 100%;
-        transition: $global-transition transform;
+        transition: transform ease-in-out $global-transition;
         background-color: $c-primary;
 
         > img {
@@ -60,7 +60,11 @@
             width: 100%;
             height: 70%;
             bottom: 0;
-            background-image: linear-gradient(to top, rgba($c-black, 0.7), 45%, rgba($c-black, 0.05) 85%, rgba($c-black, 0));
+            background-image: linear-gradient(to top,
+                rgba($c-black, 0.9), 50%,
+                rgba($c-black, 0.15) 85%,
+                rgba($c-black, 0)
+            );
         }
     }
 
