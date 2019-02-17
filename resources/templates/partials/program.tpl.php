@@ -9,6 +9,8 @@ $events = eo_get_events([
     'post_status' => 'publish'
 ]);
 $last_event = null;
+
+setlocale(LC_ALL, 'de_DE');
 ?>
 
 <h2>Programm</h2>
@@ -29,7 +31,7 @@ $last_event = null;
         <li class="c-program__item <?= $today ? 'is-today' : '' ?>">
             <div class="c-program__box">
                 <div class="c-program__week"><?= strftime('%a', strtotime($event->StartDate)) ?></div>
-                <div class="c-program__date"><?= strftime('%e. %b', strtotime($event->StartDate)) ?></div>
+                <div class="c-program__date"><?= utf8_encode(strftime('%e. %b', strtotime($event->StartDate))) ?></div>
             </div>
             <ul class="c-program__eventlist">
         <?php endif ?>
