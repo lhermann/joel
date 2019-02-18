@@ -139,6 +139,7 @@
 
             &.is-collapsed {
                 background-color: transparent;
+                height: auto;
                 // backdrop-filter: blur(0px);
             }
         }
