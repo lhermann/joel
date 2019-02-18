@@ -1,7 +1,9 @@
 <?php
 use function Tonik\Theme\App\template;
 use function Tonik\Theme\App\asset_path;
-$options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
+$json_options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
+$json_params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
+$placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] === false);
 ?>
 
 <!-- Vue slider root component -->
@@ -9,10 +11,11 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
     id="<?= $id ?>"
     class="<?= $style_modifier ?>"
     data-vue="slider"
-    :init="init(<?= $options ?>)"
+    :init="init(<?= $json_options ?>, <?= $json_params ?>)"
 >
 
     <!-- Placeholder -->
+    <?php if ($placeholder): ?>
     <div v-show="!loaded" class="c-slider">
         <ul class="c-slider__list">
             <li class="c-slider__item">
@@ -31,6 +34,11 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
             </li>
         </ul>
     </div>
+    <?php else: ?>
+    <div class="u-text-center">
+        <div v-show="!loaded" class="c-spinner c-spinner--large"></div>
+    </div>
+    <?php endif ?>
 
     <slider-component
         v-show="loaded"
@@ -38,6 +46,8 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
         :slide-duration="slideDuration"
         :slide-transition="slideTransition"
         :teaser="teaser"
+        :id="id"
+        :params="params"
         @loaded="loaded = true"
     />
 

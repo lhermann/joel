@@ -16,7 +16,14 @@ export default {
         SliderNavComponent,
         SliderTeaserComponent
     },
-    props: ["mode", "slideDuration", "slideTransition", "teaser"],
+    props: {
+        mode: String,
+        slideDuration: Number,
+        slideTransition: Number,
+        teaser: Boolean,
+        id: Number,
+        params: Object
+    },
     data() {
         return {
             slides: [],
@@ -33,6 +40,9 @@ export default {
             return {
                 "is-automatic": this.isAutomatic
             };
+        },
+        controls() {
+            return this.count > 1;
         }
     },
     methods: {
@@ -79,19 +89,31 @@ export default {
         }
     },
     mounted() {
-        var self = this;
-        axios
-            .get("wp/v2/slides")
-            .then(response => {
-                self.slides = response.data;
-                self.count = response.data.length;
-                for (var i = 0; i < self.slides.length; i++) {
-                    self.slides[i].index = i;
-                    self.slideOrder[i] = self.count - i;
-                }
-                this.$emit("loaded");
-            })
-            .catch(error => console.log({ error }));
+        if (this.id) {
+            axios
+                .get(`wp/v2/slides/${this.id}`)
+                .then(response => {
+                    this.slides = [response.data];
+                    this.count = 1;
+                    this.slides[0].index = 0;
+                    this.slideOrder[0] = 1;
+                    this.$emit("loaded");
+                })
+                .catch(error => console.log({ error }));
+        } else {
+            axios
+                .get("wp/v2/slides", this.params)
+                .then(response => {
+                    this.slides = response.data;
+                    this.count = response.data.length;
+                    for (var i = 0; i < this.slides.length; i++) {
+                        this.slides[i].index = i;
+                        this.slideOrder[i] = this.count - i;
+                    }
+                    this.$emit("loaded");
+                })
+                .catch(error => console.log({ error }));
+        }
 
         if (this.mode !== "none") {
             this.isAutomatic = true;

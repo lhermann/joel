@@ -43,13 +43,16 @@ function vueInstance(_id) {
                 slideDuration: 5000,
                 slideTransition: 800,
                 teaser: false,
-                loaded: false
+                loaded: false,
+                id: null,
+                params: {}
             };
         },
         methods: {
-            init(options) {
+            init(options, params) {
                 if (this.initDone) return;
                 Object.assign(this, options);
+                Object.assign(this.params, params);
                 this.initDone = true;
             }
         }

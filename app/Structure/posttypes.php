@@ -243,7 +243,8 @@ function register_slide_post_type()
     register_post_type( 'slides', [
         'description'        => __('Collection of slides for the homepage.', config('textdomain')),
         'public'             => true,
-        'publicly_queryable' => false,
+        'publicly_queryable' => true,
+        'exclude_from_search'=> true,
         'show_ui'            => true,
         'show_in_menu'       => true,
         'menu_icon'          => 'dashicons-images-alt',

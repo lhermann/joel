@@ -9,21 +9,21 @@ if( Store::isset_then_set('vue/slider/slider') ) return;
 
     <div class="c-slider">
 
-        <div class="c-slider__control c-slider__control--left">
+        <div v-if="controls" class="c-slider__control c-slider__control--left">
             <button v-on:click="manuallyChangeSlide('previous')"
                 class="c-btn c-btn--dark c-btn--bigicon c-btn--square c-btn--right c-slider__btn">
                 <span class="u-ic-keyboard_arrow_left"></span>
             </button>
         </div>
 
-        <div class="c-slider__control c-slider__control--right">
+        <div v-if="controls" class="c-slider__control c-slider__control--right">
             <button v-on:click="manuallyChangeSlide('next')"
                 class="c-btn c-btn--dark c-btn--bigicon c-btn--square c-btn--left c-slider__btn">
                 <span class="u-ic-keyboard_arrow_right"></span>
             </button>
         </div>
 
-        <ul class="c-slider__nav">
+        <ul v-if="controls" class="c-slider__nav">
 
             <slider-nav-component
                 v-for="(slide, i) in slides"
