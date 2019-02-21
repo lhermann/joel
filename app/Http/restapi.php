@@ -17,6 +17,60 @@ use function Tonik\Theme\App\Helper\count_terms_associated_with_term;
 use function Tonik\Theme\App\Helper\fallback_img;
 use function Tonik\Theme\App\Legacy\get_video_files;
 
+
+/**
+ * Add 'lastname' to the orderby options for speakers
+ */
+function speakers_add_orderby_params( $params ) {
+    $params['orderby']['enum'][] = 'lastname';
+    return $params;
+}
+add_filter( 'rest_speakers_collection_params',
+    'Tonik\Theme\App\Http\speakers_add_orderby_params', 10, 1 );
+
+
+/**
+ * Manipulate the query for [orderby]=lastname to that all terms are fetched from the
+ * database. We will sort and slice them alter
+ */
+function speakers_lastname_query( $prepared_args ) {
+    if($prepared_args['orderby'] === 'lastname') {
+        $prepared_args['number'] = 999;
+        $prepared_args['offset'] = 0;
+    }
+    return $prepared_args;
+}
+add_filter( 'rest_speakers_query',
+    'Tonik\Theme\App\Http\speakers_lastname_query', 10, 1 );
+
+
+/**
+ * Catch the result before it is sent by the rest API and modify it so that the
+ * 'lastname' sorting actually works for speakers
+ */
+function speakers_catch_response($result, $server, $request) {
+    $params = $request->get_params();
+    if($params['orderby'] === 'lastname') {
+        usort($result->data, function($a, $b) {
+            $al = mb_strtolower($a['lastname']);
+            $bl = mb_strtolower($b['lastname']);
+            if ($al == $bl) {
+                return 0;
+            }
+            return ($al > $bl) ? +1 : -1;
+        });
+        $count = count($result->data);
+        $offset = ($params['page'] - 1) * $params['per_page'];
+        $length = $params['per_page'];
+        $result->data = array_slice($result->data, $offset, $length);
+        $result->headers['X-WP-TotalPages'] = ceil($count / $length);
+    }
+    return $result;
+}
+add_action('rest_post_dispatch', 'Tonik\Theme\App\Http\speakers_catch_response', 10, 3 );
+
+
+
 function rest_api_additions() {
 
     /**
@@ -104,7 +158,7 @@ function rest_api_additions() {
     );
 
     /**
-     * Add the 'series_count' to speakers
+     * Add 'series_count' to speakers
      */
     register_rest_field(
         [ 'speakers' ],
@@ -115,7 +169,19 @@ function rest_api_additions() {
     );
 
     /**
-     * Add the 'subtopics_count' to topics
+     * Add 'lastname' to speakers
+     */
+    register_rest_field(
+        [ 'speakers' ],
+        'lastname',
+        [ 'get_callback' => function( $object ) {
+            $name = explode(" ", $object['name']);
+            return end($name);
+        } ]
+    );
+
+    /**
+     * Add 'subtopics_count' to topics
      */
     register_rest_field(
         [ 'topics' ],

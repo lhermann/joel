@@ -53,35 +53,45 @@ export default {
             return [];
         },
         sortingOptions() {
-            let options = [
+            const recordings = this.route === "recordings";
+            const speakers = this.route === "speakers";
+            const options = [
                 {
                     label: "Neue zuerst",
                     params: {
                         order: "desc",
-                        orderby: this.route === "recordings" ? "date" : "id"
+                        orderby: recordings ? "date" : "id"
                     }
                 },
                 {
                     label: "Alte zuerst",
                     params: {
                         order: "asc",
-                        orderby: this.route === "recordings" ? "date" : "id"
+                        orderby: recordings ? "date" : "id"
                     }
                 },
                 {
-                    label: "Alphabetisch (A-Z)",
+                    label: speakers ? "Vorname (A-Z)" : "Alphabetisch (A-Z)",
                     params: {
                         order: "asc",
-                        orderby: this.route === "recordings" ? "title" : "name"
+                        orderby: recordings ? "title" : "name"
                     }
                 },
-                {
-                    label: "Alphabetisch (Z-A)",
-                    params: {
-                        order: "desc",
-                        orderby: this.route === "recordings" ? "title" : "name"
-                    }
-                }
+                speakers
+                    ? {
+                          label: "Nachname (A-Z)",
+                          params: {
+                              order: "asc",
+                              orderby: "lastname"
+                          }
+                      }
+                    : {
+                          label: "Alphabetisch (Z-A)",
+                          params: {
+                              order: "desc",
+                              orderby: recordings ? "title" : "name"
+                          }
+                      }
             ];
             if (this.route === "recordings") {
                 options.push({

@@ -29,7 +29,7 @@ use function Tonik\Theme\App\config;
                 'params' => [
                     'hide_empty' => true,
                     'per_page' => 20,
-                    'orderby' => 'name'
+                    'orderby' => 'lastname'
                 ]
             ]) ?>
 
