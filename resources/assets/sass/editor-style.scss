@@ -51,7 +51,10 @@ hr {
     border-top: 1px solid $c-border;
 }
 
-
+// In the editor it is not good if pictures are wider than the viewport
+img {
+    max-width: 100%;
+}
 
 
 // ELEMENTS
