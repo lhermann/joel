@@ -26,10 +26,6 @@ export default {
             userIntervened: false
         };
     },
-    mounted() {
-        this.collapsed =
-            get(this.slides[this.currentSlide], "acf.slide_type") !== "teaser";
-    },
     methods: {
         onCollapseClick() {
             this.collapsed = !this.collapsed;
@@ -38,6 +34,10 @@ export default {
         }
     },
     watch: {
+        slides(slides) {
+            this.collapsed =
+                get(slides[this.currentSlide], "acf.slide_type") !== "teaser";
+        },
         currentSlide(index) {
             if (this.userIntervened) return;
             if (get(this.slides[index], "acf.slide_type") === "teaser")
