@@ -51,11 +51,9 @@ add_filter( 'rest_speakers_query',
 function speakers_catch_response($result, $server, $request) {
     $params = $request->get_params();
     if($params['orderby'] === 'lastname') {
+        setlocale(LC_COLLATE, get_locale());
         usort($result->data, function($a, $b) {
-            return strcoll(
-                mb_strtolower($a['lastname']),
-                mb_strtolower($b['lastname'])
-            );
+            return strcoll($a['lastname'], $b['lastname']);
         });
         $count = count($result->data);
         $offset = ($params['page'] - 1) * $params['per_page'];
