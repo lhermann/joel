@@ -52,12 +52,10 @@ function speakers_catch_response($result, $server, $request) {
     $params = $request->get_params();
     if($params['orderby'] === 'lastname') {
         usort($result->data, function($a, $b) {
-            $al = mb_strtolower($a['lastname']);
-            $bl = mb_strtolower($b['lastname']);
-            if ($al == $bl) {
-                return 0;
-            }
-            return ($al > $bl) ? +1 : -1;
+            return strcoll(
+                mb_strtolower($a['lastname']),
+                mb_strtolower($b['lastname'])
+            );
         });
         $count = count($result->data);
         $offset = ($params['page'] - 1) * $params['per_page'];
