@@ -16,7 +16,7 @@ if( Store::isset_then_set('vue/medialist/pagination') ) return;
 
                 <li class="o-list-inline__item">
                     <button
-                        class="c-btn c-btn--secondary c-btn--small c-btn--left"
+                        class="c-btn c-btn--secondary c-btn--small c-btn--left u-ph-"
                         :class="{'c-btn--square': !verbose}"
                         :disabled="currentPage <= 1 || isLoading"
                         v-on:click="previousPage"
@@ -53,7 +53,7 @@ if( Store::isset_then_set('vue/medialist/pagination') ) return;
                 </li>
                 <li class="o-list-inline__item">
                     <button
-                        class="c-btn c-btn--secondary c-btn--small c-btn--right"
+                        class="c-btn c-btn--secondary c-btn--small c-btn--right u-ph-"
                         :class="{'c-btn--square': !verbose}"
                         :disabled="currentPage >= totalPages || isLoading"
                         v-on:click="nextPage"
