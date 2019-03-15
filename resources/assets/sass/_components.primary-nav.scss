@@ -29,6 +29,9 @@
                 line-height: 56px;
             }
 
+            /*
+             * 1. Unset the 'nowrap' of the nav menu
+             */
             .c-primary-nav__dropdown {
                 position: absolute;
                 right: 0;
@@ -39,6 +42,7 @@
                 background-color: $c-white;
                 width: 100%;
                 list-style: none;
+                white-space: normal; /* 1 */
 
                 .c-primary-nav__item:hover &,
                 .c-primary-nav__item:focus-within & {
