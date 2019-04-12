@@ -44,8 +44,8 @@ update_trac_database('podcastping', $term->term_id, 'term');
                 <link><?= $link ?></link>
             </image>
 
-            <googleplay:author><?= $author ? $author.' / ' : '' ?>Joel Media Ministry e.V.</googleplay:author>
-            <googleplay:email>kontakt@joelmediatv.de</googleplay:email>
+            <googleplay:author><?= $author ? $author : 'Joel Media Ministry e.V.' ?></googleplay:author>
+            <googleplay:email>admin@joelmediatv.de</googleplay:email>
             <googleplay:description><?= "<![CDATA[" . term_description() . "]]>" ?></googleplay:description>
             <googleplay:explicit>No</googleplay:explicit>
             <googleplay:image href="<?= wp_get_attachment_url( get_field('image', $term)) ?>"></googleplay:image>
@@ -54,8 +54,8 @@ update_trac_database('podcastping', $term->term_id, 'term');
             <itunes:author>Joel Media Ministry e.V.<?= $author ? ' / '.$author : '' ?></itunes:author>
             <itunes:summary><?= "<![CDATA[" . term_description() . "]]>" ?></itunes:summary>
             <itunes:owner>
-                    <itunes:name><?= $author ? $author.' / ' : '' ?>Joel Media Ministry e.V.</itunes:name>
-                    <itunes:email>kontakt@joelmediatv.de</itunes:email>
+                    <itunes:name><?= $author ? $author : 'Joel Media Ministry e.V.' ?></itunes:name>
+                    <itunes:email>admin@joelmediatv.de</itunes:email>
             </itunes:owner>
             <itunes:image href="<?= wp_get_attachment_url( get_field('image', $term)) ?>"/>
             <itunes:explicit>no</itunes:explicit>
@@ -94,7 +94,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
                     <item>
                         <title><?php htmlspecialchars(the_title_rss()) ?></title>
                         <link><?php the_permalink() ?></link>
-                        <pubDate><?= get_the_date('r') ?></pubDate>
+                        <pubDate><?= esc_html( mysql2date( 'D, d M Y H:i:s +0000', get_post_time( 'Y-m-d H:i:s', true ), false ) ); ?></pubDate>
                         <guid isPermaLink="false"><?php the_guid() ?></guid>
                         <description><?= "<![CDATA[" . get_the_content_feed('rss2') . "]]>" ?></description>
                         <enclosure url="<?= trac_permalink(get_the_ID(), 'podcastdl', 'https://vodhttp.joelmediatv.de/'.$audio->relative_url) ?>" length="<?= $audio->size ?>" type="audio/mpeg" />
