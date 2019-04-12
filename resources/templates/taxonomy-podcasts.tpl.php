@@ -19,7 +19,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
 
 ?>
 <?php print('<?xml version="1.0" encoding="'.get_option( 'blog_charset' ).'"?>'."\n"); //<? is interpreted as php short tag ?>
-<?php print('<?xml-stylesheet type="text/xsl" href="https://www.ideatodomundo.org/wp-content/plugins/seriously-simple-podcasting/templates/feed-stylesheet.xsl"?>'."\n"); ?>
+<?php print('<?xml-stylesheet type="text/xsl" href="'.get_stylesheet_directory_uri().'/static/feed-stylesheet.xsl"?>'."\n"); ?>
 <rss version="2.0"
     xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
