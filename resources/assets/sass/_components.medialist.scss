@@ -38,7 +38,8 @@
 }
 
 @include mq($from: tablet) {
-    .c-medialist--2col {
+    .c-medialist--2col,
+    .c-medialist--3col {
         font-size: 0;
         margin-left: -($unit + $unit-small);
 
@@ -51,4 +52,7 @@
             font-size: 1rem;
         }
     }
+
+    .c-medialist--3col .c-medialist__item { width: 33%; }
+    .c-medialist--4col .c-medialist__item { width: 25%; }
 }

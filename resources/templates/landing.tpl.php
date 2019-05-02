@@ -37,6 +37,37 @@ use function Tonik\Theme\App\config;
     </section>
     <?php endif ?>
 
+    <?php if (config('landing-simple-videos')): ?>
+    <section class="c-section u-pv">
+
+        <div class="o-wrapper">
+
+            <h2 class="u-h3 u-mb-">
+                <span class="u-text-middle u-mr-">Neue Videos</span>
+                <a class="c-btn c-btn--tiny c-btn--subtle u-default"
+                    href="<?= home_url( '/'._x('recordings', 'http route', config('textdomain')).'/' ) ?>">
+                    Alle Videos anzeigen
+                    <span class="u-ic-arrow_forward"></span>
+                </a>
+            </h2>
+
+            <?php template('vue-components/medialist-init', [
+                'id' => 'medialist-simple',
+                'options' => [
+                    'columns' => 3
+                ],
+                'params' => [
+                    'per_page' => 3
+                ]
+            ]) ?>
+
+        </div>
+
+        <hr class="u-m0 u-mt-" />
+
+    </section>
+    <?php endif ?>
+
 
     <?php if (config('landing-videos')): ?>
     <section id="medialists" class="c-section">
