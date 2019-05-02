@@ -1,5 +1,6 @@
 <?php
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\config;
 use Tonik\Theme\App\Store;
 if( Store::isset_then_set('vue/slider/slider') ) return;
 ?>
@@ -48,12 +49,14 @@ if( Store::isset_then_set('vue/slider/slider') ) return;
 
         </ul>
 
-        <slider-teaser-component
-            v-if="teaser"
-            :slides="slides"
-            :current-slide="currentSlide"
-            :auto="isAutomatic"
-        />
+        <?php if (config('slider-teaser')): ?>
+            <slider-teaser-component
+                v-if="teaser"
+                :slides="slides"
+                :current-slide="currentSlide"
+                :auto="isAutomatic"
+            />
+        <?php endif ?>
 
     </div>
 
