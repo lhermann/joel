@@ -34,7 +34,7 @@ use function Tonik\Theme\App\config;
  * the $_POST variable) – this line is obsolete by know, yet I haven't chaned
  * the priority
  */
-add_action( 'save_post', 'Tonik\Theme\App\Legacy\process_on_save', 9 );
+add_action( 'save_post', 'Tonik\Theme\App\Legacy\process_on_save', 1 );
 function process_on_save( $post_id ) {
 
     /*

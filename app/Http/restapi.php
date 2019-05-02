@@ -50,7 +50,7 @@ add_filter( 'rest_speakers_query',
  */
 function speakers_catch_response($result, $server, $request) {
     $params = $request->get_params();
-    if($params['orderby'] === 'lastname') {
+    if(array_key_exists('orderby', $params) && $params['orderby'] === 'lastname') {
         setlocale(LC_COLLATE, get_locale());
         usort($result->data, function($a, $b) {
             $transliterator = 'Any-Latin; Latin-ASCII; Lower()';
@@ -144,7 +144,7 @@ function rest_api_additions() {
         [ 'recordings', 'series' ],
         'speakers',
         [ 'get_callback' => function( $object ) {
-            if( in_array($object['type'], ['video', 'audio'])) {
+            if( $object['type'] === "recordings") {
                 $terms = wp_get_post_terms( $object['id'], 'speakers' );
             } else {
                 $terms = get_terms_associated_with_term( $object['id'], 'speakers' );

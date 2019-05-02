@@ -5,6 +5,7 @@
 
 import differenceInDays from "date-fns/differenceInDays";
 import parseISO from "date-fns/parseISO";
+import get from "lodash/get";
 
 export default {
     name: "MediaitemComponent",
@@ -20,9 +21,9 @@ export default {
         },
         title() {
             const title = this.isRecording
-                ? this.item.title.rendered
+                ? get(this.item, "title.rendered", "")
                 : this.item.name;
-            if (title.length < 90) {
+            if (!title || title.length < 90) {
                 return title;
             } else {
                 return title.replace(/^(.{0,90}[\s]).*$/, "$1...");
