@@ -6,6 +6,7 @@
 
 import Vue from "vue";
 import addYears from "date-fns/addYears";
+import get from "lodash/get";
 
 /* Instantiate Streamcheck
  **********************/
@@ -61,14 +62,15 @@ function vueInstance(_id) {
                     window.doNotTrack ||
                     navigator.doNotTrack ||
                     navigator.msDoNotTrack ||
-                    "msTrackingProtectionEnabled" in window.external
+                    get(window.external, "msTrackingProtectionEnabled")
                 ) {
                     if (
                         window.doNotTrack == "1" ||
                         navigator.doNotTrack == "yes" ||
                         navigator.doNotTrack == "1" ||
                         navigator.msDoNotTrack == "1" ||
-                        window.external.msTrackingProtectionEnabled()
+                        (get(window.external, "msTrackingProtectionEnabled") &&
+                            window.external.msTrackingProtectionEnabled())
                     ) {
                         this.doNotTrack = true;
                     } else {
