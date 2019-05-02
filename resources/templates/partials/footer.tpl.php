@@ -47,7 +47,7 @@
 
     <section class="c-site-footer__copyright u-text-center">
         <ul class="c-site-footer__list u-mb0">
-            <li>Joel Media Ministry e.V. &copy; <?= date('Y') ?></li>
+            <li><?php bloginfo( 'name' ); ?> &copy; <?= date('Y') ?></li>
             <?php wp_nav_menu( [
                 'theme_location' => 'footer',
                 'container' => false,
