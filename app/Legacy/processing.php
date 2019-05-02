@@ -28,6 +28,38 @@ use function Tonik\Theme\App\config;
  * 255  – 'OBSOLET' the file is marked to be deleted                            cleanup.php
  */
 
+
+/**
+ * Save content from acf's tiny-mce inside the real post_content
+ */
+add_action( 'save_post', 'Tonik\Theme\App\Legacy\content_on_save' );
+function content_on_save( $post_id ) {
+    if ( !isset($_POST['post_type']) || $_POST['post_type'] !== 'recordings' || !isset($_POST['acf']) ) return;
+
+    // ACF content field id
+    $field_id = 'field_5ccad024b0ad4';
+
+    if($_POST['acf'][$field_id]) {
+        // unhook this function so it doesn't loop infinitely
+        remove_action( 'save_post', 'Tonik\Theme\App\Legacy\content_on_save' );
+
+        // update the post, which calls save_post again
+        wp_update_post( [
+            'ID'           => $post_id,
+            'post_content' => $_POST['acf'][$field_id]
+        ] );
+
+        // re-hook this function
+        add_action( 'save_post', 'Tonik\Theme\App\Legacy\content_on_save' );
+    } else {
+        $post_object = get_post( $post_id );
+        if($post_object->post_content) {
+            update_field($field_id, $post_object->post_content, $post_id);
+        }
+    }
+}
+
+
 /**
  * Is triggered whenever a post or page is created or updated.
  * (ACF fires with priority 10, so this one needs to be first since it alters
@@ -55,12 +87,6 @@ function process_on_save( $post_id ) {
      * this foreach loop will only run though the first cycle to grab the filename
      */
     $filename = stripslashes($_POST['acf']['field_52c9deb0d3c39']);
-    $_POST['acf']['field_52c9deb0d3c39'] = 'null';
-    // foreach ( $_POST['acf'] as $field_key => $field ) {
-    //     $filename = stripslashes( $field );
-    //     $_POST['acf'][$field_key] = 'null';
-    //     break;
-    // };
 
 
     /*
@@ -74,11 +100,14 @@ function process_on_save( $post_id ) {
     /*
      * set up process if a new filename is provided
      */
-    if ( $filename !== '' && $filename ) $process_me = true;
+    if ( $filename && $filename !== '' && $filename !== 'null' ) {
+        $process_me = true;
+        $_POST['acf']['field_52c9deb0d3c39'] = 'null';
+    }
 
-    if ( $dbcheck ) { // the database DOES contain entries for that post
+    if ($dbcheck) { // the database DOES contain entries for that post
 
-        if ( $filename !== '' ) { // a new file has been provided: the old files will be deleted and the new will be processed
+        if ($process_me) { // a new file has been provided: the old files will be deleted and the new will be processed
             // delete identical filenames
             $wpdb->delete(
                 'wp_video_files',
@@ -104,7 +133,7 @@ function process_on_save( $post_id ) {
     /*
      * set up database for processing of file
      */
-    if ( $process_me ) {
+    if ($process_me) {
 
         $wpdb->insert( // insert a row
             'wp_video_files', // table
