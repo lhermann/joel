@@ -1,3 +1,11 @@
+<?php
+$widgets_area_active = is_active_sidebar('footer_1')
+    && is_active_sidebar('footer_2')
+    && is_active_sidebar('footer_3')
+    && is_active_sidebar('footer_4')
+    && is_active_sidebar('footer_right');
+?>
+
 <footer id="footer" class="c-site-footer " role="contentinfo">
 
     <h2 class="u-hidden-visually">Footer</h2>
@@ -9,6 +17,7 @@
         <hr class="c-site-footer__hr u-mb0">
     </section>
 
+    <?php if ($widgets_area_active): ?>
     <section class="o-wrapper c-site-footer__nav">
         <div class="o-layout o-layout--large">
 
@@ -44,6 +53,7 @@
 
         </div>
     </section>
+    <?php endif ?>
 
     <section class="c-site-footer__copyright u-text-center">
         <ul class="c-site-footer__list u-mb0">
