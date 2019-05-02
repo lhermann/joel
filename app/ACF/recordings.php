@@ -753,64 +753,64 @@ if( function_exists('acf_add_local_field_group') ):
     /*
      * Bibel.Antworten Kategorie
      */
-    acf_add_local_field_group(array(
-        'key' => 'group_acf_bibelantworten',
-        'title' => 'Bibel.Antworten Kategorie',
-        'fields' => array(
-            array(
-                'key' => 'field_54b66d16a979b',
-                'label' => 'Bibel.Antworten Kategorie',
-                'name' => 'bibel_antworten_kategorie',
-                'type' => 'select',
-                'instructions' => 'Diese Kategorien sind nur für Videos der Serie "Bibel.Antworten" von Bedeutung.',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'choices' => array(
-                    0 => 'Keine Kategorie (wird nicht aufgelistet)',
-                    1 => '1. Lesen, hören, bewahren – Fragen zur Bibel',
-                    2 => '2. „Ich bin“ – Fragen zur Gottheit',
-                    3 => '3. „gewaschen durch sein Blut“ – Fragen zur Erlösung',
-                    4 => '4. „Könige und Priester“ – Fragen zum Leben als Christ',
-                    5 => '5. „Siehe, er kommt“ – Fragen zur Wiederkunft',
-                    6 => '6. „Tag des Herrn“ – Fragen zum Sabbat',
-                    7 => '7. „sieben goldene Leuchter“ – Fragen zum Heiligtum',
-                    8 => '8. „die Schlüssel des Totenreiches“ – Fragen zum Tod',
-                    9 => '9. „was ist und was geschehen soll“ – Fragen zur Prophetie',
-                    10 => '10. „sieben Gemeinden“ – Fragen zum Volk Gottes',
-                ),
-                'default_value' => array(
-                    0 => 0,
-                ),
-                'allow_null' => 0,
-                'multiple' => 0,
-                'ui' => 1,
-                'ajax' => 1,
-                'return_format' => 'value',
-                'placeholder' => '',
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'recordings',
-                ),
-            ),
-        ),
-        'menu_order' => 9,
-        'position' => 'side',
-        'style' => 'default',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => true,
-        'description' => '',
-    ));
+    // acf_add_local_field_group(array(
+    //     'key' => 'group_acf_bibelantworten',
+    //     'title' => 'Bibel.Antworten Kategorie',
+    //     'fields' => array(
+    //         array(
+    //             'key' => 'field_54b66d16a979b',
+    //             'label' => 'Bibel.Antworten Kategorie',
+    //             'name' => 'bibel_antworten_kategorie',
+    //             'type' => 'select',
+    //             'instructions' => 'Diese Kategorien sind nur für Videos der Serie "Bibel.Antworten" von Bedeutung.',
+    //             'required' => 0,
+    //             'conditional_logic' => 0,
+    //             'wrapper' => array(
+    //                 'width' => '',
+    //                 'class' => '',
+    //                 'id' => '',
+    //             ),
+    //             'choices' => array(
+    //                 0 => 'Keine Kategorie (wird nicht aufgelistet)',
+    //                 1 => '1. Lesen, hören, bewahren – Fragen zur Bibel',
+    //                 2 => '2. „Ich bin“ – Fragen zur Gottheit',
+    //                 3 => '3. „gewaschen durch sein Blut“ – Fragen zur Erlösung',
+    //                 4 => '4. „Könige und Priester“ – Fragen zum Leben als Christ',
+    //                 5 => '5. „Siehe, er kommt“ – Fragen zur Wiederkunft',
+    //                 6 => '6. „Tag des Herrn“ – Fragen zum Sabbat',
+    //                 7 => '7. „sieben goldene Leuchter“ – Fragen zum Heiligtum',
+    //                 8 => '8. „die Schlüssel des Totenreiches“ – Fragen zum Tod',
+    //                 9 => '9. „was ist und was geschehen soll“ – Fragen zur Prophetie',
+    //                 10 => '10. „sieben Gemeinden“ – Fragen zum Volk Gottes',
+    //             ),
+    //             'default_value' => array(
+    //                 0 => 0,
+    //             ),
+    //             'allow_null' => 0,
+    //             'multiple' => 0,
+    //             'ui' => 1,
+    //             'ajax' => 1,
+    //             'return_format' => 'value',
+    //             'placeholder' => '',
+    //         ),
+    //     ),
+    //     'location' => array(
+    //         array(
+    //             array(
+    //                 'param' => 'post_type',
+    //                 'operator' => '==',
+    //                 'value' => 'recordings',
+    //             ),
+    //         ),
+    //     ),
+    //     'menu_order' => 9,
+    //     'position' => 'side',
+    //     'style' => 'default',
+    //     'label_placement' => 'top',
+    //     'instruction_placement' => 'label',
+    //     'hide_on_screen' => '',
+    //     'active' => true,
+    //     'description' => '',
+    // ));
 
 endif;
