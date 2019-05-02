@@ -76,15 +76,21 @@ function rest_api_additions() {
      * Add a 'type' field
      */
     register_rest_field(
-        [ 'recordings', 'series', 'speakers', 'topics' ],
+        [ 'series', 'speakers', 'topics' ],
         'type',
         [ 'get_callback' => function( $object ) {
-            if( isset($object['type']) ) {
-                return 'video';
-            } elseif( isset($object['taxonomy']) ) {
-                return $object['taxonomy'];
-            }
-            return '';
+            return $object['taxonomy'];
+        } ]
+    );
+
+    /**
+     * Add a 'mediatype' field to recordings
+     */
+    register_rest_field(
+        [ 'recordings' ],
+        'mediatype',
+        [ 'get_callback' => function( $object ) {
+            return 'video';
         } ]
     );
 
@@ -107,9 +113,8 @@ function rest_api_additions() {
         'thumbnail',
         [ 'get_callback' => function( $object ) {
             switch ($object['type']) {
-                case 'video':
-                case 'audio':
-                    $id = $object['acf']['thumbnail'];
+                case 'recordings':
+                    $id = array_key_exists('thumbnail', $object['acf']) ? $object['acf']['thumbnail'] : null;
                     $res = '108p';
                     break;
                 case 'series':

@@ -90,7 +90,7 @@ module.exports = merge(
      */
     settings: {
       sourceMaps: env("SOURCEMAPS", true),
-      styleLint: false,
+      // styleLint: false,
       // styleLint: {
       //   context: "resources/assets"
       // },

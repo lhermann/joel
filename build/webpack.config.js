@@ -4,7 +4,7 @@ const webpack = require("webpack");
 
 const CopyPlugin = require("copy-webpack-plugin");
 const CleanPlugin = require("clean-webpack-plugin");
-const StyleLintPlugin = require("stylelint-webpack-plugin");
+// const StyleLintPlugin = require("stylelint-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const { default: ImageminPlugin } = require("imagemin-webpack-plugin");
@@ -111,9 +111,9 @@ module.exports = {
  * Adds Stylelint plugin if
  * linting is configured.
  */
-if (config.settings.styleLint) {
-  module.exports.plugins.push(new StyleLintPlugin(config.settings.styleLint));
-}
+// if (config.settings.styleLint) {
+//   module.exports.plugins.push(new StyleLintPlugin(config.settings.styleLint));
+// }
 
 /**
  * Adds BrowserSync plugin when

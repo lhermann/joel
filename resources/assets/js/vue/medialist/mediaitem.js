@@ -12,16 +12,7 @@ export default {
     props: ["item"],
     computed: {
         isRecording() {
-            switch (this.item.type) {
-                case "video":
-                case "audio":
-                    return true;
-                case "series":
-                case "speakers":
-                case "topics":
-                default:
-                    return false;
-            }
+            return this.item.type === "recordings";
         },
         isNew() {
             const date = parseISO(this.item.date_gmt + "Z");
