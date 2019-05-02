@@ -137,7 +137,7 @@ if( function_exists('acf_add_local_field_group') ):
 
             } else {
 
-                switch ($video->par) {
+                switch($video->par) {
                     case '1:1': $parmsg = ''; break;
                     case '0:1': $parmsg = '-> Keine PAR-Info im video gespeichert'; break;
                     default:    $parmsg = '-> Video wird eventuell verzerrt dargestellt; Ideal: 1:1'; break;
@@ -213,11 +213,11 @@ if( function_exists('acf_add_local_field_group') ):
     /*
      * Recording ACF fields
      */
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_acf_recording',
         'title' => __('Recordings', config('textdomain')),
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_53dfb75328fc8',
                 'label' => __('Status', config('textdomain')),
                 'name' => 'recording_status',
@@ -225,7 +225,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '100',
                     'class' => '',
                     'id' => '',
@@ -234,7 +234,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
             ),
-            array (
+            array(
                 'key' => 'field_52c9deb0d3c39',
                 'label' => __('Select Recording', config('textdomain')),
                 'name' => 'recording_select',
@@ -242,17 +242,17 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '100',
                     'class' => '',
                     'id' => '',
                 ),
-                'choices' => array (
+                'choices' => array(
                     'Gold Play Buddon.mp4' => 'Gold Play Buddon.mp4 [5 MB]',
                     'logo-assembly-cut.mp4' => 'logo-assembly-cut.mp4 [5 MB]',
                     'trailer-ausweg-2012.mp4' => 'trailer-ausweg-2012.mp4 [59 MB]',
                 ),
-                'default_value' => array (
+                'default_value' => array(
                 ),
                 'allow_null' => 1,
                 'multiple' => 0,
@@ -261,7 +261,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'value',
                 'placeholder' => '',
             ),
-            array (
+            array(
                 'key' => 'field_4fb10184a8596',
                 'label' => __('Thumbnail', config('textdomain')),
                 'name' => 'thumbnail',
@@ -269,7 +269,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => 'Erforderliche Aufl&ouml;sung in Pixel: 1920x1080',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -286,9 +286,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'mime_types' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'recordings',
@@ -301,10 +301,10 @@ if( function_exists('acf_add_local_field_group') ):
         'label_placement' => 'top',
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
-        'active' => 1,
-        'hide_on_screen' => array (),
+        'active' => true,
+        'hide_on_screen' => array(),
         'description' => '',
-        'hide_on_screen' => array (
+        'hide_on_screen' => array(
             0 => 'excerpt',
             1 => 'custom_fields',
             2 => 'discussion',
@@ -322,11 +322,11 @@ if( function_exists('acf_add_local_field_group') ):
     /*
      * Podcast Taxonomy ACF fields
      */
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_59de0a51d9c79',
         'title' => 'Taxonomy Podcast',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_59de0a67baf08',
                 'label' => __('Image', config('textdomain')),
                 'name' => 'image',
@@ -334,7 +334,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => 'Artwork must be a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels, in JPEG or PNG format, 72 dpi, with appropriate file extensions (.jpg, .png), and in the RGB colorspace.',
                 'required' => 1,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -350,7 +350,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'max_size' => '',
                 'mime_types' => '',
             ),
-            array (
+            array(
                 'key' => 'field_59de0abf106de',
                 'label' => __('Author', config('textdomain')),
                 'name' => 'autor',
@@ -358,7 +358,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -372,7 +372,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'object',
                 'multiple' => 0,
             ),
-            array (
+            array(
                 'key' => 'field_59de0b32b3aa1',
                 'label' => __('Categories', config('textdomain')),
                 'name' => 'categorien',
@@ -380,12 +380,12 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
                 ),
-                'choices' => array (
+                'choices' => array(
                     'Health' => 'Health',
                     'Health/Alternative Health' => 'Health / Alternative Health',
                     'Health/Fitness &amp; Nutrition' => 'Health / Fitness & Nutrition',
@@ -400,7 +400,7 @@ if( function_exists('acf_add_local_field_group') ):
                 ),
                 'allow_custom' => 0,
                 'save_custom' => 0,
-                'default_value' => array (
+                'default_value' => array(
                     0 => 'Religion & Spirituality',
                     1 => 'Religion & Spirituality: Christianity',
                 ),
@@ -408,7 +408,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'toggle' => 0,
                 'return_format' => 'value',
             ),
-            array (
+            array(
                 'key' => 'field_59e44c58b3706',
                 'label' => __('iTunes Link', config('textdomain')),
                 'name' => 'itunes_link',
@@ -416,7 +416,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -424,7 +424,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'default_value' => '',
                 'placeholder' => '',
             ),
-            array (
+            array(
                 'key' => 'field_59e79635e0444',
                 'label' => __('Stitcher Link', config('textdomain')),
                 'name' => 'stitcher_link',
@@ -432,7 +432,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -440,7 +440,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'default_value' => '',
                 'placeholder' => '',
             ),
-            array (
+            array(
                 'key' => 'field_59e3aaa4c51dc',
                 'label' => __('Website', config('textdomain')),
                 'name' => 'website_link',
@@ -448,7 +448,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -457,9 +457,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'placeholder' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'taxonomy',
                     'operator' => '==',
                     'value' => 'podcasts',
@@ -472,18 +472,18 @@ if( function_exists('acf_add_local_field_group') ):
         'label_placement' => 'top',
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
-        'active' => 1,
+        'active' => true,
         'description' => '',
     ));
 
     /*
      * Series Taxonomy ACF fields
      */
-    acf_add_local_field_group( array (
+    acf_add_local_field_group( array(
         'key' => 'group_59ddf45ff376f',
         'title' => 'Taxonomy Series',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_59ddf48a5960c',
                 'label' => __('Thumbnail for series', config('textdomain')),
                 'name' => 'image',
@@ -491,7 +491,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => 'Bild sollte mindestens 1280x720 Pixel haben.',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -507,7 +507,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'max_size' => '',
                 'mime_types' => '',
             ),
-            array (
+            array(
                 'key' => 'field_59e5a5c30a4fd',
                 'label' => __('Podcast', config('textdomain')),
                 'name' => 'podcast',
@@ -515,7 +515,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -530,9 +530,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'multiple' => 0,
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'taxonomy',
                     'operator' => '==',
                     'value' => 'series',
@@ -545,18 +545,18 @@ if( function_exists('acf_add_local_field_group') ):
         'label_placement' => 'top',
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
-        'active' => 1,
+        'active' => true,
         'description' => '',
     ));
 
     /*
      * Speaker Taxonomy ACF fields
      */
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_59ddf5713cb1d',
         'title' => 'Taxonomy Sprecher',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_59ddf586d5c6d',
                 'label' => __('Image', config('textdomain')),
                 'name' => 'image',
@@ -564,7 +564,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => 'Sollte <strong>quadratisch</strong> sein, wird ansonnsten automatisch ausgeschnitten. Mindestens <strong>300x300 Pixel</strong>.',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -580,7 +580,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'max_size' => '',
                 'mime_types' => '',
             ),
-            array (
+            array(
                 'key' => 'field_59ddf623f1beb',
                 'label' => __('Website', config('textdomain')),
                 'name' => 'website',
@@ -588,7 +588,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -597,9 +597,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'placeholder' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'taxonomy',
                     'operator' => '==',
                     'value' => 'speakers',
@@ -612,18 +612,18 @@ if( function_exists('acf_add_local_field_group') ):
         'label_placement' => 'top',
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
-        'active' => 1,
+        'active' => true,
         'description' => '',
     ));
 
     /*
      * Recordings Sidebar ACF fields
      */
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_acf_choose-taxonomies',
         'title' => __('Choose taxonomies', config('textdomain')),
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_53dfb0355292e',
                 'label' => __('Speakers', config('textdomain')),
                 'name' => 'speakers',
@@ -631,7 +631,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 1,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -645,7 +645,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'id',
                 'multiple' => 0,
             ),
-            array (
+            array(
                 'key' => 'field_53dfaf955292d',
                 'label' => __('Series', config('textdomain')),
                 'name' => 'series',
@@ -653,7 +653,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 1,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -667,7 +667,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'id',
                 'multiple' => 0,
             ),
-            array (
+            array(
                 'key' => 'field_59dcf1a261753',
                 'label' => __('Topics', config('textdomain')),
                 'name' => 'topics',
@@ -675,7 +675,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -689,7 +689,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'id',
                 'multiple' => 0,
             ),
-            array (
+            array(
                 'key' => 'field_59dcf1e0346a5',
                 'label' => __('Podcast', config('textdomain')),
                 'name' => 'podcast',
@@ -697,7 +697,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -711,7 +711,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'id',
                 'multiple' => 0,
             ),
-            array (
+            array(
                 'key' => 'field_59dcf417389a4',
                 'label' => __('Download', config('textdomain')),
                 'name' => 'download',
@@ -719,7 +719,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -731,33 +731,33 @@ if( function_exists('acf_add_local_field_group') ):
                 'ui_off_text' => __('deny', config('textdomain')),
             )
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'recordings',
                 ),
             ),
         ),
-        'menu_order' => 1,
+        'menu_order' => 0,
         'position' => 'side',
         'style' => 'default',
         'label_placement' => 'top',
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
-        'active' => 1,
+        'active' => true,
         'description' => '',
     ));
 
     /*
      * Bibel.Antworten Kategorie
      */
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_acf_bibelantworten',
         'title' => 'Bibel.Antworten Kategorie',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_54b66d16a979b',
                 'label' => 'Bibel.Antworten Kategorie',
                 'name' => 'bibel_antworten_kategorie',
@@ -765,12 +765,12 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => 'Diese Kategorien sind nur für Videos der Serie "Bibel.Antworten" von Bedeutung.',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
                 ),
-                'choices' => array (
+                'choices' => array(
                     0 => 'Keine Kategorie (wird nicht aufgelistet)',
                     1 => '1. Lesen, hören, bewahren – Fragen zur Bibel',
                     2 => '2. „Ich bin“ – Fragen zur Gottheit',
@@ -783,7 +783,7 @@ if( function_exists('acf_add_local_field_group') ):
                     9 => '9. „was ist und was geschehen soll“ – Fragen zur Prophetie',
                     10 => '10. „sieben Gemeinden“ – Fragen zum Volk Gottes',
                 ),
-                'default_value' => array (
+                'default_value' => array(
                     0 => 0,
                 ),
                 'allow_null' => 0,
@@ -794,9 +794,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'placeholder' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'recordings',
@@ -809,7 +809,7 @@ if( function_exists('acf_add_local_field_group') ):
         'label_placement' => 'top',
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
-        'active' => 1,
+        'active' => true,
         'description' => '',
     ));
 
