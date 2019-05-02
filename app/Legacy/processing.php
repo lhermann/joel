@@ -36,6 +36,7 @@ use function Tonik\Theme\App\config;
  */
 add_action( 'save_post', 'Tonik\Theme\App\Legacy\process_on_save', 9 );
 function process_on_save( $post_id ) {
+
     /*
      * Avoid the function to trigger at wrong time
      */
@@ -53,11 +54,14 @@ function process_on_save( $post_id ) {
      * $filename: the selected video or audio file; $filename = (var) 'null' for empty values
      * this foreach loop will only run though the first cycle to grab the filename
      */
-    foreach ( $_POST['acf'] as $field_key => $field ) {
-        $filename = stripslashes( $field );
-        $_POST['acf'][$field_key] = 'null';
-        break;
-    };
+    $filename = stripslashes($_POST['acf']['field_52c9deb0d3c39']);
+    $_POST['acf']['field_52c9deb0d3c39'] = 'null';
+    // foreach ( $_POST['acf'] as $field_key => $field ) {
+    //     $filename = stripslashes( $field );
+    //     $_POST['acf'][$field_key] = 'null';
+    //     break;
+    // };
+
 
     /*
      * Check if the database contains anything already
@@ -75,6 +79,12 @@ function process_on_save( $post_id ) {
     if ( $dbcheck ) { // the database DOES contain entries for that post
 
         if ( $filename !== '' ) { // a new file has been provided: the old files will be deleted and the new will be processed
+            // delete identical filenames
+            $wpdb->delete(
+                'wp_video_files',
+                ['post_id' => $post_id, 'type' => 'source', 'relative_url' => $filename]
+            );
+
             // set status 99 'DELETE' for old fiels
             $wpdb->update(
                 'wp_video_files',
