@@ -37,7 +37,7 @@ use function Tonik\Theme\App\config;
     </section>
     <?php endif ?>
 
-    <?php if (config('landing-simple-videos')): ?>
+    <?php if (config('landing-videos-simple')): ?>
     <section class="c-section u-pv">
 
         <div class="o-wrapper">
