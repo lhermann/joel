@@ -19,9 +19,8 @@ if( Store::isset_then_set('vue/slider/slide') ) return;
                         v-if="acf.show_title"
                         class="u-mb-"
                         :style="{color: colors.title}"
-                    >
-                        {{ title.rendered }}
-                    </h1>
+                        v-html="title.rendered"
+                    ></h1>
 
                     <div
                         class="u-lead"
