@@ -13,6 +13,7 @@ return [
     | Theme Switches
     |--------------------------------------------------------------------------
     */
+    'joel'                  => if_defined('JOEL', false),
     'searchbar'             => if_defined('SEARCHBAR', false),
     'slider'                => if_defined('SLIDER', true),
     'slider-teaser'         => if_defined('SLIDER_TEASER', true),

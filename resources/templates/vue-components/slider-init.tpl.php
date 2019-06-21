@@ -1,6 +1,7 @@
 <?php
 use function Tonik\Theme\App\template;
 use function Tonik\Theme\App\asset_path;
+use function Tonik\Theme\App\config;
 $json_options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
 $json_params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] === false);
@@ -15,7 +16,7 @@ $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] 
 >
 
     <!-- Placeholder -->
-    <?php if ($placeholder): ?>
+    <?php if (config('joel') && $placeholder): ?>
     <div v-show="!loaded" class="c-slider">
         <ul class="c-slider__list">
             <li class="c-slider__item">
