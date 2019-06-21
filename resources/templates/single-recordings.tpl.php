@@ -15,6 +15,20 @@ $topics = str_replace(
         ', '
     )
 );
+$youtube = get_field("youtube_video");
+if($youtube) {
+    // Remove width and height
+    $youtube = preg_replace('/width="\d+"\s*height="\d+"\s*/i', '', $youtube);
+    // Extract URL
+    preg_match_all('/src="(.+?)"/', $youtube, $matches);
+    $url = $matches[1][0];
+    // Use youtube-nocookie.com
+    $url = str_replace("www.youtube.com", "www.youtube-nocookie.com", $url);
+    // Add &modestbranding=1
+    $url .= "&modestbranding=1";
+    // Re-insert URL
+    $youtube = preg_replace('/src=".+?"/', "src=\"$url\"", $youtube);
+}
 ?>
 
 <?php get_header() ?>
@@ -49,12 +63,16 @@ $topics = str_replace(
                 </header>
 
                 <div class="o-ratio o-ratio--16:9 u-box-shadow ">
+                    <?php if ($youtube): ?>
+                    <?= $youtube ?>
+                    <?php else: ?>
                     <iframe id="player"
                         class="o-ratio__content c-player"
                         src="<?= config('url-prefix')['embed'].'0'.get_the_ID() ?>"
                         frameborder="0"
                         allowfullscreen>
                     </iframe>
+                    <?php endif ?>
                 </div>
 
 
@@ -67,7 +85,7 @@ $topics = str_replace(
 
             <section id="infobox" class="u-pv">
 
-                <?php template('partials/recordings-meta') ?>
+                <?php template('partials/recordings-meta', ['youtube' => $youtube]) ?>
 
 
             </section>
