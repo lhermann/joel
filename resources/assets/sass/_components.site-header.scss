@@ -23,6 +23,7 @@
             display: table-cell;
             padding: 0 $unit-large 0 0;
             vertical-align: middle;
+            min-width: 0; /* truncate hack */
 
             @supports(display: flex) {
                 display: block;
@@ -41,18 +42,14 @@
             }
         }
 
-        .c-site-header__item--double {
-            flex-grow: 2;
-        }
+        .c-site-header__hamburger {
+            padding-right: 0; /* IE9 */
+            padding-left: 0; /* IE9 */
+            width: $header-height;
+            height: $header-height;
 
-            .c-site-header__hamburger {
-                padding-right: 0; /* IE9 */
-                padding-left: 0; /* IE9 */
-                width: $header-height;
-                height: $header-height;
-
-                @include mq($until: tablet) {
-                    border-right-width: 0;
-                    margin-right: -$unit;
-                }
+            @include mq($until: tablet) {
+                border-right-width: 0;
+                margin-right: -$unit;
             }
+        }

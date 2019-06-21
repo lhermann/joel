@@ -464,6 +464,18 @@ $livestream-meta-height: $unit * 5;
     transition: $global-transition;
 }
 
+.u-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.u-grow { flex-grow: 1; }
+.u-shrink { flex-grow: 1; }
+.u-grow-0 { flex-grow: 0; }
+.u-shrink-0 { flex-grow: 0; }
+
 // RESPONSIVE UTILITIES
 @import "utilities.responsive-spacings";
 @import "utilities.responsive-hide";

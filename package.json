@@ -12,11 +12,10 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js",
+        "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js --watch",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "start": "npm run watch",
+        "start": "npm run dev",
         "stats": "cross-env NODE_ENV=development webpack --profile --json --config build/webpack.config.js > stats.json && webpack-bundle-analyzer stats.json",
         "build": "npm run production"
     },

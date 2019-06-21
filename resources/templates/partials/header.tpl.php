@@ -14,16 +14,16 @@ use function Tonik\Theme\App\config;
             </div>
 
             <?php if (config('searchbar')): ?>
-            <div class="c-site-header__item c-site-header__item--double u-hidden-until@desktop">
+            <div class="c-site-header__item u-grow u-shrink u-hidden-until@desktop">
                 <?php template('partials/searchform', ['style_modifier' => 'c-search-bar--primary']) ?>
             </div>
             <?php endif ?>
 
-            <div class="c-site-header__item u-hidden-until@tablet">
+            <div class="c-site-header__item u-truncate u-shrink u-hidden-until@tablet">
                 <?php template('partials/primary-nav') ?>
             </div>
 
-            <div class="c-site-header__item u-text-right">
+            <div class="c-site-header__item u-text-right u-shrink-0">
                 <button class="c-btn c-btn--subtle c-btn--edgy c-btn--bigicon
                     c-btn--square c-site-header__hamburger jsFlyinBtn"
                     data-target="mobileNav"
