@@ -20,7 +20,7 @@ if( Store::isset_then_set('vue/medialist/mediaitem') ) return;
             </a>
             <a v-else class="c-mediaitem__imglink" :href="item.link">
                 <img :src="item.thumbnail">
-                <div class="c-mediaitem__length">
+                <div v-if="length" class="c-mediaitem__length">
                     <div v-html="length"></div>
                 </div>
             </a>

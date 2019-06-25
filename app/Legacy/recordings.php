@@ -97,7 +97,7 @@ function get_video_length( $post_id = false, $video_files = [] ) {
         if($length = $file->length) break;
     }
     preg_match( '/([^D0].{3}|[^D0].{2}|[^D0]|)\d:\d{2}$/', $length, $matches ); // remove leading zeroes
-    return isset($matches[0]) ? $matches[0] : '0';
+    return isset($matches[0]) ? $matches[0] : '';
 }
 
 
