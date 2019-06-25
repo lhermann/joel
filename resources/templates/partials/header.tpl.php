@@ -19,7 +19,7 @@ use function Tonik\Theme\App\config;
             </div>
             <?php endif ?>
 
-            <div class="c-site-header__item u-truncate u-shrink u-hidden-until@tablet">
+            <div class="c-site-header__item u-shrink u-hidden-until@tablet">
                 <?php template('partials/primary-nav') ?>
             </div>
 
