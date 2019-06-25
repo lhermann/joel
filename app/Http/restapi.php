@@ -112,6 +112,25 @@ function rest_api_additions() {
         [ 'recordings', 'series', 'speakers' ],
         'thumbnail',
         [ 'get_callback' => function( $object ) {
+            // youtube video
+            if(
+                $object['type'] === 'recordings'
+                && is_array($object['acf'])
+                && $object['acf']['youtube_video']
+                && !$object['acf']['thumbnail']
+            ) {
+                preg_match_all(
+                    '/(?<=embed\/).+?(?=[\?$])/',
+                    $object['acf']['youtube_video'],
+                    $matches,
+                    PREG_SET_ORDER,
+                    0
+                );
+                if($matches[0][0])
+                    return "https://img.youtube.com/vi/{$matches[0][0]}/mqdefault.jpg";
+            }
+
+            // regular thumbnail
             switch ($object['type']) {
                 case 'recordings':
                     $id = array_key_exists('thumbnail', $object['acf']) ? $object['acf']['thumbnail'] : null;
