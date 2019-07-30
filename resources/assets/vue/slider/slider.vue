@@ -19,17 +19,17 @@
     </div>
 
     <ul v-if="controls" class="c-slider__nav">
-      <slider-nav-component
+      <slider-nav
         v-for="(slide, i) in slides"
         :key="i"
         :index="i"
         :current-slide="currentSlide"
-        v-on:clicked="manuallyChangeSlide"
+        @update:currentSlide="manuallyChangeSlide"
       />
     </ul>
 
     <ul class="c-slider__list">
-      <slide-component
+      <slide
         v-for="(slide, i) in slides"
         :key="i"
         :slide="slide"
@@ -39,7 +39,7 @@
       />
     </ul>
 
-    <slider-teaser-component
+    <slider-teaser
       v-if="teaser"
       :slides="slides"
       :current-slide="currentSlide"
@@ -50,17 +50,13 @@
 
 <script>
 import axios from "axios";
-import SlideComponent from "./slide.js";
-import SliderNavComponent from "./nav.js";
-import SliderTeaserComponent from "./teaser.js";
+import Slide from "./slide.js";
+import SliderNav from "./nav.js";
+import SliderTeaser from "./teaser.js";
 
 export default {
   name: "SliderComponent",
-  components: {
-    SlideComponent,
-    SliderNavComponent,
-    SliderTeaserComponent
-  },
+  components: { Slide, SliderNav, SliderTeaser },
   props: {
     mode: String,
     slideDuration: Number,

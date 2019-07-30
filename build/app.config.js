@@ -24,7 +24,11 @@ module.exports = merge({
    * Collection of application front-end assets.
    */
   entry: {
-    app: ["./resources/assets/app.js", "./resources/assets/sass/index.scss"],
+    app: [
+      "./resources/assets/js/index.js",
+      "./resources/assets/sass/index.scss"
+    ],
+    vue: ["./resources/assets/vue/index.js"],
     polyfills: ["./resources/assets/js/polyfills.js"],
     admin: [
       "./resources/assets/js/admin.js",
