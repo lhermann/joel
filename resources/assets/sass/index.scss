@@ -68,87 +68,9 @@
  * Hide.................Helper classes to hide content
  */
 
-// SETTINGS
-$inuit-global-font-size: 16px;
-$inuit-global-line-height: 24px;
 
-@import "settings.config";
-@import "~inuitcss/settings/settings.core";
-@import "settings.global";
-@import "settings.colors";
-
-
-
-// TOOLS
-@import "~inuitcss/tools/tools.font-size";
-@import "~inuitcss/tools/tools.clearfix";
-@import "~inuitcss/tools/tools.hidden";
-@import "~sass-mq/mq";
-@import "tools.clothoid";
-
-
-
-
-// GENERIC
-@import "~inuitcss/generic/generic.box-sizing";
-@import "~inuitcss/generic/generic.normalize";
-@import "~inuitcss/generic/generic.reset";
-@import "~inuitcss/generic/generic.shared";
-
-/**
- * 1. Allow overflow-x: hidden to work
- * 2. Make containers default to 100% viewport height
- * 3. Fix safari transition fort smoothing bug
- * 4. Fix iOS bouncy scroll
- * Note: Do not use "overflow-x: hidden;"" because it kills window.scroll
- */
-html,
-body {
-    position: relative; /* 1 */
-    background-color: $c-white;
-    height: 100%; /* 2 */
-    -webkit-font-smoothing: antialiased; /* 3 */
-    -webkit-overflow-scrolling: touch;
-}
-
-/**
- * 1. can not be applied to html or body because it messes with smooth scrolling
- *    on the iPhone
- */
-main {
-    overflow: hidden; /* 1 */
-}
-
-a {
-    outline: 0;
-    text-decoration: none;
-    color: $c-link;
-
-    &:hover,
-    &:focus {
-        color: $c-link-hover;
-    }
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid $c-border;
-}
-
-
-
-
-// ELEMENTS
-@import "~inuitcss/elements/elements.page";
-@import "~inuitcss/elements/elements.headings";
-@import "~inuitcss/elements/elements.images";
-@import "~inuitcss/elements/elements.tables";
-@import "elements.typography";
-@import "elements.forms";
-
-[v-cloak] {
-    display: none;
-}
+// SETTINGS, TOOLS, GENERIC, ELEMENTS
+@import "settings-and-elements.scss";
 
 
 
@@ -158,17 +80,17 @@ hr {
 @import "~inuitcss/objects/objects.media";
 @import "~inuitcss/objects/objects.flag";
 @import "~inuitcss/objects/objects.list-bare";
-@import "objects.list-inline";
+@import "objects/list-inline";
 @import "~inuitcss/objects/objects.box";
 @import "~inuitcss/objects/objects.block";
 @import "~inuitcss/objects/objects.ratio";
 @import "~inuitcss/objects/objects.crop";
 // @import "~inuitcss/objects/objects.pack";
-@import "objects.overflow";
-// @import "objects.owl";
-@import "objects.grid";
-@import "objects.flex";
-// @import "objects.tables";
+@import "objects/overflow";
+// @import "objects/owl";
+@import "objects/grid";
+@import "objects/flex";
+// @import "objects/tables";
 
 .o-layout--overflow {
     white-space: nowrap;
@@ -226,39 +148,39 @@ hr {
  */
 $header-height: 56px;
 
-@import "components.article";
-@import "components.alert";
-@import "components.badge";
-@import "components.buttons";
-@import "components.button-group";
-@import "components.branding";
-@import "components.collapsible";
-@import "components.dropdowns";
-@import "components.excerpt";
-@import "components.flyin"; /* 1 */
-@import "components.forms";
-@import "components.hamburger";
-@import "components.header-bg";
-@import "components.links";
-@import "components.medialist";
-@import "components.mediaitem";
-@import "components.media-promo";
-// @import "components.media-article";
-@import "components.primary-nav";
-@import "components.program";
-@import "components.search-bar";
-@import "components.section";
-@import "components.site-header";
-@import "components.site-footer";
-@import "components.site-wrapper";
-@import "components.slider";
-@import "components.slide";
-@import "components.spinner";
-@import "components.tabs";
-@import "components.wp-styles";
-@import "components.widgets";
-@import "components.dots";
-@import "components.cookie-consent";
+@import "components/article";
+@import "components/alert";
+@import "components/badge";
+@import "components/buttons";
+@import "components/button-group";
+@import "components/branding";
+@import "components/collapsible";
+@import "components/dropdowns";
+@import "components/excerpt";
+@import "components/flyin"; /* 1 */
+@import "components/forms";
+@import "components/hamburger";
+@import "components/header-bg";
+@import "components/links";
+@import "components/medialist";
+@import "components/mediaitem";
+@import "components/media-promo";
+// @import "components/media-article";
+@import "components/primary-nav";
+@import "components/program";
+@import "components/search-bar";
+@import "components/section";
+@import "components/site-header";
+@import "components/site-footer";
+@import "components/site-wrapper";
+@import "components/slider";
+@import "components/slide";
+@import "components/spinner";
+@import "components/tabs";
+@import "components/wp-styles";
+@import "components/widgets";
+@import "components/dots";
+@import "components/cookie-consent";
 
 .c-logo {
     min-width: 36px;
@@ -330,9 +252,9 @@ $livestream-meta-height: $unit * 5;
 
 
 // PLUGINS
-@import "plugins.wpcf7";
-@import "plugins.instantsearch";
-@import "plugins.autocomplete";
+@import "plugins/wpcf7";
+@import "plugins/instantsearch";
+@import "plugins/autocomplete";
 
 
 
@@ -342,13 +264,13 @@ $livestream-meta-height: $unit * 5;
 @import "~inuitcss/utilities/utilities.headings";
 @import "~inuitcss/utilities/utilities.print";
 @import "~inuitcss/utilities/utilities.hide";
-@import "utilities.animation";
-@import "utilities.icons";
-@import "utilities.orientation";
-@import "utilities.text-align";
-@import "utilities.text";
-@import "utilities.show-more";
-@import "utilities.colors";
+@import "utilities/animation";
+@import "utilities/icons";
+@import "utilities/orientation";
+@import "utilities/text-align";
+@import "utilities/text";
+@import "utilities/show-more";
+@import "utilities/colors";
 
 .u-advent-sans {
     font-family: $font-heading !important;
@@ -477,9 +399,9 @@ $livestream-meta-height: $unit * 5;
 .u-shrink-0 { flex-grow: 0; }
 
 // RESPONSIVE UTILITIES
-@import "utilities.responsive-spacings";
-@import "utilities.responsive-hide";
-@import "utilities.responsive-headings";
+@import "utilities/responsive-spacings";
+@import "utilities/responsive-hide";
+@import "utilities/responsive-headings";
 
 .u-break-wrapper {
     margin-right: -$unit;

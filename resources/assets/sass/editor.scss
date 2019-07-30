@@ -2,72 +2,8 @@
    JOEL EDITOR STYLE
    ========================================================================== */
 
-// SETTINGS
-$inuit-global-font-size: 14px;
-$inuit-global-line-height: 21px;
-
-@import "settings.config";
-@import "~inuitcss/settings/settings.core";
-@import "settings.global";
-@import "settings.colors";
-
-
-
-// TOOLS
-@import "~inuitcss/tools/tools.font-size";
-@import "~inuitcss/tools/tools.clearfix";
-@import "~inuitcss/tools/tools.hidden";
-@import "~sass-mq/mq";
-@import "tools.clothoid";
-
-
-
-
-// GENERIC
-@import "~inuitcss/generic/generic.box-sizing";
-@import "~inuitcss/generic/generic.normalize";
-@import "~inuitcss/generic/generic.reset";
-@import "~inuitcss/generic/generic.shared";
-
-html {
-    -webkit-font-smoothing: antialiased; /* 3 */
-    -webkit-overflow-scrolling: touch;
-    padding: $unit-small $unit; // margin creates scroll bars
-}
-
-a {
-    outline: 0;
-    text-decoration: none;
-    color: $c-link;
-
-    &:hover,
-    &:focus {
-        color: $c-link-hover;
-    }
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid $c-border;
-}
-
-// In the editor it is not good if pictures are wider than the viewport
-img {
-    max-width: 100%;
-}
-
-
-// ELEMENTS
-@import "~inuitcss/elements/elements.page";
-@import "~inuitcss/elements/elements.headings";
-@import "~inuitcss/elements/elements.images";
-@import "~inuitcss/elements/elements.tables";
-@import "elements.typography";
-@import "elements.forms";
-
-[v-cloak] {
-    display: none;
-}
+// SETTINGS, TOOLS, GENERIC, ELEMENTS
+@import "settings-and-elements.scss";
 
 
 // OBJECTS
@@ -75,38 +11,38 @@ img {
 @import "~inuitcss/objects/objects.media";
 @import "~inuitcss/objects/objects.flag";
 @import "~inuitcss/objects/objects.list-bare";
-@import "objects.list-inline";
+@import "objects/list-inline";
 @import "~inuitcss/objects/objects.box";
 @import "~inuitcss/objects/objects.block";
 @import "~inuitcss/objects/objects.ratio";
 @import "~inuitcss/objects/objects.crop";
-@import "objects.overflow";
-@import "objects.grid";
-@import "objects.flex";
+@import "objects/overflow";
+@import "objects/grid";
+@import "objects/flex";
 
 
 // COMPONENTS
-@import "components.alert";
-@import "components.badge";
-@import "components.buttons";
-@import "components.button-group";
-@import "components.forms";
-@import "components.links";
-@import "components.program";
-@import "components.spinner";
-@import "components.tabs";
-@import "components.wp-styles";
+@import "components/alert";
+@import "components/badge";
+@import "components/buttons";
+@import "components/button-group";
+@import "components/forms";
+@import "components/links";
+@import "components/program";
+@import "components/spinner";
+@import "components/tabs";
+@import "components/wp-styles";
 
 
 // UTILITIES
 @import "~inuitcss/utilities/utilities.widths";
 @import "~inuitcss/utilities/utilities.headings";
 @import "~inuitcss/utilities/utilities.hide";
-@import "utilities.animation";
-@import "utilities.icons";
-@import "utilities.orientation";
-@import "utilities.text-align";
-@import "utilities.show-more";
+@import "utilities/animation";
+@import "utilities/icons";
+@import "utilities/orientation";
+@import "utilities/text-align";
+@import "utilities/show-more";
 
 /*
  * Text Utilities

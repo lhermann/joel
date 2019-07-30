@@ -2,36 +2,21 @@
    JOEL WORDPRESS THEME ADMIN
    ========================================================================== */
 
-// SETTINGS
-$inuit-global-font-size: 14px;
-$inuit-global-line-height: 21px;
-
-@import "settings.config";
-@import "~inuitcss/settings/settings.core";
-@import "settings.global";
-@import "settings.colors";
-
-
-
-// TOOLS
-@import "~inuitcss/tools/tools.font-size";
-@import "~inuitcss/tools/tools.clearfix";
-@import "~inuitcss/tools/tools.hidden";
-@import "~sass-mq/mq";
-@import "tools.clothoid";
+// SETTINGS, TOOLS, GENERIC, ELEMENTS
+@import "settings-and-elements.scss";
 
 
 
 // OBJECTS
-@import "objects.flex";
+@import "objects/flex";
 
 
 
 // COMPONENTS
-@import "components.spinner";
-@import "components.alert";
-@import "components.badge";
-@import "components.dots";
+@import "components/spinner";
+@import "components/alert";
+@import "components/badge";
+@import "components/dots";
 
 /* Progress Bar */
 .c-progress {
@@ -71,8 +56,8 @@ $inuit-global-line-height: 21px;
 // UTILITIES
 @import "~inuitcss/utilities/utilities.widths";
 @import "~inuitcss/utilities/utilities.hide";
-@import "utilities.text-align";
-@import "utilities.text";
+@import "utilities/text-align";
+@import "utilities/text";
 
 [v-cloak] {
     display: none;
@@ -80,7 +65,7 @@ $inuit-global-line-height: 21px;
 
 
 // RESPONSIVE UTILITIES
-@import "utilities.responsive-spacings";
+@import "utilities/responsive-spacings";
 
 
 
@@ -206,6 +191,6 @@ $inuit-global-line-height: 21px;
 
 
 // LEGACY
-@import "_legacy.admin";
+@import "legacy/admin";
 
 

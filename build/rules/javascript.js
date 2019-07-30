@@ -1,4 +1,4 @@
-const config = require('../app.config')
+const config = require("../app.config");
 
 /**
  * Internal application javascript files.
@@ -6,5 +6,6 @@ const config = require('../app.config')
  */
 module.exports = {
   test: /\.js$/,
-  loader: ['babel-loader', 'eslint-loader']
-}
+  loader: ["babel-loader"]
+  // loader: ['babel-loader', 'eslint-loader']
+};

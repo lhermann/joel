@@ -8,6 +8,7 @@ const CleanPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const { default: ImageminPlugin } = require("imagemin-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 const vueRule = require("./rules/vue");
 const sassRule = require("./rules/sass");
@@ -32,7 +33,7 @@ module.exports = {
    *
    * @type {Object}
    */
-  entry: config.assets,
+  entry: config.entry,
 
   /**
    * Output settings for application scripts.
@@ -90,6 +91,7 @@ module.exports = {
    * @type {Array}
    */
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.LoaderOptionsPlugin({ minimize: !isdev }),
     new ExtractTextPlugin(config.outputs.css),
     new CleanPlugin(config.paths.public, { root: config.paths.root }),
