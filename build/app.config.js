@@ -98,13 +98,6 @@ module.exports = merge({
    */
   settings: {
     sourceMaps: env("SOURCEMAPS", true),
-    // styleLint: false,
-    // styleLint: {
-    //   context: "resources/assets"
-    // },
-    autoprefixer: {
-      browsers: ["last 2 versions", "> 1%", "IE 9-11"]
-    },
     browserSync: false
     // browserSync: {
     //   // https: true,
