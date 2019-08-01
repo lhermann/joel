@@ -3,7 +3,10 @@
    ========================================================================== */
 
 // SETTINGS, TOOLS, GENERIC, ELEMENTS
-@import "settings-and-elements.scss";
+@import "settings.scss";
+@import "tools.scss";
+// @import "generic.scss";
+// @import "elements.scss";
 
 
 // OBJECTS
@@ -30,7 +33,7 @@
 @import "components/links";
 @import "components/program";
 @import "components/spinner";
-@import "components/tabs";
+// @import "components/tabs";
 @import "components/wp-styles";
 
 

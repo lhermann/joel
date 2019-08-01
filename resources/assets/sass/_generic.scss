@@ -1,24 +1,3 @@
-// SETTINGS
-$inuit-global-font-size: 16px;
-$inuit-global-line-height: 24px;
-
-@import "settings/config";
-@import "~inuitcss/settings/settings.core";
-@import "settings/global";
-@import "settings/colors";
-
-
-
-// TOOLS
-@import "~inuitcss/tools/tools.font-size";
-@import "~inuitcss/tools/tools.clearfix";
-@import "~inuitcss/tools/tools.hidden";
-@import "~sass-mq/mq";
-@import "tools/clothoid";
-
-
-
-
 // GENERIC
 @import "~inuitcss/generic/generic.box-sizing";
 @import "~inuitcss/generic/generic.normalize";
@@ -63,19 +42,4 @@ a {
 hr {
     border: 0;
     border-top: 1px solid $c-border;
-}
-
-
-
-
-// ELEMENTS
-@import "~inuitcss/elements/elements.page";
-@import "~inuitcss/elements/elements.headings";
-@import "~inuitcss/elements/elements.images";
-@import "~inuitcss/elements/elements.tables";
-@import "elements/typography";
-@import "elements/forms";
-
-[v-cloak] {
-    display: none;
 }
