@@ -15,6 +15,18 @@ $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] 
     :init="init(<?= $json_options ?>, <?= $json_params ?>)"
 >
 
+
+    <slider
+        v-show="loaded"
+        :mode="mode"
+        :slide-duration="slideDuration"
+        :slide-transition="slideTransition"
+        :teaser="teaser"
+        :id="id"
+        :params="params"
+        @loaded="loaded = true"
+    />
+
     <!-- Placeholder -->
     <?php if (config('joel') && $placeholder): ?>
     <div v-show="!loaded" class="c-slider">
@@ -36,21 +48,10 @@ $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] 
         </ul>
     </div>
     <?php else: ?>
-    <div class="u-text-center">
+    <div class="u-text-center u-p">
         <div v-show="!loaded" class="c-spinner c-spinner--large"></div>
     </div>
     <?php endif ?>
-
-    <slider-component
-        v-show="loaded"
-        :mode="mode"
-        :slide-duration="slideDuration"
-        :slide-transition="slideTransition"
-        :teaser="teaser"
-        :id="id"
-        :params="params"
-        @loaded="loaded = true"
-    />
 
 </div>
 

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "SliderNavComponent",
+  name: "SliderNav",
   props: {
     index: { type: Number },
     currentSlide: { type: Number }

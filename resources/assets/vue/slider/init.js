@@ -1,8 +1,6 @@
 /*
  * Slider Init
  *
- * @author: Lukas Hermann
- *
  * Modes:
  *  - always:   continually change slides
  *  - initial:  only change slides automatically for one cycle
@@ -11,21 +9,17 @@
 
 import Vue from "vue";
 import axios from "axios";
-import SliderComponent from "./slider/slider.js";
-
-/* Axios
- **********************/
-axios.defaults.baseURL = "/wp-json/";
+import Slider from "./slider.vue";
 
 /* Global Values
  **********************/
-var _slideTransition = 800;
+const _slideTransition = 800;
 
 /* Instantiate Sliders
  *********************/
-let instances = [];
-let elements = document.querySelectorAll('[data-vue="slider"]');
-for (var i = 0; i < elements.length; i++) {
+const instances = [];
+const elements = document.querySelectorAll('[data-vue="slider"]');
+for (let i = 0; i < elements.length; i++) {
     instances.push(vueInstance("#" + elements[i].getAttribute("id")));
 }
 
@@ -35,7 +29,7 @@ function vueInstance(_id) {
     return new Vue({
         el: _id,
         name: "SliderRoot",
-        components: { SliderComponent },
+        components: { Slider },
         data() {
             return {
                 initDone: false,

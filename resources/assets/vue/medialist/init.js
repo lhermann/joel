@@ -5,7 +5,7 @@ import Medialist from "./medialist.vue";
  **********************/
 const instances = [];
 const elements = document.querySelectorAll('[data-vue="medialist"]');
-for (var i = 0; i < elements.length; i++) {
+for (let i = 0; i < elements.length; i++) {
     instances.push(vueInstance("#" + elements[i].getAttribute("id")));
 }
 

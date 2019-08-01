@@ -50,12 +50,12 @@
 
 <script>
 import axios from "axios";
-import Slide from "./slide.js";
-import SliderNav from "./nav.js";
-import SliderTeaser from "./teaser.js";
+import Slide from "./slide.vue";
+import SliderNav from "./nav.vue";
+import SliderTeaser from "./teaser.vue";
 
 export default {
-  name: "SliderComponent",
+  name: "Slider",
   components: { Slide, SliderNav, SliderTeaser },
   props: {
     mode: String,

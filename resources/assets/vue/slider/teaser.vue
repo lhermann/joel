@@ -22,7 +22,7 @@
         </div>
         <transition name="collapse">
           <div v-show="!collapsed" class="c-collapsible__body u-ph u-pv0">
-            <medialist-component
+            <medialist
               class="u-1/1"
               :init-options="options"
               :init-params="params"
@@ -42,13 +42,12 @@
 </template>
 
 <script>
-import MedialistComponent from "../medialist/medialist.js";
+import Medialist from "../medialist/medialist.vue";
 import get from "lodash/get";
 
 export default {
-  name: "SliderTeaserComponent",
-  template: "#slider-teaser-component",
-  components: { MedialistComponent },
+  name: "SliderTeaser",
+  components: { Medialist },
   props: {
     slides: Array,
     currentSlide: Number,

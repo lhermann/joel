@@ -17,10 +17,11 @@ axios.defaults.baseURL = "/wp-json/";
  */
 require("./medialist/init.js");
 require("./pagination/init.js");
+require("./slider/init.js");
 
 // import "./medialist/medialist.vue";
-// import "./test/test.vue";
 // import "./vue/slider.js";
+// import "./test/test.vue";
 // import "./vue/dropdown.js";
 // import "./vue/pagination.js";
 // import "./vue/livestream-dropdown.js";

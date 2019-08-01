@@ -71,7 +71,7 @@ const colors = {
 };
 
 export default {
-  name: "SlideComponent",
+  name: "Slide",
   props: {
     slide: Object,
     order: Number,

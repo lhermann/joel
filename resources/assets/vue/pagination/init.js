@@ -3,9 +3,9 @@ import Pagination from "./pagination.vue";
 
 /* Instantiate Dropdown
  **********************/
-let instances = [];
-let elements = document.querySelectorAll('[data-vue="pagination"]');
-for (var i = 0; i < elements.length; i++) {
+const instances = [];
+const elements = document.querySelectorAll('[data-vue="pagination"]');
+for (let i = 0; i < elements.length; i++) {
     instances.push(vueInstance("#" + elements[i].getAttribute("id")));
 }
 
