@@ -6,11 +6,11 @@ $params_json = isset($params) ? str_replace('"', "'", json_encode($params)) : '{
 
 <!-- Vue medialist root component -->
 <section id="<?= $id ?>"
-    class="<?= $style_modifier ?>"
     data-vue="medialist"
+    class="<?= $style_modifier ?>"
     :init="init(<?= $options_json ?>, <?= $params_json ?>)">
 
-    <medialist-component :init-options="options" :init-params="params" />
+    <medialist :init-options="options" :init-params="params" />
 
     <!-- Placeholders -->
     <?php if ($options['title'] ?? false): ?>

@@ -52,12 +52,14 @@ function speakers_catch_response($result, $server, $request) {
     $params = $request->get_params();
     if(array_key_exists('orderby', $params) && $params['orderby'] === 'lastname') {
         setlocale(LC_COLLATE, get_locale());
-        usort($result->data, function($a, $b) {
-            $transliterator = 'Any-Latin; Latin-ASCII; Lower()';
-            $a2 = transliterator_transliterate($transliterator, $a['lastname']);
-            $b2 = transliterator_transliterate($transliterator, $b['lastname']);
-            return strcoll($a2, $b2);
-        });
+        if(function_exists("transliterator_transliterate")) { // php-intl has to be installed
+            usort($result->data, function($a, $b) {
+                $transliterator = 'Any-Latin; Latin-ASCII; Lower()';
+                $a2 = transliterator_transliterate($transliterator, $a['lastname']);
+                $b2 = transliterator_transliterate($transliterator, $b['lastname']);
+                return strcoll($a2, $b2);
+            });
+        };
         $count = count($result->data);
         $offset = ($params['page'] - 1) * $params['per_page'];
         $length = $params['per_page'];

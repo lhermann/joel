@@ -40,6 +40,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets', 10
  */
 function register_scripts() {
 
+    wp_enqueue_script('vue', asset_path('js/vue.js'), [], sha1_file(asset('js/vue.js')->getPath()), true);
     wp_enqueue_script('app', asset_path('js/app.js'), ['jquery'], sha1_file(asset('js/app.js')->getPath()), true);
     wp_deregister_script( 'algolia-instantsearch' );
     wp_deregister_script( 'algolia-autocomplete' );
@@ -53,7 +54,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 10);
  * @return void
  */
 function register_editor_stylesheets() {
-    add_editor_style(asset_path('css/editor-styl.css'));
+    add_editor_style(asset_path('css/editor.css'));
 }
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 
