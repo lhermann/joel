@@ -6,12 +6,12 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
 <!-- Vue root component -->
 <div v-cloak
     id="<?= $id ?>"
-    class="<?= $style_modifier ?>"
     data-vue="pagination"
+    class="<?= $style_modifier ?>"
     :init="init(<?= $options ?>)"
 >
 
-    <pagination-component
+    <pagination
         class="u-mv+"
         :total="options.total"
         :per-page="options.perPage"
@@ -22,7 +22,4 @@ $options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}'
     />
 
 </div>
-
-<!-- dependency components -->
-<?php template('vue-components/medialist/pagination') ?>
 

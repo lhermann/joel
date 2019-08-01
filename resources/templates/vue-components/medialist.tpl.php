@@ -62,6 +62,3 @@ $params_json = isset($params) ? str_replace('"', "'", json_encode($params)) : '{
     </ul>
 
 </section>
-
-<!-- dependency components -->
-<?php template('vue-components/medialist/medialist') ?>

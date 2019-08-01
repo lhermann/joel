@@ -32,7 +32,7 @@ use function Tonik\Theme\App\Legacy\print_open_graph;
 
     <body <?php body_class(); ?>>
 
-        <?php template('vue-components/cookie-consent-init', [
+        <?php template('vue-components/cookie-consent', [
             'id' => 'cookie-consent',
             'options' => ['matomo']
         ]) ?>

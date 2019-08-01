@@ -164,7 +164,7 @@ if($youtube) {
                     </a>
                 </p>
 
-                <?php template('vue-components/medialist-init', [
+                <?php template('vue-components/medialist', [
                     'id' => 'medialist-next-video',
                     'options' => [
                         'pagination' => 'normal'
@@ -183,7 +183,7 @@ if($youtube) {
             <?php if (false): ?>
             <section id="recommended">
 
-                <?php template('vue-components/medialist-init', [
+                <?php template('vue-components/medialist', [
                     'id' => 'medialist-recommended',
                     'options' => [
                         'pagination' => 'minimal'

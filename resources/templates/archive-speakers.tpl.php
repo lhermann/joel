@@ -16,7 +16,7 @@ use function Tonik\Theme\App\config;
         <div class="o-layout__item u-4/5@tablet u-3/4@desktop">
 
 
-            <?php template('vue-components/medialist-init', [
+            <?php template('vue-components/medialist', [
                 'id' => 'medialist-speakers',
                 'style_modifier' => '',
                 'options' => [

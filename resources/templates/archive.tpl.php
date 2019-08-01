@@ -39,7 +39,7 @@ global $wp_query;
     </div>
 
     <!-- Pagination -->
-    <?php template('vue-components/pagination-init', [
+    <?php template('vue-components/pagination', [
         'id' => 'pagination',
         'style_modifier' => '',
         'options' => [

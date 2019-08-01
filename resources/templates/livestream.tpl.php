@@ -45,7 +45,7 @@ use function Tonik\Theme\App\asset_path;
 
         <div class="u-3/5@tablet u-2/3@desktop">
 
-                <?php template('vue-components/livestream-meta-init', [
+                <?php template('vue-components/livestream-meta', [
                     'id' => 'livestream-meta',
                     'style_modifier' => 'c-livestream-meta',
                     'options' => ['stream' => 'joelmedia'],

@@ -13,7 +13,7 @@ use function Tonik\Theme\App\config;
 
     <?php while (have_posts()): the_post() ?>
 
-        <?php template('vue-components/slider-init', [
+        <?php template('vue-components/slider', [
             'id' => 'main-slider',
             'options' => [
                 'mode' => 'none',

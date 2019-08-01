@@ -11,7 +11,7 @@ use function Tonik\Theme\App\config;
     <?php if ( config('slider') && theme('slides') ): ?>
         <section id="slider" class="c-section c-section--flush">
 
-            <?php template('vue-components/slider-init', [
+            <?php template('vue-components/slider', [
                 'id' => 'main-slider',
                 'options' => [
                     'mode' => 'initial',
@@ -51,7 +51,7 @@ use function Tonik\Theme\App\config;
                 </a>
             </h2>
 
-            <?php template('vue-components/medialist-init', [
+            <?php template('vue-components/medialist', [
                 'id' => 'medialist-simple',
                 'options' => [
                     'columns' => 3
@@ -82,7 +82,7 @@ use function Tonik\Theme\App\config;
                 </a>
             </h2>
 
-            <?php template('vue-components/medialist-init', [
+            <?php template('vue-components/medialist', [
                 'id' => 'medialist-new',
                 'options' => [],
                 'params' => [
@@ -99,7 +99,7 @@ use function Tonik\Theme\App\config;
 
                     <h2 class="u-h3 u-mb-">Beliebte Videos</h2>
 
-                    <?php template('vue-components/medialist-init', [
+                    <?php template('vue-components/medialist', [
                         'id' => 'medialist-popular',
                         'options' => [
                             'namespace' => 'wordpress-popular-posts/v1/',
@@ -125,7 +125,7 @@ use function Tonik\Theme\App\config;
                         </a>
                     </h2>
 
-                    <?php template('vue-components/medialist-init', [
+                    <?php template('vue-components/medialist', [
                         'id' => 'medialist-series',
                         'options' => [
                             'route' => 'series'
@@ -147,7 +147,7 @@ use function Tonik\Theme\App\config;
                         </a>
                     </h2>
 
-                    <?php template('vue-components/medialist-init', [
+                    <?php template('vue-components/medialist', [
                         'id' => 'medialist-devotional',
                         'options' => [],
                         'params' => [
