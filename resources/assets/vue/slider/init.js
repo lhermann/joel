@@ -20,37 +20,37 @@ const _slideTransition = 800;
 const instances = [];
 const elements = document.querySelectorAll('[data-vue="slider"]');
 for (let i = 0; i < elements.length; i++) {
-    instances.push(vueInstance("#" + elements[i].getAttribute("id")));
+  instances.push(vueInstance("#" + elements[i].getAttribute("id")));
 }
 
 /* Vue Instance
  **********************/
 function vueInstance(_id) {
-    return new Vue({
-        el: _id,
-        name: "SliderRoot",
-        components: { Slider },
-        data() {
-            return {
-                initDone: false,
-                mode: "none",
-                slideDuration: 5000,
-                slideTransition: 800,
-                teaser: false,
-                loaded: false,
-                id: null,
-                params: {}
-            };
-        },
-        methods: {
-            init(options, params) {
-                if (this.initDone) return;
-                Object.assign(this, options);
-                Object.assign(this.params, params);
-                this.initDone = true;
-            }
-        }
-    });
+  return new Vue({
+    el: _id,
+    name: "SliderRoot",
+    components: { Slider },
+    data() {
+      return {
+        initDone: false,
+        mode: "none",
+        slideDuration: 5000,
+        slideTransition: 800,
+        teaser: false,
+        loaded: false,
+        id: null,
+        params: {}
+      };
+    },
+    methods: {
+      init(options, params) {
+        if (this.initDone) return;
+        Object.assign(this, options);
+        Object.assign(this.params, params);
+        this.initDone = true;
+      }
+    }
+  });
 }
 
 export default { instances };

@@ -15,13 +15,13 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 
     <a href="<?= home_url( '/livestream/' ) ?>"
         class="c-link c-link--block c-link--primary c-primary-nav__link">
-        <stream-check :stream="options.stream">
+        <streamcheck :stream="options.stream">
             <template slot-scope="props">
                 <span class="c-dot u-mr--"
                     :class="{'c-dot--green': props.live, 'is-loading': props.loading}">
                 </span>
             </template>
-        </stream-check>
+        </streamcheck>
         <span class="u-hidden-until@desktop"><?= __('Livestream', config('textdomain')) ?></span>
         <span class="u-hidden-from@desktop"><?= _x('Live', 'Short for livestream', config('textdomain')) ?></span>
         <span class="u-ic-keyboard_arrow_down"></span>
@@ -81,7 +81,4 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
     </ul>
 
 </div>
-
-<!-- dependency components -->
-<?php template('vue-components/livestream/streamcheck') ?>
 

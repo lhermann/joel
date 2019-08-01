@@ -12,7 +12,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 >
 
     <div class="o-flex__item u-lead" style="flex-shrink: 0">
-        <stream-check :stream="options.stream">
+        <streamcheck :stream="options.stream">
             <template slot-scope="props">
                 <span class="c-dot u-mr--"
                     :class="{'c-dot--green': props.live, 'is-loading': props.loading}">
@@ -20,7 +20,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
                 <strong v-if="props.live" v-cloak>ON AIR</strong>
                 <strong v-else class="u-muted">OFFLINE</strong>
             </template>
-        </stream-check>
+        </streamcheck>
         <!-- <span class="u-hidden-from@desktop"><br>0:24:13</span> -->
     </div>
 
@@ -48,7 +48,4 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
         <strong>20 <span class="u-hidden-until@tablet">Zuschauer</span></strong>
     </div> -->
 </div>
-
-<!-- dependency components -->
-<?php template('vue-components/livestream/streamcheck') ?>
 
