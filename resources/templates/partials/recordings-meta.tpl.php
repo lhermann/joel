@@ -136,7 +136,7 @@ $download_files = get_download_files(get_the_ID());
             readonly="readonly"
             value="<?=
               htmlentities(
-                isset($youtube) ? $youtube : sprintf(
+                isset($youtube) && $youtube ? $youtube : sprintf(
                   '<iframe width="560" height="315" src="%s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
                   config('url-prefix')['embed'].'1'.get_the_ID()
                 )

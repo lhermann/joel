@@ -10,7 +10,7 @@ import axios from "axios";
 axios.defaults.baseURL = "/wp-json/";
 
 /*
- * Vue init scrips
+ * Init Vue components
  *
  * Don't use 'import' because they are hoisted and the settings above would
  * not be applied
@@ -21,3 +21,8 @@ require("./slider/init.js");
 require("./cookie-consent/init.js");
 require("./livestream/init-dropdown.js");
 require("./livestream/init-meta.js");
+
+/*
+ * Init Vue Utilities
+ */
+require("./utils/dropdown.js");
