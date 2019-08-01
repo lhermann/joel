@@ -9,7 +9,7 @@
           <div class="c-spinner" v-show="isLoading"></div>
         </div>
         <div v-if="sorting" class="o-flex__item u-text-right">
-          <sorting-component
+          <sorting
             :options="sortingOptions"
             :current-option="currentSortingOption"
             v-on:select="onSelectOption"
@@ -20,12 +20,12 @@
 
     <ul class="c-medialist" :class="medialistClass">
       <li v-for="item in items" class="c-medialist__item">
-        <mediaitem-component :key="item.id" :item="item" />
+        <mediaitem :key="item.id" :item="item" />
       </li>
     </ul>
 
     <!-- pagination -->
-    <pagination-component
+    <pagination
       v-if="pagination &amp;&amp; totalPages > 1"
       class="u-mv+"
       :total="total"
@@ -41,21 +41,20 @@
 
 <script>
 import axios from "axios";
-import MediaitemComponent from "./mediaitem.vue";
-import PaginationComponent from "./pagination.vue";
-import SortingComponent from "./sorting.vue";
+import Mediaitem from "./mediaitem.vue";
+import Pagination from "../pagination/pagination.vue";
+import Sorting from "./sorting.vue";
 import get from "lodash/get";
 
 console.log("component: " + axios.defaults.baseURL);
 
 export default {
   name: "MedialistComponent",
-  components: {
-    MediaitemComponent,
-    PaginationComponent,
-    SortingComponent
+  components: { Mediaitem, Pagination, Sorting },
+  props: {
+    initOptions: Object,
+    initParams: Object
   },
-  props: ["initOptions", "initParams"],
   data() {
     return {
       namespace: "wp/v2/",

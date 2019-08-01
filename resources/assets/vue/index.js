@@ -1,23 +1,22 @@
-/* Global Variable */
-window._joel = Object.assign({ templatePath: "", assetPath: "" }, window._joel);
-console.log(window._joel);
-
 /* Vue */
 import Vue from "vue";
-Vue.prototype.$joel = window._joel;
-// Vue.mixin({
-//   data() {
-//     return { $joel: window._joel };
-//   }
-// });
+Vue.prototype.$joel = Object.assign(
+  { templatePath: "", assetPath: "" },
+  window._joel
+);
 
 /* Axios */
 import axios from "axios";
 axios.defaults.baseURL = "/wp-json/";
 
-/* Vue init scrips */
+/*
+ * Vue init scrips
+ *
+ * Don't use 'import' because they are hoisted and the settings above would
+ * not be applied
+ */
 require("./medialist/init.js");
-// import "./medialist/init.js";
+require("./pagination/init.js");
 
 // import "./medialist/medialist.vue";
 // import "./test/test.vue";
