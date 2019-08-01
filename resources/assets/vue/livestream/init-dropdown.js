@@ -4,14 +4,9 @@ import axios from "axios";
 import format from "date-fns/format";
 import locale from "date-fns/locale/de";
 import parseISO from "date-fns/parseISO";
+import instantiate from "../instantiate.js";
 
-/* Instantiate Streamcheck
- **********************/
-const instances = [];
-const elements = document.querySelectorAll('[data-vue="livestream-dropdown"]');
-for (let i = 0; i < elements.length; i++) {
-  instances.push(vueInstance("#" + elements[i].getAttribute("id")));
-}
+instantiate.add("livestream-dropdown", vueInstance);
 
 /* Vue Instance
  **********************/
@@ -56,5 +51,3 @@ function vueInstance(_id) {
     }
   });
 }
-
-export default { instances };

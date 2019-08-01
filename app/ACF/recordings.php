@@ -73,7 +73,7 @@ if( function_exists('acf_add_local_field_group') ):
 </div>
         <?php
         $field['message'] = str_replace(["\r","\n"],"",ob_get_clean());
-        ob_flush();
+        if(ob_get_length()) ob_end_flush();
         return $field;
     }
 
@@ -104,12 +104,12 @@ if( function_exists('acf_add_local_field_group') ):
         $min_bitrate = 340;
 
         // read file directory
-        $directory = array_filter(
+        $directory = file_exists(config('processing')['upload-dir']) ? array_filter(
             scandir(config('processing')['upload-dir']),
             function($file) {
                 return(preg_match( '/\.(mov|mpg|mp4|flv|avi|mpeg4|mkv|mpeg|mpg2|mpeg2)$/', $file ));
             }
-        );
+        ) : [];
 
         // array for select field and video information
         $videofiles = array();

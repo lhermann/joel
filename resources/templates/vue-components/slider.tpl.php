@@ -55,6 +55,3 @@ $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] 
 
 </div>
 
-<!-- dependency components -->
-<?php template('vue-components/slider/slider') ?>
-

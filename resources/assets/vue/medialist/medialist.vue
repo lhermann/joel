@@ -46,8 +46,6 @@ import Pagination from "../pagination/pagination.vue";
 import Sorting from "./sorting.vue";
 import get from "lodash/get";
 
-console.log("component: " + axios.defaults.baseURL);
-
 export default {
   name: "MedialistComponent",
   components: { Mediaitem, Pagination, Sorting },

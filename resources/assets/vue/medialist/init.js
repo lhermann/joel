@@ -1,13 +1,8 @@
 import Vue from "vue";
 import Medialist from "./medialist.vue";
+import instantiate from "../instantiate.js";
 
-/* Instantiate Medialists
- **********************/
-const instances = [];
-const elements = document.querySelectorAll('[data-vue="medialist"]');
-for (let i = 0; i < elements.length; i++) {
-  instances.push(vueInstance("#" + elements[i].getAttribute("id")));
-}
+instantiate.add("medialist", vueInstance);
 
 /* Vue Instance
  **********************/
@@ -33,5 +28,3 @@ function vueInstance(_id) {
     }
   });
 }
-
-export default { instances };

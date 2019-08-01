@@ -1,13 +1,8 @@
 import Vue from "vue";
 import Pagination from "./pagination.vue";
+import instantiate from "../instantiate.js";
 
-/* Instantiate Dropdown
- **********************/
-const instances = [];
-const elements = document.querySelectorAll('[data-vue="pagination"]');
-for (let i = 0; i < elements.length; i++) {
-  instances.push(vueInstance("#" + elements[i].getAttribute("id")));
-}
+instantiate.add("pagination", vueInstance);
 
 /* Vue Instance
  **********************/
@@ -36,5 +31,3 @@ function vueInstance(_id) {
     mounted() {}
   });
 }
-
-export default { instances };

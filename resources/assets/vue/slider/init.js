@@ -10,18 +10,13 @@
 import Vue from "vue";
 import axios from "axios";
 import Slider from "./slider.vue";
+import instantiate from "../instantiate.js";
+
+instantiate.add("slider", vueInstance);
 
 /* Global Values
  **********************/
 const _slideTransition = 800;
-
-/* Instantiate Sliders
- *********************/
-const instances = [];
-const elements = document.querySelectorAll('[data-vue="slider"]');
-for (let i = 0; i < elements.length; i++) {
-  instances.push(vueInstance("#" + elements[i].getAttribute("id")));
-}
 
 /* Vue Instance
  **********************/
@@ -52,5 +47,3 @@ function vueInstance(_id) {
     }
   });
 }
-
-export default { instances };

@@ -26,3 +26,4 @@ require("./livestream/init-meta.js");
  * Init Vue Utilities
  */
 require("./utils/dropdown.js");
+require("./utils/toggle.js");

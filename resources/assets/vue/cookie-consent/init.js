@@ -1,14 +1,9 @@
 import Vue from "vue";
 import addYears from "date-fns/addYears";
 import get from "lodash/get";
+import instantiate from "../instantiate.js";
 
-/* Instantiate Streamcheck
- **********************/
-const instances = [];
-const elements = document.querySelectorAll('[data-vue="cookie-consent"]');
-for (let i = 0; i < elements.length; i++) {
-  instances.push(vueInstance("#" + elements[i].getAttribute("id")));
-}
+instantiate.add("cookie-consent", vueInstance);
 
 /* Vue Instance
  **********************/
@@ -79,5 +74,3 @@ function vueInstance(_id) {
     }
   });
 }
-
-export default { instances };
