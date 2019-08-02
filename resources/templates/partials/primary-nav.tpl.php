@@ -53,7 +53,7 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
                 'id' => 'livestream-dropdown',
                 'style_modifier' => 'c-livestream-dropdown',
                 'options' => ['stream' => 'joelmedia'],
-                'params' => ['numberposts' => 3]
+                'params' => ['numberposts' => 3, 'event-category' => 'livestream']
             ]) ?>
 
         </li>

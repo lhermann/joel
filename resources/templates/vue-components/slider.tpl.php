@@ -39,7 +39,7 @@ $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] 
                             <img src="/wordpress/wp-content/themes/joel/public/images/jm-logo-white-01.svg" class="c-logo c-logo--hero" alt="Joel Media">
                             <h1 class="u-mb0 u-mt-">Joel Media Ministry e.V.</h1>
                             <p class="u-muted"><small>... das ewige Evangelium für Stuttgart, Deutschland und die Welt</small></p>
-                            <p class="u-lead u-muted">Wöchentlich neue Videos über die Bibel,<br>Gesundheit und Zeitgeschehen</p>
+                            <p class="u-text+ u-muted">Wöchentlich neue Videos über die Bibel,<br>Gesundheit und Zeitgeschehen</p>
                             <a href="/aufnahmen/" class="c-btn c-btn--dark c-slide__btn">Erster Besuch? Hier geht's los<span class="u-ic-arrow_forward"></span></a>
                         </div>
                     </div>

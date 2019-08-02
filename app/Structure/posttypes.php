@@ -204,7 +204,7 @@ function recordings_custom_columns($column) {
                 'audiodl' => 'format-audio',
                 'podcastdl' => 'rss'
             ];
-            print('<div class="o-flex o-flex--between o-flex--middle u-smaller">');
+            print('<div class="o-flex o-flex--between o-flex--middle u-text--">');
             print('<div>Down-<br>loads:</div><div class="u-text-right">');
             foreach ($stats as $key => $icon) {
                 printf('%s <span class="dashicons dashicons-auto %s"></span><br>',

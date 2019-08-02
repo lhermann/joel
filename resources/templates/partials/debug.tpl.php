@@ -3,7 +3,7 @@
     global $wp_query;
 ?>
 
-<div class="o-wrapper u-p u-mv+ u-box-shadow">
+<div class="o-wrapper u-p u-mv+ u-shadow">
     <p>
         <?php
             // display execution time

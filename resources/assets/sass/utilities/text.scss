@@ -2,40 +2,29 @@
    #TEXT UTILITIES
    ========================================================================== */
 
-.u-lighter {
-    font-weight: lighter;
-}
+/* Font Weight */
+.u-lighter  { font-weight: 200; }
+.u-light    { font-weight: 300; }
+.u-normal   { font-weight: 400; }
+.u-medium   { font-weight: 500; }
+.u-semibold { font-weight: 600; }
+.u-bold     { font-weight: 700; }
 
-.u-normal {
-    font-weight: normal;
-}
 
-.u-bolder {
-    font-weight: bolder;
-}
+/* Font Size */
+.u-text\+\+\+ { @include inuit-font-size($font-size-8, $line-height: 1.2, $important: true); }
+.u-text\+\+   { @include inuit-font-size($font-size-7, $line-height: 1.3, $important: true); }
+.u-text\+     { @include inuit-font-size($font-size-6, $line-height: 1.4, $important: true); }
+.u-text       { @include inuit-font-size($font-size-5, $line-height: 1.5, $important: true); }
+.u-text-      { @include inuit-font-size($font-size-4, $line-height: 1.5, $important: true); }
+.u-text--     { @include inuit-font-size($font-size-3, $line-height: 1.5, $important: true); }
+.u-text---    { @include inuit-font-size($font-size-2, $line-height: 1.5, $important: true); }
 
-.u-bold {
-    font-weight: bold;
-}
 
-.u-lead {
-    @include inuit-font-size(16px, $important: true);
-}
-
-.u-default {
-    @include inuit-font-size(14px, $important: true);
-}
-
-.u-small {
-    @include inuit-font-size(12px, $line-height: 1.2, $important: true);
-}
-
-.u-smaller {
-    @include inuit-font-size(10px, $line-height: 1.2, $important: true);
-}
-
+/* Text Color */
 .u-white { color: $c-white; }
 .u-black { color: $c-black; }
+.u-brand { color: $c-brand-6; }
 .u-green { color: $c-green-4; }
 .u-red { color: $c-red-4; }
 .u-yellow { color: $c-yellow-4; }
@@ -43,12 +32,12 @@
 .u-textmuted { color: $c-textmuted; }
 
 .u-muted {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .u-truncate {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

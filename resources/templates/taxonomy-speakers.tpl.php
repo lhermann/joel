@@ -30,12 +30,12 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                             get_field('image', $term),
                             'square160',
                             false,
-                            ["class" => "u-rounded u-box-shadow"]
+                            ["class" => "u-rounded u-shadow"]
                         ) ?>
                     </div>
                     <div class="o-media__body">
                         <h1 class="u-responsive u-mb0"><?= $term->name ?></h1>
-                        <p class="u-bolder u-muted">
+                        <p class="u-semibold u-muted">
                             <?= _x('Speaker', 'taxonomy singular name', config('textdomain')) ?>
                         </p>
                         <p><?= $term->description ?></p>
@@ -53,7 +53,7 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                             <?php if ($website = get_field( 'website', $term )): ?>
                                 <li>
                                     <?= __('Website', config('textdomain')) ?>:
-                                    <a class="c-link c-link--dotted c-link--white u-bolder"
+                                    <a class="c-link c-link--dotted c-link--white u-semibold"
                                         href="http://<?= $website ?>"
                                     >
                                         <span class="u-ic-open_in_new"></span>

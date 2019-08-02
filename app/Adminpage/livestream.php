@@ -79,7 +79,7 @@ class LivestramControllPage {
             <span class="c-dot c-dot--small"
                 :class="{'c-dot--green': stream.stream_live[i]}"></span>
         </div>
-        <div class="u-smaller u-yellow u-mt--">Last checked {{ distance(stream.updated) }} ago</div>
+        <div class="u-text-- u-yellow u-mt--">Last checked {{ distance(stream.updated) }} ago</div>
     </div>
 </div>
 

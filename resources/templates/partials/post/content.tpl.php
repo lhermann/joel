@@ -34,8 +34,8 @@ use function Tonik\Theme\App\config;
             <div class="o-flag__img">
                 <?= get_avatar( $author_id, 80, null, 'Image of Author', ['class' => 'u-rounded']); ?>
             </div>
-            <div class="o-flag__body u-small">
-                <p class="u-lead u-mb--">
+            <div class="o-flag__body u-text-">
+                <p class="u-text+ u-mb--">
                     <?= __('By', config('textdomain')) ?>
                     <strong>
                         <a class="c-link c-link--dotted" href="<?= get_author_posts_url($author_id) ?>">

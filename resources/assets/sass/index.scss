@@ -157,6 +157,7 @@ $header-height: 56px;
 @import "components/buttons";
 @import "components/button-group";
 @import "components/branding";
+@import "components/card";
 @import "components/collapsible";
 @import "components/dropdowns";
 @import "components/excerpt";
@@ -314,8 +315,17 @@ $livestream-meta-height: $unit * 5;
     }
 }
 
-.u-box-shadow {
-    box-shadow: $global-shadow;
+/*
+ * Shadows
+ *************************/
+.u-shadow {
+    box-shadow: $global-shadow-3;
+
+    &-1 { box-shadow: $global-shadow-1; }
+    &-2 { box-shadow: $global-shadow-2; }
+    &-3 { box-shadow: $global-shadow-3; }
+    &-4 { box-shadow: $global-shadow-4; }
+    &-5 { box-shadow: $global-shadow-5; }
 }
 
 .u-bg-white {

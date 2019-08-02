@@ -1,0 +1,70 @@
+/* ==========================================================================
+   #DOT
+   ========================================================================== */
+
+.c-card {
+  --padding: #{$unit};
+
+  box-shadow: $global-shadow-5;
+  border-radius: $global-radius;
+  background-color: $c-white;
+  transition: background-color $global-transition, box-shadow $global-transition;
+
+  &--large {
+    --padding: #{$unit-large};
+  }
+
+  &--small {
+    --padding: #{$unit-small};
+  }
+
+  &--tiny {
+    --padding: #{$unit-tiny};
+  }
+
+  &--auto {
+    display: inline-block;
+  }
+
+  &--seamless {
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  &--clickable:hover {
+    cursor: pointer;
+    background-color: $c-gray-1;
+    box-shadow: $global-shadow-3;
+  }
+}
+
+.c-card__header {
+  @include inuit-font-size($font-size-large);
+
+  padding: calc(var(--padding) / 2) var(--padding) 0;
+  font-weight: 600;
+
+  .c-card--seamless > & {
+    padding: 0 0 calc(var(--padding) / 2);
+  }
+}
+
+.c-card__content {
+  padding: calc(var(--padding) / 2) var(--padding);
+
+  .c-card--seamless > &,
+  .c-card--flush > & {
+    padding: 0;
+  }
+}
+
+.c-card__footer {
+  padding: calc(var(--padding) / 2) var(--padding);
+  color: $c-gray-7;
+  border-top: 1px solid $c-border;
+
+  .c-card--seamless > & {
+    border-top-width: 0;
+    padding: calc(var(--padding) / 2) 0 0;
+  }
+}

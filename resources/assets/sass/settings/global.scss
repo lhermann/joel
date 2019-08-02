@@ -15,13 +15,24 @@ $unit-huge:             $inuit-global-spacing-unit-huge;
 $font-heading:          "Varela Round", "Open Sans", sans-serif;
 $font-body:             "Roboto", "Open Sans", sans-serif;
 $font-primary:          $font-body;
+$line-height:           $inuit-global-line-height; // 24px
 
 $font-size-huge:        24px; // x 1.5
 $font-size-large:       20px; // x 1.25
 $font-size:             $inuit-global-font-size; // 16px
 $font-size-small:       14px; // x 0.825
 $font-size-tiny:        12px; // x 0.75
-$line-height:           $inuit-global-line-height; // 24px
+
+$font-size-9:           36px; // x 2.25
+$font-size-8:           30px; // x 1.875
+$font-size-7:           24px; // x 1.5
+$font-size-6:           20px; // x 1.25
+$font-size-5:           16px; // x 1
+$font-size-4:           14px; // x 0.825
+$font-size-3:           12px; // x 0.75
+$font-size-2:           10px; // x 0.625
+$font-size-1:           9px; // x 0.5625
+$font-size-0:           8px; // x 0.5
 
 $inuit-font-size-h1:    36px !default;
 $inuit-font-size-h2:    28px !default;
@@ -33,8 +44,19 @@ $inuit-font-size-h6:    16px !default;
 // Standardise some UI treatments.
 $global-radius:         3px !default;
 $global-transition:     (1/3) + s !default;
-$global-shadow:         0 3px 15px rgba(black, 0.2) !default;
-$global-shadow-small:   0 3px 5px rgba(black, 0.2), 0 1px 2px rgba(black, 0.1) !default;
+
+// Shadows
+@function blacka($alpha) {
+    @return hsla(0, 0%, 0, $alpha);
+}
+$global-shadow-1: 0 1px 3px blacka(0.05), 0 1px 1px blacka(0.2) !default;
+$global-shadow-2: 0 2px 8px blacka(0.1), 0 1px 2px blacka(0.15) !default;
+$global-shadow-3: 0 4px 12px blacka(0.11), 0 2px 4px blacka(0.11) !default;
+$global-shadow-4: 0 6px 20px blacka(0.13), 0 2.5px 6px blacka(0.07) !default;
+$global-shadow-5: 0 9px 27px blacka(0.15), 0 3px 8px blacka(0.05) !default;
+
+$global-shadow:         $global-shadow-3;
+$global-shadow-small:   $global-shadow-2;
 
 // $inuit-offsets: true;
 $inuit-fractions:       1 2 3 4 5;

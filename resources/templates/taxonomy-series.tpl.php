@@ -30,17 +30,17 @@ $speakers = get_terms_associated_with_term( $term, 'speakers' );
                                 get_field('image', $term),
                                 '180p',
                                 false,
-                                ["class" => "u-rounded u-box-shadow"]
+                                ["class" => "u-rounded u-shadow"]
                             ) ?>
                         </div>
                         <div class="o-flag__body">
                             <h1 class="u-responsive u-mb0"><?= $term->name ?></h1>
-                            <p class="u-bolder u-muted"><?= _x('Series', 'taxonomy singular name', config('textdomain')) ?>
+                            <p class="u-semibold u-muted"><?= _x('Series', 'taxonomy singular name', config('textdomain')) ?>
                         </p></div>
                     </div>
 
                     <div class="u-mt u-hidden-from@tablet">
-                        <img class="u-rounded u-box-shadow u-1/1"
+                        <img class="u-rounded u-shadow u-1/1"
                             src="<?= wp_get_attachment_image_src(get_field( 'image', $term ), '360p')[0] ?>"
                             alt="Image of <?= htmlentities($term->name) ?>">
                     </div>

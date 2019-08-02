@@ -46,7 +46,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
                                 >live</span>
                                 {{event.post_title}}
                             </div>
-                            <div class="u-default">
+                            <div class="u-text">
                                 <template v-if="event.today">
                                     <strong class="u-green"><?= __('Today', config('textdomain')) ?></strong> &middot;
                                 </template>

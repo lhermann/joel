@@ -20,7 +20,7 @@ $podcast->series = get_series_of_podcast($podcast);
             </div>
             <div class="o-media__body">
                 <h3 class="u-h5 u-mb--"><?= $podcast->name ?></h3>
-                <div class="u-small u-muted">
+                <div class="u-text- u-muted">
                     <p class="u-mb-"><?= $podcast->description ?></p>
                     <p class="u-mb--">
                         <?php if (count($podcast->series) == 1): ?>
@@ -57,7 +57,7 @@ $podcast->series = get_series_of_podcast($podcast);
                     alt="Podcast auf Stitcher anzeigen">
             </a>
         </div>
-        <div class="u-mr-- u-mv-- u-ib-until@tablet u-small">
+        <div class="u-mr-- u-mv-- u-ib-until@tablet u-text-">
             <a class="c-link c-link--muted c-link--dotted u-mr-- u-mv--"
                 href="<?= get_term_link($podcast) ?>" target="_blank">
                 RSS-Feed

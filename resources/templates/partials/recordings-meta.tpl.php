@@ -11,7 +11,7 @@ $download_files = get_download_files(get_the_ID());
   <!-- Date -->
   <div class="o-flex__item">
     <span class="u-hidden-until@desktop">Veröffentlicht am</span>
-    <time class="u-bolder entry-date updated"
+    <time class="u-semibold entry-date updated"
       datetime="<?= esc_attr( get_the_date( 'c' ) ); ?>">
       <?= esc_attr( get_the_date('j. F Y') ); ?>
     </time>

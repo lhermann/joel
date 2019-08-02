@@ -11,7 +11,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
     :init="init(<?= $options ?>, <?= $params ?>)"
 >
 
-    <div class="o-flex__item u-lead" style="flex-shrink: 0">
+    <div class="o-flex__item u-text+" style="flex-shrink: 0">
         <streamcheck :stream="options.stream">
             <template slot-scope="props">
                 <span class="c-dot u-mr--"
@@ -24,7 +24,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
         <!-- <span class="u-hidden-from@desktop"><br>0:24:13</span> -->
     </div>
 
-    <!-- <div class="o-flex__item u-text-center u-lead u-pl- u-hidden-until@desktop">
+    <!-- <div class="o-flex__item u-text-center u-text+ u-pl- u-hidden-until@desktop">
         livestream already online since 0:24:13
     </div> -->
 
@@ -32,7 +32,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
         <div class="o-flag">
             <div class="o-flag__img" v-html="event.thumbnail"></div>
             <div class="o-flag__body">
-                <strong class="u-lead">{{event.post_title}}</strong>
+                <strong class="u-text+">{{event.post_title}}</strong>
                 <br>Heute von {{start}} bis {{finish}}
             </div>
         </div>
@@ -44,7 +44,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
         <strong class="u-muted">Keine Aufnahmen für heute geplant</strong>
     </div>
 
-    <!-- <div class="o-flex__item u-text-right u-lead">
+    <!-- <div class="o-flex__item u-text-right u-text+">
         <strong>20 <span class="u-hidden-until@tablet">Zuschauer</span></strong>
     </div> -->
 </div>

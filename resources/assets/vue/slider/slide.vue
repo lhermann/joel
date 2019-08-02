@@ -22,7 +22,7 @@
           ></h1>
 
           <div
-            class="u-lead"
+            class="u-text+"
             :class="{ 'u-muted': colors.theme === 'image' }"
             :style="{ color: colors.text }"
             v-html="acf.content"
@@ -43,7 +43,7 @@
           v-if="media"
           class="c-slide__media u-1/2@tablet u-hidden-until@tablet"
         >
-          <div class="o-ratio o-ratio--16:9 u-box-shadow">
+          <div class="o-ratio o-ratio--16:9 u-shadow">
             <a
               v-if="media.acf_fc_layout === 'image'"
               class="o-ratio__content"

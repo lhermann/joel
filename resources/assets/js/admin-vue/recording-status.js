@@ -107,7 +107,7 @@ if (document.getElementById("vue-recording-status")) {
                 <br/>{{file}}
             </td>
             <td class="column u-text-right">{{size}}</td>
-            <td class="column u-smaller">{{item.resolution}}<br/>{{item.bitrate}} kb/s</td>
+            <td class="column u-text--">{{item.resolution}}<br/>{{item.bitrate}} kb/s</td>
         </tr>
         `,
         props: ["item"],

@@ -31,7 +31,7 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
                         <div class="o-media__body u-pt-">
                             <h1 class="u-responsive u-mb0"><?= $term->name ?></h1>
                             <ul class="o-list-inline o-list-inline--large o-list-inline--nowrap">
-                                <li class="u-bolder u-muted">
+                                <li class="u-semibold u-muted">
                                     <?= _x('Topic', 'taxonomy singular name', config('textdomain')) ?>
                                 </li>
                                 <li>

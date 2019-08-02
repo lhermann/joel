@@ -24,7 +24,7 @@ use function Tonik\Theme\App\config;
             </a>
         </header>
 
-        <ul class="c-excerpt__meta u-small u-truncate">
+        <ul class="c-excerpt__meta u-text- u-truncate">
             <li><?php the_author(); ?></li>
             <li><span class="u-ic-folder"></span> <?php the_category(', '); ?></li>
             <li><span class="u-ic-comment"></span> <?= get_comments_number() ?></li>

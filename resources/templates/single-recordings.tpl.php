@@ -62,7 +62,7 @@ if($youtube) {
           <?= $topics ?>
         </header>
 
-        <div class="o-ratio o-ratio--16:9 u-box-shadow ">
+        <div class="o-ratio o-ratio--16:9 u-shadow ">
           <?php if ($youtube): ?>
           <?= $youtube ?>
           <?php else: ?>
@@ -154,7 +154,7 @@ if($youtube) {
         <!-- <h2 class="u-h5 u-mb--">Nächstes Video</h2> -->
         <h2 class="u-h5 u-mb--">Weitere Aufnahmen</h2>
 
-        <p class="u-small u-muted">
+        <p class="u-text- u-muted">
           Serie:
           <a class="c-link c-link--dotted u-ml--"
             href="<?= get_term_link( $series ) ?>">
@@ -205,8 +205,8 @@ if($youtube) {
             <img src="<?= asset_path('images/licenses/by-nc-nd.eu.svg') ?>"
               style="max-width: 100px;">
           </div>
-          <div class="o-flag__body u-smaller">
-            <h2 class="u-default u-mb0 u-muted">Lizenz</h2>
+          <div class="o-flag__body u-text--">
+            <h2 class="u-text u-mb0 u-muted">Lizenz</h2>
             Copyright ©2017 Joel Media Ministry e.V.
             <br>Dieses Werk ist lizenziert unter einer Creative Commons Namensnennung - Nicht kommerziell - Keine Bearbeitungen 4.0 International Lizenz.
           </div>

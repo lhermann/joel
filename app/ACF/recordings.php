@@ -38,7 +38,7 @@ if( function_exists('acf_add_local_field_group') ):
             <div class="o-flex__item"><span class="dashicons dashicons-video-alt3"></span> 1:05:14</div>
             <div class="o-flex__item"><span class="dashicons dashicons-admin-page"></span> {{items.length}} Dateien</div>
             <div class="o-flex__item"><span class="dashicons dashicons-category"></span> {{size}}</div>
-            <div v-if="!done" class="o-flex__item u-yellow u-smaller">Next update in {{timeUntil}} seconds</div>
+            <div v-if="!done" class="o-flex__item u-yellow u-text--">Next update in {{timeUntil}} seconds</div>
             <div v-if="error" class="o-flex__item u-red"><span class="dashicons dashicons-warning"></span> {{error}}</div>
             <div class="o-flex__spacer"></div>
             <div class="o-flex__item"><button class="button" @click.prevent="showDetails = !showDetails">+</button></div>
@@ -201,7 +201,7 @@ if( function_exists('acf_add_local_field_group') ):
         // Append instructions
         $field['instructions'] .= '<p><a id="ftp-credentials-button" class="button">FTP Serverdaten anzeigen</a>  &nbsp; Alle Videodateien (<code>.mp4</code>, <code>.mpg</code>, <code>.mpg2</code>, usw.) stehen zur Auswahl zur Verfügung.</p>';
         $field['instructions'] .= '<div id="ftp-credentials" class="video-alert alert-invisible"><strong>FTP Zugang f&uuml;r Videodateien</strong><br/>Host: <code>'.config('processing')['ftp-host'].'</code><br/>Username: <code>'.config('processing')['ftp-user'].'</code><br/>Password: <code>'.config('processing')['ftp-password'].'</code></div>';
-        $field['instructions'] .= '<p class="u-smaller u-muted">Die ausgewählte Datei wird vom Server verarbeitet und die existierende Datei (falls vorhanden) wird überschrieben.</p>';
+        $field['instructions'] .= '<p class="u-text-- u-muted">Die ausgewählte Datei wird vom Server verarbeitet und die existierende Datei (falls vorhanden) wird überschrieben.</p>';
         $field['instructions'] .= $alert.$js.implode($video_information);
 
         // Important: return the field
