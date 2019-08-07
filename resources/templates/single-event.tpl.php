@@ -8,7 +8,7 @@ use function Tonik\Theme\App\template;
 
     <?php while (have_posts()): the_post() ?>
 
-        <?php template('partials/post/content-simple'); ?>
+        <?php template('partials/post/content-event'); ?>
 
     <?php endwhile; ?>
 

@@ -276,7 +276,15 @@ function event_organiser_endpoint() {
                 $event->now = $event->today
                     && strtotime($event->StartTime) <= current_time('timestamp')
                     && current_time('timestamp') <= strtotime($event->FinishTime);
-                $event->thumbnail = get_the_post_thumbnail( $event->ID, '72p', array( 'class' => 'u-rounded u-hidden-until@desktop', 'width' => '80px' ));
+                // $event->thumbnail = get_the_post_thumbnail( $event->ID, '72p', array( 'class' => 'u-rounded u-hidden-until@desktop', 'width' => '80px' ));
+                $event->excerpt = get_the_excerpt($event->ID);
+                $event->url = get_permalink($event);
+                $event->thumbnail = get_the_post_thumbnail(
+                    $event->ID,
+                    $request->get_param('thumbnail_size') ?: '72p',
+                    array( 'class' => '%%class%%' )
+                );
+                $event->venue = eo_get_venue_name(eo_get_venue($event->ID));
             }
             return $events;
         }

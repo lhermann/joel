@@ -31,10 +31,16 @@
     background-color: transparent;
   }
 
+  &--clickable {
+    color: $c-text;
+    display: block;
+  }
+
   &--clickable:hover {
     cursor: pointer;
     background-color: $c-gray-1;
     box-shadow: $global-shadow-3;
+    color: $c-text;
   }
 }
 

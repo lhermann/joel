@@ -28,7 +28,9 @@
         <br>
         <strong>query_vars:</strong>
         <div style="overflow: scroll;">
+            <pre>
             <?php var_dump($wp_query->query_vars) ?>
+            </pre>
         </div>
     </p>
 </div>

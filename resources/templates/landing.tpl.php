@@ -37,6 +37,25 @@ use function Tonik\Theme\App\config;
     </section>
     <?php endif ?>
 
+    <?php if ( eo_get_events([
+        'showpastevents' => false,
+        'post_status' => 'publish',
+        'event-category' => 'veranstaltung',
+        'numberposts' => 1
+    ]) ): ?>
+    <section id="event-list" class="c-section u-pt u-pb0">
+
+        <div class="o-wrapper">
+
+            <?php template('partials/landing/event-list') ?>
+
+        </div>
+
+        <hr class="u-m0 u-mt" />
+
+    </section>
+    <?php endif ?>
+
     <?php if (config('landing-videos-simple')): ?>
     <section class="c-section u-pv">
 
@@ -70,7 +89,7 @@ use function Tonik\Theme\App\config;
 
 
     <?php if (config('landing-videos')): ?>
-    <section id="medialists" class="c-section">
+    <section id="medialists" class="c-section u-pt">
         <div class="o-wrapper u-hidden-from@tablet u-mb">
 
             <h2 class="u-h3 u-mb-">

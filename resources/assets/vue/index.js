@@ -18,6 +18,7 @@ axios.defaults.baseURL = "/wp-json/";
 require("./medialist/init.js");
 require("./pagination/init.js");
 require("./slider/init.js");
+require("./events/init.js");
 require("./cookie-consent/init.js");
 require("./livestream/init-dropdown.js");
 require("./livestream/init-meta.js");

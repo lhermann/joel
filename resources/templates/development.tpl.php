@@ -6,6 +6,12 @@ use function Tonik\Theme\App\template;
 
 <main role="main" class="o-wrapper u-pv++">
 
+  <?php template('vue-components/events', [
+      'id' => 'vue-events',
+      'params' => ['numberposts' => 3, 'event-category' => 'veranstaltung']
+  ]) ?>
+
+
   <ul class="o-list-bare o-flex o-flex--large o-flex-wrap">
     <li class="o-flex__item u-1/3">
       <div class="c-card c-card--clickable">

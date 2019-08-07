@@ -1,10 +1,8 @@
 import Vue from "vue";
-import Streamcheck from "./streamcheck.vue";
-import axios from "axios";
-import format from "date-fns/format";
-import locale from "date-fns/locale/de";
-import parseISO from "date-fns/parseISO";
 import instantiate from "../instantiate.js";
+import axios from "axios";
+import Streamcheck from "./streamcheck.vue";
+import Event from "./event.vue";
 
 instantiate.add("livestream-dropdown", vueInstance);
 
@@ -14,7 +12,7 @@ function vueInstance(_id) {
   return new Vue({
     el: _id,
     name: "LivestreamDropdown",
-    components: { Streamcheck },
+    components: { Streamcheck, Event },
     data() {
       return {
         initDone: false,
@@ -24,16 +22,8 @@ function vueInstance(_id) {
       };
     },
     methods: {
-      weekday(date) {
-        return format(parseISO(date), "EEEE", { locale });
-      },
-      date(date) {
-        return format(parseISO(date), "d. MMM", { locale });
-      },
-      time(time) {
-        return format(parseISO(time), "k:mm", { locale });
-      },
       request() {
+        this.params.thumbnail_size = "72p";
         axios
           .get("joel/v1/events", { params: this.params })
           .then(response => (this.events = response.data))
