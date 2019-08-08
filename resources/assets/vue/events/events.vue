@@ -1,11 +1,20 @@
 <template>
   <ul class="o-list-bare o-flex o-flex--large o-flex-wrap u-mb0">
-    <li v-for="event in events" :key="event.id" class="o-flex__item u-1/3">
+    <li
+      v-for="event in events"
+      :key="event.id"
+      class="o-flex__item u-1/2@tablet u-1/3@desktop"
+    >
       <event :event="event" />
     </li>
     <li v-if="!events.length" class="o-flex__item u-1/1">
-      <div class="u-p u-center">
+      <div v-if="pending" class="u-p u-center">
         <div class="c-spinner"></div>
+      </div>
+      <div v-else class="c-card">
+        <div class="c-card__content">
+          Momentan gibt es keine weiteren Veranstaltungen ...
+        </div>
       </div>
     </li>
   </ul>
@@ -22,6 +31,7 @@ export default {
   },
   data() {
     return {
+      pending: true,
       events: []
     };
   },
@@ -30,7 +40,8 @@ export default {
     axios
       .get("joel/v1/events", { params: this.params })
       .then(response => (this.events = response.data))
-      .catch(error => console.log({ error }));
+      .catch(error => console.log({ error }))
+      .finally(() => (this.pending = false));
   }
 };
 </script>

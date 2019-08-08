@@ -12,13 +12,17 @@ use function Tonik\Theme\App\config;
           <tr>
             <td class="u-pr-"><span class="u-ic-date"></span> Beginn:</td>
             <td><?= eo_get_the_start('l, j. F Y' ); ?></td>
-          </tr><tr>
+          </tr>
+          <tr>
             <td class="u-pr-"><span class="u-ic-date"></span> Ende:</td>
             <td><?= eo_get_the_end('l, j. F Y' ); ?></td>
-          </tr><tr>
-            <td class="u-pr-"><span class="u-ic-room"></span> Ort:</td>
-            <td>Michelsberg Tagungsstätte</td>
           </tr>
+          <?php if($venue_name = eo_get_venue_name()): ?>
+          <tr>
+            <td class="u-pr-"><span class="u-ic-room"></span> Ort:</td>
+            <td><?= $venue_name ?></td>
+          </tr>
+        <?php endif; ?>
         </table>
 
         <div class="u-hidden-visually">
@@ -27,13 +31,12 @@ use function Tonik\Theme\App\config;
 
     </header>
 
-
     <div class="c-article__body c-wp-styles">
 
         <?php the_content(); ?>
 
-
         <?php if(eo_venue_has_latlng()): ?>
+          <hr class="u-mt" />
           <h2><span class="u-ic-room"></span> <?php eo_venue_name() ?></h2>
           <p>
             <?php foreach (eo_get_venue_address() as $key => $value) {
@@ -48,11 +51,5 @@ use function Tonik\Theme\App\config;
         <?php endif; ?>
 
     </div>
-
-    <hr class="u-mt" />
-
-    <?php template('partials/landing/event-list', [
-      'style_modifier' => 'u-pb+'
-    ]) ?>
 
 </article>

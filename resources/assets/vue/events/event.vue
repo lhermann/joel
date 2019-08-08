@@ -6,7 +6,7 @@
         <div class="o-flag__body">
           <div class="u-text- u-medium u-brand">{{ weekday }}, {{ date }}</div>
           <div class="u-text u-medium u-mv---">{{ event.post_title }}</div>
-          <div class="u-text-- u-muted">
+          <div v-if="event.venue" class="u-text-- u-muted">
             <span class="u-ic-room"></span> {{ event.venue }}
           </div>
         </div>
