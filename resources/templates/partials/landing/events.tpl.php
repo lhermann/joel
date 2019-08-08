@@ -13,7 +13,7 @@ if(!isset($args)) $args = [];
     'numberposts' => 1
   ]) ):
 ?>
-<section id="event-list" class="c-section u-pt u-pb0">
+<section id="event-list" class="c-section u-pt u-pb0 <?= $style_modifier ?>">
 
   <div class="o-wrapper">
 

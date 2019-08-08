@@ -4,7 +4,7 @@ use function Tonik\Theme\App\Helper\idHash;
 if(!isset($args)) $args = [];
 ?>
 
-<section id="slider" class="c-section c-section--flush">
+<section id="slider" class="c-section c-section--flush <?= $style_modifier ?>">
 
     <?php template(
         'vue-components/slider',

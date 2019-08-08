@@ -5,7 +5,7 @@ use function Tonik\Theme\App\config;
 if(!isset($args)) $args = [];
 ?>
 
-<section class="c-section u-pv">
+<section class="c-section u-pv <?= $style_modifier ?> ">
   <div class="o-wrapper">
 
     <div class="o-layout o-layout--large">

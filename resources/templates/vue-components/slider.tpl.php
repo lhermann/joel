@@ -28,7 +28,7 @@ $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] 
     />
 
     <!-- Placeholder -->
-    <?php if (config('joel') && $placeholder): ?>
+    <?php if ($placeholder): ?>
     <div v-show="!loaded" class="c-slider">
         <ul class="c-slider__list">
             <li class="c-slider__item">

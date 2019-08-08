@@ -8,16 +8,27 @@ use function Tonik\Theme\App\config;
 
 <main role="main">
 
-    <?php foreach (config('landing') as $section => $args): ?>
+  <?php
+    foreach (config('landing') as $section => $args):
 
-        <?php print('<pre>'); var_dump($args); print('</pre>'); ?>
+    $style_modifier = "";
+    if(array_key_exists('style_modifier', $args)) {
+      $style_modifier = $args['style_modifier'];
+      unset($args['style_modifier']);
+    }
+  ?>
 
-        <?php template(
-            'partials/landing/'.$section,
-            [ 'args' => $args ]
-        ) ?>
+    <?php //print('<pre>'); var_dump($args); print('</pre>'); ?>
 
-    <?php endforeach ?>
+    <?php template(
+        'partials/landing/'.$section,
+        [
+          'style_modifier' => $style_modifier,
+          'args' => $args
+        ]
+    ) ?>
+
+  <?php endforeach ?>
 
 </main>
 

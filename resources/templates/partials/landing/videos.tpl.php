@@ -5,8 +5,7 @@ use function Tonik\Theme\App\config;
 if(!isset($args)) $args = [];
 ?>
 
-<section class="c-section u-pv">
-
+<section class="c-section u-pv <?= $style_modifier ?>">
     <div class="o-wrapper">
 
         <h2 class="u-h3 u-mb-">
@@ -27,7 +26,4 @@ if(!isset($args)) $args = [];
         ); ?>
 
     </div>
-
-    <hr class="u-m0 u-mt-" />
-
 </section>

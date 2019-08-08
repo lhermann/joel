@@ -29,7 +29,7 @@ $promo_list = array(
 );
 ?>
 
-<div class="o-overflow <?= $style_modifier ?> is-left">
+<div class="o-overflow is-left <?= $style_modifier ?>">
 
     <ul class="o-layout o-layout--overflow o-overflow__content" data-space-between="21">
 

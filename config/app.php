@@ -13,19 +13,9 @@ return [
     | Theme Switches
     |--------------------------------------------------------------------------
     */
-    'joel'                  => if_defined('JOEL', false),
     'searchbar'             => if_defined('SEARCHBAR', false),
     'slider'                => if_defined('SLIDER', true),
-    'slider-teaser'         => if_defined('SLIDER_TEASER', true),
     'landing'               => if_defined('LANDING', []),
-    'landing-promo'         => if_defined('LANDING_PROMO', false),
-    'landing-videos-simple' => if_defined('LANDING_VIDEOS_SIMPLE', false),
-    'landing-videos'        => if_defined('LANDING_VIDEOS', true),
-    'landing-content'       => if_defined('LANDING_CONTENT', true),
-    'landing-quotes'        => if_defined('LANDING_QUOTES', false),
-    'landing-articles'      => if_defined('LANDING_ARTICLES', true),
-    'landing-newsletter'    => if_defined('LANDING_NEWSLETTER', false),
-    'landing-donate'        => if_defined('LANDING_DONATE', true),
     'livestream' => [
         'enabled'           => if_defined('LIVESTREAM', true),
         'program-timeframe' => if_defined('LIVESTREAM_TIMEFRAME', 4), // in weeks

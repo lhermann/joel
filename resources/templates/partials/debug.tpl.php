@@ -27,9 +27,9 @@
         <strong>Post Count:</strong> <?= count($wp_query->posts) ?>
         <br>
         <strong>query_vars:</strong>
-        <div style="overflow: scroll;">
+        <div class="c-card" style="overflow: scroll; max-height: 12em;">
             <pre>
-            <?php var_dump($wp_query->query_vars) ?>
+            <?php print_r($wp_query->query_vars) ?>
             </pre>
         </div>
     </p>
