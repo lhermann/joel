@@ -17,6 +17,7 @@ return [
     'searchbar'             => if_defined('SEARCHBAR', false),
     'slider'                => if_defined('SLIDER', true),
     'slider-teaser'         => if_defined('SLIDER_TEASER', true),
+    'landing'               => if_defined('LANDING', []),
     'landing-promo'         => if_defined('LANDING_PROMO', false),
     'landing-videos-simple' => if_defined('LANDING_VIDEOS_SIMPLE', false),
     'landing-videos'        => if_defined('LANDING_VIDEOS', true),

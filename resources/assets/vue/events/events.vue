@@ -1,5 +1,5 @@
 <template>
-  <ul class="o-list-bare o-flex o-flex--large o-flex-wrap u-mb0">
+  <ul class="o-list-bare o-flex o-flex--unit o-flex--wrap u-mb0">
     <li
       v-for="event in events"
       :key="event.id"

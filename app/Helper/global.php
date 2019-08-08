@@ -9,6 +9,16 @@ namespace Tonik\Theme\App\Helper;
 */
 
 
+/*
+ * Generate a hash out of any data structure which can savely be used as
+ * a html id attribute
+ */
+function idHash($input) {
+    if(!is_string($input)) $input = serialize($input);
+    return 'id' . md5($input);
+}
+
+
 /**
  * Recursively scann a directory
  */

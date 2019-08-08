@@ -26,6 +26,7 @@ $params_json = isset($params) ? str_replace('"', "'", json_encode($params)) : '{
     </header>
     <?php endif ?>
     <ul v-if="false" class="c-medialist">
+        <?php for ($i = 0; $i < 3; $i++): ?>
         <li class="c-medialist__item">
             <div class="o-media c-mediaitem c-mediaitem--<?= $options['route'] ?? 'video' ?> c-mediaitem--dummy">
                 <div class="o-media__img c-mediaitem__img">
@@ -37,28 +38,7 @@ $params_json = isset($params) ? str_replace('"', "'", json_encode($params)) : '{
                 </div>
             </div>
         </li>
-        <li class="c-medialist__item">
-            <div class="o-media c-mediaitem c-mediaitem--<?= $options['route'] ?? 'video' ?> c-mediaitem--dummy">
-                <div class="o-media__img c-mediaitem__img">
-                    <div class="c-mediaitem__length"><div>0:0</div></div>
-                </div>
-                <div class="o-media__body c-mediaitem__body">
-                    <div class="c-mediaitem__title"></div>
-                    <div class="c-mediaitem__meta"></div>
-                </div>
-            </div>
-        </li>
-        <li class="c-medialist__item">
-            <div class="o-media c-mediaitem c-mediaitem--<?= $options['route'] ?? 'video' ?> c-mediaitem--dummy">
-                <div class="o-media__img c-mediaitem__img">
-                    <div class="c-mediaitem__length"><div>0:0</div></div>
-                </div>
-                <div class="o-media__body c-mediaitem__body">
-                    <div class="c-mediaitem__title"></div>
-                    <div class="c-mediaitem__meta"></div>
-                </div>
-            </div>
-        </li>
+        <?php endfor; ?>
     </ul>
 
 </section>

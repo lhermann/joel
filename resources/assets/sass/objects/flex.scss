@@ -3,8 +3,21 @@
    ========================================================================== */
 
 .o-flex {
+    --gap: 0;
+
     display: flex;
     align-items: self-start;
+    margin-left: calc(-1 * var(--gap));
+    margin-top: calc(-1 * var(--gap));
+
+    // Gaps
+    &--tiniest { --gap: #{$unit-tiny/4}; }
+    &--tinier { --gap: #{$unit-tiny/2}; }
+    &--tiny { --gap: #{$unit-tiny}; }
+    &--small { --gap: #{$unit-small}; }
+    &--unit { --gap: #{$unit}; }
+    &--large { --gap: #{$unit-large}; }
+    &--huge { --gap: #{$unit-huge}; }
 
     // justify-content
     &--left { justify-content: flex-start; }
@@ -12,6 +25,7 @@
     &--right { justify-content: flex-end; }
     &--between { justify-content: space-between; }
     &--around { justify-content: space-around; }
+    &--evenly { justify-content: space-evenly; }
 
     // align-items
     &--stretch { align-items: stretch; }
@@ -25,40 +39,25 @@
     &--column { flex-direction: column; }
     &--column-reverse { flex-direction: column-reverse; }
 
-    // Gutters
-    &--tiny { margin-left: -$unit-tiny; }
-    &--small { margin-left: -$unit-small; }
-    &--unit { margin-left: -$unit; }
-    &--large { margin-left: -$unit-large; }
-    &--huge { margin-left: -$unit-huge; }
-
     // Misc
     &--wrap { flex-wrap: wrap; }
+
+    > *,
+    > .o-flex__item {
+        min-width: 0; /* 1 */
+    }
+
+    > * {
+        margin-left: var(--gap);
+        margin-top: var(--gap);
+    }
+
+    > .o-flex__item {
+        margin-left: 0;
+        padding-left: var(--gap);
+    }
 }
 
-    .o-flex__item {
-        .o-flex--tiny & {
-            margin-left: $unit-tiny;
-        }
-
-        .o-flex--small & {
-            margin-left: $unit-small;
-        }
-
-        .o-flex--unit & {
-            margin-left: $unit;
-        }
-
-        .o-flex--large & {
-            margin-left: $unit-large;
-        }
-
-        .o-flex--huge & {
-            margin-left: $unit-huge;
-        }
-    }
-
     .o-flex__spacer {
-        flex-grow: 1;
+        flex-grow: 90;
     }
-
