@@ -36,6 +36,7 @@ use function Tonik\Theme\App\config;
         <?php the_content(); ?>
 
         <?php if(eo_venue_has_latlng()): ?>
+          <div class="u-clearfix"></div>
           <hr class="u-mt" />
           <h2><span class="u-ic-room"></span> <?php eo_venue_name() ?></h2>
           <p>

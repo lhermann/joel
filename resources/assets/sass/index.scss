@@ -411,6 +411,14 @@ $livestream-meta-height: $unit * 5;
 .u-grow-0 { flex-grow: 0; }
 .u-shrink-0 { flex-grow: 0; }
 
+.u-clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
 // RESPONSIVE UTILITIES
 @import "utilities/responsive-spacings";
 @import "utilities/responsive-hide";
