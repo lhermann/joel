@@ -6,6 +6,15 @@
     p:last-child {
         margin-bottom: 0;
     }
+
+    // clear floats ... yes, wordpress still uses floats!
+    &:after {
+       content: ".";
+       visibility: hidden;
+       display: block;
+       height: 0;
+       clear: both;
+    }
 }
 
     .c-article__meta {
