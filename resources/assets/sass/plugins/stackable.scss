@@ -1,0 +1,7 @@
+.ugb-image-box__title {
+  text-shadow: 0 0 16px black;
+
+  .ugb-image-box__item:hover & {
+    text-shadow: 0 0 16px transparent;
+  }
+}
