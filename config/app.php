@@ -13,6 +13,7 @@ return [
     | Theme Switches
     |--------------------------------------------------------------------------
     */
+    'mobile-menu-always'    => if_defined('MOBILE_MENU_ALWAYS', true),
     'searchbar'             => if_defined('SEARCHBAR', false),
     'slider'                => if_defined('SLIDER', true),
     'landing'               => if_defined('LANDING', []),

@@ -14,21 +14,21 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 >
     <div class="o-wrapper">
         <div class="o-flex o-flex--middle o-flex--small o-flex--nowrap">
-            <div v-if="!doNotTrack" class="o-flex__item">
-                Joel Media Ministry e.V. verwendet Cookies. Manche Cookies sind für die Grundfunktionen dieser Seite, andere erfassen wie du diese Seite verwendest mithilfe von Matomo.
+            <div v-if="!doNotTrack" class="o-flex__item u-shrink">
+                <?php bloginfo('name') ?> verwendet Cookies. Manche Cookies sind für die Grundfunktionen dieser Seite, andere erfassen wie du diese Seite verwendest mithilfe von Matomo.
                 Siehe unsere <a class="c-link c-link--dotted" href="<?= home_url( '/datenschutzerklaerung/' ) ?>">Datenschutzerklärung</a>.
             </div>
-            <div v-else class="o-flex__item">
+            <div v-else class="o-flex__item u-shrink">
                 Die "Do Not Track"-Einstellung deines Browsers ist aktiv. Nur notwendige Cookies werden gesetzt.
                 Weitere Infos in der <a class="c-link c-link--dotted" href="<?= home_url( '/datenschutzerklaerung/' ) ?>">Datenschutzerklärung</a>.
             </div>
             <div class="o-flex__spacer"></div>
-            <div v-if="!doNotTrack" class="o-flex__item">
+            <div v-if="!doNotTrack" class="o-flex__item u-shrink-0">
                 <button @click="deny" class="c-link c-link--dotted" style="white-space: nowrap;">
                     Nur notwendige Cookies erlauben
                 </button>
             </div>
-            <div class="o-flex__item">
+            <div class="o-flex__item u-shrink-0">
                 <button @click="allow" class="c-btn c-btn--small c-btn--green">OK</button>
             </div>
         </div>

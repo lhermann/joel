@@ -11,8 +11,8 @@
     margin-top: calc(-1 * var(--gap));
 
     // Gaps
-    &--tiniest { --gap: #{$unit-tiny/4}; }
-    &--tinier { --gap: #{$unit-tiny/2}; }
+    &--tiniest { --gap: #{$unit-0/2}; }
+    &--tinier { --gap: #{$unit-0}; }
     &--tiny { --gap: #{$unit-tiny}; }
     &--small { --gap: #{$unit-small}; }
     &--unit { --gap: #{$unit}; }
@@ -39,6 +39,20 @@
     &--column { flex-direction: column; }
     &--column-reverse { flex-direction: column-reverse; }
 
+    // &--tinier { margin-left: -$unit-0; }
+    // &--tiny { margin-left: -$unit-tiny; }
+    // &--small { margin-left: -$unit-small; }
+    // &--unit { margin-left: -$unit; }
+    // &--large { margin-left: -$unit-large; }
+    // &--huge { margin-left: -$unit-huge; }
+    // &--tinest { margin-left: -$unit-0/4; }
+    // &--tinier { margin-left: -$unit-0/2; }
+    // &--tiny { margin-left: -$unit-tiny/2; }
+    // &--small { margin-left: -$unit-small/2; }
+    // &--unit { margin-left: -$unit/2; }
+    // &--large { margin-left: -$unit-large/2; }
+    // &--huge { margin-left: -$unit-huge/2; }
+
     // Misc
     &--wrap { flex-wrap: wrap; }
 
@@ -57,6 +71,66 @@
         padding-left: var(--gap);
     }
 }
+
+    /*
+     * 1. Flexbox + Truncate Hack https://css-tricks.com/flexbox-truncated-text/
+     */
+    // .o-flex > *,
+    // .o-flex__item {
+    //     min-width: 0; /* 1 */
+
+    // }
+
+    // .o-flex--tiniest > *,
+    // .o-flex--tiniest > .o-flex__item {
+    //     // margin: $unit-0/4;
+    //     padding-left: $unit-0/4;
+    //     margin-top: $unit-0/4;
+    // }
+
+    // .o-flex--tinier > *,
+    // .o-flex--tinier > .o-flex__item {
+    //     // margin: $unit-0/2;
+    //     padding-left: $unit-0/2;
+    //     margin-top: $unit-0/2;
+    // }
+
+    // .o-flex--tiny > *,
+    // .o-flex--tiny > .o-flex__item {
+    //     // margin: $unit-tiny/2;
+    //     padding-left: $unit-tiny/2;
+    //     margin-top: $unit-tiny/2;
+    // }
+
+    // .o-flex--small > *,
+    // .o-flex--small > .o-flex__item {
+    //     // margin: $unit-small/2;
+    //     padding-left: $unit-small/2;
+    //     margin-top: $unit-small/2;
+    // }
+
+    // .o-flex--unit > * {
+    //     margin-left: $unit/2;
+    //     margin-top: $unit/2;
+    // }
+    // .o-flex--unit > .o-flex__item {
+    //     padding-left: $unit/2;
+    //     margin-top: $unit/2;
+    // }
+
+    // .o-flex--large > *,
+    // .o-flex--large > .o-flex__item {
+    //     // margin: $unit-large/2;
+    //     padding-left: $unit-large/2;
+    //     margin-top: $unit-large/2;
+    // }
+
+    // .o-flex--huge > *,
+    // .o-flex--huge > .o-flex__item {
+    //     // margin: $unit-huge/2;
+    //     padding-left: $unit-huge/2;
+    //     margin-top: $unit-huge/2;
+    // }
 
     .o-flex__spacer {
         flex-grow: 90;

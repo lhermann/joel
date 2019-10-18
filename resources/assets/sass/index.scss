@@ -408,9 +408,9 @@ $livestream-meta-height: $unit * 5;
 }
 
 .u-grow { flex-grow: 1; }
-.u-shrink { flex-grow: 1; }
+.u-shrink { flex-shrink: 1; }
 .u-grow-0 { flex-grow: 0; }
-.u-shrink-0 { flex-grow: 0; }
+.u-shrink-0 { flex-shrink: 0; }
 
 .u-clearfix:after {
    content: ".";
