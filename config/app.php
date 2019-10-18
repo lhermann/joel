@@ -13,6 +13,7 @@ return [
     | Theme Switches
     |--------------------------------------------------------------------------
     */
+    'sta-branding'          => if_defined('SDA_BRANDING', false),
     'mobile-menu-always'    => if_defined('MOBILE_MENU_ALWAYS', true),
     'searchbar'             => if_defined('SEARCHBAR', false),
     'slider'                => if_defined('SLIDER', true),

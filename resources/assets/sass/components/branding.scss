@@ -13,12 +13,28 @@
         height: 38px;
     }
 
-    .c-branding__title {
-        @include inuit-font-size(22px, 1.2);
-
+    .c-branding__title,
+    .c-branding__sda {
         padding-left: $unit-small;
         white-space: nowrap;
         font-family: $font-heading;
+    }
+
+    .c-branding__sda {
+        color: hsl(211, 45%, 34%);
+    }
+
+    .c-branding__denomination {
+        width: 180px;
+    }
+
+    .c-branding__church {
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .c-branding__title {
+        @include inuit-font-size(22px, 1.2);
 
         @include mq($until: tablet) {
             @include inuit-font-size(18px, 1.2);
