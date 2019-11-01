@@ -6,7 +6,8 @@ if(!function_exists("eo_get_events")) return;
 $events = eo_get_events([
     'showpastevents' => false,
     'event_end_before' => '+'.config('livestream')['program-timeframe'].' week',
-    'post_status' => 'publish'
+    'post_status' => 'publish',
+    'event-category' => 'livestream'
 ]);
 $last_event = null;
 
