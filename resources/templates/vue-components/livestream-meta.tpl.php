@@ -28,19 +28,19 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
         livestream already online since 0:24:13
     </div> -->
 
-    <div v-cloak v-if="event" class="o-flex__item u-pl@desktop">
+    <div v-cloak v-if="event" class="o-flex__item u-pl">
         <div class="o-flag">
             <div class="o-flag__img" v-html="event.thumbnail"></div>
             <div class="o-flag__body">
                 <strong class="u-text+">{{event.post_title}}</strong>
-                <br>Heute von {{start}} bis {{finish}}
+                <br>{{day}} von {{start}} bis {{finish}}
             </div>
         </div>
     </div>
     <div v-cloak v-else-if="loading" class="o-flex__item u-ph+">
         <div class="c-spinner"></div>
     </div>
-    <div v-cloak v-else class="o-flex__item u-pl@desktop">
+    <div v-cloak v-else class="o-flex__item u-pl">
         <strong class="u-muted">Keine Aufnahmen für heute geplant</strong>
     </div>
 

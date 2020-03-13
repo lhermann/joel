@@ -4,6 +4,8 @@ import axios from "axios";
 import format from "date-fns/format";
 import locale from "date-fns/locale/de";
 import parseISO from "date-fns/parseISO";
+import isToday from 'date-fns/isToday'
+import getDay from 'date-fns/getDay'
 import instantiate from "../instantiate.js";
 
 instantiate.add("livestream-meta", vueInstance);
@@ -25,6 +27,13 @@ function vueInstance(_id) {
       };
     },
     computed: {
+      day () {
+        if (isToday(this.event.StartDate)) {
+          return "Heute"
+        } else {
+          return format(parseISO(this.event.StartDate), "iiii", { locale })
+        }
+      },
       start() {
         const time = this.event.StartDate + " " + this.event.StartTime;
         return format(parseISO(time), "k:mm", { locale });
