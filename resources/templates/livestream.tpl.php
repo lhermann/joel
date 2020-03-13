@@ -18,7 +18,7 @@ use function Tonik\Theme\App\asset_path;
                 <h1><?php the_title() ?></h1>
             </header>
 
-            <div class="o-flex o-flex--stretch">
+            <div class="o-flex o-flex--stretch o-flex--wrap">
                 <div class="o-flex__item u-1/1 u-3/5@tablet u-2/3@desktop">
                     <div class="o-ratio o-ratio--16:9 u-shadow u-1/1">
                         <iframe id="player"
