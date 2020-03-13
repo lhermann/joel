@@ -23,7 +23,7 @@ use function Tonik\Theme\App\asset_path;
                     <div class="o-ratio o-ratio--16:9 u-shadow u-1/1">
                         <iframe id="player"
                             class="o-ratio__content c-player"
-                            src="<?= config('url-prefix')['embed'].'0livestream' ?>"
+                            src="<?= get_field('iframe_url') ?>"
                             frameborder="0"
                             allowfullscreen>
                         </iframe>
