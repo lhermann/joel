@@ -46,7 +46,7 @@ $params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
     <li class="c-primary-nav__dropdown-item">
       <a href="<?= home_url( '/livestream/' ) ?>"
         class="c-link c-link--block c-link--primary u-truncate">
-        <?= __('Go to livestream', config('textdomain')) //Livestream &Ouml;ffnen ?>
+        <?= __('Go to livestream', config('textdomain')) ?>
         <span class="u-ic-arrow_forward"></span>
       </a>
     </li>

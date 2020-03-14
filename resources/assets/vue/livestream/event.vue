@@ -3,7 +3,7 @@
     :is="event.today ? 'a' : 'div'"
     class="o-box o-box--natural"
     :class="{ 'c-link c-link--block c-link--primary': event.today }"
-    href="url"
+    :href="url"
   >
     <div class="o-flag">
       <div
