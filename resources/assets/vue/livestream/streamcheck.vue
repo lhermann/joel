@@ -15,17 +15,18 @@ export default {
   data() {
     return {
       loading: true,
-      live: false
+      live: false,
     };
   },
   mounted() {
-    axios
-      .get(this.stream, {
-        baseURL: "//streamcheck.joelmedia.de/"
-      })
-      .then(response => (this.live = response.data.live))
-      .catch(error => console.log({ error }))
-      .then(() => (this.loading = false));
+    this.loading = false;
+    // axios
+    //   .get(this.stream, {
+    //     baseURL: "//streamcheck.joelmedia.de/"
+    //   })
+    //   .then(response => (this.live = response.data.live))
+    //   .catch(error => console.log({ error }))
+    //   .then(() => (this.loading = false));
   }
 };
 </script>
