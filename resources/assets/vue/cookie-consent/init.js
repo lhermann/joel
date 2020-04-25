@@ -2,6 +2,7 @@ import Vue from "vue";
 import addYears from "date-fns/addYears";
 import get from "lodash/get";
 import instantiate from "../instantiate.js";
+import Cookies from "js-cookie"
 
 instantiate.add("cookie-consent", vueInstance);
 
@@ -15,12 +16,31 @@ function vueInstance(_id) {
       return {
         initDone: false,
         options: {},
-        hasCookie: false,
-        consentGiven: null,
-        doNotTrack: false
+        cookie: null,
       };
     },
+    computed: {
+      hasCookie (){
+        return Boolean(this.cookie);
+      },
+      consentGiven () {
+        return this.cookie === "allow";
+      },
+      doNotTrack () {
+        if (typeof window === 'undefined') return false;
+        return Boolean(
+          window.doNotTrack
+          || window.navigator.doNotTrack
+          || window.navigator.msDoNotTrack
+        );
+      },
+    },
     methods: {
+      init(options) {
+        if (this.initDone) return;
+        this.initDone = true;
+        this.options = options;
+      },
       allow() {
         this.setCookie(this.doNotTrack ? "deny" : "allow");
         _paq.push(["rememberConsentGiven"]);
@@ -29,48 +49,16 @@ function vueInstance(_id) {
         this.setCookie("deny");
         _paq.push(["forgetConsentGiven"]);
       },
-      init(options) {
-        if (this.initDone) return;
-        this.initDone = true;
-        this.options = options;
-      },
       setCookie(value) {
-        let expire = addYears(Date.now(), value === "allow" ? 2 : 1);
-        document.cookie = `consent-cookie=${value}; expires=${expire.toUTCString()}; path=/;"`;
-        this.getCookie();
+        Cookies.set('consent-cookie', value, { expires: 365 });
+        this.cookie = value;
       },
       getCookie() {
-        let cookie = document.cookie.match(
-          "(^|;) ?consent-cookie=([^;]*)(;|$)"
-        );
-        this.hasCookie = !!cookie;
-        this.consentGiven = cookie ? cookie[2] : null;
+        this.cookie = Cookies.get('consent-cookie');
       },
-      getDoNotTrack() {
-        if (
-          window.doNotTrack ||
-          navigator.doNotTrack ||
-          navigator.msDoNotTrack ||
-          get(window.external, "msTrackingProtectionEnabled")
-        ) {
-          if (
-            window.doNotTrack == "1" ||
-            navigator.doNotTrack == "yes" ||
-            navigator.doNotTrack == "1" ||
-            navigator.msDoNotTrack == "1" ||
-            (get(window.external, "msTrackingProtectionEnabled") &&
-              window.external.msTrackingProtectionEnabled())
-          ) {
-            this.doNotTrack = true;
-          } else {
-            this.doNotTrack = false;
-          }
-        }
-      }
     },
     beforeMount() {
       this.getCookie();
-      this.getDoNotTrack();
     }
   });
 }

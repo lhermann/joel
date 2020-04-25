@@ -407,6 +407,10 @@ $livestream-meta-height: $unit * 5;
     white-space: nowrap;
 }
 
+.u-nowrap {
+    white-space: nowrap;
+}
+
 .u-grow { flex-grow: 1; }
 .u-shrink { flex-shrink: 1; }
 .u-grow-0 { flex-grow: 0; }
