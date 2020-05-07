@@ -13,6 +13,9 @@ module.exports = {
   runtimeCompiler: true,
   pages: {
     main: 'resources/vue/main.js',
+    vanilla: 'resources/assets/js/main.js',
+    // admin: 'resources/vue/admin.js',
+    // 'vanilla-admin': 'resources/assets/js/admin.js',
   },
   devServer: {
     index: '',

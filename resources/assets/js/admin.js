@@ -12,7 +12,7 @@ import './admin-vue/recording-status.js'
  * But since I can't do that with my deploy script I just request chartist as
  * seperate resource
  */
-// import Chartist from "chartist";
+import Chartist from 'chartist'
 if (document.getElementById('trac-download-chart')) {
   new Chartist.Line('#trac-download-chart', window.chartist_data)
 }

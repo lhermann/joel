@@ -15,4 +15,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'comma-dangle': ['warn', 'always-multiline'],
   },
+  "ignorePatterns": [
+    "resources/assets/",
+    "node_modules/",
+  ],
 }

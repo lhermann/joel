@@ -62,8 +62,15 @@ function register_scripts() {
         true
     );
 
-    // wp_enqueue_script('vue', asset_path('js/vue.js'), [], sha1_file(asset('js/vue.js')->getPath()), true);
-    // wp_enqueue_script('app', asset_path('js/app.js'), ['jquery'], sha1_file(asset('js/app.js')->getPath()), true);
+    $vanilla_js = asset('js/vanilla.js');
+    wp_enqueue_script(
+        'vanilla',
+        $vanilla_js->getUri(),
+        ['jquery'],
+        sha1_file($vanilla_js->getPath()),
+        true
+    );
+
     wp_deregister_script( 'algolia-instantsearch' );
     wp_deregister_script( 'algolia-autocomplete' );
 
@@ -111,13 +118,30 @@ function register_admin_scripts_and_styles() {
     // wp_enqueue_script( 'datefns_js', "https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js", [], "", false );
     // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue", [], "v2.5.18", false );
     // wp_enqueue_script( 'chartist_js', "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js", [], "0.11.0", false );
-    // wp_enqueue_script( 'admin_js', asset_path('js/admin.js'), [], sha1_file(asset('js/admin.js')->getPath()), true );
+
+    $chunk_vendors_js = asset('js/chunk-vendors.js');
+    wp_enqueue_script(
+        'chunk-vendors',
+        $chunk_vendors_js->getUri(),
+        [],
+        sha1_file($chunk_vendors_js->getPath()),
+        true
+    );
+
+    $admin_js = asset('js/admin.js');
+    wp_enqueue_script(
+        'admin',
+        $admin_js->getUri(),
+        ['chunk-vendors'],
+        sha1_file($admin_js->getPath()),
+        true
+    );
 
     /*
      * CSS
      */
-    // wp_enqueue_style( 'chartist_css', "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css", [], "0.11.0" ); <-- included in admin.css
-    // wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), [], sha1_file(asset('css/admin.css')->getPath()) );
+    $admin_css = asset('css/admin.css');
+    wp_enqueue_style('app', $admin_css->getUri(), [], sha1_file($admin_css->getPath()));
 };
 add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles' );
 
