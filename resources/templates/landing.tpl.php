@@ -20,13 +20,10 @@ use function Tonik\Theme\App\config;
 
     <?php //print('<pre>'); var_dump($args); print('</pre>'); ?>
 
-    <?php template(
-        'partials/landing/'.$section,
-        [
-          'style_modifier' => $style_modifier,
-          'args' => $args
-        ]
-    ) ?>
+    <?php template('partials/landing/'.$section, [
+      'style_modifier' => $style_modifier,
+      'args' => $args
+    ]) ?>
 
   <?php endforeach ?>
 

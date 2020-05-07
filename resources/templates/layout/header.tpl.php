@@ -36,7 +36,6 @@ use function Tonik\Theme\App\Legacy\print_open_graph;
             'component' => 'JoCookieConsent',
             'id' => 'cookie-consent',
             'options' => [
-                'matomo' => true,
                 'page-name' => get_bloginfo('name'),
                 'privacy-policy-link' => home_url('/datenschutzerklaerung/'),
             ],
