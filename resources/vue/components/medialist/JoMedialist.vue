@@ -224,7 +224,7 @@ export default {
   },
   mounted () {
     this.setOptions(this.options)
-    this.setParams(this.localParams)
+    this.setParams(this.params)
     this.requestRecordings()
   },
 }
