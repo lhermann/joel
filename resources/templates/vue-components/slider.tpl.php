@@ -2,6 +2,8 @@
 use function Tonik\Theme\App\template;
 use function Tonik\Theme\App\asset_path;
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\asset;
+
 $json_options = isset($options) ? str_replace('"', "'", json_encode($options)) : '{}';
 $json_params = isset($params) ? str_replace('"', "'", json_encode($params)) : '{}';
 $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] === false);
@@ -36,7 +38,7 @@ $placeholder = !(key_exists('placeholder', $options) && $options['placeholder'] 
                     <a href="/aufnahmen/" class="c-slide__link"></a>
                     <div class="o-wrapper c-slide__wrapper">
                         <div class="c-slide__body u-1/2">
-                            <img src="/wordpress/wp-content/themes/joel/public/images/jm-logo-white-01.svg" class="c-logo c-logo--hero" alt="Joel Media">
+                            <img src="<?= asset('images/jm-logo-white-01.svg')->getUri() ?>" class="c-logo c-logo--hero" alt="Joel Media">
                             <h1 class="u-mb0 u-mt-">Joel Media Ministry e.V.</h1>
                             <p class="u-muted"><small>... das ewige Evangelium für Stuttgart, Deutschland und die Welt</small></p>
                             <p class="u-text+ u-muted">Wöchentlich neue Videos über die Bibel,<br>Gesundheit und Zeitgeschehen</p>
