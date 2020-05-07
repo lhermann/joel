@@ -21,13 +21,13 @@ if(!isset($args)) $args = [];
         <span class="u-text-middle u-mr-">Veranstaltungen</span>
     </h2>
 
-    <?php template(
-        'vue-components/events',
-        array_merge(
-          [ 'id' => idHash($args) ],
-          $args
-        )
-    ); ?>
+    <?php template('vue-components/main', array_merge(
+      [
+        'component' => 'JoEvents',
+        'id' => idHash($args),
+      ],
+      $args
+    )); ?>
 
   </div>
 

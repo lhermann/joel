@@ -5,7 +5,7 @@
       :key="event.id"
       class="o-flex__item u-1/2@tablet u-1/3@desktop"
     >
-      <event :event="event" />
+      <JoEvent :event="event" />
     </li>
     <li v-if="!events.length" class="o-flex__item u-1/1">
       <div v-if="pending" class="u-p u-center">
@@ -22,12 +22,13 @@
 
 <script>
 import axios from 'axios'
-import Event from './event.vue'
+import JoEvent from './JoEvent.vue'
 
 export default {
-  components: { Event },
+  components: { JoEvent },
   props: {
-    params: Object,
+    params: { type: Object, default: () => ({}) },
+    options: { type: Object, default: () => ({}) },
   },
   data () {
     return {
