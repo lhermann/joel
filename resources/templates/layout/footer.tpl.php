@@ -2,7 +2,7 @@
 use function Tonik\Theme\App\template;
 use function Tonik\Theme\App\asset;
 use function Tonik\Theme\App\asset_path;
-$polyfills_sha1 = sha1_file(asset('js/polyfills.js')->getPath());
+// $polyfills_sha1 = sha1_file(asset('js/polyfills.js')->getPath());
 ?>
 
                 <?php template('partials/debug') ?>
@@ -13,6 +13,7 @@ $polyfills_sha1 = sha1_file(asset('js/polyfills.js')->getPath());
 
         <?php template('partials/flyin-nav') ?>
 
+        <?php /*
         <script id="polyfill">
             var modernBrowser = (
                 'fetch' in window &&
@@ -27,6 +28,7 @@ $polyfills_sha1 = sha1_file(asset('js/polyfills.js')->getPath());
                 refElement.parentNode.insertBefore(scriptElement, refElement.nextSibling);
             }
         </script>
+        */ ?>
 
         <?php wp_footer(); ?>
 

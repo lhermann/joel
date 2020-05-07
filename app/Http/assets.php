@@ -23,7 +23,11 @@ use function Tonik\Theme\App\asset_path;
  */
 function register_stylesheets() {
 
-    wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/app.css')->getPath()));
+    $mainCss = asset('css/main.css');
+    wp_enqueue_style('app', $mainCss->getUri(), [], sha1_file($mainCss->getPath()));
+
+    // wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/app.css')->getPath()));
+
     wp_deregister_style( 'algolia-instantsearch' );
     wp_deregister_style( 'algolia-autocomplete' );
 
@@ -40,8 +44,26 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets', 10
  */
 function register_scripts() {
 
-    wp_enqueue_script('vue', asset_path('js/vue.js'), [], sha1_file(asset('js/vue.js')->getPath()), true);
-    wp_enqueue_script('app', asset_path('js/app.js'), ['jquery'], sha1_file(asset('js/app.js')->getPath()), true);
+    $chunk_vendors_js = asset('js/chunk-vendors.js');
+    wp_enqueue_script(
+        'chunk-vendors',
+        $chunk_vendors_js->getUri(),
+        [],
+        sha1_file($chunk_vendors_js->getPath()),
+        true
+    );
+
+    $main_js = asset('js/main.js');
+    wp_enqueue_script(
+        'main',
+        $main_js->getUri(),
+        ['chunk-vendors'],
+        sha1_file($main_js->getPath()),
+        true
+    );
+
+    // wp_enqueue_script('vue', asset_path('js/vue.js'), [], sha1_file(asset('js/vue.js')->getPath()), true);
+    // wp_enqueue_script('app', asset_path('js/app.js'), ['jquery'], sha1_file(asset('js/app.js')->getPath()), true);
     wp_deregister_script( 'algolia-instantsearch' );
     wp_deregister_script( 'algolia-autocomplete' );
 
@@ -54,7 +76,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 10);
  * @return void
  */
 function register_editor_stylesheets() {
-    add_editor_style(asset_path('css/editor.css'));
+    // add_editor_style(asset_path('css/editor.css'));
 }
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 
@@ -86,16 +108,16 @@ function register_admin_scripts_and_styles() {
     // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", [], "v2.5.18", false );
 
     // Production:
-    wp_enqueue_script( 'datefns_js', "https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js", [], "", false );
-    wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue", [], "v2.5.18", false );
-    wp_enqueue_script( 'chartist_js', "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js", [], "0.11.0", false );
-    wp_enqueue_script( 'admin_js', asset_path('js/admin.js'), [], sha1_file(asset('js/admin.js')->getPath()), true );
+    // wp_enqueue_script( 'datefns_js', "https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js", [], "", false );
+    // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue", [], "v2.5.18", false );
+    // wp_enqueue_script( 'chartist_js', "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js", [], "0.11.0", false );
+    // wp_enqueue_script( 'admin_js', asset_path('js/admin.js'), [], sha1_file(asset('js/admin.js')->getPath()), true );
 
     /*
      * CSS
      */
     // wp_enqueue_style( 'chartist_css', "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css", [], "0.11.0" ); <-- included in admin.css
-    wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), [], sha1_file(asset('css/admin.css')->getPath()) );
+    // wp_enqueue_style( 'admin_css', asset_path('css/admin.css'), [], sha1_file(asset('css/admin.css')->getPath()) );
 };
 add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles' );
 

@@ -1,13 +1,33 @@
+.DS_Store
+Thumbs.db
 node_modules
-npm-debug.log
+node_modules.bak
+/dist
+/temp
+
+# local env files
+.env
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Composer
 vendor
 stats.json
 
-.DS_Store
-Thumbs.db
-
-public
-
-.env
+# php
 *.orig
 info.php

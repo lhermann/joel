@@ -1,5 +1,14 @@
 <?php
 
+// Webpack Dev Server proxy Fix
+// if (isset($_SERVER) && key_exists("HTTP_X_FORWARDED_HOST", $_SERVER)) {
+//   var_dump($_SERVER); die();
+//   $_SERVER['HTTP_HOST'] = $_SERVER["HTTP_X_FORWARDED_HOST"];
+//   $_SERVER['REQUEST_SCHEME'] = $_SERVER["HTTP_X_FORWARDED_PROTO"];
+//   $_SERVER['SERVER_PORT'] = $_SERVER["HTTP_X_FORWARDED_PORT"];
+//   $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_X_FORWARDED_FOR"];
+// }
+
 /*
  |------------------------------------------------------------------
  | Bootstraping a Theme
