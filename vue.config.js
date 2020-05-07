@@ -10,6 +10,7 @@ const PROXY_OPTIONS = {
 module.exports = {
   publicPath: '/wp-content/themes/joel/dist',
   filenameHashing: false,
+  runtimeCompiler: true,
   pages: {
     main: 'resources/vue/main.js',
   },

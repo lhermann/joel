@@ -1,14 +1,9 @@
 import Vue from 'vue'
 import Popper from 'popper.js'
-import instantiate from '../instantiate.js'
 
-instantiate.add('dropdown', vueInstance)
-
-/* Vue Instance
- **********************/
-function vueInstance (_id) {
+export default function (element) {
   return new Vue({
-    el: _id,
+    el: element,
     name: 'Dropdown',
     data () {
       return {

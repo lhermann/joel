@@ -4,7 +4,7 @@ import Vue from 'vue'
  *****************************/
 export default {
   instances: [],
-  add (selector, component) {
+  component (selector, component) {
     const elements = document.querySelectorAll(`[data-vue="${selector}"]`)
     elements.forEach(el => {
       this.instances.push(new Vue({
@@ -18,5 +18,9 @@ export default {
         }),
       }))
     })
+  },
+  util (selector, component) {
+    const elements = document.querySelectorAll(`[data-vue="${selector}"]`)
+    elements.forEach(el => component(el))
   },
 }

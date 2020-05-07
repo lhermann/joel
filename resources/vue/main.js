@@ -7,6 +7,10 @@ import JoLivestreamDropdown from './components/livestream/JoLivestreamDropdown.v
 import JoLivestreamMeta from './components/livestream/JoLivestreamMeta.vue'
 import JoMedialist from './components/medialist/JoMedialist.vue'
 
+/* Util */
+import toggle from './components/utils/toggle.js'
+import dropdown from './components/utils/dropdown.js'
+
 /* CSS */
 import '../assets/css/main.scss'
 
@@ -19,6 +23,10 @@ Vue.prototype.$joel = Object.assign(
 axios.defaults.baseURL = '/wp-json/'
 
 /* Instantiate Components */
-instantiate.add('JoLivestreamDropdown', JoLivestreamDropdown)
-instantiate.add('JoLivestreamMeta', JoLivestreamMeta)
-instantiate.add('JoMedialist', JoMedialist)
+instantiate.component('JoLivestreamDropdown', JoLivestreamDropdown)
+instantiate.component('JoLivestreamMeta', JoLivestreamMeta)
+instantiate.component('JoMedialist', JoMedialist)
+
+/* Instantiate Utils */
+instantiate.util('toggle', toggle)
+instantiate.util('dropdown', dropdown)
