@@ -5,6 +5,7 @@ import instantiate from './instantiate.js'
 /* Components */
 import JoLivestreamDropdown from './components/livestream/JoLivestreamDropdown.vue'
 import JoLivestreamMeta from './components/livestream/JoLivestreamMeta.vue'
+import JoMedialist from './components/medialist/JoMedialist.vue'
 
 /* CSS */
 import '../assets/css/main.scss'
@@ -20,3 +21,4 @@ axios.defaults.baseURL = '/wp-json/'
 /* Instantiate Components */
 instantiate.add('JoLivestreamDropdown', JoLivestreamDropdown)
 instantiate.add('JoLivestreamMeta', JoLivestreamMeta)
+instantiate.add('JoMedialist', JoMedialist)

@@ -3,11 +3,10 @@
     <span>Sortieren:</span>
     <button
       ref="reference"
-      id="sorting-dropdown"
       class="c-btn c-btn--dropdown c-btn--tiny c-btn--secondary u-ml--"
-      v-on:click="onButtonClick"
       aria-haspopup="true"
       :aria-expanded="show ? 'true' : 'false'"
+      @click="onButtonClick"
     >
       {{ currentOption.label }}
     </button>
@@ -21,10 +20,11 @@
     >
       <li
         v-for="option in options"
+        :key="option.label"
         class="c-dropdown__item"
         :class="{ 'is-active': isCurrent(option) }"
       >
-        <button class="c-dropdown__link" v-on:click="onSelectOption(option)">
+        <button class="c-dropdown__link" @click="onSelectOption(option)">
           {{ option.label }}
         </button>
       </li>
@@ -36,8 +36,10 @@
 import Popper from 'popper.js'
 
 export default {
-  name: 'SortingComponent',
-  props: ['options', 'currentOption'],
+  props: {
+    options: Array,
+    currentOption: Object,
+  },
   data () {
     return {
       popper: null,

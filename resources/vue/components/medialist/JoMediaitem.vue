@@ -38,7 +38,11 @@
           {{ item.count }} {{ item.count === 1 ? "Aufnahme" : "Aufnahmen" }}
         </li>
         <li v-if="item.speakers">
-          <a v-for="(speaker, i) in item.speakers" :href="speaker.link">
+          <a
+            v-for="(speaker, i) in item.speakers"
+            :key="i"
+            :href="speaker.link"
+          >
             {{ speaker.name }}{{ i !== item.speakers.length - 1 ? "," : "" }}
           </a>
         </li>
@@ -61,8 +65,9 @@ import parseISO from 'date-fns/parseISO'
 import get from 'lodash/get'
 
 export default {
-  name: 'MediaitemComponent',
-  props: ['item'],
+  props: {
+    item: Object,
+  },
   computed: {
     isRecording () {
       return this.item.type === 'recordings'

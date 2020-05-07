@@ -3,10 +3,11 @@
     <a href="/livestream"
       class="c-link c-link--block c-link--primary c-primary-nav__link">
       <JoStreamcheck :stream="options.stream">
-        <template slot-scope="props">
-          <span class="c-dot u-mr--"
-            :class="{'c-dot--green': props.live, 'is-loading': props.loading}">
-          </span>
+        <template v-slot:default="{ live, loading }">
+          <span
+            class="c-dot u-mr--"
+            :class="{'c-dot--green': live, 'is-loading': loading}"
+          ></span>
         </template>
       </JoStreamcheck>
       <span class="u-hidden-until@desktop">
@@ -22,7 +23,7 @@
 
     <ul class="c-primary-nav__dropdown" style="width: 500px">
 
-      <li v-cloak
+      <li
         v-for="event in events"
         :key="event.occurrence_id"
         class="c-primary-nav__dropdown-item"
@@ -31,9 +32,11 @@
         <JoEvent :event="event" url="/livestream" />
       </li>
 
-      <li v-if="!events.length"
-        class="c-primary-nav__dropdown-item u-bg-muted u-p">
-        <div class="c-spinner u-box-center"></div>
+      <li
+        v-if="!events.length"
+        class="c-primary-nav__dropdown-item u-bg-muted u-center u-p"
+      >
+        <div class="c-spinner"></div>
       </li>
 
       <li class="c-primary-nav__dropdown-item">

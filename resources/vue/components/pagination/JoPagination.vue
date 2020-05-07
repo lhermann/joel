@@ -11,7 +11,7 @@
             class="c-btn c-btn--secondary c-btn--small c-btn--left u-ph-"
             :class="{ 'c-btn--square': !verbose }"
             :disabled="currentPage <= 1 || isLoading"
-            v-on:click="previousPage"
+            @click="previousPage"
           >
             <span class="u-ic-keyboard_arrow_left"></span>
             <span v-if="verbose" class="u-hidden-until@tablet">
@@ -20,8 +20,8 @@
           </button>
         </li>
         <li
-          v-if="!minimal"
-          v-for="n in buttons"
+          v-for="n in minimal ? [] : buttons"
+          :key="n"
           class="o-list-inline__item u-hidden-until@tablet"
         >
           <button
@@ -30,7 +30,7 @@
                       c-btn--square"
             :class="{ 'is-active': n === currentPage }"
             :disabled="isLoading"
-            v-on:click="changeRange(n)"
+            @click="changeRange(n)"
           >
             ...
           </button>
@@ -40,7 +40,7 @@
                       c-btn--square"
             :class="{ 'is-active': n === currentPage }"
             :disabled="isLoading"
-            v-on:click="toPage(n)"
+            @click="toPage(n)"
           >
             {{ n }}
           </button>
@@ -50,7 +50,7 @@
             class="c-btn c-btn--secondary c-btn--small c-btn--right u-ph-"
             :class="{ 'c-btn--square': !verbose }"
             :disabled="currentPage >= totalPages || isLoading"
-            v-on:click="nextPage"
+            @click="nextPage"
           >
             <span v-if="verbose" class="u-hidden-until@tablet">
               Nächste Seite

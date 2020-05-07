@@ -9,23 +9,27 @@
           <div class="c-spinner" v-show="isLoading"></div>
         </div>
         <div v-if="sorting" class="o-flex__item u-text-right">
-          <sorting
+          <JoSorting
             :options="sortingOptions"
             :current-option="currentSortingOption"
-            v-on:select="onSelectOption"
+            @select="onSelectOption"
           />
         </div>
       </div>
     </header>
 
     <ul class="c-medialist" :class="medialistClass">
-      <li v-for="item in items" class="c-medialist__item">
-        <mediaitem :key="item.id" :item="item" />
+      <li
+        v-for="item in items"
+        :key="item.id"
+        class="c-medialist__item"
+      >
+        <JoMediaitem :item="item" />
       </li>
     </ul>
 
     <!-- pagination -->
-    <pagination
+    <JoPagination
       v-if="pagination &amp;&amp; totalPages > 1"
       class="u-mv+"
       :total="total"
@@ -34,24 +38,28 @@
       :current-page="currentPage"
       :verbosity="pagination"
       :is-loading="isLoading"
-      v-on:to-page="onChangePage"
+      @to-page="onChangePage"
     />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Mediaitem from './mediaitem.vue'
-import Pagination from '../pagination/pagination.vue'
-import Sorting from './sorting.vue'
+import JoMediaitem from './JoMediaitem.vue'
+import JoPagination from '../pagination/JoPagination.vue'
+import JoSorting from './JoSorting.vue'
 import get from 'lodash/get'
 
 export default {
   name: 'MedialistComponent',
-  components: { Mediaitem, Pagination, Sorting },
+  components: {
+    JoMediaitem,
+    JoPagination,
+    JoSorting,
+  },
   props: {
-    initOptions: Object,
-    initParams: Object,
+    options: Object,
+    params: Object,
   },
   data () {
     return {
@@ -59,7 +67,7 @@ export default {
       route: 'recordings',
       columns: 1,
       items: [],
-      params: {
+      localParams: {
         page: 1,
         per_page: 10,
         order: null,
@@ -77,10 +85,10 @@ export default {
   },
   computed: {
     perPage () {
-      return this.params.per_page
+      return this.localParams.per_page
     },
     currentPage () {
-      return this.params.page
+      return this.localParams.page
     },
     medialistClass () {
       if (this.columns > 1) return ['c-medialist--' + this.columns + 'col']
@@ -157,26 +165,17 @@ export default {
       }
     },
     setParams (payload) {
-      Object.assign(this.params, payload)
+      Object.assign(this.localParams, payload)
       this.setInitialSortingOption()
     },
     /**
      * Choose a sorting option that fits with the params
      */
     setInitialSortingOption () {
-      // this.currentSortingOption = this.sortingOptions[0];
-      // for (let option of this.sortingOptions) {
-      //     if (get(this.params, "order") !== option.params.order) continue;
-      //     if (get(this.params, "orderby") !== option.params.orderby)
-      //         continue;
-      //     this.currentSortingOption = option;
-      //     return;
-      // }
-
       const i = this.sortingOptions.findIndex(
         opt =>
-          opt.params.orderby === get(this.params, 'orderby') &&
-          opt.params.order === (get(this.params, 'order') || 'asc'),
+          opt.params.orderby === get(this.localParams, 'orderby') &&
+          opt.params.order === (get(this.localParams, 'order') || 'asc'),
       )
       this.currentSortingOption =
         i >= 0 ? this.sortingOptions[i] : this.sortingOptions[0]
@@ -188,10 +187,10 @@ export default {
       const route = this.currentSortingOption.route || this.route
       const params = Object.assign(
         {},
-        this.params,
+        this.localParams,
         this.sorting ? this.currentSortingOption.params : {},
       )
-      this.items = Array(this.params.per_page).fill(this.createDummy())
+      this.items = Array(this.localParams.per_page).fill(this.createDummy())
       axios
         .get(namespace + route, { params })
         .then(response => {
@@ -214,18 +213,18 @@ export default {
       }
     },
     onChangePage (page) {
-      this.params.page = page
+      this.localParams.page = page
       this.requestRecordings()
     },
     onSelectOption (option) {
       this.currentSortingOption = option
-      this.params.page = 1
+      this.localParams.page = 1
       this.requestRecordings()
     },
   },
   mounted () {
-    this.setOptions(this.initOptions)
-    this.setParams(this.initParams)
+    this.setOptions(this.options)
+    this.setParams(this.localParams)
     this.requestRecordings()
   },
 }
