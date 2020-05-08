@@ -22,8 +22,18 @@ module.exports = {
     serveIndex: false,
     historyApiFallback: false,
     proxy: {
-      '/': PROXY_OPTIONS,
+      '^/': PROXY_OPTIONS,
     },
     after: app => app.use('/', createProxyMiddleware(PROXY_OPTIONS)),
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+          @import "./resources/assets/css/_settings.scss";
+          @import "./resources/assets/css/_tools.scss";
+        `,
+      },
+    },
   },
 }

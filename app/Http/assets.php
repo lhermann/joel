@@ -15,6 +15,7 @@ namespace Tonik\Theme\App\Http;
 
 use function Tonik\Theme\App\asset;
 use function Tonik\Theme\App\asset_path;
+use function Tonik\Theme\App\dev_env;
 
 /**
  * Registers theme stylesheet files.
@@ -23,8 +24,10 @@ use function Tonik\Theme\App\asset_path;
  */
 function register_stylesheets() {
 
-    $mainCss = asset('css/main.css');
-    wp_enqueue_style('app', $mainCss->getUri(), [], sha1_file($mainCss->getPath()));
+    if (!dev_env()) {
+        $mainCss = asset('css/main.css');
+        wp_enqueue_style('app', $mainCss->getUri(), [], sha1_file($mainCss->getPath()));
+    }
 
     // wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/app.css')->getPath()));
 
