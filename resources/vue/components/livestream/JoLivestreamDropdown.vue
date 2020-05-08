@@ -1,25 +1,26 @@
 <template>
   <div @mouseover="onMouseover">
-    <a href="/livestream"
-      class="c-link c-link--block c-link--primary c-primary-nav__link">
-      <JoStreamcheck :stream="options.stream">
-        <template v-slot:default="{ live, loading }">
+    <JoStreamcheck :stream="options.stream">
+      <template v-slot:default="{ live, loading }">
+        <a
+          href="/livestream"
+          class="c-link c-link--block c-link--primary c-primary-nav__link"
+          :class="{ 'ls-live': live }"
+        >
           <span
-            class="c-dot u-mr--"
-            :class="{'c-dot--green': live, 'is-loading': loading}"
+            class="c-dot c-dot--border u-mr--"
+            :class="{'c-dot--red': live, 'is-loading': loading}"
           ></span>
-        </template>
-      </JoStreamcheck>
-      <span class="u-hidden-until@desktop">
-        Livestream
-        <!-- <?= __('Livestream', config('textdomain')) ?> -->
-      </span>
-      <span class="u-hidden-from@desktop">
-        Live
-        <!-- <?= _x('Live', 'Short for livestream', config('textdomain')) ?> -->
-      </span>
-      <span class="u-ic-keyboard_arrow_down"></span>
-    </a>
+          <span class="u-hidden-until@desktop">
+            Livestream
+          </span>
+          <span class="u-hidden-from@desktop">
+            Live
+          </span>
+          <span class="u-ic-keyboard_arrow_down"></span>
+        </a>
+      </template>
+    </JoStreamcheck>
 
     <ul class="c-primary-nav__dropdown" style="width: 500px">
 
@@ -42,8 +43,7 @@
       <li class="c-primary-nav__dropdown-item">
         <a href="/livestream"
           class="c-link c-link--block c-link--primary u-truncate">
-          Go to livestream
-          <!-- <?= __('Go to livestream', config('textdomain')) ?> -->
+          Livestream öffnen
           <span class="u-ic-arrow_forward"></span>
         </a>
       </li>
@@ -84,3 +84,15 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.ls-live {
+  background-color: $c-green-4;
+  color: $c-white;
+
+  &:hover {
+    background-color: $c-green-5;
+    opacity: 1;
+  }
+}
+</style>

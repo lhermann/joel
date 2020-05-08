@@ -44,6 +44,12 @@
     &--small.is-loading::after {
         border-width: $unit-tiny / 2;
     }
+
+    &--border {
+      border: 2px solid $c-white;
+      width: $unit-small + 2px;
+      height: $unit-small + 2px;
+    }
 }
 
 @keyframes rotating {
