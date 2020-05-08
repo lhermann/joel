@@ -7,7 +7,8 @@ $params = isset($params) ? json_encode($params) : '{}';
 ?>
 
 <!-- Vue mountpoint -->
-<div id="<?= $id ?>"
+<div
+  id="<?= $id ?>"
   class="<?= $style_modifier ?>"
   data-vue="<?= $component ?>"
   data-options='<?= $options ?>'

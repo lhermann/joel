@@ -29,7 +29,8 @@ global $wp_query;
     </div>
 
     <!-- Pagination -->
-    <?php template('vue-components/pagination', [
+    <?php template('vue-components/main', [
+        'component' => 'JoPaginationWrapper',
         'id' => 'pagination',
         'style_modifier' => '',
         'options' => [

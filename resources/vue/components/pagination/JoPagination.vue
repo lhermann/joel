@@ -73,6 +73,10 @@
 </template>
 
 <script>
+import min from 'lodash/min'
+import max from 'lodash/max'
+import clamp from 'lodash/clamp'
+
 export default {
   name: 'PaginationComponent',
   props: [
@@ -84,11 +88,10 @@ export default {
     'isLoading',
   ],
   data () {
-    var range = 9
     return {
-      range: range,
-      rangeCentre: Math.ceil(range / 2),
-      rangeOffset: Math.floor(range / 2),
+      range: 8,
+      rangeOffset: 0,
+      minOffset: 0,
     }
   },
   computed: {
@@ -102,14 +105,16 @@ export default {
       if (this.totalPages <= this.range) {
         return this.totalPages
       } else {
-        var arr = [1]
-        for (var i = 1; i <= this.range - 2; i++) {
-          arr.push(this.rangeCentre - this.rangeOffset + i)
+        const buttons = [1]
+        if (this.rangeOffset > 0) buttons.push('left')
+        for (let i = 0; buttons.length < this.range - 1; i++) {
+          buttons.push(this.rangeOffset + 2 + i)
         }
-        if (arr[1] > 2) arr[1] = 'left'
-        if (arr[this.range - 2] < this.totalPages - 1) { arr[this.range - 2] = 'right' }
-        arr.push(this.totalPages)
-        return arr
+        if (buttons[this.range - 2] !== this.totalPages - 1) {
+          buttons[this.range - 2] = 'right'
+        }
+        buttons.push(this.totalPages)
+        return buttons
       }
     },
     pageRangeDisplay () {
@@ -120,8 +125,26 @@ export default {
           : this.currentPage * this.perPage
       return `${firstOfRange} - ${lastOfRange} von ${this.total}`
     },
+    maxOffset () {
+      return max([this.totalPages - this.range + 1, 0])
+    },
+  },
+  watch: {
+    currentPage (newValue, oldValue) {
+      this.setRangeOffset(newValue)
+    },
+  },
+  mounted () {
+    this.setRangeOffset(this.currentPage)
   },
   methods: {
+    setRangeOffset (currentPage) {
+      this.rangeOffset = clamp(
+        currentPage - Math.floor(this.range / 2),
+        this.minOffset,
+        this.maxOffset,
+      )
+    },
     toPage (n) {
       document.activeElement.blur()
       if (n !== this.currentPage) this.$emit('to-page', n)
@@ -134,23 +157,11 @@ export default {
     },
     changeRange (direction) {
       document.activeElement.blur()
+      const shift = this.range - 4
       if (direction === 'left') {
-        this.rangeCentre -= this.range - 4
+        this.rangeOffset = max([this.rangeOffset - shift, this.minOffset])
       } else {
-        this.rangeCentre += this.range - 4
-      }
-    },
-  },
-  watch: {
-    // whenever question changes, this function will run
-    currentPage (newValue, oldValue) {
-      var offset = this.rangeOffset
-      if (newValue <= offset + 1) {
-        this.rangeCentre = offset + 1
-      } else if (newValue > this.totalPages - offset) {
-        this.rangeCentre = this.totalPages - offset
-      } else {
-        this.rangeCentre = newValue
+        this.rangeOffset = min([this.rangeOffset + shift, this.maxOffset])
       }
     },
   },

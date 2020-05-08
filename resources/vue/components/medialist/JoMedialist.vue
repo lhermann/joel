@@ -58,8 +58,8 @@ export default {
     JoSorting,
   },
   props: {
-    options: Object,
-    params: Object,
+    params: { type: Object, default: () => ({}) },
+    options: { type: Object, default: () => ({}) },
   },
   data () {
     return {

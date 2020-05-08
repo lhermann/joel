@@ -136,3 +136,133 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+$slide-transition: 0.7s;
+$slide-duration: 5s;
+
+.x-test { border: 1px solid red; }
+
+.c-slide {
+  position: relative;
+  background-color: $c-background;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+
+  &--white {
+    color: $c-white;
+  }
+
+  .is-entering & {
+    animation: $slide-transition ease-in-out c-slide--enter;
+  }
+
+  .is-leaving & {
+    animation: $slide-transition ease-in-out c-slide--leave;
+  }
+}
+
+.c-slide__link {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.c-slide__wrapper {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .c-slide--teaser &,
+  .c-slide--text-left & {
+    justify-content: flex-start;
+  }
+
+  .c-slide--text-right & {
+    justify-content: flex-end;
+  }
+
+  .c-slide--media-left & {
+    flex-direction: row-reverse;
+  }
+}
+
+.c-slide__body,
+.c-slide__media {
+  position: relative;
+  z-index: 2;
+  padding: $unit-large;
+
+  .c-slide--teaser & {
+    @include mq($from: desktop) {
+      margin-left: $unit-huge;
+    }
+  }
+}
+
+.c-slide__body {
+  max-width: $unit * 26;
+  text-align: center;
+}
+
+.c-slide__btn {
+  min-width: 50%;
+}
+
+.c-slide__quote {
+  position: relative;
+  color: $c-gray-7;
+
+  &::before,
+  &::after {
+    position: absolute;
+    line-height: 0;
+    color: $c-gray-3;
+    font-family: serif;
+    font-size: 500%;
+  }
+
+  &::before {
+    bottom: -$unit;
+    left: -$unit-large;
+    content: "\201D";
+  }
+
+  &::after {
+    top: $unit;
+    right: -$unit-large;
+    content: "\201C";
+  }
+}
+
+.c-slide__credits {
+  margin-top: $unit;
+  color: $c-textmuted;
+}
+
+@keyframes c-slide--enter {
+  0% {
+    transform: translateX(-70%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes c-slide--leave {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-70%);
+  }
+}
+</style>

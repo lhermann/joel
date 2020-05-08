@@ -8,6 +8,8 @@ import JoLivestreamMeta from './components/livestream/JoLivestreamMeta.vue'
 import JoMedialist from './components/medialist/JoMedialist.vue'
 import JoCookieConsent from './components/cookie-consent/JoCookieConsent.vue'
 import JoEvents from './components/events/JoEvents.vue'
+import JoSlider from './components/slider/JoSlider.vue'
+import JoPaginationWrapper from './components/pagination/JoPaginationWrapper.vue'
 
 /* Util */
 import toggle from './components/utils/toggle.js'
@@ -15,8 +17,6 @@ import dropdown from './components/utils/dropdown.js'
 
 /* CSS */
 import '../assets/css/main.scss'
-
-console.log('main.js')
 
 /* Options */
 Vue.config.productionTip = false
@@ -32,6 +32,8 @@ instantiate.component('JoLivestreamMeta', JoLivestreamMeta)
 instantiate.component('JoMedialist', JoMedialist)
 instantiate.component('JoCookieConsent', JoCookieConsent)
 instantiate.component('JoEvents', JoEvents)
+instantiate.component('JoSlider', JoSlider)
+instantiate.component('JoPaginationWrapper', JoPaginationWrapper)
 
 /* Instantiate Utils */
 instantiate.util('toggle', toggle)
