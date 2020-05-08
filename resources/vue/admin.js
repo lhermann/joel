@@ -6,7 +6,6 @@ import JoRecordingStatus from './components/recordingStatus/JoRecordingStatus'
 
 /* CSS */
 import '../assets/css/admin.scss'
-import '../assets/css/editor.scss'
 
 /* Options */
 Vue.config.productionTip = false
