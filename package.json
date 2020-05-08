@@ -11,17 +11,13 @@
   },
   "private": true,
   "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.config.js --watch",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.config.js",
-    "start": "npm run dev",
-    "stats": "cross-env NODE_ENV=development webpack --profile --json --config build/webpack.config.js > stats.json && webpack-bundle-analyzer stats.json",
-    "build": "npm run production",
-    "vue-serve": "vue-cli-service serve",
-    "vue-build": "vue-cli-service build",
-    "vue-lint": "vue-cli-service lint",
-    "vue-lint-fix": "vue-cli-service lint --fix"
+    "start": "npm run serve",
+    "dev": "npm run serve",
+    "serve": "vue-cli-service serve",
+    "prod": "npm run build",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
     "algoliasearch": "^3.35.1",
