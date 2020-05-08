@@ -29,48 +29,10 @@ if( function_exists('acf_add_local_field_group') ):
         if( !$post || !is_admin() ) return $field;
         ob_start();
         ?>
-<div id="vue-recording-status" postid="<?= $post->ID ?>">
-    <div v-if="loading" class="u-text-center u-m">
-        <div class="c-spinner"></div>
-    </div>
-    <div v-if="!loading" v-cloak>
-        <div class="o-flex o-flex--unit o-flex--middle">
-            <div class="o-flex__item"><span class="dashicons dashicons-video-alt3"></span> 1:05:14</div>
-            <div class="o-flex__item"><span class="dashicons dashicons-admin-page"></span> {{items.length}} Dateien</div>
-            <div class="o-flex__item"><span class="dashicons dashicons-category"></span> {{size}}</div>
-            <div v-if="!done" class="o-flex__item u-yellow u-text--">Next update in {{timeUntil}} seconds</div>
-            <div v-if="error" class="o-flex__item u-red"><span class="dashicons dashicons-warning"></span> {{error}}</div>
-            <div class="o-flex__spacer"></div>
-            <div class="o-flex__item"><button class="button" @click.prevent="showDetails = !showDetails">+</button></div>
-        </div>
-        <div class="c-progress c-progress--green">
-            <div class="c-progress__bar " role="progressbar" :style="{'width': progress}">{{progress}}</div>
-        </div>
-    </div>
-    <div v-cloak class="status-details" v-show="showDetails">
-        <table class="widefat fixed c-table">
-            <thead>
-                <tr>
-                    <th scope="col" class="column" width="12"><label class="screen-reader-text" for="status_icon">Status</label></th>
-                    <th scope="col" class="column" width="100%">File</th>
-                    <th scope="col" class="column" width="80">Size</th>
-                    <th scope="col" class="column" width="80">Stats</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr is="status-item"
-                    v-for="(item, i) in items"
-                    :item="item"
-                    :key="item.ID"
-                    :class="{'alternate': i % 2}"
-                />
-            </tbody>
-        </table>
-        <div class="u-muted u-text-center">
-            Die Originaldatei wird für zwei Monate gespeichert, bevor sie gelöscht wird.
-        </div>
-    </div>
-</div>
+        <div
+            data-vue="JoRecordingStatus"
+            data-options='<?= json_encode([ 'postid' => $post->ID ]) ?>'
+        ></div>
         <?php
         $field['message'] = str_replace(["\r","\n"],"",ob_get_clean());
         if(ob_get_length()) ob_end_flush();

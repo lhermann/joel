@@ -1,9 +1,8 @@
 import Vue from 'vue'
-import axios from 'axios'
 import instantiate from './instantiate.js'
 
 /* Components */
-import JoLivestreamDropdown from './components/livestream/JoLivestreamDropdown.vue'
+import JoRecordingStatus from './components/recordingStatus/JoRecordingStatus'
 
 /* CSS */
 import '../assets/css/admin.scss'
@@ -15,7 +14,6 @@ Vue.prototype.$joel = Object.assign(
   { templatePath: '', assetPath: '' },
   window._joel,
 )
-axios.defaults.baseURL = '/wp-json/'
 
 /* Instantiate Components */
-instantiate.component('JoLivestreamDropdown', JoLivestreamDropdown)
+instantiate.component('JoRecordingStatus', JoRecordingStatus)
