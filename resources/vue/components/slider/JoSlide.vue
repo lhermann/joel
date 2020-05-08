@@ -141,8 +141,6 @@ export default {
 $slide-transition: 0.7s;
 $slide-duration: 5s;
 
-.x-test { border: 1px solid red; }
-
 .c-slide {
   position: relative;
   background-color: $c-background;

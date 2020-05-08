@@ -272,7 +272,7 @@ function jsglobal() {
   print('<script type="text/javascript">');
   printf('window._joel = { templatePath: "%s", assetPath: "%s" }',
     get_template_directory_uri().'/',
-    get_template_directory_uri().'/'.config('directories')['assets'].'/'
+    get_template_directory_uri().'/'.config('directories')['public'].'/'
   );
   print('</script>');
 }
