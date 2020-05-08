@@ -79,7 +79,7 @@ $width-post:     (160px 90px);
         border-radius: $global-radius;
         background-color: $c-gray-2;
         background-size: cover;
-        overflow: hidden;
+        // overflow: hidden; !clipps neu-badge!
 
         .c-mediaitem--video & {
             background-image: url("../img/dummy-108p.jpg");
