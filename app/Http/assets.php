@@ -29,8 +29,6 @@ function register_stylesheets() {
         wp_enqueue_style('app', $mainCss->getUri(), [], sha1_file($mainCss->getPath()));
     }
 
-    // wp_enqueue_style('app', asset_path('css/app.css'), [], sha1_file(asset('css/app.css')->getPath()));
-
     wp_deregister_style( 'algolia-instantsearch' );
     wp_deregister_style( 'algolia-autocomplete' );
 
@@ -86,7 +84,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 10);
  * @return void
  */
 function register_editor_stylesheets() {
-    // add_editor_style(asset_path('css/editor.css'));
+    add_editor_style(asset_path('css/main.css'));
 }
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 
@@ -113,14 +111,13 @@ function register_admin_scripts_and_styles() {
     /*
      * Javascript
      */
-
-    // Development:
-    // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", [], "v2.5.18", false );
-
-    // Production:
-    // wp_enqueue_script( 'datefns_js', "https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js", [], "", false );
-    // wp_enqueue_script( 'vue_js', "https://cdn.jsdelivr.net/npm/vue", [], "v2.5.18", false );
-    // wp_enqueue_script( 'chartist_js', "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js", [], "0.11.0", false );
+    wp_enqueue_script(
+        'chartist_js',
+        '//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js',
+        [],
+        '0.11.0',
+        false
+    );
 
     $chunk_vendors_js = asset('js/chunk-vendors.js');
     wp_enqueue_script(
@@ -140,11 +137,22 @@ function register_admin_scripts_and_styles() {
         true
     );
 
+    $vanilla_admin_js = asset('js/vanilla-admin.js');
+    wp_enqueue_script(
+        'vanilla-admin',
+        $vanilla_admin_js->getUri(),
+        ['chunk-vendors', 'chartist_js'],
+        sha1_file($vanilla_admin_js->getPath()),
+        true
+    );
+
     /*
      * CSS
      */
-    $admin_css = asset('css/admin.css');
-    wp_enqueue_style('app', $admin_css->getUri(), [], sha1_file($admin_css->getPath()));
+    if (!webpack_dev_server()) {
+        $admin_css = asset('css/admin.css');
+        wp_enqueue_style('app', $admin_css->getUri(), [], sha1_file($admin_css->getPath()));
+    }
 };
 add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles' );
 
