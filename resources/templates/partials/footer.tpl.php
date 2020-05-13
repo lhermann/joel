@@ -1,9 +1,9 @@
 <?php
 $widgets_area_active = is_active_sidebar('footer_1')
-    && is_active_sidebar('footer_2')
-    && is_active_sidebar('footer_3')
-    && is_active_sidebar('footer_4')
-    && is_active_sidebar('footer_right');
+    || is_active_sidebar('footer_2')
+    || is_active_sidebar('footer_3')
+    || is_active_sidebar('footer_4')
+    || is_active_sidebar('footer_right');
 ?>
 
 <footer id="footer" class="c-site-footer " role="contentinfo">
