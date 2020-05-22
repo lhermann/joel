@@ -17,6 +17,7 @@ export default {
     }
   },
   created () {
+    this.getStatus()
     this.intervalID = setInterval(this.getStatus, 60 * 1000)
   },
   beforeDestory () {

@@ -18,6 +18,12 @@ use function Tonik\Theme\App\asset_path;
                 <h1><?php the_title() ?></h1>
             </header>
 
+            <?php template('vue-components/main', [
+                'component' => 'JoLivestreamMessage',
+                'style_modifier' => 'u-mb',
+                'options' => ['pageID' => get_the_ID()],
+            ]) ?>
+
             <div class="o-ratio o-ratio--16:9 u-shadow u-1/1">
                 <iframe id="player"
                     class="o-ratio__content c-player"
