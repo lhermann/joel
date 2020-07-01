@@ -58,7 +58,7 @@ export default {
       options: {},
       params: {
         per_page: 5,
-        series_exclude: 368, // mit Gott leben
+        series_exclude: [521, 368], // andachtsserien
       },
       userIntervened: false,
     }
