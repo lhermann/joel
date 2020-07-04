@@ -14,9 +14,44 @@ namespace Tonik\Theme\App\ACF;
 use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\Helper\formatbytes;
 use function Tonik\Theme\App\Helper\ffprobe_recording;
+use Tonik\Theme\App\Helper\Google_API;
 
 if( function_exists('acf_add_local_field_group') ):
 
+
+    /**
+     * Show youtube video upload status
+     */
+    add_filter('acf/load_field/name=youtube_upload_status', 'Tonik\Theme\App\ACF\youtube_upload_status');
+    function youtube_upload_status( $field ) {
+        global $post;
+        if( !$post || !is_admin() ) return $field;
+
+        $client = new Google_API();
+        // var_dump($client->getAuthUrl(), $client->authenticated());
+        // var_dump($field['instructions']);
+
+        $api_class = '';
+        $api_text = '';
+        if ($client->authenticated()) {
+            $api_class = 'u-green';
+            $api_text = '[YouTube API: authenticated]';
+        } else {
+            $api_class = 'u-red';
+            $api_text = sprintf(
+                '[YouTube API: missing - <a href="%s" target="_blank">%s</a>]',
+                $client->getAuthUrl($post->ID),
+                'Authenticate'
+            );
+        }
+        $field['instructions'] .= sprintf(
+            ' <span class="%s">%s</span>',
+            $api_class,
+            $api_text,
+        );
+
+        return $field;
+    }
 
 
     /**
@@ -281,6 +316,30 @@ if( function_exists('acf_add_local_field_group') ):
                 'endpoint' => 0,
             ),
             array(
+                'key' => 'field_5ecd4cafdc1e9',
+                'label' => 'YouTube-Upload',
+                'name' => 'youtube_upload',
+                'type' => 'button_group',
+                'instructions' => 'Video zum Upload auf YouTube markieren.',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'choices' => array(
+                    'false' => '✗ Nein',
+                    'enqueue_normal' => 'Zum Upload einreihen',
+                    'enqueue_priority' => 'Einreihen: Priorität',
+                    'uploaded' => '✓ Hochgeladen',
+                ),
+                'allow_null' => 0,
+                'default_value' => 'false',
+                'layout' => 'horizontal',
+                'return_format' => 'value',
+            ),
+            array(
                 'key' => 'field_5d0ce6e66e3b9',
                 'label' => 'YouTube Video',
                 'name' => 'youtube_video',
@@ -362,130 +421,6 @@ if( function_exists('acf_add_local_field_group') ):
         'description' => '',
     ));
     endif;
-    // acf_add_local_field_group(array(
-    //     'key' => 'group_acf_recording',
-    //     'title' => __('Recordings', config('textdomain')),
-    //     'fields' => array(
-    //         array(
-    //             'key' => 'field_53dfb75328fc8',
-    //             'label' => __('Status', config('textdomain')),
-    //             'name' => 'recording_status',
-    //             'type' => 'message',
-    //             'instructions' => '',
-    //             'required' => 0,
-    //             'conditional_logic' => 0,
-    //             'wrapper' => array(
-    //                 'width' => '100',
-    //                 'class' => '',
-    //                 'id' => '',
-    //             ),
-    //             'message' => '',
-    //             'new_lines' => 'wpautop',
-    //             'esc_html' => 0,
-    //         ),
-    //         array(
-    //             'key' => 'field_52c9deb0d3c39',
-    //             'label' => __('Select Recording', config('textdomain')),
-    //             'name' => 'recording_select',
-    //             'type' => 'select',
-    //             'instructions' => '',
-    //             'required' => 0,
-    //             'conditional_logic' => 0,
-    //             'wrapper' => array(
-    //                 'width' => '100',
-    //                 'class' => '',
-    //                 'id' => '',
-    //             ),
-    //             'choices' => array(
-    //                 'Gold Play Buddon.mp4' => 'Gold Play Buddon.mp4 [5 MB]',
-    //                 'logo-assembly-cut.mp4' => 'logo-assembly-cut.mp4 [5 MB]',
-    //                 'trailer-ausweg-2012.mp4' => 'trailer-ausweg-2012.mp4 [59 MB]',
-    //             ),
-    //             'default_value' => array(
-    //             ),
-    //             'allow_null' => 1,
-    //             'multiple' => 0,
-    //             'ui' => 0,
-    //             'ajax' => 0,
-    //             'return_format' => 'value',
-    //             'placeholder' => '',
-    //         ),
-    //         array(
-    //             'key' => 'field_4fb10184a8596',
-    //             'label' => __('Thumbnail', config('textdomain')),
-    //             'name' => 'thumbnail',
-    //             'type' => 'image',
-    //             'instructions' => 'Erforderliche Aufl&ouml;sung in Pixel: 1920x1080',
-    //             'required' => 0,
-    //             'conditional_logic' => 0,
-    //             'wrapper' => array(
-    //                 'width' => '',
-    //                 'class' => '',
-    //                 'id' => '',
-    //             ),
-    //             'return_format' => 'id',
-    //             'preview_size' => '360p',
-    //             'library' => 'all',
-    //             'min_width' => 1280,
-    //             'min_height' => 720,
-    //             'min_size' => '',
-    //             'max_width' => '',
-    //             'max_height' => '',
-    //             'max_size' => '',
-    //             'mime_types' => '',
-    //         ),
-    //         array(
-    //             'key' => 'field_5ccad024b0ad4',
-    //             'label' => 'Content',
-    //             'name' => 'content',
-    //             'type' => 'wysiwyg',
-    //             'instructions' => '',
-    //             'required' => 0,
-    //             'conditional_logic' => 0,
-    //             'wrapper' => array(
-    //                 'width' => '',
-    //                 'class' => '',
-    //                 'id' => '',
-    //             ),
-    //             'default_value' => '',
-    //             'tabs' => 'all',
-    //             'toolbar' => 'full',
-    //             'media_upload' => 1,
-    //             'delay' => 1,
-    //         ),
-    //     ),
-    //     'location' => array(
-    //         array(
-    //             array(
-    //                 'param' => 'post_type',
-    //                 'operator' => '==',
-    //                 'value' => 'recordings',
-    //             ),
-    //         ),
-    //     ),
-    //     'menu_order' => 0,
-    //     'position' => 'acf_after_title',
-    //     'style' => 'seamless',
-    //     'label_placement' => 'top',
-    //     'instruction_placement' => 'label',
-    //     'hide_on_screen' => '',
-    //     'active' => true,
-    //     'hide_on_screen' => array(),
-    //     'description' => '',
-    //     'hide_on_screen' => array(
-    //         0 => 'excerpt',
-    //         1 => 'custom_fields',
-    //         2 => 'discussion',
-    //         3 => 'comments',
-    //         4 => 'slug',
-    //         5 => 'author',
-    //         6 => 'format',
-    //         7 => 'featured_image',
-    //         8 => 'categories',
-    //         9 => 'tags',
-    //         10 => 'send-trackbacks',
-    //     ),
-    // ));
 
     /*
      * Podcast Taxonomy ACF fields

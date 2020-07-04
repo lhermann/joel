@@ -120,6 +120,7 @@ return [
         'Adminpage/livestream.php',
         'Helper/global.php',
         'Helper/recordings.php',
+        'Helper/Google_API.php',
         'Legacy/admin_page_videos.php',
         'Legacy/open-graph.php',
         'Legacy/recordings.php',

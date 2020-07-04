@@ -14,7 +14,8 @@
   "require": {
     "php": ">=7.0",
     "tonik/gin": "^3.0.0",
-    "jaybizzle/crawler-detect": "1.*"
+    "jaybizzle/crawler-detect": "1.*",
+    "google/apiclient": "^2.0"
   },
   "require-dev": {
     "tonik/cli": "^3.0.0"

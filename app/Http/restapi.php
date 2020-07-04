@@ -16,6 +16,7 @@ use function Tonik\Theme\App\Helper\get_terms_associated_with_term;
 use function Tonik\Theme\App\Helper\count_terms_associated_with_term;
 use function Tonik\Theme\App\Helper\fallback_img;
 use function Tonik\Theme\App\Legacy\get_video_files;
+use Tonik\Theme\App\Helper\Google_API;
 
 
 /**
@@ -311,3 +312,25 @@ function recording_endpoints() {
 
 }
 add_action( 'rest_api_init', 'Tonik\Theme\App\Http\recording_endpoints' );
+
+/**
+ * Google API Callback
+ */
+function google_api_callback() {
+
+    /*
+     * Recording status
+     */
+    register_rest_route( config('textdomain').'/v1', '/google-api-callback', array(
+        'methods' => \WP_REST_Server::READABLE,
+        'callback' => function( \WP_REST_Request $request ) {
+            if(!$_GET['code']) return 'code missing';
+            $client = new Google_API();
+            $client->authenticate($_GET['code']);
+            wp_redirect(admin_url());
+            exit();
+        }
+    ) );
+
+}
+add_action( 'rest_api_init', 'Tonik\Theme\App\Http\google_api_callback' );

@@ -31,3 +31,4 @@ stats.json
 # php
 *.orig
 info.php
+*.googleusercontent.com.json
