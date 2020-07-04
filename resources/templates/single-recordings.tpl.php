@@ -21,7 +21,7 @@ if($youtube) {
   $youtube = preg_replace('/width="\d+"\s*height="\d+"\s*/i', '', $youtube);
   // Extract URL
   preg_match_all('/src="(.+?)"/', $youtube, $matches);
-  $url = $matches[1][0];
+  $url = count($matches) > 0 ? $matches[1][0] : '';
   // Use youtube-nocookie.com
   $url = str_replace("www.youtube.com", "www.youtube-nocookie.com", $url);
   // Add &modestbranding=1
@@ -86,7 +86,6 @@ if($youtube) {
       <section id="infobox" class="u-pv">
 
         <?php template('partials/recordings-meta', ['youtube' => $youtube]) ?>
-
 
       </section>
 

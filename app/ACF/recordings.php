@@ -22,14 +22,12 @@ if( function_exists('acf_add_local_field_group') ):
     /**
      * Show youtube video upload status
      */
-    add_filter('acf/load_field/name=youtube_upload_status', 'Tonik\Theme\App\ACF\youtube_upload_status');
-    function youtube_upload_status( $field ) {
+    add_filter('acf/load_field/name=youtube_upload', 'Tonik\Theme\App\ACF\youtube_upload');
+    function youtube_upload( $field ) {
         global $post;
         if( !$post || !is_admin() ) return $field;
 
         $client = new Google_API();
-        // var_dump($client->getAuthUrl(), $client->authenticated());
-        // var_dump($field['instructions']);
 
         $api_class = '';
         $api_text = '';
