@@ -19,7 +19,7 @@ class Google_API {
     $credentials_file = get_template_directory().'/'.OAUTH_CREDENTIALS_FILE;
     $callback_url = sprintf(
       '%s/wp-json/%s/v1/google-api-callback',
-      WP_SITEURL,
+      get_bloginfo('url'),
       config('textdomain')
     );
 
