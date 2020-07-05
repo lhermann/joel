@@ -45,7 +45,7 @@ if( function_exists('acf_add_local_field_group') ):
         $field['instructions'] .= sprintf(
             ' <span class="%s">%s</span>',
             $api_class,
-            $api_text,
+            $api_text
         );
 
         return $field;
