@@ -20,7 +20,7 @@ class Google_API {
     $callback_url = sprintf(
       '%s/wp-json/%s/v1/google-api-callback',
       WP_SITEURL,
-      config('textdomain'),
+      config('textdomain')
     );
 
     // Init Client
