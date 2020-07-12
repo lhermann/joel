@@ -332,8 +332,10 @@ if(function_exists('acf_add_local_field_group')):
         ),
         'choices' => array(
           'false' => '✗ Nein',
-          'enqueue_normal' => 'Zum Upload einreihen',
+          'enqueue_old' => 'Einreihen: Alte zuerst',
+          'enqueue_new' => 'Einreihen: Neue zuerst',
           'enqueue_priority' => 'Einreihen: Priorität',
+          'uploading' => '⬆ Hochladen',
           'uploaded' => '✓ Hochgeladen',
         ),
         'allow_null' => 0,
