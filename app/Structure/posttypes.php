@@ -84,15 +84,16 @@ add_filter ( 'pre_get_posts', 'Tonik\Theme\App\Structure\set_recordings_post_typ
 // Register the columns
 function recordings_edit_columns($columns) {
     $columns = array(
-        "cb"         => "<input type=\"checkbox\" />",
-        "image"      => __('Image', config('textdomain')),
-        "status"     => '',
-        "title"      => __('Title', config('textdomain')),
-        "speakers"   => __('Speaker', config('textdomain')),
-        "series"     => __('Series', config('textdomain')),
-        "topics"     => __('Topics', config('textdomain')),
-        "date"       => __('Date', config('textdomain')),
-        "stats"      => __('Stats', config('textdomain'))
+        'cb'         => '<input type="checkbox" />',
+        'image'      => __('Image', config('textdomain')),
+        'status'     => '',
+        'title'      => __('Title', config('textdomain')),
+        'speakers'   => __('Speaker', config('textdomain')),
+        'series'     => __('Series', config('textdomain')),
+        'topics'     => __('Topics', config('textdomain')),
+        'date'       => __('Date', config('textdomain')),
+        'youtube'    => __('YT', config('textdomain')),
+        'stats'      => __('Stats', config('textdomain'))
     );
 
     return $columns;
@@ -194,6 +195,21 @@ function recordings_custom_columns($column) {
             break;
         case "topics":
             the_terms($post->ID, 'topics', '<small class="u-truncate">', ',<br>', '</small>');
+            break;
+        case "youtube":
+            $yt_field = get_field('youtube_upload', $post->ID);
+            $icon_map = [
+                null => 'no-alt',
+                'false' => 'no-alt',
+                'enqueue_old' => 'flag',
+                'enqueue_new' => 'flag',
+                'enqueue_priority' => 'flag',
+                'uploading' => 'upload',
+                'uploaded' => 'yes',
+            ];
+            print("<div class=\"yt-status-icon $yt_field\">");
+            printf('<span class="dashicons dashicons-auto dashicons-%s"></span>', $icon_map[$yt_field]);
+            print('</div>');
             break;
         case "stats":
             print('<div class="o-flex o-flex--between">');

@@ -141,14 +141,55 @@
     }
 
     .column-speakers,
-    .column-date {
+    .column-date,
+    .column-youtube {
         border-left: 1px solid $c-gray-2;
+    }
+
+    .column-youtube {
+        width: 24px;
     }
 
     .column-stats,
     .column-subs {
         background-color: rgba($c-black, 0.05);
         color: $c-textmuted;
+    }
+}
+
+.yt-status-icon {
+    font-size: 16px;
+    background-color: #ddd;
+    color: #333;
+    border-radius: 3px;
+    line-height: 24px;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+
+    &.enqueue_old {
+        background-color: lightblue;
+        color: darkblue;
+    }
+
+    &.enqueue_new {
+        background-color: blue;
+        color: white;
+    }
+
+    &.enqueue_priority {
+        background-color: darkblue;
+        color: white;
+    }
+
+    &.uploading {
+        background-color: orange;
+        color: white;
+    }
+
+    &.uploaded {
+        background-color: green;
+        color: white;
     }
 }
 
