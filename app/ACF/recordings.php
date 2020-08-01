@@ -21,6 +21,7 @@ if(function_exists('acf_add_local_field_group')):
 
   /**
    * Show youtube video upload status
+   * And set all new videos to 'enqueue_new'
    */
   add_filter('acf/load_field/name=youtube_upload', 'Tonik\Theme\App\ACF\youtube_upload');
   function youtube_upload( $field ) {
@@ -47,6 +48,11 @@ if(function_exists('acf_add_local_field_group')):
       $api_class,
       $api_text
     );
+
+    // automatically enqueue all videos after 2020-08-01
+    if (strtotime('2020-08-01') < strtotime('now')) {
+      $field['default_value'] = 'enqueue_new';
+    }
 
     return $field;
   }
@@ -206,7 +212,6 @@ if(function_exists('acf_add_local_field_group')):
     // Important: return the field
     return $field;
   }
-
 
 
   /*
