@@ -3,19 +3,16 @@
     <div class="o-wrapper">
       <div class="o-flex o-flex--tiny o-flex--middle o-flex--wrap">
         <div class="o-flex__item u-1/1 u-2/3@desktop">
-          <template v-if="doNotTrack">
+          <!-- <template v-if="doNotTrack">
             Die "Do Not Track"-Einstellung deines Browsers ist aktiv. Nur notwendige Cookies werden gesetzt.
-          </template>
-          <template v-else>
-            {{ options['page-name'] }} verwendet Cookies. Manche Cookies sind für die Grundfunktionen dieser Seite, andere erfassen wie du diese Seite verwendest mithilfe von Matomo.
-          </template>
-            Weitere Infos in der <a class="c-link c-link--dotted" :href="options['privacy-policy-link']">Datenschutzerklärung</a>.
+          </template> -->
+          {{ options['page-name'] }} verwendet Cookies. Manche Cookies sind für die Grundfunktionen dieser Seite, andere erfassen wie du diese Seite verwendest mithilfe von Matomo. Weitere Infos in der <a class="c-link c-link--dotted" :href="options['privacy-policy-link']">Datenschutzerklärung</a>.
         </div>
         <div class="o-flex__item u-1/1 u-1/3@desktop u-text-right">
-          <button v-if="!doNotTrack" class="c-link c-link--dotted u-nowrap" @click="deny">
+          <button class="c-link c-link--dotted u-nowrap" @click="deny">
             Nur notwendige Cookies erlauben
           </button>
-          <button class="c-btn c-btn--small c-btn--green u-ml--" @click="allow">
+          <button class="c-btn c-btn--small c-btn--green u-ml-" @click="allow">
             OK
           </button>
         </div>
@@ -35,11 +32,22 @@ export default {
   },
   data () {
     return {
-      cookie: null,
-      paq: window._paq,
+      reevaluateCookie: 1,
     }
   },
   computed: {
+    matomo () {
+      return window._paq
+    },
+    cookie: {
+      get () {
+        return this.reevaluateCookie && Cookies.get('consent-cookie')
+      },
+      set (value) {
+        Cookies.set('consent-cookie', value, { expires: addYears(new Date(), 1) })
+        this.reevaluateCookie++
+      },
+    },
     hasCookie () {
       return Boolean(this.cookie)
     },
@@ -50,7 +58,7 @@ export default {
       if (typeof window === 'undefined') return false
       return Boolean(
         window.doNotTrack ||
-        window.navigator.doNotTrack ||
+        window.navigator.doNotTrack === '1' ||
         window.navigator.msDoNotTrack,
       )
     },
@@ -62,23 +70,13 @@ export default {
       this.options = options
     },
     allow () {
-      this.setCookie(this.doNotTrack ? 'deny' : 'allow')
-      this.paq.push(['rememberConsentGiven'])
+      this.cookie = 'allow'
+      this.matomo.push(['rememberConsentGiven'])
     },
     deny () {
-      this.setCookie('deny')
-      this.paq.push(['forgetConsentGiven'])
+      this.cookie = 'deny'
+      this.matomo.push(['forgetConsentGiven'])
     },
-    setCookie (value) {
-      Cookies.set('consent-cookie', value, { expires: addYears(new Date(), 1) })
-      this.cookie = value
-    },
-    getCookie () {
-      this.cookie = Cookies.get('consent-cookie')
-    },
-  },
-  beforeMount () {
-    this.getCookie()
   },
 }
 </script>
