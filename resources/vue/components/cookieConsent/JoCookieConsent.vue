@@ -26,6 +26,7 @@
 
 <script>
 import Cookies from 'js-cookie'
+import addYears from 'date-fns/addYears'
 
 export default {
   props: {
@@ -69,7 +70,7 @@ export default {
       this.paq.push(['forgetConsentGiven'])
     },
     setCookie (value) {
-      Cookies.set('consent-cookie', value, { expires: 365 })
+      Cookies.set('consent-cookie', value, { expires: addYears(new Date(), 1) })
       this.cookie = value
     },
     getCookie () {
