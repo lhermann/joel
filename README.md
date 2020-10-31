@@ -2,6 +2,12 @@
 
 Built with [tonik/theme](https://github.com/tonik/theme)
 
+## Develop
+
+1. Start Wordpress on port 8080
+2. Run `npm run build` so that PHP can find the assets in the dist folder
+3. Run `npm run dev` an access the dev environment at http://localhost:8081
+
 ## Requirements
 
 * WordPress >= 4.7
