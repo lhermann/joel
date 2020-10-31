@@ -24,8 +24,10 @@ use function Tonik\Theme\App\template;
           <span class="u-text-middle u-mr-">Weitere Veranstaltungen:</span>
       </h2>
 
-      <?php template('vue-components/events', [
+      <?php template('vue-components/main', [
+          'component' => 'JoEvents',
           'id' => 'vue-events',
+          'style_modifier' => '',
           'params' => [
             'numberposts' => 3,
             'event-category' => 'veranstaltung',

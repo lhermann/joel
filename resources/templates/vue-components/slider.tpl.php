@@ -4,21 +4,6 @@ use function Tonik\Theme\App\asset_path;
 use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\asset;
 
-// $options['default-slide'] = [
-//   "link" => "http://localhost:8081/slides/joel-media-ministry-e-v/",
-//   "acf" => [
-//     "slide_type" => "teaser",
-//     "show_title" => false,
-//     "button_text" => "Erster Besuch? Hier geht's los",
-//     "content" => "Hello World",
-//     "colors" => "https://www.joelmedia.de/wordpress/wp-content/themes/joel/public/images/slide-dark-blue.svg",
-//     "link" => ["title" => "", "url" => "/aufnahmen/", "target" => ""],
-//   ],
-//   "title" => ["rendered" => "Joel Media Ministry e.V."],
-// ];
-
-// var_dump($options); die();
-
 $options = isset($options) ? json_encode($options) : '{}';
 $params = isset($params) ? json_encode($params) : '{}';
 ?>
