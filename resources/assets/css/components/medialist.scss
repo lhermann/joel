@@ -29,8 +29,16 @@
 .c-medialist--inline {
     margin-right: 0;
     margin-left: 0;
+}
 
-    .c-medialist__item {
+.c-medialist__item {
+    margin-bottom: $unit-1;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .c-medialist--inline & {
         display: inline-block;
         margin-right: $unit-small;
         margin-bottom: $unit-small;

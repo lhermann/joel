@@ -20,16 +20,20 @@ $width-post:     (160px 90px);
 .c-mediaitem {
     display: flex; /* 1 */
     position: relative;
-    transform: translate(0, 0);
+    // transform: translate(0, 0);
     transition: $global-transition;
     border-radius: $global-radius;
-    padding: $unit-small;
+    padding: $unit-2;
     align-items: center; /* 1 */
+    border: 1px solid transparent;
 
-    &:hover {
-        transform: translate(-1px, -2px);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
-        background-color: var(--background, rgba($c-black, 0.03));
+    &:hover,
+    &:focus,
+    &:focus-within {
+        // transform: translate(-0.5px, -1px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        // background-color: var(--background, rgba($c-black, 0.03));
+        border: 1px solid $c-brand-4;
     }
 
     &--post {
@@ -145,6 +149,10 @@ $width-post:     (160px 90px);
             transition: $global-transition opacity;
             color: currentcolor;
 
+            &:focus img {
+                box-shadow: 0 0 0 2px $c-brand-4;
+            }
+
             &:after {
                 content: "";
                 position: absolute;
@@ -223,12 +231,13 @@ $width-post:     (160px 90px);
             margin-bottom: 0;
 
             &,
-            a {
-                &,
-                &:hover,
-                &:focus, {
-                    color: currentcolor;
-                }
+            &:hover {
+                color: currentcolor;
+            }
+
+            &:focus {
+                color: currentcolor;
+                text-decoration: underline;
             }
 
             .c-mediaitem--post & {
