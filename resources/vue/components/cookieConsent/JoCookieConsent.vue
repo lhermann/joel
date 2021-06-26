@@ -3,9 +3,6 @@
     <div class="o-wrapper">
       <div class="o-flex o-flex--tiny o-flex--middle o-flex--wrap">
         <div class="o-flex__item u-1/1 u-2/3@desktop">
-          <!-- <template v-if="doNotTrack">
-            Die "Do Not Track"-Einstellung deines Browsers ist aktiv. Nur notwendige Cookies werden gesetzt.
-          </template> -->
           {{ options['page-name'] }} verwendet Cookies. Manche Cookies sind für die Grundfunktionen dieser Seite, andere erfassen wie du diese Seite verwendest mithilfe von Matomo. Weitere Infos in der <a class="c-link c-link--dotted" :href="options['privacy-policy-link']">Datenschutzerklärung</a>.
         </div>
         <div class="o-flex__item u-1/1 u-1/3@desktop u-text-right">
@@ -23,7 +20,6 @@
 
 <script>
 import Cookies from 'js-cookie'
-import addYears from 'date-fns/addYears'
 
 export default {
   props: {
@@ -44,7 +40,7 @@ export default {
         return this.reevaluateCookie && Cookies.get('consent-cookie')
       },
       set (value) {
-        Cookies.set('consent-cookie', value, { expires: addYears(new Date(), 1) })
+        Cookies.set('consent-cookie', value, { expires: 356, sameSite: 'Lax' })
         this.reevaluateCookie++
       },
     },
