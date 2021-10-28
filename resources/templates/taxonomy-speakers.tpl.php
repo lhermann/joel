@@ -53,9 +53,7 @@ $series_count = count_terms_associated_with_term( $term, 'series' );
                             <?php if ($website = get_field( 'website', $term )): ?>
                                 <li>
                                     <?= __('Website', config('textdomain')) ?>:
-                                    <a class="c-link c-link--dotted c-link--white u-semibold"
-                                        href="http://<?= $website ?>"
-                                    >
+                                    <a class="c-link c-link--dotted c-link--white u-semibold" href="<?= $website ?>" target="_blank" rel="noopener">
                                         <span class="u-ic-open_in_new"></span>
                                         <?= $website ?>
                                     </a>
