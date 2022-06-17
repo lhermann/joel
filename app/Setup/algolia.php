@@ -93,12 +93,13 @@ add_filter( 'algolia_searchable_post_recordings_shared_attributes',
  * Shared attributes for terms 'speakers' & 'series'
  */
 function taxonomy_record(array $record, \WP_Term $term) {
+    $thumbnails = wp_get_attachment_image_src(
+        get_field( 'image', $term->taxonomy.'_'.$term->term_id ),
+        $term->taxonomy === 'series' ? '144p' : 'square160'
+    );
     $attr = [
         'type' => $term->taxonomy,
-        'thumbnail' => wp_get_attachment_image_src(
-            get_field( 'image', $term->taxonomy.'_'.$term->term_id ),
-            $term->taxonomy === 'series' ? '144p' : 'square160'
-        )[0]
+        'thumbnail' => is_array($thumbnails) ? reset($thumbnails) : '',
     ];
 
     return array_merge($record, $attr);

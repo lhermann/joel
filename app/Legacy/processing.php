@@ -39,7 +39,6 @@ function content_on_save ($post_id) {
   }
 }
 
-
 /**
  * Is triggered whenever a post or page is created or updated.
  *
@@ -65,6 +64,7 @@ function process_on_save ($post_id) {
   $speaker = reset($speaker)->name;
   $series = wp_get_post_terms($post_id, 'series') ?? [];
   $series = reset($series)->name;
+  $thumbnail = wp_get_attachment_image_url(get_field('thumbnail', $post_id), '720p');
 
   /*
    * $filename: the selected video or audio file; $filename = (var) 'null' for empty values
@@ -117,10 +117,15 @@ function process_on_save ($post_id) {
      * Update all rows with new speaker & series
      */
     foreach ($existing_rows as $row) {
-      if ($row['speaker'] === $speaker && $row['series'] === $series) continue;
+      if (
+        $row['thumbnail'] === $thumbnail
+        && $row['speaker'] === $speaker
+        && $row['series'] === $series
+      ) continue;
       $wpdb->update(
         'wp_video_files',
         [
+          'thumbnail' => $thumbnail,
           'speaker' => $speaker,
           'series' => $series,
           'modified' => current_time('mysql'),
@@ -149,6 +154,7 @@ function process_on_save ($post_id) {
         'size'          => filesize(config('processing')['upload-dir'].$filename),
         'length'        => '',
         'flags'         => '',
+        'thumbnail'     => $thumbnail,
         'speaker'       => $speaker,
         'series'        => $series,
         'created'       => current_time('mysql'),
