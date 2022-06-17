@@ -79,6 +79,30 @@ if(function_exists('acf_add_local_field_group')):
   }
 
 
+  /**
+   * Helper to render video select dropdown feedback item
+   * @param  string  $field
+   * @param  string  $value
+   * @param  string  $recommended
+   * @param  boolean $valid
+   * @return string
+   */
+  function dropdown_feedback_item ($field, $value, $recommended = '', $valid = true) {
+    return sprintf(
+      '<li>
+        <span style="color: %s;">%s</span>
+        <span>%s:</span>
+        <strong>%s</strong>
+        %s
+      </li>',
+      $valid ? 'green' : 'red',
+      $valid ? '✓' : '✗',
+      $field,
+      $value,
+      !$valid && $recommended ? "<span>→ $recommended</span>" : "",
+    );
+  }
+
 
   /**
    * LEGACY
@@ -102,7 +126,7 @@ if(function_exists('acf_add_local_field_group')):
 
     // Settings
     $min_height = 720;
-    $min_bitrate = 340;
+    $min_bitrate = 2500;
 
     // read file directory
     $directory = file_exists(config('processing')['upload-dir']) ? array_filter(
@@ -120,7 +144,7 @@ if(function_exists('acf_add_local_field_group')):
       // fill select
       $videofiles[$file] = $file.' ['.formatbytes( filesize( config('processing')['upload-dir'].$file ) ).']';
       // prepare video info boxes
-      $video = ffprobe_recording( config('processing')['upload-dir'].$file );
+      $video = ffprobe_recording(config('processing')['upload-dir'] . $file);
 
       if( $video->error ) {
 
@@ -137,53 +161,55 @@ if(function_exists('acf_add_local_field_group')):
         );
 
       } else {
+        $unfit = $video->height < 720
+          || $video->par !== '1:1'
+          || $video->dar !== '16:9';
 
-        switch($video->par) {
-          case '1:1': $parmsg = ''; break;
-          case '0:1': $parmsg = '-> Keine PAR-Info im video gespeichert'; break;
-          default:    $parmsg = '-> Video wird eventuell verzerrt dargestellt; Ideal: 1:1'; break;
-        }
-        switch ($video->dar) {
-          case '16:9': $parmsg = ''; break;
-          case '0:1': $parmsg = '-> Keine DAR-Info im video gespeichert'; break;
-          default:    $parmsg = '-> Video wird beschnitten; Ideal: 16:9'; break;
-        }
-
-        // Generate output string
-        $output['resolution'] = sprintf(
-          '<li%s>Aufl&ouml;sung: <strong>%sx%s</strong> %s</li>',
-          $video->height < $min_height ? ' class="format-warning"' : '',
-          $video->width,
-          $video->height,
-          $video->height < $min_height ? '-> Aufl&ouml;sung zu gering; Ideal: 1280x720' : ''
+        $output = [];
+        $output[] = dropdown_feedback_item(
+          "Datei",
+          $file,
+          null,
+          !$unfit,
         );
-        $output['bitrate'] = sprintf(
-          '<li%s>Bitrate: <strong>%skb/s</strong> %s</li>',
-          $video->bitrate < $min_bitrate ? ' class="format-warning"' : '',
+        $output[] = dropdown_feedback_item(
+          "Aufl&ouml;sung",
+          $video->width . "×" . $video->height,
+          "Min: 1280×720, Empfohlen: 1920×1080",
+          $video->height >= $min_height,
+        );
+        $output[] = dropdown_feedback_item(
+          "Bitrate",
           $video->bitrate,
-          $video->bitrate < $min_bitrate ? '-> F&uuml;r eine optimale Qualit&aumlt empfiehlt sich eine Bitrate von 5000kb/s)' : ''
+          "Min: 2500kb/s, Empfohlen: 5000kb/s",
+          $video->bitrate >= $min_bitrate,
         );
-        $output['PAR'] = sprintf(
-          '<li%s>Pixel Aspect Ratio (PAR): <strong>%s</strong> %s</li>',
-          $parmsg == '' ? '' : ' class="format-warning"',
+        $output[] = dropdown_feedback_item(
+          "Pixel Aspect Ratio (PAR)",
           $video->par,
-          $parmsg
+          "Erfordert: 1:1",
+          $video->par === '1:1',
         );
-        $output['DAR'] = sprintf( '<li%s>Display Aspect Ratio (DAR): <strong>%s</strong> %s</li>',
-          $parmsg == '' ? '' : ' class="format-warning"',
+        $output[] = dropdown_feedback_item(
+          "Display Aspect Ratio (DAR)",
           $video->dar,
-          $parmsg
+          "Erfordert: 16:9",
+          $video->dar === '16:9',
         );
-        $unfit = $video->height < 480 || $video->par !== '1:1' || $video->dar !== '16:9' ? true : false;
+        $output[] = dropdown_feedback_item(
+          "Frame Rate",
+          $video->fps . "fps",
+          "Empfohlen: 30fps",
+          $video->fps >= 30,
+        );
 
         // Add video format info boxes
         $video_information[] = sprintf(
-          '<div id="%1$s" data-value="%2$s" class="%3$s"><h4>%5$s %2$s</h4>%4$s</div>',
-          'format-info-'.$key,
+          '<div id="%s" data-value="%s" class="video-alert %s hidden">%s</div>',
+          "format-info-$key",
           $file,
-          'video-alert hidden '.($unfit ? 'alert-warning' : 'alert-success'),
-          '<ul>'.$output['resolution'].$output['bitrate'].$output['PAR'].$output['DAR'].'</ul>',
-          $unfit ? '<span class="dashicons dashicons-info"></span>' : '<span class="dashicons dashicons-yes"></span>'
+          $unfit ? 'alert-error' : 'alert-success',
+          "<ul>" . join('', $output) . "</ul>",
         );
 
       }
@@ -197,7 +223,7 @@ if(function_exists('acf_add_local_field_group')):
       "SELECT * FROM wp_video_files WHERE post_id = '$post->ID' AND status <= 10",
       ARRAY_A
     );
-    $alert = '<div id="alert-exists" class="video-alert alert-success hidden">Es ist bereits ein Video vorhanden.</div>';
+    $alert = '<div id="alert-exists" class="video-alert alert-warning hidden">Es ist bereits ein Video vorhanden.</div>';
     $alert .= '<div id="alert-overwritten" class="video-alert alert-error hidden"><strong>Achtung:</strong> Vorhandene Datei wird &uuml;berschrieben</div>';
     $js = sprintf('<div id="videofile-exists" data-bool="%s"></div>',
       $db_file ? "true" : "false"

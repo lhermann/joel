@@ -226,6 +226,7 @@ add_action('theme/single/sidebar', 'Tonik\Theme\App\Setup\render_sidebar');
 function joel_setup_options () {
   //migrate joel db
   global $wpdb;
+
   // Posts
   $wpdb->query( "UPDATE $wpdb->posts SET post_type = 'recordings' WHERE post_type = 'video';" );
 

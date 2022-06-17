@@ -23,7 +23,7 @@ function ffprobe_recording( $file ) {
         return $video;
     }
 
-    $pattern = '/(?:\[STREAM\].*?index=0).*?width=(?<w>\d+).*?height=(?<h>\d+).*?sample_aspect_ratio=(?<par>\d+:\d+).*?display_aspect_ratio=(?<dar>\d+:\d+).*?bit_rate=(?<bitrate>\d+)/s';
+    $pattern = '/(?:\[STREAM\].*?index=0).*?width=(?<w>\d+).*?height=(?<h>\d+).*?sample_aspect_ratio=(?<par>\d+:\d+).*?display_aspect_ratio=(?<dar>\d+:\d+).*?r_frame_rate=(?<fps>\d+).*?bit_rate=(?<bitrate>\d+)/s';
     preg_match($pattern, implode($output), $matches);
 
     // print("<pre>"); print_r(implode($output)); print("</pre>");
@@ -33,6 +33,7 @@ function ffprobe_recording( $file ) {
     $video->bitrate = floor($matches['bitrate']/1000);
     $video->par = $matches['par'];
     $video->dar = $matches['dar'];
+    $video->fps = $matches['fps'];
 
     return $video;
 }

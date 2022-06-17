@@ -63,11 +63,11 @@ function content_on_save( $post_id ) {
 /**
  * Is triggered whenever a post or page is created or updated.
  * (ACF fires with priority 10, so this one needs to be first since it alters
- * the $_POST variable) – this line is obsolete by know, yet I haven't chaned
+ * the $_POST variable) – this line is obsolete by now, but I haven't chaned
  * the priority
  */
-add_action( 'save_post', 'Tonik\Theme\App\Legacy\process_on_save', 1 );
-function process_on_save( $post_id ) {
+add_action('save_post', 'Tonik\Theme\App\Legacy\process_on_save', 1);
+function process_on_save ($post_id) {
 
     /*
      * Avoid the function to trigger at wrong time
