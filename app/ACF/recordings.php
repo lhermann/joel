@@ -105,7 +105,6 @@ if(function_exists('acf_add_local_field_group')):
 
 
   /**
-   * LEGACY
    * Populate the select dropdown list
    *
    * #1 Manipulate the 'select' field for videos and populate them with a list of all the videos
