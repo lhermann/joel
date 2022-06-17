@@ -122,22 +122,21 @@
 
 /* Video Alert */
 .video-alert {
-    padding: 8px 35px 8px 14px;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    background-color: #ddd;
+    padding: 1px 12px;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    margin: 5px 0 15px;
+    background-color: white;
+    border-left-width: 4px;
 }
 .alert-success {
-    background-color: #dff0d8;
-    color: #468847;
+    border-left-color: #5db85b;
 }
 .alert-warning {
-    background-color: #fcf8e3;
-    color: #8a6d3b;
+    border-left-color: #dba618;
 }
 .alert-error {
-    background-color: #f2dede;
-    color: #b94a48;
+    border-left-color: #cd331f;
 }
 .alert-invisible {
     display: none;

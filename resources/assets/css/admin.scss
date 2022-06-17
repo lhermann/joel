@@ -57,8 +57,8 @@
 
 
 // UTILITIES
-@import "~inuitcss/utilities/utilities.widths";
-@import "~inuitcss/utilities/utilities.hide";
+@import "../../../node_modules/inuitcss/utilities/utilities.widths";
+@import "../../../node_modules/inuitcss/utilities/utilities.hide";
 @import "utilities/text-align";
 @import "utilities/text";
 
@@ -73,7 +73,7 @@
 
 
 // OTHER
-@import "~chartist/dist/scss/chartist.scss";
+@import "../../../node_modules/chartist/dist/scss/chartist.scss";
 
 /* Images */
 .img {
@@ -230,11 +230,9 @@
     background: #444;
 }
 
-@import "~chartist/dist/scss/chartist";
+@import "../../../node_modules/chartist/dist/scss/chartist";
 
 
 
 // LEGACY
 @import "legacy/admin";
-
-

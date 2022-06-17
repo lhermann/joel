@@ -11,7 +11,7 @@
     margin-top: calc(-1 * var(--gap));
 
     // Gaps
-    &--tiniest { --gap: #{$unit-0/2}; }
+    &--tiniest { --gap: calc(#{$unit-0}/2); }
     &--tinier { --gap: #{$unit-0}; }
     &--tiny { --gap: #{$unit-tiny}; }
     &--small { --gap: #{$unit-small}; }

@@ -42,7 +42,7 @@
     }
 
     &--small.is-loading::after {
-        border-width: $unit-tiny / 2;
+        border-width: calc($unit-tiny / 2);
     }
 
     &--border {

@@ -3,6 +3,6 @@ $inuit-global-font-size: 16px;
 $inuit-global-line-height: 24px;
 
 @import "settings/config";
-@import "~inuitcss/settings/settings.core";
+@import "../../../node_modules/inuitcss/settings/settings.core";
 @import "settings/global";
 @import "settings/colors";

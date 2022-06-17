@@ -17,7 +17,8 @@
     "prod": "npm run build",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lint-fix": "vue-cli-service lint --fix"
+    "lint-fix": "vue-cli-service lint --fix",
+    "sass-admin": "sass --watch resources/assets/css/admin.scss dist/css/admin.css",
   },
   "dependencies": {
     "algoliasearch": "^3.35.1",
