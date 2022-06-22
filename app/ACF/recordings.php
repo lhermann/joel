@@ -179,8 +179,8 @@ if(function_exists('acf_add_local_field_group')):
         );
         $output[] = dropdown_feedback_item(
           "Bitrate",
-          $video->bitrate,
-          "Min: 2500kb/s, Empfohlen: 5000kb/s",
+          $video->bitrate . " kb/s",
+          "Min: 2.500 kb/s, Empfohlen: 5.000 kb/s",
           $video->bitrate >= $min_bitrate,
         );
         $output[] = dropdown_feedback_item(
@@ -222,7 +222,7 @@ if(function_exists('acf_add_local_field_group')):
       "SELECT * FROM wp_video_files WHERE post_id = '$post->ID' AND status <= 10",
       ARRAY_A
     );
-    $alert = '<div id="alert-exists" class="video-alert alert-warning hidden">Es ist bereits ein Video vorhanden.</div>';
+    $alert = '<div id="alert-exists" class="video-alert alert-success hidden">Es ist bereits ein Video vorhanden.</div>';
     $alert .= '<div id="alert-overwritten" class="video-alert alert-error hidden"><strong>Achtung:</strong> Vorhandene Datei wird &uuml;berschrieben</div>';
     $js = sprintf('<div id="videofile-exists" data-bool="%s"></div>',
       $db_file ? "true" : "false"

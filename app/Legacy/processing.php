@@ -117,18 +117,13 @@ function process_on_save ($post_id) {
      * Update all rows with new speaker & series
      */
     foreach ($existing_rows as $row) {
-      if (
-        $row['thumbnail'] === $thumbnail
-        && $row['speaker'] === $speaker
-        && $row['series'] === $series
-      ) continue;
       $wpdb->update(
         'wp_video_files',
         [
           'thumbnail' => $thumbnail,
           'speaker' => $speaker,
           'series' => $series,
-          'modified' => current_time('mysql'),
+          'post_modified' => current_time('mysql', 1),
         ],
         ['ID' => $row['ID']],
       );
