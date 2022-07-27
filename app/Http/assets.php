@@ -75,7 +75,10 @@ function register_scripts_and_styles() {
  */
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 function register_editor_stylesheets() {
-  add_editor_style(asset_path('css/main.css'));
+  $main_css = get_asset_by_name('main.css');
+  if (file_exists($main_css->getPath())) {
+    add_editor_style($main_css->getPath());
+  }
 }
 
 /**

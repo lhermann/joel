@@ -15,10 +15,10 @@ export default {
           options: el.dataset.options ? JSON.parse(el.dataset.options) : {},
         },
       )
-      instance.provide('$joel', Object.assign(
+      instance.config.globalProperties.$joel = Object.assign(
         { templatePath: '', assetPath: '' },
         window._joel,
-      ))
+      )
       instance.mount(el)
       this.instances.push(instance)
     })
