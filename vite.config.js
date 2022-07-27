@@ -13,7 +13,7 @@ export default defineConfig({
       input: {
         'vue-main': 'src-vue/main.js',
         'vue-admin': 'src-vue/admin.js',
-        'vanilla-main': 'src-vanilla/main.js',
+        // 'vanilla-main': 'src-vanilla/main.js', // TODO: refactor legacy depts
         'vanilla-admin': 'src-vanilla/admin.js',
       },
     },

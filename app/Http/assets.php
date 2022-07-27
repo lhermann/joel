@@ -55,6 +55,31 @@ function register_scripts_and_styles() {
   wp_deregister_script('algolia-autocomplete');
 
   //
+  // Legacy Scripts
+  //
+  $chunk_vendors_legacy_js = asset('assets/chunk-vendors.legacy.js');
+  if (file_exists($chunk_vendors_legacy_js->getPath())) {
+    wp_enqueue_script(
+      'chunk-vendors-legacy',
+      $chunk_vendors_legacy_js->getUri(),
+      [],
+      sha1_file($chunk_vendors_legacy_js->getPath()),
+      true
+    );
+  }
+
+  $vanilla_legacy_js = asset('assets/vanilla.legacy.js');
+  if (file_exists($vanilla_legacy_js->getPath())) {
+    wp_enqueue_script(
+      'vanilla-legacy',
+      $vanilla_legacy_js->getUri(),
+      ['chunk-vendors-legacy'],
+      sha1_file($vanilla_legacy_js->getPath()),
+      true
+    );
+  }
+
+  //
   // Styles
   //
 
