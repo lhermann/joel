@@ -1,0 +1,402 @@
+/* ==========================================================================
+#BUTTONS
+========================================================================== */
+
+/**
+* This is an example component. Extend inuitcss by building your own components
+* that make up your UI. Component classes are prefixed with a `c-`.
+*/
+
+/**
+* 1. Allow us to style box model properties.
+* 2. Line different sized buttons up a little nicer.
+* 3. Make buttons inherit font styles (often necessary when styling `input`s as
+*    buttons).
+* 4. Reset/normalize some styles.
+* 5. Force all button-styled elements to appear clickable.
+*/
+
+.c-btn {
+    display: inline-block; /* [1] */
+    transition: $global-transition;
+    margin: 0; /* [4] */
+    border-width: 0;
+    border-radius: $global-radius;
+    cursor: pointer; /* [5] */
+    padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-large;
+    vertical-align: middle; /* [2] */
+    text-align: center; /* [4] */
+    font: inherit; /* [3] */
+    font-weight: 400;
+    color: $c-white;
+    background-color: $c-gray-4;
+    // font-family: $font-heading;
+
+    > [class^="u-ic-"],
+    > [class*=" u-ic-"] {
+        vertical-align: -2px;
+    }
+
+    &:disabled {
+        cursor: default;
+    }
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none; /* [4] */
+        color: $c-white;
+    }
+
+    &:disabled {
+        opacity: 0.65;
+    }
+}
+
+
+
+
+/* Style variants
+========================================================================== */
+
+.c-btn--primary {
+    background-color: $c-primary-light;
+    color: $c-white;
+
+    &:hover,
+    &:focus {
+        background-color: $c-primary-lighter;
+    }
+
+    &:disabled {
+        background-color: $c-primary-light;
+    }
+}
+
+.c-btn--secondary {
+    background-color: $c-gray-2;
+    color: $c-gray-7;
+
+    &.is-active,
+    &:hover,
+    &:focus {
+        background-color: $c-gray-7;
+        color: $c-gray-2;
+    }
+
+    &:disabled {
+        background-color: $c-gray-2;
+        color: $c-gray-5;
+    }
+}
+
+.c-btn--green {
+    background-color: $c-green;
+    color: $c-white;
+
+    &:hover,
+    &:focus {
+        background-color: darken($c-green, 6%);
+    }
+
+    &:disabled {
+        background-color: $c-green;
+    }
+}
+
+.c-btn--red {
+    background-color: $c-red;
+    color: $c-white;
+
+    &:hover,
+    &:focus {
+        background-color: darken($c-red, 8%);
+    }
+
+    &:disabled {
+        background-color: $c-red;
+    }
+}
+
+.c-btn--dark {
+    background-color: rgba($c-black, 0.6);
+    color: $c-white;
+
+    &:hover,
+    &:focus {
+        background-color: rgba($c-black, 0.7);
+    }
+
+    &:disabled {
+        background-color: rgba($c-black, 0.6);
+    }
+}
+
+.c-btn--light {
+    background-color: $c-gray-2;
+    color: $c-text;
+
+    &:hover,
+    &:focus {
+        background-color: lighten($c-gray-4, 10%);
+        color: $c-text;
+    }
+
+    &:disabled {
+        background-color: $c-gray-2;
+    }
+}
+
+.c-btn--subtle {
+    background-color: transparent;
+    color: $c-gray-5;
+
+    &:hover,
+    &:focus {
+        background-color: rgba($c-black, 0.05);
+        color: $c-gray-6;
+    }
+}
+
+
+
+
+/* Size variants
+========================================================================== */
+
+.c-btn--tiny {
+    padding: $inuit-global-spacing-unit-tiny*0.5 $inuit-global-spacing-unit-small;
+}
+
+.c-btn--small {
+  padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit;
+}
+
+.c-btn--large {
+  padding: $inuit-global-spacing-unit $inuit-global-spacing-unit-large;
+}
+
+
+
+
+/* Ghost buttons
+========================================================================== */
+
+/**
+* Ghost buttons have see-through backgrounds and are bordered.
+*/
+
+$btn-ghost-border-width: 1px;
+
+.c-btn--ghost {
+    border: $btn-ghost-border-width solid currentColor;
+    padding: ($inuit-global-spacing-unit-small - $btn-ghost-border-width) ($inuit-global-spacing-unit - $btn-ghost-border-width);
+    color: currentcolor;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        background: none;
+        color: currentcolor;
+        border-color: currentcolor;
+    }
+
+    &.c-btn--tiny {
+        padding: ($inuit-global-spacing-unit-tiny*0.5 - $btn-ghost-border-width) ($inuit-global-spacing-unit-small - $btn-ghost-border-width);
+    }
+
+    &.c-btn--small {
+        padding: ($inuit-global-spacing-unit-tiny - $btn-ghost-border-width) ($inuit-global-spacing-unit-small - $btn-ghost-border-width);
+    }
+
+    &.c-btn--large {
+        padding: ($inuit-global-spacing-unit - $btn-ghost-border-width) ($inuit-global-spacing-unit-large - $btn-ghost-border-width);
+    }
+
+    &.c-btn--primary {
+        color: $c-primary-light;
+        border-color: $c-primary-light;
+
+        &:hover,
+        &:focus {
+            color: $c-white;
+            background-color: $c-primary-light;
+        }
+
+        &:disabled {
+            color: $c-primary-light;
+        }
+    }
+
+    &.c-btn--secondary {
+        color: $c-gray-4;
+
+        &:hover,
+        &:focus {
+            color: $c-gray-2;
+            background-color: $c-gray-7;
+            border-color: $c-gray-7;
+        }
+
+        &:disabled {
+            color: $c-gray-4;
+            border-color: $c-gray-4;
+        }
+    }
+
+    &.c-btn--green {
+        color: $c-green;
+        border-color: $c-green;
+
+        &:hover,
+        &:focus {
+            color: $c-white;
+            background-color: $c-green;
+        }
+
+        &:disabled {
+            color: $c-green;
+        }
+    }
+
+    &.c-btn--red {
+        color: $c-red;
+        border-color: $c-red;
+
+        &:hover,
+        &:focus {
+            color: $c-white;
+            background-color: $c-red;
+        }
+
+        &:disabled {
+            color: $c-red;
+        }
+    }
+
+    &.c-btn--dark {
+        color: rgba($c-black, 0.7);
+        border-color: rgba($c-black, 0.7);
+
+        &:hover,
+        &:focus {
+            color: $c-white;
+            background-color: rgba($c-black, 0.7);
+        }
+
+        &:disabled {
+            color: rgba($c-black, 0.7);
+        }
+    }
+
+    &.c-btn--light {
+        color: $c-gray-2;
+
+        &:hover,
+        &:focus {
+            color: $c-text;
+            background-color: $c-gray-2;
+            border-color: $c-gray-2;
+        }
+
+        &:disabled {
+            color: $c-gray-2;
+        }
+    }
+
+    &.c-btn--subtle {
+        border-color: transparent;
+        // color: currentcolor;
+
+        &:hover,
+        &:focus {
+            border-color: currentcolor;
+        }
+
+        &:disabled {
+            border-color: transparent;
+        }
+    }
+
+    // match specificity of style modifiers
+    &.c-btn--ghost:disabled {
+        background: none;
+    }
+}
+
+
+/* Custom
+========================================================================== */
+
+.c-btn--border0 {
+    border-width: 0;
+}
+
+.c-btn--icon {
+    > span {
+        font-size: 128.6%;
+    }
+}
+
+.c-btn--bigicon {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    > span {
+        line-height: $unit-small * 2 + $inuit-global-line-height;
+        font-size: $inuit-global-font-size * 2;
+    }
+
+    &.c-btn--ghost > span {
+        line-height: $unit-small * 2 + $inuit-global-line-height - 2px;
+    }
+}
+
+.c-btn--square {
+    padding-right: unset;
+    padding-left: unset;
+    width: $unit-small * 2 + $inuit-global-line-height;
+
+    &.c-btn--small {
+        padding-right: unset;
+        padding-left: unset;
+        width: $unit-tiny * 2 + $inuit-global-line-height;
+    }
+
+    &.c-btn--large {
+        padding-right: unset;
+        padding-left: unset;
+        width: $unit * 2 + $inuit-global-line-height;
+    }
+}
+
+.c-btn--wall {
+    height: 100%;
+}
+
+.c-btn--edgy {
+    border-radius: 0;
+}
+
+.c-btn--center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.c-btn--right {
+    border-radius: 0 $global-radius $global-radius 0;
+}
+
+.c-btn--left {
+    border-radius: $global-radius 0 0 $global-radius;
+}
+
+.c-btn--dropdown::after {
+    display: inline-block;
+    vertical-align: -0.1em;
+    font-family: "icomoon";
+    content: "\e313";
+}
