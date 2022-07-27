@@ -86,27 +86,27 @@ $width-post:     (160px 90px);
         // overflow: hidden; !clipps neu-badge!
 
         .c-mediaitem--video & {
-            background-image: url("../img/dummy-108p.jpg");
+            background-image: url("../images/dummy-108p.jpg");
         }
 
         .c-mediaitem--audio & {
             width: nth($width-audio, 1);
             flex-basis: nth($width-audio, 1);
-            // background-image: url("../img/dummy-108p.jpg");
+            // background-image: url("../images/dummy-108p.jpg");
         }
 
         .c-mediaitem--series & {
             width: nth($width-serie, 1);
             height: nth($width-serie, 2);
             flex-basis: nth($width-serie, 1);
-            background-image: url("../img/dummy-144p.jpg");
+            background-image: url("../images/dummy-144p.jpg");
         }
 
         .c-mediaitem--speakers & {
             width: nth($width-sprecher, 1);
             height: nth($width-sprecher, 2);
             flex-basis: nth($width-sprecher, 1);
-            background-image: url("../img/dummy-square160.jpg");
+            background-image: url("../images/dummy-square160.jpg");
         }
 
         .c-mediaitem--topics & {
@@ -120,7 +120,7 @@ $width-post:     (160px 90px);
             width: nth($width-post, 1);
             height: nth($width-post, 2);
             flex-basis: nth($width-post, 1);
-            background-image: url("../img/dummy-180p.jpg");
+            background-image: url("../images/dummy-180p.jpg");
         }
 
         .c-mediaitem--simple & {

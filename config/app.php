@@ -98,7 +98,7 @@ return [
     'directories' => [
         'languages' => 'resources/languages',
         'templates' => 'resources/templates',
-        'assets' => 'resources/assets',
+        'assets' => 'dist',
         'public' => 'dist',
         'app' => 'app',
     ],
