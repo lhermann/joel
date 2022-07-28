@@ -30,7 +30,7 @@ function register_scripts_and_styles() {
   //
 
   $main_js = get_asset_by_name('vue-main.js');
-  if (file_exists($main_js->getPath())) {
+  if ($main_js && file_exists($main_js->getPath())) {
     wp_enqueue_script(
       'vue-main',
       $main_js->getUri(),
@@ -41,7 +41,7 @@ function register_scripts_and_styles() {
   }
 
   $vanilla_main_js = get_asset_by_name('vanilla-main.js');
-  if (file_exists($vanilla_main_js->getPath())) {
+  if ($vanilla_main_js && file_exists($vanilla_main_js->getPath())) {
     wp_enqueue_script(
       'vanilla-main',
       $vanilla_main_js->getUri(),
@@ -58,7 +58,7 @@ function register_scripts_and_styles() {
   // Legacy Scripts
   //
   $chunk_vendors_legacy_js = asset('assets/chunk-vendors.legacy.js');
-  if (file_exists($chunk_vendors_legacy_js->getPath())) {
+  if ($chunk_vendors_legacy_js && file_exists($chunk_vendors_legacy_js->getPath())) {
     wp_enqueue_script(
       'chunk-vendors-legacy',
       $chunk_vendors_legacy_js->getUri(),
@@ -69,7 +69,7 @@ function register_scripts_and_styles() {
   }
 
   $vanilla_legacy_js = asset('assets/vanilla.legacy.js');
-  if (file_exists($vanilla_legacy_js->getPath())) {
+  if ($vanilla_legacy_js && file_exists($vanilla_legacy_js->getPath())) {
     wp_enqueue_script(
       'vanilla-legacy',
       $vanilla_legacy_js->getUri(),
@@ -84,7 +84,7 @@ function register_scripts_and_styles() {
   //
 
   $main_css = get_asset_by_name('main.css');
-  if (file_exists($main_css->getPath())) {
+  if ($main_css && file_exists($main_css->getPath())) {
     wp_enqueue_style('main', $main_css->getUri(), [], sha1_file($main_css->getPath()));
   }
 
@@ -101,7 +101,7 @@ function register_scripts_and_styles() {
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 function register_editor_stylesheets() {
   $main_css = get_asset_by_name('main.css');
-  if (file_exists($main_css->getPath())) {
+  if ($main_css && file_exists($main_css->getPath())) {
     add_editor_style($main_css->getPath());
   }
 }
@@ -126,7 +126,7 @@ function register_admin_scripts_and_styles() {
 
   // $admin_js = asset('js/admin.js');
   $admin_js = get_asset_by_name('vue-admin.js');
-  if (file_exists($admin_js->getPath())) {
+  if ($admin_js && file_exists($admin_js->getPath())) {
     wp_enqueue_script(
       'vue-admin',
       $admin_js->getUri(),
@@ -138,7 +138,7 @@ function register_admin_scripts_and_styles() {
 
   // TEMP DISABLED
   $vanilla_admin_js = get_asset_by_name('vanilla-admin.js');
-  if (file_exists($vanilla_admin_js->getPath())) {
+  if ($vanilla_admin_js && file_exists($vanilla_admin_js->getPath())) {
     wp_enqueue_script(
       'vanilla-admin',
       $vanilla_admin_js->getUri(),
@@ -152,7 +152,7 @@ function register_admin_scripts_and_styles() {
    * CSS
    */
   $admin_css = get_asset_by_name('admin.css');
-  if (file_exists($admin_css->getPath())) {
+  if ($admin_css && file_exists($admin_css->getPath())) {
     wp_enqueue_style('admin', $admin_css->getUri(), [], sha1_file($admin_css->getPath()));
   }
 };
