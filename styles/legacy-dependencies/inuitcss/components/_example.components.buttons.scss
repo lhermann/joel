@@ -1,0 +1,183 @@
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+
+/**
+ * This is an example component. Extend inuitcss by building your own components
+ * that make up your UI. Component classes are prefixed with a `c-`.
+ */
+
+$inuit-button-padding-vertical:         $inuit-global-spacing-unit-small !default;
+$inuit-button-padding-horizontal:       $inuit-global-spacing-unit !default;
+$inuit-button-transition:               $global-transition !default;
+$inuit-button-radius:                   $global-radius !default;
+
+$inuit-button-small-padding-vertical:   $inuit-global-spacing-unit-tiny !default;
+$inuit-button-small-padding-horizontal: $inuit-global-spacing-unit-small !default;
+
+$inuit-button-large-padding-vertical:   $inuit-global-spacing-unit !default;
+$inuit-button-large-padding-horizontal: $inuit-global-spacing-unit-large !default;
+
+$inuit-button-ghost-border-width:       2px;
+
+/**
+ * 1. Allow us to style box model properties.
+ * 2. Line different sized buttons up a little nicer.
+ * 3. Make buttons inherit font styles (often necessary when styling `input`s as
+ *    buttons).
+ * 4. Reset/normalize some styles.
+ * 5. Force all button-styled elements to appear clickable.
+ */
+
+.c-btn {
+  display: inline-block; /* [1] */
+  vertical-align: middle; /* [2] */
+  font: inherit; /* [3] */
+  text-align: center; /* [4] */
+  margin: 0; /* [4] */
+  cursor: pointer; /* [5] */
+  padding: $inuit-button-padding-vertical $inuit-button-padding-horizontal;
+  transition: $inuit-button-transition;
+  border-radius: $inuit-button-radius;
+}
+
+
+
+
+
+/* Style variants
+   ========================================================================== */
+
+.c-btn--primary {
+  background-color: #4a8ec2;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none; /* [4] */
+    color: #fff;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #3774a2;
+  }
+
+}
+
+
+.c-btn--secondary {
+  background-color: #2f4054;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #1d2733;
+  }
+
+}
+
+
+.c-btn--tertiary {
+  background-color: #fff;
+  color: #4a8ec2;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+    color: #4a8ec2;
+  }
+
+  &:hover,
+  &:focus {
+    color: #3774a2;
+  }
+
+}
+
+
+
+
+
+/* Size variants
+   ========================================================================== */
+
+.c-btn--small {
+  padding: $inuit-button-small-padding-vertical $inuit-button-small-padding-horizontal;
+}
+
+.c-btn--large {
+  padding: $inuit-button-large-padding-vertical $inuit-button-large-padding-horizontal;
+}
+
+
+
+
+
+/* Ghost buttons
+   ========================================================================== */
+
+/**
+ * Ghost buttons have see-through backgrounds and are bordered.
+ */
+
+.c-btn--ghost {
+  border: $inuit-button-ghost-border-width solid currentColor;
+  padding: ($inuit-button-padding-vertical - $inuit-button-ghost-border-width) ($inuit-button-padding-horizontal - $inuit-button-ghost-border-width);
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    background: none;
+  }
+
+  &.c-btn--small {
+    padding: ($inuit-button-small-padding-vertical - $inuit-button-ghost-border-width) ($inuit-button-small-padding-horizontal - $inuit-button-ghost-border-width);
+  }
+
+  &.c-btn--large {
+    padding: ($inuit-button-large-padding-vertical - $inuit-button-ghost-border-width) ($inuit-button-large-padding-horizontal - $inuit-button-ghost-border-width);
+  }
+
+  &.c-btn--primary {
+    color: #4a8ec2;
+
+    &:hover,
+    &:focus {
+      color: #3774a2;
+    }
+
+  }
+
+  &.c-btn--secondary {
+    color: #2f4054;
+
+    &:hover,
+    &:focus {
+      color: #1d2733;
+    }
+
+  }
+
+  &.c-btn--tertiary {
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+
+  }
+
+}

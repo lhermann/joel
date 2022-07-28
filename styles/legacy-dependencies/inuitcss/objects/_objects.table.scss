@@ -1,0 +1,81 @@
+/* ==========================================================================
+   #TABLE
+   ========================================================================== */
+
+$inuit-table-tiny-cell-padding:  $inuit-global-spacing-unit-tiny !default;
+$inuit-table-small-cell-padding: $inuit-global-spacing-unit-small !default;
+$inuit-table-large-cell-padding: $inuit-global-spacing-unit-large !default;
+$inuit-table-huge-cell-padding:  $inuit-global-spacing-unit-huge !default;
+
+/**
+ * A simple object for manipulating the structure of HTML `table`s.
+ */
+
+.o-table {
+  width: 100%;
+}
+
+
+
+
+
+/* Equal-width table cells
+   ========================================================================== */
+
+/**
+ * `table-layout: fixed` forces all cells within a table to occupy the same
+ * width as each other. This also has performance benefits: because the browser
+ * does not need to (re)calculate cell dimensions based on content it discovers,
+ * the table can be rendered very quickly. Further reading:
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout#Values
+ */
+
+.o-table--fixed {
+  table-layout: fixed;
+}
+
+
+
+
+
+/* Size variants
+   ========================================================================== */
+
+.o-table--tiny {
+
+  th,
+  td {
+    padding: $inuit-table-tiny-cell-padding;
+  }
+
+}
+
+
+.o-table--small {
+
+  th,
+  td {
+    padding: $inuit-table-small-cell-padding;
+  }
+
+}
+
+
+.o-table--large {
+
+  th,
+  td {
+    padding: $inuit-table-large-cell-padding;
+  }
+
+}
+
+
+.o-table--huge {
+
+  th,
+  td {
+    padding: $inuit-table-huge-cell-padding;
+  }
+
+}
