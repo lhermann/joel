@@ -18,13 +18,12 @@ use function Tonik\Theme\App\Legacy\get_status_video_files;
 use function Tonik\Theme\App\Legacy\get_tracs;
 
 /**
- * Registers `media` custom post type.
+ * Registers `recordings` custom post type.
  *
  * @return void
  */
-function register_media_post_type()
-{
-    register_post_type( 'recordings', [
+function register_media_post_type () {
+    register_post_type('recordings', [
         'description'        => __('Collection of Video and Audio Recordings.', config('textdomain')),
         'public'             => true,
         'publicly_queryable' => true,

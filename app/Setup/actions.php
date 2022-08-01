@@ -67,6 +67,13 @@ function register_required_plugins() {
       'required'          => true,
       'version'           => '4.2.0',
       'force_activation'  => true,
+    ),
+    array(
+      'name'              => 'Link To Bible',
+      'slug'              => 'link-to-bible',
+      'required'          => true,
+      'version'           => '2.5.9',
+      'force_activation'  => true,
     )
   );
 
