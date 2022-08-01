@@ -314,7 +314,7 @@ function recording_endpoints() {
         return $video_files = get_video_files($request['id'], 'raw');
       },
       'permission_callback' => '__return_true',
-    ],
+    ]
   );
 
 }
@@ -341,7 +341,7 @@ function google_api_callback() {
         exit();
       },
       'permission_callback' => '__return_true',
-    ],
+    ]
   );
 
 }
