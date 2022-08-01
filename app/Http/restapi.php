@@ -26,8 +26,7 @@ function speakers_add_orderby_params( $params ) {
   $params['orderby']['enum'][] = 'lastname';
   return $params;
 }
-add_filter( 'rest_speakers_collection_params',
-  'Tonik\Theme\App\Http\speakers_add_orderby_params', 10, 1 );
+add_filter('rest_speakers_collection_params', 'Tonik\Theme\App\Http\speakers_add_orderby_params', 10, 1);
 
 
 /**
@@ -41,8 +40,7 @@ function speakers_lastname_query( $prepared_args ) {
   }
   return $prepared_args;
 }
-add_filter( 'rest_speakers_query',
-  'Tonik\Theme\App\Http\speakers_lastname_query', 10, 1 );
+add_filter('rest_speakers_query', 'Tonik\Theme\App\Http\speakers_lastname_query', 10, 1);
 
 
 /**
@@ -69,7 +67,7 @@ function speakers_catch_response($result, $server, $request) {
   }
   return $result;
 }
-add_action('rest_post_dispatch', 'Tonik\Theme\App\Http\speakers_catch_response', 10, 3 );
+add_action('rest_post_dispatch', 'Tonik\Theme\App\Http\speakers_catch_response', 10, 3);
 
 
 
@@ -260,38 +258,43 @@ function event_organiser_endpoint() {
   /**
    * Add a route
    */
-  register_rest_route( config('textdomain').'/v1', '/events', array(
-    'methods' => \WP_REST_Server::READABLE,
-    'callback' => function( \WP_REST_Request $request ) {
-      $params = [
-        'showpastevents' => false,
-        'post_status' => 'publish'
-      ];
-      $events = eo_get_events(
-        array_merge($params, $request->get_params())
-      );
-      foreach ($events as &$event) {
-        $event->today = $event->StartDate == current_time('Y-m-d');
-        $event->tomorrow = $event->StartDate == current_time('Y-m-') . (current_time('d') + 1);
-        $event->now = $event->today
-          && strtotime($event->StartTime) <= current_time('timestamp')
-          && current_time('timestamp') <= strtotime($event->FinishTime);
-        // $event->thumbnail = get_the_post_thumbnail( $event->ID, '72p', array( 'class' => 'u-rounded u-hidden-until@desktop', 'width' => '80px' ));
-        $event->excerpt = get_the_excerpt($event->ID);
-        $event->url = get_permalink($event);
-        $event->thumbnail = get_the_post_thumbnail(
-          $event->ID,
-          $request->get_param('thumbnail_size') ?: '72p',
-          array( 'class' => '%%class%%' )
+  register_rest_route(
+    config('textdomain').'/v1',
+    '/events',
+    [
+      'methods' => \WP_REST_Server::READABLE,
+      'callback' => function (\WP_REST_Request $request) {
+        $params = [
+          'showpastevents' => false,
+          'post_status' => 'publish'
+        ];
+        $events = eo_get_events(
+          array_merge($params, $request->get_params())
         );
-        $event->venue = eo_get_venue_name(eo_get_venue($event->ID));
-      }
-      return $events;
-    }
-  ) );
+        foreach ($events as &$event) {
+          $event->today = $event->StartDate == current_time('Y-m-d');
+          $event->tomorrow = $event->StartDate == current_time('Y-m-') . (current_time('d') + 1);
+          $event->now = $event->today
+            && strtotime($event->StartTime) <= current_time('timestamp')
+            && current_time('timestamp') <= strtotime($event->FinishTime);
+          // $event->thumbnail = get_the_post_thumbnail( $event->ID, '72p', array( 'class' => 'u-rounded u-hidden-until@desktop', 'width' => '80px' ));
+          $event->excerpt = get_the_excerpt($event->ID);
+          $event->url = get_permalink($event);
+          $event->thumbnail = get_the_post_thumbnail(
+            $event->ID,
+            $request->get_param('thumbnail_size') ?: '72p',
+            array( 'class' => '%%class%%' )
+          );
+          $event->venue = eo_get_venue_name(eo_get_venue($event->ID));
+        }
+        return $events;
+      },
+      'permission_callback' => '__return_true',
+    ]
+  );
 
 }
-add_action( 'rest_api_init', 'Tonik\Theme\App\Http\event_organiser_endpoint' );
+add_action('rest_api_init', 'Tonik\Theme\App\Http\event_organiser_endpoint');
 
 
 /**
@@ -302,12 +305,17 @@ function recording_endpoints() {
   /*
    * Recording status
    */
-  register_rest_route( config('textdomain').'/v1', '/recording-status/(?P<id>\d+)', array(
-    'methods' => \WP_REST_Server::READABLE,
-    'callback' => function( \WP_REST_Request $request ) {
-      return $video_files = get_video_files($request['id'], 'raw');
-    }
-  ) );
+  register_rest_route(
+    config('textdomain').'/v1',
+    '/recording-status/(?P<id>\d+)',
+    [
+      'methods' => \WP_REST_Server::READABLE,
+      'callback' => function (\WP_REST_Request $request) {
+        return $video_files = get_video_files($request['id'], 'raw');
+      },
+      'permission_callback' => '__return_true',
+    ],
+  );
 
 }
 add_action( 'rest_api_init', 'Tonik\Theme\App\Http\recording_endpoints' );
@@ -320,16 +328,21 @@ function google_api_callback() {
   /*
    * Recording status
    */
-  register_rest_route( config('textdomain').'/v1', '/google-api-callback', array(
-    'methods' => \WP_REST_Server::READABLE,
-    'callback' => function( \WP_REST_Request $request ) {
-      if(!$_GET['code']) return 'code missing';
-      $client = new Google_API();
-      $client->authenticate($_GET['code']);
-      wp_redirect(admin_url());
-      exit();
-    }
-  ) );
+  register_rest_route(
+    config('textdomain').'/v1',
+    '/google-api-callback',
+    [
+      'methods' => \WP_REST_Server::READABLE,
+      'callback' => function (\WP_REST_Request $request) {
+        if(!$_GET['code']) return 'code missing';
+        $client = new Google_API();
+        $client->authenticate($_GET['code']);
+        wp_redirect(admin_url());
+        exit();
+      },
+      'permission_callback' => '__return_true',
+    ],
+  );
 
 }
-add_action( 'rest_api_init', 'Tonik\Theme\App\Http\google_api_callback' );
+add_action('rest_api_init', 'Tonik\Theme\App\Http\google_api_callback');

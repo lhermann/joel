@@ -192,7 +192,11 @@ function add_async_defer ($tag, $handle) {
 add_filter('script_loader_tag', 'Tonik\Theme\App\Http\add_module_to_script', 10, 3);
 function add_module_to_script ($tag, $handle, $src) {
   if (in_array($handle, ['vue-main', 'vue-admin'])) {
-    $tag = str_replace('text/javascript', 'module', $tag);
+    if (strpos($tag, 'text/javascript') !== false) {
+      $tag = str_replace('text/javascript', 'module', $tag);
+    } else {
+      $tag = str_replace('<script', '<script type="module"', $tag);
+    }
   }
 
   return $tag;
