@@ -1,4 +1,4 @@
-# Copyright (C) 2018 Lukas Hermann <lukher6@web.de>
+# Copyright (C) 2022 Lukas Hermann <lukher6@web.de>
 # This file is distributed under the GPLv2 License.
 msgid ""
 msgstr ""
@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-12-11T12:55:55+00:00\n"
-"PO-Revision-Date: 2018-12-11T12:55:55+00:00\n"
-"X-Generator: WP-CLI 2.0.1\n"
+"POT-Creation-Date: 2022-08-01T14:30:40+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
 
 #. Theme Name of the theme
 msgid "Joel"
@@ -33,236 +33,187 @@ msgstr ""
 msgid "https://github.com/lhermann"
 msgstr ""
 
-#: bootstrap/compatibility.php:39
-msgid "Important! This theme requires <a href='//github.com/tonik/gin'><strong>tonik/gin</strong></a> package. Please, make sure it's installed and active."
-msgstr ""
-
-#: bootstrap/compatibility.php:52
-msgid "We could not find <a href='//github.com/tonik/gin'><strong>tonik/gin</strong></a> package. You have to install it before using this theme."
-msgstr ""
-
-#: app/ACF/slides.php:26
-msgid "Slide Type"
-msgstr ""
-
-#: app/ACF/slides.php:39
-msgid "Text Left"
-msgstr ""
-
-#: app/ACF/slides.php:43
-msgid "Text Center"
-msgstr ""
-
-#: app/ACF/slides.php:47
-msgid "Text Right"
-msgstr ""
-
-#: app/ACF/slides.php:51
-msgid "Media Right"
-msgstr ""
-
-#: app/ACF/slides.php:55
-msgid "Media Left"
-msgstr ""
-
-#: app/ACF/slides.php:59
-msgid "Recordings Teaser"
-msgstr ""
-
-#: app/ACF/slides.php:70
-msgid "Background"
-msgstr ""
-
-#: app/ACF/slides.php:82
-msgid "Background 1"
-msgstr ""
-
-#: app/ACF/slides.php:83
-msgid "Background 2"
-msgstr ""
-
-#: app/ACF/slides.php:84
-msgid "Background 3"
-msgstr ""
-
-#: app/ACF/slides.php:85
-msgid "Background 4"
-msgstr ""
-
-#: app/ACF/slides.php:86
-msgid "Background 5"
-msgstr ""
-
-#: app/ACF/slides.php:87
-msgid "Background 6"
-msgstr ""
-
-#: app/ACF/slides.php:88
-msgid "Custom Image"
-msgstr ""
-
-#: app/ACF/slides.php:97
-msgid "Background Image"
-msgstr ""
-
-#: app/ACF/slides.php:129
-msgid "Media Content"
-msgstr ""
-
-#: app/ACF/slides.php:159
-msgid "Video"
-msgstr ""
-
-#: app/ACF/slides.php:192
-#: app/ACF/slides.php:197
-#: app/ACF/recordings.php:331
-#: app/ACF/recordings.php:561
-#: app/Structure/posttypes.php:86
-#: app/Structure/taxonomies.php:179
-#: app/Structure/taxonomies.php:222
-msgid "Image"
-msgstr ""
-
-#: app/ACF/slides.php:224
-msgid "Choose Media"
-msgstr ""
-
-#: app/ACF/slides.php:268
-msgid "Color Scheme"
-msgstr ""
-
-#: app/ACF/slides.php:280
-msgid "Black Text"
-msgstr ""
-
-#: app/ACF/slides.php:281
-msgid "White Text"
-msgstr ""
-
-#: app/ACF/slides.php:363
-msgid "Button Text"
-msgstr ""
-
-#: app/ACF/slides.php:382
-msgid "URL"
-msgstr ""
-
-#: app/ACF/slides.php:394
-msgid "Link for Button and Slide"
-msgstr ""
-
-#: app/ACF/recordings.php:218
-#: resources/templates/vue-components/medialist/mediaitem.tpl.php:38
-msgid "Recordings"
-msgstr ""
-
-#: app/ACF/recordings.php:222
+#: app/ACF/recordings.php:243
 msgid "Status"
 msgstr ""
 
-#: app/ACF/recordings.php:239
+#: app/ACF/recordings.php:260
 msgid "Select Recording"
 msgstr ""
 
-#: app/ACF/recordings.php:266
+#: app/ACF/recordings.php:287
 msgid "Thumbnail"
 msgstr ""
 
-#: app/ACF/recordings.php:355
+#: app/ACF/recordings.php:443
+#: app/ACF/recordings.php:673
+#: app/ACF/slides.php:202
+#: app/ACF/slides.php:207
+#: app/Structure/posttypes-media.php:87
+#: app/Structure/taxonomies.php:180
+#: app/Structure/taxonomies.php:223
+msgid "Image"
+msgstr ""
+
+#: app/ACF/recordings.php:467
 msgid "Author"
 msgstr ""
 
-#: app/ACF/recordings.php:377
+#: app/ACF/recordings.php:489
 msgid "Categories"
 msgstr ""
 
-#: app/ACF/recordings.php:413
+#: app/ACF/recordings.php:525
 msgid "iTunes Link"
 msgstr ""
 
-#: app/ACF/recordings.php:429
+#: app/ACF/recordings.php:541
 msgid "Stitcher Link"
 msgstr ""
 
-#: app/ACF/recordings.php:445
-#: app/ACF/recordings.php:585
-#: resources/templates/taxonomy-speakers.tpl.php:54
+#: app/ACF/recordings.php:557
+#: app/ACF/recordings.php:697
+#: resources/templates/taxonomy-speakers.tpl.php:55
 msgid "Website"
 msgstr ""
 
-#: app/ACF/recordings.php:488
+#: app/ACF/recordings.php:600
 msgid "Thumbnail for series"
 msgstr ""
 
-#: app/ACF/recordings.php:512
-#: app/ACF/recordings.php:694
-#: app/Structure/taxonomies.php:119
+#: app/ACF/recordings.php:624
+#: app/ACF/recordings.php:806
+#: app/Structure/taxonomies.php:120
 msgid "Podcast"
 msgstr ""
 
-#: app/ACF/recordings.php:624
+#: app/ACF/recordings.php:736
 msgid "Choose taxonomies"
 msgstr ""
 
-#: app/ACF/recordings.php:628
-#: resources/templates/archive-speakers.tpl.php:25
+#: app/ACF/recordings.php:740
+#: resources/templates/algolia/instantsearch.obsolete.tpl.php:221
+#: resources/templates/archive-speakers.tpl.php:24
 msgid "Speakers"
 msgstr ""
 
-#: app/ACF/recordings.php:650
-#: app/Structure/posttypes.php:90
-#: app/Structure/posttypes.php:104
-#: app/Structure/posttypes.php:141
-#: app/Structure/taxonomies.php:48
-#: resources/templates/archive-series.tpl.php:25
+#: app/ACF/recordings.php:762
+#: app/Structure/posttypes-media.php:91
+#: app/Structure/posttypes-media.php:108
+#: app/Structure/posttypes-media.php:145
+#: app/Structure/taxonomies.php:49
+#: resources/templates/algolia/instantsearch.obsolete.tpl.php:240
+#: resources/templates/archive-series.tpl.php:24
 msgid "Series"
 msgstr ""
 
-#: app/ACF/recordings.php:672
-#: resources/templates/archive-topics.tpl.php:25
+#: app/ACF/recordings.php:784
+#: app/Structure/posttypes-media.php:92
+#: resources/templates/algolia/instantsearch.obsolete.tpl.php:258
+#: resources/templates/archive-topics.tpl.php:24
+#: resources/templates/single-recordings.tpl.php:14
 msgid "Topics"
 msgstr ""
 
-#: app/ACF/recordings.php:716
+#: app/ACF/recordings.php:828
 msgid "Download"
 msgstr ""
 
-#: app/ACF/recordings.php:730
+#: app/ACF/recordings.php:842
 msgid "permit"
 msgstr ""
 
-#: app/ACF/recordings.php:731
+#: app/ACF/recordings.php:843
 msgid "deny"
 msgstr ""
 
+#: app/ACF/slides.php:29
+msgid "Show Title"
+msgstr ""
+
+#: app/ACF/slides.php:43
+msgid "Yes"
+msgstr ""
+
+#: app/ACF/slides.php:44
+msgid "No"
+msgstr ""
+
+#: app/ACF/slides.php:48
+msgid "Button Text"
+msgstr ""
+
+#: app/ACF/slides.php:67
+msgid "Link"
+msgstr ""
+
+#: app/ACF/slides.php:84
+msgid "Content"
+msgstr ""
+
+#: app/ACF/slides.php:105
+msgid "Slide Type"
+msgstr ""
+
+#: app/ACF/slides.php:139
+msgid "Media Content"
+msgstr ""
+
+#: app/ACF/slides.php:169
+msgid "Video"
+msgstr ""
+
+#: app/ACF/slides.php:234
+msgid "Choose Media"
+msgstr ""
+
+#: app/ACF/slides.php:242
+msgid "Slide Colors"
+msgstr ""
+
+#: app/ACF/slides.php:276
+msgid "Background Image"
+msgstr ""
+
+#: app/ACF/slides.php:308
+msgid "Text Color"
+msgstr ""
+
+#: app/ACF/slides.php:328
+msgid "Black"
+msgstr ""
+
+#: app/ACF/slides.php:329
+msgid "White"
+msgstr ""
+
 #: app/Http/routes.php:44
-#: app/Structure/taxonomies.php:33
-#: resources/templates/taxonomy-series.tpl.php:23
-#: resources/templates/landing.tpl.php:89
-#: resources/templates/landing.tpl.php:111
+#: app/Structure/taxonomies.php:34
 #: resources/templates/partials/archive-tabs.tpl.php:10
+#: resources/templates/taxonomy-series.tpl.php:22
 msgctxt "http route"
 msgid "series"
 msgstr ""
 
 #: app/Http/routes.php:47
-#: app/Structure/taxonomies.php:58
-#: resources/templates/taxonomy-speakers.tpl.php:23
+#: app/Structure/taxonomies.php:59
 #: resources/templates/partials/archive-tabs.tpl.php:14
+#: resources/templates/taxonomy-speakers.tpl.php:22
 msgctxt "http route"
 msgid "speakers"
 msgstr ""
 
 #: app/Http/routes.php:50
-#: app/Structure/taxonomies.php:81
-#: resources/templates/taxonomy-topics.tpl.php:22
+#: app/Structure/taxonomies.php:82
 #: resources/templates/partials/archive-tabs.tpl.php:18
+#: resources/templates/taxonomy-topics.tpl.php:21
+#: resources/templates/taxonomy-topics.tpl.php:51
 msgctxt "http route"
 msgid "topics"
 msgstr ""
 
 #: app/Http/routes.php:53
-#: app/Structure/taxonomies.php:103
+#: app/Structure/taxonomies.php:104
 msgctxt "http route"
 msgid "podcasts"
 msgstr ""
@@ -279,428 +230,444 @@ msgstr ""
 msgid "Footer Menu"
 msgstr ""
 
-#: app/Structure/posttypes.php:27
+#: app/Structure/posttypes-answer.php:26
+msgid "Question and answer posts"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:40
+msgctxt "http route"
+msgid "answer"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:42
+msgctxt "post type general name"
+msgid "Answers"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:43
+msgctxt "post type singular name"
+msgid "Answer"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:44
+msgctxt "admin menu"
+msgid "Answers"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:45
+msgctxt "add new on admin bar"
+msgid "Answers"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:46
+#: app/Structure/posttypes-media.php:47
+#: app/Structure/posttypes-media.php:280
+msgctxt "book"
+msgid "Add New"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:47
+msgid "Add New Answer"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:48
+msgid "New Answer"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:49
+msgid "Edit Answer"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:50
+msgid "View Answer"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:51
+msgid "All Answers"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:52
+msgid "Search Answers"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:53
+msgid "Parent Answer:"
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:54
+msgid "No answers found."
+msgstr ""
+
+#: app/Structure/posttypes-answer.php:55
+msgid "No answers found in Trash."
+msgstr ""
+
+#: app/Structure/posttypes-media.php:27
 msgid "Collection of Video and Audio Recordings."
 msgstr ""
 
-#: app/Structure/posttypes.php:40
-#: resources/templates/landing.tpl.php:50
+#: app/Structure/posttypes-media.php:41
 #: resources/templates/partials/archive-tabs.tpl.php:6
+#: resources/templates/partials/landing/videos.tpl.php:14
 msgctxt "http route"
 msgid "recordings"
 msgstr ""
 
-#: app/Structure/posttypes.php:42
-#: resources/templates/archive-recordings.tpl.php:25
+#: app/Structure/posttypes-media.php:43
+#: resources/templates/archive-recordings.tpl.php:24
 #: resources/templates/partials/archive-tabs.tpl.php:7
 msgctxt "post type general name"
 msgid "Recordings"
 msgstr ""
 
-#: app/Structure/posttypes.php:43
+#: app/Structure/posttypes-media.php:44
 msgctxt "post type singular name"
 msgid "Recording"
 msgstr ""
 
-#: app/Structure/posttypes.php:44
+#: app/Structure/posttypes-media.php:45
 msgctxt "admin menu"
 msgid "Archive"
 msgstr ""
 
-#: app/Structure/posttypes.php:45
+#: app/Structure/posttypes-media.php:46
 msgctxt "add new on admin bar"
 msgid "Recordings"
 msgstr ""
 
-#: app/Structure/posttypes.php:46
-#: app/Structure/posttypes.php:248
-msgctxt "book"
-msgid "Add New"
-msgstr ""
-
-#: app/Structure/posttypes.php:47
+#: app/Structure/posttypes-media.php:48
 msgid "Add New Recording"
 msgstr ""
 
-#: app/Structure/posttypes.php:48
+#: app/Structure/posttypes-media.php:49
 msgid "New Recording"
 msgstr ""
 
-#: app/Structure/posttypes.php:49
+#: app/Structure/posttypes-media.php:50
 msgid "Edit Recording"
 msgstr ""
 
-#: app/Structure/posttypes.php:50
+#: app/Structure/posttypes-media.php:51
 msgid "View Recording"
 msgstr ""
 
-#: app/Structure/posttypes.php:51
+#: app/Structure/posttypes-media.php:52
 msgid "All Recordings"
 msgstr ""
 
-#: app/Structure/posttypes.php:52
+#: app/Structure/posttypes-media.php:53
 msgid "Search Recordings"
 msgstr ""
 
-#: app/Structure/posttypes.php:53
+#: app/Structure/posttypes-media.php:54
 msgid "Parent Recording:"
 msgstr ""
 
-#: app/Structure/posttypes.php:54
+#: app/Structure/posttypes-media.php:55
 msgid "No recordings found."
 msgstr ""
 
-#: app/Structure/posttypes.php:55
+#: app/Structure/posttypes-media.php:56
 msgid "No recordings found in Trash."
 msgstr ""
 
-#: app/Structure/posttypes.php:88
+#: app/Structure/posttypes-media.php:89
 msgid "Title"
 msgstr ""
 
-#: app/Structure/posttypes.php:89
-#: app/Structure/posttypes.php:103
-#: app/Structure/posttypes.php:117
-#: app/Structure/taxonomies.php:73
+#: app/Structure/posttypes-media.php:90
+#: app/Structure/posttypes-media.php:107
+#: app/Structure/posttypes-media.php:121
+#: app/Structure/taxonomies.php:74
 msgid "Speaker"
 msgstr ""
 
-#: app/Structure/posttypes.php:91
+#: app/Structure/posttypes-media.php:93
 msgid "Date"
 msgstr ""
 
-#: app/Structure/posttypes.php:229
+#: app/Structure/posttypes-media.php:94
+msgid "YT"
+msgstr ""
+
+#: app/Structure/posttypes-media.php:95
+msgid "Stats"
+msgstr ""
+
+#: app/Structure/posttypes-media.php:260
 msgid "Collection of slides for the homepage."
 msgstr ""
 
-#: app/Structure/posttypes.php:244
+#: app/Structure/posttypes-media.php:276
 msgctxt "post type general name"
 msgid "Slides"
 msgstr ""
 
-#: app/Structure/posttypes.php:245
+#: app/Structure/posttypes-media.php:277
 msgctxt "post type singular name"
 msgid "Slide"
 msgstr ""
 
-#: app/Structure/posttypes.php:246
+#: app/Structure/posttypes-media.php:278
 msgctxt "admin menu"
 msgid "Slider"
 msgstr ""
 
-#: app/Structure/posttypes.php:247
+#: app/Structure/posttypes-media.php:279
 msgctxt "add new on admin bar"
 msgid "Slides"
 msgstr ""
 
-#: app/Structure/posttypes.php:249
+#: app/Structure/posttypes-media.php:281
 msgid "Add New Slide"
 msgstr ""
 
-#: app/Structure/posttypes.php:250
+#: app/Structure/posttypes-media.php:282
 msgid "New Slide"
 msgstr ""
 
-#: app/Structure/posttypes.php:251
+#: app/Structure/posttypes-media.php:283
 msgid "Edit Slide"
 msgstr ""
 
-#: app/Structure/posttypes.php:252
+#: app/Structure/posttypes-media.php:284
 msgid "View Slide"
 msgstr ""
 
-#: app/Structure/posttypes.php:253
+#: app/Structure/posttypes-media.php:285
 msgid "All Slides"
 msgstr ""
 
-#: app/Structure/posttypes.php:254
+#: app/Structure/posttypes-media.php:286
 msgid "Search Slides"
 msgstr ""
 
-#: app/Structure/posttypes.php:255
+#: app/Structure/posttypes-media.php:287
 msgid "Parent Slide:"
 msgstr ""
 
-#: app/Structure/posttypes.php:256
+#: app/Structure/posttypes-media.php:288
 msgid "No slides found."
 msgstr ""
 
-#: app/Structure/posttypes.php:257
+#: app/Structure/posttypes-media.php:289
 msgid "No slides found in Trash."
 msgstr ""
 
-#: app/Structure/taxonomies.php:38
+#: app/Structure/taxonomies.php:39
 #: resources/templates/partials/archive-tabs.tpl.php:11
+#: resources/templates/taxonomy-speakers.tpl.php:51
 msgctxt "taxonomy general name"
 msgid "Series"
 msgstr ""
 
-#: app/Structure/taxonomies.php:39
-#: resources/templates/taxonomy-series.tpl.php:36
-#: resources/templates/taxonomy-speakers.tpl.php:50
+#: app/Structure/taxonomies.php:40
+#: resources/templates/taxonomy-series.tpl.php:38
 msgctxt "taxonomy singular name"
 msgid "Series"
 msgstr ""
 
-#: app/Structure/taxonomies.php:40
+#: app/Structure/taxonomies.php:41
 msgid "Search Series"
 msgstr ""
 
-#: app/Structure/taxonomies.php:41
+#: app/Structure/taxonomies.php:42
 msgid "All Series"
 msgstr ""
 
-#: app/Structure/taxonomies.php:42
+#: app/Structure/taxonomies.php:43
 msgid "Parent Series"
 msgstr ""
 
-#: app/Structure/taxonomies.php:43
+#: app/Structure/taxonomies.php:44
 msgid "Parent Series:"
 msgstr ""
 
-#: app/Structure/taxonomies.php:44
+#: app/Structure/taxonomies.php:45
 msgid "Edit Series"
 msgstr ""
 
-#: app/Structure/taxonomies.php:45
+#: app/Structure/taxonomies.php:46
 msgid "Update Serie"
 msgstr ""
 
-#: app/Structure/taxonomies.php:46
+#: app/Structure/taxonomies.php:47
 msgid "Add New Series"
 msgstr ""
 
-#: app/Structure/taxonomies.php:47
+#: app/Structure/taxonomies.php:48
 msgid "New Series Name"
 msgstr ""
 
-#: app/Structure/taxonomies.php:63
+#: app/Structure/taxonomies.php:64
 #: resources/templates/partials/archive-tabs.tpl.php:15
 msgctxt "taxonomy general name"
 msgid "Speakers"
 msgstr ""
 
-#: app/Structure/taxonomies.php:64
-#: resources/templates/taxonomy-series.tpl.php:54
-#: resources/templates/taxonomy-speakers.tpl.php:38
+#: app/Structure/taxonomies.php:65
+#: resources/templates/taxonomy-series.tpl.php:56
+#: resources/templates/taxonomy-speakers.tpl.php:39
 msgctxt "taxonomy singular name"
 msgid "Speaker"
 msgstr ""
 
-#: app/Structure/taxonomies.php:65
+#: app/Structure/taxonomies.php:66
 msgid "Search Speakers"
 msgstr ""
 
-#: app/Structure/taxonomies.php:66
+#: app/Structure/taxonomies.php:67
 msgid "All Speakers"
 msgstr ""
 
-#: app/Structure/taxonomies.php:67
+#: app/Structure/taxonomies.php:68
 msgid "Parent Speaker"
 msgstr ""
 
-#: app/Structure/taxonomies.php:68
+#: app/Structure/taxonomies.php:69
 msgid "Parent Speaker:"
 msgstr ""
 
-#: app/Structure/taxonomies.php:69
+#: app/Structure/taxonomies.php:70
 msgid "Edit Speaker"
 msgstr ""
 
-#: app/Structure/taxonomies.php:70
+#: app/Structure/taxonomies.php:71
 msgid "Update Speaker"
 msgstr ""
 
-#: app/Structure/taxonomies.php:71
+#: app/Structure/taxonomies.php:72
 msgid "Add New Speaker"
 msgstr ""
 
-#: app/Structure/taxonomies.php:72
+#: app/Structure/taxonomies.php:73
 msgid "New Speaker Name"
 msgstr ""
 
-#: app/Structure/taxonomies.php:87
+#: app/Structure/taxonomies.php:88
 #: resources/templates/partials/archive-tabs.tpl.php:19
 msgctxt "taxonomy general name"
 msgid "Topics"
 msgstr ""
 
-#: app/Structure/taxonomies.php:88
-#: resources/templates/taxonomy-topics.tpl.php:36
+#: app/Structure/taxonomies.php:89
+#: resources/templates/taxonomy-topics.tpl.php:35
 msgctxt "taxonomy singular name"
 msgid "Topic"
 msgstr ""
 
-#: app/Structure/taxonomies.php:89
+#: app/Structure/taxonomies.php:90
 msgid "Search Topics"
 msgstr ""
 
-#: app/Structure/taxonomies.php:90
+#: app/Structure/taxonomies.php:91
 msgid "All Topics"
 msgstr ""
 
-#: app/Structure/taxonomies.php:91
+#: app/Structure/taxonomies.php:92
 msgid "Parent Topic"
 msgstr ""
 
-#: app/Structure/taxonomies.php:92
+#: app/Structure/taxonomies.php:93
 msgid "Parent Topic:"
 msgstr ""
 
-#: app/Structure/taxonomies.php:93
+#: app/Structure/taxonomies.php:94
 msgid "Edit Topic"
 msgstr ""
 
-#: app/Structure/taxonomies.php:94
+#: app/Structure/taxonomies.php:95
 msgid "Update Topic"
 msgstr ""
 
-#: app/Structure/taxonomies.php:95
+#: app/Structure/taxonomies.php:96
 msgid "Add New Topic"
 msgstr ""
 
-#: app/Structure/taxonomies.php:96
+#: app/Structure/taxonomies.php:97
 msgid "New Topic Name"
 msgstr ""
 
-#: app/Structure/taxonomies.php:97
+#: app/Structure/taxonomies.php:98
 msgid "Topic"
 msgstr ""
 
-#: app/Structure/taxonomies.php:109
+#: app/Structure/taxonomies.php:110
 msgctxt "taxonomy general name"
 msgid "Podcasts"
 msgstr ""
 
-#: app/Structure/taxonomies.php:110
+#: app/Structure/taxonomies.php:111
 msgctxt "taxonomy singular name"
 msgid "Podcast"
 msgstr ""
 
-#: app/Structure/taxonomies.php:111
+#: app/Structure/taxonomies.php:112
 msgid "Search Podcasts"
 msgstr ""
 
-#: app/Structure/taxonomies.php:112
+#: app/Structure/taxonomies.php:113
 msgid "All Podcasts"
 msgstr ""
 
-#: app/Structure/taxonomies.php:113
+#: app/Structure/taxonomies.php:114
 msgid "Parent Podcast"
 msgstr ""
 
-#: app/Structure/taxonomies.php:114
+#: app/Structure/taxonomies.php:115
 msgid "Parent Podcast:"
 msgstr ""
 
-#: app/Structure/taxonomies.php:115
+#: app/Structure/taxonomies.php:116
 msgid "Edit Podcast"
 msgstr ""
 
-#: app/Structure/taxonomies.php:116
+#: app/Structure/taxonomies.php:117
 msgid "Update Podcast"
 msgstr ""
 
-#: app/Structure/taxonomies.php:117
+#: app/Structure/taxonomies.php:118
 msgid "Add New Podcast"
 msgstr ""
 
-#: app/Structure/taxonomies.php:118
+#: app/Structure/taxonomies.php:119
 msgid "New Podcast Name"
 msgstr ""
 
-#: app/Structure/taxonomies.php:225
+#: app/Structure/taxonomies.php:226
 msgid "Subs"
 msgstr ""
 
-#: resources/templates/taxonomy-series.tpl.php:24
-msgid "Show all series"
+#: bootstrap/compatibility.php:39
+msgid "Important! This theme requires <a href='//github.com/tonik/gin'><strong>tonik/gin</strong></a> package. Please, make sure it's installed and active."
 msgstr ""
 
-#: resources/templates/taxonomy-series.tpl.php:51
-#: resources/templates/taxonomy-speakers.tpl.php:45
-#: resources/templates/taxonomy-topics.tpl.php:41
-#: resources/templates/taxonomy-topics.tpl.php:78
-msgid "Videos"
-msgstr ""
-
-#: resources/templates/taxonomy-speakers.tpl.php:25
-msgid "Show all speakers"
-msgstr ""
-
-#: resources/templates/taxonomy-topics.tpl.php:23
-msgid "Show all topics"
-msgstr ""
-
-#: resources/templates/taxonomy-topics.tpl.php:55
-#: resources/templates/taxonomy-topics.tpl.php:75
-msgid "Subtopic"
-msgid_plural "Subtopics"
-msgstr[0] ""
-
-#: resources/templates/vue-components/medialist/mediaitem.tpl.php:37
-msgid "Recording"
-msgstr ""
-
-#: resources/templates/vue-components/medialist/mediaitem.tpl.php:47
-msgid "clicks"
-msgstr ""
-
-#: resources/templates/vue-components/medialist/mediaitem.tpl.php:51
-msgctxt "singular"
-msgid "Series"
-msgstr ""
-
-#: resources/templates/vue-components/medialist/mediaitem.tpl.php:52
-msgctxt "plural"
-msgid "Series"
-msgstr ""
-
-#: resources/templates/vue-components/medialist/sorting.tpl.php:12
-msgid "Sort:"
-msgstr ""
-
-#: resources/templates/vue-components/medialist/pagination.tpl.php:26
-msgid "Previous page"
-msgstr ""
-
-#: resources/templates/vue-components/medialist/pagination.tpl.php:62
-msgid "Next page"
-msgstr ""
-
-#: resources/templates/vue-components/slider/teaser.tpl.php:17
-msgid "New Recordings"
+#: bootstrap/compatibility.php:52
+msgid "We could not find <a href='//github.com/tonik/gin'><strong>tonik/gin</strong></a> package. You have to install it before using this theme."
 msgstr ""
 
 #. Template Name of the theme
-#: resources/templates/vue-components/livestream-dropdown-init.tpl.php:25
+msgid "Development"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Kitchen"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Landing"
+msgstr ""
+
+#. Template Name of the theme
 msgid "Livestream"
 msgstr ""
 
-#: resources/templates/vue-components/livestream-dropdown-init.tpl.php:26
-msgctxt "Short for livestream"
-msgid "Live"
+#: resources/templates/algolia/autocomplete.obsolete.tpl.php:79
+msgid "No results matched your query "
 msgstr ""
 
-#: resources/templates/vue-components/livestream-dropdown-init.tpl.php:51
-msgid "Today"
-msgstr ""
-
-#: resources/templates/vue-components/livestream-dropdown-init.tpl.php:54
-msgid "Tomorrow"
-msgstr ""
-
-#: resources/templates/vue-components/livestream-dropdown-init.tpl.php:60
-msgctxt "as in \"at 10 am\""
-msgid "at"
-msgstr ""
-
-#: resources/templates/vue-components/livestream-dropdown-init.tpl.php:76
-msgid "Go to livestream"
-msgstr ""
-
-#: resources/templates/landing.tpl.php:90
-msgid "New Series"
+#: resources/templates/algolia/autocomplete.tpl.php:108
+msgid "Keine Treffer f&uuml;r die Anfrage "
 msgstr ""
 
 #. translators: %s: post title
@@ -715,6 +682,7 @@ msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
+msgstr[1] ""
 
 #: resources/templates/comments.tpl.php:60
 msgid "Comment navigation"
@@ -732,6 +700,10 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
+#: resources/templates/partials/flyin-nav.tpl.php:12
+msgid "Menu"
+msgstr ""
+
 #: resources/templates/partials/post/content.tpl.php:39
 msgid "By"
 msgstr ""
@@ -744,10 +716,32 @@ msgstr ""
 msgid "Search archive..."
 msgstr ""
 
-#: resources/templates/partials/flyin-nav.tpl.php:12
-msgid "Menu"
+#: resources/templates/single-slides.tpl.php:11
+msgid "Slide"
 msgstr ""
 
-#. Template Name of the theme
-msgid "Landing"
+#: resources/templates/taxonomy-series.tpl.php:23
+msgid "Show all series"
 msgstr ""
+
+#: resources/templates/taxonomy-series.tpl.php:53
+#: resources/templates/taxonomy-speakers.tpl.php:46
+#: resources/templates/taxonomy-topics.tpl.php:40
+#: resources/templates/taxonomy-topics.tpl.php:83
+msgid "Videos"
+msgstr ""
+
+#: resources/templates/taxonomy-speakers.tpl.php:24
+msgid "Show all speakers"
+msgstr ""
+
+#: resources/templates/taxonomy-topics.tpl.php:22
+msgid "Show all topics"
+msgstr ""
+
+#: resources/templates/taxonomy-topics.tpl.php:59
+#: resources/templates/taxonomy-topics.tpl.php:80
+msgid "Subtopic"
+msgid_plural "Subtopics"
+msgstr[0] ""
+msgstr[1] ""
