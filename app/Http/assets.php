@@ -22,71 +22,140 @@ use function Tonik\Theme\App\webpack_dev_server;
  *
  * @return void
  */
-function register_stylesheets() {
+add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts_and_styles', 10);
+function register_scripts_and_styles() {
 
-    if (!webpack_dev_server()) {
-        $mainCss = asset('css/main.css');
-        wp_enqueue_style('app', $mainCss->getUri(), [], sha1_file($mainCss->getPath()));
-    }
+  //
+  // Scripts
+  //
 
-    wp_deregister_style( 'algolia-instantsearch' );
-    wp_deregister_style( 'algolia-autocomplete' );
+  $main_js = get_asset_by_name('vue-main.js');
+  if ($main_js && file_exists($main_js->getPath())) {
+    wp_enqueue_script(
+      'vue-main',
+      $main_js->getUri(),
+      [],
+      sha1_file($main_js->getPath()),
+      true
+    );
+  }
+
+  $vanilla_main_js = get_asset_by_name('vanilla-main.js');
+  if ($vanilla_main_js && file_exists($vanilla_main_js->getPath())) {
+    wp_enqueue_script(
+      'vanilla-main',
+      $vanilla_main_js->getUri(),
+      [],
+      sha1_file($vanilla_main_js->getPath()),
+      true
+    );
+  }
+
+  wp_deregister_script('algolia-instantsearch');
+  wp_deregister_script('algolia-autocomplete');
+
+  //
+  // Legacy Scripts
+  //
+  $chunk_vendors_legacy_js = asset('assets/chunk-vendors.legacy.js');
+  if ($chunk_vendors_legacy_js && file_exists($chunk_vendors_legacy_js->getPath())) {
+    wp_enqueue_script(
+      'chunk-vendors-legacy',
+      $chunk_vendors_legacy_js->getUri(),
+      [],
+      sha1_file($chunk_vendors_legacy_js->getPath()),
+      true
+    );
+  }
+
+  $vanilla_legacy_js = asset('assets/vanilla.legacy.js');
+  if ($vanilla_legacy_js && file_exists($vanilla_legacy_js->getPath())) {
+    wp_enqueue_script(
+      'vanilla-legacy',
+      $vanilla_legacy_js->getUri(),
+      ['chunk-vendors-legacy'],
+      sha1_file($vanilla_legacy_js->getPath()),
+      true
+    );
+  }
+
+  //
+  // Styles
+  //
+
+  $main_css = get_asset_by_name('main.css');
+  if ($main_css && file_exists($main_css->getPath())) {
+    wp_enqueue_style('main', $main_css->getUri(), [], sha1_file($main_css->getPath()));
+  }
+
+  wp_deregister_style('algolia-instantsearch');
+  wp_deregister_style('algolia-autocomplete');
 
 }
-add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets', 10);
-
-
-/**
- * Registers theme script files.
- *
- * Priority 1 so it is added before jquery
- *
- * @return void
- */
-function register_scripts() {
-
-    $chunk_vendors_js = asset('js/chunk-vendors.js');
-    wp_enqueue_script(
-        'chunk-vendors',
-        $chunk_vendors_js->getUri(),
-        [],
-        sha1_file($chunk_vendors_js->getPath()),
-        true
-    );
-
-    $main_js = asset('js/main.js');
-    wp_enqueue_script(
-        'main',
-        $main_js->getUri(),
-        ['chunk-vendors'],
-        sha1_file($main_js->getPath()),
-        true
-    );
-
-    $vanilla_js = asset('js/vanilla.js');
-    wp_enqueue_script(
-        'vanilla',
-        $vanilla_js->getUri(),
-        ['jquery'],
-        sha1_file($vanilla_js->getPath()),
-        true
-    );
-
-    wp_deregister_script( 'algolia-instantsearch' );
-    wp_deregister_script( 'algolia-autocomplete' );
-
-}
-add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts', 10);
 
 /**
  * Registers editor stylesheets.
  *
  * @return void
  */
-function register_editor_stylesheets() {
-    add_editor_style(asset_path('css/main.css'));
-}
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
+function register_editor_stylesheets() {
+  $main_css = get_asset_by_name('main.css');
+  if ($main_css && file_exists($main_css->getPath())) {
+    add_editor_style($main_css->getPath());
+  }
+}
+
+/**
+ * Registers admin scripts and stylesheets.
+ *
+ * @return void
+ */
+add_action('admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles');
+function register_admin_scripts_and_styles() {
+  /*
+   * Javascript
+   */
+  wp_enqueue_script(
+    'chartist',
+    '//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js',
+    [],
+    '0.11.0',
+    false
+  );
+
+  // $admin_js = asset('js/admin.js');
+  $admin_js = get_asset_by_name('vue-admin.js');
+  if ($admin_js && file_exists($admin_js->getPath())) {
+    wp_enqueue_script(
+      'vue-admin',
+      $admin_js->getUri(),
+      [],
+      sha1_file($admin_js->getPath()),
+      true
+    );
+  }
+
+  // TEMP DISABLED
+  $vanilla_admin_js = get_asset_by_name('vanilla-admin.js');
+  if ($vanilla_admin_js && file_exists($vanilla_admin_js->getPath())) {
+    wp_enqueue_script(
+      'vanilla-admin',
+      $vanilla_admin_js->getUri(),
+      ['chartist'],
+      sha1_file($vanilla_admin_js->getPath()),
+      true
+    );
+  }
+
+  /*
+   * CSS
+   */
+  $admin_css = get_asset_by_name('admin.css');
+  if ($admin_css && file_exists($admin_css->getPath())) {
+    wp_enqueue_style('admin', $admin_css->getUri(), [], sha1_file($admin_css->getPath()));
+  }
+};
 
 /**
  * Moves front-end jQuery script to the footer.
@@ -94,68 +163,13 @@ add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
  * @param  \WP_Scripts $wp_scripts
  * @return void
  */
-function move_jquery_to_the_footer($wp_scripts) {
-    if( is_admin() ) return;
-    $wp_scripts->add_data( 'jquery', 'group', 1 );
-    $wp_scripts->add_data( 'jquery-core', 'group', 1 );
-    $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
-}
 add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer');
-
-/**
- * Registers admin scripts and stylesheets.
- *
- * @return void
- */
-function register_admin_scripts_and_styles() {
-    /*
-     * Javascript
-     */
-    wp_enqueue_script(
-        'chartist_js',
-        '//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js',
-        [],
-        '0.11.0',
-        false
-    );
-
-    $chunk_vendors_js = asset('js/chunk-vendors.js');
-    wp_enqueue_script(
-        'chunk-vendors',
-        $chunk_vendors_js->getUri(),
-        [],
-        sha1_file($chunk_vendors_js->getPath()),
-        true
-    );
-
-    $admin_js = asset('js/admin.js');
-    wp_enqueue_script(
-        'admin',
-        $admin_js->getUri(),
-        ['chunk-vendors'],
-        sha1_file($admin_js->getPath()),
-        true
-    );
-
-    $vanilla_admin_js = asset('js/vanilla-admin.js');
-    wp_enqueue_script(
-        'vanilla-admin',
-        $vanilla_admin_js->getUri(),
-        ['chunk-vendors', 'chartist_js'],
-        sha1_file($vanilla_admin_js->getPath()),
-        true
-    );
-
-    /*
-     * CSS
-     */
-    if (!webpack_dev_server()) {
-        $admin_css = asset('css/admin.css');
-        wp_enqueue_style('app', $admin_css->getUri(), [], sha1_file($admin_css->getPath()));
-    }
-};
-add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_scripts_and_styles' );
-
+function move_jquery_to_the_footer ($wp_scripts) {
+  if( is_admin() ) return;
+  $wp_scripts->add_data( 'jquery', 'group', 1 );
+  $wp_scripts->add_data( 'jquery-core', 'group', 1 );
+  $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+}
 
 /**
  * Add 'async' and 'defer' to <script> tags
@@ -165,8 +179,50 @@ add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\register_admin_script
  *
  * User 'defer' in production otherwise jquery-dependencies throw errors
  */
-function add_async_defer($tag, $handle) {
-    if(is_admin()) return $tag;
-    return str_replace( ' src', ' defer src', $tag );
-}
 add_filter('script_loader_tag', 'Tonik\Theme\App\Http\add_async_defer', 10, 2);
+function add_async_defer ($tag, $handle) {
+  if(is_admin()) return $tag;
+  return str_replace( ' src', ' defer src', $tag );
+}
+
+
+/**
+ * Add type="module" to scripts
+ */
+add_filter('script_loader_tag', 'Tonik\Theme\App\Http\add_module_to_script', 10, 3);
+function add_module_to_script ($tag, $handle, $src) {
+  if (in_array($handle, ['vue-main', 'vue-admin'])) {
+    if (strpos($tag, 'text/javascript') !== false) {
+      $tag = str_replace('text/javascript', 'module', $tag);
+    } else {
+      $tag = str_replace('<script', '<script type="module"', $tag);
+    }
+  }
+
+  return $tag;
+}
+
+//
+// Helper Functions
+//
+
+/**
+ * Return the first matching asset
+ * Example:
+ *   - $asset_name = 'vue-admin.js'
+ *   - returns 'dist/assets/vue-main.4ac13b6a.js'
+ * @param  [string] $asset_name
+ * @return [Asset]
+ */
+function get_asset_by_name ($asset_name) {
+  $dir = scandir(dirname(dirname(__DIR__)) . '/dist/assets');
+  $name_parts = explode('.', $asset_name);
+  $regex = '/^' . $name_parts[0] . '.+\.' . end($name_parts) . '$/im';
+
+  foreach ($dir as $file) {
+    if (preg_match($regex, $file)) {
+      return asset('assets/' . $file);
+    }
+  }
+
+}

@@ -1,0 +1,11 @@
+// ELEMENTS
+@import "./legacy-dependencies/inuitcss/elements/elements.page";
+@import "./legacy-dependencies/inuitcss/elements/elements.headings";
+@import "./legacy-dependencies/inuitcss/elements/elements.images";
+@import "./legacy-dependencies/inuitcss/elements/elements.tables";
+@import "elements/typography";
+@import "elements/forms";
+
+[v-cloak] {
+    display: none;
+}

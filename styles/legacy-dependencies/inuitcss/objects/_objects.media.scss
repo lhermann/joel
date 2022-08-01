@@ -1,0 +1,150 @@
+/* ==========================================================================
+   #MEDIA
+   ========================================================================== */
+
+$inuit-media-spacing:       $inuit-global-spacing-unit !default;
+$inuit-media-tiny-spacing:  $inuit-global-spacing-unit-tiny !default;
+$inuit-media-small-spacing: $inuit-global-spacing-unit-small !default;
+$inuit-media-large-spacing: $inuit-global-spacing-unit-large !default;
+$inuit-media-huge-spacing:  $inuit-global-spacing-unit-huge !default;
+
+/**
+ * Place any image- and text-like content side-by-side, as per:
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+ */
+
+.o-media {
+  @include inuit-clearfix();
+  display: block;
+}
+
+  .o-media__img {
+    float: left;
+    margin-right: $inuit-media-spacing;
+
+    > img {
+      display: block;
+    }
+
+  }
+
+  .o-media__body {
+    overflow: hidden;
+    display: block;
+
+    &,
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+
+
+
+
+/* Size variants
+   ========================================================================== */
+
+/**
+ * Modify the amount of space between our image and our text. We also have
+ * reversible options for all available sizes.
+ */
+
+.o-media--flush {
+
+  > .o-media__img {
+    margin-right: 0;
+    margin-left: 0;
+ }
+
+}
+
+
+.o-media--tiny {
+
+  > .o-media__img {
+    margin-right: $inuit-media-tiny-spacing;
+  }
+
+  &.o-media--reverse {
+
+    > .o-media__img {
+      margin-right: 0;
+      margin-left: $inuit-media-tiny-spacing;
+    }
+
+  }
+
+}
+
+
+.o-media--small {
+
+  > .o-media__img {
+    margin-right: $inuit-media-small-spacing;
+  }
+
+  &.o-media--reverse {
+
+    > .o-media__img {
+      margin-right: 0;
+      margin-left: $inuit-media-small-spacing;
+    }
+
+  }
+
+}
+
+
+.o-media--large {
+
+  > .o-media__img {
+    margin-right: $inuit-media-large-spacing;
+  }
+
+  &.o-media--reverse {
+
+    > .o-media__img {
+      margin-right: 0;
+      margin-left: $inuit-media-large-spacing;
+    }
+
+  }
+
+}
+
+
+.o-media--huge {
+
+  > .o-media__img {
+    margin-right: $inuit-media-huge-spacing;
+  }
+
+  &.o-media--reverse {
+
+    > .o-media__img {
+      margin-right: 0;
+      margin-left: $inuit-media-huge-spacing;
+    }
+
+  }
+
+}
+
+
+
+
+
+/* Reversed media objects
+   ========================================================================== */
+
+.o-media--reverse {
+
+  > .o-media__img {
+    float: right;
+    margin-right: 0;
+    margin-left: $inuit-media-spacing;
+  }
+
+}

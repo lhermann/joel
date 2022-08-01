@@ -98,7 +98,7 @@ return [
     'directories' => [
         'languages' => 'resources/languages',
         'templates' => 'resources/templates',
-        'assets' => 'resources/assets',
+        'assets' => 'dist',
         'public' => 'dist',
         'app' => 'app',
     ],
@@ -138,7 +138,8 @@ return [
         'Structure/navs.php',
         'Structure/widgets.php',
         'Structure/sidebars.php',
-        'Structure/posttypes.php',
+        'Structure/posttypes-media.php',
+        'Structure/posttypes-answer.php',
         'Structure/taxonomies.php',
         'Structure/shortcodes.php',
         'Structure/thumbnails.php',

@@ -25,12 +25,9 @@
         <?php print_r( $wp_query->query ) ?>
         <br>
         <strong>Post Count:</strong> <?= count($wp_query->posts) ?>
-        <br>
-        <strong>query_vars:</strong>
-        <div class="c-card" style="overflow: scroll; max-height: 12em;">
-            <pre>
-            <?php print_r($wp_query->query_vars) ?>
-            </pre>
-        </div>
     </p>
+    <div>query_vars:</div>
+    <div style="overflow: scroll; max-height: 12em; border: 1px solid lightgray; padding: 0.5rem;">
+        <pre><?php print_r($wp_query->query_vars) ?></pre>
+    </div>
 </div>

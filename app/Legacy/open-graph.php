@@ -8,6 +8,7 @@ namespace Tonik\Theme\App\Legacy;
 |-----------------------------------------------------------
 */
 
+use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\asset_path;
 
 /**
@@ -36,16 +37,6 @@ function print_open_graph() {
     global $post, $wp_query, $page, $paged;
 
     /*
-     * CURRENTLY NOT IN USE
-     * Extension for the <title>
-     */
-    $title_extension = '';
-    $site_description = get_bloginfo( 'description', 'display' );
-    if ( $site_description && ( is_home() || is_front_page() ) ) $title_extension .= ' | '.$site_description; // Add the blog description for the home/front page.
-    if ( $paged >= 2 || $page >= 2 ) $title_extension .= ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) ); // Add a page number if necessary
-    if ( isset( $_GET['eo_month'] ) ) $title_extension .= ' | '.date( 'M y', strtotime($_GET['eo_month']) ); // individualize titles for widget calendar months
-
-    /*
      * Ope Graph Title
      */
     $og_title = substr( strtok( wp_title( '¥', false, 'right' ) , '¥' ), 0, -1);
@@ -62,7 +53,7 @@ function print_open_graph() {
     /*
      * Description
      */
-    $description = $site_description;
+    $description = get_bloginfo('description', 'display');
     if ( is_single() ) {
         switch ( $post->post_type ) {
             case 'recordings':

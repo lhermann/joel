@@ -1,0 +1,45 @@
+// GENERIC
+@import "./legacy-dependencies/inuitcss/generic/generic.box-sizing";
+@import "./legacy-dependencies/inuitcss/generic/generic.normalize";
+@import "./legacy-dependencies/inuitcss/generic/generic.reset";
+@import "./legacy-dependencies/inuitcss/generic/generic.shared";
+
+/**
+ * 1. Allow overflow-x: hidden to work
+ * 2. Make containers default to 100% viewport height
+ * 3. Fix safari transition fort smoothing bug
+ * 4. Fix iOS bouncy scroll
+ * Note: Do not use "overflow-x: hidden;"" because it kills window.scroll
+ */
+html,
+body {
+    position: relative; /* 1 */
+    background-color: $c-white;
+    height: 100%; /* 2 */
+    -webkit-font-smoothing: antialiased; /* 3 */
+    -webkit-overflow-scrolling: touch;
+}
+
+/**
+ * 1. can not be applied to html or body because it messes with smooth scrolling
+ *    on the iPhone
+ */
+main {
+    overflow: hidden; /* 1 */
+}
+
+a {
+    outline: 0;
+    text-decoration: none;
+    color: $c-link;
+
+    &:hover,
+    &:focus {
+        color: $c-link-hover;
+    }
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid $c-border;
+}

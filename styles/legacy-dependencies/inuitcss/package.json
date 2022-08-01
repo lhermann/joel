@@ -1,0 +1,40 @@
+{
+  "name": "inuitcss-modified",
+  "version": "6.0.1",
+  "description": "Extensible, scalable, Sass-based, OOCSS framework for large and long-lasting UI projects.",
+  "main": "example.main.scss",
+  "scripts": {
+    "test": "npm run lint && mocha test/run.js",
+    "lint": "./node_modules/.bin/stylelint \"**/*.scss\" --syntax scss"
+  },
+  "keywords": [
+    "oocss",
+    "sass",
+    "bem",
+    "itcss",
+    "css"
+  ],
+  "author": "Harry Roberts <csswizardry@gmail.com>",
+  "contributors": [
+    "Anselm Hannemann",
+    "Dennis Heibült",
+    "Florian Bouvot",
+    "Nenad Jelovac"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/inuitcss/inuitcss/issues"
+  },
+  "homepage": "https://github.com/inuitcss/inuitcss#readme",
+  "dependencies": {
+    "sass-mq": "^5.0.0"
+  },
+  "devDependencies": {
+    "glob": "^7.1.3",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.9.4",
+    "sass-true": "^4.0.0",
+    "stylelint": "^9.6.0",
+    "stylelint-scss": "^3.3.1"
+  }
+}
