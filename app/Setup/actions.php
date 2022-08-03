@@ -26,6 +26,38 @@ function set_locale() {
 }
 
 
+
+/**
+ * Save content from acf's tiny-mce inside the real post_content
+ */
+add_action('save_post', 'Tonik\Theme\App\Setup\content_on_save');
+function content_on_save ($post_id) {
+  if ( !isset($_POST['post_type']) || $_POST['post_type'] !== 'recordings' || !isset($_POST['acf']) ) return;
+
+  // ACF content field id
+  $field_id = 'field_5ccad024b0ad4';
+
+  if($_POST['acf'][$field_id]) {
+    // unhook this function so it doesn't loop infinitely
+    remove_action( 'save_post', 'Tonik\Theme\App\Setup\content_on_save' );
+
+    // update the post, which calls save_post again
+    wp_update_post( [
+      'ID'           => $post_id,
+      'post_content' => $_POST['acf'][$field_id]
+    ] );
+
+    // re-hook this function
+    add_action( 'save_post', 'Tonik\Theme\App\Setup\content_on_save' );
+  } else {
+    $post_object = get_post( $post_id );
+    if($post_object->post_content) {
+      update_field($field_id, $post_object->post_content, $post_id);
+    }
+  }
+}
+
+
 /**
  * Include the TGM_Plugin_Activation class.
  *

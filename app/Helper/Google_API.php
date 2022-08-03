@@ -16,7 +16,6 @@ class Google_API {
   private $client;
 
   public function __construct () {
-    $credentials_file = get_template_directory().'/'.OAUTH_CREDENTIALS_FILE;
     $callback_url = sprintf(
       '%s/wp-json/%s/v1/google-api-callback',
       get_bloginfo('url'),
@@ -26,7 +25,7 @@ class Google_API {
     // Init Client
     $this->client = new Google_Client();
     $this->client->setApplicationName('Joel Video Upload');
-    $this->client->setAuthConfig($credentials_file);
+    $this->client->setAuthConfig(OAUTH_CREDENTIALS_FILE);
     $this->client->setRedirectUri($callback_url);
     $this->client->setScopes(['https://www.googleapis.com/auth/youtube']);
     $this->client->prepareScopes();

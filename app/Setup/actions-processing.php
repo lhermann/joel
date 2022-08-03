@@ -1,6 +1,6 @@
 <?php
 
-namespace Tonik\Theme\App\Legacy;
+namespace Tonik\Theme\App\Setup;
 
 use function Tonik\Theme\App\config;
 
@@ -8,44 +8,13 @@ use function Tonik\Theme\App\config;
  * This script is triggered every time a video in the wordpress backend is being saved.
  */
 
-
-/**
- * Save content from acf's tiny-mce inside the real post_content
- */
-add_action( 'save_post', 'Tonik\Theme\App\Legacy\content_on_save' );
-function content_on_save ($post_id) {
-  if ( !isset($_POST['post_type']) || $_POST['post_type'] !== 'recordings' || !isset($_POST['acf']) ) return;
-
-  // ACF content field id
-  $field_id = 'field_5ccad024b0ad4';
-
-  if($_POST['acf'][$field_id]) {
-    // unhook this function so it doesn't loop infinitely
-    remove_action( 'save_post', 'Tonik\Theme\App\Legacy\content_on_save' );
-
-    // update the post, which calls save_post again
-    wp_update_post( [
-      'ID'           => $post_id,
-      'post_content' => $_POST['acf'][$field_id]
-    ] );
-
-    // re-hook this function
-    add_action( 'save_post', 'Tonik\Theme\App\Legacy\content_on_save' );
-  } else {
-    $post_object = get_post( $post_id );
-    if($post_object->post_content) {
-      update_field($field_id, $post_object->post_content, $post_id);
-    }
-  }
-}
-
 /**
  * Is triggered whenever a post or page is created or updated.
  *
  * Note: ACF fires with priority 10, this needs to execute afterwards so that
  * speaker and series are updated already
  */
-add_action('save_post', 'Tonik\Theme\App\Legacy\process_on_save', 11);
+add_action('save_post', 'Tonik\Theme\App\Setup\process_on_save', 11);
 function process_on_save ($post_id) {
 
   /*
@@ -64,7 +33,15 @@ function process_on_save ($post_id) {
   $speaker = reset($speaker)->name;
   $series = wp_get_post_terms($post_id, 'series') ?? [];
   $series = reset($series)->name;
-  $thumbnail = wp_get_attachment_image_url(get_field('thumbnail', $post_id), '720p');
+  $attachment_id = get_field('thumbnail', $post_id);
+
+  // Get thumbnail path
+  $thumbnailPath = get_attached_file($attachment_id); // without correct filename
+  $thumbnailUrl = wp_get_attachment_image_url($attachment_id, '720p'); // with correct filename
+  $thumbnailPathParts = explode('/', $thumbnailPath);
+  array_pop($thumbnailPathParts);
+  $thumbnailUrlParts = explode('/', $thumbnailUrl);
+  $thumbnail = implode('/', array_merge($thumbnailPathParts, [array_pop($thumbnailUrlParts)]));
 
   /*
    * $filename: the selected video or audio file; $filename = (var) 'null' for empty values
@@ -135,7 +112,6 @@ function process_on_save ($post_id) {
    * set up database for processing of file
    */
   if ($process_me) {
-
     $wpdb->insert(
       'wp_video_files',
       array(
@@ -156,6 +132,7 @@ function process_on_save ($post_id) {
         'modified'      => current_time('mysql'),
       ),
     );
+
     // log the event
     file_put_contents(
       config('processing')['log-dir'] . 'main.log',
@@ -175,7 +152,7 @@ function process_on_save ($post_id) {
  * namley, 'video', 'audio_lq' and 'audio_hq' is set to STATUS 99
  * the deleting process is taken care of by hand or another script
  */
-add_action( 'before_delete_post', 'Tonik\Theme\App\Legacy\delete_video' );
+add_action('before_delete_post', 'Tonik\Theme\App\Setup\delete_video');
 function delete_video ($postid) {
 
   // We check if the global post type isn't ours and just return
