@@ -9,6 +9,7 @@ export default defineConfig({
   build: {
     target: ['es2015'],
     manifest: true,
+    sourcemap: true,
     rollupOptions: {
       input: {
         'vue-main': 'src-vue/main.js',

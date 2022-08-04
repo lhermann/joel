@@ -1,38 +1,43 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue/dist/vue.esm-bundler'
 import Popper from 'popper.js'
+import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 
 export default function (element) {
+  const buttonElement = element.querySelector('[data-ref="button"]')
+  const dropdownElement = element.querySelector('[data-ref="dropdown"]')
+
   const app = createApp({
-    name: 'Dropdown-Util',
-    data () {
-      return {
-        visible: false,
-        popper: null,
-      }
-    },
-    methods: {
-      toggleDropdown (event, force = null) {
-        this.visible = force === null ? !this.visible : force
-        this.$nextTick(() => {
-          this.popper.scheduleUpdate()
+    name: 'DropdownUtil',
+    setup () {
+      const visible = ref(false)
+      let popper = null
+
+      onMounted(() => {
+        document.addEventListener('click', onOutsideClick)
+        popper = new Popper(buttonElement, dropdownElement, {
+          placement: dropdownElement.dataset.placement,
         })
-      },
-      onOutsideClick (event) {
-        if (this.visible && !this.$el.contains(event.target)) {
-          this.toggleDropdown(event, false)
-        }
-      },
-    },
-    mounted () {
-      this.popper = new Popper(this.$refs.button, this.$refs.dropdown, {
-        placement: this.$refs.dropdown.dataset.placement,
       })
-    },
-    created () {
-      document.addEventListener('click', this.onOutsideClick)
-    },
-    destroyed () {
-      document.removeEventListener('click', this.onOutsideClick)
+      onBeforeUnmount(() => {
+        document.removeEventListener('click', onOutsideClick)
+      })
+
+      function toggleDropdown (event, force = null) {
+        visible.value = force === null ? !visible.value : force
+        nextTick(() => {
+          popper.scheduleUpdate()
+        })
+      }
+      function onOutsideClick (event) {
+        if (visible.value && !element.contains(event.target)) {
+          toggleDropdown(event, false)
+        }
+      }
+
+      return {
+        toggleDropdown,
+        visible,
+      }
     },
   })
 

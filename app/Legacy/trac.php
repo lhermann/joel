@@ -45,16 +45,12 @@ function trac_rewrite_rules() {
     global $wp_rewrite;
 
     // define new rules
-    $new_rules = array(
-        "trac/([0-9]{1,})/(.+?)/(.+?)/?$"
-
-                    => "index.php"
-                            ."?p=".$wp_rewrite->preg_index(1)
-                            ."&trac-label=".$wp_rewrite->preg_index(2)
-                            ."&redirect_url=".$wp_rewrite->preg_index(3)
-                            ."&template=trac",
-
-    );
+    $new_rules = [
+        "trac/([0-9]{1,})/(.+?)/?$" => "index.php"
+            ."?p=".$wp_rewrite->preg_index(1)
+            ."&trac-label=".$wp_rewrite->preg_index(2)
+            ."&template=trac",
+    ];
 
     // Add new rules to existing rules
     $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
@@ -97,7 +93,7 @@ function trac_controller( $wp ) {
         printf('<p><strong>HTTP Referer:</strong> <a href="%1$s">%1$s</a></p>',
             isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "#"
         );
-        printf("<p><strong>Redirect Url:</strong> <code>https://%s</code></p>",
+        printf("<p><strong>Redirect Url:</strong> <code>%s</code></p>",
             get_query_var('redirect_url')
         );
         print("<p><strong>Log:</strong> <code>$log</code></p>");
@@ -106,7 +102,9 @@ function trac_controller( $wp ) {
 
     // Redirect to specified url
     header("HTTP/1.1 302 Found");
-    header('Location: https://' . get_query_var('redirect_url'));
+    header('Location: ' . get_query_var('redirect_url'));
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment');
     exit();
 }
 
@@ -554,18 +552,14 @@ function trac_dashboard_widget_function() {
 }
 
 
+// return trac permalink
 function trac_permalink($post_id, $label, $url) {
-    // remove http:// or https://
-    if(stripos($url, '://')) {
-        $url = substr($url, stripos($url, '://') + 3);
-    }
-    // return trac permalink
     return sprintf(
-        "%s/trac/%d/%s/%s/",
+        "%s/trac/%d/%s/?redirect_url=%s",
         get_bloginfo('url'),
         $post_id,
         $label,
-        $url
+        urlencode($url),
     );
 }
 

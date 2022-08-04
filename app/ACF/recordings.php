@@ -155,7 +155,7 @@ if(function_exists('acf_add_local_field_group')):
            'format-info-'.$key,
            $file,
            'video-alert hidden alert-warning',
-           '<pre>'.implode($video->error, "\n").'</pre>',
+           '<pre>'.implode("\n", $video->error).'</pre>',
            '<span class="dashicons dashicons-info"></span>'
         );
 

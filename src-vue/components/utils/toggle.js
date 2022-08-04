@@ -1,8 +1,8 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue/dist/vue.esm-bundler'
 
 export default function (element) {
   const app = createApp({
-    name: 'Toggle-Util',
+    name: 'ToggleUtil',
     data () {
       return {
         toggled: false,

@@ -29,16 +29,18 @@ $download_files = get_download_files(get_the_ID());
 
   <!-- Download -->
   <?php if ($download_files): ?>
-  <div id="download"
+  <div
+    id="download"
     class="o-flex__item u-text-right"
     data-vue="dropdown"
   >
-      <button id="download-btn"
+      <button
+        id="download-btn"
+        data-ref="button"
         class="c-btn c-btn--small c-btn--secondary"
-        v-on:click="toggleDropdown"
-        ref="button"
         aria-haspopup="true"
         :aria-expanded="visible"
+        v-on:click="toggleDropdown"
       >
         <span class="u-ic-download"></span>
         Download
@@ -48,29 +50,37 @@ $download_files = get_download_files(get_the_ID());
           class="u-ic-keyboard_arrow_up"></span>
       </button>
 
-      <ul class="c-dropdown c-dropdown--round"
-        v-show="visible" v-cloak
+      <ul
+        v-cloak
+        v-show="visible"
+        data-ref="dropdown"
+        class="c-dropdown c-dropdown--round"
         aria-labelledby="download-btn"
         data-placement="bottom-end"
-        ref="dropdown"
       >
 
         <?php foreach ($download_files as $file):
+          $download_url = strpos($file->relative_url, 'http') === false
+            ? config('url-prefix')['download'].$file->relative_url
+            : $file->relative_url;
           $permalink = trac_permalink(
             $file->post_id,
             $file->type."dl",
-            config('url-prefix')['download'].$file->relative_url
-          ); ?>
+            $download_url,
+          );
+        ?>
 
             <li class="c-dropdown__item ">
-              <a class="c-link c-link--block c-link--secondary"
+              <a
+                class="c-link c-link--block c-link--secondary u-text-left"
+                target="_blank"
                 href="<?= $permalink ?>">
                 <?php if ($file->type === 'video'): ?>
                   <span class="u-ic-videocam"></span>
                 <?php else: ?>
                   <span class="u-ic-headset"></span>
                 <?php endif ?>
-                <strong><?php
+                &nbsp;<strong><?php
                   if ($file->type === 'video') {
                     echo $file->resolution === '720p' ? 'HD' : 'SD';
                   } else {
@@ -95,16 +105,17 @@ $download_files = get_download_files(get_the_ID());
   <?php endif ?>
 
   <!-- Share -->
-  <div id="share"
+  <div
+    id="share"
     class="o-flex__item u-text-right u-hidden-until@tablet"
     data-vue="dropdown"
   >
       <button id="share-btn"
         class="c-btn c-btn--small c-btn--secondary"
-        v-on:click="toggleDropdown"
-        ref="button"
+        data-ref="button"
         aria-haspopup="true"
         :aria-expanded="visible"
+        v-on:click="toggleDropdown"
       >
         <span class="u-ic-share"></span>
         Teilen
@@ -118,7 +129,7 @@ $download_files = get_download_files(get_the_ID());
         v-show="visible" v-cloak
         aria-labelledby="share-btn"
         data-placement="bottom-end"
-        ref="dropdown">
+        data-ref="dropdown">
 
         <li class="c-dropdown__item ">
           <a class="c-link c-link--block c-link--secondary"
