@@ -7,7 +7,7 @@ use Tonik\Gin\Foundation\Theme;
 use Tonik\Gin\Template\Template;
 
 
-function webpack_dev_server() {
+function vite_dev_proxy() {
     return strpos($_SERVER['HTTP_HOST'], 'localhost') !== false &&
         key_exists("HTTP_X_FORWARDED_PORT", $_SERVER);
 }

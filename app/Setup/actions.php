@@ -309,12 +309,19 @@ add_action( 'admin_menu', 'Tonik\Theme\App\Setup\remove_admin_menu_pages' );
  * Add javascript global vars
  */
 function jsglobal() {
+  // Global JS variables
   print('<script type="text/javascript">');
   printf('window._joel = { templatePath: "%s", assetPath: "%s" }',
     get_template_directory_uri().'/',
     get_template_directory_uri().'/'.config('directories')['public'].'/'
   );
   print('</script>');
+
+  // Global CSS variables
+  printf('<style>:root { --templatePath: %s, --assetPath: %s }</style>',
+    get_template_directory_uri().'/',
+    get_template_directory_uri().'/'.config('directories')['public'].'/'
+  );
 }
-add_action( 'wp_footer', 'Tonik\Theme\App\Setup\jsglobal' );
+add_action( 'wp_head', 'Tonik\Theme\App\Setup\jsglobal' );
 

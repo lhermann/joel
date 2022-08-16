@@ -13,9 +13,23 @@ namespace Tonik\Theme\App\Http;
 |
 */
 
+use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\asset;
 use function Tonik\Theme\App\asset_path;
-use function Tonik\Theme\App\webpack_dev_server;
+use function Tonik\Theme\App\vite_dev_proxy;
+
+/**
+ * Make sure it works with vite proxy
+ */
+if (vite_dev_proxy()) {
+  config()->set('directories', [
+      'languages' => 'resources/languages',
+      'templates' => 'resources/templates',
+      'assets' => 'public',
+      'public' => 'public',
+      'app' => 'app',
+  ]);
+}
 
 /**
  * Registers theme stylesheet files.
@@ -30,25 +44,13 @@ function register_scripts_and_styles() {
   //
 
   $main_js = get_asset_by_name('vue-main.js');
-  if ($main_js && file_exists($main_js->getPath())) {
-    wp_enqueue_script(
-      'vue-main',
-      $main_js->getUri(),
-      [],
-      sha1_file($main_js->getPath()),
-      true
-    );
+  if ($main_js) {
+    wp_enqueue_script('vue-main', $main_js['uri'], [], $main_js['hash'], true);
   }
 
   $vanilla_main_js = get_asset_by_name('vanilla-main.js');
-  if ($vanilla_main_js && file_exists($vanilla_main_js->getPath())) {
-    wp_enqueue_script(
-      'vanilla-main',
-      $vanilla_main_js->getUri(),
-      [],
-      sha1_file($vanilla_main_js->getPath()),
-      true
-    );
+  if ($vanilla_main_js) {
+    wp_enqueue_script('vanilla-main', $vanilla_main_js['uri'], [], $vanilla_main_js['hash'], true);
   }
 
   wp_deregister_script('algolia-instantsearch');
@@ -84,8 +86,8 @@ function register_scripts_and_styles() {
   //
 
   $main_css = get_asset_by_name('main.css');
-  if ($main_css && file_exists($main_css->getPath())) {
-    wp_enqueue_style('main', $main_css->getUri(), [], sha1_file($main_css->getPath()));
+  if ($main_css) {
+    wp_enqueue_style('main', $main_css['uri'], [], $main_css['hash']);
   }
 
   wp_deregister_style('algolia-instantsearch');
@@ -101,8 +103,8 @@ function register_scripts_and_styles() {
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 function register_editor_stylesheets() {
   $main_css = get_asset_by_name('main.css');
-  if ($main_css && file_exists($main_css->getPath())) {
-    add_editor_style($main_css->getPath());
+  if ($main_css) {
+    add_editor_style($main_css['path']);
   }
 }
 
@@ -124,36 +126,23 @@ function register_admin_scripts_and_styles() {
     false
   );
 
-  // $admin_js = asset('js/admin.js');
   $admin_js = get_asset_by_name('vue-admin.js');
-  if ($admin_js && file_exists($admin_js->getPath())) {
-    wp_enqueue_script(
-      'vue-admin',
-      $admin_js->getUri(),
-      [],
-      sha1_file($admin_js->getPath()),
-      true
-    );
+  if ($admin_js) {
+    wp_enqueue_script('vue-admin', $admin_js['uri'], [], $admin_js['hash'], true);
   }
 
   // TEMP DISABLED
   $vanilla_admin_js = get_asset_by_name('vanilla-admin.js');
-  if ($vanilla_admin_js && file_exists($vanilla_admin_js->getPath())) {
-    wp_enqueue_script(
-      'vanilla-admin',
-      $vanilla_admin_js->getUri(),
-      ['chartist'],
-      sha1_file($vanilla_admin_js->getPath()),
-      true
-    );
+  if ($vanilla_admin_js) {
+    wp_enqueue_script('vanilla-admin', $vanilla_admin_js['uri'], ['chartist'], $vanilla_admin_js['hash'], true);
   }
 
   /*
    * CSS
    */
   $admin_css = get_asset_by_name('admin.css');
-  if ($admin_css && file_exists($admin_css->getPath())) {
-    wp_enqueue_style('admin', $admin_css->getUri(), [], sha1_file($admin_css->getPath()));
+  if ($admin_css) {
+    wp_enqueue_style('admin', $admin_css['uri'], [], $admin_css['hash']);
   }
 };
 
@@ -215,14 +204,37 @@ function add_module_to_script ($tag, $handle, $src) {
  * @return [Asset]
  */
 function get_asset_by_name ($asset_name) {
+  // dev environment
+  if (vite_dev_proxy()) {
+    if (strpos($asset_name, 'css') !== false) return null;
+    $name_map = [
+      'vue-main.js' => '/src-vue/main.js',
+      'vue-admin.js' => '/src-vue/admin.js',
+      'vanilla-main.js' => '/src-vanilla/main.js',
+      'vanilla-admin.js' => '/src-vanilla/admin.js',
+    ];
+    return [
+      'uri' => $name_map[$asset_name],
+      'path' => null,
+      'hash' => null,
+    ];
+  }
+
+  // prod environment
   $dir = scandir(dirname(dirname(__DIR__)) . '/dist/assets');
   $name_parts = explode('.', $asset_name);
   $regex = '/^' . $name_parts[0] . '.+\.' . end($name_parts) . '$/im';
 
   foreach ($dir as $file) {
     if (preg_match($regex, $file)) {
-      return asset('assets/' . $file);
+      $asset = asset('assets/' . $file);
+      return [
+        'uri' => $asset->getUri(),
+        'path' => $asset->getPath(),
+        'hash' => sha1_file($asset->getPath()),
+      ];
     }
   }
 
+  return null;
 }
