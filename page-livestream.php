@@ -25,4 +25,4 @@ use function Tonik\Theme\App\template;
  *
  * @see resources/templates/single.tpl.php
  */
-template('livestream');
+template('page-livestream');

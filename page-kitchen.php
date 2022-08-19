@@ -25,4 +25,4 @@ use function Tonik\Theme\App\template;
  *
  * @see resources/templates/single.tpl.php
  */
-template('kitchen');
+template('page-kitchen');
