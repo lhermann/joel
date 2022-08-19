@@ -17,6 +17,7 @@ import toggle from './components/utils/toggle.js'
 import dropdown from './components/utils/dropdown.js'
 
 /* CSS */
+import '../styles/tailwind.css'
 import '../styles/main.scss'
 
 /* Options */
