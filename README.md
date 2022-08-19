@@ -18,3 +18,12 @@ Built with [tonik/theme](https://github.com/tonik/theme)
 ## Documentation
 
 Comprehensive documentation of the starter is available at http://labs.tonik.pl/theme/
+
+## Update translation files
+
+1. Run `./resources/languages/make-pot.sh`
+2. Ignore deprecation warnings
+3. This should show up: `Success: POT file successfully generated!`
+4. Open PoEdit
+5. Open `resources/languages/de_DE.po`
+6. Translation -> Update from POT file

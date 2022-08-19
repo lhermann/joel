@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Joel 2.0.0-alpha.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/themefiles\n"
-"POT-Creation-Date: 2022-08-01T14:30:40+00:00\n"
-"PO-Revision-Date: 2022-08-01 16:35+0200\n"
+"POT-Creation-Date: 2022-08-19T14:18:40+00:00\n"
+"PO-Revision-Date: 2022-08-19 16:20+0200\n"
 "Last-Translator: Lukas Hermann <luke.antix@gmail.com>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -35,65 +35,65 @@ msgstr "Lukas Hermann <lukher6@web.de>"
 msgid "https://github.com/lhermann"
 msgstr "https://github.com/lhermann"
 
-#: app/ACF/recordings.php:243
+#: app/ACF/recordings.php:268
 msgid "Status"
 msgstr "Status"
 
-#: app/ACF/recordings.php:260
+#: app/ACF/recordings.php:285
 msgid "Select Recording"
 msgstr "Aufnahme auswählen"
 
-#: app/ACF/recordings.php:287
+#: app/ACF/recordings.php:312
 msgid "Thumbnail"
 msgstr "Miniaturbild"
 
-#: app/ACF/recordings.php:443 app/ACF/recordings.php:673 app/ACF/slides.php:202
+#: app/ACF/recordings.php:468 app/ACF/recordings.php:698 app/ACF/slides.php:202
 #: app/ACF/slides.php:207 app/Structure/posttypes-media.php:87
 #: app/Structure/taxonomies.php:180 app/Structure/taxonomies.php:223
 msgid "Image"
 msgstr "Bild"
 
-#: app/ACF/recordings.php:467
+#: app/ACF/recordings.php:492
 msgid "Author"
 msgstr "Autor"
 
-#: app/ACF/recordings.php:489
+#: app/ACF/recordings.php:514
 msgid "Categories"
 msgstr "Artikel-Kategorie"
 
-#: app/ACF/recordings.php:525
+#: app/ACF/recordings.php:550
 msgid "iTunes Link"
 msgstr "iTunes Link"
 
-#: app/ACF/recordings.php:541
+#: app/ACF/recordings.php:566
 msgid "Stitcher Link"
 msgstr "Stitcher Link"
 
-#: app/ACF/recordings.php:557 app/ACF/recordings.php:697
+#: app/ACF/recordings.php:582 app/ACF/recordings.php:722
 #: resources/templates/taxonomy-speakers.tpl.php:55
 msgid "Website"
 msgstr "Website"
 
-#: app/ACF/recordings.php:600
+#: app/ACF/recordings.php:625
 msgid "Thumbnail for series"
 msgstr "Titelbild für Serien"
 
-#: app/ACF/recordings.php:624 app/ACF/recordings.php:806
+#: app/ACF/recordings.php:649 app/ACF/recordings.php:831
 #: app/Structure/taxonomies.php:120
 msgid "Podcast"
 msgstr "Podcast"
 
-#: app/ACF/recordings.php:736
+#: app/ACF/recordings.php:761
 msgid "Choose taxonomies"
 msgstr "Taxonomien auswählen"
 
-#: app/ACF/recordings.php:740
+#: app/ACF/recordings.php:765
 #: resources/templates/algolia/instantsearch.obsolete.tpl.php:221
 #: resources/templates/archive-speakers.tpl.php:24
 msgid "Speakers"
 msgstr "Sprecher"
 
-#: app/ACF/recordings.php:762 app/Structure/posttypes-media.php:91
+#: app/ACF/recordings.php:787 app/Structure/posttypes-media.php:91
 #: app/Structure/posttypes-media.php:108 app/Structure/posttypes-media.php:145
 #: app/Structure/taxonomies.php:49
 #: resources/templates/algolia/instantsearch.obsolete.tpl.php:240
@@ -101,22 +101,22 @@ msgstr "Sprecher"
 msgid "Series"
 msgstr "Serien"
 
-#: app/ACF/recordings.php:784 app/Structure/posttypes-media.php:92
+#: app/ACF/recordings.php:809 app/Structure/posttypes-media.php:92
 #: resources/templates/algolia/instantsearch.obsolete.tpl.php:258
 #: resources/templates/archive-topics.tpl.php:24
 #: resources/templates/single-recordings.tpl.php:14
 msgid "Topics"
 msgstr "Themen"
 
-#: app/ACF/recordings.php:828
+#: app/ACF/recordings.php:853
 msgid "Download"
 msgstr "Download"
 
-#: app/ACF/recordings.php:842
+#: app/ACF/recordings.php:867
 msgid "permit"
 msgstr "erlauben"
 
-#: app/ACF/recordings.php:843
+#: app/ACF/recordings.php:868
 msgid "deny"
 msgstr "verweigern"
 
@@ -230,23 +230,23 @@ msgstr "antwort"
 
 #: app/Structure/posttypes-answer.php:42
 msgctxt "post type general name"
-msgid "Answers"
-msgstr "Antworten"
+msgid "Boogle Answers"
+msgstr "Boogle Antworten"
 
 #: app/Structure/posttypes-answer.php:43
 msgctxt "post type singular name"
-msgid "Answer"
-msgstr "Antwort"
+msgid "Boogle Answer"
+msgstr "Boogle Antwort"
 
 #: app/Structure/posttypes-answer.php:44
 msgctxt "admin menu"
-msgid "Answers"
-msgstr "Antworten"
+msgid "Boogle"
+msgstr "Boogle"
 
 #: app/Structure/posttypes-answer.php:45
 msgctxt "add new on admin bar"
-msgid "Answers"
-msgstr "Antworten"
+msgid "Boogle Answer"
+msgstr "Boogle Antwort"
 
 #: app/Structure/posttypes-answer.php:46 app/Structure/posttypes-media.php:47
 #: app/Structure/posttypes-media.php:280
@@ -644,8 +644,12 @@ msgstr ""
 "Thema verwenden."
 
 #. Template Name of the theme
+msgid "Boogle"
+msgstr "Boogle"
+
+#. Template Name of the theme
 msgid "Development"
-msgstr ""
+msgstr "Development"
 
 #. Template Name of the theme
 msgid "Kitchen"
@@ -742,6 +746,22 @@ msgid "Subtopic"
 msgid_plural "Subtopics"
 msgstr[0] "Unterthema"
 msgstr[1] "Unterthemen"
+
+#~ msgctxt "post type general name"
+#~ msgid "Answers"
+#~ msgstr "Antworten"
+
+#~ msgctxt "post type singular name"
+#~ msgid "Answer"
+#~ msgstr "Antwort"
+
+#~ msgctxt "admin menu"
+#~ msgid "Answers"
+#~ msgstr "Antworten"
+
+#~ msgctxt "add new on admin bar"
+#~ msgid "Answers"
+#~ msgstr "Antworten"
 
 #~ msgid "Text Left"
 #~ msgstr "Linksbündig"

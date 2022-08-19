@@ -3,6 +3,7 @@ import axios from 'axios'
 import instantiate from './instantiate.js'
 
 /* Components */
+import JoBoogleMain from './components/boogle/JoBoogleMain.vue'
 import JoLivestreamDropdown from './components/livestream/JoLivestreamDropdown.vue'
 import JoLivestreamMeta from './components/livestream/JoLivestreamMeta.vue'
 import JoLivestreamMessage from './components/livestream/JoLivestreamMessage.vue'
@@ -29,6 +30,7 @@ import '../styles/main.scss'
 axios.defaults.baseURL = '/wp-json/'
 
 /* Instantiate Components */
+instantiate.component('JoBoogleMain', JoBoogleMain)
 instantiate.component('JoLivestreamDropdown', JoLivestreamDropdown)
 instantiate.component('JoLivestreamMeta', JoLivestreamMeta)
 instantiate.component('JoLivestreamMessage', JoLivestreamMessage)
