@@ -88,12 +88,12 @@ function register_scripts_and_styles() {
 
   $main_css = get_asset_by_name('assets/main.css');
   if ($main_css) {
-    wp_enqueue_style('main', $main_css['uri'], [], $main_css['hash']);
+    wp_enqueue_style('main-style', $main_css['uri'], [], $main_css['hash']);
   }
 
   $fonts_css = get_asset_by_name('fonts/style.css');
   if ($fonts_css) {
-    wp_enqueue_style('main', $fonts_css['uri'], [], $fonts_css['hash']);
+    wp_enqueue_style('font-style', $fonts_css['uri'], [], $fonts_css['hash']);
   }
 
   wp_deregister_style('algolia-instantsearch');
