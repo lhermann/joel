@@ -48,10 +48,11 @@ function register_scripts_and_styles() {
     wp_enqueue_script('vue-main', $main_js['uri'], [], $main_js['hash'], true);
   }
 
-  $vanilla_main_js = get_asset_by_name('vanilla-main.js');
-  if ($vanilla_main_js) {
-    wp_enqueue_script('vanilla-main', $vanilla_main_js['uri'], [], $vanilla_main_js['hash'], true);
-  }
+  // TODO: refactor main.js
+  // $vanilla_main_js = get_asset_by_name('vanilla-main.js');
+  // if ($vanilla_main_js) {
+  //   wp_enqueue_script('vanilla-main', $vanilla_main_js['uri'], [], $vanilla_main_js['hash'], true);
+  // }
 
   wp_deregister_script('algolia-instantsearch');
   wp_deregister_script('algolia-autocomplete');
