@@ -247,5 +247,10 @@ function get_asset_by_name ($asset_path) {
     }
   }
 
-  return asset($asset_path);
+  const $asset = asset($asset_path);
+  return [
+    'uri' => $asset->getUri(),
+    'path' => $asset->getPath(),
+    'hash' => sha1_file($asset->getPath()),
+  ];
 }
