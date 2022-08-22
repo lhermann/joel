@@ -43,7 +43,7 @@ function register_scripts_and_styles() {
   // Scripts
   //
 
-  $main_js = get_asset_by_name('vue-main.js');
+  $main_js = get_asset_by_name('assets/vue-main.js');
   if ($main_js) {
     wp_enqueue_script('vue-main', $main_js['uri'], [], $main_js['hash'], true);
   }
@@ -86,9 +86,14 @@ function register_scripts_and_styles() {
   // Styles
   //
 
-  $main_css = get_asset_by_name('main.css');
+  $main_css = get_asset_by_name('assets/main.css');
   if ($main_css) {
     wp_enqueue_style('main', $main_css['uri'], [], $main_css['hash']);
+  }
+
+  $fonts_css = get_asset_by_name('fonts/style.css');
+  if ($fonts_css) {
+    wp_enqueue_style('main', $fonts_css['uri'], [], $fonts_css['hash']);
   }
 
   wp_deregister_style('algolia-instantsearch');
@@ -103,7 +108,7 @@ function register_scripts_and_styles() {
  */
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 function register_editor_stylesheets() {
-  $main_css = get_asset_by_name('main.css');
+  $main_css = get_asset_by_name('assets/main.css');
   if ($main_css) {
     add_editor_style($main_css['path']);
   }
@@ -127,13 +132,13 @@ function register_admin_scripts_and_styles() {
     false
   );
 
-  $admin_js = get_asset_by_name('vue-admin.js');
+  $admin_js = get_asset_by_name('assets/vue-admin.js');
   if ($admin_js) {
     wp_enqueue_script('vue-admin', $admin_js['uri'], [], $admin_js['hash'], true);
   }
 
   // TEMP DISABLED
-  $vanilla_admin_js = get_asset_by_name('vanilla-admin.js');
+  $vanilla_admin_js = get_asset_by_name('assets/vanilla-admin.js');
   if ($vanilla_admin_js) {
     wp_enqueue_script('vanilla-admin', $vanilla_admin_js['uri'], ['chartist'], $vanilla_admin_js['hash'], true);
   }
@@ -141,7 +146,7 @@ function register_admin_scripts_and_styles() {
   /*
    * CSS
    */
-  $admin_css = get_asset_by_name('admin.css');
+  $admin_css = get_asset_by_name('assets/admin.css');
   if ($admin_css) {
     wp_enqueue_style('admin', $admin_css['uri'], [], $admin_css['hash']);
   }
@@ -199,43 +204,48 @@ function add_module_to_script ($tag, $handle, $src) {
 /**
  * Return the first matching asset
  * Example:
- *   - $asset_name = 'vue-admin.js'
+ *   - $asset_path = 'assets/vue-admin.js'
  *   - returns 'dist/assets/vue-main.4ac13b6a.js'
  * @param  [string] $asset_name
  * @return [Asset]
  */
-function get_asset_by_name ($asset_name) {
+function get_asset_by_name ($asset_path) {
   // dev environment
   if (vite_dev_proxy()) {
-    if (strpos($asset_name, 'css') !== false) return null;
     $name_map = [
-      'vue-main.js' => '/src-vue/main.js',
-      'vue-admin.js' => '/src-vue/admin.js',
-      'vanilla-main.js' => '/src-vanilla/main.js',
-      'vanilla-admin.js' => '/src-vanilla/admin.js',
+      'assets/vue-main.js' => '/src-vue/main.js',
+      'assets/vue-admin.js' => '/src-vue/admin.js',
+      'assets/vanilla-main.js' => '/src-vanilla/main.js',
+      'assets/vanilla-admin.js' => '/src-vanilla/admin.js',
+      'fonts/style.css' => '/fonts/style.css',
     ];
+    if (!array_key_exists($asset_path, $name_map)) return null;
     return [
-      'uri' => $name_map[$asset_name],
+      'uri' => $name_map[$asset_path],
       'path' => null,
       'hash' => null,
     ];
   }
 
   // prod environment
-  $dir = scandir(dirname(dirname(__DIR__)) . '/dist/assets');
-  $name_parts = explode('.', $asset_name);
-  $regex = '/^' . $name_parts[0] . '.+\.' . end($name_parts) . '$/im';
+  if (strpos($asset_path, 'assets') === 0) {
+    $dir = scandir(dirname(dirname(__DIR__)) . '/dist/assets');
+    $asset_parts = explode('/', $asset_path);
+    $asset_name = end($asset_parts);
+    $name_parts = explode('.', $asset_name);
+    $regex = '/^' . $name_parts[0] . '.+\.' . end($name_parts) . '$/im';
 
-  foreach ($dir as $file) {
-    if (preg_match($regex, $file)) {
-      $asset = asset('assets/' . $file);
-      return [
-        'uri' => $asset->getUri(),
-        'path' => $asset->getPath(),
-        'hash' => sha1_file($asset->getPath()),
-      ];
+    foreach ($dir as $file) {
+      if (preg_match($regex, $file)) {
+        $asset = asset('assets/' . $file);
+        return [
+          'uri' => $asset->getUri(),
+          'path' => $asset->getPath(),
+          'hash' => sha1_file($asset->getPath()),
+        ];
+      }
     }
   }
 
-  return null;
+  return asset($asset_path);
 }

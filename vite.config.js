@@ -21,7 +21,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '^/(?!src-|styles|node_modules|@).*': {
+      '^/(?!src-|fonts|images|styles|node_modules|@).*': {
         target: 'http://localhost:8080',
         xfwd: true,
       },
