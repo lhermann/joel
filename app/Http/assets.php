@@ -247,7 +247,7 @@ function get_asset_by_name ($asset_path) {
     }
   }
 
-  const $asset = asset($asset_path);
+  $asset = asset($asset_path);
   return [
     'uri' => $asset->getUri(),
     'path' => $asset->getPath(),
