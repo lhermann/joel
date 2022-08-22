@@ -1,6 +1,5 @@
 <template>
   <AisInstantSearch
-    class="mb-12"
     index-name="wp_posts_answer"
     :search-client="searchClient"
   >
@@ -63,16 +62,10 @@
       }"
     />
   </AisInstantSearch>
-  <div>
-
-    <!-- Answers -->
-    <JoBoogleAnswerList />
-  </div>
 </template>
 
 <script setup>
 import JoBoogleSearch from './JoBoogleSearch.vue'
-import JoBoogleAnswerList from './JoBoogleAnswerList.vue'
 import JoBoogleAnswerItem from './JoBoogleAnswerItem.vue'
 import {
   AisInstantSearch,
@@ -93,9 +86,4 @@ const searchClient = algoliasearch(
   props.options.application_id,
   props.options.search_api_key,
 )
-
 </script>
-
-<style>
-
-</style>

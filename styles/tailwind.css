@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.wpcf7-form th,
+.wpcf7-form td {
+  @apply py-1;
+}
+.wpcf7-form th {
+  @apply text-left font-normal;
+}
+.wpcf7-form input {
+  @apply text-sm placeholder:text-neutral-400 bg-white;
+}
+.wpcf7-form .wpcf7-not-valid-tip {
+  @apply text-xs;
+}
+.wpcf7-form .wpcf7-submit {
+  @apply cursor-pointer hover:border-neutral-600 transition-colors;
+}
+.wpcf7-form .wpcf7-response-output:not(:empty) {
+  @apply text-sm rounded bg-neutral-100 mx-0;
+}

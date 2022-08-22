@@ -14,9 +14,14 @@
         <span class="u-ic-folder"></span>
       </a>
       <a v-else class="c-mediaitem__imglink" :href="item.link">
-        <img :src="item.thumbnail" />
+        <img
+          :src="item.thumbnail"
+          width="256"
+          height="144"
+          alt="Thumbnail"
+        >
         <div v-if="length" class="c-mediaitem__length">
-          <div v-html="length"></div>
+          <div v-html="length" />
         </div>
       </a>
       <div
@@ -25,11 +30,15 @@
         :style="{
           backgroundImage: `url(${$joel.assetPath}images/neu-badge.png)`
         }"
-      ></div>
+      />
     </div>
 
     <div class="o-media__body c-mediaitem__body">
-      <a class="c-mediaitem__title" :href="item.link" v-html="title"></a>
+      <a
+        class="c-mediaitem__title"
+        :href="item.link"
+        v-html="title"
+      />
       <ul class="c-mediaitem__meta u-truncate">
         <li v-if="subtopics">
           {{ subtopics }}

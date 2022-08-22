@@ -2,10 +2,7 @@
 use function Tonik\Theme\App\template;
 use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\asset_path;
-use \Algolia_Settings;
 $settings = new Algolia_Settings();
-// $settings->get_application_id();
-// $settings->get_search_api_key();
 ?>
 
 <?php get_header() ?>
@@ -22,7 +19,8 @@ $settings = new Algolia_Settings();
 
 
   <!-- Boogle Search and List -->
-  <?php template('vue-components/main', [
+  <div class="mb-24">
+    <?php template('vue-components/main', [
       'component' => 'JoBoogleMain',
       'id' => 'JoBoogleMain',
       'style_modifier' => '',
@@ -30,7 +28,14 @@ $settings = new Algolia_Settings();
         'application_id' => $settings->get_application_id(),
         'search_api_key' => $settings->get_search_api_key(),
       ],
-  ]) ?>
+    ]) ?>
+  </div>
+
+  <h2 class="text-lg leading-snug mb-2">
+    Eigene Frage stellen
+  </h2>
+  <p>Die richtige Antwort auf deine Frage war nicht dabei? Wir fügen ständig neue Antworten hinzu. Stelle deine Frage hier:</p>
+  <?= do_shortcode('[contact-form-7 id="4274" title="Boogle Frage"]') ?>
 
 </main>
 

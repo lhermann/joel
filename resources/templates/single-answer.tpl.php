@@ -6,11 +6,24 @@ use function Tonik\Theme\App\template;
 
 <main role="main" class="o-wrapper o-wrapper--slim u-mv+">
 
-    <?php while (have_posts()): the_post() ?>
+  <p class="mb-12">
+    <a href="/boogle/">← Zurück</a>
+  </p>
 
-        <?php template('partials/post/content-simple'); ?>
+  <?php while (have_posts()): the_post() ?>
 
-    <?php endwhile; ?>
+    <?php template('partials/post/content-answer'); ?>
+
+  <?php endwhile; ?>
+
+  <h2 class="text-lg leading-snug mb-2 mt-24">
+    Eigene Frage stellen
+  </h2>
+  <p>
+    Deine Frage wurde nicht richtig beantwortet? Wir fügen ständig neue Antworten hinzu.
+    <br>Stelle deine Frage hier:
+  </p>
+  <?= do_shortcode('[contact-form-7 id="4274" title="Boogle Frage"]') ?>
 
 </main>
 
