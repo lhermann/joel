@@ -26,7 +26,7 @@ use function Tonik\Theme\App\config;
                     'pagination' => 'verbose'
                 ],
                 'params' => [
-                    'per_page' => 50
+                    'per_page' => 20
                 ]
             ]) ?>
 

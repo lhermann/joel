@@ -113,23 +113,6 @@ function rest_api_additions() {
     [ 'recordings', 'series', 'speakers' ],
     'thumbnail',
     [ 'get_callback' => function ($payload) {
-      // youtube video
-      if ($payload['type'] === 'recordings') {
-        $yt_string = get_field('youtube_video', $payload['id']);
-        if ($yt_string) {
-          preg_match_all(
-            '/(?<=embed\/).+?(?=[\?$])/',
-            $yt_string,
-            $matches,
-            PREG_SET_ORDER,
-            0
-          );
-          if($matches[0][0]) {
-            return "https://img.youtube.com/vi/{$matches[0][0]}/mqdefault.jpg";
-          }
-        }
-      }
-
       // regular thumbnail
       switch ($payload['type']) {
         case 'recordings':
@@ -154,6 +137,26 @@ function rest_api_additions() {
         $res
       );
     } ]
+  );
+
+  register_rest_field(
+    ['recordings'],
+    'youtube_id',
+    ['get_callback' => function ($payload) {
+      // return get_field('youtube_video', $payload['id']);
+      $yt_string = get_field('youtube_video', $payload['id']);
+      if ($yt_string) {
+        preg_match_all(
+          '/(?<=embed\/)(?<id>.+?)(?=[\?$])/',
+          $yt_string,
+          $matches,
+          PREG_SET_ORDER,
+          0
+        );
+        return $matches[0]['id'];
+      }
+      return '';
+    }],
   );
 
   /**

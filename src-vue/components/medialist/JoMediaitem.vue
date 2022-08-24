@@ -13,9 +13,16 @@
       >
         <span class="u-ic-folder"></span>
       </a>
-      <a v-else class="c-mediaitem__imglink" :href="item.link">
+      <a
+        v-else
+        class="c-mediaitem__imglink"
+        :href="item.link"
+        @mouseenter="imgHover = true"
+        @mouseleave="imgHover = false"
+      >
         <img
-          :src="item.thumbnail"
+          :src="thumbnail"
+          class="text-transparent"
           width="256"
           height="144"
           alt="Thumbnail"
@@ -77,6 +84,9 @@ export default {
   props: {
     item: Object,
   },
+  data: () => ({
+    imgHover: false,
+  }),
   computed: {
     isRecording () {
       return this.item.type === 'recordings'
@@ -112,6 +122,13 @@ export default {
     },
     isDummy () {
       return typeof this.item.dummy !== 'undefined'
+    },
+    thumbnail () {
+      // Show an auto-generated youtube thumbnail on hover
+      if (this.imgHover && this.item.youtube_id) {
+        return `https://i3.ytimg.com/vi/${this.item.youtube_id}/mq2.jpg`
+      }
+      return this.item.thumbnail
     },
   },
 }
