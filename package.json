@@ -17,8 +17,7 @@
   },
   "dependencies": {
     "algoliasearch": "^4.14.2",
-    "autocomplete.js": "^0.36.0",
-    "axios": "^0.21.1",
+    "axios": "^0.27.2",
     "cash-dom": "^7.0.4",
     "chartist": "^0.11.4",
     "core-js": "^3.6.4",
