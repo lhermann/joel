@@ -97,7 +97,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
                         <pubDate><?= esc_html( mysql2date( 'D, d M Y H:i:s +0000', get_post_time( 'Y-m-d H:i:s', true ), false ) ); ?></pubDate>
                         <guid isPermaLink="false"><?php the_guid() ?></guid>
                         <description><?= "<![CDATA[" . get_the_content_feed('rss2') . "]]>" ?></description>
-                        <enclosure url="<?= trac_permalink(get_the_ID(), 'podcastdl', 'https://vodhttp.joelmediatv.de/'.$audio->relative_url) ?>" length="<?= $audio->size ?>" type="audio/mpeg" />
+                        <enclosure url="<?= trac_permalink(get_the_ID(), 'podcastdl', $audio->relative_url) ?>" length="<?= $audio->size ?>" type="audio/mpeg" />
                         <itunes:duration><?= $audio->length ?></itunes:duration>
                         <itunes:subtitle>Ein Programm von Joel Media Ministry e.V.</itunes:subtitle>
                         <dc:creator>Joel Media Ministry e.V.</dc:creator>
