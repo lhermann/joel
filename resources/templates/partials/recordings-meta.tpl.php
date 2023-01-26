@@ -84,7 +84,7 @@ $download_files = get_download_files(get_the_ID());
                   if ($file->type === 'video') {
                     echo $file->resolution === '720p' ? 'HD' : 'SD';
                   } else {
-                    echo $file->bitrate >= 96 ? 'HQ' : 'LQ';
+                    echo $file->bitrate > 96 ? 'HQ' : 'LQ';
                   }
                 ?></strong>
                 <?= formatbytes($file->size) ?>
