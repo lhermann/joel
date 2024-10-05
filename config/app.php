@@ -117,7 +117,7 @@ return [
         'helpers.php',
         'ACF/recordings.php',
         'ACF/slides.php',
-        'Adminpage/livestream.php',
+        // 'Adminpage/livestream.php', // DEPRECATED
         'Helper/global.php',
         'Helper/recordings.php',
         'Helper/Google_API.php',

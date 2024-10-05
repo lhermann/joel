@@ -2,6 +2,11 @@
 
 Built with [tonik/theme](https://github.com/tonik/theme)
 
+## Deploy
+
+DO NOT DEPLOY
+host.42lh.com is too outdated. The deploy will fail and break.
+
 ## Develop
 
 1. Start Wordpress on port 8080

@@ -15,7 +15,7 @@
     "php": ">=7.0",
     "tonik/gin": "^3.0.0",
     "jaybizzle/crawler-detect": "1.*",
-    "google/apiclient": "^2.0"
+    "google/apiclient": "^2.17"
   },
   "require-dev": {
     "tonik/cli": "^3.0.0"

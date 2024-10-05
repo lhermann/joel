@@ -9,8 +9,6 @@ namespace Tonik\Theme\App\Helper;
 */
 
 use function Tonik\Theme\App\config;
-use \Google_Client;
-use \Google_Service_YouTube;
 
 class Google_API {
   private $client;
@@ -23,11 +21,11 @@ class Google_API {
     );
 
     // Init Client
-    $this->client = new Google_Client();
+    $this->client = new Google\Client();
     $this->client->setApplicationName('Joel Video Upload');
     $this->client->setAuthConfig(OAUTH_CREDENTIALS_FILE);
     $this->client->setRedirectUri($callback_url);
-    $this->client->setScopes(['https://www.googleapis.com/auth/youtube']);
+    $this->client->setScopes([Google\Service\YouTube::YOUTUBE]);
     $this->client->prepareScopes();
     $this->client->setAccessType('offline');
     $this->client->setApprovalPrompt('force');
@@ -35,6 +33,19 @@ class Google_API {
     // Get token from store
     $token = $this->_getToken();
     if ($token) $this->client->setAccessToken($token);
+
+    // Get token from store
+    $token = $this->_getToken();
+    if ($token) {
+      $this->client->setAccessToken($token);
+      // Attempt to renew if expired
+      if ($this->client->isAccessTokenExpired()) {
+        if (!$this->renewToken()) {
+          // Token renewal failed, clear the token
+          $this->_setToken(null);
+        }
+      }
+    }
 
     // renew token if necessary
     if ($this->client->isAccessTokenExpired()) $this->renewToken();
@@ -61,22 +72,42 @@ class Google_API {
     return $token;
   }
 
-  public function authenticated () {
-    return !$this->client->isAccessTokenExpired();
+  public function authenticated() {
+    $token = $this->_getToken();
+    if (!$token) {
+      return false;
+    }
+    if ($this->client->isAccessTokenExpired()) {
+      return $this->renewToken();
+    }
+    return true;
   }
 
-  public function renewToken () {
+  public function renewToken() {
     $token = $this->_getToken();
-    if (!$token || !key_exists('refresh_token', $token)) return;
-    $new_token = $this->client->fetchAccessTokenWithRefreshToken(
-      $token['refresh_token']
-    );
-    $token = $this->_setToken($new_token);
+    if (!$token || !isset($token['refresh_token'])) {
+      // No valid token available, user needs to re-authenticate
+      return false;
+    }
+    try {
+      $new_token = $this->client->fetchAccessTokenWithRefreshToken($token['refresh_token']);
+      if (isset($new_token['error'])) {
+        // Refresh token is invalid, remove the stored token
+        delete_option('google-api-token');
+        return false;
+      }
+      $this->_setToken($new_token);
+      return true;
+    } catch (Exception $e) {
+      // Handle any exceptions (e.g., network errors)
+      error_log('Error refreshing Google API token: ' . $e->getMessage());
+      return false;
+    }
   }
 
   public function youtube_api () {
     $this->client->authorize();
-    return new Google_Service_YouTube($this->client);
+    return new Google\Service\YouTube($this->client);
   }
 
   public function setDefer ($value) {
@@ -87,8 +118,14 @@ class Google_API {
     return $this->client;
   }
 
-  private function _getToken () {
-    return get_option('google-api-token');
+  private function _getToken() {
+    $token = get_option('google-api-token');
+    if (is_array($token) && isset($token['error'])) {
+      // Token is invalid, remove it
+      delete_option('google-api-token');
+      return null;
+    }
+    return $token;
   }
 
   private function _setToken ($value) {
