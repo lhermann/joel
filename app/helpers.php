@@ -8,8 +8,9 @@ use Tonik\Gin\Template\Template;
 
 
 function vite_dev_proxy() {
-    return strpos($_SERVER['HTTP_HOST'], 'localhost') !== false &&
-        key_exists("HTTP_X_FORWARDED_PORT", $_SERVER);
+    return key_exists('HTTP_HOST', $_SERVER)
+        && strpos($_SERVER['HTTP_HOST'], 'localhost') !== false
+        && key_exists('HTTP_X_FORWARDED_PORT', $_SERVER);
 }
 
 /**
