@@ -2,7 +2,7 @@ name: Deploy WordPress Theme
 
 on:
   # push:
-  #   branches: [ main, master ]
+  #   branches: master
   workflow_dispatch: # Allows manual triggering
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: '8.3'
         extensions: mbstring, xml, ctype, iconv, intl
         tools: composer:v2
 
