@@ -1,0 +1,74 @@
+name: Deploy WordPress Theme
+
+on:
+  # push:
+  #   branches: [ main, master ]
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extensions: mbstring, xml, ctype, iconv, intl
+        tools: composer:v2
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install Composer dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'lts/*'
+        cache: 'npm'
+
+    - name: Install Node.js dependencies
+      run: npm ci
+
+    - name: Build assets
+      run: npm run build
+
+    - name: Setup SSH key
+      uses: webfactory/ssh-agent@v0.8.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to server
+      run: |
+        # Add server to known hosts to avoid the prompt
+        mkdir -p ~/.ssh
+        ssh-keyscan -H host1.joelmedia.de >> ~/.ssh/known_hosts
+
+        # Create a temporary directory for rsync exclusions
+        mkdir -p /tmp/rsync-exclude
+        echo ".git" > /tmp/rsync-exclude/exclude.txt
+        echo ".gitignore" >> /tmp/rsync-exclude/exclude.txt
+        echo "package.json" >> /tmp/rsync-exclude/exclude.txt
+        echo "package-lock.json" >> /tmp/rsync-exclude/exclude.txt
+        echo "composer.json" >> /tmp/rsync-exclude/exclude.txt
+        echo "composer.lock" >> /tmp/rsync-exclude/exclude.txt
+        echo "node_modules" >> /tmp/rsync-exclude/exclude.txt
+        echo "resources/vue" >> /tmp/rsync-exclude/exclude.txt
+        echo "resources/assets" >> /tmp/rsync-exclude/exclude.txt
+
+        # Deploy files using rsync (excluding the files/directories specified)
+        rsync -avz --delete --exclude-from=/tmp/rsync-exclude/exclude.txt ./ root@host1.joelmedia.de:/var/www/joelmedia.de/
+
+        # Change ownership of deployed files to www-data
+        ssh root@host1.joelmedia.de "chown -R www-data:www-data /var/www/joelmedia.de/"
