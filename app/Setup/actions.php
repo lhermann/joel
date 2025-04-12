@@ -107,13 +107,13 @@ function register_required_plugins() {
       'version'           => '2.5.9',
       'force_activation'  => false,
     ),
-    array(
-      'name'              => 'Search by Algolia – Instant & Relevant results',
-      'slug'              => 'search-by-algolia-instant-relevant-results',
-      'required'          => true,
-      'version'           => '2.11.3',
-      'force_activation'  => true,
-    ),
+    // array(
+    //   'name'              => 'Search by Algolia – Instant & Relevant results',
+    //   'slug'              => 'search-by-algolia-instant-relevant-results',
+    //   'required'          => true,
+    //   'version'           => '2.11.3',
+    //   'force_activation'  => true,
+    // ),
   );
 
   if(config('livestream')['enabled']) {
