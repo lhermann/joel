@@ -1,8 +1,8 @@
 name: Deploy WordPress Theme
 
 on:
-  # push:
-  #   branches: master
+  push:
+    branches: master
   workflow_dispatch: # Allows manual triggering
 
 jobs:
