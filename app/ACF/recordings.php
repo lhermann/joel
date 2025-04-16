@@ -26,7 +26,12 @@ if(function_exists('acf_add_local_field_group')):
   add_filter('acf/load_field/name=youtube_upload', 'Tonik\Theme\App\ACF\youtube_upload');
   function youtube_upload( $field ) {
     global $post;
-    if( !$post || !is_admin() ) return $field;
+
+    // Only modify the field when we're on the post edit screen
+    // Check if we're in admin AND editing a single post
+    if( !is_admin() || !$post || get_current_screen()->base !== 'post' ) {
+        return $field;
+    }
 
     $client = new Google_API();
 
