@@ -1,6 +1,8 @@
 <?php
 
 namespace Tonik\Theme\App\Helper;
+use Google\Client;
+use Google\Service\YouTube;
 
 /*
 |-----------------------------------------------------------
@@ -21,11 +23,11 @@ class Google_API {
     );
 
     // Init Client
-    $this->client = new Google\Client();
+    $this->client = new Client();
     $this->client->setApplicationName('Joel Video Upload');
     $this->client->setAuthConfig(OAUTH_CREDENTIALS_FILE);
     $this->client->setRedirectUri($callback_url);
-    $this->client->setScopes([Google\Service\YouTube::YOUTUBE]);
+    $this->client->setScopes([YouTube::YOUTUBE]);
     $this->client->prepareScopes();
     $this->client->setAccessType('offline');
     $this->client->setApprovalPrompt('force');
