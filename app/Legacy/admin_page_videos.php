@@ -72,6 +72,15 @@ class VideoControllPage
 
                             <div class="meta-box-sortables ui-sortable">
                                 <div class="postbox">
+                                    <h3 class="hndle" style="cursor: default;">YouTube API</h3>
+                                    <div class="inside">
+                                        <?= print_youtube_api_status() ?>
+                                    </div><!-- .inside -->
+                                </div><!-- .postbox -->
+                            </div><!-- .meta-box-sortables .ui-sortable -->
+
+                            <div class="meta-box-sortables ui-sortable">
+                                <div class="postbox">
                                     <h3 class="hndle" style="cursor: default;">Logs</h3>
                                     <div id="ajax-video-logs" class="inside">
                                         <div class="c-spinner u-m"></div>
@@ -412,4 +421,28 @@ function ajax_video_files() {
 
 
     die(); // this is required to return a proper result
+}
+
+use Tonik\Theme\App\Helper\Google_API;
+
+function print_youtube_api_status () {
+    $client = new Google_API();
+    $api_class = '';
+    $api_text = '';
+    if ($client->authenticated()) {
+      $api_class = 'u-green';
+      $api_text = '[YouTube API: authenticated]';
+    } else {
+      $api_class = 'u-red';
+      $api_text = sprintf(
+        '[YouTube API: missing - <a href="%s" target="_blank">%s</a>]',
+        $client->getAuthUrl($post->ID),
+        'Authenticate'
+      );
+    }
+    printf(
+      ' <span class="%s">%s</span>',
+      $api_class,
+      $api_text
+    );
 }
