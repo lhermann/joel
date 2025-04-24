@@ -49,13 +49,12 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
         <?php if (config('livestream')['enabled']): ?>
         <li class="c-primary-nav__item">
 
-            <?php template('vue-components/main', [
-                'component' => 'JoLivestreamDropdown',
-                'id' => 'livestream-dropdown',
-                'style_modifier' => 'c-livestream-dropdown',
-                'options' => ['stream' => 'joelmedia'],
-                'params' => ['numberposts' => 3, 'event-category' => 'livestream']
-            ]) ?>
+            <a
+                href="/livestream/"
+                class="c-link c-link--block c-link--primary c-primary-nav__link"
+            >
+                Livestream
+            </a>
 
         </li>
         <?php endif ?>

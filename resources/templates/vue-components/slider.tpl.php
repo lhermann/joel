@@ -29,8 +29,10 @@ $params = isset($params) ? json_encode($params) : '{}';
         <div class="o-wrapper c-slide__wrapper">
           <div class="c-slide__body u-1/2">
             <img
+              class="c-logo c-logo--hero"
+              style="margin: auto;"
               src="<?= asset('images/jm-logo-white-01.svg')->getUri() ?>"
-              class="c-logo c-logo--hero" alt="Joel Media"
+              alt="Joel Media"
             >
             <h1 class="u-mb0 u-mt-">Joel Media Ministry e.V.</h1>
             <p class="u-muted"><small>... das ewige Evangelium für Stuttgart, Deutschland und die Welt</small></p>
