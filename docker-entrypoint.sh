@@ -10,4 +10,4 @@ if ! command -v gifsicle &> /dev/null || ! command -v optipng &> /dev/null || ! 
 fi
 
 # Execute the original entrypoint
-exec docker-entrypoint.sh "$@"
+exec /usr/local/bin/docker-entrypoint.sh "$@"
