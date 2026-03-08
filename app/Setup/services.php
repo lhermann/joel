@@ -14,20 +14,21 @@ namespace Tonik\Theme\App\Setup;
 */
 
 use function Tonik\Theme\App\theme;
-use Tonik\Gin\Foundation\Theme;
 use WP_Query;
 
 /**
- * Bind all the services
+ * Bind theme services into the container.
  *
- * @return void
+ * Services registered here are singletons — resolved once on first
+ * access via theme('service_name'), then cached for the request.
  */
 function bind_services()
 {
     /**
-     * Retreive all the slides and allready get all the fields
+     * Pre-load all slides with their ACF fields.
+     * Access via: theme('slides') → array of WP_Post objects with ACF fields attached.
      */
-    theme()->bind('slides', function (Theme $theme, $parameters) {
+    theme()->bind('slides', function ($container, $parameters) {
         $query = new WP_Query([
             'post_type' => 'slides',
         ]);

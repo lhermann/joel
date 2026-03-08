@@ -1,43 +1,51 @@
 <?php
 
-// Webpack Dev Server proxy Fix
-// if (isset($_SERVER) && key_exists("HTTP_X_FORWARDED_HOST", $_SERVER)) {
-//   var_dump($_SERVER); die();
-//   $_SERVER['HTTP_HOST'] = $_SERVER["HTTP_X_FORWARDED_HOST"];
-//   $_SERVER['REQUEST_SCHEME'] = $_SERVER["HTTP_X_FORWARDED_PROTO"];
-//   $_SERVER['SERVER_PORT'] = $_SERVER["HTTP_X_FORWARDED_PORT"];
-//   $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_X_FORWARDED_FOR"];
-// }
-
 /*
- |------------------------------------------------------------------
- | Bootstraping a Theme
- |------------------------------------------------------------------
- |
- | This file is responsible for bootstrapping your theme. Autoloads
- | composer packages, checks compatibility and loads theme files.
- | Most likely, you don't need to change anything in this file.
- | Your theme custom logic should be distributed across a
- | separated components in the `/app` directory.
- |
- */
+|------------------------------------------------------------------
+| Theme Bootstrap
+|------------------------------------------------------------------
+|
+| Entry point for the WordPress theme. Loads Composer autoloader,
+| initializes the config, and auto-loads all theme component files
+| listed in config/app.php under the 'autoload' key.
+|
+| The theme was originally built on Tonik Gin framework, which has
+| been replaced with simple self-contained helpers in app/helpers.php.
+| The Tonik\Theme\App namespace is preserved throughout the codebase
+| for backwards compatibility — it's just a namespace, not a dependency.
+|
+*/
 
-// Require Composer's autoloading file
-// if it's present in theme directory.
+// Composer autoloader (for google/apiclient, crawler-detect, etc.)
 if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     require $composer;
 }
 
-// Before running we need to check if everything is in place.
-// If something went wrong, we will display friendly alert.
+// Check PHP version and other requirements before proceeding.
 $ok = require_once __DIR__ . '/bootstrap/compatibility.php';
+if (!$ok) {
+    return;
+}
 
-if ($ok) {
-    // Now, we can bootstrap our theme.
-    $theme = require_once __DIR__ . '/bootstrap/theme.php';
+// Load the helper functions first — everything else depends on these.
+require_once __DIR__ . '/app/helpers.php';
 
-    // Autoload theme. Uses localize_template() and
-    // supports child theme overriding. However,
-    // they must be under the same dir path.
-    (new Tonik\Gin\Foundation\Autoloader($theme->get('config')))->register();
+// Initialize the config store from config/app.php.
+// This must happen before any autoloaded file calls config().
+$config = require __DIR__ . '/config/app.php';
+\Tonik\Theme\App\config_init($config);
+
+// Auto-load all theme component files listed in config/app.php.
+// Each file registers its own hooks, filters, post types, etc.
+// Uses locate_template() so child themes can override any file.
+foreach ($config['autoload'] as $file) {
+    $relative_path = $config['directories']['app'] . '/' . $file;
+    if (!locate_template($relative_path, true, true)) {
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            trigger_error(
+                "Autoloaded file [{$relative_path}] cannot be found. Check 'autoload' in config/app.php.",
+                E_USER_WARNING
+            );
+        }
+    }
 }

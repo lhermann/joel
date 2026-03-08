@@ -14,15 +14,17 @@ namespace Tonik\Theme\App\Http;
 */
 
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\config_set;
 use function Tonik\Theme\App\asset;
 use function Tonik\Theme\App\asset_path;
 use function Tonik\Theme\App\vite_dev_proxy;
 
 /**
- * Make sure it works with vite proxy
+ * In Vite dev proxy mode, assets are served from source (not dist/).
+ * Override the 'public' directory so asset() resolves to the right place.
  */
 if (vite_dev_proxy()) {
-  config()->set('directories', [
+  config_set('directories', [
       'languages' => 'resources/languages',
       'templates' => 'resources/templates',
       'assets' => 'public',

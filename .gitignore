@@ -4,6 +4,7 @@ node_modules
 node_modules.bak
 /dist
 /temp
+.claude/
 
 # local env files
 .env

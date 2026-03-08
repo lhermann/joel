@@ -1,23 +1,15 @@
 {
-  "name": "tonik/theme",
-  "description": "Tonik is a WordPress Starter Theme which aims to modernize, organize and enhance some aspects of WordPress theme development.",
+  "name": "joel/themefiles",
+  "description": "Joel Media Ministry WordPress theme",
   "keywords": [
-    "tonik",
-    "theme",
-    "gin",
     "wordpress",
-    "wordpress-starter-theme",
     "wordpress-theme"
   ],
-  "license": "MIT",
+  "license": "UNLICENSED",
   "type": "wordpress-theme",
   "require": {
-    "php": ">=7.0",
-    "tonik/gin": "^3.0.0",
+    "php": "^8.1",
     "jaybizzle/crawler-detect": "1.*",
     "google/apiclient": "^2.17"
-  },
-  "require-dev": {
-    "tonik/cli": "^3.0.0"
   }
 }
