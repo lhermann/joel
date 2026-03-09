@@ -81,9 +81,8 @@ function config_set(string $key, $value): void
 |-----------------------------------------------------------
 |
 | Minimal service container. Services are closures that get
-| resolved once (singleton pattern) and cached. Used for:
-|  - 'config' (legacy — config() helper is preferred)
-|  - 'slides' (bound in Setup/services.php)
+| resolved once (singleton pattern) and cached.
+| Currently used for 'slides' (bound in Setup/services.php).
 |
 */
 

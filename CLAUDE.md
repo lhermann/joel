@@ -86,7 +86,7 @@ Templates use the `template()` helper which supports two calling patterns:
 // Simple: render a specific template
 template('partials/header');
 
-// Named (with fallback): tries "single-page.tpl.php", falls back to "single.tpl.php"
+// Named: array joins with '-', renders "single-page.tpl.php"
 template(['single', 'page']);
 
 // With data: variables are extracted into the template scope
