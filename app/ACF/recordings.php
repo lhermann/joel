@@ -567,9 +567,9 @@ if(function_exists('acf_add_local_field_group')):
         'placeholder' => '',
       ),
       array(
-        'key' => 'field_59e79635e0444',
-        'label' => __('Stitcher Link', config('textdomain')),
-        'name' => 'stitcher_link',
+        'key' => 'field_67cde001a0001',
+        'label' => __('Spotify Link', config('textdomain')),
+        'name' => 'spotify_link',
         'type' => 'url',
         'instructions' => '',
         'required' => 0,

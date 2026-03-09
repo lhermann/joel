@@ -66,8 +66,8 @@ msgid "iTunes Link"
 msgstr "iTunes Link"
 
 #: app/ACF/recordings.php:566
-msgid "Stitcher Link"
-msgstr "Stitcher Link"
+msgid "Spotify Link"
+msgstr "Spotify Link"
 
 #: app/ACF/recordings.php:582 app/ACF/recordings.php:722
 #: resources/templates/taxonomy-speakers.tpl.php:55

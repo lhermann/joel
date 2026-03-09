@@ -4,7 +4,7 @@ use function Tonik\Theme\App\asset_path;
 use function Tonik\Theme\App\Helper\get_series_of_podcast;
 
 $podcast->itunes = get_field('itunes_link', $podcast);
-$podcast->stitcher = get_field('stitcher_link', $podcast);
+$podcast->spotify = get_field('spotify_link', $podcast);
 $podcast->image = get_field('image', $podcast);
 $podcast->series = get_series_of_podcast($podcast);
 
@@ -45,18 +45,22 @@ $podcast->series = get_series_of_podcast($podcast);
     </div>
     <div class="o-layout__item u-1/3@tablet u-mt- u-mt0@tablet">
 
-        <div class="u-mr-- u-mv-- u-ib-until@tablet">
-            <a href="<?= $podcast->itunes ?>" target="_blank">
-                <img src="<?= asset_path('images/listen-on-apple-podcasts.svg') ?>"
-                    alt="Podcast auf Apple Podcasts anzeigen">
-            </a>
-        </div>
-        <div class="u-mr-- u-mv-- u-ib-until@tablet">
-            <a href="<?= $podcast->stitcher ?>" target="_blank">
-                <img src="<?= asset_path('images/listen-on-stitcher.svg') ?>"
-                    alt="Podcast auf Stitcher anzeigen">
-            </a>
-        </div>
+        <?php if ($podcast->itunes): ?>
+            <div class="u-mr-- u-mv-- u-ib-until@tablet">
+                <a href="<?= $podcast->itunes ?>" target="_blank">
+                    <img src="<?= asset_path('images/listen-on-apple-podcasts.svg') ?>"
+                        alt="Podcast auf Apple Podcasts anzeigen">
+                </a>
+            </div>
+        <?php endif ?>
+        <?php if ($podcast->spotify): ?>
+            <div class="u-mr-- u-mv-- u-ib-until@tablet">
+                <a href="<?= $podcast->spotify ?>" target="_blank">
+                    <img src="<?= asset_path('images/listen-on-spotify.svg') ?>"
+                        alt="Podcast auf Spotify anzeigen">
+                </a>
+            </div>
+        <?php endif ?>
         <div class="u-mr-- u-mv-- u-ib-until@tablet u-text-">
             <a class="c-link c-link--muted c-link--dotted u-mr-- u-mv--"
                 href="<?= get_term_link($podcast) ?>" target="_blank">

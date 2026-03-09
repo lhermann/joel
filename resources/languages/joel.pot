@@ -68,7 +68,7 @@ msgid "iTunes Link"
 msgstr ""
 
 #: app/ACF/recordings.php:566
-msgid "Stitcher Link"
+msgid "Spotify Link"
 msgstr ""
 
 #: app/ACF/recordings.php:582

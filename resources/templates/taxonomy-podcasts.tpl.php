@@ -88,7 +88,8 @@ update_trac_database('podcastping', $term->term_id, 'term');
             <?php if ( have_posts() ) :
                 while ( have_posts() ) : the_post();
                     $audio = get_video_file(get_the_ID(), 'audio');
-                    if( !$audio ) continue;
+                    $video = get_video_file(get_the_ID(), 'video');
+                    if( !$audio && !$video ) continue;
                     ?>
 
                     <item>
@@ -97,8 +98,13 @@ update_trac_database('podcastping', $term->term_id, 'term');
                         <pubDate><?= esc_html( mysql2date( 'D, d M Y H:i:s +0000', get_post_time( 'Y-m-d H:i:s', true ), false ) ); ?></pubDate>
                         <guid isPermaLink="false"><?php the_guid() ?></guid>
                         <description><?= "<![CDATA[" . get_the_content_feed('rss2') . "]]>" ?></description>
+                        <?php if ($audio): ?>
                         <enclosure url="<?= trac_permalink(get_the_ID(), 'podcastdl', $audio->relative_url) ?>" length="<?= $audio->size ?>" type="audio/mpeg" />
-                        <itunes:duration><?= $audio->length ?></itunes:duration>
+                        <?php endif ?>
+                        <?php if ($video): ?>
+                        <media:content url="<?= esc_url('https://' . $video->relative_url) ?>" fileSize="<?= $video->size ?>" type="video/mp4" medium="video" />
+                        <?php endif ?>
+                        <itunes:duration><?= $audio ? $audio->length : $video->length ?></itunes:duration>
                         <itunes:subtitle>Ein Programm von Joel Media Ministry e.V.</itunes:subtitle>
                         <dc:creator>Joel Media Ministry e.V.</dc:creator>
                         <itunes:summary><?= "<![CDATA[" . get_the_content_feed('rss2') . "]]>" ?></itunes:summary>
