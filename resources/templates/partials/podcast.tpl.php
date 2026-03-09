@@ -49,6 +49,7 @@ $podcast->series = get_series_of_podcast($podcast);
             <div class="u-mr-- u-mv-- u-ib-until@tablet">
                 <a href="<?= $podcast->itunes ?>" target="_blank">
                     <img src="<?= asset_path('images/listen-on-apple-podcasts.svg') ?>"
+                        width="156" height="40"
                         alt="Podcast auf Apple Podcasts anzeigen">
                 </a>
             </div>
@@ -57,6 +58,7 @@ $podcast->series = get_series_of_podcast($podcast);
             <div class="u-mr-- u-mv-- u-ib-until@tablet">
                 <a href="<?= $podcast->spotify ?>" target="_blank">
                     <img src="<?= asset_path('images/listen-on-spotify.svg') ?>"
+                        width="156" height="40"
                         alt="Podcast auf Spotify anzeigen">
                 </a>
             </div>
