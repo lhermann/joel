@@ -4,6 +4,7 @@ import instantiate from './instantiate.js'
 
 /* Components */
 import JoBoogleMain from './components/boogle/JoBoogleMain.vue'
+import JoSearchMain from './components/search/JoSearchMain.vue'
 import JoLivestreamDropdown from './components/livestream/JoLivestreamDropdown.vue'
 import JoLivestreamMeta from './components/livestream/JoLivestreamMeta.vue'
 import JoLivestreamMessage from './components/livestream/JoLivestreamMessage.vue'
@@ -31,6 +32,7 @@ axios.defaults.baseURL = '/wp-json/'
 
 /* Instantiate Components */
 instantiate.component('JoBoogleMain', JoBoogleMain)
+instantiate.component('JoSearchMain', JoSearchMain)
 instantiate.component('JoLivestreamDropdown', JoLivestreamDropdown)
 instantiate.component('JoLivestreamMeta', JoLivestreamMeta)
 instantiate.component('JoLivestreamMessage', JoLivestreamMessage)
