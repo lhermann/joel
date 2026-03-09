@@ -1,11 +1,13 @@
 <template>
   <div id="algolia-search-box">
+    <i class="algolia-search-icon icon-search" />
     <input
       v-model="query"
       type="search"
       :placeholder="placeholder"
       autofocus
     >
+    <slot />
   </div>
 </template>
 

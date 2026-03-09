@@ -104,14 +104,15 @@
       <!-- Main content -->
       <section class="o-layout__item u-2/3@tablet u-1/1">
         <header class="u-mb+">
-          <JoSearchInput placeholder="Archiv durchsuchen ..." />
-          <AisStats>
-            <template v-slot="{ nbHits, processingTimeMS }">
-              <div class="u-mt-" style="font-size: .85em; color: #888;">
-                {{ nbHits }} Treffer in {{ processingTimeMS }}ms
-              </div>
-            </template>
-          </AisStats>
+          <JoSearchInput placeholder="Archiv durchsuchen ...">
+            <AisStats>
+              <template v-slot="{ nbHits, processingTimeMS }">
+                <div class="ais-stats">
+                  {{ nbHits }} Treffer in {{ processingTimeMS }}ms
+                </div>
+              </template>
+            </AisStats>
+          </JoSearchInput>
         </header>
 
         <AisHits>

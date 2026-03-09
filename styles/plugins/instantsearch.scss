@@ -118,3 +118,20 @@
     right: $unit-small;
     color: $c-textmuted;
 }
+
+// vue-instantsearch v4 overrides
+.ais-Hits-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ais-Pagination-link {
+    color: inherit;
+    display: block;
+    padding: 6px 0;
+
+    &:hover {
+        color: inherit;
+    }
+}
