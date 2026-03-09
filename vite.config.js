@@ -22,7 +22,7 @@ export default defineConfig({
   server: {
     proxy: {
       '^/(?!src-|fonts|images|styles|node_modules|@).*': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8081',
         xfwd: true,
       },
     },
