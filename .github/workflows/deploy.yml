@@ -70,5 +70,8 @@ jobs:
         # Deploy files using rsync (excluding the files/directories specified)
         rsync -avz --delete --exclude-from=/tmp/rsync-exclude/exclude.txt ./ root@host1.joelmedia.de:/var/www/joelmedia.de/
 
+        # Sync custom entrypoint to where Coolify mounts it
+        ssh root@host1.joelmedia.de "cp /var/www/joelmedia.de/custom-entrypoint.sh /var/www/docker-custom/wordpress-custom-entrypoint.sh && chmod +x /var/www/docker-custom/wordpress-custom-entrypoint.sh"
+
         # Change ownership of deployed files to www-data
         ssh root@host1.joelmedia.de "chown -R www-data:www-data /var/www/joelmedia.de/"
