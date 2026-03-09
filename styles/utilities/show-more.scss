@@ -37,6 +37,10 @@
     }
 
 
+    &--transcript {
+        max-height: 18em; // ~12 lines of text
+    }
+
     &.is-visible {
         height: auto;
         max-height: unset;

@@ -177,6 +177,31 @@ if($youtube) {
 
       </section>
 
+      <?php if ($transcript = get_field('transcript')): ?>
+      <section id="transcript">
+
+        <h2 class="u-h5 u-mb-">Transkript</h2>
+
+        <div id="show-more-transcript" data-vue="toggle">
+          <div class="u-text-left u-mb-" :class="{ 'u-show-more u-show-more--transcript': !toggled }">
+            <p><?= nl2br(esc_html($transcript)) ?></p>
+          </div>
+
+          <button class="c-btn c-btn--ghost c-btn--subtle c-btn--tiny u-ph" @click="toggle">
+            <template v-if="toggled">
+              <span class="u-ic-minus"></span> verbergen
+            </template>
+            <template v-else>
+              <span class="u-ic-plus"></span> ganzes Transkript anzeigen
+            </template>
+          </button>
+        </div>
+
+        <hr class="u-mv+">
+
+      </section>
+      <?php endif ?>
+
       <?php if (false): ?>
       <section id="recommended">
 

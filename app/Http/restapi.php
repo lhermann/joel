@@ -230,6 +230,25 @@ function rest_api_additions() {
   );
 
   /**
+   * Add 'transcript' to recordings
+   */
+  register_rest_field(
+    'recordings',
+    'transcript',
+    [
+      'get_callback' => function( $object ) {
+        return get_field('transcript', $object['id']) ?: '';
+      },
+      'update_callback' => function( $value, $post ) {
+        update_field('transcript', $value, $post->ID);
+      },
+      'schema' => [
+        'type' => 'string',
+      ],
+    ]
+  );
+
+  /**
    * Add a human readable date (and take the date-burden off js' back)
    */
   register_rest_field(

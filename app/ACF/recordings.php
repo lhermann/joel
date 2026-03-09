@@ -429,6 +429,25 @@ if(function_exists('acf_add_local_field_group')):
         'media_upload' => 1,
         'delay' => 1,
       ),
+      array(
+        'key' => 'field_67ce0001a0001',
+        'label' => 'Transkript',
+        'name' => 'transcript',
+        'type' => 'textarea',
+        'instructions' => 'Transkript der Aufnahme (Klartext). Wird auf der Seite unterhalb von "Weitere Aufnahmen" angezeigt.',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+        'placeholder' => '',
+        'maxlength' => '',
+        'rows' => 8,
+        'new_lines' => 'br',
+      ),
     ),
     'location' => array(
       array(
