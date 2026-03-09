@@ -96,10 +96,11 @@ update_trac_database('podcastping', $term->term_id, 'term');
                     if ($yt_string && preg_match('/(?<=embed\/)(.+?)(?=[\?$])/', $yt_string, $m)) {
                         $yt_url = 'https://www.youtube.com/watch?v=' . $m[1];
                     }
-                    $links = "\nAufnahme ansehen: " . get_the_permalink();
+                    $links = "<p>Aufnahme ansehen: " . get_the_permalink();
                     if ($yt_url) {
-                        $links .= "\nVideo auf YouTube: " . $yt_url;
+                        $links .= "<br>Video auf YouTube: " . $yt_url;
                     }
+                    $links .= "</p>";
                     $description = trim($description) ? $description . "\n" . $links : $links;
                     ?>
 
