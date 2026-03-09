@@ -1,22 +1,11 @@
 <template>
-  <div class="relative">
-    <div class="algolia-search-icon">
-      <span class="u-ic u-ic-search" />
-    </div>
+  <div id="algolia-search-box">
     <input
       v-model="query"
-      class="c-search-bar__input"
       type="search"
       :placeholder="placeholder"
       autofocus
     >
-    <button
-      v-if="query"
-      class="absolute right-0 h-10 w-10"
-      @click="query = ''"
-    >
-      &times;
-    </button>
   </div>
 </template>
 

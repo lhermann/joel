@@ -1,13 +1,14 @@
 <template>
-  <ul>
-    <li v-for="item in items" :key="item.value">
+  <ul class="ais-hierarchical-menu--body">
+    <li v-for="item in items" :key="item.value" class="ais-hierarchical-menu--item">
       <a
-        class="u-truncate"
+        class="ais-hierarchical-menu--link u-truncate"
         :class="{ 'is-active': item.isRefined }"
         href="#"
         @click.prevent="refine(item.value)"
       >
-        {{ item.label }} ({{ item.count }})
+        {{ item.label }}
+        <span class="ais-hierarchical-menu--count">{{ item.count }}</span>
       </a>
       <JoSearchTopicTree
         v-if="item.data && item.data.length"

@@ -24,7 +24,9 @@
       </div>
 
       <div class="o-media__body c-mediaitem__body">
-        <h3 class="c-mediaitem__title" v-html="highlightedTitle" />
+        <h3 class="c-mediaitem__title">
+          <a :href="item.permalink" v-html="highlightedTitle" />
+        </h3>
         <ul v-if="item.post_type === 'recordings'" class="c-mediaitem__meta u-truncate">
           <li v-if="item.speakers" v-html="item.speakers" />
           <li v-if="item.views">{{ item.views }} Klicks</li>
@@ -48,6 +50,12 @@ const props = defineProps({
   item: { type: Object, required: true },
 })
 
+// Fix stale Algolia URLs: www.joelmedia.de/wordpress/wp-content → joelmedia.de/wp-content
+function fixUrl (url) {
+  if (!url) return ''
+  return url.replace('://www.joelmedia.de/wordpress/', '://joelmedia.de/')
+}
+
 const highlightedTitle = computed(() => {
   return _get(props.item, '_highlightResult.post_title.value', props.item.post_title || '')
 })
@@ -58,9 +66,9 @@ const snippet = computed(() => {
 
 const thumbnail = computed(() => {
   if (props.item.post_type === 'recordings') {
-    return props.item.thumbnail || ''
+    return fixUrl(props.item.thumbnail)
   }
-  return _get(props.item, 'images.thumbnail.url', '')
+  return fixUrl(_get(props.item, 'images.thumbnail.url', ''))
 })
 
 const badge = computed(() => {

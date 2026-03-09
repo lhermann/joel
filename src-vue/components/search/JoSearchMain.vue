@@ -13,17 +13,18 @@
           :limit="10"
         >
           <template v-slot="{ items, refine }">
-            <section v-if="items.length" class="ais-facets">
+            <section v-if="items.length" class="ais-facets ais-menu">
               <h3 class="u-h4 u-mb-">Filter</h3>
-              <ul>
-                <li v-for="item in items" :key="item.value">
+              <ul class="ais-menu--body">
+                <li v-for="item in items" :key="item.value" class="ais-menu--item">
                   <a
-                    class="u-truncate"
+                    class="ais-menu--link u-truncate"
                     :class="{ 'is-active': item.isRefined }"
                     href="#"
                     @click.prevent="refine(item.value)"
                   >
-                    {{ item.label }} ({{ item.count }})
+                    {{ item.label }}
+                    <span class="ais-menu--count">{{ item.count }}</span>
                   </a>
                 </li>
               </ul>
@@ -37,17 +38,18 @@
           :limit="10"
         >
           <template v-slot="{ items, refine }">
-            <section v-if="items.length" class="ais-facets">
+            <section v-if="items.length" class="ais-facets ais-menu">
               <h3 class="u-h4 u-mb-">Sprecher</h3>
-              <ul>
-                <li v-for="item in items" :key="item.value">
+              <ul class="ais-menu--body">
+                <li v-for="item in items" :key="item.value" class="ais-menu--item">
                   <a
-                    class="u-truncate"
+                    class="ais-menu--link u-truncate"
                     :class="{ 'is-active': item.isRefined }"
                     href="#"
                     @click.prevent="refine(item.value)"
                   >
-                    {{ item.label }} ({{ item.count }})
+                    {{ item.label }}
+                    <span class="ais-menu--count">{{ item.count }}</span>
                   </a>
                 </li>
               </ul>
@@ -61,17 +63,18 @@
           :limit="10"
         >
           <template v-slot="{ items, refine }">
-            <section v-if="items.length" class="ais-facets">
+            <section v-if="items.length" class="ais-facets ais-menu">
               <h3 class="u-h4 u-mb-">Serien</h3>
-              <ul>
-                <li v-for="item in items" :key="item.value">
+              <ul class="ais-menu--body">
+                <li v-for="item in items" :key="item.value" class="ais-menu--item">
                   <a
-                    class="u-truncate"
+                    class="ais-menu--link u-truncate"
                     :class="{ 'is-active': item.isRefined }"
                     href="#"
                     @click.prevent="refine(item.value)"
                   >
-                    {{ item.label }} ({{ item.count }})
+                    {{ item.label }}
+                    <span class="ais-menu--count">{{ item.count }}</span>
                   </a>
                 </li>
               </ul>
@@ -90,7 +93,7 @@
           :limit="10"
         >
           <template v-slot="{ items, refine }">
-            <section v-if="items.length" class="ais-facets">
+            <section v-if="items.length" class="ais-facets ais-menu">
               <h3 class="u-h4 u-mb-">Themen</h3>
               <JoSearchTopicTree :items="items" :refine="refine" />
             </section>
