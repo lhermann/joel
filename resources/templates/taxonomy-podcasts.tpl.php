@@ -36,7 +36,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
             <lastBuildDate><?= esc_html( mysql2date( 'D, d M Y H:i:s +0000', get_lastpostmodified( 'GMT' ), false ) ); ?></lastBuildDate>
             <language>de-DE</language>
             <copyright>Copyright &#xA9; Joel Media Ministry e.V. 2012-<?= date('Y') ?></copyright>
-            <webMaster>admin@joelmediatv.de (Lukas Hermann)</webMaster>
+            <webMaster>admin@joelmedia.de (Lukas Hermann)</webMaster>
 
             <image>
                 <url><?= wp_get_attachment_url( get_field('image', $term)) ?></url>
@@ -45,7 +45,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
             </image>
 
             <googleplay:author><?= $author ? $author : 'Joel Media Ministry e.V.' ?></googleplay:author>
-            <googleplay:email>admin@joelmediatv.de</googleplay:email>
+            <googleplay:email>admin@joelmedia.de</googleplay:email>
             <googleplay:description><?= "<![CDATA[" . term_description() . "]]>" ?></googleplay:description>
             <googleplay:explicit>No</googleplay:explicit>
             <googleplay:image href="<?= wp_get_attachment_url( get_field('image', $term)) ?>"></googleplay:image>
@@ -55,7 +55,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
             <itunes:summary><?= "<![CDATA[" . term_description() . "]]>" ?></itunes:summary>
             <itunes:owner>
                     <itunes:name><?= $author ? $author : 'Joel Media Ministry e.V.' ?></itunes:name>
-                    <itunes:email>admin@joelmediatv.de</itunes:email>
+                    <itunes:email>admin@joelmedia.de</itunes:email>
             </itunes:owner>
             <itunes:image href="<?= wp_get_attachment_url( get_field('image', $term)) ?>"/>
             <itunes:explicit>no</itunes:explicit>
