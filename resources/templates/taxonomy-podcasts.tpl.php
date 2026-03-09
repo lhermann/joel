@@ -90,6 +90,17 @@ update_trac_database('podcastping', $term->term_id, 'term');
                     $audio = get_video_file(get_the_ID(), 'audio');
                     $video = get_video_file(get_the_ID(), 'video');
                     if( !$audio && !$video ) continue;
+                    $description = get_the_content_feed('rss2');
+                    $yt_string = get_field('youtube_video', get_the_ID());
+                    $yt_url = '';
+                    if ($yt_string && preg_match('/(?<=embed\/)(.+?)(?=[\?$])/', $yt_string, $m)) {
+                        $yt_url = 'https://www.youtube.com/watch?v=' . $m[1];
+                    }
+                    $links = "\nAufnahme ansehen: " . get_the_permalink();
+                    if ($yt_url) {
+                        $links .= "\nVideo auf YouTube: " . $yt_url;
+                    }
+                    $description = trim($description) ? $description . "\n" . $links : $links;
                     ?>
 
                     <item>
@@ -97,7 +108,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
                         <link><?php the_permalink() ?></link>
                         <pubDate><?= esc_html( mysql2date( 'D, d M Y H:i:s +0000', get_post_time( 'Y-m-d H:i:s', true ), false ) ); ?></pubDate>
                         <guid isPermaLink="false"><?php the_guid() ?></guid>
-                        <description><?= "<![CDATA[" . get_the_content_feed('rss2') . "]]>" ?></description>
+                        <description><?= "<![CDATA[" . $description . "]]>" ?></description>
                         <?php if ($audio): ?>
                         <enclosure url="<?= trac_permalink(get_the_ID(), 'podcastdl', $audio->relative_url) ?>" length="<?= $audio->size ?>" type="audio/mpeg" />
                         <?php endif ?>
@@ -107,7 +118,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
                         <itunes:duration><?= $audio ? $audio->length : $video->length ?></itunes:duration>
                         <itunes:subtitle>Ein Programm von Joel Media Ministry e.V.</itunes:subtitle>
                         <dc:creator>Joel Media Ministry e.V.</dc:creator>
-                        <itunes:summary><?= "<![CDATA[" . get_the_content_feed('rss2') . "]]>" ?></itunes:summary>
+                        <itunes:summary><?= "<![CDATA[" . $description . "]]>" ?></itunes:summary>
                         <itunes:author><?php
                             foreach(wp_get_post_terms(get_the_ID(), 'speakers') as $i => $s) {
                                 echo $i != 0 ? ", " : ""; echo htmlspecialchars($s->name);
