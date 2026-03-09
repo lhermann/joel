@@ -102,7 +102,7 @@ update_trac_database('podcastping', $term->term_id, 'term');
                         <enclosure url="<?= trac_permalink(get_the_ID(), 'podcastdl', $audio->relative_url) ?>" length="<?= $audio->size ?>" type="audio/mpeg" />
                         <?php endif ?>
                         <?php if ($video): ?>
-                        <media:content url="<?= esc_url('https://' . $video->relative_url) ?>" fileSize="<?= $video->size ?>" type="video/mp4" medium="video" />
+                        <media:content url="<?= esc_url($video->relative_url) ?>" fileSize="<?= $video->size ?>" type="video/mp4" medium="video" />
                         <?php endif ?>
                         <itunes:duration><?= $audio ? $audio->length : $video->length ?></itunes:duration>
                         <itunes:subtitle>Ein Programm von Joel Media Ministry e.V.</itunes:subtitle>
