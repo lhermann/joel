@@ -76,8 +76,7 @@
 </template>
 
 <script>
-import differenceInDays from 'date-fns/differenceInDays'
-import parseISO from 'date-fns/parseISO'
+import { differenceInDays, parseISO } from 'date-fns'
 import get from 'lodash/get'
 
 export default {

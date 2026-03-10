@@ -37,10 +37,8 @@
 <script>
 import JoStreamcheck from './JoStreamcheck.vue'
 import axios from 'axios'
-import format from 'date-fns/format'
-import locale from 'date-fns/locale/de'
-import parseISO from 'date-fns/parseISO'
-import isToday from 'date-fns/isToday'
+import { format, parseISO, isToday } from 'date-fns'
+import { de as locale } from 'date-fns/locale/de'
 
 export default {
   components: { JoStreamcheck },

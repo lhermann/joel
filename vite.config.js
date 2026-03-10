@@ -19,6 +19,14 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        loadPaths: ['node_modules'],
+        silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'legacy-js-api'],
+      },
+    },
+  },
   server: {
     proxy: {
       '^/(?!src-|fonts|images|styles|node_modules|@).*': {

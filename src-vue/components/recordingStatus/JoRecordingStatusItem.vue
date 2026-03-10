@@ -19,7 +19,7 @@
 
 <script>
 import last from 'lodash/last'
-import filesize from 'filesize'
+import { filesize } from 'filesize'
 
 export default {
   props: ['item'],

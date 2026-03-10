@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Popper from 'popper.js'
+import { createPopper } from '@popperjs/core'
 
 export default {
   props: {
@@ -55,7 +55,7 @@ export default {
     onButtonClick () {
       this.show = !this.show
       this.$nextTick(() => {
-        this.popper.scheduleUpdate()
+        this.popper.update()
       })
     },
     onSelectOption (option) {
@@ -76,14 +76,14 @@ export default {
     },
   },
   mounted () {
-    this.popper = new Popper(this.$refs.reference, this.$refs.popper, {
+    this.popper = createPopper(this.$refs.reference, this.$refs.popper, {
       placement: 'bottom-end',
     })
   },
   created () {
     document.addEventListener('click', this.onOutsideClick)
   },
-  destroyed () {
+  unmounted () {
     document.removeEventListener('click', this.onOutsideClick)
   },
 }

@@ -88,7 +88,7 @@ function register_scripts_and_styles() {
   // Styles
   //
 
-  $main_css = get_asset_by_name('assets/main.css');
+  $main_css = get_asset_by_name('assets/vue-main.css');
   if ($main_css) {
     wp_enqueue_style('main-style', $main_css['uri'], [], $main_css['hash']);
   }
@@ -110,7 +110,7 @@ function register_scripts_and_styles() {
  */
 add_action('admin_init', 'Tonik\Theme\App\Http\register_editor_stylesheets');
 function register_editor_stylesheets() {
-  $main_css = get_asset_by_name('assets/main.css');
+  $main_css = get_asset_by_name('assets/vue-main.css');
   if ($main_css) {
     add_editor_style($main_css['path']);
   }
@@ -148,7 +148,7 @@ function register_admin_scripts_and_styles() {
   /*
    * CSS
    */
-  $admin_css = get_asset_by_name('assets/admin.css');
+  $admin_css = get_asset_by_name('assets/vue-admin.css');
   if ($admin_css) {
     wp_enqueue_style('admin', $admin_css['uri'], [], $admin_css['hash']);
   }

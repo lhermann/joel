@@ -66,8 +66,8 @@
 import JoRecordingStatusItem from './JoRecordingStatusItem.vue'
 import axios from 'axios'
 import trimEnd from 'lodash/trimEnd'
-import filesize from 'filesize'
-import differenceInSeconds from 'date-fns/differenceInSeconds'
+import { filesize } from 'filesize'
+import { differenceInSeconds } from 'date-fns'
 
 export default {
   components: { JoRecordingStatusItem },
@@ -140,7 +140,7 @@ export default {
       this.updated = Date.now()
     }, 30000)
   },
-  destroyed () {
+  unmounted () {
     clearInterval(this.interval)
   },
 }

@@ -1,5 +1,5 @@
 import { createApp } from 'vue/dist/vue.esm-bundler'
-import Popper from 'popper.js'
+import { createPopper } from '@popperjs/core'
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 
 export default function (element) {
@@ -14,7 +14,7 @@ export default function (element) {
 
       onMounted(() => {
         document.addEventListener('click', onOutsideClick)
-        popper = new Popper(buttonElement, dropdownElement, {
+        popper = createPopper(buttonElement, dropdownElement, {
           placement: dropdownElement.dataset.placement,
         })
       })
@@ -25,7 +25,7 @@ export default function (element) {
       function toggleDropdown (event, force = null) {
         visible.value = force === null ? !visible.value : force
         nextTick(() => {
-          popper.scheduleUpdate()
+          popper.update()
         })
       }
       function onOutsideClick (event) {

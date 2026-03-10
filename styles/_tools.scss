@@ -3,4 +3,9 @@
 @import "./legacy-dependencies/inuitcss/tools/tools.clearfix";
 @import "./legacy-dependencies/inuitcss/tools/tools.hidden";
 @import "sass-mq/mq";
+
+// Vite 7's custom sass importer bypasses sass-mq's _mq.import.scss (which
+// does @forward as mq-*), so $breakpoints isn't prefixed to $mq-breakpoints.
+// Alias it explicitly for code that expects the prefixed name.
+$mq-breakpoints: $breakpoints !default;
 @import "./tools/clothoid";

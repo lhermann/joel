@@ -43,9 +43,8 @@
 </template>
 
 <script>
-import format from 'date-fns/format'
-import locale from 'date-fns/locale/de'
-import parseISO from 'date-fns/parseISO'
+import { format, parseISO } from 'date-fns'
+import { de as locale } from 'date-fns/locale/de'
 
 export default {
   props: {
