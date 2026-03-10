@@ -84,6 +84,17 @@
     color: $c-textmuted;
 }
 
+.c-timestamp {
+    color: $c-textalt;
+    font-size: 0.85em;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        color: $c-accent;
+    }
+}
+
     .c-link__float-right {
         float: right;
         margin-top: -$inuit-global-line-height;

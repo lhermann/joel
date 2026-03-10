@@ -45,3 +45,18 @@ instantiate.component('JoPaginationWrapper', JoPaginationWrapper)
 /* Instantiate Utils */
 instantiate.util('toggle', toggle)
 instantiate.util('dropdown', dropdown)
+
+/* Timestamp seeking */
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[data-seek]')
+  if (!link) return
+  const seconds = parseInt(link.dataset.seek, 10)
+  const iframe = document.querySelector('#head iframe')
+  if (!iframe) return
+  // YouTube iframe postMessage API
+  iframe.contentWindow.postMessage(JSON.stringify({
+    event: 'command',
+    func: 'seekTo',
+    args: [seconds, true],
+  }), '*')
+})

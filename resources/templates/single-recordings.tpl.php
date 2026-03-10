@@ -24,8 +24,8 @@ if($youtube) {
   $url = count($matches) > 0 ? $matches[1][0] : '';
   // Use youtube-nocookie.com
   $url = str_replace("www.youtube.com", "www.youtube-nocookie.com", $url);
-  // Add &modestbranding=1
-  $url .= "&modestbranding=1";
+  // Add &modestbranding=1&enablejsapi=1
+  $url .= "&modestbranding=1&enablejsapi=1";
   // Re-insert URL
   $youtube = preg_replace('/src=".+?"/', "src=\"$url\"", $youtube);
 }
@@ -184,7 +184,21 @@ if($youtube) {
 
         <div id="show-more-transcript" data-vue="toggle">
           <div class="u-text-left u-mb-" :class="{ 'u-show-more u-show-more--transcript': !toggled }">
-            <p><?= nl2br(esc_html($transcript)) ?></p>
+            <p><?php
+              $transcript_html = nl2br(esc_html($transcript));
+              // Convert [M:SS] or [H:MM:SS] timestamps to clickable seek links
+              echo preg_replace_callback(
+                '/\[(\d+:\d{2}(?::\d{2})?)\]/',
+                function ($m) {
+                  $parts = array_map('intval', explode(':', $m[1]));
+                  $seconds = count($parts) === 3
+                    ? $parts[0] * 3600 + $parts[1] * 60 + $parts[2]
+                    : $parts[0] * 60 + $parts[1];
+                  return '<a class="c-timestamp" href="#head" data-seek="' . $seconds . '">' . $m[1] . '</a>';
+                },
+                $transcript_html
+              );
+            ?></p>
           </div>
 
           <button class="c-btn c-btn--ghost c-btn--subtle c-btn--tiny u-ph" @click="toggle">
