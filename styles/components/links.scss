@@ -85,13 +85,10 @@
 }
 
 .c-timestamp {
-    color: $c-textalt;
-    font-size: 0.85em;
     text-decoration: none;
-    cursor: pointer;
 
     &:hover {
-        color: $c-accent;
+        text-decoration: underline;
     }
 }
 

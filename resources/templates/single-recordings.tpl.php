@@ -194,7 +194,7 @@ if($youtube) {
                   $seconds = count($parts) === 3
                     ? $parts[0] * 3600 + $parts[1] * 60 + $parts[2]
                     : $parts[0] * 60 + $parts[1];
-                  return '<a class="c-timestamp" href="#head" data-seek="' . $seconds . '">' . $m[1] . '</a>';
+                  return '[<a class="c-timestamp" href="#head" data-seek="' . $seconds . '">' . $m[1] . '</a>]';
                 },
                 $transcript_html
               );

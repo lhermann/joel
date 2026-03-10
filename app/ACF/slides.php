@@ -166,7 +166,7 @@ acf_add_local_field_group(array(
                 '5a8ecfb57713c' => array(
                     'key' => '5a8ecfb57713c',
                     'name' => 'video',
-                    'label' => '<span class="dashicons dashicons-video-alt2"></span> ' . 'Video',
+                    'label' => '<span class="dashicons dashicons-video-alt2"></span> Video',
                     'display' => 'block',
                     'sub_fields' => array(
                         array(
@@ -199,7 +199,7 @@ acf_add_local_field_group(array(
                 '5a8ed0542c2ea' => array(
                     'key' => '5a8ed0542c2ea',
                     'name' => 'image',
-                    'label' => '<span class="dashicons dashicons-format-image"></span> ' . 'Image',
+                    'label' => '<span class="dashicons dashicons-format-image"></span> Image',
                     'display' => 'block',
                     'sub_fields' => array(
                         array(
