@@ -277,6 +277,7 @@ add_action( 'rest_api_init', 'Tonik\Theme\App\Http\rest_api_additions' );
  * Add route to get events from event organiser
  */
 function event_organiser_endpoint() {
+  if (!function_exists('eo_get_events')) return;
   /**
    * Add a route
    */

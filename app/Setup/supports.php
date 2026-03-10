@@ -85,4 +85,4 @@ function load_textdomain() {
 
     load_theme_textdomain(config('textdomain'), "{$paths['directory']}/{$directories['languages']}");
 }
-add_action('after_setup_theme', 'Tonik\Theme\App\Setup\load_textdomain');
+add_action('init', 'Tonik\Theme\App\Setup\load_textdomain');

@@ -9,6 +9,7 @@ use function Tonik\Theme\App\config;
         <h1 class="u-roboto"><?php the_title(); ?></h1>
 
         <table class="c-article__meta u-mb" style="width: auto;">
+          <?php if (function_exists('eo_get_the_start')): ?>
           <tr>
             <td class="u-pr-"><span class="u-ic-date"></span> Beginn:</td>
             <td><?= eo_get_the_start('l, j. F Y' ); ?></td>
@@ -22,7 +23,8 @@ use function Tonik\Theme\App\config;
             <td class="u-pr-"><span class="u-ic-room"></span> Ort:</td>
             <td><?= $venue_name ?></td>
           </tr>
-        <?php endif; ?>
+          <?php endif; ?>
+          <?php endif; ?>
         </table>
 
         <div class="u-hidden-visually">
@@ -35,7 +37,7 @@ use function Tonik\Theme\App\config;
 
         <?php the_content(); ?>
 
-        <?php if(eo_venue_has_latlng()): ?>
+        <?php if(function_exists('eo_venue_has_latlng') && eo_venue_has_latlng()): ?>
           <div class="u-clearfix"></div>
           <hr class="u-mt" />
           <h2><span class="u-ic-room"></span> <?php eo_venue_name() ?></h2>

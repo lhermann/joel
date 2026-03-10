@@ -120,9 +120,9 @@ function register_required_plugins() {
     $plugins[] = array(
       'name'              => 'Event Organiser',
       'slug'              => 'event-organiser',
-      'required'          => true,
+      'required'          => false,
       'version'           => '3.7.4',
-      'force_activation'  => true,
+      'force_activation'  => false,
     );
   }
 

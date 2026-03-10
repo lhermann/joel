@@ -28,4 +28,4 @@ function register_navigation_areas()
         // 'footer_sitemap' => __('Footer Sitemap', config('textdomain'))
     ]);
 }
-add_action('after_setup_theme', 'Tonik\Theme\App\Structure\register_navigation_areas');
+add_action('init', 'Tonik\Theme\App\Structure\register_navigation_areas');

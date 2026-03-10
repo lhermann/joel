@@ -6,7 +6,7 @@ if(!isset($args)) $args = [];
 
 
 <?php
-  if ( eo_get_events([
+  if ( function_exists('eo_get_events') && eo_get_events([
     'showpastevents' => false,
     'post_status' => 'publish',
     'event-category' => $args['event-category'],

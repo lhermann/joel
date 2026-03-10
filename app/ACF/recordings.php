@@ -270,7 +270,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_53dfb75328fc8',
-        'label' => __('Status', config('textdomain')),
+        'label' => 'Status',
         'name' => 'recording_status',
         'type' => 'message',
         'instructions' => '',
@@ -287,7 +287,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_52c9deb0d3c39',
-        'label' => __('Select Recording', config('textdomain')),
+        'label' => 'Select Recording',
         'name' => 'recording_select',
         'type' => 'select',
         'instructions' => '',
@@ -314,7 +314,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_4fb10184a8596',
-        'label' => __('Thumbnail', config('textdomain')),
+        'label' => 'Thumbnail',
         'name' => 'thumbnail',
         'type' => 'image',
         'instructions' => 'Erforderliche Aufl&ouml;sung in Pixel: 1920x1080',
@@ -489,7 +489,7 @@ if(function_exists('acf_add_local_field_group')):
     'fields' => array(
       array(
         'key' => 'field_59de0a67baf08',
-        'label' => __('Image', config('textdomain')),
+        'label' => 'Image',
         'name' => 'image',
         'type' => 'image',
         'instructions' => 'Artwork must be a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels, in JPEG or PNG format, 72 dpi, with appropriate file extensions (.jpg, .png), and in the RGB colorspace.',
@@ -513,7 +513,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59de0abf106de',
-        'label' => __('Author', config('textdomain')),
+        'label' => 'Author',
         'name' => 'autor',
         'type' => 'taxonomy',
         'instructions' => '',
@@ -535,7 +535,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59de0b32b3aa1',
-        'label' => __('Categories', config('textdomain')),
+        'label' => 'Categories',
         'name' => 'categorien',
         'type' => 'checkbox',
         'instructions' => '',
@@ -571,7 +571,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59e44c58b3706',
-        'label' => __('iTunes Link', config('textdomain')),
+        'label' => 'iTunes Link',
         'name' => 'itunes_link',
         'type' => 'url',
         'instructions' => '',
@@ -587,7 +587,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_67cde001a0001',
-        'label' => __('Spotify Link', config('textdomain')),
+        'label' => 'Spotify Link',
         'name' => 'spotify_link',
         'type' => 'url',
         'instructions' => '',
@@ -603,7 +603,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59e3aaa4c51dc',
-        'label' => __('Website', config('textdomain')),
+        'label' => 'Website',
         'name' => 'website_link',
         'type' => 'url',
         'instructions' => '',
@@ -646,7 +646,7 @@ if(function_exists('acf_add_local_field_group')):
     'fields' => array(
       array(
         'key' => 'field_59ddf48a5960c',
-        'label' => __('Thumbnail for series', config('textdomain')),
+        'label' => 'Thumbnail for series',
         'name' => 'image',
         'type' => 'image',
         'instructions' => 'Bild sollte mindestens 1280x720 Pixel haben.',
@@ -670,7 +670,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59e5a5c30a4fd',
-        'label' => __('Podcast', config('textdomain')),
+        'label' => 'Podcast',
         'name' => 'podcast',
         'type' => 'taxonomy',
         'instructions' => '',
@@ -719,7 +719,7 @@ if(function_exists('acf_add_local_field_group')):
     'fields' => array(
       array(
         'key' => 'field_59ddf586d5c6d',
-        'label' => __('Image', config('textdomain')),
+        'label' => 'Image',
         'name' => 'image',
         'type' => 'image',
         'instructions' => 'Sollte <strong>quadratisch</strong> sein, wird ansonnsten automatisch ausgeschnitten. Mindestens <strong>300x300 Pixel</strong>.',
@@ -743,7 +743,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59ddf623f1beb',
-        'label' => __('Website', config('textdomain')),
+        'label' => 'Website',
         'name' => 'website',
         'type' => 'url',
         'instructions' => '',
@@ -782,11 +782,11 @@ if(function_exists('acf_add_local_field_group')):
    */
   acf_add_local_field_group(array(
     'key' => 'group_acf_choose-taxonomies',
-    'title' => __('Choose taxonomies', config('textdomain')),
+    'title' => 'Choose taxonomies',
     'fields' => array(
       array(
         'key' => 'field_53dfb0355292e',
-        'label' => __('Speakers', config('textdomain')),
+        'label' => 'Speakers',
         'name' => 'speakers',
         'type' => 'taxonomy',
         'instructions' => '',
@@ -808,7 +808,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_53dfaf955292d',
-        'label' => __('Series', config('textdomain')),
+        'label' => 'Series',
         'name' => 'series',
         'type' => 'taxonomy',
         'instructions' => '',
@@ -830,7 +830,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59dcf1a261753',
-        'label' => __('Topics', config('textdomain')),
+        'label' => 'Topics',
         'name' => 'topics',
         'type' => 'taxonomy',
         'instructions' => '',
@@ -852,7 +852,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59dcf1e0346a5',
-        'label' => __('Podcast', config('textdomain')),
+        'label' => 'Podcast',
         'name' => 'podcast',
         'type' => 'taxonomy',
         'instructions' => '',
@@ -874,7 +874,7 @@ if(function_exists('acf_add_local_field_group')):
       ),
       array(
         'key' => 'field_59dcf417389a4',
-        'label' => __('Download', config('textdomain')),
+        'label' => 'Download',
         'name' => 'download',
         'type' => 'true_false',
         'instructions' => '',
@@ -888,8 +888,8 @@ if(function_exists('acf_add_local_field_group')):
         'message' => '',
         'default_value' => 1,
         'ui' => 1,
-        'ui_on_text' => __('permit', config('textdomain')),
-        'ui_off_text' => __('deny', config('textdomain')),
+        'ui_on_text' => 'permit',
+        'ui_off_text' => 'deny',
       )
     ),
     'location' => array(

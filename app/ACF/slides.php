@@ -26,7 +26,7 @@ acf_add_local_field_group(array(
         /* Meta */
         array(
             'key' => 'field_5a8ff51423fe9',
-            'label' => __('Show Title', config('textdomain')),
+            'label' => 'Show Title',
             'name' => 'show_title',
             'type' => 'true_false',
             'instructions' => '',
@@ -40,12 +40,12 @@ acf_add_local_field_group(array(
             'message' => '',
             'default_value' => 1,
             'ui' => 1,
-            'ui_on_text' => __('Yes', config('textdomain')),
-            'ui_off_text' => __('No', config('textdomain')),
+            'ui_on_text' => 'Yes',
+            'ui_off_text' => 'No',
         ),
         array(
             'key' => 'field_5a8ebbab2a387',
-            'label' => __('Button Text', config('textdomain')),
+            'label' => 'Button Text',
             'name' => 'button_text',
             'type' => 'text',
             'instructions' => '',
@@ -64,7 +64,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_5c68ed48ac801',
-            'label' => __('Link', config('textdomain')),
+            'label' => 'Link',
             'name' => 'link',
             'type' => 'link',
             'instructions' => '',
@@ -81,7 +81,7 @@ acf_add_local_field_group(array(
         /* Slide Content */
         array(
             'key' => 'field_5a8ebb2553dbe',
-            'label' => __('Content', config('textdomain')),
+            'label' => 'Content',
             'name' => 'content',
             'type' => 'wysiwyg',
             'instructions' => '',
@@ -102,7 +102,7 @@ acf_add_local_field_group(array(
         /* Slide Type */
         array(
             'key' => 'field_5a8eb2f599038',
-            'label' => __('Slide Type', config('textdomain')),
+            'label' => 'Slide Type',
             'name' => 'slide_type',
             'type' => 'button_group',
             'instructions' => '',
@@ -136,7 +136,7 @@ acf_add_local_field_group(array(
         /* Media Flexible Content */
         array(
             'key' => 'field_5a8ecfb5a802c',
-            'label' => __('Media Content', config('textdomain')),
+            'label' => 'Media Content',
             'name' => 'media_content',
             'type' => 'flexible_content',
             'instructions' => '',
@@ -166,7 +166,7 @@ acf_add_local_field_group(array(
                 '5a8ecfb57713c' => array(
                     'key' => '5a8ecfb57713c',
                     'name' => 'video',
-                    'label' => '<span class="dashicons dashicons-video-alt2"></span> ' . __('Video', config('textdomain')),
+                    'label' => '<span class="dashicons dashicons-video-alt2"></span> ' . 'Video',
                     'display' => 'block',
                     'sub_fields' => array(
                         array(
@@ -199,12 +199,12 @@ acf_add_local_field_group(array(
                 '5a8ed0542c2ea' => array(
                     'key' => '5a8ed0542c2ea',
                     'name' => 'image',
-                    'label' => '<span class="dashicons dashicons-format-image"></span> ' . __('Image', config('textdomain')),
+                    'label' => '<span class="dashicons dashicons-format-image"></span> ' . 'Image',
                     'display' => 'block',
                     'sub_fields' => array(
                         array(
                             'key' => 'field_5a8eceb814a26',
-                            'label' => __('Image', config('textdomain')),
+                            'label' => 'Image',
                             'name' => 'image',
                             'type' => 'image',
                             'instructions' => '',
@@ -231,7 +231,7 @@ acf_add_local_field_group(array(
                     'max' => '',
                 ),
             ),
-            'button_label' => __('Choose Media', config('textdomain')),
+            'button_label' => 'Choose Media',
             'min' => '',
             'max' => 1,
         ),
@@ -239,7 +239,7 @@ acf_add_local_field_group(array(
         /* Slide Colors */
         array(
             'key' => 'field_5a8eaf6292f5d',
-            'label' => __('Slide Colors', config('textdomain')),
+            'label' => 'Slide Colors',
             'name' => 'colors',
             'type' => 'button_group',
             'instructions' => '',
@@ -273,7 +273,7 @@ acf_add_local_field_group(array(
         /* Custom Background */
         array(
             'key' => 'field_5a8eb03ac3cb6',
-            'label' => __('Background Image', config('textdomain')),
+            'label' => 'Background Image',
             'name' => 'background_image',
             'type' => 'image',
             'instructions' => '',
@@ -305,7 +305,7 @@ acf_add_local_field_group(array(
         ),
         array(
             'key' => 'field_5a8eec1065915',
-            'label' => __('Text Color', config('textdomain')),
+            'label' => 'Text Color',
             'name' => 'text_color',
             'type' => 'button_group',
             'instructions' => '',
@@ -325,8 +325,8 @@ acf_add_local_field_group(array(
                 'id' => '',
             ),
             'choices' => array(
-                '#333' => __('Black', config('textdomain')),
-                '#fff' => __('White', config('textdomain')),
+                '#333' => 'Black',
+                '#fff' => 'White',
             ),
             'allow_null' => 0,
             'default_value' => 'black',
