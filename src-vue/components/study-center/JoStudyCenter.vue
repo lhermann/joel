@@ -1,13 +1,12 @@
 <template>
   <div class="flex flex-col flex-1 min-h-0">
-    <!-- Messages -->
     <div ref="messages" class="flex-1 overflow-y-auto px-4 pt-4">
 
       <!-- Welcome state -->
-      <div v-if="messages.length === 0" class="flex flex-col items-center justify-end text-center min-h-full pb-4">
+      <div v-if="messages.length === 0" class="flex flex-col items-center justify-center text-center min-h-full">
         <h1 class="text-3xl mb-2">Studienzentrum</h1>
         <p class="text-gray-500 mb-8">Stelle Fragen zum Archiv, zu Predigten und zur Bibel</p>
-        <div class="flex flex-wrap justify-center gap-2 max-w-xl">
+        <div class="flex flex-wrap justify-center gap-2 max-w-xl mb-6">
           <button
             v-for="chip in exampleChips"
             :key="chip"
@@ -17,51 +16,73 @@
             {{ chip }}
           </button>
         </div>
+        <!-- Input inline in welcome state -->
+        <div class="flex items-end w-full max-w-[700px] gap-2">
+          <textarea
+            ref="input"
+            v-model="inputText"
+            class="flex-1 resize-none border border-gray-300 rounded-lg px-4 py-2 text-base leading-6 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
+            placeholder="Stelle eine Frage..."
+            rows="1"
+            :disabled="streaming"
+            @keydown="onKeydown"
+            @input="autoGrow"
+          />
+          <button
+            class="flex items-center justify-center w-10 h-10 shrink-0 border-none rounded-full bg-[#061375] text-white cursor-pointer transition hover:bg-[#0b1f9e] disabled:opacity-50 disabled:cursor-default"
+            :disabled="!inputText.trim() || streaming"
+            @click="sendMessage(inputText)"
+          >
+            <span v-if="streaming" class="c-spinner c-spinner--small" />
+            <span v-else class="u-ic-send" />
+          </button>
+        </div>
       </div>
 
       <!-- Conversation -->
-      <template v-for="(msg, i) in messages" :key="i">
-        <JoStudyCenterMessage
-          :role="msg.role"
-          :text="msg.text"
-          :sources="msg.sources"
-          :loading="msg.loading"
-        />
+      <template v-if="messages.length">
+        <template v-for="(msg, i) in messages" :key="i">
+          <JoStudyCenterMessage
+            :role="msg.role"
+            :text="msg.text"
+            :sources="msg.sources"
+            :loading="msg.loading"
+          />
+        </template>
+
+        <!-- Input below conversation -->
+        <div class="max-w-[700px] mx-auto mb-4">
+          <div class="flex items-end gap-2">
+            <textarea
+              ref="input"
+              v-model="inputText"
+              class="flex-1 resize-none border border-gray-300 rounded-lg px-4 py-2 text-base leading-6 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
+              placeholder="Stelle eine Frage..."
+              rows="1"
+              :disabled="streaming"
+              @keydown="onKeydown"
+              @input="autoGrow"
+            />
+            <button
+              class="flex items-center justify-center w-10 h-10 shrink-0 border-none rounded-full bg-[#061375] text-white cursor-pointer transition hover:bg-[#0b1f9e] disabled:opacity-50 disabled:cursor-default"
+              :disabled="!inputText.trim() || streaming"
+              @click="sendMessage(inputText)"
+            >
+              <span v-if="streaming" class="c-spinner c-spinner--small" />
+              <span v-else class="u-ic-send" />
+            </button>
+          </div>
+          <button
+            v-if="!streaming"
+            class="block mx-auto mt-2 text-xs text-gray-400 bg-transparent border-none cursor-pointer hover:text-gray-600 transition"
+            @click="clearHistory"
+          >
+            Neues Gespräch
+          </button>
+        </div>
       </template>
 
       <div ref="scrollAnchor" />
-    </div>
-
-    <!-- Input -->
-    <div class="px-4 pb-4 pt-2 bg-white" :class="messages.length ? 'border-t border-gray-200' : ''">
-      <div class="flex items-end max-w-[700px] mx-auto gap-2">
-        <button
-          v-if="messages.length && !streaming"
-          class="flex items-center justify-center w-10 h-10 shrink-0 border border-gray-300 rounded-full bg-white text-gray-500 cursor-pointer transition hover:bg-gray-50 hover:text-gray-700"
-          title="Neues Gespräch"
-          @click="clearHistory"
-        >
-          <span class="u-ic-add" />
-        </button>
-        <textarea
-          ref="input"
-          v-model="inputText"
-          class="flex-1 resize-none border border-gray-300 rounded-lg px-4 py-2 text-base leading-6 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
-          placeholder="Stelle eine Frage..."
-          rows="1"
-          :disabled="streaming"
-          @keydown="onKeydown"
-          @input="autoGrow"
-        />
-        <button
-          class="flex items-center justify-center w-10 h-10 shrink-0 border-none rounded-full bg-[#061375] text-white cursor-pointer transition hover:bg-[#0b1f9e] disabled:opacity-50 disabled:cursor-default"
-          :disabled="!inputText.trim() || streaming"
-          @click="sendMessage(inputText)"
-        >
-          <span v-if="streaming" class="c-spinner c-spinner--small" />
-          <span v-else class="u-ic-send" />
-        </button>
-      </div>
     </div>
   </div>
 </template>
