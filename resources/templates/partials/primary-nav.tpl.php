@@ -45,15 +45,16 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
 
         <?php endforeach ?>
 
-        <!-- Livestream -->
-        <?php if (config('livestream')['enabled']): ?>
+        <!-- Studienzentrum -->
+        <?php if (config('study-center-url')): ?>
         <li class="c-primary-nav__item">
 
             <a
-                href="/livestream/"
-                class="c-link c-link--block c-link--primary c-primary-nav__link"
+                href="/studienzentrum/"
+                class="c-link c-link--block c-link--primary c-primary-nav__link
+                <?= (is_page('studienzentrum')) ? 'is-active' : '' ?>"
             >
-                Livestream
+                Studienzentrum
             </a>
 
         </li>

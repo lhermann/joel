@@ -13,6 +13,7 @@ import JoCookieConsent from './components/cookieConsent/JoCookieConsent.vue'
 import JoEvents from './components/events/JoEvents.vue'
 import JoSlider from './components/slider/JoSlider.vue'
 import JoPaginationWrapper from './components/pagination/JoPaginationWrapper.vue'
+import JoStudyCenter from './components/study-center/JoStudyCenter.vue'
 
 /* Util */
 import toggle from './components/utils/toggle.js'
@@ -41,6 +42,7 @@ instantiate.component('JoCookieConsent', JoCookieConsent)
 instantiate.component('JoEvents', JoEvents)
 instantiate.component('JoSlider', JoSlider)
 instantiate.component('JoPaginationWrapper', JoPaginationWrapper)
+instantiate.component('JoStudyCenter', JoStudyCenter)
 
 /* Instantiate Utils */
 instantiate.util('toggle', toggle)

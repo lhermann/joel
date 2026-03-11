@@ -1,0 +1,52 @@
+/* ==========================================================================
+   #STUDY CENTER
+   Minimal SCSS — only for parent overrides and keyframes.
+   Component styling uses Tailwind classes in Vue templates.
+   ========================================================================== */
+
+/* Hide footer & debug bar for full-height chat */
+.is-fullscreen-app {
+  .c-site-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .c-site-header {
+    flex-shrink: 0;
+  }
+
+  .c-site-footer,
+  .c-site-wrapper > .o-wrapper {
+    display: none !important;
+  }
+}
+
+/* Loading dots animation */
+@keyframes study-dot-pulse {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}
+
+.c-study-dots span {
+  animation: study-dot-pulse 1.2s ease-in-out infinite;
+
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.4s; }
+}
+
+/* Markdown content — needs nested selectors for v-html output */
+.c-study-content {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $c-link;
+
+    &:hover {
+      color: $c-link-hover;
+    }
+  }
+}

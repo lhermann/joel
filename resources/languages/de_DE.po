@@ -663,6 +663,10 @@ msgstr "Landing"
 msgid "Livestream"
 msgstr "Livestream"
 
+#. Template Name of the theme
+msgid "Study Center"
+msgstr "Studienzentrum"
+
 #: resources/templates/algolia/autocomplete.obsolete.tpl.php:79
 msgid "No results matched your query "
 msgstr ""

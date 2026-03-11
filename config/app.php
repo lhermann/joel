@@ -22,6 +22,7 @@ return [
         'enabled'           => if_defined('LIVESTREAM', true),
         'program-timeframe' => if_defined('LIVESTREAM_TIMEFRAME', 4), // in weeks
     ],
+    'study-center-url'      => if_defined('STUDY_CENTER_URL', ''),
     'matomo-consent'        => if_defined('MATOMO_CONSENT', false),
     // favicon is reachable at site root
     'favicon'               => if_defined('FAVICON', false),

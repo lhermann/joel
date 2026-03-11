@@ -24,7 +24,7 @@
         <strong>WP Query:</strong>
         <?php print_r( $wp_query->query ) ?>
         <br>
-        <strong>Post Count:</strong> <?= count($wp_query->posts) ?>
+        <strong>Post Count:</strong> <?= count($wp_query->posts ?? []) ?>
     </p>
     <div>query_vars:</div>
     <div style="overflow: scroll; max-height: 12em; border: 1px solid lightgray; padding: 0.5rem;">
