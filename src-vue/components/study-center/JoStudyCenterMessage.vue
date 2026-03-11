@@ -4,7 +4,7 @@
     <div
       class="px-4 py-2"
       :class="role === 'user'
-        ? 'bg-blue-50 rounded-xl rounded-br-none ml-8'
+        ? 'bg-blue-50 border border-blue-100 rounded-xl rounded-br-none ml-8'
         : 'bg-white border border-gray-200 rounded-xl rounded-bl-none'"
     >
       <!-- Loading dots -->

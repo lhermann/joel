@@ -29,7 +29,7 @@
             @input="autoGrow"
           />
           <button
-            class="flex items-center justify-center w-10 h-10 shrink-0 border-none rounded-full bg-[#061375] text-white cursor-pointer transition hover:bg-[#0b1f9e] disabled:opacity-50 disabled:cursor-default"
+            class="flex items-center justify-center w-10 h-10 shrink-0 border-none rounded-full bg-green-600 text-white cursor-pointer transition hover:bg-green-700 disabled:opacity-50 disabled:cursor-default"
             :disabled="!inputText.trim() || streaming"
             @click="sendMessage(inputText)"
           >
@@ -64,7 +64,7 @@
               @input="autoGrow"
             />
             <button
-              class="flex items-center justify-center w-10 h-10 shrink-0 border-none rounded-full bg-[#061375] text-white cursor-pointer transition hover:bg-[#0b1f9e] disabled:opacity-50 disabled:cursor-default"
+              class="flex items-center justify-center w-10 h-10 shrink-0 border-none rounded-full bg-green-600 text-white cursor-pointer transition hover:bg-green-700 disabled:opacity-50 disabled:cursor-default"
               :disabled="!inputText.trim() || streaming"
               @click="sendMessage(inputText)"
             >
