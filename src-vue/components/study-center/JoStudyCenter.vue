@@ -29,7 +29,7 @@
             @input="autoGrow"
           />
           <button
-            class="c-btn c-btn--small c-btn--green c-btn--square !rounded-full !w-10 !h-10 !p-0 flex items-center justify-center shrink-0 disabled:opacity-50"
+            class="c-btn c-btn--small c-btn--green flex items-center justify-center shrink-0 !w-10 !h-10 !p-0 disabled:opacity-50"
             :disabled="!inputText.trim() || streaming"
             @click="sendMessage(inputText)"
           >
@@ -64,7 +64,7 @@
               @input="autoGrow"
             />
             <button
-              class="c-btn c-btn--small c-btn--green c-btn--square !rounded-full !w-10 !h-10 !p-0 flex items-center justify-center shrink-0 disabled:opacity-50"
+              class="c-btn c-btn--small c-btn--green flex items-center justify-center shrink-0 !w-10 !h-10 !p-0 disabled:opacity-50"
               :disabled="!inputText.trim() || streaming"
               @click="sendMessage(inputText)"
             >
