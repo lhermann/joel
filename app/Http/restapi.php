@@ -369,3 +369,66 @@ function google_api_callback() {
 
 }
 add_action('rest_api_init', 'Tonik\Theme\App\Http\google_api_callback');
+
+
+/**
+ * Study Center cards endpoint
+ * Returns lightweight card data for a list of post IDs.
+ */
+function study_center_cards() {
+  register_rest_route(
+    config('textdomain').'/v1',
+    '/cards',
+    [
+      'methods' => \WP_REST_Server::CREATABLE,
+      'callback' => function (\WP_REST_Request $request) {
+        $ids = $request->get_json_params()['ids'] ?? [];
+        if (!is_array($ids) || empty($ids)) {
+          return new \WP_Error('invalid_ids', 'ids must be a non-empty array', ['status' => 400]);
+        }
+
+        $ids = array_map('intval', array_slice($ids, 0, 20));
+        $cards = [];
+
+        foreach ($ids as $post_id) {
+          $post = get_post($post_id);
+          if (!$post || $post->post_status !== 'publish') continue;
+
+          $card = [
+            'post_id' => $post_id,
+            'post_type' => $post->post_type,
+            'title' => get_the_title($post_id),
+            'permalink' => get_permalink($post_id),
+          ];
+
+          if ($post->post_type === 'recordings') {
+            $speakers = wp_get_post_terms($post_id, 'speakers');
+            $card['speaker'] = !empty($speakers) ? $speakers[0]->name : '';
+
+            $series = wp_get_post_terms($post_id, 'series');
+            $card['series'] = !empty($series) ? $series[0]->name : '';
+
+            $thumb_id = get_field('thumbnail', $post_id);
+            $card['thumbnail'] = $thumb_id
+              ? (wp_get_attachment_image_src($thumb_id, '108p')[0] ?? '')
+              : fallback_img('', '108p');
+
+            $yt_string = get_field('youtube_video', $post_id);
+            $card['youtube_id'] = '';
+            if ($yt_string && preg_match('/(?<=embed\/)(.+?)(?=[\?$])/', $yt_string, $m)) {
+              $card['youtube_id'] = $m[1];
+            }
+          } elseif ($post->post_type === 'answer') {
+            $card['excerpt'] = wp_trim_words(wp_strip_all_tags($post->post_content), 30);
+          }
+
+          $cards[] = $card;
+        }
+
+        return $cards;
+      },
+      'permission_callback' => '__return_true',
+    ]
+  );
+}
+add_action('rest_api_init', 'Tonik\Theme\App\Http\study_center_cards');
