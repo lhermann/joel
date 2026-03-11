@@ -397,7 +397,7 @@ function study_center_cards() {
           $card = [
             'post_id' => $post_id,
             'post_type' => $post->post_type,
-            'title' => get_the_title($post_id),
+            'title' => html_entity_decode(get_the_title($post_id)),
             'permalink' => get_permalink($post_id),
           ];
 
