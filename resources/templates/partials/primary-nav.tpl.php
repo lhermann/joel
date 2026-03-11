@@ -45,7 +45,7 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
 
         <?php endforeach ?>
 
-        <!-- Studienzentrum -->
+        <!-- Studienzentrum — uncomment when ready to go public
         <?php if (config('study-center-url')): ?>
         <li class="c-primary-nav__item">
 
@@ -59,6 +59,7 @@ use function Tonik\Theme\App\Helper\menu_item_has_children;
 
         </li>
         <?php endif ?>
+        -->
 
     </ul><!--end c-primary-nav__list-->
 
