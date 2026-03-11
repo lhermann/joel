@@ -29,7 +29,7 @@
             @input="autoGrow"
           />
           <button
-            class="c-btn c-btn--small c-btn--green flex items-center justify-center shrink-0 !w-10 !h-10 !p-0 disabled:opacity-50"
+            class="shrink-0 flex items-center justify-center c-btn c-btn--small c-btn--green !rounded-lg !w-10 !h-10 !p-0 disabled:opacity-50"
             :disabled="!inputText.trim() || streaming"
             @click="sendMessage(inputText)"
           >
@@ -104,8 +104,8 @@ export default {
       messages: [],
       streaming: false,
       exampleChips: [
-        'Was sagt die Bibel über Vergebung?',
-        'Erkläre Römer 8 im Kontext der Predigten',
+        'Was sagt der Prophet Joel über Vergebung?',
+        'Erkläre das Heiligtum im Kontext von Römer 8',
         'Was ist die Taufe?',
         'Predigten über das Buch Jesaja',
       ],
