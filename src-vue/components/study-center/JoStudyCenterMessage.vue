@@ -74,7 +74,7 @@ export default {
       // Convert [N] citation markers to superscript
       html = html.replace(
         /\[(\d+)\]/g,
-        '<sup class="inline-flex items-center justify-center min-w-[16px] h-4 px-0.5 mx-px rounded bg-blue-100 text-blue-900 text-xs font-semibold align-super leading-none">$1</sup>',
+        '<sup class="text-[10px] text-blue-600/70 font-medium ml-px">$1</sup>',
       )
       return html
     },

@@ -44,7 +44,7 @@ export default {
     },
     permalink () {
       let url = this.source.permalink || '#'
-      if (this.isRecording && this.source.youtube_id && this.source.start_seconds) {
+      if (this.isRecording && this.source.start_seconds) {
         url += `?t=${this.source.start_seconds}`
       }
       return url

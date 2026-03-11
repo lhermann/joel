@@ -49,16 +49,38 @@ instantiate.util('toggle', toggle)
 instantiate.util('dropdown', dropdown)
 
 /* Timestamp seeking */
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a[data-seek]')
-  if (!link) return
-  const seconds = parseInt(link.dataset.seek, 10)
+function seekYouTube (seconds) {
   const iframe = document.querySelector('#head iframe')
   if (!iframe) return
-  // YouTube iframe postMessage API
   iframe.contentWindow.postMessage(JSON.stringify({
     event: 'command',
     func: 'seekTo',
     args: [seconds, true],
   }), '*')
+}
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[data-seek]')
+  if (!link) return
+  seekYouTube(parseInt(link.dataset.seek, 10))
 })
+
+// Auto-seek on page load via ?t= query parameter
+const tParam = new URLSearchParams(window.location.search).get('t')
+if (tParam) {
+  const seconds = parseInt(tParam, 10)
+  if (seconds > 0) {
+    // Wait for YouTube iframe to be ready
+    window.addEventListener('message', function onReady (e) {
+      try {
+        const data = JSON.parse(e.data)
+        if (data.event === 'onReady' || data.event === 'initialDelivery') {
+          seekYouTube(seconds)
+          window.removeEventListener('message', onReady)
+        }
+      } catch { /* ignore non-JSON messages */ }
+    })
+    // Fallback: seek after a delay in case the ready event was missed
+    setTimeout(() => seekYouTube(seconds), 2000)
+  }
+}

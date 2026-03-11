@@ -4,7 +4,7 @@
     <div ref="messages" class="flex-1 overflow-y-auto px-4 pt-4">
 
       <!-- Welcome state -->
-      <div v-if="messages.length === 0" class="flex flex-col items-center justify-center text-center min-h-full pb-8">
+      <div v-if="messages.length === 0" class="flex flex-col items-center justify-end text-center min-h-full pb-4">
         <h1 class="text-3xl mb-2">Studienzentrum</h1>
         <p class="text-gray-500 mb-8">Stelle Fragen zum Archiv, zu Predigten und zur Bibel</p>
         <div class="flex flex-wrap justify-center gap-2 max-w-xl">
@@ -33,8 +33,16 @@
     </div>
 
     <!-- Input -->
-    <div class="px-4 pb-4 pt-2 border-t border-gray-200 bg-white">
+    <div class="px-4 pb-4 pt-2 bg-white" :class="messages.length ? 'border-t border-gray-200' : ''">
       <div class="flex items-end max-w-[700px] mx-auto gap-2">
+        <button
+          v-if="messages.length && !streaming"
+          class="flex items-center justify-center w-10 h-10 shrink-0 border border-gray-300 rounded-full bg-white text-gray-500 cursor-pointer transition hover:bg-gray-50 hover:text-gray-700"
+          title="Neues Gespräch"
+          @click="clearHistory"
+        >
+          <span class="u-ic-add" />
+        </button>
         <textarea
           ref="input"
           v-model="inputText"
@@ -75,7 +83,7 @@ export default {
       messages: [],
       streaming: false,
       exampleChips: [
-        'Was sagt Joel Hartge über Vergebung?',
+        'Was sagt die Bibel über Vergebung?',
         'Erkläre Römer 8 im Kontext der Predigten',
         'Was ist die Taufe?',
         'Predigten über das Buch Jesaja',
@@ -157,7 +165,19 @@ export default {
               this.scrollToBottom()
             } else if (eventType === 'done') {
               assistant.loading = false
-              assistant.sources = data.sources || []
+              // Renumber sources sequentially (LLM may skip numbers)
+              const sources = (data.sources || []).sort((a, b) => a.ref - b.ref)
+              const refRemap = {}
+              sources.forEach((s, i) => {
+                refRemap[s.ref] = i + 1
+                s.ref = i + 1
+              })
+              // Renumber citations in text
+              assistant.text = assistant.text.replace(
+                /\[(\d+)\]/g,
+                (match, num) => refRemap[num] ? `[${refRemap[num]}]` : match,
+              )
+              assistant.sources = sources
               this.scrollToBottom()
             } else if (eventType === 'error') {
               assistant.loading = false
@@ -223,6 +243,12 @@ export default {
       const el = this.$refs.input
       if (!el) return
       el.style.height = 'auto'
+    },
+
+    clearHistory () {
+      this.messages = []
+      localStorage.removeItem(STORAGE_KEY)
+      this.$nextTick(() => this.$refs.input?.focus())
     },
   },
 }
