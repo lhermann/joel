@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col flex-1 min-h-0">
-    <div ref="messages" class="flex-1 overflow-y-auto px-4 pt-4">
+  <div class="flex flex-col flex-1">
+    <div ref="messages" class="flex-1 px-4 pt-4">
 
       <!-- Welcome state -->
       <div v-if="messages.length === 0" class="flex flex-col items-center justify-center text-center min-h-full">

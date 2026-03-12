@@ -4,23 +4,10 @@
    Component styling uses Tailwind classes in Vue templates.
    ========================================================================== */
 
-/* Hide footer & debug bar for full-height chat */
-.is-fullscreen-app {
-  .c-site-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100dvh;
-    overflow: hidden;
-  }
-
-  .c-site-header {
-    flex-shrink: 0;
-  }
-
-  .c-site-footer,
-  .c-site-wrapper > .o-wrapper {
-    display: none !important;
-  }
+/* Full-height chat area — fills viewport minus header, footer scrolls below */
+.c-study-center {
+  min-height: calc(100dvh - 80px); /* approximate header height */
+  padding-bottom: $unit-large;
 }
 
 /* Loading dots animation */
