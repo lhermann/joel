@@ -419,7 +419,7 @@ function study_center_cards() {
               $card['youtube_id'] = $m[1];
             }
           } elseif ($post->post_type === 'answer') {
-            $card['excerpt'] = wp_trim_words(wp_strip_all_tags($post->post_content), 30);
+            $card['excerpt'] = html_entity_decode(wp_trim_words(wp_strip_all_tags($post->post_content), 30), ENT_QUOTES | ENT_HTML5, 'UTF-8');
           }
 
           $cards[] = $card;
