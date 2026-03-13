@@ -184,7 +184,7 @@ if($youtube) {
           <h2 class="u-h5" style="margin-bottom:0">Transkript</h2>
           <button
             class="c-btn c-btn--ghost c-btn--subtle c-btn--tiny"
-            onclick="(function(btn){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([btn.dataset.transcript],{type:'text/plain'}));a.download=btn.dataset.filename;a.click();URL.revokeObjectURL(a.href)})(this)"
+            onclick="(function(btn){var a=document.createElement('a');a.href=window.URL.createObjectURL(new Blob([btn.dataset.transcript],{type:'text/plain'}));a.download=btn.dataset.filename;a.click();window.URL.revokeObjectURL(a.href)})(this)"
             data-transcript="<?php
               $speaker_names = implode(', ', array_map(fn($s) => $s->name, $speakers));
               $pub_year = get_the_date('Y');
