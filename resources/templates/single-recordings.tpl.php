@@ -180,7 +180,31 @@ if($youtube) {
       <?php if ($transcript = get_field('transcript')): ?>
       <section id="transcript">
 
-        <h2 class="u-h5 u-mb-">Transkript</h2>
+        <div class="o-flex o-flex--between o-flex--middle u-mb-">
+          <h2 class="u-h5" style="margin-bottom:0">Transkript</h2>
+          <button
+            class="c-btn c-btn--ghost c-btn--subtle c-btn--tiny"
+            onclick="(function(btn){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([btn.dataset.transcript],{type:'text/plain'}));a.download=btn.dataset.filename;a.click();URL.revokeObjectURL(a.href)})(this)"
+            data-transcript="<?php
+              $speaker_names = implode(', ', array_map(fn($s) => $s->name, $speakers));
+              $pub_year = get_the_date('Y');
+              $transcript_download = get_the_title() . "\n"
+                . $speaker_names . "\n"
+                . "\n"
+                . trim($transcript) . "\n"
+                . "\n---\n\n"
+                . "Lizenz\n"
+                . "Copyright ©{$pub_year} Joel Media Ministry e.V.\n"
+                . "Dieses Werk ist lizenziert unter einer Creative Commons Namensnennung - Nicht kommerziell - Keine Bearbeitungen 4.0 International Lizenz.\n"
+                . "\n"
+                . get_permalink();
+              echo esc_attr($transcript_download);
+            ?>"
+            data-filename="<?= esc_attr(sanitize_file_name(get_the_title())) ?>-transkript.txt"
+          >
+            <span class="u-ic-download"></span> herunterladen
+          </button>
+        </div>
 
         <div id="show-more-transcript" data-vue="toggle">
           <div class="u-text-left u-mb-" :class="{ 'u-show-more u-show-more--transcript': !toggled }">
@@ -245,7 +269,7 @@ if($youtube) {
           </div>
           <div class="o-flag__body u-text--">
             <h2 class="u-text u-mb0 u-muted">Lizenz</h2>
-            Copyright ©2017 Joel Media Ministry e.V.
+            Copyright ©<?= get_the_date('Y') ?> Joel Media Ministry e.V.
             <br>Dieses Werk ist lizenziert unter einer Creative Commons Namensnennung - Nicht kommerziell - Keine Bearbeitungen 4.0 International Lizenz.
           </div>
         </div>
