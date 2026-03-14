@@ -69,8 +69,12 @@ class Google_API {
 
   public function authenticate ($code) {
     $token = $this->client->fetchAccessTokenWithAuthCode($code);
-    $token['refresh_token'] = $this->client->getRefreshToken();
-    $token = $this->_setToken($token);
+    // refresh_token is already in $token if access_type=offline
+    // only fall back to getRefreshToken() if missing
+    if (empty($token['refresh_token'])) {
+      $token['refresh_token'] = $this->client->getRefreshToken();
+    }
+    $this->_setToken($token);
     return $token;
   }
 
