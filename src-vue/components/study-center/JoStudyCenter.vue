@@ -129,7 +129,7 @@ export default {
       this.messages.push({ role: 'assistant', text: '', sources: null, loading: true })
 
       this.streaming = true
-      this.scrollToBottom()
+      this.scrollToBottom(true)
 
       try {
         await this.streamResponse()
@@ -238,11 +238,16 @@ export default {
       } catch (e) { /* corrupted data, ignore */ }
     },
 
-    scrollToBottom () {
+    scrollToBottom (force = false) {
       if (this._scrollRAF) return
       this._scrollRAF = requestAnimationFrame(() => {
         this._scrollRAF = null
-        this.$refs.scrollAnchor?.scrollIntoView({ behavior: 'smooth' })
+        // Only auto-scroll if user is already near the bottom (or forced)
+        const docEl = document.documentElement
+        const distanceFromBottom = docEl.scrollHeight - docEl.scrollTop - docEl.clientHeight
+        if (force || distanceFromBottom < 150) {
+          this.$refs.scrollAnchor?.scrollIntoView({ behavior: 'smooth' })
+        }
       })
     },
 
