@@ -126,11 +126,17 @@ function register_admin_scripts_and_styles() {
   /*
    * Javascript
    */
+  wp_enqueue_style(
+    'chartist-css',
+    '//cdn.jsdelivr.net/chartist.js/0.11.4/chartist.min.css',
+    [],
+    '0.11.4'
+  );
   wp_enqueue_script(
     'chartist',
-    '//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js',
+    '//cdn.jsdelivr.net/chartist.js/0.11.4/chartist.min.js',
     [],
-    '0.11.0',
+    '0.11.4',
     false
   );
 
