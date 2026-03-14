@@ -128,13 +128,13 @@ function register_admin_scripts_and_styles() {
    */
   wp_enqueue_style(
     'chartist-css',
-    '//cdn.jsdelivr.net/chartist.js/0.11.4/chartist.min.css',
+    '//cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.css',
     [],
     '0.11.4'
   );
   wp_enqueue_script(
     'chartist',
-    '//cdn.jsdelivr.net/chartist.js/0.11.4/chartist.min.js',
+    '//cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.js',
     [],
     '0.11.4',
     false
