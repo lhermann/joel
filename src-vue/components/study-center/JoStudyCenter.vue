@@ -43,6 +43,7 @@
       <template v-if="messages.length">
         <template v-for="(msg, i) in messages" :key="i">
           <JoStudyCenterMessage
+            :ref="i === messages.length - 1 ? 'lastMessage' : undefined"
             :role="msg.role"
             :text="msg.text"
             :sources="msg.sources"
@@ -82,7 +83,6 @@
         </div>
       </template>
 
-      <div ref="scrollAnchor" />
     </div>
   </div>
 </template>
@@ -129,7 +129,7 @@ export default {
       this.messages.push({ role: 'assistant', text: '', sources: null, loading: true })
 
       this.streaming = true
-      this.scrollToBottom()
+      this.scrollLastMessageIntoView()
 
       try {
         await this.streamResponse()
@@ -183,7 +183,7 @@ export default {
             if (eventType === 'chunk') {
               if (assistant.loading) assistant.loading = false
               assistant.text += data.text
-              this.scrollToBottom()
+              this.scrollLastMessageIntoView()
             } else if (eventType === 'done') {
               assistant.loading = false
               // Renumber sources sequentially (LLM may skip numbers)
@@ -199,7 +199,7 @@ export default {
                 (match, num) => refRemap[num] ? `[${refRemap[num]}]` : match,
               )
               assistant.sources = sources
-              this.scrollToBottom()
+              this.scrollLastMessageIntoView()
             } else if (eventType === 'error') {
               assistant.loading = false
               assistant.text = data.message || 'Ein Fehler ist aufgetreten.'
@@ -238,16 +238,17 @@ export default {
       } catch (e) { /* corrupted data, ignore */ }
     },
 
-    scrollToBottom () {
+    scrollLastMessageIntoView () {
       if (this._scrollRAF) return
       this._scrollRAF = requestAnimationFrame(() => {
         this._scrollRAF = null
-        const anchor = this.$refs.scrollAnchor
-        if (!anchor) return
-        // Don't scroll if the anchor is already in (or above) the viewport
-        const rect = anchor.getBoundingClientRect()
-        if (rect.top <= window.innerHeight) return
-        anchor.scrollIntoView({ behavior: 'smooth' })
+        const refs = this.$refs.lastMessage
+        const el = refs && refs[0]?.$el
+        if (!el) return
+        const rect = el.getBoundingClientRect()
+        // Already visible — don't scroll
+        if (rect.top >= 0 && rect.top < window.innerHeight) return
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       })
     },
 
