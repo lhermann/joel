@@ -68,27 +68,18 @@ class Google_API {
   }
 
   public function authenticate ($code) {
-    error_log('[Google_API] authenticate() called with code: ' . substr($code, 0, 20) . '...');
-    error_log('[Google_API] redirect_uri: ' . $this->client->getRedirectUri());
-    error_log('[Google_API] access_type config: ' . $this->client->getConfig('access_type'));
-    error_log('[Google_API] prompt config: ' . $this->client->getConfig('prompt'));
-
     $token = $this->client->fetchAccessTokenWithAuthCode($code);
-    error_log('[Google_API] fetchAccessTokenWithAuthCode response keys: ' . implode(', ', array_keys($token)));
-    error_log('[Google_API] refresh_token in response: ' . var_export($token['refresh_token'] ?? 'NOT SET', true));
-    error_log('[Google_API] error in response: ' . var_export($token['error'] ?? 'NONE', true));
-
-    $client_refresh = $this->client->getRefreshToken();
-    error_log('[Google_API] client->getRefreshToken(): ' . var_export($client_refresh, true));
+    error_log('[Google_API] authenticate: keys=' . implode(',', array_keys($token))
+      . ' refresh_token=' . (empty($token['refresh_token']) ? 'MISSING' : 'present')
+      . ' error=' . ($token['error'] ?? 'none'));
 
     // refresh_token is already in $token if access_type=offline
     // only fall back to getRefreshToken() if missing
     if (empty($token['refresh_token'])) {
-      error_log('[Google_API] refresh_token empty in response, falling back to getRefreshToken()');
-      $token['refresh_token'] = $client_refresh;
+      $token['refresh_token'] = $this->client->getRefreshToken();
+      error_log('[Google_API] authenticate: used getRefreshToken() fallback, result=' . (empty($token['refresh_token']) ? 'MISSING' : 'present'));
     }
 
-    error_log('[Google_API] final refresh_token: ' . var_export($token['refresh_token'] ?? null, true));
     $this->_setToken($token);
     return $token;
   }
