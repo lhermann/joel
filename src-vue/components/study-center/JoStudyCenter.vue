@@ -183,7 +183,6 @@ export default {
             if (eventType === 'chunk') {
               if (assistant.loading) assistant.loading = false
               assistant.text += data.text
-              this.scrollLastMessageIntoView()
             } else if (eventType === 'done') {
               assistant.loading = false
               // Renumber sources sequentially (LLM may skip numbers)
@@ -242,11 +241,9 @@ export default {
       if (this._scrollRAF) return
       this._scrollRAF = requestAnimationFrame(() => {
         this._scrollRAF = null
-        const refs = this.$refs.lastMessage
-        const el = refs && refs[0]?.$el
+        const el = this.$refs.lastMessage?.[0]?.$el
         if (!el) return
         const rect = el.getBoundingClientRect()
-        // Already visible — don't scroll
         if (rect.top >= 0 && rect.top < window.innerHeight) return
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       })
