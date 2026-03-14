@@ -93,15 +93,21 @@ class Google_API {
     try {
       $new_token = $this->client->fetchAccessTokenWithRefreshToken($token['refresh_token']);
       if (isset($new_token['error'])) {
-        // Refresh token is invalid, remove the stored token
-        delete_option('google-api-token');
+        error_log('[Google_API] renewToken error: ' . $new_token['error']);
+        if ($new_token['error'] === 'invalid_grant') {
+          // Refresh token revoked or expired — force re-auth
+          delete_option('google-api-token');
+        }
         return false;
+      }
+      // Preserve refresh_token (Google doesn't return it on renewal)
+      if (empty($new_token['refresh_token'])) {
+        $new_token['refresh_token'] = $token['refresh_token'];
       }
       $this->_setToken($new_token);
       return true;
-    } catch (Exception $e) {
-      // Handle any exceptions (e.g., network errors)
-      error_log('Error refreshing Google API token: ' . $e->getMessage());
+    } catch (\Exception $e) {
+      error_log('[Google_API] renewToken exception: ' . $e->getMessage());
       return false;
     }
   }
