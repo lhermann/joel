@@ -32,25 +32,14 @@ class Google_API {
     $this->client->setAccessType('offline');
     $this->client->setPrompt('consent');
 
-    // Get token from store
-    $token = $this->_getToken();
-    if ($token) $this->client->setAccessToken($token);
-
-    // Get token from store
+    // Get token from store and renew if expired
     $token = $this->_getToken();
     if ($token) {
       $this->client->setAccessToken($token);
-      // Attempt to renew if expired
       if ($this->client->isAccessTokenExpired()) {
-        if (!$this->renewToken()) {
-          // Token renewal failed, clear the token
-          $this->_setToken(null);
-        }
+        $this->renewToken();
       }
     }
-
-    // renew token if necessary
-    if ($this->client->isAccessTokenExpired()) $this->renewToken();
   }
 
   public function getToken () {
