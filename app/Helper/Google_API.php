@@ -27,7 +27,7 @@ class Google_API {
     $this->client->setApplicationName('Joel Video Upload');
     $this->client->setAuthConfig(OAUTH_CREDENTIALS_FILE);
     $this->client->setRedirectUri($callback_url);
-    $this->client->setScopes([YouTube::YOUTUBE]);
+    $this->client->setScopes([YouTube::YOUTUBE, YouTube::YOUTUBE_FORCE_SSL]);
     $this->client->prepareScopes();
     $this->client->setAccessType('offline');
     $this->client->setPrompt('consent');
