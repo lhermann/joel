@@ -129,7 +129,7 @@ export default {
       this.messages.push({ role: 'assistant', text: '', sources: null, loading: true })
 
       this.streaming = true
-      this.scrollToBottom(true)
+      this.scrollToBottom()
 
       try {
         await this.streamResponse()
@@ -238,16 +238,16 @@ export default {
       } catch (e) { /* corrupted data, ignore */ }
     },
 
-    scrollToBottom (force = false) {
+    scrollToBottom () {
       if (this._scrollRAF) return
       this._scrollRAF = requestAnimationFrame(() => {
         this._scrollRAF = null
-        // Only auto-scroll if user is already near the bottom (or forced)
-        const docEl = document.documentElement
-        const distanceFromBottom = docEl.scrollHeight - docEl.scrollTop - docEl.clientHeight
-        if (force || distanceFromBottom < 150) {
-          this.$refs.scrollAnchor?.scrollIntoView({ behavior: 'smooth' })
-        }
+        const anchor = this.$refs.scrollAnchor
+        if (!anchor) return
+        // Don't scroll if the anchor is already in (or above) the viewport
+        const rect = anchor.getBoundingClientRect()
+        if (rect.top <= window.innerHeight) return
+        anchor.scrollIntoView({ behavior: 'smooth' })
       })
     },
 
