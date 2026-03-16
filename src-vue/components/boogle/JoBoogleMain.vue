@@ -58,7 +58,7 @@
         'ais-Pagination-item--page': '',
         'ais-Pagination-item--selected': '!text-neutral-200 !bg-neutral-700',
         'ais-Pagination-item--disabled': '!text-neutral-400 hover:!text-neutral-400 hover:!bg-gray-200',
-        'ais-Pagination-link': 'block w-9 h-9 leading-9 text-center text-inherit hover:text-inherit focus:text-inherit',
+        'ais-Pagination-link': 'block w-9 h-9 text-center text-inherit hover:text-inherit focus:text-inherit',
       }"
     />
   </AisInstantSearch>
