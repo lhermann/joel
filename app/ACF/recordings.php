@@ -488,6 +488,22 @@ if(function_exists('acf_add_local_field_group')):
     'title' => 'Taxonomy Podcast',
     'fields' => array(
       array(
+        'key' => 'field_68307a01a0001',
+        'label' => 'Hidden',
+        'name' => 'hidden',
+        'type' => 'true_false',
+        'instructions' => 'Hide this podcast from the podcast page. The RSS feed will still be served.',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => 0,
+        'ui' => 1,
+      ),
+      array(
         'key' => 'field_59de0a67baf08',
         'label' => 'Image',
         'name' => 'image',

@@ -1,6 +1,7 @@
 <?php
 use function Tonik\Theme\App\template;
-$terms = get_terms( ['taxonomy' => 'podcasts'] );
+$terms = get_terms( ['taxonomy' => 'podcasts', 'orderby' => 'term_id', 'order' => 'DESC'] );
+$terms = array_filter( $terms, fn($term) => !get_field('hidden', 'podcasts_' . $term->term_id) );
 ?>
 
 <?php get_header() ?>
