@@ -14,10 +14,12 @@ import JoEvents from './components/events/JoEvents.vue'
 import JoSlider from './components/slider/JoSlider.vue'
 import JoPaginationWrapper from './components/pagination/JoPaginationWrapper.vue'
 import JoStudyCenter from './components/study-center/JoStudyCenter.vue'
+import JoHeroSearch from './components/home/JoHeroSearch.vue'
 
 /* Util */
 import toggle from './components/utils/toggle.js'
 import dropdown from './components/utils/dropdown.js'
+import cardRowScroll from './components/utils/cardRowScroll.js'
 
 /* CSS */
 import '../styles/tailwind.css'
@@ -43,10 +45,12 @@ instantiate.component('JoEvents', JoEvents)
 instantiate.component('JoSlider', JoSlider)
 instantiate.component('JoPaginationWrapper', JoPaginationWrapper)
 instantiate.component('JoStudyCenter', JoStudyCenter)
+instantiate.component('JoHeroSearch', JoHeroSearch)
 
 /* Instantiate Utils */
 instantiate.util('toggle', toggle)
 instantiate.util('dropdown', dropdown)
+instantiate.util('cardRowScroll', cardRowScroll)
 
 /* Timestamp seeking */
 function seekYouTube (seconds) {
