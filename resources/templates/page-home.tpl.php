@@ -10,6 +10,9 @@ get_header();
   <?php // ─── Hero ─────────────────────────────────────────────── ?>
   <?php template('partials/home/hero') ?>
 
+  <!-- Chat conversation renders here via Vue Teleport -->
+  <div id="hero-chat"></div>
+
   <?php // ─── New Videos ───────────────────────────────────────── ?>
   <?php
   $new_videos = new WP_Query([

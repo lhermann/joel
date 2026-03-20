@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Search input -->
+    <!-- Search input (stays in hero) -->
     <div class="max-w-xl mx-auto">
       <div class="flex gap-2 items-center bg-white rounded-lg shadow-lg p-1">
         <span class="pl-2 text-gray-400 text-xl u-ic-search" />
@@ -25,49 +25,51 @@
       </div>
     </div>
 
-    <!-- Chat conversation (expands below hero) -->
-    <div v-if="messages.length" class="max-w-3xl mx-auto mt-8 text-left">
-      <template v-for="(msg, i) in messages" :key="i">
-        <JoStudyCenterMessage
-          :ref="i === messages.length - 1 ? 'lastMessage' : undefined"
-          :role="msg.role"
-          :text="msg.text"
-          :sources="msg.sources"
-          :loading="msg.loading"
-        />
-      </template>
-
-      <!-- Follow-up input -->
-      <div class="max-w-[700px] mx-auto mb-4">
-        <div class="flex items-end gap-2">
-          <textarea
-            ref="followupInput"
-            v-model="inputText"
-            class="flex-1 resize-none border border-white/30 rounded-lg px-4 py-2 text-base leading-6 bg-white/10 text-white placeholder:text-white/50 overflow-y-auto focus:outline-none focus:border-white/60 disabled:opacity-60"
-            placeholder="Weitere Frage stellen..."
-            rows="1"
-            :disabled="streaming"
-            @keydown.enter.exact.prevent="sendMessage(inputText)"
-            @input="autoGrow"
+    <!-- Chat conversation (teleported below hero, on white background) -->
+    <Teleport to="#hero-chat">
+      <div v-if="chatVisible" class="max-w-screen-xl mx-auto px-4 py-8">
+        <template v-for="(msg, i) in messages" :key="i">
+          <JoStudyCenterMessage
+            :ref="i === messages.length - 1 ? 'lastMessage' : undefined"
+            :role="msg.role"
+            :text="msg.text"
+            :sources="msg.sources"
+            :loading="msg.loading"
           />
+        </template>
+
+        <!-- Follow-up input -->
+        <div class="max-w-[700px] mx-auto mb-4">
+          <div class="flex items-end gap-2">
+            <textarea
+              ref="followupInput"
+              v-model="inputText"
+              class="flex-1 resize-none border border-gray-300 rounded-lg px-4 py-2 text-base leading-6 bg-white text-gray-800 placeholder:text-gray-400 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
+              placeholder="Weitere Frage stellen..."
+              rows="1"
+              :disabled="streaming"
+              @keydown.enter.exact.prevent="sendMessage(inputText)"
+              @input="autoGrow"
+            />
+            <button
+              class="shrink-0 flex items-center justify-center w-10 h-10 p-0 rounded-lg bg-blue-700 hover:bg-blue-900 text-white border-none transition-colors disabled:opacity-50"
+              :disabled="!inputText.trim() || streaming"
+              @click="sendMessage(inputText)"
+            >
+              <span v-if="streaming" class="c-spinner c-spinner--small" />
+              <span v-else class="u-ic-send" />
+            </button>
+          </div>
           <button
-            class="c-btn c-btn--small flex items-center justify-center shrink-0 !w-10 !h-10 !p-0 bg-white/20 hover:bg-white/30 text-white border-none disabled:opacity-50"
-            :disabled="!inputText.trim() || streaming"
-            @click="sendMessage(inputText)"
+            v-if="!streaming"
+            class="block mx-auto mt-2 text-xs text-gray-400 bg-transparent border-none cursor-pointer hover:text-gray-600 transition"
+            @click="clearHistory"
           >
-            <span v-if="streaming" class="c-spinner c-spinner--small" />
-            <span v-else class="u-ic-send" />
+            Neues Gespräch
           </button>
         </div>
-        <button
-          v-if="!streaming"
-          class="block mx-auto mt-2 text-xs text-white/50 bg-transparent border-none cursor-pointer hover:text-white/80 transition"
-          @click="clearHistory"
-        >
-          Neues Gespräch
-        </button>
       </div>
-    </div>
+    </Teleport>
   </div>
 </template>
 
@@ -100,6 +102,12 @@ export default {
       placeholderIndex: 0,
     }
   },
+  computed: {
+    // Show chat area only when we have actual response content (not just the loading placeholder)
+    chatVisible () {
+      return this.messages.some(m => m.text || m.sources)
+    },
+  },
   mounted () {
     this.loadHistory()
     this.startPlaceholderRotation()
@@ -126,7 +134,6 @@ export default {
       this.messages.push({ role: 'assistant', text: '', sources: null, loading: true })
 
       this.streaming = true
-      this.scrollLastMessageIntoView()
 
       try {
         await this.streamResponse()
@@ -141,6 +148,7 @@ export default {
 
       this.streaming = false
       this.saveHistory()
+      this.scrollLastMessageIntoView()
     },
 
     async streamResponse () {
@@ -180,6 +188,10 @@ export default {
             if (eventType === 'chunk') {
               if (assistant.loading) assistant.loading = false
               assistant.text += data.text
+              // Scroll into view on first chunk (chat just appeared)
+              if (assistant.text === data.text) {
+                this.$nextTick(() => this.scrollLastMessageIntoView())
+              }
             } else if (eventType === 'done') {
               assistant.loading = false
               const sources = (data.sources || []).sort((a, b) => a.ref - b.ref)
