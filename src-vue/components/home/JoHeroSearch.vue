@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Search input (stays in hero) -->
-    <div class="max-w-xl mx-auto">
+    <div class="max-w-xl mx-auto relative">
       <div class="flex gap-2 items-center bg-white rounded-lg shadow-lg p-1">
         <span class="pl-2 text-gray-400 text-xl u-ic-search" />
         <input
@@ -11,7 +11,12 @@
           class="flex-1 h-10 p-0 text-gray-800 bg-transparent border-none outline-none text-base placeholder:text-gray-400"
           :placeholder="currentPlaceholder"
           :disabled="streaming"
+          @input="onSearchInput"
           @keydown.enter.prevent="sendMessage(inputText)"
+          @keydown.down.prevent="navigateSuggestion(1)"
+          @keydown.up.prevent="navigateSuggestion(-1)"
+          @keydown.escape="closeSuggestions"
+          @blur="closeSuggestions"
         >
         <button
           class="block h-10 px-4 rounded bg-blue-700 disabled:bg-blue-500 enabled:hover:bg-blue-900 transition-colors"
@@ -22,6 +27,34 @@
           <span v-if="streaming" class="c-spinner c-spinner--small" />
           <span v-else>Suchen</span>
         </button>
+      </div>
+
+      <!-- Instant search suggestions -->
+      <div
+        v-if="suggestions.length > 0 && !chatVisible"
+        class="absolute left-0 right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50"
+      >
+        <a
+          v-for="(item, i) in suggestions"
+          :key="item.post_id"
+          :href="suggestionPermalink(item)"
+          class="flex items-center gap-3 px-3 py-2 no-underline text-gray-800 transition-colors"
+          :class="i === suggestionIndex ? 'bg-blue-50' : 'hover:bg-gray-50'"
+          @mousedown.prevent
+        >
+          <img
+            v-if="item.thumbnail"
+            :src="item.thumbnail"
+            width="80"
+            height="45"
+            alt=""
+            class="shrink-0 w-[80px] h-auto rounded-sm"
+          >
+          <div class="flex-1 min-w-0">
+            <div class="text-sm font-medium leading-tight truncate">{{ item.title }}</div>
+            <div v-if="item.speaker" class="text-xs text-gray-500 mt-0.5">{{ item.speaker }}<span v-if="item.series"> · {{ item.series }}</span></div>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -112,6 +145,9 @@ export default {
       streaming: false,
       currentPlaceholder: PLACEHOLDERS[0],
       placeholderIndex: 0,
+      suggestions: [],
+      suggestionIndex: -1,
+      searchAbort: null,
     }
   },
   computed: {
@@ -129,6 +165,7 @@ export default {
   },
   beforeUnmount () {
     clearInterval(this._placeholderTimer)
+    clearTimeout(this._searchDebounce)
   },
   methods: {
     startPlaceholderRotation () {
@@ -138,7 +175,64 @@ export default {
       }, 4000)
     },
 
+    onSearchInput () {
+      if (this.chatVisible) return
+      clearTimeout(this._searchDebounce)
+      const query = this.inputText.trim()
+      if (query.length < 2) {
+        this.closeSuggestions()
+        return
+      }
+      this._searchDebounce = setTimeout(() => this.fetchSuggestions(query), 300)
+    },
+
+    async fetchSuggestions (query) {
+      if (this.searchAbort) this.searchAbort.abort()
+      const controller = new AbortController()
+      this.searchAbort = controller
+
+      try {
+        const apiUrl = this.options.api_url || ''
+        const res = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(query)}`, {
+          signal: controller.signal,
+        })
+        if (!res.ok) return
+        this.suggestions = await res.json()
+        this.suggestionIndex = -1
+      } catch (e) {
+        if (e.name !== 'AbortError') console.error('Search suggestion error:', e)
+      }
+    },
+
+    closeSuggestions () {
+      this.suggestions = []
+      this.suggestionIndex = -1
+      if (this.searchAbort) {
+        this.searchAbort.abort()
+        this.searchAbort = null
+      }
+    },
+
+    navigateSuggestion (direction) {
+      if (!this.suggestions.length) return
+      this.suggestionIndex = Math.max(-1, Math.min(
+        this.suggestions.length - 1,
+        this.suggestionIndex + direction,
+      ))
+    },
+
+    suggestionPermalink (item) {
+      return item.permalink || '#'
+    },
+
     async sendMessage (text) {
+      // If keyboard navigated to a suggestion, go there instead
+      if (this.suggestionIndex >= 0 && this.suggestions[this.suggestionIndex]) {
+        window.location.href = this.suggestionPermalink(this.suggestions[this.suggestionIndex])
+        return
+      }
+      this.closeSuggestions()
+
       text = text.trim()
       if (!text || this.streaming) return
 
