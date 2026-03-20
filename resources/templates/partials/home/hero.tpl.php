@@ -1,25 +1,29 @@
 <?php
 use function Tonik\Theme\App\config;
+use function Tonik\Theme\App\asset_path;
 ?>
 
-<section class="relative bg-gradient-to-br from-[#082391] to-[#1455CC] text-white py-16 md:py-24">
+<section class="relative text-white py-16 md:py-24 bg-cover bg-center bg-no-repeat"
+  style="background-image: url('<?= esc_url(asset_path('images/slide-dark-blue.svg')) ?>');"
+>
   <div class="max-w-3xl mx-auto px-4 text-center">
 
     <!-- Logo -->
-    <?php
-    $logo_id = get_theme_mod('custom_logo');
-    $logo_src = $logo_id ? wp_get_attachment_image_src($logo_id, 'full') : false;
-    if ($logo_src):
-    ?>
-      <img
-        src="<?= esc_url($logo_src[0]) ?>"
-        alt="<?= esc_attr(get_bloginfo('name')) ?>"
-        class="mx-auto mb-4 h-20 md:h-24 w-auto"
-      >
-    <?php endif ?>
+    <img
+      src="<?= esc_url(asset_path('images/jm-logo-white-01.svg')) ?>"
+      alt="<?= esc_attr(get_bloginfo('name')) ?>"
+      class="mx-auto mb-4 h-20 md:h-24 w-auto"
+    >
 
-    <!-- Slogan -->
-    <h1 class="text-2xl md:text-3xl font-bold mb-8"><?= esc_html(get_bloginfo('description')) ?></h1>
+    <!-- Title -->
+    <h1 class="text-2xl md:text-3xl font-bold mb-0 mt-2">Joel Media Ministry e.V.</h1>
+    <p class="text-sm text-[#d1e4f9] mb-4">
+      <small><?= esc_html(get_bloginfo('description')) ?></small>
+    </p>
+    <p class="text-base text-white/90 mb-8">
+      Wöchentlich neue Videos über die Bibel,<br>
+      Gesundheit und Zeitgeschehen
+    </p>
 
     <!-- Search input (Vue hydration target) -->
     <div
@@ -34,7 +38,7 @@ use function Tonik\Theme\App\config;
             class="flex-1 px-3 py-3 text-gray-800 bg-transparent border-none outline-none text-base placeholder:text-gray-400"
             placeholder="Durchsuche das Archiv..."
           >
-          <button class="c-btn c-btn--primary mr-1 my-1 !rounded-md" type="button">
+          <button class="rounded bg-blue-700" type="button">
             Suchen
           </button>
         </div>

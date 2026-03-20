@@ -7,9 +7,6 @@
  * Below: copyright fineprint with legal/admin links
  */
 
-$logo_id = get_theme_mod('custom_logo');
-$logo_src = $logo_id ? wp_get_attachment_image_src($logo_id, 'full') : false;
-
 // Shared Tailwind classes for widget nav columns
 $widget_nav_classes = 'text-sm [&_h3]:text-white [&_h3]:font-semibold [&_h3]:mb-3 [&_ul]:list-none [&_ul]:m-0 [&_ul]:p-0 [&_li]:mb-1.5 [&_a]:text-gray-400 [&_a]:no-underline hover:[&_a]:text-white [&_a]:transition-colors';
 ?>
@@ -20,15 +17,14 @@ $widget_nav_classes = 'text-sm [&_h3]:text-white [&_h3]:font-semibold [&_h3]:mb-
     <!-- 4-column grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
 
-      <!-- Col 1: Logo + description (hardcoded) -->
+      <!-- Col 1: Logo + name + description (hardcoded) -->
       <div>
-        <?php if ($logo_src): ?>
-          <img
-            src="<?= esc_url($logo_src[0]) ?>"
-            alt="<?= esc_attr(get_bloginfo('name')) ?>"
-            class="h-10 w-auto mb-3 brightness-0 invert"
-          >
-        <?php endif ?>
+        <img
+          src="<?= esc_url(\Tonik\Theme\App\asset_path('images/jm-logo-white-01.svg')) ?>"
+          alt="Joel Media Ministry"
+          class="h-10 w-auto mb-3"
+        >
+        <p class="text-white font-semibold mb-1">Joel Media Ministry e.V.</p>
         <p class="text-sm text-gray-400 leading-relaxed">
           <?= esc_html(get_bloginfo('description')) ?>
         </p>
@@ -59,7 +55,7 @@ $widget_nav_classes = 'text-sm [&_h3]:text-white [&_h3]:font-semibold [&_h3]:mb-
 
     <!-- Fineprint -->
     <div class="border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-      <?= esc_html(get_bloginfo('name')) ?> &copy; <?= date('Y') ?>
+      Joel Media Ministry e.V. &copy; <?= date('Y') ?>
       <span class="mx-2">&middot;</span>
       <a href="<?= esc_url(home_url('/impressum/')) ?>" class="text-gray-500 no-underline hover:text-gray-300 transition-colors">Impressum</a>
       <span class="mx-2">&middot;</span>

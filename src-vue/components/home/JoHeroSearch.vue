@@ -2,24 +2,24 @@
   <div>
     <!-- Search input -->
     <div class="max-w-xl mx-auto">
-      <div class="flex items-center bg-white rounded-lg shadow-lg">
-        <span class="pl-4 text-gray-400 text-xl u-ic-search"></span>
+      <div class="flex gap-2 items-center bg-white rounded-lg shadow-lg p-1">
+        <span class="pl-2 text-gray-400 text-xl u-ic-search" />
         <input
           ref="input"
           v-model="inputText"
           type="text"
-          class="flex-1 px-3 py-3 text-gray-800 bg-transparent border-none outline-none text-base placeholder:text-gray-400"
+          class="flex-1 h-10 p-0 text-gray-800 bg-transparent border-none outline-none text-base placeholder:text-gray-400"
           :placeholder="currentPlaceholder"
           :disabled="streaming"
           @keydown.enter.prevent="sendMessage(inputText)"
         >
         <button
-          class="c-btn c-btn--primary mr-1 my-1 !rounded-md"
+          class="block h-10 px-4 rounded bg-blue-700 disabled:bg-blue-500 enabled:hover:bg-blue-900 transition-colors"
           type="button"
           :disabled="!inputText.trim() || streaming"
           @click="sendMessage(inputText)"
         >
-          <span v-if="streaming" class="c-spinner c-spinner--small"></span>
+          <span v-if="streaming" class="c-spinner c-spinner--small" />
           <span v-else>Suchen</span>
         </button>
       </div>
@@ -55,8 +55,8 @@
             :disabled="!inputText.trim() || streaming"
             @click="sendMessage(inputText)"
           >
-            <span v-if="streaming" class="c-spinner c-spinner--small"></span>
-            <span v-else class="u-ic-send"></span>
+            <span v-if="streaming" class="c-spinner c-spinner--small" />
+            <span v-else class="u-ic-send" />
           </button>
         </div>
         <button
