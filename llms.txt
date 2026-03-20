@@ -1,0 +1,27 @@
+# Joel Media Ministry
+
+> Joel Media Ministry (joelmedia.de) is a German Christian media organization based in Stuttgart, providing a video and audio archive of biblical teachings, livestreams, articles, and podcasts. The site is in German. Their mission: "Das ewige Evangelium fuer Stuttgart, Deutschland und die Welt" (The eternal gospel for Stuttgart, Germany and the world).
+
+The archive contains 4,000+ recordings from various speakers, organized by series and topics. Content includes sermons, health lectures, prophecy seminars, and Bible study courses. Most recordings are available as video and audio downloads. Over 4,000 recordings have full-text transcripts.
+
+## Main Sections
+
+- [Video Archive](https://www.joelmedia.de/aufnahmen/): Browse all recordings with filters for speaker, series, and topic
+- [Series](https://www.joelmedia.de/serien/): Recordings grouped by teaching series
+- [Speakers](https://www.joelmedia.de/sprecher/): Speaker directory with profiles
+- [Topics](https://www.joelmedia.de/themen/): Hierarchical topic taxonomy for browsing by subject
+- [Livestream](https://www.joelmedia.de/livestream/): Live video broadcasts
+- [Articles](https://www.joelmedia.de/artikel/): Blog posts and news
+- [Boogle](https://www.joelmedia.de/boogle/): Search engine for precise Bible answers — curated Q&A content
+- [Study Center](https://www.joelmedia.de/studienzentrum/): AI-powered semantic search across all recording transcripts
+- [Podcasts](https://www.joelmedia.de/podcasts/): Audio podcast feeds (also available via Apple Podcasts, Spotify, etc.)
+
+## API
+
+- [WordPress REST API](https://www.joelmedia.de/wp-json/wp/v2/recordings): Recordings endpoint with metadata (speakers, series, topics, duration, transcript)
+- [Study Center API](https://study.joelmedia.de): RAG-powered semantic search API across recording transcripts
+
+## Optional
+
+- [Contact](https://www.joelmedia.de/kontakt/): Contact information
+- [Donations](https://www.joelmedia.de/spenden/): The ministry operates almost exclusively through donations

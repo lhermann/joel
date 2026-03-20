@@ -72,3 +72,20 @@ function include_additional_templates( $template ) {
     return $template;
 }
 add_filter( 'template_include', 'Tonik\Theme\App\Http\include_additional_templates', 99 );
+
+
+/**
+ * Serve /llms.txt from theme
+ */
+add_action('parse_request', 'Tonik\Theme\App\Http\serve_llms_txt');
+function serve_llms_txt() {
+    if (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) !== '/llms.txt') return;
+
+    $file = get_template_directory() . '/llms.txt';
+    if (!file_exists($file)) return;
+
+    header('Content-Type: text/plain; charset=utf-8');
+    header('X-Robots-Tag: noindex');
+    readfile($file);
+    exit();
+}
