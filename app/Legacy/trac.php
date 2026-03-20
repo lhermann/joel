@@ -94,15 +94,35 @@ function trac_controller( $wp ) {
             isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "#"
         );
         printf("<p><strong>Redirect Url:</strong> <code>%s</code></p>",
-            get_query_var('redirect_url')
+            esc_html(get_query_var('redirect_url'))
         );
         print("<p><strong>Log:</strong> <code>$log</code></p>");
         die();
     }
 
+    // Validate redirect URL against allowed domains to prevent open redirect abuse
+    $redirect_url = get_query_var('redirect_url');
+    $allowed_domains = ['joelmedia.de', 'joelmediatv.de'];
+    $parsed = parse_url($redirect_url);
+    $host = $parsed['host'] ?? '';
+
+    $is_allowed = false;
+    foreach ($allowed_domains as $domain) {
+        if ($host === $domain || str_ends_with($host, '.' . $domain)) {
+            $is_allowed = true;
+            break;
+        }
+    }
+
+    if (!$is_allowed) {
+        status_header(403);
+        echo 'Forbidden: invalid redirect URL';
+        exit();
+    }
+
     // Redirect to specified url
     header("HTTP/1.1 302 Found");
-    header('Location: ' . get_query_var('redirect_url'));
+    header('Location: ' . $redirect_url);
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment');
     exit();
