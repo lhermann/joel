@@ -41,8 +41,8 @@ use function Tonik\Theme\App\asset_path;
             class="flex-1 px-3 py-3 text-gray-800 bg-transparent border-none outline-none text-base placeholder:text-gray-400"
             placeholder="Durchsuche das Archiv..."
           >
-          <button class="rounded bg-blue-700" type="button">
-            Suchen
+          <button class="rounded bg-blue-700 px-4 py-2" type="button">
+            <span class="u-ic-send text-lg"></span>
           </button>
         </div>
       </div>

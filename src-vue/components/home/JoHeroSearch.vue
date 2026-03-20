@@ -25,7 +25,7 @@
           @click="sendMessage(inputText)"
         >
           <span v-if="streaming" class="c-spinner c-spinner--small" />
-          <span v-else>Suchen</span>
+          <span v-else class="u-ic-send text-lg" />
         </button>
       </div>
 
@@ -126,11 +126,14 @@ const MAX_EXCHANGES = 4
 
 const PLACEHOLDERS = [
   'Durchsuche das Archiv...',
-  'Was sagt die Bibel über Vergebung?',
-  'Predigten über Offenbarung',
-  'Wer ist Christopher Kramp?',
-  'Erkläre das Heiligtum',
-  'Tägliche Andachten über Daniel',
+  'Was sagt die Bibel über Vergebung?...',
+  'Predigten über Offenbarung...',
+  'Erkläre das Heiligtum...',
+  'Andachten über Daniel...',
+  'In welchem Jahr ist Jesus geboren?...',
+  '2. Korinther 5, Vers 21...',
+  'Was steht in den Schriftrollen vom Toten Meer?...',
+  'Was geschah 1844?...',
 ]
 
 export default {
