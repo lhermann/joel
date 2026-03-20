@@ -19,7 +19,7 @@ The archive contains 4,000+ recordings from various speakers, organized by serie
 ## API
 
 - [WordPress REST API](https://www.joelmedia.de/wp-json/wp/v2/recordings): Recordings endpoint with metadata (speakers, series, topics, duration, transcript)
-- [Study Center API](https://study.joelmedia.de): RAG-powered semantic search API across recording transcripts
+- [Study Center API](https://study.joelmedia.de/docs): RAG-powered semantic search API across recording transcripts ([OpenAPI spec](https://study.joelmedia.de/docs/spec.json))
 
 ## Optional
 
