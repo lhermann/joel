@@ -34,6 +34,16 @@ function trac_query_variables() {
 
 
 /**
+ * Block crawlers from indexing trac redirect URLs
+ */
+add_filter('robots_txt', 'Tonik\Theme\App\Legacy\trac_robots_txt', 10, 1);
+function trac_robots_txt($output) {
+    $output .= "\nDisallow: /trac/\n";
+    return $output;
+}
+
+
+/**
  * Custom URL Routing
  * Tutorial: http://www.hongkiat.com/blog/wordpress-url-rewrite/
  *
