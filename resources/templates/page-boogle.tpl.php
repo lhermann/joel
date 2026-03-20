@@ -34,7 +34,7 @@ $settings = new Algolia_Settings();
   <h2 class="text-lg leading-snug mb-2">
     Eigene Frage stellen
   </h2>
-  <p>Die richtige Antwort auf deine Frage war nicht dabei? Wir fügen ständig neue Antworten hinzu. Schreibe uns deine Frage an fragen@joelmedia.de</p>
+  <p>Die richtige Antwort auf deine Frage war nicht dabei? Wir fügen ständig neue Antworten hinzu. Schreibe uns deine Frage an <?= cryptx_encrypt('fragen@joelmedia.de') ?></p>
 
 </main>
 

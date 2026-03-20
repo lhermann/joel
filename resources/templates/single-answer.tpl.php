@@ -21,7 +21,7 @@ use function Tonik\Theme\App\template;
   </h2>
   <p>
     Deine Frage wurde nicht richtig beantwortet? Wir fügen ständig neue Antworten hinzu.
-    <br>Schreibe uns deine Frage an fragen@joelmedia.de
+    <br>Schreibe uns deine Frage an <?= cryptx_encrypt('fragen@joelmedia.de') ?>
   </p>
 
 </main>
