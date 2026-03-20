@@ -21,9 +21,8 @@ use function Tonik\Theme\App\template;
   </h2>
   <p>
     Deine Frage wurde nicht richtig beantwortet? Wir fügen ständig neue Antworten hinzu.
-    <br>Stelle deine Frage hier:
+    <br>Schreibe uns deine Frage an fragen@joelmedia.de
   </p>
-  <?= do_shortcode('[contact-form-7 id="4274" title="Boogle Frage"]') ?>
 
 </main>
 
