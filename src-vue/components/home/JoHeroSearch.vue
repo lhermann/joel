@@ -79,7 +79,7 @@
         </div>
 
         <!-- Separator -->
-        <hr class="max-w-[700px] mx-auto mt-6 mb-0 border-gray-200">
+        <hr class="mt-10 mb-0 border-gray-200">
       </div>
     </Teleport>
   </div>
