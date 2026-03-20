@@ -28,7 +28,10 @@ use function Tonik\Theme\App\asset_path;
     <!-- Search input (Vue hydration target) -->
     <div
       data-vue="JoHeroSearch"
-      data-options='<?= esc_attr(json_encode(['api_url' => config('study-center-url')])) ?>'
+      data-options='<?= esc_attr(json_encode([
+        'api_url' => config('study-center-url'),
+        'recording_count' => (int) wp_count_posts('recordings')->publish,
+      ])) ?>'
     >
       <div class="max-w-xl mx-auto">
         <div class="flex items-center bg-white rounded-lg shadow-lg">

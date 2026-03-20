@@ -28,6 +28,15 @@
     <!-- Chat conversation (teleported below hero, on white background) -->
     <Teleport to="#hero-chat">
       <div v-if="chatVisible" class="max-w-screen-xl mx-auto px-4 py-8">
+
+        <!-- Headline -->
+        <div class="max-w-[700px] mx-auto mb-6">
+          <h2 class="text-xl font-bold mb-1">Joel Chat</h2>
+          <p class="text-sm text-gray-500 m-0">
+            Basierend auf unserem Archiv von {{ recordingCount }} Videos
+          </p>
+        </div>
+
         <template v-for="(msg, i) in messages" :key="i">
           <JoStudyCenterMessage
             :ref="i === messages.length - 1 ? 'lastMessage' : undefined"
@@ -68,6 +77,9 @@
             Neues Gespräch
           </button>
         </div>
+
+        <!-- Separator -->
+        <hr class="max-w-[700px] mx-auto mt-6 mb-0 border-gray-200">
       </div>
     </Teleport>
   </div>
@@ -103,9 +115,12 @@ export default {
     }
   },
   computed: {
-    // Show chat area only when we have actual response content (not just the loading placeholder)
     chatVisible () {
       return this.messages.some(m => m.text || m.sources)
+    },
+    recordingCount () {
+      const count = this.options.recording_count || 0
+      return new Intl.NumberFormat('de-DE').format(count)
     },
   },
   mounted () {
