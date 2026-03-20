@@ -15,8 +15,9 @@
           @keydown.enter.prevent="sendMessage(inputText)"
           @keydown.down.prevent="navigateSuggestion(1)"
           @keydown.up.prevent="navigateSuggestion(-1)"
-          @keydown.escape="closeSuggestions"
-          @blur="closeSuggestions"
+          @keydown.escape="suggestionsOpen = false"
+          @blur="suggestionsOpen = false"
+          @focus="suggestionsOpen = true"
         >
         <button
           class="block h-10 px-4 rounded bg-blue-700 disabled:bg-blue-500 enabled:hover:bg-blue-900 transition-colors"
@@ -31,8 +32,8 @@
 
       <!-- Instant search suggestions -->
       <div
-        v-if="suggestions.length > 0 && !chatVisible"
-        class="absolute left-0 right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50"
+        v-if="suggestionsOpen && suggestions.length > 0 && !chatVisible"
+        class="absolute left-0 right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 text-left"
       >
         <a
           v-for="(item, i) in suggestions"
@@ -149,6 +150,7 @@ export default {
       currentPlaceholder: PLACEHOLDERS[0],
       placeholderIndex: 0,
       suggestions: [],
+      suggestionsOpen: false,
       suggestionIndex: -1,
       searchAbort: null,
     }
@@ -183,7 +185,7 @@ export default {
       clearTimeout(this._searchDebounce)
       const query = this.inputText.trim()
       if (query.length < 2) {
-        this.closeSuggestions()
+        this.closeSuggestions() // clear results when input is too short
         return
       }
       this._searchDebounce = setTimeout(() => this.fetchSuggestions(query), 300)
@@ -201,6 +203,7 @@ export default {
         })
         if (!res.ok) return
         this.suggestions = await res.json()
+        this.suggestionsOpen = true
         this.suggestionIndex = -1
       } catch (e) {
         if (e.name !== 'AbortError') console.error('Search suggestion error:', e)
@@ -209,6 +212,7 @@ export default {
 
     closeSuggestions () {
       this.suggestions = []
+      this.suggestionsOpen = false
       this.suggestionIndex = -1
       if (this.searchAbort) {
         this.searchAbort.abort()
