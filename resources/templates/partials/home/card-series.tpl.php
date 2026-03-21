@@ -31,7 +31,7 @@ $episode_count = $series->episode_count ?? $series->count ?? 0;
   class="snap-start shrink-0 w-[240px] sm:w-[250px] md:w-[260px] block no-underline text-gray-800 group rounded-lg border border-transparent p-2 transition-all hover:border-[#5387DB] hover:shadow-[0_2px_5px_rgba(0,0,0,0.08)]"
 >
   <!-- Thumbnail -->
-  <div class="relative aspect-video bg-gray-200 mb-2">
+  <div class="relative aspect-video rounded-lg bg-gray-200 mb-2">
     <img
       src="<?= esc_url($thumbnail) ?>"
       <?php if ($srcset): ?>srcset="<?= $srcset ?>" sizes="300px"<?php endif ?>
