@@ -92,24 +92,6 @@ function trac_controller( $wp ) {
     );
     file_put_contents('trac.log', $log, FILE_APPEND);
 
-    if( !$crawler ) {
-        // Update the database
-        update_trac_database(get_query_var('trac-label'), get_query_var('p'));
-    }
-
-    // don't redirect on development environment but show a debug message
-    if( ENVIRONMENT == 'development' ) {
-        print("<h1>Trac Debug Message</h1>");
-        printf('<p><strong>HTTP Referer:</strong> <a href="%1$s">%1$s</a></p>',
-            isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "#"
-        );
-        printf("<p><strong>Redirect Url:</strong> <code>%s</code></p>",
-            esc_html(get_query_var('redirect_url'))
-        );
-        print("<p><strong>Log:</strong> <code>$log</code></p>");
-        die();
-    }
-
     // Validate redirect URL against allowed domains to prevent open redirect abuse
     $redirect_url = get_query_var('redirect_url');
     $allowed_domains = ['joelmedia.de', 'joelmediatv.de'];
@@ -128,6 +110,24 @@ function trac_controller( $wp ) {
         status_header(403);
         echo 'Forbidden: invalid redirect URL';
         exit();
+    }
+
+    if( !$crawler ) {
+        // Update the database (after URL validation so spam doesn't inflate counts)
+        update_trac_database(get_query_var('trac-label'), get_query_var('p'));
+    }
+
+    // don't redirect on development environment but show a debug message
+    if( ENVIRONMENT == 'development' ) {
+        print("<h1>Trac Debug Message</h1>");
+        printf('<p><strong>HTTP Referer:</strong> <a href="%1$s">%1$s</a></p>',
+            isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "#"
+        );
+        printf("<p><strong>Redirect Url:</strong> <code>%s</code></p>",
+            esc_html(get_query_var('redirect_url'))
+        );
+        print("<p><strong>Log:</strong> <code>$log</code></p>");
+        die();
     }
 
     // Redirect to specified url
