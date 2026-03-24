@@ -123,6 +123,7 @@
 import JoStudyCenterMessage from '../study-center/JoStudyCenterMessage.vue'
 
 const STORAGE_KEY = 'hero-chat-messages'
+const MEMORY_KEY = 'JM:studyCenterMemory'
 const MAX_EXCHANGES = 4
 
 const PLACEHOLDERS = [
@@ -271,10 +272,13 @@ export default {
       const apiUrl = this.options.api_url || ''
       const historyMessages = this.buildHistory()
 
+      const memory = this.loadMemory()
+      const body = { messages: historyMessages }
+      if (memory.length) body.memory = memory
       const response = await fetch(apiUrl + '/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: historyMessages }),
+        body: JSON.stringify(body),
       })
 
       if (!response.ok) {
@@ -321,6 +325,7 @@ export default {
                 (match, num) => refRemap[num] ? `[${refRemap[num]}]` : match,
               )
               assistant.sources = sources
+              if (data.memory) this.handleMemoryEvent(data.memory)
               this.scrollLastMessageIntoView()
             } else if (eventType === 'error') {
               assistant.loading = false
@@ -386,6 +391,30 @@ export default {
       this.messages = []
       localStorage.removeItem(STORAGE_KEY)
       this.$nextTick(() => this.$refs.input?.focus())
+    },
+
+    loadMemory () {
+      try {
+        const stored = localStorage.getItem(MEMORY_KEY)
+        return stored ? JSON.parse(stored).map(m => m.text) : []
+      } catch (e) { return [] }
+    },
+
+    handleMemoryEvent (data) {
+      try {
+        let memories = []
+        try { memories = JSON.parse(localStorage.getItem(MEMORY_KEY)) || [] } catch (e) { /* */ }
+
+        const now = new Date().toISOString().slice(0, 10)
+        for (const text of (data.save || [])) {
+          memories.push({ text, ts: now })
+        }
+
+        // Evict oldest when over limit
+        while (memories.length > 10) memories.shift()
+
+        localStorage.setItem(MEMORY_KEY, JSON.stringify(memories))
+      } catch (e) { /* quota exceeded */ }
     },
   },
 }
