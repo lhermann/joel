@@ -90,8 +90,8 @@
 <script>
 import JoStudyCenterMessage from './JoStudyCenterMessage.vue'
 
-const STORAGE_KEY = 'study-center-messages'
-const MEMORY_KEY = 'JM:studyCenterMemory'
+const STORAGE_KEY = 'jm:chat-messages:study'
+const MEMORY_KEY = 'jm:chat-memory'
 const MAX_EXCHANGES = 4
 
 export default {

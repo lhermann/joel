@@ -122,8 +122,8 @@
 <script>
 import JoStudyCenterMessage from '../study-center/JoStudyCenterMessage.vue'
 
-const STORAGE_KEY = 'hero-chat-messages'
-const MEMORY_KEY = 'JM:studyCenterMemory'
+const STORAGE_KEY = 'jm:chat-messages:home'
+const MEMORY_KEY = 'jm:chat-memory'
 const MAX_EXCHANGES = 4
 
 const PLACEHOLDERS = [
