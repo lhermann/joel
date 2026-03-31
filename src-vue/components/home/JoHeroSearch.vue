@@ -321,8 +321,14 @@ export default {
                 s.ref = i + 1
               })
               assistant.text = assistant.text.replace(
-                /\[(\d+)\]/g,
-                (match, num) => refRemap[num] ? `[${refRemap[num]}]` : match,
+                /\[(\d+(?:\s*,\s*\d+)*)\]/g,
+                (match, nums) => {
+                  const remapped = nums.split(',').map(n => {
+                    const orig = n.trim()
+                    return refRemap[orig] != null ? String(refRemap[orig]) : orig
+                  })
+                  return `[${remapped.join(', ')}]`
+                },
               )
               assistant.sources = sources
               if (data.memory) this.handleMemoryEvent(data.memory)

@@ -202,10 +202,16 @@ export default {
                 refRemap[s.ref] = i + 1
                 s.ref = i + 1
               })
-              // Renumber citations in text
+              // Renumber citations in text (handles [1], [1, 2], [1, 2, 4] etc.)
               assistant.text = assistant.text.replace(
-                /\[(\d+)\]/g,
-                (match, num) => refRemap[num] ? `[${refRemap[num]}]` : match,
+                /\[(\d+(?:\s*,\s*\d+)*)\]/g,
+                (match, nums) => {
+                  const remapped = nums.split(',').map(n => {
+                    const orig = n.trim()
+                    return refRemap[orig] != null ? String(refRemap[orig]) : orig
+                  })
+                  return `[${remapped.join(', ')}]`
+                },
               )
               assistant.sources = sources
               if (data.memory) this.handleMemoryEvent(data.memory)
