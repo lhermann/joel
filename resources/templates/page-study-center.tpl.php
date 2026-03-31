@@ -14,6 +14,7 @@ use function Tonik\Theme\App\config;
     'style_modifier' => 'flex flex-col flex-1',
     'options' => [
       'api_url' => config('study-center-url'),
+      'recording_count' => (int) wp_count_posts('recordings')->publish,
     ],
   ]) ?>
 

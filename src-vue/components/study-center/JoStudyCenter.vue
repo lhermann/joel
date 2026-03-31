@@ -4,8 +4,8 @@
 
       <!-- Welcome state -->
       <div v-if="messages.length === 0" class="flex flex-col items-center justify-center text-center min-h-full">
-        <h1 class="text-3xl mb-2">Studienzentrum</h1>
-        <p class="text-gray-500 mb-8">Stelle Fragen zum Archiv, zu Predigten und zur Bibel</p>
+        <h1 class="text-3xl mb-2">Zeteo</h1>
+        <p class="text-gray-500 mb-8">Suche und du wirst finden... &mdash; basierend auf unserem Archiv von {{ recordingCount }} Videos</p>
         <div class="flex flex-wrap justify-center gap-2 max-w-xl mb-6">
           <button
             v-for="chip in exampleChips"
@@ -111,6 +111,12 @@ export default {
         'Predigten über das Buch Jesaja',
       ],
     }
+  },
+  computed: {
+    recordingCount () {
+      const count = this.options.recording_count || 0
+      return new Intl.NumberFormat('de-DE').format(count)
+    },
   },
   mounted () {
     this.loadHistory()
