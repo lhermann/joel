@@ -1,8 +1,13 @@
 <template>
   <a
     :href="permalink"
-    class="flex items-start gap-2 p-2 border border-gray-200 rounded bg-white no-underline text-gray-800 transition hover:border-gray-400 hover:shadow-sm"
+    class="relative flex items-start gap-2 p-2 pl-4 border border-gray-200 rounded bg-white no-underline text-gray-800 transition hover:border-gray-400 hover:shadow-sm"
   >
+    <!-- Source index badge -->
+    <span class="absolute -left-3 top-2 flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-bold shadow-sm">
+      {{ source.ref }}
+    </span>
+
     <!-- Thumbnail for recordings -->
     <div v-if="isRecording && source.thumbnail" class="relative shrink-0 w-[120px] max-sm:w-[80px]">
       <img
@@ -21,10 +26,9 @@
     </div>
 
     <div class="flex-1 min-w-0">
-      <span class="text-xs text-blue-900 font-semibold mr-0.5">[{{ source.ref }}]</span>
       <span class="text-sm font-medium leading-tight">{{ source.title }}</span>
-      <span v-if="source.speaker" class="block text-xs text-gray-500 mt-0.5">
-        {{ source.speaker }}
+      <span v-if="source.speaker || source.date" class="block text-xs text-gray-500 mt-0.5">
+        {{ source.speaker }}<template v-if="source.speaker && source.date"> · </template>{{ source.date }}
       </span>
       <span v-if="source.excerpt" class="block text-xs text-gray-500 mt-0.5">
         {{ source.excerpt }}

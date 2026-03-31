@@ -399,6 +399,7 @@ function study_center_cards() {
             'post_type' => $post->post_type,
             'title' => html_entity_decode(get_the_title($post_id)),
             'permalink' => get_permalink($post_id),
+            'date' => get_the_date('j. F Y', $post_id),
           ];
 
           if ($post->post_type === 'recordings') {
