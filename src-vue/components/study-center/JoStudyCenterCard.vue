@@ -4,7 +4,7 @@
     class="relative flex items-start gap-2 p-2 pl-4 border border-gray-200 rounded bg-white no-underline text-gray-800 transition hover:border-gray-400 hover:shadow-sm"
   >
     <!-- Source index badge -->
-    <span class="absolute -left-3 top-2 flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-bold shadow-sm">
+    <span class="absolute -left-3 top-2 flex items-center justify-center w-5 h-5 rounded-full bg-white border border-gray-300 text-blue-600 text-[10px] font-bold shadow-sm">
       {{ source.ref }}
     </span>
 
