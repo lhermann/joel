@@ -4,8 +4,8 @@
 
       <!-- Welcome state -->
       <div v-if="messages.length === 0" class="flex flex-col items-center justify-center text-center min-h-full">
-        <h1 class="text-3xl mb-2">Zeteo</h1>
-        <p class="text-gray-500 mb-8">Suche und du wirst finden... &mdash; basierend auf unserem Archiv von {{ recordingCount }} Videos</p>
+        <h1 class="text-3xl mb-2">Zeteo <span class="font-normal">&ndash; Suche und du wirst finden...</span></h1>
+        <p class="text-gray-500 mb-8">Basierend auf unserem Archiv von {{ recordingCount }} Videos</p>
         <div class="flex flex-wrap justify-center gap-2 max-w-xl mb-6">
           <button
             v-for="chip in exampleChips"
@@ -29,7 +29,7 @@
             @input="autoGrow"
           />
           <button
-            class="shrink-0 flex items-center justify-center c-btn c-btn--small c-btn--green !rounded-lg !w-10 !h-10 !p-0 disabled:opacity-50"
+            class="shrink-0 flex items-center justify-center w-10 h-10 p-0 rounded-lg bg-blue-700 hover:bg-blue-900 text-white border-none transition-colors disabled:opacity-50"
             :disabled="!inputText.trim() || streaming"
             @click="sendMessage(inputText)"
           >
@@ -41,6 +41,14 @@
 
       <!-- Conversation -->
       <template v-if="messages.length">
+        <!-- Headline -->
+        <div class="max-w-[700px] mx-auto mb-6">
+          <h2 class="text-xl font-bold mb-1">Zeteo <span class="font-normal">&ndash; Suche und du wirst finden...</span></h2>
+          <p class="text-sm text-gray-500 m-0">
+            Basierend auf unserem Archiv von {{ recordingCount }} Videos
+          </p>
+        </div>
+
         <template v-for="(msg, i) in messages" :key="i">
           <JoStudyCenterMessage
             :ref="i === messages.length - 1 ? 'lastMessage' : undefined"
@@ -57,15 +65,15 @@
             <textarea
               ref="input"
               v-model="inputText"
-              class="flex-1 resize-none border border-gray-300 rounded-lg px-4 py-2 text-base leading-6 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
-              placeholder="Stelle eine Frage..."
+              class="flex-1 resize-none border border-gray-300 rounded-lg px-4 py-2 text-base leading-6 bg-white text-gray-800 placeholder:text-gray-400 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
+              placeholder="Weitere Frage stellen..."
               rows="1"
               :disabled="streaming"
               @keydown="onKeydown"
               @input="autoGrow"
             />
             <button
-              class="c-btn c-btn--small c-btn--green flex items-center justify-center shrink-0 !w-10 !h-10 !p-0 disabled:opacity-50"
+              class="shrink-0 flex items-center justify-center w-10 h-10 p-0 rounded-lg bg-blue-700 hover:bg-blue-900 text-white border-none transition-colors disabled:opacity-50"
               :disabled="!inputText.trim() || streaming"
               @click="sendMessage(inputText)"
             >
