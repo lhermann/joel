@@ -30,6 +30,9 @@
       <span v-if="source.speaker || source.date" class="block text-xs text-gray-500 mt-0.5">
         {{ source.speaker }}<template v-if="source.speaker && source.date"> · </template>{{ source.date }}
       </span>
+      <span v-if="source.source_type === 'manuscript'" class="block text-xs text-blue-600 mt-0.5">
+        Sendemanuskript
+      </span>
       <span v-if="source.excerpt" class="block text-xs text-gray-500 mt-0.5">
         {{ source.excerpt }}
       </span>
