@@ -67,7 +67,7 @@
         <div class="max-w-[700px] mx-auto mb-6">
           <h2 class="text-xl font-bold mb-1">Zeteo <span class="font-normal">&ndash; Suche und du wirst finden...</span></h2>
           <p class="text-sm text-gray-500 m-0">
-            Basierend auf unserem Archiv von {{ recordingCount }} Videos
+            KI Antworten basierend auf unserem Archiv von {{ recordingCount }} Videos
           </p>
         </div>
 
