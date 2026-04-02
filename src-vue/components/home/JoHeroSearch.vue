@@ -87,7 +87,7 @@
             <textarea
               ref="followupInput"
               v-model="inputText"
-              class="flex-1 resize-none border border-gray-300 rounded-lg px-4 py-2 text-base leading-6 bg-white text-gray-800 placeholder:text-gray-400 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
+              class="flex-1 resize-none border border-gray-300 rounded-xl rounded-br-none px-4 py-2 text-base leading-6 bg-white text-gray-800 placeholder:text-gray-400 overflow-y-auto focus:outline-none focus:border-blue-500 disabled:opacity-60"
               placeholder="Weitere Frage stellen..."
               rows="1"
               :disabled="streaming"
@@ -95,7 +95,7 @@
               @input="autoGrow"
             />
             <button
-              class="shrink-0 flex items-center justify-center w-10 h-10 p-0 rounded-lg bg-blue-700 hover:bg-blue-900 text-white border-none transition-colors disabled:opacity-50"
+              class="shrink-0 block h-10 px-4 rounded text-white bg-blue-700 disabled:bg-blue-500 enabled:hover:bg-blue-900 transition-colors"
               :disabled="!inputText.trim() || streaming"
               @click="sendMessage(inputText)"
             >

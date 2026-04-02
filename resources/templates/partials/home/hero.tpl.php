@@ -34,14 +34,14 @@ use function Tonik\Theme\App\asset_path;
       ])) ?>'
     >
       <div class="max-w-xl mx-auto">
-        <div class="flex items-center bg-white rounded-lg shadow-lg">
-          <span class="pl-4 text-gray-400 text-xl u-ic-search"></span>
+        <div class="flex gap-2 items-center bg-white rounded-lg shadow-lg p-1">
+          <span class="pl-2 text-gray-400 text-xl u-ic-search"></span>
           <input
             type="text"
-            class="flex-1 px-3 py-3 text-gray-800 bg-transparent border-none outline-none text-base placeholder:text-gray-400"
+            class="flex-1 h-10 p-0 text-gray-800 bg-transparent border-none outline-none text-base placeholder:text-gray-400"
             placeholder="Durchsuche das Archiv..."
           >
-          <button class="rounded bg-blue-700 px-4 py-2" type="button">
+          <button class="block h-10 px-4 rounded bg-blue-700 disabled:bg-blue-500 enabled:hover:bg-blue-900 transition-colors" type="button">
             <span class="u-ic-send text-lg"></span>
           </button>
         </div>
