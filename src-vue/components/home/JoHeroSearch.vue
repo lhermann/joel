@@ -12,7 +12,7 @@
           :placeholder="currentPlaceholder"
           :disabled="streaming"
           @input="onSearchInput"
-          @keydown.enter.prevent="sendMessage(inputText)"
+          @keydown.enter.prevent="sendFromHero(inputText)"
           @keydown.down.prevent="navigateSuggestion(1)"
           @keydown.up.prevent="navigateSuggestion(-1)"
           @keydown.escape="suggestionsOpen = false"
@@ -23,7 +23,7 @@
           class="block h-10 px-4 rounded bg-blue-700 disabled:bg-blue-500 enabled:hover:bg-blue-900 transition-colors"
           type="button"
           :disabled="!inputText.trim() || streaming"
-          @click="sendMessage(inputText)"
+          @click="sendFromHero(inputText)"
         >
           <span v-if="streaming" class="c-spinner c-spinner--small" />
           <span v-else class="u-ic-send text-lg" />
@@ -232,6 +232,14 @@ export default {
 
     suggestionPermalink (item) {
       return item.permalink || '#'
+    },
+
+    sendFromHero (text) {
+      if (this.chatVisible) {
+        this.messages = []
+        localStorage.removeItem(STORAGE_KEY)
+      }
+      this.sendMessage(text)
     },
 
     async sendMessage (text) {
