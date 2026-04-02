@@ -24,21 +24,6 @@ use WP_Query;
  */
 function bind_services()
 {
-    /**
-     * Pre-load all slides with their ACF fields.
-     * Access via: theme('slides') → array of WP_Post objects with ACF fields attached.
-     */
-    theme()->bind('slides', function ($container, $parameters) {
-        $query = new WP_Query([
-            'post_type' => 'slides',
-        ]);
-        foreach ($query->posts as $i => $post) {
-            $fields = get_fields($post->ID);
-            foreach ($fields as $key => $field) {
-                $query->posts[$i]->$key = $field;
-            }
-        }
-        return $query->posts;
-    });
+    // Slider service removed
 }
 add_action('init', 'Tonik\Theme\App\Setup\bind_services');

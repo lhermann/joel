@@ -7,7 +7,7 @@ use function Tonik\Theme\App\asset_path;
 
                 <?php template('partials/debug') ?>
 
-                <?php template('partials/footer') ?>
+                <?php template('partials/home/footer') ?>
 
             </div><!-- .c-site-wrapper -->
 

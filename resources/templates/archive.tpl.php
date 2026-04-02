@@ -6,7 +6,7 @@ global $wp_query;
 
 <?php get_header() ?>
 
-<main role="main" class="max-w-prose mx-auto px-4 md:px-8 u-pv+">
+<main role="main" class="max-w-screen-md mx-auto px-4 md:px-8 u-pv+">
 
     <div class="u-center u-mb+">
         <a class="c-btn c-btn--secondary" href="<?= get_permalink( get_page_by_path( 'artikel' ) ) ?>">

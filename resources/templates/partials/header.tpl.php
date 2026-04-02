@@ -7,24 +7,20 @@ use function Tonik\Theme\App\config;
 
   <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
-    <div class="c-site-header__flex">
+    <div class="flex items-center gap-4 h-14">
 
-      <div class="c-site-header__item">
+      <div class="">
         <?php template('partials/branding') ?>
       </div>
 
-      <?php if (config('searchbar')): ?>
-      <div class="c-site-header__item u-grow u-shrink u-hidden-until@desktop">
-        <?php template('partials/searchform', ['style_modifier' => 'c-search-bar--primary']) ?>
-      </div>
-      <?php endif ?>
+      <div class="grow"></div>
 
-      <div class="c-site-header__item u-shrink u-hidden-until@tablet">
+      <div class="flex-none hidden sm:block">
         <?php template('partials/primary-nav') ?>
       </div>
 
       <div
-        class="c-site-header__item u-text-right u-shrink-0 <?= config('mobile-menu-always') ? '' : 'u-hidden-from@tablet' ?>"
+        class="flex-none text-right"
       >
         <button class="c-btn c-btn--subtle c-btn--edgy c-btn--bigicon
           c-btn--square c-site-header__hamburger jsFlyinBtn"

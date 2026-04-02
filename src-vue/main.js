@@ -13,9 +13,6 @@ import JoPaginationWrapper from './components/pagination/JoPaginationWrapper.vue
 import JoHeroSearch from './components/home/JoHeroSearch.vue'
 
 /* Components (lazy — heavy, page-specific) */
-const JoBoogleMain = () => import('./components/boogle/JoBoogleMain.vue')
-const JoSearchMain = () => import('./components/search/JoSearchMain.vue')
-const JoSlider = () => import('./components/slider/JoSlider.vue')
 const JoStudyCenter = () => import('./components/study-center/JoStudyCenter.vue')
 
 /* Util */
@@ -36,15 +33,12 @@ import '../styles/main.scss'
 axios.defaults.baseURL = '/wp-json/'
 
 /* Instantiate Components */
-instantiate.component('JoBoogleMain', JoBoogleMain)
-instantiate.component('JoSearchMain', JoSearchMain)
 instantiate.component('JoLivestreamDropdown', JoLivestreamDropdown)
 instantiate.component('JoLivestreamMeta', JoLivestreamMeta)
 instantiate.component('JoLivestreamMessage', JoLivestreamMessage)
 instantiate.component('JoMedialist', JoMedialist)
 instantiate.component('JoCookieConsent', JoCookieConsent)
 instantiate.component('JoEvents', JoEvents)
-instantiate.component('JoSlider', JoSlider)
 instantiate.component('JoPaginationWrapper', JoPaginationWrapper)
 instantiate.component('JoStudyCenter', JoStudyCenter)
 instantiate.component('JoHeroSearch', JoHeroSearch)

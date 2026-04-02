@@ -4,7 +4,7 @@ use function Tonik\Theme\App\template;
 
 <?php get_header() ?>
 
-<main role="main" class="max-w-prose mx-auto px-4 md:px-8 u-mb+">
+<main role="main" class="max-w-screen-md mx-auto px-4 md:px-8 u-mb+">
 
     <div class="u-center u-mv">
       <?= get_the_post_thumbnail(null, 'medium', ['class' => 'u-rounded u-shadow-3']) ?>

@@ -30,7 +30,7 @@ $link_text = $link_text ?? 'Alle anzeigen';
       <!-- Left arrow -->
       <button
         data-ref="prev"
-        class="group hidden md:flex absolute z-20 left-0 inset-y-0 w-16 items-center justify-center text-white bg-gradient-to-l from-transparent via-white/30 to-white"
+        class="group hidden md:flex absolute z-20 -left-2 inset-y-0 w-16 items-center justify-center text-white bg-gradient-to-l from-transparent via-white/30 to-white"
         aria-label="Zurück scrollen"
       >
         <div class="p-2 rounded-full bg-blue-700/70 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 group-hover:-translate-x-1 transition-all">
@@ -50,7 +50,7 @@ $link_text = $link_text ?? 'Alle anzeigen';
       <!-- Right arrow -->
       <button
         data-ref="next"
-        class="group hidden md:flex absolute z-20 right-0 inset-y-0 w-16 items-center justify-center bg-gradient-to-r from-transparent via-white/30 to-white"
+        class="group hidden md:flex absolute z-20 -right-2 inset-y-0 w-16 items-center justify-center bg-gradient-to-r from-transparent via-white/30 to-white"
         aria-label="Weiter scrollen"
       >
         <div class="p-2 rounded-full bg-blue-700/70 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">

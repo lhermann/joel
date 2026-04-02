@@ -25,7 +25,7 @@ $widget_nav_classes = 'text-sm [&_h3]:text-white [&_h3]:font-semibold [&_h3]:mb-
           class="h-10 w-auto mb-3"
         >
         <p class="text-white font-semibold mb-1">Joel Media Ministry e.V.</p>
-        <p class="text-sm text-gray-400 leading-relaxed">
+        <p class="text-sm text-slate-500 leading-relaxed">
           <?= esc_html(get_bloginfo('description')) ?>
         </p>
       </div>
@@ -54,14 +54,15 @@ $widget_nav_classes = 'text-sm [&_h3]:text-white [&_h3]:font-semibold [&_h3]:mb-
     </div>
 
     <!-- Fineprint -->
-    <div class="border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-      Joel Media Ministry e.V. &copy; <?= date('Y') ?>
-      <span class="mx-2">&middot;</span>
-      <a href="<?= esc_url(home_url('/impressum/')) ?>" class="text-gray-500 no-underline hover:text-gray-300 transition-colors">Impressum</a>
-      <span class="mx-2">&middot;</span>
-      <a href="<?= esc_url(home_url('/datenschutzerklaerung/')) ?>" class="text-gray-500 no-underline hover:text-gray-300 transition-colors">Datenschutz</a>
-      <span class="mx-2">&middot;</span>
-      <a href="<?= esc_url(admin_url()) ?>" class="text-gray-500 no-underline hover:text-gray-300 transition-colors">Admin</a>
+    <div class="border-t border-slate-700 pt-6 text-center text-sm !text-slate-500">
+      <ul class="c-site-footer__list u-mb0">
+        <li><?php bloginfo( 'name' ); ?> &copy; <?= date('Y') ?></li>
+        <?php wp_nav_menu( [
+          'theme_location' => 'footer',
+          'container' => false,
+          'items_wrap' => '%3$s'
+        ] ); ?>
+      </ul>
     </div>
 
   </div>

@@ -152,14 +152,9 @@ get_header();
   <?php // ─── Donate CTA ──────────────────────────────────────── ?>
   <?php template('partials/home/donate') ?>
 
-  <?php // ─── Footer ──────────────────────────────────────────── ?>
-  <?php template('partials/home/footer') ?>
-
 </main>
 
 <style>
-  .page-template-page-home .c-site-footer { display: none; }
-
   /* Card row scroll button transitions (Vue-style enter/leave) */
   .enter-from, .leave-to { opacity: 0; }
   .enter-to, .leave-from { opacity: 1; }

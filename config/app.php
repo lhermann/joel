@@ -15,8 +15,6 @@ return [
     */
     'sta-branding'          => if_defined('SDA_BRANDING', false),
     'mobile-menu-always'    => if_defined('MOBILE_MENU_ALWAYS', true),
-    'searchbar'             => if_defined('SEARCHBAR', false),
-    'slider'                => if_defined('SLIDER', true),
     'landing'               => if_defined('LANDING', []),
     'livestream' => [
         'enabled'           => if_defined('LIVESTREAM', true),
@@ -117,7 +115,7 @@ return [
     'autoload' => [
         'helpers.php',
         'ACF/recordings.php',
-        'ACF/slides.php',
+        // 'ACF/slides.php', // REMOVED: slider feature removed
         // 'Adminpage/livestream.php', // DEPRECATED
         'Helper/global.php',
         'Helper/recordings.php',
@@ -130,7 +128,7 @@ return [
         'Http/ajaxes.php',
         'Http/restapi.php',
         'Http/routes.php',
-        'Setup/algolia.php',
+        // 'Setup/algolia.php', // REMOVED: Algolia search replaced by Study Center
         'Setup/actions.php',
         'Setup/actions-processing.php',
         'Setup/filters.php',

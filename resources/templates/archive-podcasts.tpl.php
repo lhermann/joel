@@ -6,7 +6,7 @@ $terms = array_filter( $terms, fn($term) => !get_field('hidden', 'podcasts_' . $
 
 <?php get_header() ?>
 
-<main role="main" class="max-w-prose mx-auto px-4 md:px-8 u-pt+">
+<main role="main" class="max-w-screen-md mx-auto px-4 md:px-8 u-pt+">
 
     <h2>Podcasts</h2>
 

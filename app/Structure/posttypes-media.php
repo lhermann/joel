@@ -292,4 +292,4 @@ function register_slide_post_type()
 
 }
 
-if(config('slider')) add_action('init', 'Tonik\Theme\App\Structure\register_slide_post_type');
+// Slider feature removed

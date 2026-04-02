@@ -56,8 +56,6 @@ function register_scripts_and_styles() {
   //   wp_enqueue_script('vanilla-main', $vanilla_main_js['uri'], [], $vanilla_main_js['hash'], true);
   // }
 
-  wp_deregister_script('algolia-instantsearch');
-  wp_deregister_script('algolia-autocomplete');
 
   //
   // Legacy Scripts
@@ -98,8 +96,6 @@ function register_scripts_and_styles() {
     wp_enqueue_style('font-style', $fonts_css['uri'], [], $fonts_css['hash']);
   }
 
-  wp_deregister_style('algolia-instantsearch');
-  wp_deregister_style('algolia-autocomplete');
 
 }
 
