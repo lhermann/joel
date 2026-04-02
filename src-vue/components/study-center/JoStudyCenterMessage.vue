@@ -19,6 +19,7 @@
         v-else-if="role === 'assistant'"
         class="c-study-content leading-6"
         v-html="renderedHtml"
+        @click="onCiteClick"
       />
       <div v-else class="leading-6">
         {{ text }}
@@ -39,6 +40,7 @@
 
 <script>
 import { marked } from 'marked'
+import { renderCitationSups } from '../../utils/citations.js'
 import JoStudyCenterCard from './JoStudyCenterCard.vue'
 
 // Configure marked
@@ -70,14 +72,23 @@ export default {
   computed: {
     renderedHtml () {
       if (!this.text) return ''
-      let html = marked.parse(this.text)
-      // Convert [N], [N, M, ...], and [N: timestamp] citation markers to superscripts
-      const supClass = 'text-[10px] text-blue-600/70 font-medium ml-px'
-      html = html.replace(
-        /\[(\d+(?:\s*,\s*\d+)*)(?::[^\]]*)?\]/g,
-        (_, nums) => nums.split(',').map(n => `<sup class="${supClass}">${n.trim()}</sup>`).join(''),
-      )
-      return html
+      const html = marked.parse(this.text)
+      return renderCitationSups(html)
+    },
+  },
+  methods: {
+    onCiteClick (e) {
+      const ref = e.target.dataset?.citeRef
+      if (!ref) return
+      e.preventDefault()
+      const card = this.$el.querySelector(`#cite-card-${ref}`)
+      if (!card) return
+      const rect = card.getBoundingClientRect()
+      if (rect.top < 0 || rect.bottom > window.innerHeight) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      }
+      card.classList.add('cite-highlight')
+      setTimeout(() => card.classList.remove('cite-highlight'), 1500)
     },
   },
 }

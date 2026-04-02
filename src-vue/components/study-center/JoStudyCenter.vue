@@ -97,6 +97,7 @@
 
 <script>
 import JoStudyCenterMessage from './JoStudyCenterMessage.vue'
+import { renumberCitations } from '../../utils/citations.js'
 
 const STORAGE_KEY = 'jm:chat-messages:study'
 const MEMORY_KEY = 'jm:chat-memory'
@@ -210,17 +211,7 @@ export default {
                 refRemap[s.ref] = i + 1
                 s.ref = i + 1
               })
-              // Renumber citations in text (handles [1], [1, 2], [1, 2, 4], [1: 30:02] etc.)
-              assistant.text = assistant.text.replace(
-                /\[(\d+(?:\s*,\s*\d+)*)(?::[^\]]*)?\]/g,
-                (match, nums) => {
-                  const remapped = nums.split(',').map(n => {
-                    const orig = n.trim()
-                    return refRemap[orig] != null ? String(refRemap[orig]) : orig
-                  })
-                  return `[${remapped.join(', ')}]`
-                },
-              )
+              assistant.text = renumberCitations(assistant.text, refRemap)
               assistant.sources = sources
               if (data.memory) this.handleMemoryEvent(data.memory)
               this.scrollLastMessageIntoView()

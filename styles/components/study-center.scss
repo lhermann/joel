@@ -47,3 +47,13 @@
     }
   }
 }
+
+/* Citation card highlight animation */
+@keyframes cite-flash {
+  0% { background-color: rgb(219 234 254); /* blue-100 */ }
+  100% { background-color: white; }
+}
+
+.cite-highlight {
+  animation: cite-flash 1.5s ease-out;
+}

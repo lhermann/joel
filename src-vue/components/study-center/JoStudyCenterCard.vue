@@ -1,5 +1,6 @@
 <template>
   <a
+    :id="'cite-card-' + source.ref"
     :href="permalink"
     class="relative flex items-start gap-2 p-2 pl-4 border border-gray-200 rounded bg-white no-underline text-gray-800 transition hover:border-gray-400 hover:shadow-sm"
   >
