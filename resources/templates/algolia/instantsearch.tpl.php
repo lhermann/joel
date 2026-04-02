@@ -11,7 +11,7 @@ $settings = new Algolia_Settings();
 
 <?php get_header(); ?>
 
-<main role="main" class="o-wrapper u-pv+">
+<main role="main" class="max-w-screen-xl mx-auto px-4 md:px-8 u-pv+">
     <div
         data-vue="JoSearchMain"
         data-options='<?= json_encode([

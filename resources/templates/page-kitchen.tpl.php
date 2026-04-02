@@ -4,7 +4,7 @@ use function Tonik\Theme\App\template;
 
 <?php get_header() ?>
 
-<main class="o-wrapper u-pv+">
+<main class="max-w-screen-xl mx-auto px-4 md:px-8 u-pv+">
     <h1>Kitchen</h1>
 
     <h2>Colors</h2>

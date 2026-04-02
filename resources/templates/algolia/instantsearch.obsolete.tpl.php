@@ -4,7 +4,7 @@ use function Tonik\Theme\App\config;
 
 <?php get_header(); ?>
 
-<main role="main" class="o-wrapper u-pv+">
+<main role="main" class="max-w-screen-xl mx-auto px-4 md:px-8 u-pv+">
 
     <div class="o-layout o-layout--large u-break-wrapper@until-tablet">
 

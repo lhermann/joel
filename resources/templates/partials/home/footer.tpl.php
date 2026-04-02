@@ -12,7 +12,7 @@ $widget_nav_classes = 'text-sm [&_h3]:text-white [&_h3]:font-semibold [&_h3]:mb-
 ?>
 
 <footer class="bg-gray-900 text-gray-300 pt-12 pb-6" role="contentinfo">
-  <div class="max-w-screen-xl mx-auto px-4">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
     <!-- 4-column grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">

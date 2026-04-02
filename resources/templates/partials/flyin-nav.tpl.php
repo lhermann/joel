@@ -17,7 +17,7 @@ use function Tonik\Theme\App\Helper\render_menu_for_flyin;
             </button>
         </header>
 
-        <div class="o-wrapper u-mt">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8 u-mt">
 
             <?php if (config('searchbar')): ?>
             <div>

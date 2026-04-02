@@ -5,7 +5,7 @@ use function Tonik\Theme\App\config;
 
 <?php get_header() ?>
 
-<main role="main" class="o-wrapper">
+<main role="main" class="max-w-screen-xl mx-auto px-4 md:px-8">
 
     <?php template('partials/archive-tabs', [
         'style_modifier' => 'u-break-wrapper@until-tablet u-4/5@tablet u-3/4@desktop u-box-center'

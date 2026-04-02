@@ -15,7 +15,7 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
         style="background-image: url('<?= asset_path('/images/header-blue.svg') ?>');"
     >
 
-        <div class="o-wrapper">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
             <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
                 <a class="c-link c-link--dotted c-link--white" href="/<?= _x('topics', 'http route', config('textdomain')) ?>/">
@@ -96,7 +96,7 @@ $subtopics = get_terms([ 'taxonomy' => 'topics', 'parent' => $term->term_id ]);
 
     </div>
 
-    <div class="o-wrapper u-mt">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8 u-mt">
         <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
             <?php template('vue-components/medialist', [

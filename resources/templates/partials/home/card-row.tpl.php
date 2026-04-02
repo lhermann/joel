@@ -12,7 +12,7 @@ $link_text = $link_text ?? 'Alle anzeigen';
 ?>
 
 <section class="py-8 md:py-12">
-  <div class="max-w-screen-xl mx-auto px-4">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
     <!-- Heading -->
     <div class="flex items-center gap-3 mb-4">
@@ -41,7 +41,7 @@ $link_text = $link_text ?? 'Alle anzeigen';
       <!-- Cards -->
       <div
         data-ref="scroller"
-        class="flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 -mb-2"
+        class="flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 -mx-2"
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
         <?= $cards_html ?>

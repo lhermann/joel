@@ -5,7 +5,7 @@ use function Tonik\Theme\App\config;
 
 <header id="header" class="c-site-header <?= $style_modifier ?>" role="banner">
 
-  <div class="o-wrapper">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
     <div class="c-site-header__flex">
 

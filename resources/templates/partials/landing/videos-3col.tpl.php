@@ -6,7 +6,7 @@ if(!isset($args)) $args = [];
 ?>
 
 <section class="c-section u-pv <?= $style_modifier ?> ">
-  <div class="o-wrapper">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
     <div class="o-layout o-layout--large">
         <div class="o-layout__item u-1/3@desktop u-1/1 u-mb">

@@ -4,7 +4,7 @@ if(!isset($args)) $args = [];
 ?>
 
 <section class="c-section <?= $style_modifier ?>">
-  <div class="o-wrapper">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
     <div class="o-flex o-flex--between o-flex--middle">
       <div class="o-flex__item">
           <h2>Joel Media Unterstützen</h2>

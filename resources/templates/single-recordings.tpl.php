@@ -40,7 +40,7 @@ if($youtube) {
   <div id="head"
     class="c-header-bg c-header-bg--offset u-pt+"
     style="background-image: url(<?= asset_path('images/header-blue.svg') ?>);">
-    <div class="o-wrapper">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
       <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
 
@@ -80,7 +80,7 @@ if($youtube) {
     </div>
   </div>
 
-  <div class="o-wrapper">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
     <div class="u-box-center u-3/4@tablet u-2/3@desktop">
 
       <section id="infobox" class="u-pv">

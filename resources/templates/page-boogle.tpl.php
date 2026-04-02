@@ -7,7 +7,7 @@ $settings = new Algolia_Settings();
 
 <?php get_header() ?>
 
-<main class="o-wrapper !max-w-prose u-pv+" role="main">
+<main class="max-w-screen-xl mx-auto px-4 md:px-8 u-pv+" role="main">
 
   <header class="mb-12">
     <div class="flex items-center justify-center mb-1">

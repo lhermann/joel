@@ -6,7 +6,7 @@ $query = new WP_Query( ['posts_per_page' => 3] );
 ?>
 
 <section class="c-section c-section--alt <?= $style_modifier ?>">
-    <div class="o-wrapper">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
       <h2>
           <span class="u-text-middle">Artikel</span>

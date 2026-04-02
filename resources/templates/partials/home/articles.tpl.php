@@ -7,7 +7,7 @@
 ?>
 
 <section class="py-8 md:py-12 bg-gray-50">
-  <div class="max-w-screen-xl mx-auto px-4">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
     <div class="flex items-center gap-3 mb-4">
       <h2 class="text-xl md:text-2xl font-bold m-0">Artikel</h2>

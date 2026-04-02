@@ -7,7 +7,7 @@ use function Tonik\Theme\App\config;
 
 <main>
 
-    <div class="o-wrapper u-text-center u-pt">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8 u-text-center u-pt">
         <h1><?= __('Slide', config('textdomain')) ?>: <?php the_title() ?></h1>
     </div>
 

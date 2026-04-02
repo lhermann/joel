@@ -4,7 +4,7 @@ use function Tonik\Theme\App\template;
 
 <?php get_header() ?>
 
-<main role="main" class="o-wrapper u-pv++">
+<main role="main" class="max-w-screen-xl mx-auto px-4 md:px-8 u-pv++">
 
   <?php template('vue-components/events', [
       'id' => 'vue-events',

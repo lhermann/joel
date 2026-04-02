@@ -12,7 +12,7 @@ use function Tonik\Theme\App\asset_path;
 
     <div id="head" class="c-header-bg c-header-bg--offset u-pt+"
         style="background-image: url(<?= asset_path('images/header-blue.svg') ?>);">
-        <div class="o-wrapper">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
             <header class="u-white">
                 <h1><?php the_title() ?></h1>
@@ -56,7 +56,7 @@ use function Tonik\Theme\App\asset_path;
         </div>
     </div>
 
-    <div class="o-wrapper u-mb++">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8 u-mb++">
 
         <div class="u-3/5@tablet u-2/3@desktop">
 

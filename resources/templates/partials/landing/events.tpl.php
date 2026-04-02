@@ -15,7 +15,7 @@ if(!isset($args)) $args = [];
 ?>
 <section id="event-list" class="c-section u-pt u-pb0 <?= $style_modifier ?>">
 
-  <div class="o-wrapper">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
 
     <h2 class="u-h3 u-mb-">
         <span class="u-text-middle u-mr-">Veranstaltungen</span>

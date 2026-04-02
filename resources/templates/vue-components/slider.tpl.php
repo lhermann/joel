@@ -26,7 +26,7 @@ $params = isset($params) ? json_encode($params) : '{}';
         style="background-image: url('<?= asset_path('images/slide-dark-blue.svg') ?>');"
       >
         <a href="/aufnahmen/" class="c-slide__link"></a>
-        <div class="o-wrapper c-slide__wrapper">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8 c-slide__wrapper">
           <div class="c-slide__body u-1/2">
             <img
               class="c-logo c-logo--hero"

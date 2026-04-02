@@ -10,7 +10,7 @@ $widgets_area_active = is_active_sidebar('footer_1')
 
   <h2 class="u-hidden-visually">Footer</h2>
 
-  <section class="o-wrapper u-text-center u-pt u-hidden-from@tablet">
+  <section class="max-w-screen-xl mx-auto px-4 md:px-8 u-text-center u-pt u-hidden-from@tablet">
     <a class="c-btn c-btn--secondary" href="#header">
       Zurück zum Anfang <span class="u-ic-arrow_upward"></span>
     </a>
@@ -18,7 +18,7 @@ $widgets_area_active = is_active_sidebar('footer_1')
   </section>
 
   <?php if ($widgets_area_active): ?>
-  <section class="o-wrapper c-site-footer__nav">
+  <section class="max-w-screen-xl mx-auto px-4 md:px-8 c-site-footer__nav">
     <div class="o-layout o-layout--large">
 
       <div class="o-layout__item u-3/4@tablet">
