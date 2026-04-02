@@ -71,10 +71,10 @@ export default {
     renderedHtml () {
       if (!this.text) return ''
       let html = marked.parse(this.text)
-      // Convert [N] and [N, M, ...] citation markers to superscripts
+      // Convert [N], [N, M, ...], and [N: timestamp] citation markers to superscripts
       const supClass = 'text-[10px] text-blue-600/70 font-medium ml-px'
       html = html.replace(
-        /\[(\d+(?:\s*,\s*\d+)*)\]/g,
+        /\[(\d+(?:\s*,\s*\d+)*)(?::[^\]]*)?\]/g,
         (_, nums) => nums.split(',').map(n => `<sup class="${supClass}">${n.trim()}</sup>`).join(''),
       )
       return html

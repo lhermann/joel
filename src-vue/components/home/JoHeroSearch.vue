@@ -321,7 +321,7 @@ export default {
                 s.ref = i + 1
               })
               assistant.text = assistant.text.replace(
-                /\[(\d+(?:\s*,\s*\d+)*)\]/g,
+                /\[(\d+(?:\s*,\s*\d+)*)(?::[^\]]*)?\]/g,
                 (match, nums) => {
                   const remapped = nums.split(',').map(n => {
                     const orig = n.trim()
