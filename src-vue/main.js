@@ -2,19 +2,21 @@
 import axios from 'axios'
 import instantiate from './instantiate.js'
 
-/* Components */
-import JoBoogleMain from './components/boogle/JoBoogleMain.vue'
-import JoSearchMain from './components/search/JoSearchMain.vue'
+/* Components (eager — lightweight, widely used) */
 import JoLivestreamDropdown from './components/livestream/JoLivestreamDropdown.vue'
 import JoLivestreamMeta from './components/livestream/JoLivestreamMeta.vue'
 import JoLivestreamMessage from './components/livestream/JoLivestreamMessage.vue'
 import JoMedialist from './components/medialist/JoMedialist.vue'
 import JoCookieConsent from './components/cookieConsent/JoCookieConsent.vue'
 import JoEvents from './components/events/JoEvents.vue'
-import JoSlider from './components/slider/JoSlider.vue'
 import JoPaginationWrapper from './components/pagination/JoPaginationWrapper.vue'
-import JoStudyCenter from './components/study-center/JoStudyCenter.vue'
 import JoHeroSearch from './components/home/JoHeroSearch.vue'
+
+/* Components (lazy — heavy, page-specific) */
+const JoBoogleMain = () => import('./components/boogle/JoBoogleMain.vue')
+const JoSearchMain = () => import('./components/search/JoSearchMain.vue')
+const JoSlider = () => import('./components/slider/JoSlider.vue')
+const JoStudyCenter = () => import('./components/study-center/JoStudyCenter.vue')
 
 /* Util */
 import toggle from './components/utils/toggle.js'
