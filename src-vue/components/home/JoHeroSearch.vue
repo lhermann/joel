@@ -183,7 +183,6 @@ export default {
     },
 
     onSearchInput () {
-      if (this.chatVisible) return
       clearTimeout(this._searchDebounce)
       const query = this.inputText.trim()
       if (query.length < 2) {
