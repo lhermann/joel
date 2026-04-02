@@ -32,7 +32,7 @@
 
       <!-- Instant search suggestions -->
       <div
-        v-if="suggestionsOpen && suggestions.length > 0 && !chatVisible"
+        v-if="suggestionsOpen && suggestions.length > 0"
         class="absolute left-0 right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 text-left"
       >
         <a
