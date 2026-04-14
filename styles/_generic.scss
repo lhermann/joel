@@ -21,11 +21,11 @@ body {
 }
 
 /**
- * 1. can not be applied to html or body because it messes with smooth scrolling
- *    on the iPhone
+ * Clip horizontal overflow without creating a scroll container or clipping
+ * vertical glyph ascenders (would cut off top of headings like "Ä").
  */
 main {
-    overflow: hidden; /* 1 */
+    overflow-x: clip;
 }
 
 a {
