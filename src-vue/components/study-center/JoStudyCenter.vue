@@ -113,6 +113,7 @@ export default {
       inputText: '',
       messages: [],
       streaming: false,
+      conversationId: crypto.randomUUID(),
       exampleChips: [
         'Was sagt der Prophet Joel über Vergebung?',
         'Erkläre das Heiligtum im Kontext von Römer 8',
@@ -167,7 +168,7 @@ export default {
       const historyMessages = this.buildHistory()
 
       const memory = this.loadMemory()
-      const body = { messages: historyMessages }
+      const body = { messages: historyMessages, conversation_id: this.conversationId }
       if (memory.length) body.memory = memory
       const response = await fetch(apiUrl + '/api/chat', {
         method: 'POST',
@@ -287,6 +288,7 @@ export default {
 
     clearHistory () {
       this.messages = []
+      this.conversationId = crypto.randomUUID()
       localStorage.removeItem(STORAGE_KEY)
       this.$nextTick(() => this.$refs.input?.focus())
     },
